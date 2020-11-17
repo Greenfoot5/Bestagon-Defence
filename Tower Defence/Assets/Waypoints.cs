@@ -2,15 +2,15 @@
 
 public class Waypoints : MonoBehaviour
 {
-    public static Transform[] points;
+    public static Transform[] Points;
 
-    void Awake()
+    private void Awake()
     {
-        points = new Transform[transform.childCount];
+        Points = new Transform[transform.childCount];
         
-        for (int i = 0; i < points.Length; i++)
+        for (var i = 0; i < Points.Length; i++)
         {
-            points[i] = transform.GetChild(i);
+            Points[i] = transform.GetChild(i);
         }
     }
 }

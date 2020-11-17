@@ -1,38 +1,36 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
     public float speed = 2f;
 
-    private Transform target;
-    private int waypointIndex = 0;
+    private Transform _target;
+    private int _waypointIndex;
 
-    void Start()
+    private void Start()
     {
-        target = Waypoints.points[waypointIndex];
+        _target = Waypoints.Points[_waypointIndex];
     }
 
-    void Update()
+    private void Update()
     {
-        Vector3 dir = target.position - transform.position;
+        var dir = _target.position - transform.position;
         transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
 
-        if (Vector3.Distance(transform.position, target.position) <= 0.05f)
+        if (Vector3.Distance(transform.position, _target.position) <= 0.05f)
         {
             GetNextWaypoint();
         }
     }
 
-    void GetNextWaypoint()
+    private void GetNextWaypoint()
     {
-        if (waypointIndex >= Waypoints.points.Length - 1)
+        if (_waypointIndex >= Waypoints.Points.Length - 1)
         {
             Destroy(gameObject);
             return;
         }
-        waypointIndex++;
-        target = Waypoints.points[waypointIndex];
+        _waypointIndex++;
+        _target = Waypoints.Points[_waypointIndex];
     }
 }
