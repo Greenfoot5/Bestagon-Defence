@@ -5,15 +5,21 @@ using UnityEngine;
 public class Turret : MonoBehaviour
 {
     private Transform _target;
+    
+    [Header("Attributes")]
+    
     public float range = 2.5f;
-
-    public string enemyTag = "Enemy";
-    public float turnSpeed = 3f;
-
     public float fireRate = 1f;
     private float _fireCountdown = 0f;
-
+    public float turnSpeed = 3f;
+    
+    [Header("Refernces")]
+    public string enemyTag = "Enemy";
     public Transform partToRotate;
+    
+    public GameObject bulletPrefab;
+    public Transform firePoint;
+    
     // Start is called before the first frame update
     private void Start()
     {
@@ -77,7 +83,7 @@ public class Turret : MonoBehaviour
 
     void Shoot()
     {
-        Debug.Log("Shoot");
+        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
     }
     
     // Visualises a circle of range when turret is selected
