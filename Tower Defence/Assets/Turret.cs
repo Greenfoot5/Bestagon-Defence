@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
@@ -7,35 +6,40 @@ public class Turret : MonoBehaviour
     public float range = 2.5f;
 
     public string enemyTag = "Enemy";
+    public float turnSpeed = 3f;
 
     public Transform partToRotate;
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        InvokeRepeating("UpdateTarget", 0f, 0.5f);
+        // Call the function every 2s
+        InvokeRepeating(nameof(UpdateTarget), 0f, 0.5f);
     }
 
-    void UpdateTarget()
+    private void UpdateTarget()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
-        float shortestDistance = Mathf.Infinity;
+        // Create a list of enemies and remember shortest distance and enemy
+        var enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+        var shortestDistance = Mathf.Infinity;
         GameObject nearestEnemy = null;
-
+        
+        // Loop through the enemies and find the closest
         foreach (var enemy in enemies)
         {
-            float distanceToEnemey = Vector3.Distance(transform.position, enemy.transform.position);
+            var distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
             
-            if (distanceToEnemey < shortestDistance)
-            {
-                shortestDistance = distanceToEnemey;
-                nearestEnemy = enemy;
-            }
+            // Save if new closest enemy
+            if (!(distanceToEnemy < shortestDistance)) continue;
+            shortestDistance = distanceToEnemy;
+            nearestEnemy = enemy;
         }
-
+        
+        // Check if we have a target and should shoot
         if (nearestEnemy != null && shortestDistance <= range)
         {
             _target = nearestEnemy.transform;
         }
+        // Set our target to null if out of range
         else
         {
             _target = null;
@@ -43,19 +47,22 @@ public class Turret : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        // Don't do anything if we don't have a target
         if (_target == null)
         {
             return;
         }
         
+        // Rotate turret to look at target
         var aimDir = ((Vector2)_target.position - (Vector2)transform.position).normalized;
-        var lookDir = Vector3.Lerp(transform.up, aimDir, 1f);
-
-        transform.rotation *= Quaternion.FromToRotation(transform.up, lookDir);
+        var up = partToRotate.up;
+        var lookDir = Vector3.Lerp(up, aimDir, Time.deltaTime * turnSpeed);
+        transform.rotation *= Quaternion.FromToRotation(up, lookDir);
     }
-
+    
+    // Visualises a circle of range when turret is selected
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
