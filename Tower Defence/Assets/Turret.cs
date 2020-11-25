@@ -3,11 +3,12 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-    
-    private Transform target;
+    private Transform _target;
     public float range = 2.5f;
 
     public string enemyTag = "Enemy";
+
+    public Transform partToRotate;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,21 +34,26 @@ public class Turret : MonoBehaviour
 
         if (nearestEnemy != null && shortestDistance <= range)
         {
-            target = nearestEnemy.transform;
+            _target = nearestEnemy.transform;
         }
         else
         {
-            target = null;
+            _target = null;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (target == null)
+        if (_target == null)
         {
             return;
         }
+        
+        var aimDir = ((Vector2)_target.position - (Vector2)transform.position).normalized;
+        var lookDir = Vector3.Lerp(transform.up, aimDir, 1f);
+
+        transform.rotation *= Quaternion.FromToRotation(transform.up, lookDir);
     }
 
     private void OnDrawGizmosSelected()
