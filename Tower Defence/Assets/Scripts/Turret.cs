@@ -1,6 +1,4 @@
-﻿using Unity.Profiling;
-using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
@@ -10,10 +8,10 @@ public class Turret : MonoBehaviour
     
     public float range = 2.5f;
     public float fireRate = 1f;
-    private float _fireCountdown = 0f;
+    private float _fireCountdown;
     public float turnSpeed = 3f;
     
-    [Header("Refernces")]
+    [Header("References")]
     public string enemyTag = "Enemy";
     public Transform partToRotate;
     
@@ -83,7 +81,13 @@ public class Turret : MonoBehaviour
 
     void Shoot()
     {
-        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        var bulletGO = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        var bullet = bulletGO.GetComponent<Bullet>();
+
+        if (bullet != null)
+        {
+            bullet.Seek(_target);
+        }
     }
     
     // Visualises a circle of range when turret is selected
