@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Unity.Profiling;
+using UnityEditor;
+using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
@@ -7,6 +9,9 @@ public class Turret : MonoBehaviour
 
     public string enemyTag = "Enemy";
     public float turnSpeed = 3f;
+
+    public float fireRate = 1f;
+    private float _fireCountdown = 0f;
 
     public Transform partToRotate;
     // Start is called before the first frame update
@@ -60,6 +65,19 @@ public class Turret : MonoBehaviour
         var up = partToRotate.up;
         var lookDir = Vector3.Lerp(up, aimDir, Time.deltaTime * turnSpeed);
         transform.rotation *= Quaternion.FromToRotation(up, lookDir);
+
+        if (_fireCountdown <= 0)
+        {
+            Shoot();
+            _fireCountdown = 1f / fireRate;
+        }
+
+        _fireCountdown -= Time.deltaTime;
+    }
+
+    void Shoot()
+    {
+        Debug.Log("Shoot");
     }
     
     // Visualises a circle of range when turret is selected
