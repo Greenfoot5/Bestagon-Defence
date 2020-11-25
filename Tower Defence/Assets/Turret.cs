@@ -4,11 +4,10 @@ using UnityEngine;
 public class Turret : MonoBehaviour
 {
     
-    [SerializeField]
     private Transform target;
     public float range = 2.5f;
 
-    public string enemyTag = "enemy";
+    public string enemyTag = "Enemy";
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +34,10 @@ public class Turret : MonoBehaviour
         if (nearestEnemy != null && shortestDistance <= range)
         {
             target = nearestEnemy.transform;
+        }
+        else
+        {
+            target = null;
         }
     }
 
