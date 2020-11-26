@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
 
         var dir = ((Vector2)_target.position - (Vector2)transform.position).normalized;
         var distanceThisFrame = speed * Time.deltaTime;
-
+        
         if (dir.magnitude <= distanceThisFrame)
         {
             HitTarget();
@@ -34,6 +34,6 @@ public class Bullet : MonoBehaviour
 
     void HitTarget()
     {
-        Debug.Log("We hit something!");
+        Destroy(gameObject);
     }
 }
