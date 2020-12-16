@@ -79,6 +79,7 @@ public class Turret : MonoBehaviour
         _fireCountdown -= Time.deltaTime;
     }
 
+    // Create the bullet and set the target
     void Shoot()
     {
         var bulletGO = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
