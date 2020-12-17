@@ -1,8 +1,8 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Node : MonoBehaviour
 {
+    // The colour to set out node to
     public Color hoverColour;
     private Color _defaultColour;
 
@@ -23,10 +23,11 @@ public class Node : MonoBehaviour
         {
             Debug.Log("Turret already built!");
         }
-        
-        // Build a turret
-    }
 
+        GameObject turretToBuild = BuildManager.instance.GetTurretToBuild();
+        _turret = Instantiate(turretToBuild, transform.position, transform.rotation);
+    }
+    
     private void OnMouseEnter()
     {
         _rend.material.color = hoverColour;
