@@ -3,12 +3,21 @@
 public class Turret : MonoBehaviour
 {
     private Transform _target;
+    
+    [Header("Attributes")]
+    
     public float range = 2.5f;
-
-    public string enemyTag = "Enemy";
+    public float fireRate = 1f;
+    private float _fireCountdown;
     public float turnSpeed = 3f;
-
+    
+    [Header("References")]
+    public string enemyTag = "Enemy";
     public Transform partToRotate;
+    
+    public GameObject bulletPrefab;
+    public Transform firePoint;
+    
     // Start is called before the first frame update
     private void Start()
     {
@@ -60,6 +69,26 @@ public class Turret : MonoBehaviour
         var up = partToRotate.up;
         var lookDir = Vector3.Lerp(up, aimDir, Time.deltaTime * turnSpeed);
         transform.rotation *= Quaternion.FromToRotation(up, lookDir);
+
+        if (_fireCountdown <= 0)
+        {
+            Shoot();
+            _fireCountdown = 1f / fireRate;
+        }
+
+        _fireCountdown -= Time.deltaTime;
+    }
+
+    // Create the bullet and set the target
+    void Shoot()
+    {
+        var bulletGO = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        var bullet = bulletGO.GetComponent<Bullet>();
+
+        if (bullet != null)
+        {
+            bullet.Seek(_target);
+        }
     }
     
     // Visualises a circle of range when turret is selected
