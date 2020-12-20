@@ -2,6 +2,8 @@
 
 public class CameraController : MonoBehaviour
 {
+    private bool doMovement = true;
+    
     public float panSpeed = 10f;
     [Range(0,1)]
     [Tooltip("Percentage of the screen from border to start panning")]
@@ -10,6 +12,16 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            doMovement = !doMovement;
+        }
+        
+        if (!doMovement)
+        {
+            return;
+        }
+        
         if (Input.GetKey("w") || Input.mousePosition.y >= Screen.height * panBorderPercentage)
         {
             transform.Translate(Vector3.up * (panSpeed * Time.deltaTime), Space.World);
