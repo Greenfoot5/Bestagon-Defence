@@ -2,26 +2,34 @@
 
 public class CameraController : MonoBehaviour
 {
-    private bool doMovement = true;
+    // Tracks if we currently want to pan or not
+    private bool _doMovement = true;
     
     public float panSpeed = 10f;
     [Range(0,1)]
     [Tooltip("Percentage of the screen from border to start panning")]
     public float panBorderPercentage = 0.95f;
-
-    // Update is called once per frame
+    
+    // Used when changing the camera size
+    public float scrollSpeed = 5000f;
+    public float minOrthSize = 3;
+    public float maxOrthSize = 9;
+    
     void Update()
     {
+        // Enables/disables panning
         if (Input.GetKey(KeyCode.Escape))
         {
-            doMovement = !doMovement;
+            _doMovement = !_doMovement;
         }
         
-        if (!doMovement)
+        if (!_doMovement)
         {
             return;
         }
         
+        // Each of the panning inputs.
+        // Then we move the camera on the x or y to pan
         if (Input.GetKey("w") || Input.mousePosition.y >= Screen.height * panBorderPercentage)
         {
             transform.Translate(Vector3.up * (panSpeed * Time.deltaTime), Space.World);
@@ -38,5 +46,14 @@ public class CameraController : MonoBehaviour
         {
             transform.Translate(Vector3.left * (panSpeed * Time.deltaTime), Space.World);
         }
+        
+        // Implement scrolling by changing the Orthographic Size on the camera
+        float scroll = Input.GetAxis("Mouse ScrollWheel");
+
+        float orthSize = transform.GetComponent<Camera>().orthographicSize;
+        orthSize -= scroll * scrollSpeed * Time.deltaTime;
+        Mathf.Clamp(orthSize, minOrthSize, maxOrthSize);
+
+        transform.GetComponent<Camera>().orthographicSize = orthSize;
     }
 }
