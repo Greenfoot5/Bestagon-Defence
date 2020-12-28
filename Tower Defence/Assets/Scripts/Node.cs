@@ -21,6 +21,7 @@ public class Node : MonoBehaviour
 
     private void OnMouseDown()
     {
+        // Check we are trying to build
         if (_buildManager.GetTurretToBuild() == null)
         {
             return;
@@ -38,11 +39,13 @@ public class Node : MonoBehaviour
     
     private void OnMouseEnter()
     {
+        // Make sure we're hovering over the node and nothing else
         if (EventSystem.current.IsPointerOverGameObject())
         {
             return;
         }
         
+        // Make sure we're trying to build
         if (_buildManager.GetTurretToBuild() == null)
         {
             return;
