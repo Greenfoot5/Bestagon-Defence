@@ -1,6 +1,4 @@
-﻿using System;
-using System.Runtime.CompilerServices;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
@@ -51,7 +49,7 @@ public class Bullet : MonoBehaviour
     {
         // Spawn hit effect
         var effectIns = Instantiate(impactEffect, transform.position, transform.rotation);
-        Destroy(effectIns, 1f);
+        Destroy(effectIns, 2f);
 
         if (explosionRadius > 0f)
         {
