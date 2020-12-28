@@ -3,7 +3,8 @@
 public class CameraController : MonoBehaviour
 {
     // Tracks if we currently want to pan or not
-    private bool _doMovement = true;
+    [SerializeField]
+    private bool _doMovement = false;
     
     public float panSpeed = 10f;
     [Range(0,1)]
@@ -18,6 +19,7 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         // Enables/disables panning
+        // TODO - Fix iffy use
         if (Input.GetKey(KeyCode.Escape))
         {
             _doMovement = !_doMovement;
