@@ -1,11 +1,11 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
     private Transform _target;
     
     public float speed = 30f;
+    public float explosionRadius = 0f;
 
     public GameObject impactEffect;
 
@@ -38,6 +38,10 @@ public class Bullet : MonoBehaviour
         
         // Move the bullet towards the target
         transform.Translate(dir.normalized * distanceThisFrame, Space.World);
+        var toTarget = _target.position - transform.position;
+        Vector3.Normalize(toTarget);
+        transform.up = toTarget;
+
     }
     
     // Called when we hit the target
@@ -45,12 +49,43 @@ public class Bullet : MonoBehaviour
     {
         // Spawn hit effect
         var effectIns = Instantiate(impactEffect, transform.position, transform.rotation);
-        Destroy(effectIns, 1f);
-        
-        // TODO - should damage target
-        Destroy(_target.gameObject);
-        
+        Destroy(effectIns, 2f);
+
+        if (explosionRadius > 0f)
+        {
+            Explode();
+        }
+        else
+        {
+            Damage(_target);
+        }
+
         // Destroy so we only hit once
         Destroy(gameObject);
+    }
+
+    void Damage(Transform enemy)
+    {
+        // TODO - should damage target
+        Destroy(enemy.gameObject);
+    }
+
+    void Explode()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
+        Debug.Log(colliders);
+        foreach (Collider2D collider2d in colliders)
+        {
+            if (collider2d.CompareTag("Enemy"))
+            {
+                Damage(collider2d.transform);
+            }
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
 }
