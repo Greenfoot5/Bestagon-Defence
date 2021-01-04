@@ -6,10 +6,11 @@ public class Node : MonoBehaviour
     // The colour to set out node to
     public Color hoverColour;
     private Color _defaultColour;
-
-    private GameObject _turret;
-    private Renderer _rend;
     
+    [Header("Optional")]
+    public GameObject turret; 
+    
+    private Renderer _rend;
     private BuildManager _buildManager;
 
     void Start()
@@ -22,19 +23,18 @@ public class Node : MonoBehaviour
     private void OnMouseDown()
     {
         // Check we are trying to build
-        if (_buildManager.GetTurretToBuild() == null)
+        if (!_buildManager.CanBuild)
         {
             return;
         }
         
         // TODO - Enable turret upgrades
-        if (_turret != null)
+        if (turret != null)
         {
             Debug.Log("Turret already built!");
         }
 
-        GameObject turretToBuild = _buildManager.GetTurretToBuild();
-        _turret = Instantiate(turretToBuild, transform.position, transform.rotation);
+        _buildManager.BuildTurretOn(this);
     }
     
     private void OnMouseEnter()
@@ -46,14 +46,15 @@ public class Node : MonoBehaviour
         }
         
         // Make sure we're trying to build
-        if (_buildManager.GetTurretToBuild() == null)
+        if (!_buildManager.CanBuild)
         {
             return;
         }
         
         _rend.material.color = hoverColour;
     }
-
+    
+    // Reset colour when we no longer hover.
     private void OnMouseExit()
     {
         _rend.material.color = _defaultColour;
