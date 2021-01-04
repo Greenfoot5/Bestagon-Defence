@@ -17,6 +17,7 @@ public class BuildManager : MonoBehaviour
     private TurretBlueprint _turretToBuild;
 
     public bool CanBuild => _turretToBuild != null;
+    public bool HasGold => GameStats.gold >= _turretToBuild.cost;
     
     // Called when we build
     public void BuildTurretOn(Node node)
