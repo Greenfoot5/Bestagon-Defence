@@ -2,11 +2,11 @@
 
 public class GameStats : MonoBehaviour
 {
-    public static int gold;
-    public int startGold = 200;
+    public static int money;
+    public int startMoney = 200;
 
     void Start()
     {
-        gold = startGold;
+        money = startMoney;
     }
 }

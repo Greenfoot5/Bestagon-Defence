@@ -17,23 +17,23 @@ public class BuildManager : MonoBehaviour
     private TurretBlueprint _turretToBuild;
 
     public bool CanBuild => _turretToBuild != null;
-    public bool HasGold => GameStats.gold >= _turretToBuild.cost;
+    public bool HasMoney => GameStats.money >= _turretToBuild.cost;
     
     // Called when we build
     public void BuildTurretOn(Node node)
     {
-        if (GameStats.gold < _turretToBuild.cost)
+        if (GameStats.money < _turretToBuild.cost)
         {
             Debug.Log("Not enough gold!");
             return;
         }
 
-        GameStats.gold -= _turretToBuild.cost;
+        GameStats.money -= _turretToBuild.cost;
         
         var turret = Instantiate(_turretToBuild.prefab, node.transform.position, Quaternion.identity);
         node.turret = turret;
         
-        Debug.Log("Turret build. Gold left: " + GameStats.gold);
+        Debug.Log("Turret build. Gold left: " + GameStats.money);
     }
     
     // Used to set the turret we want to build.

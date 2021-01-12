@@ -52,7 +52,7 @@ public class Node : MonoBehaviour
             return;
         }
 
-        if (_buildManager.HasGold)
+        if (_buildManager.HasMoney)
         {
             _rend.material.color = hoverColour;
         }
