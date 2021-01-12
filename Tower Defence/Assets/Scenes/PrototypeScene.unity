@@ -495,6 +495,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4559129809900468847, guid: f8c5804ade5de404db89023d77cf7f43, type: 3}
   m_PrefabInstance: {fileID: 316364538}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &374751615
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7999956124641554730, guid: e496437627ad345cfa65c42cb4a0bcb3, type: 3}
+      propertyPath: m_Name
+      value: Missile Impact
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999956124641554741, guid: e496437627ad345cfa65c42cb4a0bcb3, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999956124641554741, guid: e496437627ad345cfa65c42cb4a0bcb3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999956124641554741, guid: e496437627ad345cfa65c42cb4a0bcb3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999956124641554741, guid: e496437627ad345cfa65c42cb4a0bcb3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999956124641554741, guid: e496437627ad345cfa65c42cb4a0bcb3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999956124641554741, guid: e496437627ad345cfa65c42cb4a0bcb3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999956124641554741, guid: e496437627ad345cfa65c42cb4a0bcb3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999956124641554741, guid: e496437627ad345cfa65c42cb4a0bcb3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999956124641554741, guid: e496437627ad345cfa65c42cb4a0bcb3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999956124641554741, guid: e496437627ad345cfa65c42cb4a0bcb3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999956124641554741, guid: e496437627ad345cfa65c42cb4a0bcb3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e496437627ad345cfa65c42cb4a0bcb3, type: 3}
 --- !u!1001 &429208894
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1944,6 +2001,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c22f09b80f574907baaea15ddfb2633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  standardTurret:
+    prefab: {fileID: 3974544501041316794, guid: f962ed2b909e2496cb09aa444d473eda, type: 3}
+    cost: 100
+  missileLauncher:
+    prefab: {fileID: 3974544501041316794, guid: fdd375ca6f6204cc5bbfe7da05610de0, type: 3}
+    cost: 150
 --- !u!1001 &1219488027
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2164,12 +2227,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3942835963936203609, guid: 21ef1708a1b044572a19bf8492b39c3f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3942835963936203609, guid: 21ef1708a1b044572a19bf8492b39c3f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1201689247}
     - target: {fileID: 3942835963936203609, guid: 21ef1708a1b044572a19bf8492b39c3f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PurchaseMissileLauncher
+      value: SelectMissileLauncher
+      objectReference: {fileID: 0}
+    - target: {fileID: 3942835963936203609, guid: 21ef1708a1b044572a19bf8492b39c3f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Shop, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3942835963936203610, guid: 21ef1708a1b044572a19bf8492b39c3f, type: 3}
       propertyPath: m_Sprite
@@ -2324,6 +2395,7 @@ GameObject:
   - component: {fileID: 1262650573}
   - component: {fileID: 1262650572}
   - component: {fileID: 1262650574}
+  - component: {fileID: 1262650575}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2374,8 +2446,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c378951380fa42d0ad06800ba5dda5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  standardTurretPrefab: {fileID: 3974544501041316794, guid: f962ed2b909e2496cb09aa444d473eda, type: 3}
-  missileLauncherPrefab: {fileID: 3974544501041316794, guid: fdd375ca6f6204cc5bbfe7da05610de0, type: 3}
+--- !u!114 &1262650575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262650571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d637c033ce9ab4c078c663272157689e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startGold: 0
 --- !u!1001 &1272866068
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4047,6 +4130,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1201689247}
+    - target: {fileID: 3942835963936203609, guid: 21ef1708a1b044572a19bf8492b39c3f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectStandardTurret
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21ef1708a1b044572a19bf8492b39c3f, type: 3}
 --- !u!1001 &7113015030856433727
