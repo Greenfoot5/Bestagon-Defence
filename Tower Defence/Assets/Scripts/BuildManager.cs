@@ -16,6 +16,8 @@ public class BuildManager : MonoBehaviour
 
     private TurretBlueprint _turretToBuild;
 
+    public GameObject buildEffect;
+
     public bool CanBuild => _turretToBuild != null;
     public bool HasMoney => GameStats.money >= _turretToBuild.cost;
     
@@ -29,9 +31,13 @@ public class BuildManager : MonoBehaviour
         }
 
         GameStats.money -= _turretToBuild.cost;
-        
-        var turret = Instantiate(_turretToBuild.prefab, node.transform.position, Quaternion.identity);
+
+        var nodePosition = node.transform.position;
+        var turret = Instantiate(_turretToBuild.prefab, nodePosition, Quaternion.identity);
         node.turret = turret;
+
+        GameObject effect = Instantiate(buildEffect, nodePosition, Quaternion.identity);
+        Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
         
         Debug.Log("Turret build. Gold left: " + GameStats.money);
     }
