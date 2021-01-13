@@ -7,8 +7,9 @@
 
 public class EnemyMovement : MonoBehaviour
 {
-    // The speed the enemy should move at
+    // Enemy Stats
     public float speed = 2f;
+    public int health = 20;
     
     // Waypoint indexes
     private Transform _target;
@@ -24,6 +25,21 @@ public class EnemyMovement : MonoBehaviour
         // Set the next target to the first waypoint.
         // _waypointIndex will always be 0 at the start
         _target = Waypoints.Points[_waypointIndex];
+    }
+
+    public void TakeDamage(int amount)
+    {
+        health -= amount;
+
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
     }
     
     // Every scene, we need to move the enemy
