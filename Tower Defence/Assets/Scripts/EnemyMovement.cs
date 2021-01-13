@@ -10,6 +10,7 @@ public class EnemyMovement : MonoBehaviour
     // Enemy Stats
     public float speed = 2f;
     public int health = 20;
+    public int deathMoney = 10;
     
     // Waypoint indexes
     private Transform _target;
@@ -39,6 +40,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void Die()
     {
+        GameStats.money += deathMoney;
         Destroy(gameObject);
     }
     
