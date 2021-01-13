@@ -31,7 +31,7 @@ public class EnemyMovement : MonoBehaviour
     {
         // Get the direction and move in that direction
         var dir = _target.position - transform.position;
-        transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
+        transform.Translate(dir.normalized * (speed * Time.deltaTime), Space.World);
         
         // If we're within the set distance, get the next waypoint
         if (Vector3.Distance(transform.position, _target.position) <= distanceToWaypoint)
@@ -46,13 +46,18 @@ public class EnemyMovement : MonoBehaviour
         // If we've reached the end, destroy
         if (_waypointIndex >= Waypoints.Points.Length - 1)
         {
-            Destroy(gameObject);
-            // Destroy can take a little time to finish
+            EndPath();
             return;
         }
         
         // Get the next waypoint
         _waypointIndex++;
         _target = Waypoints.Points[_waypointIndex];
+    }
+
+    void EndPath()
+    {
+        GameStats.lives--;
+        Destroy(gameObject);
     }
 }
