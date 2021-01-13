@@ -11,6 +11,8 @@ public class EnemyMovement : MonoBehaviour
     public float speed = 2f;
     public int health = 20;
     public int deathMoney = 10;
+
+    public GameObject deathEffect;
     
     // Waypoint indexes
     private Transform _target;
@@ -40,6 +42,9 @@ public class EnemyMovement : MonoBehaviour
 
     private void Die()
     {
+        GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
+        Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
+
         GameStats.money += deathMoney;
         Destroy(gameObject);
     }
