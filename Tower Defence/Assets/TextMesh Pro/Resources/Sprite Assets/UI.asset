@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84a92b25f83d49b9bc132d206b370281, type: 3}
-  m_Name: Coin
+  m_Name: UI
   m_EditorClassIdentifier: 
   hashCode: 2451115
   material: {fileID: -6031691101353513847}
@@ -73,7 +73,28 @@ MonoBehaviour:
     m_StrikethroughThickness: 0
     m_TabWidth: 0
   spriteSheet: {fileID: 2800000, guid: cc56415fb8e3044f58708c895ec5c5f6, type: 3}
-  m_SpriteCharacterTable: []
-  m_SpriteGlyphTable: []
+  m_SpriteCharacterTable:
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 0
+    m_Scale: 1
+    m_Name: Coin
+    m_HashCode: 2451115
+  m_SpriteGlyphTable:
+  - m_Index: 0
+    m_Metrics:
+      m_Width: 156
+      m_Height: 116
+      m_HorizontalBearingX: 20
+      m_HorizontalBearingY: 105
+      m_HorizontalAdvance: 200
+    m_GlyphRect:
+      m_X: 0
+      m_Y: 0
+      m_Width: 156
+      m_Height: 116
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: -3338749442709606003, guid: cc56415fb8e3044f58708c895ec5c5f6, type: 3}
   spriteInfoList: []
   fallbackSpriteAssets: []
