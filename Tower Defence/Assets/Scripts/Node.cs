@@ -5,6 +5,7 @@ public class Node : MonoBehaviour
 {
     // The colour to set out node to
     public Color hoverColour;
+    public Color cantAffordColour;
     private Color _defaultColour;
     
     [Header("Optional")]
@@ -50,8 +51,15 @@ public class Node : MonoBehaviour
         {
             return;
         }
-        
-        _rend.material.color = hoverColour;
+
+        if (_buildManager.HasMoney)
+        {
+            _rend.material.color = hoverColour;
+        }
+        else
+        {
+            _rend.material.color = cantAffordColour;
+        }
     }
     
     // Reset colour when we no longer hover.
