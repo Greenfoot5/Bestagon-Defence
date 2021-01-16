@@ -7,8 +7,12 @@
 
 public class EnemyMovement : MonoBehaviour
 {
-    // The speed the enemy should move at
+    // Enemy Stats
     public float speed = 2f;
+    public int health = 20;
+    public int deathMoney = 10;
+
+    public GameObject deathEffect;
     
     // Waypoint indexes
     private Transform _target;
@@ -25,13 +29,32 @@ public class EnemyMovement : MonoBehaviour
         // _waypointIndex will always be 0 at the start
         _target = Waypoints.Points[_waypointIndex];
     }
+
+    public void TakeDamage(int amount)
+    {
+        health -= amount;
+
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
+        Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
+
+        GameStats.money += deathMoney;
+        Destroy(gameObject);
+    }
     
     // Every scene, we need to move the enemy
     private void Update()
     {
         // Get the direction and move in that direction
         var dir = _target.position - transform.position;
-        transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
+        transform.Translate(dir.normalized * (speed * Time.deltaTime), Space.World);
         
         // If we're within the set distance, get the next waypoint
         if (Vector3.Distance(transform.position, _target.position) <= distanceToWaypoint)
@@ -46,13 +69,18 @@ public class EnemyMovement : MonoBehaviour
         // If we've reached the end, destroy
         if (_waypointIndex >= Waypoints.Points.Length - 1)
         {
-            Destroy(gameObject);
-            // Destroy can take a little time to finish
+            EndPath();
             return;
         }
         
         // Get the next waypoint
         _waypointIndex++;
         _target = Waypoints.Points[_waypointIndex];
+    }
+
+    void EndPath()
+    {
+        GameStats.lives--;
+        Destroy(gameObject);
     }
 }

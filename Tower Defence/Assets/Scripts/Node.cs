@@ -23,6 +23,12 @@ public class Node : MonoBehaviour
 
     private void OnMouseDown()
     {
+        // Make sure we're hovering over the node and nothing else
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
+        
         // Check we are trying to build
         if (!_buildManager.CanBuild)
         {

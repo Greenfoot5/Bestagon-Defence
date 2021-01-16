@@ -97,6 +97,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1.5
+  health: 20
+  deathMoney: 10
+  deathEffect: {fileID: 710779272522642178, guid: d286b443e8ade4d4cb1ec3e2a41a94f8, type: 3}
   distanceToWaypoint: 0.05
 --- !u!60 &4532340251281591674
 PolygonCollider2D:
