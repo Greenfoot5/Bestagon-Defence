@@ -7,15 +7,21 @@ public class Turret : MonoBehaviour
     [Header("Attributes")]
     
     public float range = 2.5f;
+    public float turnSpeed = 3f;
+    
+    [Header("Bullets (default)")]
     public float fireRate = 1f;
     private float _fireCountdown;
-    public float turnSpeed = 3f;
+    public GameObject bulletPrefab;
+
+    [Header("User Laser")] 
+    public bool useLaser;
+    public LineRenderer lineRenderer;
     
     [Header("References")]
     public string enemyTag = "Enemy";
     public Transform partToRotate;
     
-    public GameObject bulletPrefab;
     public Transform firePoint;
     
     // Start is called before the first frame update
@@ -61,16 +67,20 @@ public class Turret : MonoBehaviour
         // Don't do anything if we don't have a target
         if (_target == null)
         {
+            if (useLaser && lineRenderer.enabled)
+            {
+                lineRenderer.enabled = false;
+            }
             return;
         }
-        
-        // Rotate turret to look at target
-        var aimDir = ((Vector2)_target.position - (Vector2)transform.position).normalized;
-        var up = partToRotate.up;
-        var lookDir = Vector3.Lerp(up, aimDir, Time.deltaTime * turnSpeed);
-        transform.rotation *= Quaternion.FromToRotation(up, lookDir);
 
-        if (_fireCountdown <= 0)
+        LookAtTarget();
+
+        if (useLaser)
+        {
+            FireLaser();
+        }
+        else if (_fireCountdown <= 0)
         {
             Shoot();
             _fireCountdown = 1f / fireRate;
@@ -79,8 +89,16 @@ public class Turret : MonoBehaviour
         _fireCountdown -= Time.deltaTime;
     }
 
+    private void LookAtTarget()
+    {
+        var aimDir = ((Vector2)_target.position - (Vector2)transform.position).normalized;
+        var up = partToRotate.up;
+        var lookDir = Vector3.Lerp(up, aimDir, Time.deltaTime * turnSpeed);
+        transform.rotation *= Quaternion.FromToRotation(up, lookDir);
+    }
+
     // Create the bullet and set the target
-    void Shoot()
+    private void Shoot()
     {
         var bulletGO = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         var bullet = bulletGO.GetComponent<Bullet>();
@@ -89,6 +107,16 @@ public class Turret : MonoBehaviour
         {
             bullet.Seek(_target);
         }
+    }
+
+    private void FireLaser()
+    {
+        if (!lineRenderer.enabled)
+        {
+            lineRenderer.enabled = true;
+        }
+        lineRenderer.SetPosition(0, firePoint.position);
+        lineRenderer.SetPosition(1, _target.position);
     }
     
     // Visualises a circle of range when turret is selected
