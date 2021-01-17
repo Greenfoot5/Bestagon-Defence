@@ -5,18 +5,14 @@
  * Set out by a waypoints array
  */
 
+[RequireComponent(typeof(Enemy))]
 public class EnemyMovement : MonoBehaviour
 {
-    // Enemy Stats
-    public float speed = 2f;
-    public int health = 20;
-    public int deathMoney = 10;
-
-    public GameObject deathEffect;
-    
     // Waypoint indexes
     private Transform _target;
     private int _waypointIndex;
+
+    private Enemy _enemy;
     
     // The distance from enemy to waypoint before it's considered reached
     [SerializeField] 
@@ -28,39 +24,25 @@ public class EnemyMovement : MonoBehaviour
         // Set the next target to the first waypoint.
         // _waypointIndex will always be 0 at the start
         _target = Waypoints.Points[_waypointIndex];
+
+        _enemy = GetComponent<Enemy>();
     }
 
-    public void TakeDamage(int amount)
-    {
-        health -= amount;
-
-        if (health <= 0)
-        {
-            Die();
-        }
-    }
-
-    private void Die()
-    {
-        GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
-        Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
-
-        GameStats.money += deathMoney;
-        Destroy(gameObject);
-    }
-    
     // Every scene, we need to move the enemy
     private void Update()
     {
         // Get the direction and move in that direction
         var dir = _target.position - transform.position;
-        transform.Translate(dir.normalized * (speed * Time.deltaTime), Space.World);
+        transform.Translate(dir.normalized * (_enemy.speed * Time.deltaTime), Space.World);
         
         // If we're within the set distance, get the next waypoint
         if (Vector3.Distance(transform.position, _target.position) <= distanceToWaypoint)
         {
             GetNextWaypoint();
         }
+        
+        // Reset speed in case we've been slowed
+        _enemy.speed = _enemy.StartSpeed;
     }
     
     // Gets the next waypoint in the waypoints array

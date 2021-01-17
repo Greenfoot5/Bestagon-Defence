@@ -5,7 +5,7 @@ public class Bullet : MonoBehaviour
     private Transform _target;
     
     public float speed = 30f;
-    public float explosionRadius = 0f;
+    public float explosionRadius;
     public int damage = 50;
 
     public GameObject impactEffect;
@@ -25,7 +25,8 @@ public class Bullet : MonoBehaviour
         }
         
         // Get the direction of the target, and the distance to move this frame
-        var dir = ((Vector2)_target.position - (Vector2)transform.position);
+        var position = transform.position;
+        var dir = ((Vector2)_target.position - (Vector2)position);
         var distanceThisFrame = speed * Time.deltaTime;
         
         // TODO - Make it based on target size
@@ -39,7 +40,7 @@ public class Bullet : MonoBehaviour
         
         // Move the bullet towards the target
         transform.Translate(dir.normalized * distanceThisFrame, Space.World);
-        var toTarget = _target.position - transform.position;
+        var toTarget = _target.position - position;
         Vector3.Normalize(toTarget);
         transform.up = toTarget;
 
@@ -49,7 +50,8 @@ public class Bullet : MonoBehaviour
     private void HitTarget()
     {
         // Spawn hit effect
-        var effectIns = Instantiate(impactEffect, transform.position, transform.rotation);
+        var position = transform;
+        var effectIns = Instantiate(impactEffect, position.position, position.rotation);
         Destroy(effectIns, 2f);
 
         if (explosionRadius > 0f)
@@ -67,7 +69,7 @@ public class Bullet : MonoBehaviour
 
     void Damage(Transform enemy)
     {
-        EnemyMovement em = enemy.GetComponent<EnemyMovement>();
+        Enemy em = enemy.GetComponent<Enemy>();
 
         if (em != null)
         {
