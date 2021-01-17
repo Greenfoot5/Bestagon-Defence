@@ -45,11 +45,11 @@ TagManager:
   - name: Enviroment
     uniqueID: 3867309159
     locked: 0
-  - name: Enemies
-    uniqueID: 1179752323
-    locked: 0
   - name: Projectiles
     uniqueID: 3329326963
+    locked: 0
+  - name: Enemies
+    uniqueID: 1179752323
     locked: 0
   - name: Turrets
     uniqueID: 925339771
