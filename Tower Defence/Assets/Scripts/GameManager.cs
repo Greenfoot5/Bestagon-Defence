@@ -3,6 +3,9 @@
 public class GameManager : MonoBehaviour
 {
     private bool _gameEnded;
+
+    public GameObject gameOverUI;
+    
     // Update is called once per frame
     void Update()
     {
@@ -19,7 +22,8 @@ public class GameManager : MonoBehaviour
 
     private void EndGame()
     {
-        Debug.Log("Game Over!");
         _gameEnded = true;
+        
+        gameOverUI.SetActive(true);
     }
 }

@@ -4976,6 +4976,8 @@ MonoBehaviour:
   fireRate: 1
   bulletPrefab: {fileID: 0}
   useLaser: 1
+  damageOverTime: 5
+  slowPercentage: 0.3
   lineRenderer: {fileID: 2486436700464072617}
   impactEffect: {fileID: 1957792540}
   enemyTag: Enemy
