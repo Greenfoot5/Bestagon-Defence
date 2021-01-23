@@ -39,6 +39,7 @@ public class Node : MonoBehaviour
         if (turret != null)
         {
             Debug.Log("Turret already built!");
+            return;
         }
 
         _buildManager.BuildTurretOn(this);
