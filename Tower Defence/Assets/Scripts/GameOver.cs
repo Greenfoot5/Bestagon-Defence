@@ -1,18 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using TMPro;
 using UnityEngine;
 
 public class GameOver : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public TMP_Text roundsText;
 
-    // Update is called once per frame
-    void Update()
+    public void OnEnable()
     {
-        
+        roundsText.text = "<size=4em><b>" + GameStats.rounds + "</b></size>";
     }
 }
