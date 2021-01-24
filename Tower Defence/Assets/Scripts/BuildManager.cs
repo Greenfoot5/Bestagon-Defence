@@ -13,11 +13,13 @@ public class BuildManager : MonoBehaviour
         }
         instance = this;
     }
+    
+    public GameObject buildEffect;
 
     private TurretBlueprint _turretToBuild;
     private Node _selectedNode;
 
-    public GameObject buildEffect;
+    public NodeUI nodeUI;
 
     public bool CanBuild => _turretToBuild != null;
     public bool HasMoney => GameStats.money >= _turretToBuild.cost;
@@ -44,15 +46,17 @@ public class BuildManager : MonoBehaviour
     }
     
     // Used to set the turret we want to build.
-    public void SetSelection(TurretBlueprint turret)
+    public void SelectTurretToBuild(TurretBlueprint turret)
     {
         _turretToBuild = turret;
         _selectedNode = null;
     }
 
-    public void SetSelection(Node node)
+    public void SelectNode(Node node)
     {
         _selectedNode = node;
         _turretToBuild = null;
+
+        nodeUI.SetTarget(node);
     }
 }

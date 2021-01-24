@@ -3919,6 +3919,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildEffect: {fileID: 2228279973635050725, guid: 0819bd4b36b114943ba247527c0225db, type: 3}
+  nodeUI: {fileID: 1364801256}
 --- !u!114 &1262650575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4079,6 +4080,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1364801255}
+  - component: {fileID: 1364801256}
   m_Layer: 0
   m_Name: NodeUI
   m_TagString: Untagged
@@ -4101,6 +4103,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1364801256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1364801254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89744f11922744baab6ff29557d16f75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1385690649
 GameObject:
   m_ObjectHideFlags: 0

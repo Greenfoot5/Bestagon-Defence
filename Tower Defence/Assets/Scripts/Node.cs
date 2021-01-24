@@ -32,7 +32,7 @@ public class Node : MonoBehaviour
         // TODO - Enable turret upgrades
         if (turret != null)
         {
-            _buildManager.SetSelection(this);
+            _buildManager.SelectNode(this);
             return;
         }
         
