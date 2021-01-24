@@ -15,6 +15,7 @@ public class BuildManager : MonoBehaviour
     }
 
     private TurretBlueprint _turretToBuild;
+    private Node _selectedNode;
 
     public GameObject buildEffect;
 
@@ -43,9 +44,15 @@ public class BuildManager : MonoBehaviour
     }
     
     // Used to set the turret we want to build.
-    public void SelectTurretToBuild(TurretBlueprint turret)
+    public void SetSelection(TurretBlueprint turret)
     {
         _turretToBuild = turret;
+        _selectedNode = null;
     }
-    
+
+    public void SetSelection(Node node)
+    {
+        _selectedNode = node;
+        _turretToBuild = null;
+    }
 }
