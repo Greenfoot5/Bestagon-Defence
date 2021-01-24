@@ -2,6 +2,8 @@
 
 public class NodeUI : MonoBehaviour
 {
+    public GameObject ui;
+    
     private Node _target;
 
     public void SetTarget(Node node)
@@ -9,5 +11,12 @@ public class NodeUI : MonoBehaviour
         _target = node;
 
         transform.position = _target.transform.position;
+        
+        ui.SetActive(true);
+    }
+
+    public void Hide()
+    {
+        ui.SetActive(false);
     }
 }

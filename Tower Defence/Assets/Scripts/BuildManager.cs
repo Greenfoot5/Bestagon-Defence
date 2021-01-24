@@ -50,6 +50,8 @@ public class BuildManager : MonoBehaviour
     {
         _turretToBuild = turret;
         _selectedNode = null;
+        
+        nodeUI.Hide();
     }
 
     public void SelectNode(Node node)
