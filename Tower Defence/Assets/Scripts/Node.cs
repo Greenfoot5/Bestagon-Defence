@@ -42,7 +42,25 @@ public class Node : MonoBehaviour
             return;
         }
 
-        _buildManager.BuildTurretOn(this);
+        BuildTurret(_buildManager.GetTurretToBuild());
+    }
+    
+    void BuildTurret(TurretBlueprint blueprint)
+    {
+        if (GameStats.money < blueprint.cost)
+        {
+            Debug.Log("Not enough gold!");
+            return;
+        }
+
+        GameStats.money -= blueprint.cost;
+
+        var nodePosition = transform.position;
+        var newTurret = Instantiate(blueprint.prefab, nodePosition, Quaternion.identity);
+        turret = newTurret;
+
+        GameObject effect = Instantiate(_buildManager.buildEffect, nodePosition, Quaternion.identity);
+        Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
     }
     
     private void OnMouseEnter()
