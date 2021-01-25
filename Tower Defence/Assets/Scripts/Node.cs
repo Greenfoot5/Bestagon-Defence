@@ -7,7 +7,7 @@ public class Node : MonoBehaviour
     public Color hoverColour;
     public Color cantAffordColour;
     private Color _defaultColour;
-    
+
     [HideInInspector]
     public GameObject turret;
     [HideInInspector]
@@ -88,6 +88,8 @@ public class Node : MonoBehaviour
         Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
 
         isUpgraded = true;
+        
+        BuildManager.instance.DeselectNode();
     }
     
     private void OnMouseEnter()
