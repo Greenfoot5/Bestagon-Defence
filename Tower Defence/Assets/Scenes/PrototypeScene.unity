@@ -182,7 +182,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: '<b>Upgrade</b>
 
-    <sprite="UI" name="Coin">20
+    <sprite="UI-Icons" name="Coin"> 20
 
 '
   m_isRightToLeft: 0
@@ -542,7 +542,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <sprite="UI" name="Coin">200
+  m_text: <sprite="UI-Icons" name="Coin"> 200
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ed862fa2de5a148a8adb187ac55cd3eb, type: 2}
   m_sharedMaterial: {fileID: 7459919616753430026, guid: ed862fa2de5a148a8adb187ac55cd3eb, type: 2}
@@ -1709,7 +1709,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3942835963782936598, guid: 21ef1708a1b044572a19bf8492b39c3f, type: 3}
       propertyPath: m_text
-      value: '<sprite="UI" name="Coin"> 220
+      value: '<sprite="UI-Icons" name="Coin"> 220
 
 '
       objectReference: {fileID: 0}
@@ -2430,7 +2430,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ' <sprite="EmojiOne" name="1f60d"> 20'
+  m_text: <sprite="Ui-Icons" name="Heart"> 20
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ed862fa2de5a148a8adb187ac55cd3eb, type: 2}
   m_sharedMaterial: {fileID: 7459919616753430026, guid: ed862fa2de5a148a8adb187ac55cd3eb, type: 2}
@@ -3625,7 +3625,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3942835963782936598, guid: 21ef1708a1b044572a19bf8492b39c3f, type: 3}
       propertyPath: m_text
-      value: <sprite="UI" name="Coin"> 175
+      value: <sprite="UI-Icons" name="Coin"> 175
       objectReference: {fileID: 0}
     - target: {fileID: 3942835963936203607, guid: 21ef1708a1b044572a19bf8492b39c3f, type: 3}
       propertyPath: m_Name
@@ -5427,7 +5427,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: '<b>Sell</b>
 
-    <sprite="UI" name="Coin">50'
+    <sprite="UI-Icons" name="Coin"> 50'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ed862fa2de5a148a8adb187ac55cd3eb, type: 2}
   m_sharedMaterial: {fileID: 7459919616753430026, guid: ed862fa2de5a148a8adb187ac55cd3eb, type: 2}
@@ -5914,7 +5914,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ' <sprite="EmojiOne" name="1f601"> 5.00'
+  m_text: <sprite="UI-Icons" name="Clock"> 5.00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ed862fa2de5a148a8adb187ac55cd3eb, type: 2}
   m_sharedMaterial: {fileID: 7459919616753430026, guid: ed862fa2de5a148a8adb187ac55cd3eb, type: 2}

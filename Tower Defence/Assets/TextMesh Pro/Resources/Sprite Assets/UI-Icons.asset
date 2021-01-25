@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!21 &-6031691101353513847
+--- !u!21 &-3211378125195702951
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 1
@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: cc56415fb8e3044f58708c895ec5c5f6, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0ac6f0ce4952044018b8eb0acb6d5c1f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -46,10 +46,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84a92b25f83d49b9bc132d206b370281, type: 3}
-  m_Name: UI
+  m_Name: UI-Icons
   m_EditorClassIdentifier: 
-  hashCode: 2451115
-  material: {fileID: -6031691101353513847}
+  hashCode: -291080119
+  material: {fileID: -3211378125195702951}
   materialHashCode: 0
   m_Version: 1.1.0
   m_FaceInfo:
@@ -72,7 +72,7 @@ MonoBehaviour:
     m_StrikethroughOffset: 0
     m_StrikethroughThickness: 0
     m_TabWidth: 0
-  spriteSheet: {fileID: 2800000, guid: cc56415fb8e3044f58708c895ec5c5f6, type: 3}
+  spriteSheet: {fileID: 2800000, guid: 0ac6f0ce4952044018b8eb0acb6d5c1f, type: 3}
   m_SpriteCharacterTable:
   - m_ElementType: 2
     m_Unicode: 65534
@@ -80,21 +80,63 @@ MonoBehaviour:
     m_Scale: 1
     m_Name: Coin
     m_HashCode: 2451115
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 1
+    m_Scale: 1
+    m_Name: Clock
+    m_HashCode: 81055592
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 2
+    m_Scale: 1
+    m_Name: Heart
+    m_HashCode: 84381802
   m_SpriteGlyphTable:
   - m_Index: 0
     m_Metrics:
-      m_Width: 156
-      m_Height: 116
-      m_HorizontalBearingX: 20
-      m_HorizontalBearingY: 105
-      m_HorizontalAdvance: 200
+      m_Width: 405
+      m_Height: 301
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 301
+      m_HorizontalAdvance: 405
+    m_GlyphRect:
+      m_X: 375
+      m_Y: 16
+      m_Width: 405
+      m_Height: 301
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: -7600547735278782811, guid: 0ac6f0ce4952044018b8eb0acb6d5c1f, type: 3}
+  - m_Index: 1
+    m_Metrics:
+      m_Width: 300
+      m_Height: 301
+      m_HorizontalBearingX: 50
+      m_HorizontalBearingY: 301
+      m_HorizontalAdvance: 405
+    m_GlyphRect:
+      m_X: 875
+      m_Y: 16
+      m_Width: 300
+      m_Height: 301
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: -6410149378855393431, guid: 0ac6f0ce4952044018b8eb0acb6d5c1f, type: 3}
+  - m_Index: 2
+    m_Metrics:
+      m_Width: 282
+      m_Height: 317
+      m_HorizontalBearingX: 70
+      m_HorizontalBearingY: 300
+      m_HorizontalAdvance: 410
     m_GlyphRect:
       m_X: 0
       m_Y: 0
-      m_Width: 156
-      m_Height: 116
+      m_Width: 282
+      m_Height: 317
     m_Scale: 1
     m_AtlasIndex: 0
-    sprite: {fileID: -3338749442709606003, guid: cc56415fb8e3044f58708c895ec5c5f6, type: 3}
+    sprite: {fileID: -6962966226207395590, guid: 0ac6f0ce4952044018b8eb0acb6d5c1f, type: 3}
   spriteInfoList: []
   fallbackSpriteAssets: []

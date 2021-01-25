@@ -25,7 +25,7 @@ public class NodeUI : MonoBehaviour
         }
         else
         {
-            upgradeText.text = "<b>Upgrade</b>\n<sprite=\"UI\" name=\"Coin\">" + _target.turretBlueprint.upgradeCost;
+            upgradeText.text = "<b>Upgrade</b>\n<sprite=\"UI-Icons\" name=\"Coin\"> " + _target.turretBlueprint.upgradeCost;
             upgradeButton.interactable = true;
         }
 

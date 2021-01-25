@@ -8,6 +8,6 @@ public class LivesUI : MonoBehaviour
 
     void Update()
     {
-        livesText.text = " <sprite=\"EmojiOne\" name=\"1f60d\"> " + GameStats.lives;
+        livesText.text = "<sprite=\"UI-Icons\" name=\"Heart\"> " + GameStats.lives;
     }
 }
