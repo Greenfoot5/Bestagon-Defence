@@ -101,8 +101,8 @@ SpriteRenderer:
   m_SortingLayerID: 925339771
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 09ccc79e8ff7d46b9a6f48318f10d1d9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 4f3b5a71bfb4c43f7a3f1bf5d3f7c0a0, type: 3}
+  m_Color: {r: 0.2971698, g: 1, b: 0.6599887, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 4711107948385963260}
   - component: {fileID: 6514982}
   m_Layer: 0
-  m_Name: Missile Launcher
+  m_Name: Standard Upgraded Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -158,9 +158,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 4
-  turnSpeed: 2
-  fireRate: 0.25
-  bulletPrefab: {fileID: 8482092496986591318, guid: 2022144fe54f0497e909e81f56751da7, type: 3}
+  turnSpeed: 6
+  fireRate: 1.5
+  bulletPrefab: {fileID: 8554329261332597528, guid: ae2bb6b111513466a910af495e377c8d, type: 3}
   useLaser: 0
   damageOverTime: 5
   slowPercentage: 0
