@@ -2,10 +2,6 @@
 
 public class CameraController : MonoBehaviour
 {
-    // Tracks if we currently want to pan or not
-    [SerializeField]
-    private bool _doMovement = false;
-    
     public float panSpeed = 10f;
     [Range(0,1)]
     [Tooltip("Percentage of the screen from border to start panning")]
@@ -24,19 +20,7 @@ public class CameraController : MonoBehaviour
             enabled = false;
             return;
         }
-        
-        // Enables/disables panning
-        // TODO - Fix iffy use
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            _doMovement = !_doMovement;
-        }
-        
-        if (!_doMovement)
-        {
-            return;
-        }
-        
+
         // Each of the panning inputs.
         // Then we move the camera on the x or y to pan
         if (Input.GetKey("w") || Input.mousePosition.y >= Screen.height * panBorderPercentage)
