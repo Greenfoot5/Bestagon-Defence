@@ -91,6 +91,18 @@ public class Node : MonoBehaviour
         
         BuildManager.instance.DeselectNode();
     }
+
+    public void SellTurret()
+    {
+        GameStats.money += turretBlueprint.GetSellAmount();
+        
+        // TODO - Spawn a cool effect
+        
+        Destroy(turret);
+        turretBlueprint = null;
+        
+        BuildManager.instance.DeselectNode();
+    }
     
     private void OnMouseEnter()
     {
