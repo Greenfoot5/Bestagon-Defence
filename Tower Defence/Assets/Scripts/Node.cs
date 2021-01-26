@@ -96,11 +96,13 @@ public class Node : MonoBehaviour
     {
         GameStats.money += turretBlueprint.GetSellAmount();
         
-        // TODO - Spawn a cool effect
+        GameObject effect = Instantiate(_buildManager.sellEffect, transform.position, Quaternion.identity);
+        Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
         
         Destroy(turret);
         turretBlueprint = null;
-        
+        isUpgraded = false;
+
         BuildManager.instance.DeselectNode();
     }
     
