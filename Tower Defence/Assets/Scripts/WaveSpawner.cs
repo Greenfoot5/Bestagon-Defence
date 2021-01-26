@@ -50,6 +50,7 @@ public class WaveSpawner : MonoBehaviour
     private IEnumerator SpawnWave()
     {
         _waveIndex++;
+        GameStats.rounds++;
         
         // For all the enemies we will spawn,
         // spawn one, then wait timeBetweenEnemies seconds

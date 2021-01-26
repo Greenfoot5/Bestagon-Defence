@@ -18,6 +18,13 @@ public class CameraController : MonoBehaviour
     
     void Update()
     {
+        // Disable panning if the game is over
+        if (GameManager.isGameOver)
+        {
+            enabled = false;
+            return;
+        }
+        
         // Enables/disables panning
         // TODO - Fix iffy use
         if (Input.GetKey(KeyCode.Escape))
