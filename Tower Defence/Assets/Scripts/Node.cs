@@ -28,17 +28,17 @@ public class Node : MonoBehaviour
         {
             return;
         }
+
+        // TODO - Enable turret upgrades
+        if (turret != null)
+        {
+            _buildManager.SelectNode(this);
+            return;
+        }
         
         // Check we are trying to build
         if (!_buildManager.CanBuild)
         {
-            return;
-        }
-        
-        // TODO - Enable turret upgrades
-        if (turret != null)
-        {
-            Debug.Log("Turret already built!");
             return;
         }
 
