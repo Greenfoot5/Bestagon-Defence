@@ -7,9 +7,13 @@ public class Node : MonoBehaviour
     public Color hoverColour;
     public Color cantAffordColour;
     private Color _defaultColour;
-    
-    [Header("Optional")]
-    public GameObject turret; 
+
+    [HideInInspector]
+    public GameObject turret;
+    [HideInInspector]
+    public TurretBlueprint turretBlueprint;
+    [HideInInspector]
+    public bool isUpgraded;
     
     private Renderer _rend;
     private BuildManager _buildManager;
@@ -42,7 +46,50 @@ public class Node : MonoBehaviour
             return;
         }
 
-        _buildManager.BuildTurretOn(this);
+        BuildTurret(_buildManager.GetTurretToBuild());
+    }
+    
+    private void BuildTurret(TurretBlueprint blueprint)
+    {
+        if (GameStats.money < blueprint.cost)
+        {
+            Debug.Log("Not enough gold!");
+            return;
+        }
+
+        GameStats.money -= blueprint.cost;
+
+        var nodePosition = transform.position;
+        var newTurret = Instantiate(blueprint.prefab, nodePosition, Quaternion.identity);
+        turret = newTurret;
+        turretBlueprint = blueprint;
+
+        GameObject effect = Instantiate(_buildManager.buildEffect, nodePosition, Quaternion.identity);
+        Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
+    }
+
+    public void UpgradeTurret()
+    {
+        if (GameStats.money < turretBlueprint.upgradeCost)
+        {
+            Debug.Log("Not enough gold!");
+            return;
+        }
+
+        GameStats.money -= turretBlueprint.upgradeCost;
+        
+        // Remove old turret, and spawn new one
+        Destroy(turret);
+        var nodePosition = transform.position;
+        var newTurret = Instantiate(turretBlueprint.upgradedPrefab, nodePosition, Quaternion.identity);
+        turret = newTurret;
+
+        GameObject effect = Instantiate(_buildManager.buildEffect, nodePosition, Quaternion.identity);
+        Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
+
+        isUpgraded = true;
+        
+        BuildManager.instance.DeselectNode();
     }
     
     private void OnMouseEnter()
