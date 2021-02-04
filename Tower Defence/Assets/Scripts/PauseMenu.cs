@@ -1,24 +1,20 @@
 ﻿using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
-using UnityEngine.XR;
 
 public class PauseMenu : MonoBehaviour
 {
-    public GameObject UI;
-    public void Update()
+    public GameObject ui;
+    public void Awake()
     {
-        if (Input.GetButtonDown(KeyCode.P.ToString()))
-        {
-            Toggle();
-        }
+        GameStats.controls.Misc.TogglePauseMenu.performed += ctx => Toggle();
     }
 
     public void Toggle()
     {
-        UI.SetActive(!UI.activeSelf);
+        ui.SetActive(!ui.activeSelf);
+        Debug.Log("Pause Toggled");
 
-        if (UI.activeSelf)
+        if (ui.activeSelf)
         {
             Time.timeScale = 0f;
         }

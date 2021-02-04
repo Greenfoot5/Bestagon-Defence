@@ -25,29 +25,29 @@ public class Node : MonoBehaviour
         _buildManager = BuildManager.instance;
     }
 
-    private void OnMouseDown()
-    {
-        // Make sure we're hovering over the node and nothing else
-        if (EventSystem.current.IsPointerOverGameObject())
-        {
-            return;
-        }
-
-        // TODO - Enable turret upgrades
-        if (turret != null)
-        {
-            _buildManager.SelectNode(this);
-            return;
-        }
-        
-        // Check we are trying to build
-        if (!_buildManager.CanBuild)
-        {
-            return;
-        }
-
-        BuildTurret(_buildManager.GetTurretToBuild());
-    }
+    // private void OnMouseDown()
+    // {
+    //     // Make sure we're hovering over the node and nothing else
+    //     if (EventSystem.current.IsPointerOverGameObject())
+    //     {
+    //         return;
+    //     }
+    //
+    //     // TODO - Enable turret upgrades
+    //     if (turret != null)
+    //     {
+    //         _buildManager.SelectNode(this);
+    //         return;
+    //     }
+    //     
+    //     // Check we are trying to build
+    //     if (!_buildManager.CanBuild)
+    //     {
+    //         return;
+    //     }
+    //
+    //     BuildTurret(_buildManager.GetTurretToBuild());
+    // }
     
     private void BuildTurret(TurretBlueprint blueprint)
     {
@@ -106,33 +106,33 @@ public class Node : MonoBehaviour
         BuildManager.instance.DeselectNode();
     }
     
-    private void OnMouseEnter()
-    {
-        // Make sure we're hovering over the node and nothing else
-        if (EventSystem.current.IsPointerOverGameObject())
-        {
-            return;
-        }
-        
-        // Make sure we're trying to build
-        if (!_buildManager.CanBuild)
-        {
-            return;
-        }
-
-        if (_buildManager.HasMoney)
-        {
-            _rend.material.color = hoverColour;
-        }
-        else
-        {
-            _rend.material.color = cantAffordColour;
-        }
-    }
-    
-    // Reset colour when we no longer hover.
-    private void OnMouseExit()
-    {
-        _rend.material.color = _defaultColour;
-    }
+    // private void OnMouseEnter()
+    // {
+    //     // Make sure we're hovering over the node and nothing else
+    //     if (EventSystem.current.IsPointerOverGameObject())
+    //     {
+    //         return;
+    //     }
+    //     
+    //     // Make sure we're trying to build
+    //     if (!_buildManager.CanBuild)
+    //     {
+    //         return;
+    //     }
+    //
+    //     if (_buildManager.HasMoney)
+    //     {
+    //         _rend.material.color = hoverColour;
+    //     }
+    //     else
+    //     {
+    //         _rend.material.color = cantAffordColour;
+    //     }
+    // }
+    //
+    // // Reset colour when we no longer hover.
+    // private void OnMouseExit()
+    // {
+    //     _rend.material.color = _defaultColour;
+    // }
 }
