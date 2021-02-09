@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.InputSystem.EnhancedTouch;
 
 public class GameStats : MonoBehaviour
 {
@@ -10,15 +9,6 @@ public class GameStats : MonoBehaviour
     public int startLives = 20;
 
     public static int rounds;
-
-    public static Controls controls;
-
-    void Awake()
-    {
-        controls = new Controls();
-        controls.Enable();
-        TouchSimulation.Enable();
-    }
 
     void Start()
     {

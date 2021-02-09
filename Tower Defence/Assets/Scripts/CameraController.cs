@@ -1,12 +1,9 @@
 ﻿using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class CameraController : MonoBehaviour
 {
     public float panSpeed = 10f;
     [Range(0,1)]
-    [Tooltip("Percentage of the screen from border to start panning")]
-    public float panBorderPercentage = 0.95f;
     public Vector2 minPos = new Vector2(0, 0);
     public Vector2 maxPos = new Vector2(0, 0);
     
@@ -18,46 +15,27 @@ public class CameraController : MonoBehaviour
     private Vector2 _cameraSpeed;
     private float _scrolling;
 
-    void Start()
+    void Move()
     {
-        GameStats.controls.CameraMovement.Movement.performed += Move;
-        GameStats.controls.CameraMovement.Zoom.performed += Scroll;
-    }
-
-    void Move(InputAction.CallbackContext ctx)
-    {
-        if (ctx.control.device == Keyboard.current)
+        // Keyboard & Mouse Input
+        _cameraSpeed = new Vector2(Input.GetAxis("Pan Horizontal"), Input.GetAxis("Pan Vertical"));
+        _cameraSpeed *= panSpeed;
+        // Mobile Input
+        if (false)
         {
-            _cameraSpeed = ctx.ReadValue<Vector2>() * panSpeed;
-        }
-        else if (ctx.control.device == Touchscreen.current)
-        {
-            _cameraSpeed = ctx.ReadValue<Vector2>() * panSpeed;
+            
         }
     }
 
-    void Scroll(InputAction.CallbackContext ctx)
+    void Scroll()
     {
-        if (ctx.control.device == Keyboard.current)
+        // Keyboard & Mouse input
+        _scrolling = Input.mouseScrollDelta.y * scrollSpeed;
+        
+        // Mobile input
+        if (false)
         {
-            _scrolling = ctx.ReadValue<float>() * scrollSpeed;
-        }
-        else if (ctx.control.device == Touchscreen.current)
-        {
-            // var touchZero = Touchscreen.current.primaryTouch;
-            // var touchOne = Touchscreen.current.touches[0];
-            //
-            // // Find the position in the previous frame of each touch.
-            // var touchZeroPrevPos = touchZero.position.ReadValue() - touchZero.delta.ReadValue();
-            // var touchOnePrevPos = touchOne.position.ReadValue() - touchOne.delta.ReadValue();
-            //
-            // // Find the magnitude of the vector (the distance) between the touches in each frame.
-            // var prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
-            // var touchDeltaMag = (touchZero.position.ReadValue() - touchOne.position.ReadValue()).magnitude;
-            //
-            // // Find the difference in the distances between each frame.
-            // _scrolling = 0.01f * (touchDeltaMag - prevTouchDeltaMag);
-            // Debug.Log(_scrolling);
+            
         }
     }
     
@@ -69,6 +47,10 @@ public class CameraController : MonoBehaviour
             enabled = false;
             return;
         }
+        
+        // TODO - Check if we actually need to call them.
+        Move();
+        Scroll();
 
         var transformPosition = transform.position;
         float newPositionX = Mathf.Clamp(transformPosition.x + _cameraSpeed.x * Time.deltaTime, minPos.x, maxPos.x);

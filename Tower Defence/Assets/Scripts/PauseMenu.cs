@@ -4,15 +4,12 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject ui;
-    public void Awake()
-    {
-        GameStats.controls.Misc.TogglePauseMenu.performed += ctx => Toggle();
-    }
+
+    private bool _hasBeenToggled = false;
 
     public void Toggle()
     {
         ui.SetActive(!ui.activeSelf);
-        Debug.Log("Pause Toggled");
 
         if (ui.activeSelf)
         {
@@ -33,5 +30,18 @@ public class PauseMenu : MonoBehaviour
     public void Menu()
     {
         Debug.LogError("No Menu created yet!");
+    }
+
+    public void Update()
+    {
+        if (Input.GetAxis("Pause") > 0 && !_hasBeenToggled)
+        {
+            Toggle();
+            _hasBeenToggled = true;
+        }
+        else if (Input.GetAxis("Pause") == 0)
+        {
+            _hasBeenToggled = false;
+        }
     }
 }
