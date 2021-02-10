@@ -2,8 +2,8 @@
 
 public class CameraController : MonoBehaviour
 {
-    public float panSpeed = 10f;
-    [Range(0,1)]
+    public float keyboardPanSpeed = 10f;
+    public float swipePanSpeed = 1f;
     public Vector2 minPos = new Vector2(0, 0);
     public Vector2 maxPos = new Vector2(0, 0);
     
@@ -11,19 +11,31 @@ public class CameraController : MonoBehaviour
     public float scrollSpeed = 5000f;
     public float minOrthSize = 3;
     public float maxOrthSize = 9;
+    public new Camera camera;
 
     private Vector2 _cameraSpeed;
     private float _scrolling;
+
+    private float _prevPinchMag;
+
+    void Start()
+    {
+        camera = transform.GetComponent<Camera>();
+    }
 
     void Move()
     {
         // Keyboard & Mouse Input
         _cameraSpeed = new Vector2(Input.GetAxis("Pan Horizontal"), Input.GetAxis("Pan Vertical"));
-        _cameraSpeed *= panSpeed;
+        _cameraSpeed *= keyboardPanSpeed;
         // Mobile Input
-        if (false)
+        if (Input.touches.Length == 1)
         {
-            
+            Touch touch = Input.touches[0];
+            if (touch.phase != TouchPhase.Ended && touch.phase != TouchPhase.Canceled)
+            {
+                _cameraSpeed = -touch.deltaPosition * swipePanSpeed;
+            }
         }
     }
 
@@ -33,9 +45,23 @@ public class CameraController : MonoBehaviour
         _scrolling = Input.mouseScrollDelta.y * scrollSpeed;
         
         // Mobile input
-        if (false)
+        if (Input.touches.Length == 2)
         {
-            
+            Vector2 touch0Pos = Input.touches[0].position;
+            Vector2 touch1Pos = Input.touches[1].position;
+
+            Vector2 pinchLength = touch0Pos - touch1Pos;
+
+            if (_prevPinchMag != 0)
+            {
+                _scrolling = pinchLength.magnitude - _prevPinchMag;
+            }
+
+            _prevPinchMag = pinchLength.magnitude;
+        }
+        else
+        {
+            _prevPinchMag = 0f;
         }
     }
     
@@ -59,10 +85,10 @@ public class CameraController : MonoBehaviour
         _cameraSpeed = new Vector2();
 
         // Implement scrolling by changing the Orthographic Size on the camera
-        float orthSize = transform.GetComponent<Camera>().orthographicSize;
+        float orthSize = camera.orthographicSize;
         orthSize -= _scrolling * Time.deltaTime;
         orthSize = Mathf.Clamp(orthSize, minOrthSize, maxOrthSize);
 
-        transform.GetComponent<Camera>().orthographicSize = orthSize;
+        camera.orthographicSize = orthSize;
     }
 }

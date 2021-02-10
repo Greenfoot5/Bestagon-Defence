@@ -1914,12 +1914,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20c2dd081d37948ecbb87a4d0c6e0f34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panSpeed: 10
+  keyboardPanSpeed: 7
+  swipePanSpeed: 0.7
   minPos: {x: -8, y: -5}
   maxPos: {x: 8, y: 5}
-  scrollSpeed: 1
+  scrollSpeed: 7
   minOrthSize: 3
   maxOrthSize: 9
+  camera: {fileID: 519420031}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
