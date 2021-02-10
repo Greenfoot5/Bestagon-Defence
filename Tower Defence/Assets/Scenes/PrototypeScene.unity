@@ -2076,10 +2076,9 @@ MonoBehaviour:
   swipePanSpeed: 0.8
   minPos: {x: -8, y: -5}
   maxPos: {x: 8, y: 5}
-  scrollSpeed: 7
+  scrollSpeed: 15
   minOrthSize: 3
   maxOrthSize: 9
-  camera: {fileID: 519420031}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
