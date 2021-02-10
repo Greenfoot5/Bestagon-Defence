@@ -91,6 +91,20 @@ public class Node : MonoBehaviour
         
         BuildManager.instance.DeselectNode();
     }
+
+    public void SellTurret()
+    {
+        GameStats.money += turretBlueprint.GetSellAmount();
+        
+        GameObject effect = Instantiate(_buildManager.sellEffect, transform.position, Quaternion.identity);
+        Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
+        
+        Destroy(turret);
+        turretBlueprint = null;
+        isUpgraded = false;
+
+        BuildManager.instance.DeselectNode();
+    }
     
     private void OnMouseEnter()
     {

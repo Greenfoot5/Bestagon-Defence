@@ -8,6 +8,6 @@ public class MoneyUI : MonoBehaviour
 
     void Update()
     {
-        waveCountdownText.text = "<sprite=\"UI\" name=\"Coin\">" + GameStats.money;
+        waveCountdownText.text = "<sprite=\"UI-Icons\" name=\"Coin\"> " + GameStats.money;
     }
 }
