@@ -1,5 +1,4 @@
-﻿using System;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -19,8 +18,6 @@ public class GameOver : MonoBehaviour
 
     public void Menu()
     {
-        // TODO - add menu
-        Debug.LogError("Menu not created");
-        SceneManager.LoadScene("LevelSelect");
+        SceneManager.LoadScene("MainMenu");
     }
 }

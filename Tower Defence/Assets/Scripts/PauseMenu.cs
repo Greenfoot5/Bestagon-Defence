@@ -5,7 +5,7 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject ui;
 
-    private bool _hasBeenToggled = false;
+    private bool _hasBeenToggled;
 
     public void Toggle()
     {
@@ -29,7 +29,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Menu()
     {
-        Debug.LogError("No Menu created yet!");
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void Update()
