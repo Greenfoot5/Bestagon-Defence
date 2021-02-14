@@ -5,7 +5,7 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject ui;
 
-    private bool _hasBeenToggled;
+    private static bool _hasBeenToggled;
 
     public void Toggle()
     {
