@@ -9,9 +9,14 @@ public class TurretBlueprint
 
     public GameObject upgradedPrefab;
     public int upgradeCost;
+    
+    [Range(0, 1)]
+    [Tooltip("The percentage reduction to apply to the price when selling")]
+    public float sellReduction = 0.5f;
 
     public int GetSellAmount()
     {
-        return cost / 2;
+        // Implement an increase if upgraded.
+        return (int) (cost * sellReduction);
     }
 }
