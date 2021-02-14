@@ -59,7 +59,8 @@ public class EnemyMovement : MonoBehaviour
         _waypointIndex++;
         _target = Waypoints.points[_waypointIndex];
     }
-
+    
+    // Called when we reach the final waypoint
     void EndPath()
     {
         GameStats.lives--;

@@ -11,7 +11,7 @@ public class MainMenu : MonoBehaviour
 
     public void Settings()
     {
-        
+        //TODO - Load the settings scene
     }
 
     public void Quit()

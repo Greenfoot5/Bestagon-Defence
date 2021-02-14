@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
         speed = StartSpeed;
     }
     
+    // Called when the enemy takes damage
     public void TakeDamage(float amount)
     {
         health -= amount;
@@ -25,17 +26,21 @@ public class Enemy : MonoBehaviour
             Die();
         }
     }
-
+    
+    // Called when we slow the enemy (permanent effect)
     public void Slow(float slowPercentage)
     {
         speed = StartSpeed * (1f - slowPercentage);
     }
-
+    
+    // Called when we die
     private void Die()
     {
+        // Spawn death effect
         GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
-
+        
+        // Grant money and destroy self
         GameStats.money += deathMoney;
         Destroy(gameObject);
     }

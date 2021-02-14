@@ -24,7 +24,8 @@ public class GameManager : MonoBehaviour
             EndGame();
         }
     }
-
+    
+    // Called when we reach 0 lives
     private void EndGame()
     {
         isGameOver = true;

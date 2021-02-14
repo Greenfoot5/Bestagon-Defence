@@ -6,7 +6,8 @@ public class PauseMenu : MonoBehaviour
     public GameObject ui;
 
     private static bool _hasBeenToggled;
-
+    
+    // Pauses/unpauses the game, and toggles the UI
     public void Toggle()
     {
         ui.SetActive(!ui.activeSelf);
@@ -20,26 +21,32 @@ public class PauseMenu : MonoBehaviour
             Time.timeScale = 1f;
         }
     }
-
+    
+    // The retry button, reloads the current scene
     public void Retry()
     {
         Toggle();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-
+    
+    // The Main Menu button that returns us to the main menu
+    // TODO - return to level select, not main menu
     public void Menu()
     {
         Toggle();
         SceneManager.LoadScene("MainMenu");
     }
-
+    
+    // Called each frame
     public void Update()
     {
+        // On press, pause the game
         if (Input.GetAxis("Pause") > 0 && !_hasBeenToggled)
         {
             Toggle();
             _hasBeenToggled = true;
         }
+        // Set's _hasBeenToggled on release
         else if (Input.GetAxis("Pause") == 0)
         {
             _hasBeenToggled = false;

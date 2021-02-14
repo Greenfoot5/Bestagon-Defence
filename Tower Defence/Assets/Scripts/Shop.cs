@@ -3,9 +3,12 @@
 public class Shop : MonoBehaviour
 {
     private BuildManager _buildManager;
-
+    
+    [Tooltip("Bullet Turret")]
     public TurretBlueprint standardTurret;
+    [Tooltip("AoE Bullet Tower")]
     public TurretBlueprint missileLauncher;
+    [Tooltip("Laser beam turret")]
     public TurretBlueprint laserBeamer;
 
     void Start()
