@@ -4,9 +4,9 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject ui;
-
-    private static bool _hasBeenToggled;
     
+    private bool _hasBeenToggled;
+
     // Pauses/unpauses the game, and toggles the UI
     public void Toggle()
     {
@@ -15,6 +15,7 @@ public class PauseMenu : MonoBehaviour
         if (ui.activeSelf)
         {
             Time.timeScale = 0f;
+            Input.ResetInputAxes();
         }
         else
         {
@@ -40,6 +41,9 @@ public class PauseMenu : MonoBehaviour
     // Called each frame
     public void Update()
     {
+        if (Input.GetAxis("Pause") != 0)
+            Debug.Log(Input.GetAxis("Pause"));
+        
         // On press, pause the game
         if (Input.GetAxis("Pause") > 0 && !_hasBeenToggled)
         {
