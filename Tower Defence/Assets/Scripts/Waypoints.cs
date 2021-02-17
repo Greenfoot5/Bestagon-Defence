@@ -7,16 +7,16 @@
 public class Waypoints : MonoBehaviour
 {
     // Has a array of all the waypoints
-    public static Transform[] Points;
+    public static Transform[] points;
 
     private void Awake()
     {
         // Creates and adds all waypoints to the array
-        Points = new Transform[transform.childCount];
+        points = new Transform[transform.childCount];
         
-        for (var i = 0; i < Points.Length; i++)
+        for (var i = 0; i < points.Length; i++)
         {
-            Points[i] = transform.GetChild(i);
+            points[i] = transform.GetChild(i);
         }
     }
 }

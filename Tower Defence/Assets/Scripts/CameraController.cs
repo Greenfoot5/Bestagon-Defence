@@ -11,7 +11,7 @@ public class CameraController : MonoBehaviour
     public float scrollSpeed = 5000f;
     public float minOrthSize = 3;
     public float maxOrthSize = 9;
-    public new Camera camera;
+    private Camera _camera;
 
     private Vector2 _cameraSpeed;
     private float _scrolling;
@@ -20,7 +20,7 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
-        camera = transform.GetComponent<Camera>();
+        _camera = transform.GetComponent<Camera>();
     }
 
     void Move()
@@ -85,10 +85,10 @@ public class CameraController : MonoBehaviour
         _cameraSpeed = new Vector2();
 
         // Implement scrolling by changing the Orthographic Size on the camera
-        float orthSize = camera.orthographicSize;
+        float orthSize = _camera.orthographicSize;
         orthSize -= _scrolling * Time.deltaTime;
         orthSize = Mathf.Clamp(orthSize, minOrthSize, maxOrthSize);
 
-        camera.orthographicSize = orthSize;
+        _camera.orthographicSize = orthSize;
     }
 }

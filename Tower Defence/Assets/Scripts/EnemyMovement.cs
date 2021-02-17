@@ -23,7 +23,7 @@ public class EnemyMovement : MonoBehaviour
     {
         // Set the next target to the first waypoint.
         // _waypointIndex will always be 0 at the start
-        _target = Waypoints.Points[_waypointIndex];
+        _target = Waypoints.points[_waypointIndex];
 
         _enemy = GetComponent<Enemy>();
     }
@@ -49,7 +49,7 @@ public class EnemyMovement : MonoBehaviour
     private void GetNextWaypoint()
     {
         // If we've reached the end, destroy
-        if (_waypointIndex >= Waypoints.Points.Length - 1)
+        if (_waypointIndex >= Waypoints.points.Length - 1)
         {
             EndPath();
             return;
@@ -57,7 +57,7 @@ public class EnemyMovement : MonoBehaviour
         
         // Get the next waypoint
         _waypointIndex++;
-        _target = Waypoints.Points[_waypointIndex];
+        _target = Waypoints.points[_waypointIndex];
     }
 
     void EndPath()
