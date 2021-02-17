@@ -1,24 +1,17 @@
 ﻿using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
-using UnityEngine.XR;
 
 public class PauseMenu : MonoBehaviour
 {
-    public GameObject UI;
-    public void Update()
-    {
-        if (Input.GetButtonDown(KeyCode.P.ToString()))
-        {
-            Toggle();
-        }
-    }
+    public GameObject ui;
+
+    private bool _hasBeenToggled = false;
 
     public void Toggle()
     {
-        UI.SetActive(!UI.activeSelf);
+        ui.SetActive(!ui.activeSelf);
 
-        if (UI.activeSelf)
+        if (ui.activeSelf)
         {
             Time.timeScale = 0f;
         }
@@ -37,5 +30,18 @@ public class PauseMenu : MonoBehaviour
     public void Menu()
     {
         Debug.LogError("No Menu created yet!");
+    }
+
+    public void Update()
+    {
+        if (Input.GetAxis("Pause") > 0 && !_hasBeenToggled)
+        {
+            Toggle();
+            _hasBeenToggled = true;
+        }
+        else if (Input.GetAxis("Pause") == 0)
+        {
+            _hasBeenToggled = false;
+        }
     }
 }

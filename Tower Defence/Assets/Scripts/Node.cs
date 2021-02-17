@@ -32,7 +32,7 @@ public class Node : MonoBehaviour
         {
             return;
         }
-
+    
         // TODO - Enable turret upgrades
         if (turret != null)
         {
@@ -45,7 +45,7 @@ public class Node : MonoBehaviour
         {
             return;
         }
-
+    
         BuildTurret(_buildManager.GetTurretToBuild());
     }
     
@@ -119,7 +119,7 @@ public class Node : MonoBehaviour
         {
             return;
         }
-
+    
         if (_buildManager.HasMoney)
         {
             _rend.material.color = hoverColour;
