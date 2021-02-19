@@ -24,6 +24,11 @@ public class WaveSpawner : MonoBehaviour
     // Should be waypoint 0
     public Transform spawnPoint;
 
+    void Start()
+    {
+        enemiesAlive = 0;
+    }
+
     private void Update()
     {
         // Only reduce the countdown if there are enemies remaining
