@@ -42,7 +42,7 @@ public class EnemyMovement : MonoBehaviour
         }
         
         // Reset speed in case we've been slowed
-        _enemy.speed = _enemy.StartSpeed;
+        _enemy.speed = _enemy.startSpeed;
     }
     
     // Gets the next waypoint in the waypoints array
@@ -59,7 +59,8 @@ public class EnemyMovement : MonoBehaviour
         _waypointIndex++;
         _target = Waypoints.points[_waypointIndex];
     }
-
+    
+    // Called when we reach the final waypoint
     void EndPath()
     {
         GameStats.lives--;

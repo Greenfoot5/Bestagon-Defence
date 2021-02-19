@@ -5,30 +5,41 @@ public class Turret : MonoBehaviour
     private Transform _target;
     private Enemy _targetEnemy;
     
+    // TODO - Setup editor script to make this cleaner in the editor
     [Header("Attributes")]
     
+    [Tooltip("The range in units that the turret can 'see' enemies")]
     public float range = 2.5f;
+    [Tooltip("The speed the turret rotates to look at enemies. Should at least be able to follow enemies")]
     public float turnSpeed = 3f;
     
     [Header("Bullets (default)")]
+    [Tooltip("The time interval between each shot")]
     public float fireRate = 1f;
     private float _fireCountdown;
+    [Tooltip("The bullet to spawn on shoot")]
     public GameObject bulletPrefab;
 
-    [Header("User Laser")] 
+    [Header("Lasers")] 
+    [Tooltip("When enabled, the turret fires a laser rather than bullets")]
     public bool useLaser;
-
+    
+    [Tooltip("The damage dealt over 1 second while an enemy is hit by the laser")]
     public float damageOverTime = 5;
     [Range(0, 1)]
+    [Tooltip("The percentage the enemy's speed is reduced by. Does not stack")]
     public float slowPercentage;
     
     public LineRenderer lineRenderer;
     public ParticleSystem impactEffect;
     
     [Header("References")]
+    [Tooltip("The GameObject tag to target")]
     public string enemyTag = "Enemy";
+    [Tooltip("The GameObject to rotate to make the turret rotate")]
     public Transform partToRotate;
     
+    [Tooltip("The position to spawn the bullet/laser from")]
     public Transform firePoint;
     
     // Start is called before the first frame update
@@ -83,9 +94,11 @@ public class Turret : MonoBehaviour
             
             return;
         }
-
+        
+        // Rotates the turret each frame
         LookAtTarget();
-
+        
+        // Check which shot type we're using
         if (useLaser)
         {
             FireLaser();
@@ -101,6 +114,7 @@ public class Turret : MonoBehaviour
 
     private void LookAtTarget()
     {
+        // Get's the rotation we need to end up at, and lerp each frame towards that
         var aimDir = ((Vector2)_target.position - (Vector2)transform.position).normalized;
         var up = partToRotate.up;
         var lookDir = Vector3.Lerp(up, aimDir, Time.deltaTime * turnSpeed);
@@ -118,7 +132,8 @@ public class Turret : MonoBehaviour
             bullet.Seek(_target);
         }
     }
-
+    
+    // TODO - Animate the laser slightly (make it pulse)
     private void FireLaser()
     {
         // Deal damage

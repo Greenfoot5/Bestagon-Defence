@@ -1,41 +1,58 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
     [Header("Stats")]
-    public readonly float StartSpeed = 2f;
+    public readonly float startSpeed = 2f;
+    public readonly float startHealth = 20f;
+    
     [HideInInspector]
     public float speed;
-    public float health = 20;
+    [HideInInspector]
+    public float health;
     public int deathMoney = 10;
+
+    [Header("Health Bar")]
+    public Image leftBar;
+    public Image rightBar;
 
     public GameObject deathEffect;
 
     void Start()
     {
-        speed = StartSpeed;
+        speed = startSpeed;
+        health = startHealth;
     }
     
+    // Called when the enemy takes damage
     public void TakeDamage(float amount)
     {
         health -= amount;
+
+        leftBar.fillAmount = health / startHealth;
+        rightBar.fillAmount = health / startHealth;
 
         if (health <= 0)
         {
             Die();
         }
     }
-
+    
+    // Called when we slow the enemy (permanent effect)
     public void Slow(float slowPercentage)
     {
-        speed = StartSpeed * (1f - slowPercentage);
+        speed = startSpeed * (1f - slowPercentage);
     }
-
+    
+    // Called when we die
     private void Die()
     {
+        // Spawn death effect
         GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
-
+        
+        // Grant money and destroy self
         GameStats.money += deathMoney;
         Destroy(gameObject);
     }
