@@ -52,6 +52,9 @@ public class Enemy : MonoBehaviour
         GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
         
+        // Let the wave spawner know the enemy is dead
+        WaveSpawner.enemiesAlive--;
+        
         // Grant money and destroy self
         GameStats.money += deathMoney;
         Destroy(gameObject);

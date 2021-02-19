@@ -4,6 +4,8 @@ using TMPro;
 
 public class WaveSpawner : MonoBehaviour
 {
+    public static int enemiesAlive;
+        
     // Our enemy
     public Transform enemyPrefab;
     
@@ -28,6 +30,13 @@ public class WaveSpawner : MonoBehaviour
     
     private void Update()
     {
+        // Only reduce the countdown if there are enemies remaining
+        // TODO - Update countdown text to enemies remaining
+        if (enemiesAlive > 0)
+        {
+            return;
+        }
+
         // If we've reached the end of the countdown,
         // call the next wave
         if (_countdown <= 0f)
@@ -36,19 +45,22 @@ public class WaveSpawner : MonoBehaviour
             StartCoroutine(SpawnWave());
             // Reset the timer
             _countdown = timeBetweenWaves;
+
+            return;
         }
 
         _countdown -= Time.deltaTime;
         _countdown = Mathf.Clamp(_countdown, 0f, Mathf.Infinity);
         
         waveCountdownText.text = string.Format("<sprite=\"UI-Icons\" name=\"Clock\"> {0:0.00}", _countdown);
+
+        GameStats.rounds = _waveIndex + 1;
     }
     
     // Spawns in our enemies
     private IEnumerator SpawnWave()
     {
         _waveIndex++;
-        GameStats.rounds++;
         
         // For all the enemies we will spawn,
         // spawn one, then wait timeBetweenEnemies seconds
@@ -64,5 +76,6 @@ public class WaveSpawner : MonoBehaviour
     private void SpawnEnemy()
     {
         Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+        enemiesAlive++;
     }
 }
