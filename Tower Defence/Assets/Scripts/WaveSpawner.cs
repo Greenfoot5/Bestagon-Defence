@@ -5,10 +5,10 @@ using TMPro;
 public class WaveSpawner : MonoBehaviour
 {
     public static int enemiesAlive;
-        
-    // Our enemy
-    public Transform enemyPrefab;
     
+    // All the waves in the level
+    public Wave[] waves;
+
     // Times before sending waves
     public float timeBetweenWaves = 5f;
     // Set to first countdown
@@ -23,11 +23,7 @@ public class WaveSpawner : MonoBehaviour
     // The point to spawn in the enemy.
     // Should be waypoint 0
     public Transform spawnPoint;
-    
-    [SerializeField]
-    // Time to wait before spawning the next enemy in the wave.
-    private float timeBetweenEnemies = 0.5f;
-    
+
     private void Update()
     {
         // Only reduce the countdown if there are enemies remaining
@@ -60,22 +56,44 @@ public class WaveSpawner : MonoBehaviour
     // Spawns in our enemies
     private IEnumerator SpawnWave()
     {
-        _waveIndex++;
-        
-        // For all the enemies we will spawn,
-        // spawn one, then wait timeBetweenEnemies seconds
-        for (var i = 0; i < _waveIndex; i++)
+        Wave wave = waves[_waveIndex];
+
+        for (var i = 0; i < wave.waveSets.Length; i++)
         {
-            SpawnEnemy();
-            yield return new WaitForSeconds(timeBetweenEnemies);
+            WaveSet set = wave.waveSets[i];
+            
+            // For all the enemies we will spawn,
+            // spawn one, then wait timeBetweenEnemies seconds
+            for (var j = 0; j < set.count; j++)
+            {
+                SpawnEnemy(set.enemy);
+
+                if (j + 1 != set.count)
+                {
+                    yield return new WaitForSeconds(set.rate);
+                }
+            }
+
+            if (i + 1 != wave.waveSets.Length)
+            {
+                yield return new WaitForSeconds(wave.setDelays[i]);
+            }
+        }
+
+        _waveIndex++;
+
+        if (_waveIndex == waves.Length)
+        {
+            Debug.Log("Level complete!");
+            enabled = false;
         }
     }
     
     // Spawns an enemy.
     // What else would it do!?
-    private void SpawnEnemy()
+    private void SpawnEnemy(GameObject enemy)
     {
-        Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+        Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
         enemiesAlive++;
     }
 }

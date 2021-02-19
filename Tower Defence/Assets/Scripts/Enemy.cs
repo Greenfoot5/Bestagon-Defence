@@ -4,8 +4,8 @@ using UnityEngine.UI;
 public class Enemy : MonoBehaviour
 {
     [Header("Stats")]
-    public readonly float startSpeed = 2f;
-    public readonly float startHealth = 20f;
+    public float startSpeed = 2f;
+    public float startHealth = 20f;
     
     [HideInInspector]
     public float speed;
