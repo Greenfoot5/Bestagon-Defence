@@ -63,7 +63,10 @@ public class EnemyMovement : MonoBehaviour
     // Called when we reach the final waypoint
     void EndPath()
     {
+        // Let our other systems know the enemy reached the end
         GameStats.lives--;
+        WaveSpawner.enemiesAlive--;
+        
         Destroy(gameObject);
     }
 }

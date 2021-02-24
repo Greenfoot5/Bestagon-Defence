@@ -4,8 +4,8 @@ using UnityEngine.UI;
 public class Enemy : MonoBehaviour
 {
     [Header("Stats")]
-    public readonly float startSpeed = 2f;
-    public readonly float startHealth = 20f;
+    public float startSpeed = 2f;
+    public float startHealth = 20f;
     
     [HideInInspector]
     public float speed;
@@ -51,6 +51,9 @@ public class Enemy : MonoBehaviour
         // Spawn death effect
         GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
+        
+        // Let the wave spawner know the enemy is dead
+        WaveSpawner.enemiesAlive--;
         
         // Grant money and destroy self
         GameStats.money += deathMoney;
