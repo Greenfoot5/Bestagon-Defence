@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 4711107948385963260}
   - component: {fileID: 6514982}
   m_Layer: 0
-  m_Name: Standard Upgraded Turret
+  m_Name: Standard Turret Upgraded
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -158,14 +158,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 4
-  turnSpeed: 6
-  fireRate: 1.5
+  turnSpeed: 3
+  fireRate: 1
   bulletPrefab: {fileID: 8554329261332597528, guid: ae2bb6b111513466a910af495e377c8d, type: 3}
   useLaser: 0
   damageOverTime: 5
   slowPercentage: 0
   lineRenderer: {fileID: 0}
-  impactEffect: {fileID: 0}
+  impactEffect: {fileID: 2834155742553635263, guid: 410840a991e414225baff388418be600, type: 3}
   enemyTag: Enemy
   partToRotate: {fileID: 4711107948385963260}
   firePoint: {fileID: 1483480927}

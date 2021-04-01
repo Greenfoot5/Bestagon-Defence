@@ -9,7 +9,16 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 2efd9d7bdf8e0465d8f3c93c42e3d626
   - enabled: 1
+    path: Assets/Scenes/LevelSelect.unity
+    guid: 6c08fdee9933e4d3a9292b88a94b983a
+  - enabled: 1
     path: Assets/Scenes/PrototypeLevel.unity
     guid: bcae845140dd848c9b9a5aa381e851c4
+  - enabled: 1
+    path: Assets/Scenes/HexagonLevel.unity
+    guid: 98f493f3b2159447eb37c3a6dadc667d
+  - enabled: 1
+    path: Assets/Scenes/PolygonLevel.unity
+    guid: 9eb7a85ac13264cdba210105834fbd89
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: f7e4968f6dea44f07805c614cb315fab, type: 2}

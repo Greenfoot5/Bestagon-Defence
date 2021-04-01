@@ -3123,11 +3123,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79e11d82f4bcc410b972e01ce50f182d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 1766261579634831074, guid: 458780032aac64edd9cb81311c5de419, type: 3}
+  waves: []
   timeBetweenWaves: 5
   waveCountdownText: {fileID: 969181907}
   spawnPoint: {fileID: 8583544827492872388}
-  timeBetweenEnemies: 0.5
 --- !u!4 &1262650573
 Transform:
   m_ObjectHideFlags: 0
@@ -3497,7 +3496,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: PrototypeLevel
+          m_StringArgument: LevelSelect
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1394894636

@@ -96,9 +96,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3984fe6a284ef4f31af7e61ebb37d6f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverColour: {r: 0.85, g: 0.85, b: 0.85, a: 1}
-  cantAffordColour: {r: 0.92941177, g: 0.29803923, b: 0.2509804, a: 1}
+  hoverColour: {r: 0.7, g: 0.7, b: 0.7, a: 1}
+  cantAffordColour: {r: 0.83137256, g: 0.11764706, b: 0.23529412, a: 1}
   turret: {fileID: 0}
+  turretBlueprint:
+    prefab: {fileID: 0}
+    cost: 0
+    upgradedPrefab: {fileID: 0}
+    upgradeCost: 0
+    sellReduction: 0.5
+  isUpgraded: 0
 --- !u!60 &1837585327
 PolygonCollider2D:
   m_ObjectHideFlags: 0
