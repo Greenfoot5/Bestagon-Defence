@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using Turrets.Upgrades.BulletUpgrades;
+using Turrets.Upgrades.TurretUpgrades;
+using UnityEngine;
 
 namespace Turrets
 {
@@ -36,6 +39,10 @@ namespace Turrets
         public string enemyTag = "Enemy";
         public Transform partToRotate;
         public Transform firePoint;
+        
+        // Upgrades
+        public List<BulletUpgrade> bulletUpgrades = new List<BulletUpgrade>();
+        public List<TurretUpgrade> turretUpgrades = new List<TurretUpgrade>();
     
         // Start is called before the first frame update
         private void Start()
