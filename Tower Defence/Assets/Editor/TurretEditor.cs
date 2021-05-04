@@ -38,7 +38,7 @@ namespace Editor
             // Upgrades
             EditorGUILayout.Space();
             // EditorGUILayout.PrefixLabel("Upgrades");
-            AddTurretUpgrades(turret.turretUpgrades);
+            AddTurretUpgrades(turret.turretUpgrades, turret);
             AddBulletUpgrades(turret.bulletUpgrades);
         }
 
@@ -74,7 +74,7 @@ namespace Editor
             }
         }
 
-        private void AddTurretUpgrades(List<TurretUpgrade> upgrades)
+        private void AddTurretUpgrades(List<TurretUpgrade> upgrades, Turret turret)
         {
             _showTurretUpgrades = EditorGUILayout.BeginFoldoutHeaderGroup(_showTurretUpgrades, "Turret Upgrades");
             if (!_showTurretUpgrades)
@@ -98,6 +98,7 @@ namespace Editor
             if (newUpgrade != null)
             {
                 upgrades.Add(newUpgrade);
+                turret.AddUpgrade(newUpgrade);
             }
 
             // Remove null upgrades
@@ -111,8 +112,8 @@ namespace Editor
         
         private void AddBulletUpgrades(List<BulletUpgrade> upgrades)
         {
-            _showTurretUpgrades = EditorGUILayout.BeginFoldoutHeaderGroup(_showTurretUpgrades, "Bullet Upgrades");
-            if (!_showTurretUpgrades)
+            _showBulletUpgrades = EditorGUILayout.BeginFoldoutHeaderGroup(_showBulletUpgrades, "Bullet Upgrades");
+            if (!_showBulletUpgrades)
                 return;
             
             // Add current Upgrades

@@ -4,7 +4,8 @@ namespace Turrets.Upgrades.TurretUpgrades
 {
     public abstract class TurretUpgrade : ScriptableObject
     {
-        private string upgradeType = "Fire Rate Reduction";
+        [SerializeField]
+        private string upgradeType;
 
         [Range(0f, 1f)]
         [SerializeField]
@@ -27,13 +28,10 @@ namespace Turrets.Upgrades.TurretUpgrades
             return upgradeTier;
         }
 
-        void AlterTurretStat(ref Turret turret)
-        {
-        }
+        public abstract Turret AddUpgrade(Turret turret);
 
-        bool ValidUpgrade(ref Turret turret)
-        {
-            return true;
-        }
+        public abstract Turret RemoveUpgrade(Turret turret);
+
+        public abstract bool ValidUpgrade(Turret turret);
     }
 }

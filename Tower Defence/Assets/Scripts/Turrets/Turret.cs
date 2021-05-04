@@ -41,14 +41,18 @@ namespace Turrets
         public Transform firePoint;
         
         // Upgrades
-        public List<BulletUpgrade> bulletUpgrades = new List<BulletUpgrade>();
         public List<TurretUpgrade> turretUpgrades = new List<TurretUpgrade>();
-    
+        public List<BulletUpgrade> bulletUpgrades = new List<BulletUpgrade>();
+
         // Start is called before the first frame update
         private void Start()
         {
             // Call the function every 2s
             InvokeRepeating(nameof(UpdateTarget), 0f, 0.5f);
+            foreach (TurretUpgrade upgrade in turretUpgrades)
+            {
+                AddUpgrade(upgrade);
+            }
         }
 
         private void UpdateTarget()
@@ -171,6 +175,22 @@ namespace Turrets
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, range);
+        }
+
+        // TODO - Actually check the upgrade is valid
+        public bool AddUpgrade(TurretUpgrade upgrade)
+        {
+            if (!upgrade.ValidUpgrade(this))
+                return false;
+
+            upgrade.AddUpgrade(this);
+
+            return true;
+        }
+
+        public bool AddUpgrade(BulletUpgrade upgrade)
+        {
+            return false;
         }
     }
 }

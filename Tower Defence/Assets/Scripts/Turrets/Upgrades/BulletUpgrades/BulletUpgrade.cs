@@ -27,11 +27,11 @@ namespace Turrets.Upgrades.BulletUpgrades
             return upgradeTier;
         }
         
-        void AlterBulletSettings(ref Bullet bullet)
+        public void AlterBulletSettings(ref Bullet bullet)
         {
         }
 
-        bool ValidUpgrade(ref Turret turret)
+        public bool ValidUpgrade(ref Turret turret)
         {
             return true;
         }
