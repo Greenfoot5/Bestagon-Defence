@@ -37,5 +37,6 @@ public class EvolutionSelectionUI : MonoBehaviour
     {
         // TODO - Grant the user's choice
         transform.parent.gameObject.SetActive (false);
+        Time.timeScale = 1f;
     }
 }
