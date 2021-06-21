@@ -1,0 +1,984 @@
+fileFormatVersion: 2
+guid: 926e5887a49c64a52afd6094c977db99
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8710246372267956930
+    second: runeGrey_slabOutline_sheet_0
+  - first:
+      213: 5318659861669789116
+    second: runeGrey_slabOutline_sheet_1
+  - first:
+      213: -2475778605460490307
+    second: runeGrey_slabOutline_sheet_2
+  - first:
+      213: -403680946255584042
+    second: runeGrey_slabOutline_sheet_3
+  - first:
+      213: -6714075016957191663
+    second: runeGrey_slabOutline_sheet_4
+  - first:
+      213: -6316171028261040934
+    second: runeGrey_slabOutline_sheet_5
+  - first:
+      213: -2577354099346100387
+    second: runeGrey_slabOutline_sheet_6
+  - first:
+      213: -43358077810190262
+    second: runeGrey_slabOutline_sheet_7
+  - first:
+      213: 8870933133615282498
+    second: runeGrey_slabOutline_sheet_8
+  - first:
+      213: -5822484492266224559
+    second: runeGrey_slabOutline_sheet_9
+  - first:
+      213: 4312614255072058308
+    second: runeGrey_slabOutline_sheet_10
+  - first:
+      213: 8249173878090774016
+    second: runeGrey_slabOutline_sheet_11
+  - first:
+      213: -3518075488036037334
+    second: runeGrey_slabOutline_sheet_12
+  - first:
+      213: -1597451121743799143
+    second: runeGrey_slabOutline_sheet_13
+  - first:
+      213: 2824297975510474384
+    second: runeGrey_slabOutline_sheet_14
+  - first:
+      213: -2635510176329996275
+    second: runeGrey_slabOutline_sheet_15
+  - first:
+      213: -3467334208913314605
+    second: runeGrey_slabOutline_sheet_16
+  - first:
+      213: 4546310689509156246
+    second: runeGrey_slabOutline_sheet_17
+  - first:
+      213: -3064221760535501981
+    second: runeGrey_slabOutline_sheet_18
+  - first:
+      213: 2731773075001397463
+    second: runeGrey_slabOutline_sheet_19
+  - first:
+      213: 6024844966514819156
+    second: runeGrey_slabOutline_sheet_20
+  - first:
+      213: 6222192678938285572
+    second: runeGrey_slabOutline_sheet_21
+  - first:
+      213: 4408299078986698174
+    second: runeGrey_slabOutline_sheet_22
+  - first:
+      213: 3202189742797214813
+    second: runeGrey_slabOutline_sheet_23
+  - first:
+      213: 7523869889954451557
+    second: runeGrey_slabOutline_sheet_24
+  - first:
+      213: 4324158624995101406
+    second: runeGrey_slabOutline_sheet_25
+  - first:
+      213: 2415555477710031090
+    second: runeGrey_slabOutline_sheet_26
+  - first:
+      213: 7783578196300675603
+    second: runeGrey_slabOutline_sheet_27
+  - first:
+      213: -171657246613670362
+    second: runeGrey_slabOutline_sheet_28
+  - first:
+      213: 8520254405105528065
+    second: runeGrey_slabOutline_sheet_29
+  - first:
+      213: 7390299904856016222
+    second: runeGrey_slabOutline_sheet_30
+  - first:
+      213: 3108711905123495761
+    second: runeGrey_slabOutline_sheet_31
+  - first:
+      213: 5135020984266360818
+    second: runeGrey_slabOutline_sheet_32
+  - first:
+      213: 4232269412208173633
+    second: runeGrey_slabOutline_sheet_33
+  - first:
+      213: 3874688720866961357
+    second: runeGrey_slabOutline_sheet_34
+  - first:
+      213: -8159730999724757685
+    second: runeGrey_slabOutline_sheet_35
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: runeGrey_slabOutline_sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 372
+        width: 56
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ca9a2d3de201e870800000000000000
+      internalID: 8710246372267956930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: runeGrey_slabOutline_sheet_1
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 372
+        width: 56
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbdb4f7f6fcafc940800000000000000
+      internalID: 5318659861669789116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: runeGrey_slabOutline_sheet_2
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 372
+        width: 56
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db7f30fb97444add0800000000000000
+      internalID: -2475778605460490307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: runeGrey_slabOutline_sheet_3
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 372
+        width: 56
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d4a7d37156d56af0800000000000000
+      internalID: -403680946255584042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: runeGrey_slabOutline_sheet_4
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 372
+        width: 56
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11a11f24850d2d2a0800000000000000
+      internalID: -6714075016957191663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: runeGrey_slabOutline_sheet_5
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 372
+        width: 56
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adc03ef0ae37858a0800000000000000
+      internalID: -6316171028261040934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: runeGrey_slabOutline_sheet_6
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 372
+        width: 56
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5f24102a166b3cd0800000000000000
+      internalID: -2577354099346100387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: runeGrey_slabOutline_sheet_7
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 372
+        width: 56
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a48daf5de06f56ff0800000000000000
+      internalID: -43358077810190262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: runeGrey_slabOutline_sheet_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 279
+        width: 56
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 249b16f4fa2eb1b70800000000000000
+      internalID: 8870933133615282498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: runeGrey_slabOutline_sheet_9
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 279
+        width: 56
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15440400431623fa0800000000000000
+      internalID: -5822484492266224559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: runeGrey_slabOutline_sheet_10
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 279
+        width: 56
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cb1bd6d0db79db30800000000000000
+      internalID: 4312614255072058308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: runeGrey_slabOutline_sheet_11
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 279
+        width: 56
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0063806afe3fa7270800000000000000
+      internalID: 8249173878090774016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: runeGrey_slabOutline_sheet_12
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 279
+        width: 56
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2d5a92bbf84d2fc0800000000000000
+      internalID: -3518075488036037334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: runeGrey_slabOutline_sheet_13
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 279
+        width: 56
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99c596e1ba6b4d9e0800000000000000
+      internalID: -1597451121743799143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: runeGrey_slabOutline_sheet_14
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 279
+        width: 56
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09e18228b0ce13720800000000000000
+      internalID: 2824297975510474384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: runeGrey_slabOutline_sheet_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 186
+        width: 56
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d086ce94579cc6bd0800000000000000
+      internalID: -2635510176329996275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: runeGrey_slabOutline_sheet_16
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 186
+        width: 56
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dc692068ed81efc0800000000000000
+      internalID: -3467334208913314605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: runeGrey_slabOutline_sheet_17
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 186
+        width: 56
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69521c61c7db71f30800000000000000
+      internalID: 4546310689509156246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: runeGrey_slabOutline_sheet_18
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 186
+        width: 56
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36362423b82b975d0800000000000000
+      internalID: -3064221760535501981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: runeGrey_slabOutline_sheet_19
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 186
+        width: 56
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d05f6e532539e520800000000000000
+      internalID: 2731773075001397463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: runeGrey_slabOutline_sheet_20
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 186
+        width: 56
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4508ae7739c8c9350800000000000000
+      internalID: 6024844966514819156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: runeGrey_slabOutline_sheet_21
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 186
+        width: 56
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4061720664ba95650800000000000000
+      internalID: 6222192678938285572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: runeGrey_slabOutline_sheet_22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 93
+        width: 56
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebd0faaf7ac6d2d30800000000000000
+      internalID: 4408299078986698174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: runeGrey_slabOutline_sheet_23
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 93
+        width: 56
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d54d3daea96707c20800000000000000
+      internalID: 3202189742797214813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: runeGrey_slabOutline_sheet_24
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 93
+        width: 56
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5601efe3dc72a6860800000000000000
+      internalID: 7523869889954451557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: runeGrey_slabOutline_sheet_25
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 93
+        width: 56
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eda464beb5f720c30800000000000000
+      internalID: 4324158624995101406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: runeGrey_slabOutline_sheet_26
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 93
+        width: 56
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f8c728a8e6c58120800000000000000
+      internalID: 2415555477710031090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: runeGrey_slabOutline_sheet_27
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 93
+        width: 56
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31a3aff5123d40c60800000000000000
+      internalID: 7783578196300675603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: runeGrey_slabOutline_sheet_28
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 93
+        width: 56
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6267878c4a62e9df0800000000000000
+      internalID: -171657246613670362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: runeGrey_slabOutline_sheet_29
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 56
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10da54c3d360e3670800000000000000
+      internalID: 8520254405105528065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: runeGrey_slabOutline_sheet_30
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 0
+        width: 56
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e55cb84ab9e9f8660800000000000000
+      internalID: 7390299904856016222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: runeGrey_slabOutline_sheet_31
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
+        width: 56
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15fe9edc10d542b20800000000000000
+      internalID: 3108711905123495761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: runeGrey_slabOutline_sheet_32
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 0
+        width: 56
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f78f51f062434740800000000000000
+      internalID: 5135020984266360818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: runeGrey_slabOutline_sheet_33
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 56
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1426b6c5b9a0cba30800000000000000
+      internalID: 4232269412208173633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: runeGrey_slabOutline_sheet_34
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 0
+        width: 56
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc7ec76dcd8a5c530800000000000000
+      internalID: 3874688720866961357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: runeGrey_slabOutline_sheet_35
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 0
+        width: 56
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4da9aa43efc2ce80800000000000000
+      internalID: -8159730999724757685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

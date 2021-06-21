@@ -12,6 +12,8 @@ public class Shop : MonoBehaviour
     [Tooltip("Laser beam turret")]
     public TurretBlueprint laserBeamer;
 
+    public GameObject selectionUI;
+
     void Start()
     {
         _buildManager = BuildManager.instance;
@@ -36,5 +38,10 @@ public class Shop : MonoBehaviour
     {
         Debug.Log("Laser Beamer Selected.");
         _buildManager.SelectTurretToBuild(laserBeamer);
+    }
+
+    public void PurchaseEvolution()
+    {
+        selectionUI.SetActive(true);
     }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Turrets.Upgrades.TurretUpgrades
 {
@@ -9,10 +10,16 @@ namespace Turrets.Upgrades.TurretUpgrades
 
         [Range(0f, 1f)]
         [SerializeField]
-        private float fireRateReduction;
+        private float effectPercentage;
         [SerializeField]
         private int upgradeTier;
         
+        // TODO - Generate display name from update type and tier
+        public string displayName;
+        public Sprite icon;
+        public string effectText;
+        public string[] restrictionsText;
+
         public string GETUpgradeType()
         {
             return upgradeType;
@@ -20,7 +27,7 @@ namespace Turrets.Upgrades.TurretUpgrades
 
         public float GETUpgradeValue()
         {
-            return fireRateReduction;
+            return effectPercentage;
         }
 
         public int GETUpgradeTier()

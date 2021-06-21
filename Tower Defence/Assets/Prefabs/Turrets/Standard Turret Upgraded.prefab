@@ -101,8 +101,8 @@ SpriteRenderer:
   m_SortingLayerID: 925339771
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4f3b5a71bfb4c43f7a3f1bf5d3f7c0a0, type: 3}
-  m_Color: {r: 0.2971698, g: 1, b: 0.6599887, a: 1}
+  m_Sprite: {fileID: 4920047704721737328, guid: 21a20ee9254a44011ae704eebedd6202, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -159,13 +159,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 4
   turnSpeed: 3
+  attackType: 0
   fireRate: 1
   bulletPrefab: {fileID: 8554329261332597528, guid: ae2bb6b111513466a910af495e377c8d, type: 3}
-  useLaser: 0
   damageOverTime: 5
-  slowPercentage: 0
   lineRenderer: {fileID: 0}
   impactEffect: {fileID: 2834155742553635263, guid: 410840a991e414225baff388418be600, type: 3}
+  slowPercentage: 0
   enemyTag: Enemy
   partToRotate: {fileID: 4711107948385963260}
   firePoint: {fileID: 1483480927}
+  turretUpgrades: []
+  bulletUpgrades: []
