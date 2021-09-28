@@ -40,7 +40,7 @@ public class Shop : MonoBehaviour
         _buildManager.SelectTurretToBuild(laserBeamer);
     }
 
-    public void PurchaseEvolution()
+    public void PurchaseEnhancement()
     {
         selectionUI.SetActive(true);
     }

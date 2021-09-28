@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using Turrets.Upgrades.BulletUpgrades;
+using UnityEngine;
 
 namespace Turrets
 {
@@ -13,6 +15,8 @@ namespace Turrets
     
         [Tooltip("The effect spawned when the bullet hit's a target")]
         public GameObject impactEffect;
+
+        private List<BulletUpgrade> upgrades = new List<BulletUpgrade>();
 
         public void Seek(Transform newTarget)
         {
@@ -56,6 +60,14 @@ namespace Turrets
             // Spawn hit effect
             var position = transform;
             var effectIns = Instantiate(impactEffect, position.position, position.rotation);
+            
+            // Add upgrade effects
+            Enemy enemy = _target.GetComponent<Enemy>();
+            foreach (var upgrade in upgrades)
+            {
+                upgrade.OnHit(enemy);
+            }
+            
             Destroy(effectIns, 2f);
         
             // If we have AoE effect or not
@@ -73,9 +85,9 @@ namespace Turrets
         }
     
         // Called when dealing damage to a single enemy
-        void Damage(Transform enemy)
+        private void Damage(Component enemy)
         {
-            Enemy em = enemy.GetComponent<Enemy>();
+            var em = enemy.GetComponent<Enemy>();
 
             if (em != null)
             {
@@ -84,17 +96,22 @@ namespace Turrets
         }
     
         // Called if we have an AoE effect
-        void Explode()
+        private void Explode()
         {
             // Get's all the enemies in the AoE and calls Damage on them
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
-            foreach (Collider2D collider2d in colliders)
+            var colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
+            foreach (var collider2d in colliders)
             {
                 if (collider2d.CompareTag("Enemy"))
                 {
                     Damage(collider2d.transform);
                 }
             }
+        }
+
+        public void AddUpgrade(BulletUpgrade upgrade)
+        {
+            upgrades.Add(upgrade);
         }
     
         // Allows us to visualise the bullet's AoE in the editor
