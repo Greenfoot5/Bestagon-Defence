@@ -9,7 +9,7 @@ namespace Turrets.Upgrades.BulletUpgrades
         [SerializeField]
         private float effectPercentage;
         
-        public new void AlterBulletSettings(ref Bullet bullet)
+        public void AlterBulletSettings(ref Bullet bullet)
         {
             throw new System.NotImplementedException();
         }

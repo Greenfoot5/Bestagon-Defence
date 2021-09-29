@@ -64,4 +64,21 @@ public class BuildManager : MonoBehaviour
         _selectedNode = null;
         nodeUI.Hide();
     }
+
+    private void Update()
+    {
+        if (!Input.GetMouseButtonDown(0))
+        {
+            return;
+        }
+        
+        var cam = Camera.main;
+        var origin = cam.ScreenToViewportPoint(Input.mousePosition);
+        var hit = Physics2D.Raycast(origin, Vector3.forward, 100);
+        if (hit) return;
+        
+        DeselectNode();
+        _turretToBuild = null;
+        Debug.Log("Deselected");
+    }
 }
