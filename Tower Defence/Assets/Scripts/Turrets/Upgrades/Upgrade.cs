@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Upgrade : ScriptableObject
+public abstract class Upgrade : ScriptableObject
 {
     [SerializeField]
     private string upgradeType;

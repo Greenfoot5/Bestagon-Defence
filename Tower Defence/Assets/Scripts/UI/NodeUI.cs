@@ -13,7 +13,7 @@ namespace UI
         public TMP_Text upgradeText;
         public Button upgradeButton;
         public TMP_Text sellText;
-    
+
         // Called when we select a node
         public void SetTarget(Node node)
         {

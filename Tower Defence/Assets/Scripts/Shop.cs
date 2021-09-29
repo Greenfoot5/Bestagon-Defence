@@ -1,5 +1,6 @@
 ﻿using Turrets;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
 {
@@ -12,8 +13,10 @@ public class Shop : MonoBehaviour
     [Tooltip("Laser beam turret")]
     public TurretBlueprint laserBeamer;
 
-    public GameObject selectionUI;
-    public GameObject defaultButton;
+    public GameObject turretInventory;
+    public GameObject upgradeInventory;
+    public GameObject defaultTurretButton;
+    public GameObject defaultUpgradeButton;
 
     void Start()
     {
@@ -41,23 +44,32 @@ public class Shop : MonoBehaviour
         _buildManager.SelectTurretToBuild(laserBeamer);
     }
 
-    public void PurchaseEnhancement()
-    {
-        selectionUI.SetActive(true);
-    }
-
-    public void SelectUpgrade(Upgrade upgrade)
-    {
-        _buildManager.SelectTurretToBuild(null);
-    }
-
+    // public void PurchaseEnhancement()
+    // {
+    //     selectionUI.SetActive(true);
+    // }
+    
     public void SelectTurret(GameObject turret)
     {
         _buildManager.SelectTurretToBuild(standardTurret);
     }
 
-    public void SpawnNewItem(Upgrade upgrade)
+    public void SelectUpgrade(Upgrade upgrade)
     {
-        Instantiate(upgrade.GenerateButton(defaultButton, this), transform);
+        // Select Upgrade
     }
+    
+    public void SpawnNewTurret(GameObject turret)
+    {
+        // Add and display the new item
+        var turretButton = Instantiate(defaultTurretButton, turretInventory.transform);
+        turretButton.GetComponent<Button>().onClick.AddListener(delegate { SelectTurret(null); });
+    }
+    
+    public void SpawnNewUpgrade(Upgrade upgrade)
+    {
+        Instantiate(upgrade.GenerateButton(defaultUpgradeButton, this), upgradeInventory.transform);
+    }
+
+    
 }

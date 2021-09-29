@@ -5,10 +5,6 @@ namespace Turrets.Upgrades.BulletUpgrades
     [CreateAssetMenu(fileName = "SlowUpgrade", menuName = "Upgrades/BulletUpgrade/SlowsEnemyUpgrade", order = 1)]
     public class SlowUpgrade : BulletUpgrade
     {
-        [Range(0f, 1f)]
-        [SerializeField]
-        private float effectPercentage;
-        
         public void AlterBulletSettings(ref Bullet bullet)
         {
             throw new System.NotImplementedException();
@@ -22,7 +18,7 @@ namespace Turrets.Upgrades.BulletUpgrades
 
         public override void OnHit(Enemy target)
         {
-            target.Slow(effectPercentage);
+            target.Slow(GETUpgradeValue());
         }
 
         public new bool ValidUpgrade(ref Turret turret)

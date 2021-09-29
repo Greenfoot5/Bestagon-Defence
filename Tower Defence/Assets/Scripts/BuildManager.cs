@@ -65,6 +65,13 @@ public class BuildManager : MonoBehaviour
         nodeUI.Hide();
     }
 
+    public void Deselect()
+    {
+        _selectedNode = null;
+        nodeUI.Hide();
+        _turretToBuild = null;
+    }
+
     private void Update()
     {
         if (!Input.GetMouseButtonDown(0))
@@ -77,8 +84,6 @@ public class BuildManager : MonoBehaviour
         var hit = Physics2D.Raycast(origin, Vector3.forward, 100);
         if (hit) return;
         
-        DeselectNode();
-        _turretToBuild = null;
-        Debug.Log("Deselected");
+        Deselect();
     }
 }

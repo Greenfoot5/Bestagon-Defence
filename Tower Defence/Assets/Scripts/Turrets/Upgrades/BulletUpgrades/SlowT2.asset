@@ -12,5 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2db0c3d1579341f8bd90af8aa9e324d, type: 3}
   m_Name: SlowT2
   m_EditorClassIdentifier: 
-  upgradeTier: 1
-  effectPercentage: 0.1
+  upgradeType: Fire Rate Reduction
+  effectPercentage: 0.2
+  upgradeTier: 2
+  displayName: 
+  icon: {fileID: 0}
+  effectText: 
+  restrictionsText: []
+  upgradeTier: 2
+  effectPercentage: 0.2
