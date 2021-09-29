@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 3942835963936203610}
   - component: {fileID: 3942835963936203609}
   m_Layer: 5
-  m_Name: Standard Shop Button
+  m_Name: StandardTurretShopItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

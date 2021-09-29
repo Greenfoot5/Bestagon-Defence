@@ -13,6 +13,7 @@ public class Shop : MonoBehaviour
     public TurretBlueprint laserBeamer;
 
     public GameObject selectionUI;
+    public GameObject defaultButton;
 
     void Start()
     {
@@ -43,5 +44,20 @@ public class Shop : MonoBehaviour
     public void PurchaseEnhancement()
     {
         selectionUI.SetActive(true);
+    }
+
+    public void SelectUpgrade(Upgrade upgrade)
+    {
+        _buildManager.SelectTurretToBuild(null);
+    }
+
+    public void SelectTurret(GameObject turret)
+    {
+        _buildManager.SelectTurretToBuild(standardTurret);
+    }
+
+    public void SpawnNewItem(Upgrade upgrade)
+    {
+        Instantiate(upgrade.GenerateButton(defaultButton, this), transform);
     }
 }

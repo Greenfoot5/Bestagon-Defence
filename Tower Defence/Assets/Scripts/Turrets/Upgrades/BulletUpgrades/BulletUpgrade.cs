@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Turrets.Upgrades.BulletUpgrades
 {
-    public abstract class BulletUpgrade : ScriptableObject
+    public abstract class BulletUpgrade : Upgrade
     {
         private string upgradeType = "Fire Rate Reduction";
         

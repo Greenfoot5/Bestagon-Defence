@@ -1,43 +1,20 @@
+using System.Linq;
 using UnityEngine;
 
 namespace Turrets.Upgrades.TurretUpgrades
 {
-    public abstract class TurretUpgrade : ScriptableObject
+    public abstract class TurretUpgrade : Upgrade
     {
-        [SerializeField]
-        private string upgradeType;
-
-        [Range(0f, 1f)]
-        [SerializeField]
-        private float effectPercentage;
-        [SerializeField]
-        private int upgradeTier;
-        
-        // TODO - Generate display name from update type and tier
-        public string displayName;
-        public Sprite icon;
-        public string effectText;
-        public string[] restrictionsText;
-
-        public string GETUpgradeType()
-        {
-            return upgradeType;
-        }
-
-        public float GETUpgradeValue()
-        {
-            return effectPercentage;
-        }
-
-        public int GETUpgradeTier()
-        {
-            return upgradeTier;
-        }
+        public bool isEvolution;
 
         public abstract Turret AddUpgrade(Turret turret);
 
         public abstract Turret RemoveUpgrade(Turret turret);
 
-        public abstract bool ValidUpgrade(Turret turret);
+        public virtual bool ValidUpgrade(Turret turret)
+        {
+            // Make sure the turret doesn't already have an evolution (as they will currently conflict)
+            return turret.turretUpgrades.All(upgrade => !upgrade.isEvolution);
+        }
     }
 }
