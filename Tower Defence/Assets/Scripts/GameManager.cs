@@ -6,9 +6,15 @@ public class GameManager : MonoBehaviour
 
     public GameObject gameOverUI;
 
+    public LevelData.LevelData levelData;
+
     void Start()
     {
         isGameOver = false;
+        if (levelData == null)
+        {
+            Debug.LogError("No level data set!", this);
+        }
     }
     
     // Update is called once per frame

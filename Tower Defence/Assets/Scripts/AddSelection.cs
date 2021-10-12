@@ -1,4 +1,4 @@
-using System;
+using Turrets.Blueprints;
 using Turrets.Upgrades.TurretUpgrades;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -6,45 +6,59 @@ using Random = UnityEngine.Random;
 public class AddSelection : MonoBehaviour
 {
     public GameObject turretSelectionUI;
-    // TODO - Remove test
-    public TurretUpgrade[] test_upgrades;
     public GameObject evolutionSelectionUI;
+    private GameManager _gameManager;
+    public Shop shop;
+
+    private void Init()
+    {
+        if (_gameManager == null) _gameManager = BuildManager.instance.GetComponent<GameManager>();
+    }
 
     private void OnEnable()
     {
+        Init();
+        
         // Pause the game so the user can think
         Time.timeScale = 0f;
         
         // Destroy the previous selection
-        for (int i = transform.childCount - 1; i >= 0; i--)
+        for (var i = transform.childCount - 1; i >= 0; i--)
         {
             Destroy(transform.GetChild(i).gameObject);
         }
         
         // TODO - Perhaps modify amount of choices
-        for (int i = 0; i < 3; i++)
+        for (var i = 0; i < 3; i++)
         {
             // TODO - Choose which reward type to give
-            String choiceType = "TurretEvolution";
+            var choice = Random.Range(0, 2);
             // TODO - Avoid duplicates
-            switch (choiceType)
+            if (choice == 0)
             {
-                case "TurretEvolution":
-                    // TODO - Choose which reward in that type to give
-                    GenerateEvolutionUI(test_upgrades[Random.Range(0, test_upgrades.Length - 1)]);
-                    break;
-                
-                default:
-                    Debug.LogError("Invalid choice type selected");
-                    break;
+                // TODO - Choose which reward in that type to give
+                var upgrades = _gameManager.levelData.upgrades;
+                GenerateEvolutionUI(upgrades[Random.Range(0, upgrades.Count - 1)]);
+            }
+            else if (choice == 1)
+            {
+                var turrets = _gameManager.levelData.turrets;
+                GenerateTurretUI(turrets[Random.Range(0, turrets.Count - 1)]);
             }
         }
     }
 
-    private void GenerateEvolutionUI(TurretUpgrade upgrade)
+    private void GenerateEvolutionUI(Upgrade upgrade)
     {
         // Create the ui as a child
         GameObject evolutionUI = Instantiate(evolutionSelectionUI, transform);
-        evolutionUI.GetComponent<EvolutionSelectionUI>().Init(upgrade);
+        Debug.Log(upgrade);
+        evolutionUI.GetComponent<EvolutionSelectionUI>().Init((TurretUpgrade)upgrade);
+    }
+
+    private void GenerateTurretUI(TurretBlueprint turret)
+    {
+        GameObject turretUI = Instantiate(turretSelectionUI, transform);
+        turretUI.GetComponent<TurretSelectionUI>().Init(turret, shop);
     }
 }

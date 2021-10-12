@@ -192,5 +192,19 @@ namespace Turrets
         {
             return false;
         }
+
+        public bool AddUpgrade(Upgrade upgrade)
+        {
+            if (upgrade.GetType() == typeof(TurretUpgrade))
+            {
+                return AddUpgrade((TurretUpgrade)upgrade);
+            }
+            else if (upgrade.GetType() == typeof(BulletUpgrade))
+            {
+                return AddUpgrade((BulletUpgrade)upgrade);
+            }
+
+            return false;
+        }
     }
 }

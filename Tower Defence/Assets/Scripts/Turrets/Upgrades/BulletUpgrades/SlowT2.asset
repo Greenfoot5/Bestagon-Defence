@@ -15,9 +15,7 @@ MonoBehaviour:
   upgradeType: Fire Rate Reduction
   effectPercentage: 0.2
   upgradeTier: 2
-  displayName: 
-  icon: {fileID: 0}
-  effectText: 
+  displayName: Slowing Shot
+  icon: {fileID: -4923086779475263353, guid: 0073599b7617e4b4ab7263bfac3fcacf, type: 3}
+  effectText: Slows enemies by 20%
   restrictionsText: []
-  upgradeTier: 2
-  effectPercentage: 0.2

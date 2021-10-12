@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 166}
+  m_AnchoredPosition: {x: 0, y: 20}
+  m_SizeDelta: {x: 140, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8031966078441050814
 CanvasRenderer:
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4324158624995101406, guid: 926e5887a49c64a52afd6094c977db99, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4f3b5a71bfb4c43f7a3f1bf5d3f7c0a0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Turret Evolution
+  m_text: Turret
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ed862fa2de5a148a8adb187ac55cd3eb, type: 2}
   m_sharedMaterial: {fileID: 7459919616753430026, guid: ed862fa2de5a148a8adb187ac55cd3eb, type: 2}
@@ -333,7 +333,7 @@ GameObject:
   - component: {fileID: 3062667330899005314}
   - component: {fileID: 526300620183252632}
   m_Layer: 5
-  m_Name: Restrictions
+  m_Name: Upgrades
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -386,7 +386,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Can be applied to:'
+  m_text: Upgrades
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ed862fa2de5a148a8adb187ac55cd3eb, type: 2}
   m_sharedMaterial: {fileID: 7459919616753430026, guid: ed862fa2de5a148a8adb187ac55cd3eb, type: 2}
@@ -490,7 +490,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 152}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7103339725165294490
 CanvasRenderer:
@@ -520,7 +520,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Range I
+  m_text: Basic Bullet
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ed862fa2de5a148a8adb187ac55cd3eb, type: 2}
   m_sharedMaterial: {fileID: 7459919616753430026, guid: ed862fa2de5a148a8adb187ac55cd3eb, type: 2}
@@ -601,7 +601,7 @@ GameObject:
   - component: {fileID: 6369636273567168066}
   - component: {fileID: 1219808412639005329}
   m_Layer: 5
-  m_Name: Effect
+  m_Name: Cost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -654,7 +654,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Increases Range by 10%
+  m_text: Cost
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ed862fa2de5a148a8adb187ac55cd3eb, type: 2}
   m_sharedMaterial: {fileID: 7459919616753430026, guid: ed862fa2de5a148a8adb187ac55cd3eb, type: 2}
@@ -735,9 +735,9 @@ GameObject:
   - component: {fileID: 4356707813417822490}
   - component: {fileID: 6703945424226418194}
   - component: {fileID: 308355810}
-  - component: {fileID: 912509167598602563}
+  - component: {fileID: 767975858313691649}
   m_Layer: 5
-  m_Name: EvolutionSelectionOption
+  m_Name: TurretSelectionOption
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -849,7 +849,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &912509167598602563
+--- !u!114 &767975858313691649
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -858,10 +858,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7349952435930394342}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 942cf2bd308b34e158307b0e9816254c, type: 3}
+  m_Script: {fileID: 11500000, guid: 8cfcf9f5a749247dab55058460389cb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   iconImage: {fileID: 4543250165993662423}
   displayName: {fileID: 8037839850094324763}
-  effect: {fileID: 1219808412639005329}
-  restrictions: {fileID: 526300620183252632}
+  type: {fileID: 8047922210373222496}
+  cost: {fileID: 1219808412639005329}
+  upgrades: {fileID: 526300620183252632}

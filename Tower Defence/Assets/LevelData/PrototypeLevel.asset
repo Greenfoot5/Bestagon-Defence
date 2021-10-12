@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fd92d5c95da242598d43eb06f883d13, type: 3}
+  m_Name: PrototypeLevel
+  m_EditorClassIdentifier: 
+  turrets:
+  - {fileID: 11400000, guid: d2db62c1bef594027b45aec4631e1e6a, type: 2}
+  - {fileID: 11400000, guid: d2db62c1bef594027b45aec4631e1e6a, type: 2}
+  upgrades:
+  - {fileID: 11400000, guid: 103873ced36d04d7288e4b0b48a679ab, type: 2}
+  - {fileID: 11400000, guid: f488ec51e287048928b2b94b48e4abef, type: 2}
+  - {fileID: 11400000, guid: f51f0f08791ee4076be40b4d01554f3c, type: 2}
+  - {fileID: 11400000, guid: a0c38167287c8451a8852957968ab515, type: 2}
+  - {fileID: 11400000, guid: b0d0ae1af2298453c9cbeba82f4ab064, type: 2}
+  - {fileID: 11400000, guid: 2843a599f232045cd84bddb4bfdc34b5, type: 2}

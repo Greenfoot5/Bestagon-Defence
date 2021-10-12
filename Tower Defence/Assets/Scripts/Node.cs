@@ -1,4 +1,5 @@
 ﻿using Turrets;
+using Turrets.Blueprints;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -49,6 +50,7 @@ public class Node : MonoBehaviour
         
         // Construct a turret
         BuildTurret(_buildManager.GetTurretToBuild());
+        _buildManager.BuiltTurret();
     }
     
     // Called when we're building a turret
@@ -76,26 +78,13 @@ public class Node : MonoBehaviour
     }
     
     // Called when we upgrade the turret
-    public void UpgradeTurret()
+    public void UpgradeTurret(Upgrade upgrade)
     {
-        // Check we can afford it
-        if (GameStats.money < turretBlueprint.upgradeCost)
-        {
-            Debug.Log("Not enough gold!");
-            return;
-        }
-        
-        // Subtract the cost
-        GameStats.money -= turretBlueprint.upgradeCost;
-        
-        // Remove old turret, and spawn new one
-        Destroy(turret);
-        var nodePosition = transform.position;
-        var newTurret = Instantiate(turretBlueprint.upgradedPrefab, nodePosition, Quaternion.identity);
-        turret = newTurret;
-        
+        // Apply the upgrade
+        turret.GetComponent<Turret>().AddUpgrade(upgrade);
+
         // Spawn the build effect
-        GameObject effect = Instantiate(_buildManager.buildEffect, nodePosition, Quaternion.identity);
+        GameObject effect = Instantiate(_buildManager.buildEffect, transform.position, Quaternion.identity);
         Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
 
         isUpgraded = true;
@@ -129,13 +118,11 @@ public class Node : MonoBehaviour
         {
             return;
         }
-        
         // Make sure we're trying to build
         if (!_buildManager.CanBuild)
         {
             return;
         }
-        
         // Check if we can afford the select turret
         if (_buildManager.HasMoney)
         {

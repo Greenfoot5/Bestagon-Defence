@@ -30,8 +30,7 @@ namespace UI
             }
             else
             {
-                upgradeText.text = "<b>Upgrade</b>\n<sprite=\"UI-Icons\" name=\"Coin\"> " + 
-                                   _target.turretBlueprint.upgradeCost;
+                upgradeText.text = "<b>Upgrade</b>";
                 upgradeButton.interactable = true;
             }
         
@@ -52,7 +51,7 @@ namespace UI
         // Upgrades the turret
         public void Upgrade()
         {
-            _target.UpgradeTurret();
+            _target.UpgradeTurret(null);
         }
     
         // Sells the turret

@@ -21,3 +21,4 @@ MonoBehaviour:
   restrictionsText:
   - Bullet Type
   - Area Type
+  isEvolution: 0

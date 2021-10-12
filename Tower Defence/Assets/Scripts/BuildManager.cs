@@ -1,4 +1,5 @@
 ﻿using Turrets;
+using Turrets.Blueprints;
 using UI;
 using UnityEngine;
 
@@ -23,6 +24,7 @@ public class BuildManager : MonoBehaviour
     public GameObject sellEffect;
 
     private TurretBlueprint _turretToBuild;
+    private GameObject _buildingButton;
     private Node _selectedNode;
     
     [Tooltip("The UI to move above the turret")]
@@ -32,10 +34,17 @@ public class BuildManager : MonoBehaviour
     public bool HasMoney => GameStats.money >= _turretToBuild.cost;
 
     // Used to set the turret we want to build.
-    public void SelectTurretToBuild(TurretBlueprint turret)
+    public void SelectTurretToBuild(TurretBlueprint turret, GameObject buttonToDelete)
     {
         _turretToBuild = turret;
+        _buildingButton = buttonToDelete;
         DeselectNode();
+    }
+
+    public void BuiltTurret()
+    {
+        Destroy(_buildingButton);
+        Deselect();
     }
     
     // Get's the current turret we want to build
@@ -65,10 +74,9 @@ public class BuildManager : MonoBehaviour
         nodeUI.Hide();
     }
 
-    public void Deselect()
+    private void Deselect()
     {
-        _selectedNode = null;
-        nodeUI.Hide();
+        DeselectNode();
         _turretToBuild = null;
     }
 

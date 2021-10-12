@@ -1,22 +1,18 @@
 ﻿using Turrets;
+using Turrets.Blueprints;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
 {
     private BuildManager _buildManager;
-    
-    [Tooltip("Bullet Turret")]
-    public TurretBlueprint standardTurret;
-    [Tooltip("AoE Bullet Tower")]
-    public TurretBlueprint missileLauncher;
-    [Tooltip("Laser beam turret")]
-    public TurretBlueprint laserBeamer;
 
     public GameObject turretInventory;
     public GameObject upgradeInventory;
     public GameObject defaultTurretButton;
     public GameObject defaultUpgradeButton;
+
+    public GameObject SelectionUI;
 
     void Start()
     {
@@ -26,32 +22,9 @@ public class Shop : MonoBehaviour
     /*
      * Turret Selection Functions
      */
-    public void SelectStandardTurret()
+    private void SelectTurret(TurretBlueprint turret, GameObject button)
     {
-        Debug.Log("Standard Turret Selected.");
-        _buildManager.SelectTurretToBuild(standardTurret);
-    }
-
-    public void SelectMissileLauncher()
-    {
-        Debug.Log("Missile Launcher Selected.");
-        _buildManager.SelectTurretToBuild(missileLauncher);
-    }
-    
-    public void SelectLaserBeamer()
-    {
-        Debug.Log("Laser Beamer Selected.");
-        _buildManager.SelectTurretToBuild(laserBeamer);
-    }
-
-    // public void PurchaseEnhancement()
-    // {
-    //     selectionUI.SetActive(true);
-    // }
-    
-    public void SelectTurret(GameObject turret)
-    {
-        _buildManager.SelectTurretToBuild(standardTurret);
+        _buildManager.SelectTurretToBuild(turret, button);
     }
 
     public void SelectUpgrade(Upgrade upgrade)
@@ -59,11 +32,11 @@ public class Shop : MonoBehaviour
         // Select Upgrade
     }
     
-    public void SpawnNewTurret(GameObject turret)
+    public void SpawnNewTurret(TurretBlueprint turret)
     {
         // Add and display the new item
         var turretButton = Instantiate(defaultTurretButton, turretInventory.transform);
-        turretButton.GetComponent<Button>().onClick.AddListener(delegate { SelectTurret(null); });
+        turretButton.GetComponent<Button>().onClick.AddListener(delegate { SelectTurret(turret, turretButton); });
     }
     
     public void SpawnNewUpgrade(Upgrade upgrade)
@@ -71,5 +44,8 @@ public class Shop : MonoBehaviour
         Instantiate(upgrade.GenerateButton(defaultUpgradeButton, this), upgradeInventory.transform);
     }
 
-    
+    public void OpenSelectionUI()
+    {
+        SelectionUI.SetActive(true);
+    }
 }
