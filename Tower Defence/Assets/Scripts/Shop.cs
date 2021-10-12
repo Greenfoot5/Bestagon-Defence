@@ -1,4 +1,4 @@
-﻿using Turrets;
+﻿using TMPro;
 using Turrets.Blueprints;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,17 +6,21 @@ using UnityEngine.UI;
 public class Shop : MonoBehaviour
 {
     private BuildManager _buildManager;
+    private LevelData.LevelData _levelData;
 
     public GameObject turretInventory;
     public GameObject upgradeInventory;
     public GameObject defaultTurretButton;
     public GameObject defaultUpgradeButton;
 
-    public GameObject SelectionUI;
+    public GameObject selectionUI;
+    private int _selectionCost;
 
-    void Start()
+    private void Start()
     {
         _buildManager = BuildManager.instance;
+        _levelData = _buildManager.GetComponent<GameManager>().levelData;
+        _selectionCost = _levelData.initialSelectionCost;
     }
     
     /*
@@ -36,6 +40,7 @@ public class Shop : MonoBehaviour
     {
         // Add and display the new item
         var turretButton = Instantiate(defaultTurretButton, turretInventory.transform);
+        turretButton.GetComponent<Image>().sprite = turret.shopIcon;
         turretButton.GetComponent<Button>().onClick.AddListener(delegate { SelectTurret(turret, turretButton); });
     }
     
@@ -46,6 +51,20 @@ public class Shop : MonoBehaviour
 
     public void OpenSelectionUI()
     {
-        SelectionUI.SetActive(true);
+        selectionUI.SetActive(true);
+    }
+
+    public int GetSelectionCost()
+    {
+        return _selectionCost;
+    }
+
+    public void IncrementSelectionCost()
+    {
+        GameStats.money -= _selectionCost;
+        _selectionCost += _levelData.selectionCostIncrement;
+        // Update button text
+        turretInventory.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "<sprite=\"UI-Icons\" name=\"Coin\"> " + _selectionCost;
+        upgradeInventory.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "<sprite=\"UI-Icons\" name=\"Coin\"> " + _selectionCost;
     }
 }

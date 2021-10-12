@@ -31,7 +31,6 @@ public class BuildManager : MonoBehaviour
     public NodeUI nodeUI;
 
     public bool CanBuild => _turretToBuild != null;
-    public bool HasMoney => GameStats.money >= _turretToBuild.cost;
 
     // Used to set the turret we want to build.
     public void SelectTurretToBuild(TurretBlueprint turret, GameObject buttonToDelete)

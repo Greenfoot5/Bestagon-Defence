@@ -56,16 +56,6 @@ public class Node : MonoBehaviour
     // Called when we're building a turret
     private void BuildTurret(TurretBlueprint blueprint)
     {
-        // Check we can afford it
-        if (GameStats.money < blueprint.cost)
-        {
-            Debug.Log("Not enough gold!");
-            return;
-        }
-        
-        // Subtract the cost
-        GameStats.money -= blueprint.cost;
-        
         // Spawn the turret and set the turret and blueprint
         var nodePosition = transform.position;
         var newTurret = Instantiate(blueprint.prefab, nodePosition, Quaternion.identity);
@@ -95,8 +85,8 @@ public class Node : MonoBehaviour
     // Called when we sell turrets
     public void SellTurret()
     {
-        // Grant the money
-        GameStats.money += turretBlueprint.GetSellAmount();
+        // // Grant the money
+        // GameStats.money += turretBlueprint.GetSellAmount();
         
         // Spawn the sell effect
         GameObject effect = Instantiate(_buildManager.sellEffect, transform.position, Quaternion.identity);
@@ -124,14 +114,7 @@ public class Node : MonoBehaviour
             return;
         }
         // Check if we can afford the select turret
-        if (_buildManager.HasMoney)
-        {
-            _rend.material.color = hoverColour;
-        }
-        else
-        {
-            _rend.material.color = cantAffordColour;
-        }
+        _rend.material.color = hoverColour;
     }
     
     // Reset colour when we no longer hover.

@@ -21,7 +21,6 @@ public class TurretSelectionUI : MonoBehaviour
         iconImage.sprite = turret.shopIcon;
         displayName.text = turret.displayName;
         type.text = turret.turretType;
-        cost.text = "<sprite=\"UI-Icons\" name=\"Coin\"> " + turret.cost.ToString();
         // Set the upgrades values
         upgrades.text = GetUpgradesText();
         

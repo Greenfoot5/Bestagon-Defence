@@ -10,7 +10,6 @@ namespace Turrets.Blueprints
     {
         [Header("Shop Info")]
         public Sprite shopIcon;
-        public int cost;
         public string displayName;
         public string turretType;
         
@@ -20,16 +19,5 @@ namespace Turrets.Blueprints
         // Preset upgrades
         public List<TurretUpgrade> turretUpgrades = new List<TurretUpgrade>();
         public List<BulletUpgrade> bulletUpgrades = new List<BulletUpgrade>();
-        
-        [Header("Misc")]
-        [Range(0, 1)]
-        [Tooltip("The percentage reduction to apply to the price when selling")]
-        public float sellReduction = 0.5f;
-
-        public int GetSellAmount()
-        {
-            // Implement an increase if upgraded.
-            return (int) (cost * sellReduction);
-        }
     }
 }

@@ -7,9 +7,10 @@ namespace LevelData
     [CreateAssetMenu(fileName = "LevelName", menuName = "LevelData", order = 2)]
     public class LevelData : ScriptableObject
     {
-        [Header("Turrets")]
+        [Header("Selection")]
         public List<TurretBlueprint> turrets = new List<TurretBlueprint>();
-        [Header("Upgrades")]
         public List<Upgrade> upgrades = new List<Upgrade>();
+        public int initialSelectionCost;
+        public int selectionCostIncrement;
     }
 }

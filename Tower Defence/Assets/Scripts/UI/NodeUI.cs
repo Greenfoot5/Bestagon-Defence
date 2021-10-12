@@ -35,7 +35,7 @@ namespace UI
             }
         
             // Set sell amount
-            sellText.text = "<b>Sell</b>\n<sprite=\"UI-Icons\" name=\"Coin\"> " + _target.turretBlueprint.GetSellAmount();
+            sellText.text = "<b>Sell</b>";
         
             // Enable the UI
             ui.SetActive(true);
