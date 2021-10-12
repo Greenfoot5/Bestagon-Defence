@@ -1,5 +1,7 @@
 ﻿using TMPro;
 using Turrets.Blueprints;
+using Turrets.Upgrades.TurretUpgrades;
+using UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +9,7 @@ public class Shop : MonoBehaviour
 {
     private BuildManager _buildManager;
     private LevelData.LevelData _levelData;
+    private GameObject _selectedUpgrade;
 
     public GameObject turretInventory;
     public GameObject upgradeInventory;
@@ -23,17 +26,23 @@ public class Shop : MonoBehaviour
         _selectionCost = _levelData.initialSelectionCost;
     }
     
-    /*
-     * Turret Selection Functions
-     */
     private void SelectTurret(TurretBlueprint turret, GameObject button)
     {
         _buildManager.SelectTurretToBuild(turret, button);
     }
 
-    public void SelectUpgrade(Upgrade upgrade)
+    private void SelectUpgrade(Upgrade upgrade, GameObject button)
     {
-        // Select Upgrade
+        _selectedUpgrade.transform.GetChild(0).gameObject.SetActive(false);
+        _selectedUpgrade = button;
+        button.transform.GetChild(0).gameObject.SetActive(false);
+    }
+
+    public Upgrade UseUpgrade()
+    {
+        var upgrade = _selectedUpgrade.GetComponent<EvolutionSelectionUI>().upgrade;
+        Destroy(_selectedUpgrade);
+        return upgrade;
     }
     
     public void SpawnNewTurret(TurretBlueprint turret)
@@ -46,7 +55,9 @@ public class Shop : MonoBehaviour
     
     public void SpawnNewUpgrade(Upgrade upgrade)
     {
-        Instantiate(upgrade.GenerateButton(defaultUpgradeButton, this), upgradeInventory.transform);
+        var upgradeButton = Instantiate(defaultUpgradeButton, upgradeInventory.transform);
+        upgradeButton.GetComponent<Image>().sprite = upgrade.icon;
+        upgradeButton.GetComponent<Button>().onClick.AddListener(delegate { SelectUpgrade(upgrade, upgradeButton); });
     }
 
     public void OpenSelectionUI()
@@ -66,5 +77,18 @@ public class Shop : MonoBehaviour
         // Update button text
         turretInventory.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "<sprite=\"UI-Icons\" name=\"Coin\"> " + _selectionCost;
         upgradeInventory.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "<sprite=\"UI-Icons\" name=\"Coin\"> " + _selectionCost;
+    }
+
+    public void EnableUpgradeInventory()
+    {
+        // TODO - Only show those that can be used
+        turretInventory.SetActive(false);
+        upgradeInventory.SetActive(true);
+    }
+
+    public void EnableTurretInventory()
+    {
+        turretInventory.SetActive(true);
+        upgradeInventory.SetActive(false);
     }
 }

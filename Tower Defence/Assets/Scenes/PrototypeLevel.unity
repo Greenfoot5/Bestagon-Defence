@@ -613,11 +613,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1201689247}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
-        m_MethodName: SpawnNewUpgrade
-        m_Mode: 2
+        m_MethodName: OpenSelectionUI
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 103873ced36d04d7288e4b0b48a679ab, type: 2}
-          m_ObjectArgumentAssemblyTypeName: Upgrade, Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5208,6 +5208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ui: {fileID: 197475306}
+  shop: {fileID: 1201689247}
   upgradeText: {fileID: 91213067}
   upgradeButton: {fileID: 715802826}
   sellText: {fileID: 1874917133}
@@ -7485,7 +7486,6 @@ GameObject:
   - component: {fileID: 1932399700}
   - component: {fileID: 1932399699}
   - component: {fileID: 1932399698}
-  - component: {fileID: 1932399697}
   m_Layer: 5
   m_Name: Upgrades
   m_TagString: Untagged
@@ -7513,23 +7513,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 104.89261}
   m_SizeDelta: {x: 0, y: 209.78522}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1932399697
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1932399695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c22f09b80f574907baaea15ddfb2633, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turretInventory: {fileID: 0}
-  upgradeInventory: {fileID: 0}
-  defaultTurretButton: {fileID: 0}
-  defaultUpgradeButton: {fileID: 0}
-  selectionUI: {fileID: 0}
 --- !u!114 &1932399698
 MonoBehaviour:
   m_ObjectHideFlags: 0

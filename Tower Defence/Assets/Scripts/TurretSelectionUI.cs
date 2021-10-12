@@ -11,7 +11,6 @@ public class TurretSelectionUI : MonoBehaviour
     public Image iconImage;
     public TextMeshProUGUI displayName;
     public TextMeshProUGUI type;
-    public TextMeshProUGUI cost;
     public TextMeshProUGUI upgrades;
 
     // Called when creating the UI

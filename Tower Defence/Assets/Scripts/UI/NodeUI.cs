@@ -7,6 +7,7 @@ namespace UI
     public class NodeUI : MonoBehaviour
     {
         public GameObject ui;
+        public Shop shop;
     
         private Node _target;
     
@@ -18,6 +19,8 @@ namespace UI
         public void SetTarget(Node node)
         {
             _target = node;
+
+            shop.EnableUpgradeInventory();
         
             // Move the UI to be above the node
             transform.position = _target.transform.position;
@@ -46,12 +49,17 @@ namespace UI
         public void Hide()
         {
             ui.SetActive(false);
+            shop.EnableTurretInventory();
         }
     
         // Upgrades the turret
-        public void Upgrade()
+        public void UpgradeNode()
         {
-            _target.UpgradeTurret(null);
+            Upgrade upgrade = shop.UseUpgrade();
+            if (shop.UseUpgrade())
+            {
+                _target.UpgradeTurret(upgrade);
+            }
         }
     
         // Sells the turret

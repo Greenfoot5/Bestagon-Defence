@@ -32,14 +32,4 @@ public abstract class Upgrade : ScriptableObject
     {
         return upgradeTier;
     }
-
-    public GameObject GenerateButton(GameObject button, Shop shop)
-    {
-        // Set image
-        button.GetComponent<Image>().sprite = icon;
-        // var buttonTransform = button.GetComponent<RectTransform>();
-        // buttonTransform.sizeDelta = new Vector2(buttonTransform.rect.height, icon.rect.width);
-        button.GetComponent<Button>().onClick.AddListener(delegate { shop.SelectUpgrade(this); });
-        return button;
-    }
 }
