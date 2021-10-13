@@ -2,8 +2,8 @@ using UnityEngine;
 
 namespace Turrets.Upgrades.BulletUpgrades
 {
-    [CreateAssetMenu(fileName = "SlowUpgrade", menuName = "Upgrades/BulletUpgrade/SlowsEnemyUpgrade", order = 1)]
-    public class SlowUpgrade : BulletUpgrade
+    [CreateAssetMenu(fileName = "BulletDamageT0", menuName = "Upgrades/BulletUpgrade/BulletDamage", order = 2)]
+    public class DamageUpgrade : BulletUpgrade
     {
         public void AlterBulletSettings(ref Bullet bullet)
         {
@@ -13,11 +13,12 @@ namespace Turrets.Upgrades.BulletUpgrades
         public override void OnShoot(Bullet bullet)
         {
             bullet.AddUpgrade(this);
+            bullet.damage += (int) GETUpgradeValue();
         }
 
         public override void OnHit(Enemy target)
         {
-            target.Slow(GETUpgradeValue());
+            return;
         }
 
         public new bool ValidUpgrade(ref Turret turret)

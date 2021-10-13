@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Turrets;
 using Turrets.Blueprints;
 using UI;
 using UnityEngine;
@@ -10,7 +9,7 @@ public class BuildManager : MonoBehaviour
 {
     public static BuildManager instance;
 
-    void Awake()
+    private void Awake()
     {
         // Make sure we only ever have one BuildManager
         if (instance != null)
@@ -93,21 +92,26 @@ public class BuildManager : MonoBehaviour
         }
         
         //Set up the new Pointer Event
-        PointerEventData pointerEventData = new PointerEventData(eventSystem);
-        //Set the Pointer Event Position to that of the mouse position
-        pointerEventData.position = Input.mousePosition;
+        var pointerEventData = new PointerEventData(eventSystem)
+        {
+            //Set the Pointer Event Position to that of the mouse position
+            position = Input.mousePosition
+        };
 
         //Create a list of Raycast Results
-        List<RaycastResult> results = new List<RaycastResult>();
+        var results = new List<RaycastResult>();
 
         //Raycast using the Graphics Raycaster and mouse click position
         screenRaycaster.Raycast(pointerEventData, results);
 
         var cam = Camera.main;
-        var origin = cam.ScreenToViewportPoint(Input.mousePosition);
-        var hit = Physics2D.Raycast(origin, Vector3.forward, 100);
-        if (hit || results.Count != 0) return;
-        
+        if (cam is { })
+        {
+            var origin = cam.ScreenToViewportPoint(Input.mousePosition);
+            var hit = Physics2D.Raycast(origin, Vector3.forward, 100);
+            if (hit || results.Count != 0) return;
+        }
+
         Deselect();
     }
 }

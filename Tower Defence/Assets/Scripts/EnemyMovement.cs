@@ -42,7 +42,7 @@ public class EnemyMovement : MonoBehaviour
         }
         
         // Reset speed in case we've been slowed
-        _enemy.speed = _enemy.startSpeed;
+        // _enemy.speed = _enemy.startSpeed;
     }
     
     // Gets the next waypoint in the waypoints array

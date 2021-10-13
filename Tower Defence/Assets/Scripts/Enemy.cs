@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
 
     public GameObject deathEffect;
 
-    void Start()
+    private void Start()
     {
         speed = startSpeed;
         health = startHealth;
@@ -42,6 +42,7 @@ public class Enemy : MonoBehaviour
     // Called when we slow the enemy (permanent effect)
     public void Slow(float slowPercentage)
     {
+        Debug.Log("Slowing");
         speed = startSpeed * (1f - slowPercentage);
     }
     
@@ -49,7 +50,7 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         // Spawn death effect
-        GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
+        var effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
         
         // Let the wave spawner know the enemy is dead

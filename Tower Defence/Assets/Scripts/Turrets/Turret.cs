@@ -92,12 +92,10 @@ namespace Turrets
             // Don't do anything if we don't have a target
             if (_target == null)
             {
-                if (attackType == TurretType.Laser && lineRenderer.enabled)
-                {
-                    lineRenderer.enabled = false;
-                    impactEffect.Stop();
-                }
-            
+                if (attackType != TurretType.Laser || !lineRenderer.enabled) return;
+                lineRenderer.enabled = false;
+                impactEffect.Stop();
+
                 return;
             }
         
@@ -133,10 +131,13 @@ namespace Turrets
             var bulletGO = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             var bullet = bulletGO.GetComponent<Bullet>();
 
-            if (bullet != null)
+            if (bullet == null) return;
+            
+            foreach (var upgrade in bulletUpgrades)
             {
-                bullet.Seek(_target);
+                upgrade.OnShoot(bullet);
             }
+            bullet.Seek(_target);
         }
     
         // TODO - Animate the laser slightly (make it pulse)
@@ -178,7 +179,7 @@ namespace Turrets
         }
 
         // TODO - Actually check the upgrade is valid
-        public bool AddUpgrade(TurretUpgrade upgrade)
+        private bool AddUpgrade(TurretUpgrade upgrade)
         {
             // if (!upgrade.ValidUpgrade(this))
             //     return false;
@@ -190,9 +191,10 @@ namespace Turrets
             return true;
         }
 
-        public bool AddUpgrade(BulletUpgrade upgrade)
+        private bool AddUpgrade(BulletUpgrade upgrade)
         {
-            return false;
+            bulletUpgrades.Add(upgrade);
+            return true;
         }
 
         public bool AddUpgrade(Upgrade upgrade)

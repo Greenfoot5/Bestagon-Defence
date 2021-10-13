@@ -62,7 +62,7 @@ namespace Turrets
             var effectIns = Instantiate(impactEffect, position.position, position.rotation);
             
             // Add upgrade effects
-            Enemy enemy = _target.GetComponent<Enemy>();
+            var enemy = _target.GetComponent<Enemy>();
             foreach (var upgrade in upgrades)
             {
                 upgrade.OnHit(enemy);
