@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d437c567020b4f2599bfd79f544c3bc, type: 3}
+  m_Name: AdvancedLaserTurret
+  m_EditorClassIdentifier: 
+  shopIcon: {fileID: 21300000, guid: 53d2e052e8cb94f7fb4d11ccacec5eaa, type: 3}
+  displayName: Advanced
+  turretType: Laser Turret
+  prefab: {fileID: 8263255388866025106, guid: f76383e69d04d405ea64aa69d096467f, type: 3}
+  turretUpgrades:
+  - {fileID: 11400000, guid: a0c38167287c8451a8852957968ab515, type: 2}
+  bulletUpgrades:
+  - {fileID: 11400000, guid: 0da67581e745c4e708a1b6172cb3d6ef, type: 2}
+  - {fileID: 11400000, guid: fd238766202484223ad41e159363d2d9, type: 2}

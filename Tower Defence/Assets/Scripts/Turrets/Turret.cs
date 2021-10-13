@@ -145,9 +145,11 @@ namespace Turrets
         {
             // Deal damage
             _targetEnemy.TakeDamage(damageOverTime * Time.deltaTime);
-        
-            // Slow the enemy
-            _targetEnemy.Slow(slowPercentage);
+
+            foreach (var upgrade in bulletUpgrades)
+            {
+                upgrade.OnHit(_targetEnemy);
+            }
 
             // Enable visuals
             if (!lineRenderer.enabled)

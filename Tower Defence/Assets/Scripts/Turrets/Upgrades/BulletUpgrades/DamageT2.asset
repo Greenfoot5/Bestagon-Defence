@@ -9,15 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2db0c3d1579341f8bd90af8aa9e324d, type: 3}
-  m_Name: SlowT2
+  m_Script: {fileID: 11500000, guid: 1296562320c7941648b7fb9646f0e2f9, type: 3}
+  m_Name: DamageT2
   m_EditorClassIdentifier: 
-  upgradeType: Slow Upgrade
+  upgradeType: Damage
   effectPercentage: 0.2
   upgradeTier: 2
-  displayName: Slowing Shot
-  icon: {fileID: -4923086779475263353, guid: 0073599b7617e4b4ab7263bfac3fcacf, type: 3}
-  effectText: Slows enemies by 20%
-  restrictionsText:
-  - Bullet Turret
-  - Laser Turret
+  displayName: Damage Increase
+  icon: {fileID: -7438874361149522337, guid: 0073599b7617e4b4ab7263bfac3fcacf, type: 3}
+  effectText: Increase Damage by 20%
+  restrictionsText: []

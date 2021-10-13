@@ -60,7 +60,17 @@ public class Node : MonoBehaviour
         var nodePosition = transform.position;
         var newTurret = Instantiate(blueprint.prefab, nodePosition, Quaternion.identity);
         turret = newTurret;
+        var turretClass = turret.GetComponent<Turret>();
         turretBlueprint = blueprint;
+        
+        foreach (var turretUpgrade in blueprint.turretUpgrades)
+        {
+            turretClass.AddUpgrade(turretUpgrade);
+        }
+        foreach (var bulletUpgrade in blueprint.bulletUpgrades)
+        {
+            turretClass.AddUpgrade(bulletUpgrade);
+        }
         
         // Spawn the build effect and destroy after
         GameObject effect = Instantiate(_buildManager.buildEffect, nodePosition, Quaternion.identity);

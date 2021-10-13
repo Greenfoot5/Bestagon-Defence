@@ -22,5 +22,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a0c38167287c8451a8852957968ab515, type: 2}
   - {fileID: 11400000, guid: b0d0ae1af2298453c9cbeba82f4ab064, type: 2}
   - {fileID: 11400000, guid: 2843a599f232045cd84bddb4bfdc34b5, type: 2}
+  - {fileID: 11400000, guid: fd238766202484223ad41e159363d2d9, type: 2}
+  - {fileID: 11400000, guid: c90507ecd7ed843958d400aaaeaf6e18, type: 2}
+  - {fileID: 11400000, guid: 0da67581e745c4e708a1b6172cb3d6ef, type: 2}
+  - {fileID: 11400000, guid: 7c7e505c5536a4df684108f83d159ad6, type: 2}
+  - {fileID: 11400000, guid: b07b4ca124a454693aad3534ab3ec8fd, type: 2}
   initialSelectionCost: 100
   selectionCostIncrement: 10

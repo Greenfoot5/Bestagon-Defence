@@ -42,7 +42,6 @@ public class Enemy : MonoBehaviour
     // Called when we slow the enemy (permanent effect)
     public void Slow(float slowPercentage)
     {
-        Debug.Log("Slowing");
         speed = startSpeed * (1f - slowPercentage);
     }
     
