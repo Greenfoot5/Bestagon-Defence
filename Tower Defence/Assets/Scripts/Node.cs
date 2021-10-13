@@ -70,7 +70,6 @@ public class Node : MonoBehaviour
     // Called when we upgrade the turret
     public void UpgradeTurret(Upgrade upgrade)
     {
-        Debug.Log("Adding Upgrade");
         // Apply the upgrade
         turret.GetComponent<Turret>().AddUpgrade(upgrade);
 

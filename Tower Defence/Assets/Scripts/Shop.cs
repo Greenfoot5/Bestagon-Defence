@@ -32,9 +32,8 @@ public class Shop : MonoBehaviour
         _buildManager.SelectTurretToBuild(turret, button);
     }
 
-    public void SelectUpgrade(Upgrade upgrade, GameObject button)
+    private void SelectUpgrade(Upgrade upgrade, GameObject button)
     {
-        Debug.Log("Selected Upgrade");
         if (_selectedUpgradeButton != null) _selectedUpgradeButton.transform.GetChild(0).gameObject.SetActive(false);
         _selectedUpgradeButton = button;
         button.transform.GetChild(0).gameObject.SetActive(true);
@@ -62,7 +61,6 @@ public class Shop : MonoBehaviour
         var upgradeButton = Instantiate(defaultUpgradeButton, upgradeInventory.transform);
         upgradeButton.GetComponent<Image>().sprite = upgrade.icon;
         upgradeButton.GetComponent<Button>().onClick.AddListener(delegate { SelectUpgrade(upgrade, upgradeButton); });
-        Debug.Log("Spawned Upgrade");
         Debug.Log(upgradeButton.GetComponent<Button>().onClick);
     }
 

@@ -56,9 +56,7 @@ namespace UI
         public void UpgradeNode()
         {
             var upgrade = shop.UseUpgrade();
-            Debug.Log(upgrade);
             if (upgrade == null) return;
-            Debug.Log("Upgrading");
             _target.UpgradeTurret(upgrade);
         }
     

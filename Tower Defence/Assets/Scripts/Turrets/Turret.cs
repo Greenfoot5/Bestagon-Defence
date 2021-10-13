@@ -183,7 +183,6 @@ namespace Turrets
             // if (!upgrade.ValidUpgrade(this))
             //     return false;
             
-            Debug.Log("upgrade.AddUpgrade");
             upgrade.AddUpgrade(this);
             
             turretUpgrades.Add(upgrade);
@@ -193,25 +192,17 @@ namespace Turrets
 
         public bool AddUpgrade(BulletUpgrade upgrade)
         {
-            Debug.Log("Bullet Upgrade");
             return false;
         }
 
         public bool AddUpgrade(Upgrade upgrade)
         {
-            Debug.Log("Generic Upgrade");
-            switch (upgrade)
+            return upgrade switch
             {
-                case TurretUpgrade turretUpgrade:
-                    Debug.Log("Turret Upgrade");
-                    return AddUpgrade(turretUpgrade);
-                case BulletUpgrade bulletUpgrade:
-                    Debug.Log("Bullet Upgrade");
-                    return AddUpgrade(bulletUpgrade);
-                default:
-                    Debug.Log("Invalid Upgrade Type");
-                    return false;
-            }
+                TurretUpgrade turretUpgrade => AddUpgrade(turretUpgrade),
+                BulletUpgrade bulletUpgrade => AddUpgrade(bulletUpgrade),
+                _ => false
+            };
         }
     }
 }

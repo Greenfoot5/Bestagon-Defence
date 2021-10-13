@@ -2087,6 +2087,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7569071462628360905, guid: 137f8506d4db341d1a8874fe8ad95496, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569071462628360905, guid: 137f8506d4db341d1a8874fe8ad95496, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569071462628360905, guid: 137f8506d4db341d1a8874fe8ad95496, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 137f8506d4db341d1a8874fe8ad95496, type: 3}
 --- !u!4 &496775943 stripped
@@ -4860,6 +4872,8 @@ MonoBehaviour:
   buildEffect: {fileID: 2228279973635050725, guid: 0819bd4b36b114943ba247527c0225db, type: 3}
   sellEffect: {fileID: 710779272522642178, guid: c237ec1a850104d038377b19c877601e, type: 3}
   nodeUI: {fileID: 1364801256}
+  screenRaycaster: {fileID: 474522200}
+  eventSystem: {fileID: 708064497}
 --- !u!114 &1262650575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7918,7 +7932,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1964561494
 MonoBehaviour:
   m_ObjectHideFlags: 0
