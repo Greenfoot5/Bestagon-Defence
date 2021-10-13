@@ -180,31 +180,38 @@ namespace Turrets
         // TODO - Actually check the upgrade is valid
         public bool AddUpgrade(TurretUpgrade upgrade)
         {
-            if (!upgrade.ValidUpgrade(this))
-                return false;
-
+            // if (!upgrade.ValidUpgrade(this))
+            //     return false;
+            
+            Debug.Log("upgrade.AddUpgrade");
             upgrade.AddUpgrade(this);
+            
+            turretUpgrades.Add(upgrade);
 
             return true;
         }
 
         public bool AddUpgrade(BulletUpgrade upgrade)
         {
+            Debug.Log("Bullet Upgrade");
             return false;
         }
 
         public bool AddUpgrade(Upgrade upgrade)
         {
-            if (upgrade.GetType() == typeof(TurretUpgrade))
+            Debug.Log("Generic Upgrade");
+            switch (upgrade)
             {
-                return AddUpgrade((TurretUpgrade)upgrade);
+                case TurretUpgrade turretUpgrade:
+                    Debug.Log("Turret Upgrade");
+                    return AddUpgrade(turretUpgrade);
+                case BulletUpgrade bulletUpgrade:
+                    Debug.Log("Bullet Upgrade");
+                    return AddUpgrade(bulletUpgrade);
+                default:
+                    Debug.Log("Invalid Upgrade Type");
+                    return false;
             }
-            else if (upgrade.GetType() == typeof(BulletUpgrade))
-            {
-                return AddUpgrade((BulletUpgrade)upgrade);
-            }
-
-            return false;
         }
     }
 }

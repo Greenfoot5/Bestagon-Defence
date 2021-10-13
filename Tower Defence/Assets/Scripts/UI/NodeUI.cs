@@ -26,19 +26,19 @@ namespace UI
             transform.position = _target.transform.position;
         
             // Check if the turret is already upgraded and if we need to enable the upgrade button
-            if (_target.isUpgraded)
-            {
-                upgradeText.text = "<b>Upgrade\nPurchased</b>";
-                upgradeButton.interactable = false;
-            }
-            else
-            {
-                upgradeText.text = "<b>Upgrade</b>";
-                upgradeButton.interactable = true;
-            }
+            // if (_target.isUpgraded)
+            // {
+            //     upgradeText.text = "<b>Upgrade\nPurchased</b>";
+            //     upgradeButton.interactable = false;
+            // }
+            // else
+            // {
+            //     upgradeText.text = "<b>Upgrade</b>";
+            //     upgradeButton.interactable = true;
+            // }
         
-            // Set sell amount
-            sellText.text = "<b>Sell</b>";
+            // // Set sell amount
+            // sellText.text = "<b>Sell</b>";
         
             // Enable the UI
             ui.SetActive(true);
@@ -55,11 +55,11 @@ namespace UI
         // Upgrades the turret
         public void UpgradeNode()
         {
-            Upgrade upgrade = shop.UseUpgrade();
-            if (shop.UseUpgrade())
-            {
-                _target.UpgradeTurret(upgrade);
-            }
+            var upgrade = shop.UseUpgrade();
+            Debug.Log(upgrade);
+            if (upgrade == null) return;
+            Debug.Log("Upgrading");
+            _target.UpgradeTurret(upgrade);
         }
     
         // Sells the turret

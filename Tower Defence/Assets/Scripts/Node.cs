@@ -70,14 +70,13 @@ public class Node : MonoBehaviour
     // Called when we upgrade the turret
     public void UpgradeTurret(Upgrade upgrade)
     {
+        Debug.Log("Adding Upgrade");
         // Apply the upgrade
         turret.GetComponent<Turret>().AddUpgrade(upgrade);
 
         // Spawn the build effect
         GameObject effect = Instantiate(_buildManager.buildEffect, transform.position, Quaternion.identity);
         Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
-
-        isUpgraded = true;
         
         BuildManager.instance.DeselectNode();
     }

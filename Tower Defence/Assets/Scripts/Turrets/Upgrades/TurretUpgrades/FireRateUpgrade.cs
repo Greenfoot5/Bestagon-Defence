@@ -5,10 +5,9 @@ namespace Turrets.Upgrades.TurretUpgrades
     [CreateAssetMenu(fileName = "FireRateUpgrade", menuName = "Upgrades/TurretUpgrade/FireRateUpgrade", order = 1)]
     public class FireRateUpgrade : TurretUpgrade
     {
-        public override Turret AddUpgrade(Turret turret)
+        public override void AddUpgrade(Turret turret)
         {
             turret.fireRate *= 1 - GETUpgradeValue();
-            return turret;
         }
 
         public override Turret RemoveUpgrade(Turret turret)

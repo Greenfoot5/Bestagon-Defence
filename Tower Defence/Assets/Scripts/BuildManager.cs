@@ -89,6 +89,7 @@ public class BuildManager : MonoBehaviour
         var cam = Camera.main;
         var origin = cam.ScreenToViewportPoint(Input.mousePosition);
         var hit = Physics2D.Raycast(origin, Vector3.forward, 100);
+        Debug.Log((bool)hit);
         if (hit) return;
         
         Deselect();
