@@ -12,7 +12,7 @@ namespace Turrets.Upgrades.BulletUpgrades
 
         public override Bullet OnShoot(Bullet bullet)
         {;
-            bullet.explosionRadius = GETUpgradeValue();
+            bullet.explosionRadius += GETUpgradeValue();
             return bullet;
         }
 
