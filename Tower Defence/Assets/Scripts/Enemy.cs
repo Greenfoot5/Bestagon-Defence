@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     
     [HideInInspector]
     public float speed;
-    [HideInInspector]
+    //[HideInInspector]
     public float health;
     public int deathMoney = 10;
 

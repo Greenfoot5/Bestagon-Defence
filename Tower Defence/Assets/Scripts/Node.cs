@@ -66,14 +66,16 @@ public class Node : MonoBehaviour
         foreach (var turretUpgrade in blueprint.turretUpgrades)
         {
             turretClass.AddUpgrade(turretUpgrade);
+            Debug.Log(turretUpgrade);
         }
+        
         foreach (var bulletUpgrade in blueprint.bulletUpgrades)
         {
             turretClass.AddUpgrade(bulletUpgrade);
         }
         
         // Spawn the build effect and destroy after
-        GameObject effect = Instantiate(_buildManager.buildEffect, nodePosition, Quaternion.identity);
+        var effect = Instantiate(_buildManager.buildEffect, nodePosition, Quaternion.identity);
         Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
     }
     

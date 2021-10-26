@@ -111,6 +111,9 @@ namespace Turrets
 
         public void AddUpgrade(BulletUpgrade upgrade)
         {
+            Debug.Log("Bullet1 " + damage);
+            upgrade.OnShoot(this);
+            Debug.Log("Bullet2 " + damage);
             upgrades.Add(upgrade);
         }
     

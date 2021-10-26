@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Turrets;
 using Turrets.Upgrades.BulletUpgrades;
@@ -15,7 +16,7 @@ namespace Editor
 
         public override void OnInspectorGUI()
         {
-            Turret turret = (Turret) target;
+            var turret = (Turret) target;
 
             // Basic stats
             EditorGUILayout.PrefixLabel("Attributes");
@@ -42,47 +43,52 @@ namespace Editor
             AddBulletUpgrades(turret.bulletUpgrades);
         }
 
-        private void AddAttackTypeData(Turret turret)
+        private static void AddAttackTypeData(Turret turret)
         {
             EditorGUILayout.PrefixLabel("Turret Attack");
             turret.attackType = (TurretType) EditorGUILayout.EnumPopup("Attack Type", turret.attackType);
 
-            // Bullet Attack Stats
-            if (turret.attackType == TurretType.Bullet)
+            switch (turret.attackType)
             {
-                EditorGUILayout.HelpBox("Fires a bullet prefab every fire rate seconds that homes in on an " +
-                                        "enemy", MessageType.None);
-                turret.fireRate = EditorGUILayout.FloatField("Fire Rate", turret.fireRate);
-                turret.bulletPrefab = (GameObject) EditorGUILayout.ObjectField("Bullet Prefab",
-                    turret.bulletPrefab, typeof(GameObject), false);
-            }
-            // Laser Attack Stats
-            else if (turret.attackType == TurretType.Laser)
-            {
-                EditorGUILayout.HelpBox("Fires a laser from the fire point to the enemy.", MessageType.None);
-                turret.damageOverTime = EditorGUILayout.FloatField("Damage every Second", turret.damageOverTime);
-                turret.lineRenderer = (LineRenderer) EditorGUILayout.ObjectField("Line Renderer",
-                    turret.lineRenderer, typeof(LineRenderer), true);
-                turret.impactEffect = (ParticleSystem) EditorGUILayout.ObjectField("Impact Effect",
-                    turret.impactEffect, typeof(GameObject), false);
-            }
-            // Area Attack Stats
-            else if (turret.attackType == TurretType.Area)
-            {
-                EditorGUILayout.Space();
-                EditorGUILayout.HelpBox("DO NOT USE! NO SETUP YET", MessageType.Error);
+                // Bullet Attack Stats
+                case TurretType.Bullet:
+                    EditorGUILayout.HelpBox("Fires a bullet prefab every fire rate seconds that homes in on an " +
+                                            "enemy", MessageType.None);
+                    turret.fireRate = EditorGUILayout.FloatField("Fire Rate", turret.fireRate);
+                    turret.bulletPrefab = (GameObject) EditorGUILayout.ObjectField("Bullet Prefab",
+                        turret.bulletPrefab, typeof(GameObject), false);
+                    break;
+                // Laser Attack Stats
+                case TurretType.Laser:
+                    EditorGUILayout.HelpBox("Fires a laser from the fire point to the enemy.", MessageType.None);
+                    turret.damageOverTime = EditorGUILayout.FloatField("Damage every Second", turret.damageOverTime);
+                    turret.lineRenderer = (LineRenderer) EditorGUILayout.ObjectField("Line Renderer",
+                        turret.lineRenderer, typeof(LineRenderer), true);
+                    turret.impactEffect = (ParticleSystem) EditorGUILayout.ObjectField("Impact Effect",
+                        turret.impactEffect, typeof(GameObject), false);
+                    break;
+                // Area Attack Stats
+                case TurretType.Area:
+                    EditorGUILayout.Space();
+                    EditorGUILayout.HelpBox("DO NOT USE! NO SETUP YET", MessageType.Error);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
 
-        private void AddTurretUpgrades(List<TurretUpgrade> upgrades, Turret turret)
+        private void AddTurretUpgrades(IList<TurretUpgrade> upgrades, Turret turret)
         {
             _showTurretUpgrades = EditorGUILayout.BeginFoldoutHeaderGroup(_showTurretUpgrades, "Turret Upgrades");
             if (!_showTurretUpgrades)
+            {
+                EditorGUILayout.EndFoldoutHeaderGroup();
                 return;
-            
+            }
+
             // Add current Upgrades
-            List<int> toRemove = new List<int>();
-            for (int i = 0; i < upgrades.Count; i++)
+            var toRemove = new List<int>();
+            for (var i = 0; i < upgrades.Count; i++)
             {
                 if (upgrades[i] == null)
                 {
@@ -93,7 +99,7 @@ namespace Editor
             }
             
             // In case we want to add a new upgrade
-            TurretUpgrade newUpgrade = (TurretUpgrade) EditorGUILayout.ObjectField("Add Upgrade", null,
+            var newUpgrade = (TurretUpgrade) EditorGUILayout.ObjectField("Add Upgrade", null,
                 typeof(TurretUpgrade), false);
             if (newUpgrade != null)
             {
@@ -107,18 +113,22 @@ namespace Editor
             {
                 upgrades.RemoveAt(r);
             }
+            
             EditorGUILayout.EndFoldoutHeaderGroup();
         }
         
-        private void AddBulletUpgrades(List<BulletUpgrade> upgrades)
+        private void AddBulletUpgrades(IList<BulletUpgrade> upgrades)
         {
             _showBulletUpgrades = EditorGUILayout.BeginFoldoutHeaderGroup(_showBulletUpgrades, "Bullet Upgrades");
             if (!_showBulletUpgrades)
+            {
+                EditorGUILayout.EndFoldoutHeaderGroup();
                 return;
-            
+            }
+
             // Add current Upgrades
-            List<int> toRemove = new List<int>();
-            for (int i = 0; i < upgrades.Count; i++)
+            var toRemove = new List<int>();
+            for (var i = 0; i < upgrades.Count; i++)
             {
                 if (upgrades[i] == null)
                 {
@@ -129,7 +139,7 @@ namespace Editor
             }
             
             // In case we want to add a new upgrade
-            BulletUpgrade newUpgrade = (BulletUpgrade) EditorGUILayout.ObjectField("Add Upgrade", null,
+            var newUpgrade = (BulletUpgrade) EditorGUILayout.ObjectField("Add Upgrade", null,
                 typeof(BulletUpgrade), false);
             if (newUpgrade != null)
             {
@@ -142,6 +152,7 @@ namespace Editor
             {
                 upgrades.RemoveAt(r);
             }
+            
             EditorGUILayout.EndFoldoutHeaderGroup();
         }
     }

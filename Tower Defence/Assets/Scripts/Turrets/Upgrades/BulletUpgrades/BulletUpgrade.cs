@@ -4,7 +4,7 @@ namespace Turrets.Upgrades.BulletUpgrades
 {
     public abstract class BulletUpgrade : Upgrade
     {
-        public abstract void OnShoot(Bullet bullet);
+        public abstract Bullet OnShoot(Bullet bullet);
 
         public abstract void OnHit(Enemy target);
 

@@ -1,7 +1,5 @@
 ﻿using TMPro;
 using Turrets.Blueprints;
-using Turrets.Upgrades.TurretUpgrades;
-using UI;
 using UnityEngine;
 using UnityEngine.UI;
 

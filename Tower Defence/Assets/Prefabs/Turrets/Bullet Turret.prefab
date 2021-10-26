@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1483480926}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.641, z: 0}
+  m_LocalPosition: {x: 0, y: 0.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4711107948385963260}
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 4711107948385963260}
   - component: {fileID: 6514982}
   m_Layer: 0
-  m_Name: Standard Turret Upgraded
+  m_Name: Bullet Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -157,11 +157,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 261dc4a4fa6ac451eb7ab4605e8a51ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 4
+  range: 3
   turnSpeed: 3
   attackType: 0
   fireRate: 1
-  bulletPrefab: {fileID: 8554329261332597528, guid: ae2bb6b111513466a910af495e377c8d, type: 3}
+  bulletPrefab: {fileID: 8554329261332597528, guid: 73df7aaa5f02848a59285b946c547b07, type: 3}
   damageOverTime: 5
   lineRenderer: {fileID: 0}
   impactEffect: {fileID: 2834155742553635263, guid: 410840a991e414225baff388418be600, type: 3}

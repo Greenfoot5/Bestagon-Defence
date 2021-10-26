@@ -10,9 +10,10 @@ namespace Turrets.Upgrades.BulletUpgrades
             throw new System.NotImplementedException();
         }
 
-        public override void OnShoot(Bullet bullet)
+        public override Bullet OnShoot(Bullet bullet)
         {
             bullet.AddUpgrade(this);
+            return bullet;
         }
 
         public override void OnHit(Enemy target)

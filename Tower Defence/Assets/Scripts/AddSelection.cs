@@ -1,5 +1,4 @@
 using Turrets.Blueprints;
-using Turrets.Upgrades.TurretUpgrades;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -23,15 +22,14 @@ public class AddSelection : MonoBehaviour
             gameObject.SetActive(false);
             return;
         }
+
+        Time.timeScale = 0f;
         shop.IncrementSelectionCost();
     }
 
     private void OnEnable()
     {
         Init();
-        
-        // Pause the game so the user can think
-        Time.timeScale = 0f;
 
         // Destroy the previous selection
         for (var i = transform.childCount - 1; i >= 0; i--)
@@ -67,13 +65,13 @@ public class AddSelection : MonoBehaviour
     private void GenerateEvolutionUI(Upgrade upgrade)
     {
         // Create the ui as a child
-        GameObject evolutionUI = Instantiate(evolutionSelectionUI, transform);
+        var evolutionUI = Instantiate(evolutionSelectionUI, transform);
         evolutionUI.GetComponent<EvolutionSelectionUI>().Init(upgrade, shop);
     }
 
     private void GenerateTurretUI(TurretBlueprint turret)
     {
-        GameObject turretUI = Instantiate(turretSelectionUI, transform);
+        var turretUI = Instantiate(turretSelectionUI, transform);
         turretUI.GetComponent<TurretSelectionUI>().Init(turret, shop);
     }
 }

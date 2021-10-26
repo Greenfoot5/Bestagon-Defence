@@ -20,6 +20,7 @@ namespace Turrets
         public float range = 2.5f;
         public float turnSpeed = 3f;
         
+        [SerializeField]
         public TurretType attackType;
         
         // Bullets
@@ -49,10 +50,12 @@ namespace Turrets
         {
             // Call the function every 2s
             InvokeRepeating(nameof(UpdateTarget), 0f, 0.5f);
-            foreach (TurretUpgrade upgrade in turretUpgrades)
-            {
-                AddUpgrade(upgrade);
-            }
+            // Added when a turret is built.
+            // TODO - Apply effects for pre-placed turrets in maps
+            // foreach (var upgrade in turretUpgrades)
+            // {
+            //     AddUpgrade(upgrade);
+            // }
         }
 
         private void UpdateTarget()
@@ -135,7 +138,10 @@ namespace Turrets
             
             foreach (var upgrade in bulletUpgrades)
             {
-                upgrade.OnShoot(bullet);
+                Debug.Log(bullet.damage);
+                Debug.Log("Add " + upgrade, bullet);
+                bullet.AddUpgrade(upgrade);
+                Debug.Log(bullet.damage);
             }
             bullet.Seek(_target);
         }
