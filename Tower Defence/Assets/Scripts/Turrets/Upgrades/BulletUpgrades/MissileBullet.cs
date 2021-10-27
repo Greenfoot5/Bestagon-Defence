@@ -2,8 +2,8 @@ using UnityEngine;
 
 namespace Turrets.Upgrades.BulletUpgrades
 {
-    [CreateAssetMenu(fileName = "BulletDamageT0", menuName = "Upgrades/BulletUpgrade/BulletDamage", order = 2)]
-    public class DamageUpgrade : BulletUpgrade
+    [CreateAssetMenu(fileName = "MissileBulletT0", menuName = "Upgrades/BulletUpgrade/MissileBullet", order = 3)]
+    public class MissileBullet : BulletUpgrade
     {
         public void AlterBulletSettings(ref Bullet bullet)
         {
@@ -11,11 +11,8 @@ namespace Turrets.Upgrades.BulletUpgrades
         }
 
         public override Bullet OnShoot(Bullet bullet)
-        {
-            Debug.Log("OhShoot1 " + bullet.damage);
-            //bullet.AddUpgrade(this);
-            bullet.damage += (int) (GETUpgradeValue() * bullet.damage);
-            Debug.Log("OhShoot2 " + bullet.damage);
+        {;
+            bullet.explosionRadius += GETUpgradeValue();
             return bullet;
         }
 
