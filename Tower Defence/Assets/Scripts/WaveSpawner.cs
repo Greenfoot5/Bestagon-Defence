@@ -24,6 +24,8 @@ public class WaveSpawner : MonoBehaviour
     // Should be waypoint 0
     public Transform spawnPoint;
 
+    public bool isSpawning;
+
     void Start()
     {
         enemiesAlive = 0;
@@ -31,9 +33,10 @@ public class WaveSpawner : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(enemiesAlive);
         // Only reduce the countdown if there are enemies remaining
         // TODO - Update countdown text to enemies remaining
-        if (enemiesAlive > 0)
+        if (enemiesAlive > 0 || isSpawning)
         {
             return;
         }
@@ -61,11 +64,12 @@ public class WaveSpawner : MonoBehaviour
     // Spawns in our enemies
     private IEnumerator SpawnWave()
     {
-        Wave wave = waves[_waveIndex];
+        isSpawning = true;
+        var wave = waves[_waveIndex];
 
         for (var i = 0; i < wave.waveSets.Length; i++)
         {
-            WaveSet set = wave.waveSets[i];
+            var set = wave.waveSets[i];
             
             // For all the enemies we will spawn,
             // spawn one, then wait timeBetweenEnemies seconds
@@ -86,12 +90,11 @@ public class WaveSpawner : MonoBehaviour
         }
 
         _waveIndex++;
+        isSpawning = false;
 
-        if (_waveIndex == waves.Length)
-        {
-            Debug.Log("Level complete!");
-            enabled = false;
-        }
+        if (_waveIndex != waves.Length) yield break;
+        Debug.Log("Level complete!");
+        enabled = false;
     }
     
     // Spawns an enemy.
