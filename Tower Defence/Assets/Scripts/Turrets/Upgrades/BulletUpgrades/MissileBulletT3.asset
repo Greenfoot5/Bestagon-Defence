@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: MissileBulletT3
   m_EditorClassIdentifier: 
   upgradeType: MissileBullet
-  effectPercentage: 0.2
-  upgradeTier: 2
+  effectPercentage: 0.75
+  upgradeTier: 3
   displayName: Explosive
-  icon: {fileID: -328808283585003431, guid: 0073599b7617e4b4ab7263bfac3fcacf, type: 3}
-  effectText: Bullets explod in a radius of 0.2 units on contact
+  icon: {fileID: -6384868493912083287, guid: 76cbd91640a794041b973df91c86354f, type: 3}
+  effectText: Bullets explod in a radius of 0.75 units on contact
   restrictionsText:
   - BulletTurret
