@@ -18,20 +18,29 @@ namespace Turrets
         private Enemy _targetEnemy;
         
         public float range = 2.5f;
-        public float turnSpeed = 3f;
         
         [SerializeField]
         public TurretType attackType;
         
-        // Bullets
+        // Bullets + Area
+        [Tooltip("Time between each shot")]
         public float fireRate = 1f;
         private float _fireCountdown;
+        
+        // Bullet + Laser
+        public float turnSpeed = 3f;
+        
+        // Bullets
         public GameObject bulletPrefab;
         
         // Lasers
         public float damageOverTime = 5;
         public LineRenderer lineRenderer;
         public ParticleSystem impactEffect;
+        
+        // Area
+        public float smashDamage = 20f;
+        public ParticleSystem smashEffect;
         
         // Effects
         public float slowPercentage;
@@ -95,27 +104,35 @@ namespace Turrets
             // Don't do anything if we don't have a target
             if (_target == null)
             {
+                _fireCountdown -= Time.deltaTime;
                 if (attackType != TurretType.Laser || !lineRenderer.enabled) return;
+                
                 lineRenderer.enabled = false;
                 impactEffect.Stop();
-
                 return;
             }
         
             // Rotates the turret each frame
-            LookAtTarget();
+            if (attackType != TurretType.Area)
+                LookAtTarget();
         
             // Check which attack type we're using
             if (attackType == TurretType.Laser)
             {
                 FireLaser();
             }
-            else if (_fireCountdown <= 0)
+            else switch (_fireCountdown <= 0)
             {
-                Shoot();
-                _fireCountdown = 1f / fireRate;
+                case true when attackType == TurretType.Bullet:
+                    Shoot();
+                    _fireCountdown = fireRate;
+                    break;
+                case true when attackType == TurretType.Area:
+                    Smash();
+                    _fireCountdown = fireRate;
+                    break;
             }
-
+            
             _fireCountdown -= Time.deltaTime;
         }
 
@@ -177,6 +194,21 @@ namespace Turrets
 
             // Set impact effect position
             impactEffectTransform.position = targetPosition + aimDir * 0.2f;
+        }
+
+        private void Smash()
+        {
+            smashEffect.Play();
+            
+            // Get's all the enemies in the AoE and calls Damage on them
+            var colliders = Physics2D.OverlapCircleAll(transform.position, range);
+            foreach (var collider2d in colliders)
+            {
+                if (collider2d.CompareTag("Enemy"))
+                {
+                    collider2d.GetComponent<Enemy>().TakeDamage(smashDamage);
+                }
+            }
         }
     
         // Visualises a circle of range when turret is selected

@@ -21,7 +21,6 @@ namespace Editor
             // Basic stats
             EditorGUILayout.PrefixLabel("Attributes");
             turret.range = EditorGUILayout.FloatField("Range", turret.range);
-            turret.turnSpeed = EditorGUILayout.FloatField("Rotation Speed", turret.turnSpeed);
 
             // Bullet/Laser/Area attack data
             EditorGUILayout.Space();
@@ -54,6 +53,8 @@ namespace Editor
                 case TurretType.Bullet:
                     EditorGUILayout.HelpBox("Fires a bullet prefab every fire rate seconds that homes in on an " +
                                             "enemy", MessageType.None);
+                    
+                    turret.turnSpeed = EditorGUILayout.FloatField("Rotation Speed", turret.turnSpeed);
                     turret.fireRate = EditorGUILayout.FloatField("Fire Rate", turret.fireRate);
                     turret.bulletPrefab = (GameObject) EditorGUILayout.ObjectField("Bullet Prefab",
                         turret.bulletPrefab, typeof(GameObject), false);
@@ -61,16 +62,20 @@ namespace Editor
                 // Laser Attack Stats
                 case TurretType.Laser:
                     EditorGUILayout.HelpBox("Fires a laser from the fire point to the enemy.", MessageType.None);
+                    turret.turnSpeed = EditorGUILayout.FloatField("Rotation Speed", turret.turnSpeed);
                     turret.damageOverTime = EditorGUILayout.FloatField("Damage every Second", turret.damageOverTime);
                     turret.lineRenderer = (LineRenderer) EditorGUILayout.ObjectField("Line Renderer",
                         turret.lineRenderer, typeof(LineRenderer), true);
                     turret.impactEffect = (ParticleSystem) EditorGUILayout.ObjectField("Impact Effect",
-                        turret.impactEffect, typeof(GameObject), false);
+                        turret.impactEffect, typeof(ParticleSystem), true);
                     break;
                 // Area Attack Stats
                 case TurretType.Area:
-                    EditorGUILayout.Space();
-                    EditorGUILayout.HelpBox("DO NOT USE! NO SETUP YET", MessageType.Error);
+                    EditorGUILayout.HelpBox("Smashes down an AoE attack", MessageType.None);
+                    turret.fireRate = EditorGUILayout.FloatField("Smash Rate", turret.fireRate);
+                    turret.smashDamage = EditorGUILayout.FloatField("Smash Damage", turret.smashDamage);
+                    turret.smashEffect = (ParticleSystem) EditorGUILayout.ObjectField("Smash Effect",
+                        turret.smashEffect, typeof(ParticleSystem), true);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
