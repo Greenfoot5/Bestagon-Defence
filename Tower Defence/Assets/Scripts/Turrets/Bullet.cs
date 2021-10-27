@@ -16,7 +16,7 @@ namespace Turrets
         [Tooltip("The effect spawned when the bullet hit's a target")]
         public GameObject impactEffect;
 
-        private List<BulletUpgrade> upgrades = new List<BulletUpgrade>();
+        private List<Upgrade> upgrades = new List<Upgrade>();
 
         public void Seek(Transform newTarget)
         {
@@ -65,7 +65,7 @@ namespace Turrets
             var enemy = _target.GetComponent<Enemy>();
             foreach (var upgrade in upgrades)
             {
-                upgrade.OnHit(enemy);
+                upgrade.OnHit(new []{enemy});
             }
             
             Destroy(effectIns, 2f);
@@ -109,11 +109,9 @@ namespace Turrets
             }
         }
 
-        public void AddUpgrade(BulletUpgrade upgrade)
+        public void AddUpgrade(Upgrade upgrade)
         {
-            Debug.Log("Bullet1 " + damage);
             upgrade.OnShoot(this);
-            Debug.Log("Bullet2 " + damage);
             upgrades.Add(upgrade);
         }
     

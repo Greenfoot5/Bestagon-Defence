@@ -2,23 +2,25 @@ using UnityEngine;
 
 namespace Turrets.Upgrades.TurretUpgrades
 {
-    [CreateAssetMenu(fileName = "RangeUpgrade", menuName = "Upgrades/TurretUpgrade/RangeUpgrade", order = 2)]
-    public class RangeUpgrade : TurretUpgrade
+    [CreateAssetMenu(fileName = "RangeUpgrade", menuName = "Upgrades/RangeUpgrade")]
+    public class RangeUpgrade : Upgrade
     {
+        public override bool ValidUpgrade(Turret turret)
+        {
+            return true;
+        }
+
         public override void AddUpgrade(Turret turret)
         {
             turret.range *= 1 + GETUpgradeValue();
         }
 
-        public override Turret RemoveUpgrade(Turret turret)
+        public override void RemoveUpgrade(Turret turret)
         {
             turret.fireRate /= 1 + GETUpgradeValue();
-            return turret;
         }
 
-        public override bool ValidUpgrade(Turret turret)
-        {
-            return turret.attackType == TurretType.Bullet || turret.attackType == TurretType.Area;
-        }
+        public override void OnShoot(Bullet bullet) { }
+        public override void OnHit(Enemy[] targets) { }
     }
 }

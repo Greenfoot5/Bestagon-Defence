@@ -2,28 +2,35 @@ using UnityEngine;
 
 namespace Turrets.Upgrades.BulletUpgrades
 {
-    [CreateAssetMenu(fileName = "SlowUpgrade", menuName = "Upgrades/BulletUpgrade/SlowsEnemyUpgrade", order = 1)]
-    public class SlowUpgrade : BulletUpgrade
+    [CreateAssetMenu(fileName = "SlowUpgrade", menuName = "Upgrades/SlowsEnemyUpgrade")]
+    public class SlowUpgrade : Upgrade
     {
-        public void AlterBulletSettings(ref Bullet bullet)
+        public override bool ValidUpgrade(Turret turret)
+        {
+            return true;
+        }
+
+        public override void AddUpgrade(Turret turret)
         {
             throw new System.NotImplementedException();
         }
 
-        public override Bullet OnShoot(Bullet bullet)
+        public override void RemoveUpgrade(Turret turret)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void OnShoot(Bullet bullet)
         {
             bullet.AddUpgrade(this);
-            return bullet;
         }
 
-        public override void OnHit(Enemy target)
+        public override void OnHit(Enemy[] targets)
         {
-            target.Slow(GETUpgradeValue());
-        }
-
-        public new bool ValidUpgrade(ref Turret turret)
-        {
-            return turret.attackType == TurretType.Bullet;
+            foreach (var target in targets)
+            {
+                target.Slow(GETUpgradeValue());
+            }
         }
     }
 }

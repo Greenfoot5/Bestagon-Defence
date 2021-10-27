@@ -38,8 +38,7 @@ namespace Editor
             // Upgrades
             EditorGUILayout.Space();
             // EditorGUILayout.PrefixLabel("Upgrades");
-            AddTurretUpgrades(turret.turretUpgrades, turret);
-            AddBulletUpgrades(turret.bulletUpgrades);
+            AddUpgrades(turret.upgrades, turret);
         }
 
         private static void AddAttackTypeData(Turret turret)
@@ -82,7 +81,7 @@ namespace Editor
             }
         }
 
-        private void AddTurretUpgrades(IList<TurretUpgrade> upgrades, Turret turret)
+        private void AddUpgrades(IList<Upgrade> upgrades, Turret turret)
         {
             _showTurretUpgrades = EditorGUILayout.BeginFoldoutHeaderGroup(_showTurretUpgrades, "Turret Upgrades");
             if (!_showTurretUpgrades)
@@ -99,56 +98,17 @@ namespace Editor
                 {
                     toRemove.Add(i);
                 }
-                upgrades[i] = (TurretUpgrade) EditorGUILayout.ObjectField(upgrades[i], typeof(TurretUpgrade),
+                upgrades[i] = (Upgrade) EditorGUILayout.ObjectField(upgrades[i], typeof(Upgrade),
                     false);
             }
             
             // In case we want to add a new upgrade
-            var newUpgrade = (TurretUpgrade) EditorGUILayout.ObjectField("Add Upgrade", null,
-                typeof(TurretUpgrade), false);
-            if (newUpgrade != null)
+            var newUpgrade = (Upgrade) EditorGUILayout.ObjectField("Add Upgrade", null,
+                typeof(Upgrade), false);
+            if (newUpgrade != null && newUpgrade.ValidUpgrade(turret))
             {
                 upgrades.Add(newUpgrade);
                 turret.AddUpgrade(newUpgrade);
-            }
-
-            // Remove null upgrades
-            toRemove.Reverse();
-            foreach (var r in toRemove)
-            {
-                upgrades.RemoveAt(r);
-            }
-            
-            EditorGUILayout.EndFoldoutHeaderGroup();
-        }
-        
-        private void AddBulletUpgrades(IList<BulletUpgrade> upgrades)
-        {
-            _showBulletUpgrades = EditorGUILayout.BeginFoldoutHeaderGroup(_showBulletUpgrades, "Bullet Upgrades");
-            if (!_showBulletUpgrades)
-            {
-                EditorGUILayout.EndFoldoutHeaderGroup();
-                return;
-            }
-
-            // Add current Upgrades
-            var toRemove = new List<int>();
-            for (var i = 0; i < upgrades.Count; i++)
-            {
-                if (upgrades[i] == null)
-                {
-                    toRemove.Add(i);
-                }
-                upgrades[i] = (BulletUpgrade) EditorGUILayout.ObjectField(upgrades[i], typeof(BulletUpgrade),
-                    false);
-            }
-            
-            // In case we want to add a new upgrade
-            var newUpgrade = (BulletUpgrade) EditorGUILayout.ObjectField("Add Upgrade", null,
-                typeof(BulletUpgrade), false);
-            if (newUpgrade != null)
-            {
-                upgrades.Add(newUpgrade);
             }
 
             // Remove null upgrades

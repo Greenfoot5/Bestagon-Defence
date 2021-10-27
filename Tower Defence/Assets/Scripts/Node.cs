@@ -63,15 +63,10 @@ public class Node : MonoBehaviour
         var turretClass = turret.GetComponent<Turret>();
         turretBlueprint = blueprint;
         
-        foreach (var turretUpgrade in blueprint.turretUpgrades)
+        foreach (var turretUpgrade in blueprint.upgrades)
         {
             turretClass.AddUpgrade(turretUpgrade);
             Debug.Log(turretUpgrade);
-        }
-        
-        foreach (var bulletUpgrade in blueprint.bulletUpgrades)
-        {
-            turretClass.AddUpgrade(bulletUpgrade);
         }
         
         // Spawn the build effect and destroy after

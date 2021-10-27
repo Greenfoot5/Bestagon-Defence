@@ -17,7 +17,6 @@ namespace Turrets.Blueprints
         [Tooltip("The prefab to use when the turret is built.")]
         public GameObject prefab;
         // Preset upgrades
-        public List<TurretUpgrade> turretUpgrades = new List<TurretUpgrade>();
-        public List<BulletUpgrade> bulletUpgrades = new List<BulletUpgrade>();
+        public List<Upgrade> upgrades = new List<Upgrade>();
     }
 }

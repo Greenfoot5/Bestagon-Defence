@@ -1,3 +1,4 @@
+using Turrets;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,13 +18,23 @@ public abstract class Upgrade : ScriptableObject
     public Sprite icon;
     public string effectText;
     public string[] restrictionsText;
-    
-    public string GETUpgradeType()
+
+    public abstract bool ValidUpgrade(Turret turret);
+
+    public abstract void AddUpgrade(Turret turret);
+
+    public abstract void RemoveUpgrade(Turret turret);
+
+    public abstract void OnShoot(Bullet bullet);
+
+    public abstract void OnHit(Enemy[] targets);
+
+    protected string GETUpgradeType()
     {
         return upgradeType;
     }
 
-    public float GETUpgradeValue()
+    protected float GETUpgradeValue()
     {
         return effectPercentage;
     }
