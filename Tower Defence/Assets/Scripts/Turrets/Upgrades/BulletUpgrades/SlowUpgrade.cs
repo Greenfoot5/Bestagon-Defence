@@ -5,10 +5,6 @@ namespace Turrets.Upgrades.BulletUpgrades
     [CreateAssetMenu(fileName = "SlowUpgrade", menuName = "Upgrades/SlowsEnemyUpgrade")]
     public class SlowUpgrade : Upgrade
     {
-        public override bool ValidUpgrade(Turret turret)
-        {
-            return true;
-        }
 
         public override void AddUpgrade(Turret turret)
         {

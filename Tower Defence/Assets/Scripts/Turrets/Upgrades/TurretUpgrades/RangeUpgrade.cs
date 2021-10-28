@@ -5,11 +5,6 @@ namespace Turrets.Upgrades.TurretUpgrades
     [CreateAssetMenu(fileName = "RangeUpgrade", menuName = "Upgrades/RangeUpgrade")]
     public class RangeUpgrade : Upgrade
     {
-        public override bool ValidUpgrade(Turret turret)
-        {
-            return true;
-        }
-
         public override void AddUpgrade(Turret turret)
         {
             turret.range *= 1 + GETUpgradeValue();

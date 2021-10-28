@@ -1,3 +1,4 @@
+using System.Linq;
 using Turrets;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,9 +18,12 @@ public abstract class Upgrade : ScriptableObject
     public string displayName;
     public Sprite icon;
     public string effectText;
-    public string[] restrictionsText;
+    public TurretType[] validTypes;
 
-    public abstract bool ValidUpgrade(Turret turret);
+    public bool ValidUpgrade(Turret turret)
+    {
+        return validTypes.Contains(turret.attackType);
+    }
 
     public abstract void AddUpgrade(Turret turret);
 

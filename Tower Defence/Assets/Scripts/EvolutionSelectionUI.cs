@@ -1,5 +1,4 @@
 using TMPro;
-using Turrets.Upgrades.TurretUpgrades;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,15 +18,15 @@ public class EvolutionSelectionUI : MonoBehaviour
         displayName.text = initUpgrade.displayName;
         effect.text = initUpgrade.effectText;
         // Set the restrictions values
-        if (initUpgrade.restrictionsText.Length == 0)
+        if (initUpgrade.validTypes.Length == 0)
         {
             restrictions.text += "\n• Any";
         }
         else
         {
-            foreach (string turretRestriction in initUpgrade.restrictionsText)
+            foreach (var turretType in initUpgrade.validTypes)
             {
-                restrictions.text += "\n• " + turretRestriction;
+                restrictions.text += "\n• " + turretType;
             }
         }
         

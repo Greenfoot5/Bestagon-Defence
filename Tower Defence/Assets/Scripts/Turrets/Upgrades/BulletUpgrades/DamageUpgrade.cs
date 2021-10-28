@@ -5,11 +5,6 @@ namespace Turrets.Upgrades.BulletUpgrades
     [CreateAssetMenu(fileName = "BulletDamageT0", menuName = "Upgrades/BulletDamage")]
     public class DamageUpgrade : Upgrade
     {
-        public override bool ValidUpgrade(Turret turret)
-        {
-            return turret.attackType == TurretType.Bullet;
-        }
-
         public override void AddUpgrade(Turret turret)
         {
             throw new System.NotImplementedException();
