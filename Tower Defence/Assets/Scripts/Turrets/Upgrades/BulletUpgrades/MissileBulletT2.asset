@@ -18,5 +18,4 @@ MonoBehaviour:
   displayName: Explosive
   icon: {fileID: -328808283585003431, guid: 0073599b7617e4b4ab7263bfac3fcacf, type: 3}
   effectText: Bullets explod in a radius of 0.4 units on contact
-  restrictionsText:
-  - BulletTurret
+  validTypes: 00000000

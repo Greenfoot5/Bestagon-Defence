@@ -66,7 +66,7 @@ public class AddSelection : MonoBehaviour
     {
         // Create the ui as a child
         var evolutionUI = Instantiate(evolutionSelectionUI, transform);
-        evolutionUI.GetComponent<EvolutionSelectionUI>().Init(upgrade, shop);
+        evolutionUI.GetComponent<UpgradeSelectionUI>().Init(upgrade, shop);
     }
 
     private void GenerateTurretUI(TurretBlueprint turret)

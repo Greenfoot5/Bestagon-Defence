@@ -18,4 +18,4 @@ MonoBehaviour:
   displayName: Range III
   icon: {fileID: -8989286888908879805, guid: 76cbd91640a794041b973df91c86354f, type: 3}
   effectText: Increases Range by 30%
-  restrictionsText: []
+  validTypes: 000000000100000002000000

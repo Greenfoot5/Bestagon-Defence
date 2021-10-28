@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EvolutionSelectionUI : MonoBehaviour
+public class UpgradeSelectionUI : MonoBehaviour
 {
     public Upgrade upgrade;
     public Image iconImage;

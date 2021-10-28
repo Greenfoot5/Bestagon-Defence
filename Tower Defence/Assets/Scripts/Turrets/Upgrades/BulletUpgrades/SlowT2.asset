@@ -18,6 +18,4 @@ MonoBehaviour:
   displayName: Slowing Shot
   icon: {fileID: -4923086779475263353, guid: 0073599b7617e4b4ab7263bfac3fcacf, type: 3}
   effectText: Slows enemies by 20%
-  restrictionsText:
-  - Bullet Turret
-  - Laser Turret
+  validTypes: 000000000100000002000000

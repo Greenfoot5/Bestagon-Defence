@@ -18,4 +18,4 @@ MonoBehaviour:
   displayName: Damage Increase
   icon: {fileID: -7438874361149522337, guid: 0073599b7617e4b4ab7263bfac3fcacf, type: 3}
   effectText: Increase Damage by 20%
-  restrictionsText: []
+  validTypes: 000000000100000002000000

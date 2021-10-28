@@ -18,4 +18,4 @@ MonoBehaviour:
   displayName: Range II
   icon: {fileID: 3731734153449624977, guid: 0073599b7617e4b4ab7263bfac3fcacf, type: 3}
   effectText: Increases Range by 20%
-  restrictionsText: []
+  validTypes: 000000000100000002000000

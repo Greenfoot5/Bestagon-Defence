@@ -18,6 +18,4 @@ MonoBehaviour:
   displayName: Fire Rate I
   icon: {fileID: -3064221760535501981, guid: 926e5887a49c64a52afd6094c977db99, type: 3}
   effectText: Increases Fire Rate by 10%
-  restrictionsText:
-  - Bullet Turret
-  - Area Turret
+  validTypes: 0000000002000000
