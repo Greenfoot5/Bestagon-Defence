@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using Turrets;
 using UnityEngine;
@@ -31,20 +32,10 @@ public abstract class Upgrade : ScriptableObject
 
     public abstract void OnShoot(Bullet bullet);
 
-    public abstract void OnHit(Enemy[] targets);
-
-    protected string GETUpgradeType()
-    {
-        return upgradeType;
-    }
+    public abstract void OnHit(IEnumerable<Enemy> targets);
 
     protected float GETUpgradeValue()
     {
         return effectPercentage;
-    }
-
-    protected int GETUpgradeTier()
-    {
-        return upgradeTier;
     }
 }

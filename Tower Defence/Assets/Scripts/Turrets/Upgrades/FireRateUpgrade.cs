@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Turrets.Upgrades.TurretUpgrades
@@ -16,6 +17,6 @@ namespace Turrets.Upgrades.TurretUpgrades
         }
 
         public override void OnShoot(Bullet bullet) { }
-        public override void OnHit(Enemy[] targets) { }
+        public override void OnHit(IEnumerable<Enemy> targets) { }
     }
 }

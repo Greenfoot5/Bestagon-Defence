@@ -1,11 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Turrets.Upgrades.BulletUpgrades
 {
-    [CreateAssetMenu(fileName = "SlowUpgrade", menuName = "Upgrades/SlowsEnemyUpgrade")]
-    public class SlowUpgrade : Upgrade
+    [CreateAssetMenu(fileName = "MissileBulletT0", menuName = "Upgrades/MissileBullet")]
+    public class MissileBullet : Upgrade
     {
-
         public override void AddUpgrade(Turret turret)
         {
             throw new System.NotImplementedException();
@@ -17,16 +17,10 @@ namespace Turrets.Upgrades.BulletUpgrades
         }
 
         public override void OnShoot(Bullet bullet)
-        {
-            bullet.AddUpgrade(this);
+        {;
+            bullet.explosionRadius += GETUpgradeValue();
         }
 
-        public override void OnHit(Enemy[] targets)
-        {
-            foreach (var target in targets)
-            {
-                target.Slow(GETUpgradeValue());
-            }
-        }
+        public override void OnHit(IEnumerable<Enemy> targets) { }
     }
 }

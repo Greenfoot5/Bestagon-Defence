@@ -26,7 +26,7 @@ public class UpgradeSelectionUI : MonoBehaviour
         {
             foreach (var turretType in initUpgrade.validTypes)
             {
-                restrictions.text += "\n• " + turretType;
+                restrictions.text += "\n• " + turretType + " Turret";
             }
         }
         

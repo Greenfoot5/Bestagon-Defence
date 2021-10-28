@@ -1,10 +1,12 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Turrets.Upgrades.BulletUpgrades
 {
-    [CreateAssetMenu(fileName = "BulletDamageT0", menuName = "Upgrades/BulletDamage")]
-    public class DamageUpgrade : Upgrade
+    [CreateAssetMenu(fileName = "SlowUpgrade", menuName = "Upgrades/SlowsEnemyUpgrade")]
+    public class SlowUpgrade : Upgrade
     {
+
         public override void AddUpgrade(Turret turret)
         {
             throw new System.NotImplementedException();
@@ -17,9 +19,15 @@ namespace Turrets.Upgrades.BulletUpgrades
 
         public override void OnShoot(Bullet bullet)
         {
-            bullet.damage += (int) (GETUpgradeValue() * bullet.damage);
+            bullet.AddUpgrade(this);
         }
 
-        public override void OnHit(Enemy[] targets) { }
+        public override void OnHit(IEnumerable<Enemy> targets)
+        {
+            foreach (var target in targets)
+            {
+                target.Slow(GETUpgradeValue());
+            }
+        }
     }
 }

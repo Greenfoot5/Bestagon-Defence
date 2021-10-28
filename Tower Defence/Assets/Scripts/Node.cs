@@ -66,7 +66,6 @@ public class Node : MonoBehaviour
         foreach (var turretUpgrade in blueprint.upgrades)
         {
             turretClass.AddUpgrade(turretUpgrade);
-            Debug.Log(turretUpgrade);
         }
         
         // Spawn the build effect and destroy after
