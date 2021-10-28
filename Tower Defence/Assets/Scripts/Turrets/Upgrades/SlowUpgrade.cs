@@ -7,15 +7,9 @@ namespace Turrets.Upgrades.BulletUpgrades
     public class SlowUpgrade : Upgrade
     {
 
-        public override void AddUpgrade(Turret turret)
-        {
-            throw new System.NotImplementedException();
-        }
+        public override void AddUpgrade(Turret turret) { }
 
-        public override void RemoveUpgrade(Turret turret)
-        {
-            throw new System.NotImplementedException();
-        }
+        public override void RemoveUpgrade(Turret turret) { }
 
         public override void OnShoot(Bullet bullet)
         {

@@ -77,10 +77,12 @@ public class Node : MonoBehaviour
     public void UpgradeTurret(Upgrade upgrade)
     {
         // Apply the upgrade
-        turret.GetComponent<Turret>().AddUpgrade(upgrade);
+        var appliedUpgrade = turret.GetComponent<Turret>().AddUpgrade(upgrade);
+        if (appliedUpgrade)
+            return;
 
-        // Spawn the build effect
-        GameObject effect = Instantiate(_buildManager.buildEffect, transform.position, Quaternion.identity);
+            // Spawn the build effect
+        var effect = Instantiate(_buildManager.buildEffect, transform.position, Quaternion.identity);
         Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
         
         BuildManager.instance.DeselectNode();

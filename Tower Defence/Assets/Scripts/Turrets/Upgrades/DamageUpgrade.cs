@@ -8,12 +8,14 @@ namespace Turrets.Upgrades.BulletUpgrades
     {
         public override void AddUpgrade(Turret turret)
         {
-            throw new System.NotImplementedException();
+            turret.damageOverTime += GETUpgradeValue() * turret.damageOverTime;
+            turret.smashDamage += GETUpgradeValue() * turret.smashDamage;
         }
 
         public override void RemoveUpgrade(Turret turret)
         {
-            throw new System.NotImplementedException();
+            turret.damageOverTime -= GETUpgradeValue() * turret.damageOverTime;
+            turret.smashDamage -= GETUpgradeValue() * turret.smashDamage;
         }
 
         public override void OnShoot(Bullet bullet)
