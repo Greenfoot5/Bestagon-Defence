@@ -8,8 +8,7 @@ namespace Turrets.Upgrades
     {
         [SerializeField]
         private string upgradeType;
-
-        [Range(0f, 1f)]
+        
         [SerializeField]
         private int upgradeTier;
         

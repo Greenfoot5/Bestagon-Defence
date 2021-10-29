@@ -10,12 +10,12 @@ namespace Turrets.Upgrades
         private float percentageDecrease;
         public override void AddUpgrade(Turret turret)
         {
-            turret.fireRate *= 1 - percentageDecrease;
+            turret.fireRate *= 1 + percentageDecrease;
         }
 
         public override void RemoveUpgrade(Turret turret)
         {
-            turret.fireRate /= 1 - percentageDecrease;
+            turret.fireRate *= 1 + percentageDecrease;
         }
 
         public override void OnShoot(Bullet bullet) { }

@@ -30,7 +30,7 @@ namespace Turrets.Upgrades
             {
                 case TurretType.Bullet:
                     turret.range += turret.range * bulletRange;
-                    turret.fireRate *= 1 - bulletFireRate;
+                    turret.fireRate *= 1 + bulletFireRate;
                     turret.turnSpeed += turret.turnSpeed * bulletTurnSpeed;
                     break;
                 case TurretType.Laser:
@@ -41,7 +41,7 @@ namespace Turrets.Upgrades
                 case TurretType.Area:
                     turret.range += turret.range * areaRange;
                     turret.smashDamage += turret.smashDamage * areaDamage;
-                    turret.fireRate += turret.fireRate * areaFireRate;
+                    turret.fireRate *= 1 + areaFireRate;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -54,7 +54,7 @@ namespace Turrets.Upgrades
             {
                 case TurretType.Bullet:
                     turret.range -= turret.range * bulletRange;
-                    turret.fireRate /= 1 - bulletFireRate;
+                    turret.fireRate /= 1 + bulletFireRate;
                     turret.turnSpeed -= turret.turnSpeed * bulletTurnSpeed;
                     break;
                 case TurretType.Laser:
@@ -65,7 +65,7 @@ namespace Turrets.Upgrades
                 case TurretType.Area:
                     turret.range -= turret.range * areaRange;
                     turret.smashDamage -= turret.smashDamage * areaDamage;
-                    turret.fireRate /= 1 - areaFireRate;
+                    turret.fireRate /= 1 + areaFireRate;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
