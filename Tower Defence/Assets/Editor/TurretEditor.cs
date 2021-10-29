@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Turrets;
-using Turrets.Upgrades.BulletUpgrades;
-using Turrets.Upgrades.TurretUpgrades;
+using Turrets.Upgrades;
 using UnityEditor;
 using UnityEngine;
 

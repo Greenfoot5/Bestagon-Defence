@@ -16,7 +16,6 @@ MonoBehaviour:
   displayName: Killer
   turretType: Bullet Turret
   prefab: {fileID: 3974544501041316794, guid: f962ed2b909e2496cb09aa444d473eda, type: 3}
-  turretUpgrades:
-  - {fileID: 11400000, guid: f51f0f08791ee4076be40b4d01554f3c, type: 2}
-  bulletUpgrades:
+  upgrades:
   - {fileID: 11400000, guid: b07b4ca124a454693aad3534ab3ec8fd, type: 2}
+  - {fileID: 11400000, guid: f51f0f08791ee4076be40b4d01554f3c, type: 2}

@@ -16,8 +16,5 @@ MonoBehaviour:
   displayName: Advanced
   turretType: Bullet Turret
   prefab: {fileID: 3974544501041316794, guid: f962ed2b909e2496cb09aa444d473eda, type: 3}
-  turretUpgrades:
-  - {fileID: 11400000, guid: 103873ced36d04d7288e4b0b48a679ab, type: 2}
-  - {fileID: 11400000, guid: a0c38167287c8451a8852957968ab515, type: 2}
-  bulletUpgrades:
-  - {fileID: 11400000, guid: 0da67581e745c4e708a1b6172cb3d6ef, type: 2}
+  upgrades:
+  - {fileID: 11400000, guid: 7c7e505c5536a4df684108f83d159ad6, type: 2}
