@@ -10,15 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 392646548d607415eae9890069c98df4, type: 3}
-  m_Name: FireRateUpgradeT2
+  m_Name: FireRateUpgradeT3
   m_EditorClassIdentifier: 
   upgradeType: Fire Rate Reduction
-  effectPercentage: 0.15
-  upgradeTier: 2
-  displayName: Fire Rate II
-  icon: {fileID: 7432947564322603382, guid: 0073599b7617e4b4ab7263bfac3fcacf, type: 3}
-  effectText: Increases Fire Rate by 15%
-  restrictionsText:
-  - Bullet Turret
-  - Area Turret
-  isEvolution: 0
+  effectPercentage: 0.25
+  upgradeTier: 3
+  displayName: Fire Rate III
+  icon: {fileID: -5817845718087999316, guid: 76cbd91640a794041b973df91c86354f, type: 3}
+  effectText: Increases Fire Rate by 25%
+  validTypes: 0000000002000000

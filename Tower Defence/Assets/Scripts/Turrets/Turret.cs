@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using Turrets.Upgrades.BulletUpgrades;
-using Turrets.Upgrades.TurretUpgrades;
 using UnityEngine;
 
 namespace Turrets
@@ -51,8 +49,7 @@ namespace Turrets
         public Transform firePoint;
         
         // Upgrades
-        public List<TurretUpgrade> turretUpgrades = new List<TurretUpgrade>();
-        public List<BulletUpgrade> bulletUpgrades = new List<BulletUpgrade>();
+        public List<Upgrade> upgrades = new List<Upgrade>();
 
         // Start is called before the first frame update
         private void Start()
@@ -153,12 +150,9 @@ namespace Turrets
 
             if (bullet == null) return;
             
-            foreach (var upgrade in bulletUpgrades)
+            foreach (var upgrade in upgrades)
             {
-                Debug.Log(bullet.damage);
-                Debug.Log("Add " + upgrade, bullet);
                 bullet.AddUpgrade(upgrade);
-                Debug.Log(bullet.damage);
             }
             bullet.Seek(_target);
         }
@@ -169,9 +163,9 @@ namespace Turrets
             // Deal damage
             _targetEnemy.TakeDamage(damageOverTime * Time.deltaTime);
 
-            foreach (var upgrade in bulletUpgrades)
+            foreach (var upgrade in upgrades)
             {
-                upgrade.OnHit(_targetEnemy);
+                upgrade.OnHit(new [] {_targetEnemy});
             }
 
             // Enable visuals
@@ -202,12 +196,19 @@ namespace Turrets
             
             // Get's all the enemies in the AoE and calls Damage on them
             var colliders = Physics2D.OverlapCircleAll(transform.position, range);
+            var enemies = new List<Enemy>();
             foreach (var collider2d in colliders)
             {
-                if (collider2d.CompareTag("Enemy"))
-                {
-                    collider2d.GetComponent<Enemy>().TakeDamage(smashDamage);
-                }
+                if (!collider2d.CompareTag("Enemy")) continue;
+                
+                var enemy = collider2d.GetComponent<Enemy>();
+                enemies.Add(enemy);
+                enemy.TakeDamage(smashDamage);
+            }
+
+            foreach (var upgrade in upgrades)
+            {
+                upgrade.OnHit(enemies.ToArray());
             }
         }
     
@@ -218,33 +219,14 @@ namespace Turrets
             Gizmos.DrawWireSphere(transform.position, range);
         }
 
-        // TODO - Actually check the upgrade is valid
-        private bool AddUpgrade(TurretUpgrade upgrade)
-        {
-            // if (!upgrade.ValidUpgrade(this))
-            //     return false;
-            
-            upgrade.AddUpgrade(this);
-            
-            turretUpgrades.Add(upgrade);
-
-            return true;
-        }
-
-        private bool AddUpgrade(BulletUpgrade upgrade)
-        {
-            bulletUpgrades.Add(upgrade);
-            return true;
-        }
-
         public bool AddUpgrade(Upgrade upgrade)
         {
-            return upgrade switch
-            {
-                TurretUpgrade turretUpgrade => AddUpgrade(turretUpgrade),
-                BulletUpgrade bulletUpgrade => AddUpgrade(bulletUpgrade),
-                _ => false
-            };
+            if (!upgrade.ValidUpgrade(this))
+                return false;
+            
+            upgrade.AddUpgrade(this);
+            upgrades.Add(upgrade);
+            return true;
         }
     }
 }

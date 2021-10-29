@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1296562320c7941648b7fb9646f0e2f9, type: 3}
-  m_Name: DamageT3
+  m_Name: DamageT1
   m_EditorClassIdentifier: 
   upgradeType: Damage
-  effectPercentage: 0.4
-  upgradeTier: 3
+  effectPercentage: 0.1
+  upgradeTier: 1
   displayName: Damage Increase
-  icon: {fileID: 1822490610995675819, guid: 76cbd91640a794041b973df91c86354f, type: 3}
-  effectText: Increase Damage by 40%
-  restrictionsText: []
+  icon: {fileID: 8249173878090774016, guid: 926e5887a49c64a52afd6094c977db99, type: 3}
+  effectText: Increase Damage by 10%
+  validTypes: 000000000100000002000000

@@ -33,7 +33,6 @@ public class WaveSpawner : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(enemiesAlive);
         // Only reduce the countdown if there are enemies remaining
         // TODO - Update countdown text to enemies remaining
         if (enemiesAlive > 0 || isSpawning)

@@ -63,15 +63,9 @@ public class Node : MonoBehaviour
         var turretClass = turret.GetComponent<Turret>();
         turretBlueprint = blueprint;
         
-        foreach (var turretUpgrade in blueprint.turretUpgrades)
+        foreach (var turretUpgrade in blueprint.upgrades)
         {
             turretClass.AddUpgrade(turretUpgrade);
-            Debug.Log(turretUpgrade);
-        }
-        
-        foreach (var bulletUpgrade in blueprint.bulletUpgrades)
-        {
-            turretClass.AddUpgrade(bulletUpgrade);
         }
         
         // Spawn the build effect and destroy after
@@ -83,10 +77,12 @@ public class Node : MonoBehaviour
     public void UpgradeTurret(Upgrade upgrade)
     {
         // Apply the upgrade
-        turret.GetComponent<Turret>().AddUpgrade(upgrade);
+        var appliedUpgrade = turret.GetComponent<Turret>().AddUpgrade(upgrade);
+        if (appliedUpgrade)
+            return;
 
-        // Spawn the build effect
-        GameObject effect = Instantiate(_buildManager.buildEffect, transform.position, Quaternion.identity);
+            // Spawn the build effect
+        var effect = Instantiate(_buildManager.buildEffect, transform.position, Quaternion.identity);
         Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
         
         BuildManager.instance.DeselectNode();

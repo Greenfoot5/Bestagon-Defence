@@ -1,13 +1,11 @@
 using TMPro;
-using Turrets;
 using Turrets.Blueprints;
-using Turrets.Upgrades.TurretUpgrades;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class TurretSelectionUI : MonoBehaviour
 {
-    private TurretBlueprint turretBlueprint;
+    private TurretBlueprint _turretBlueprint;
     public Image iconImage;
     public TextMeshProUGUI displayName;
     public TextMeshProUGUI type;
@@ -16,29 +14,32 @@ public class TurretSelectionUI : MonoBehaviour
     // Called when creating the UI
     public void Init (TurretBlueprint turret, Shop shop)
     {
-        turretBlueprint = turret;
+        _turretBlueprint = turret;
         iconImage.sprite = turret.shopIcon;
         displayName.text = turret.displayName;
         type.text = turret.turretType;
         // Set the upgrades values
-        upgrades.text = GetUpgradesText();
+        if (_turretBlueprint.upgrades.Count == 0)
+        {
+            upgrades.text += "\n• None";
+        }
+        else
+        {
+            foreach (var upgrade in _turretBlueprint.upgrades)
+            {
+                upgrades.text += "\n• " + upgrade.displayName;
+            }
+        }
         
-        gameObject.GetComponent<Button>().onClick.AddListener(delegate { MakeSelection(shop); });;
+        gameObject.GetComponent<Button>().onClick.AddListener(delegate { MakeSelection(shop); });
     }
 
     // Called when the user clicks on the button
     private void MakeSelection (Shop shop)
     {
-        // TODO - Grant the user's choice
-        
         transform.parent.gameObject.SetActive (false);
         Time.timeScale = 1f;
         
-        shop.SpawnNewTurret(turretBlueprint);
-    }
-
-    private string GetUpgradesText()
-    {
-        return "Upgrades:\n• None";
+        shop.SpawnNewTurret(_turretBlueprint);
     }
 }

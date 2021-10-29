@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Linq;
+using Turrets;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,20 +19,23 @@ public abstract class Upgrade : ScriptableObject
     public string displayName;
     public Sprite icon;
     public string effectText;
-    public string[] restrictionsText;
-    
-    public string GETUpgradeType()
+    public TurretType[] validTypes;
+
+    public bool ValidUpgrade(Turret turret)
     {
-        return upgradeType;
+        return validTypes.Contains(turret.attackType);
     }
 
-    public float GETUpgradeValue()
+    public abstract void AddUpgrade(Turret turret);
+
+    public abstract void RemoveUpgrade(Turret turret);
+
+    public abstract void OnShoot(Bullet bullet);
+
+    public abstract void OnHit(IEnumerable<Enemy> targets);
+
+    protected float GETUpgradeValue()
     {
         return effectPercentage;
-    }
-
-    protected int GETUpgradeTier()
-    {
-        return upgradeTier;
     }
 }
