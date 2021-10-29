@@ -16,8 +16,5 @@ MonoBehaviour:
   displayName: Advanced
   turretType: Laser Turret
   prefab: {fileID: 8263255388866025106, guid: f76383e69d04d405ea64aa69d096467f, type: 3}
-  turretUpgrades:
-  - {fileID: 11400000, guid: a0c38167287c8451a8852957968ab515, type: 2}
-  bulletUpgrades:
-  - {fileID: 11400000, guid: 0da67581e745c4e708a1b6172cb3d6ef, type: 2}
-  - {fileID: 11400000, guid: fd238766202484223ad41e159363d2d9, type: 2}
+  upgrades:
+  - {fileID: 11400000, guid: c90507ecd7ed843958d400aaaeaf6e18, type: 2}

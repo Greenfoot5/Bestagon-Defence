@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
-using Turrets.Upgrades.BulletUpgrades;
-using Turrets.Upgrades.TurretUpgrades;
+using Turrets.Upgrades;
 using UnityEngine;
 
 namespace Turrets.Blueprints

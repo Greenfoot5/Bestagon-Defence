@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Turrets.Blueprints;
+using Turrets.Upgrades;
 using UnityEngine;
 
 namespace LevelData
