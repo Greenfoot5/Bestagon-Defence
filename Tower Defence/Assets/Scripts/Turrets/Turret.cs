@@ -123,11 +123,11 @@ namespace Turrets
             {
                 case true when attackType == TurretType.Bullet:
                     Shoot();
-                    _fireCountdown = fireRate;
+                    _fireCountdown = 1 / fireRate;
                     break;
                 case true when attackType == TurretType.Area:
                     Smash();
-                    _fireCountdown = fireRate;
+                    _fireCountdown = 1 / fireRate;
                     break;
             }
             
