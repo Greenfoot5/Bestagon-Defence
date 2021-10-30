@@ -12,20 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc10d9db80e244b291978caa6ba6ec7, type: 3}
   m_Name: SniperT1
   m_EditorClassIdentifier: 
-  upgradeType: 
-  upgradeTier: 0
-  displayName: 
-  icon: {fileID: 0}
-  effectText: 
-  validTypes: 
-  bulletRange: 0
-  bulletDamage: 0
-  bulletFireRate: 0
-  bulletTurnSpeed: 0
-  bulletSpeed: 0
-  laserRange: 0
-  laserTurnSpeed: 0
+  upgradeType: Sni[er
+  upgradeTier: 1
+  displayName: Sniper I
+  icon: {fileID: 3202189742797214813, guid: 926e5887a49c64a52afd6094c977db99, type: 3}
+  effectText: Makes it a little like a Sniper
+  validTypes: 000000000100000002000000
+  bulletRange: 1
+  bulletDamage: 1
+  bulletFireRate: -0.5
+  bulletTurnSpeed: -0.3
+  bulletSpeed: 1
+  laserRange: 0.5
+  laserTurnSpeed: -0.5
   laserDamage: 0
-  areaRange: 0
-  areaDamage: 0
-  areaFireRate: 0
+  areaRange: 1
+  areaDamage: 1
+  areaFireRate: -0.5

@@ -74,7 +74,7 @@ namespace Turrets.Upgrades
 
         public override void OnShoot(Bullet bullet)
         {
-            bullet.damage += (int) (bullet.damage * bulletDamage);
+            bullet.damage += bullet.damage * bulletDamage;
             bullet.speed += bullet.speed * bulletSpeed;
         }
 

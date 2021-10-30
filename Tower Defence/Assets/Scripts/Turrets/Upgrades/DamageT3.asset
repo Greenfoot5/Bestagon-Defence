@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: DamageT3
   m_EditorClassIdentifier: 
   upgradeType: Damage
-  effectPercentage: 0.4
   upgradeTier: 3
-  displayName: Damage Increase
+  displayName: Damage+ III
   icon: {fileID: 1822490610995675819, guid: 76cbd91640a794041b973df91c86354f, type: 3}
   effectText: Increase Damage by 40%
   validTypes: 000000000100000002000000
+  percentageIncrease: 0.4

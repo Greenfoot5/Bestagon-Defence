@@ -9,16 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47c396cb5ca4b4f9a9a46a24e22514d5, type: 3}
-  m_Name: MissileBulletT2
+  m_Script: {fileID: 11500000, guid: 8062262321bc543138867258ea3b19a7, type: 3}
+  m_Name: BombBulletT2
   m_EditorClassIdentifier: 
-  upgradeType: MissileBullet
+  upgradeType: Bomb
   upgradeTier: 2
-  displayName: Missiles II
+  displayName: Bombs II
   icon: {fileID: -328808283585003431, guid: 0073599b7617e4b4ab7263bfac3fcacf, type: 3}
-  effectText: Bullets explod in a radius of 0.4 units on contact
+  effectText: Bullets explode, with increades damage but are shot slower, with a
+    slower range
   validTypes: 00000000
-  explosionRadius: 0.4
-  damageIncrease: 0.3
-  fireRateDecrease: 0.75
-  speedIncrease: 0.3
+  explosionRadius: 0.6
+  damageIncrease: 0.4
+  fireRateDecrease: 0.85
+  rangeDecrease: 0.6
+  speedDecrease: 0.85
