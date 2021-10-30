@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeType: Slow Upgrade
   upgradeTier: 2
-  displayName: Slowing Shot
+  displayName: Slowing Shots II
   icon: {fileID: -4923086779475263353, guid: 0073599b7617e4b4ab7263bfac3fcacf, type: 3}
   effectText: Slows enemies by 20%
   validTypes: 000000000100000002000000

@@ -15,7 +15,7 @@ MonoBehaviour:
   upgradeType: MissileBullet
   upgradeTier: 1
   displayName: Missiles I
-  icon: {fileID: 8870933133615282498, guid: 926e5887a49c64a52afd6094c977db99, type: 3}
+  icon: {fileID: 6024844966514819156, guid: 926e5887a49c64a52afd6094c977db99, type: 3}
   effectText: Bullets explode, deal more damage, but are fired slower
   validTypes: 00000000
   explosionRadius: 0.2
