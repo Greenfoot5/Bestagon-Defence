@@ -15,7 +15,7 @@ namespace Turrets.Upgrades
 
         public override void RemoveUpgrade(Turret turret)
         {
-            turret.fireRate *= 1 + percentageDecrease;
+            turret.fireRate /= 1 + percentageDecrease;
         }
 
         public override void OnShoot(Bullet bullet) { }
