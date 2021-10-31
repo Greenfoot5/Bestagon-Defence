@@ -223,8 +223,11 @@ namespace Turrets
         public bool AddUpgrade(Upgrade upgrade)
         {
             if (!upgrade.ValidUpgrade(this))
+            {
+                Debug.Log("Invalid Upgrade");
                 return false;
-            
+            }
+
             upgrade.AddUpgrade(this);
             upgrades.Add(upgrade);
             return true;

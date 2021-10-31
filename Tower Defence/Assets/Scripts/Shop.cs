@@ -39,12 +39,15 @@ public class Shop : MonoBehaviour
         _selectedUpgrade = upgrade;
     }
 
-    public Upgrade UseUpgrade()
+    public Upgrade GetUpgrade()
     {
-        var upgrade = _selectedUpgrade;
+        return _selectedUpgrade;
+    }
+
+    public void RemoveUpgrade()
+    {
         Destroy(_selectedUpgradeButton);
         _selectedUpgrade = null;
-        return upgrade;
     }
     
     public void SpawnNewTurret(TurretBlueprint turret)
