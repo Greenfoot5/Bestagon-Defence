@@ -55,10 +55,14 @@ namespace UI
         // Upgrades the turret
         public void UpgradeNode()
         {
-            var upgrade = shop.UseUpgrade();
+            var upgrade = shop.GetUpgrade();
             if (upgrade == null) return;
-            _target.UpgradeTurret(upgrade);
-        }
+            
+            var applied = _target.UpgradeTurret(upgrade);
+            if (!applied) return;
+            
+            shop.RemoveUpgrade();
+            }
     
         // Sells the turret
         public void Sell()
