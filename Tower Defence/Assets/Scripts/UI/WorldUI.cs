@@ -12,8 +12,8 @@ namespace UI
         // Update is called once per frame
         void Update()
         {
-            moneyText.text = "<sprite=\"UI-Icons\" name=\"Coin\"> " + GameStats.money;
-            livesText.text = "<sprite=\"UI-Icons\" name=\"Heart\"> " + GameStats.lives;
+            moneyText.text = "<sprite=\"UI-Gold\" name=\"gold\"> " + GameStats.money;
+            livesText.text = "<sprite=\"UI-Life\" name=\"life\"> " + GameStats.lives;
             waveCountText.text = " # " + GameStats.rounds;
         }
     }

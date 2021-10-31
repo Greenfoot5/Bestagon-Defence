@@ -15,32 +15,11 @@ MonoBehaviour:
   turrets:
   - {fileID: 11400000, guid: d2db62c1bef594027b45aec4631e1e6a, type: 2}
   - {fileID: 11400000, guid: 40dc94d320d594a5fad076af47f85c42, type: 2}
-  - {fileID: 11400000, guid: d34ca52000d774b7b8ca6a25dbf8b6b0, type: 2}
-  - {fileID: 11400000, guid: defe6f09e3fbf44f49bd14d47ebcb305, type: 2}
-  - {fileID: 11400000, guid: 5958a675ba690410eb9254a851560e75, type: 2}
   - {fileID: 11400000, guid: 957e7ef90aad744a4bf2718c30338651, type: 2}
+  - {fileID: 11400000, guid: 5958a675ba690410eb9254a851560e75, type: 2}
   upgrades:
-  - {fileID: 11400000, guid: 103873ced36d04d7288e4b0b48a679ab, type: 2}
-  - {fileID: 11400000, guid: f488ec51e287048928b2b94b48e4abef, type: 2}
-  - {fileID: 11400000, guid: f51f0f08791ee4076be40b4d01554f3c, type: 2}
-  - {fileID: 11400000, guid: a0c38167287c8451a8852957968ab515, type: 2}
-  - {fileID: 11400000, guid: b0d0ae1af2298453c9cbeba82f4ab064, type: 2}
-  - {fileID: 11400000, guid: 2843a599f232045cd84bddb4bfdc34b5, type: 2}
-  - {fileID: 11400000, guid: fd238766202484223ad41e159363d2d9, type: 2}
-  - {fileID: 11400000, guid: c90507ecd7ed843958d400aaaeaf6e18, type: 2}
-  - {fileID: 11400000, guid: 0da67581e745c4e708a1b6172cb3d6ef, type: 2}
-  - {fileID: 11400000, guid: 7c7e505c5536a4df684108f83d159ad6, type: 2}
-  - {fileID: 11400000, guid: b07b4ca124a454693aad3534ab3ec8fd, type: 2}
-  - {fileID: 11400000, guid: 2ab08b2aea51241ffa61f0713e187ca0, type: 2}
-  - {fileID: 11400000, guid: f0fdb6c55f8f54c21b6a9f08480bd0b7, type: 2}
-  - {fileID: 11400000, guid: 8d4a998c7bcd04f18bb6d486e4f6fe4a, type: 2}
   - {fileID: 11400000, guid: a36951a90c6c44391a71cbd17ff8c4c9, type: 2}
-  - {fileID: 11400000, guid: ed82589302c26471c93da2205759f4d3, type: 2}
-  - {fileID: 11400000, guid: 217bfad42a1e84cc9822aab6c7631ddb, type: 2}
-  - {fileID: 11400000, guid: e51d8f8c8fdf2433197f9df264a59986, type: 2}
-  - {fileID: 11400000, guid: 93c709e1323f24997afed2605b01ff51, type: 2}
-  - {fileID: 11400000, guid: b27a173d3675244dd8aa830dafac9f53, type: 2}
-  - {fileID: 11400000, guid: 808ffb459db3844d6bdaf6ecfd8727a9, type: 2}
-  - {fileID: 11400000, guid: 2a42e155c209b403eb3e9155f49abcfa, type: 2}
+  - {fileID: 11400000, guid: a36951a90c6c44391a71cbd17ff8c4c9, type: 2}
+  - {fileID: 11400000, guid: a36951a90c6c44391a71cbd17ff8c4c9, type: 2}
   initialSelectionCost: 100
   selectionCostIncrement: 10

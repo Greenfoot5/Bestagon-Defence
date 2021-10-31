@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc10d9db80e244b291978caa6ba6ec7, type: 3}
   m_Name: SniperT1
   m_EditorClassIdentifier: 
-  upgradeType: Sni[er
+  upgradeType: Sniper
   upgradeTier: 1
-  bgColour: {r: 0, g: 0, b: 0, a: 0}
+  primaryColor: {r: 0.75294125, g: 0.10980393, b: 0.3137255, a: 1}
+  bgColor: {r: 0.603, g: 0.14110202, b: 0.2827885, a: 0.29803923}
   displayName: Sniper I
-  tagline: 
+  tagline: Takes targets down from afar
   icon: {fileID: 21300000, guid: 8c7d34e13e49c4eb0848f6234ee43269, type: 3}
-  effectText: Makes it a little like a Sniper
+  effectText: Shorts further, deals more damage, but takes time to do so
   validTypes: 000000000100000002000000
   bulletRange: 1
   bulletDamage: 1
