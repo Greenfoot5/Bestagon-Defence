@@ -34,5 +34,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2ab08b2aea51241ffa61f0713e187ca0, type: 2}
   - {fileID: 11400000, guid: f0fdb6c55f8f54c21b6a9f08480bd0b7, type: 2}
   - {fileID: 11400000, guid: 8d4a998c7bcd04f18bb6d486e4f6fe4a, type: 2}
-  initialSelectionCost: 100
-  selectionCostIncrement: 10
+  - {fileID: 11400000, guid: a36951a90c6c44391a71cbd17ff8c4c9, type: 2}
+  initialSelectionCost: 11
+  selectionCostIncrement: 1

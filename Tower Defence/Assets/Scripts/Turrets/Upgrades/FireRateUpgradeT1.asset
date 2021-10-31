@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: FireRateUpgradeT1
   m_EditorClassIdentifier: 
   upgradeType: Fire Rate Reduction
-  effectPercentage: 0.1
   upgradeTier: 1
   displayName: Fire Rate I
   icon: {fileID: -3064221760535501981, guid: 926e5887a49c64a52afd6094c977db99, type: 3}
   effectText: Increases Fire Rate by 10%
   validTypes: 0000000002000000
+  percentageDecrease: 0.1

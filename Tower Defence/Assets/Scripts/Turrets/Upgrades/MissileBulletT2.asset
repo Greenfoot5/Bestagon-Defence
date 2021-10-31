@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: MissileBulletT2
   m_EditorClassIdentifier: 
   upgradeType: MissileBullet
-  effectPercentage: 0.4
   upgradeTier: 2
-  displayName: Explosive
-  icon: {fileID: -328808283585003431, guid: 0073599b7617e4b4ab7263bfac3fcacf, type: 3}
+  displayName: Missiles II
+  icon: {fileID: 8346557823063867531, guid: 0073599b7617e4b4ab7263bfac3fcacf, type: 3}
   effectText: Bullets explod in a radius of 0.4 units on contact
   validTypes: 00000000
+  explosionRadius: 0.4
+  damageIncrease: 0.3
+  fireRateDecrease: 0.75
+  speedIncrease: 0.3

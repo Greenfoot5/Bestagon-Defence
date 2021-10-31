@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Turrets.Upgrades
 {
-    [CreateAssetMenu(fileName = "BulletDamageT0", menuName = "Upgrades/BulletDamage")]
+    [CreateAssetMenu(fileName = "DamageT0", menuName = "Upgrades/Damage")]
     public class DamageUpgrade : Upgrade
     {
         [SerializeField]
@@ -22,7 +22,7 @@ namespace Turrets.Upgrades
 
         public override void OnShoot(Bullet bullet)
         {
-            bullet.damage += (int) (percentageIncrease * bullet.damage);
+            bullet.damage += (percentageIncrease * bullet.damage);
         }
 
         public override void OnHit(IEnumerable<Enemy> targets) { }

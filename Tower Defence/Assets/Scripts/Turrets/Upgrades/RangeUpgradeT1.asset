@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: RangeUpgradeT1
   m_EditorClassIdentifier: 
   upgradeType: Range Increase
-  effectPercentage: 0.1
   upgradeTier: 1
   displayName: Range I
   icon: {fileID: 4324158624995101406, guid: 926e5887a49c64a52afd6094c977db99, type: 3}
   effectText: Increases Range by 10%
   validTypes: 000000000100000002000000
+  percentageIncrease: 0.1

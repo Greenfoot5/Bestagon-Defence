@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8062262321bc543138867258ea3b19a7, type: 3}
+  m_Name: BombBulletT1
+  m_EditorClassIdentifier: 
+  upgradeType: Bomb
+  upgradeTier: 1
+  displayName: Bombs I
+  icon: {fileID: 8870933133615282498, guid: 926e5887a49c64a52afd6094c977db99, type: 3}
+  effectText: Bullets explode, with increades damage but are shot slower, with a
+    slower range
+  validTypes: 00000000
+  explosionRadius: 0.3
+  damageIncrease: 0.3
+  fireRateDecrease: 0.95
+  rangeDecrease: 0.7
+  speedDecrease: 0.95

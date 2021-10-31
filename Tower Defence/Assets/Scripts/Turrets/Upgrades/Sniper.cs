@@ -31,11 +31,11 @@ namespace Turrets.Upgrades
                 case TurretType.Bullet:
                     turret.range += turret.range * bulletRange;
                     turret.fireRate *= 1 + bulletFireRate;
-                    turret.turnSpeed += turret.turnSpeed * bulletTurnSpeed;
+                    turret.turnSpeed -= turret.turnSpeed * bulletTurnSpeed;
                     break;
                 case TurretType.Laser:
                     turret.range += turret.range * laserRange;
-                    turret.turnSpeed += turret.turnSpeed * laserTurnSpeed;
+                    turret.turnSpeed -= turret.turnSpeed * laserTurnSpeed;
                     turret.damageOverTime += turret.damageOverTime * laserDamage;
                     break;
                 case TurretType.Area:
@@ -74,7 +74,7 @@ namespace Turrets.Upgrades
 
         public override void OnShoot(Bullet bullet)
         {
-            bullet.damage += (int) (bullet.damage * bulletDamage);
+            bullet.damage += bullet.damage * bulletDamage;
             bullet.speed += bullet.speed * bulletSpeed;
         }
 
