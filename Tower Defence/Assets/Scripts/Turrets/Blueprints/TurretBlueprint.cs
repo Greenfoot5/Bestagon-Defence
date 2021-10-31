@@ -10,7 +10,11 @@ namespace Turrets.Blueprints
         [Header("Shop Info")]
         public Sprite shopIcon;
         public string displayName;
-        public string turretType;
+        public string tagline;
+
+        public Color titleColor;
+        public Color bgColor;
+        public Color upgradeBGColor;
         
         [Header("Turret Info")]
         [Tooltip("The prefab to use when the turret is built.")]

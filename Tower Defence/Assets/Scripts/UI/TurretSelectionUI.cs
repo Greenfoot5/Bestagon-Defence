@@ -6,32 +6,36 @@ using UnityEngine.UI;
 public class TurretSelectionUI : MonoBehaviour
 {
     private TurretBlueprint _turretBlueprint;
-    public Image iconImage;
+    
+    // Content
     public TextMeshProUGUI displayName;
-    public TextMeshProUGUI type;
-    public TextMeshProUGUI upgrades;
+    public TextMeshProUGUI tagline;
+    public Image icon;
+    public TextMeshProUGUI stats;
+    public TextMeshProUGUI noneText;
+
+    [Header("Colors")]
+    public Image bg;
+    public Image upgradesBG;
+    public TextMeshProUGUI upgradesTitle;
 
     // Called when creating the UI
     public void Init (TurretBlueprint turret, Shop shop)
     {
         _turretBlueprint = turret;
-        iconImage.sprite = turret.shopIcon;
         displayName.text = turret.displayName;
-        type.text = turret.turretType;
-        // Set the upgrades values
-        if (_turretBlueprint.upgrades.Count == 0)
-        {
-            upgrades.text += "\n• None";
-        }
-        else
-        {
-            foreach (var upgrade in _turretBlueprint.upgrades)
-            {
-                upgrades.text += "\n• " + upgrade.displayName;
-            }
-        }
+        tagline.text = turret.tagline;
+        icon.sprite = turret.shopIcon;
+        // TODO - Stats
+        // TODO - Display Upgrades
         
-        gameObject.GetComponent<Button>().onClick.AddListener(delegate { MakeSelection(shop); });
+        // Colors
+        tagline.color = turret.titleColor;
+        upgradesTitle.color = turret.titleColor;
+        bg.color = turret.bgColor;
+        upgradesBG.color = turret.upgradeBGColor;
+
+        bg.GetComponent<Button>().onClick.AddListener(delegate { MakeSelection(shop); });
     }
 
     // Called when the user clicks on the button

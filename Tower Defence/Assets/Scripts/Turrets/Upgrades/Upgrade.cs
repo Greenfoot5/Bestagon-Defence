@@ -8,13 +8,15 @@ namespace Turrets.Upgrades
     {
         [SerializeField]
         private string upgradeType;
-        
         [SerializeField]
         private int upgradeTier;
-        
-        // TODO - Generate display name from update type and tier
+
+        public Color primaryColor;
+        public Color bgColor;
         public string displayName;
+        public string tagline;
         public Sprite icon;
+        [Multiline]
         public string effectText;
         public TurretType[] validTypes;
 
@@ -30,5 +32,10 @@ namespace Turrets.Upgrades
         public abstract void OnShoot(Bullet bullet);
 
         public abstract void OnHit(IEnumerable<Enemy> targets);
+
+        public string GETUpgradeType()
+        {
+            return upgradeType;
+        }
     }
 }

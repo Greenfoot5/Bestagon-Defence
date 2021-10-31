@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeType: Sni[er
   upgradeTier: 1
+  bgColour: {r: 0, g: 0, b: 0, a: 0}
   displayName: Sniper I
-  icon: {fileID: 3202189742797214813, guid: 926e5887a49c64a52afd6094c977db99, type: 3}
+  tagline: 
+  icon: {fileID: 21300000, guid: 8c7d34e13e49c4eb0848f6234ee43269, type: 3}
   effectText: Makes it a little like a Sniper
   validTypes: 000000000100000002000000
   bulletRange: 1
