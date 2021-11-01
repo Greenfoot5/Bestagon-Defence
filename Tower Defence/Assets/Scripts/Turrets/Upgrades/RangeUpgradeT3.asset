@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeType: Range Increase
   upgradeTier: 3
+  accentColor: {r: 0.5176471, g: 0.85882354, b: 0.10980392, a: 1}
   displayName: Range III
+  tagline: Visionary
   icon: {fileID: -8989286888908879805, guid: 76cbd91640a794041b973df91c86354f, type: 3}
   effectText: Increases Range by 30%
   validTypes: 000000000100000002000000

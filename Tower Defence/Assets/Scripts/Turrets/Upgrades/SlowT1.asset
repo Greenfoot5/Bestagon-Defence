@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeType: Slow Upgrade
   upgradeTier: 1
-  bgColour: {r: 0, g: 0, b: 0, a: 0}
-  displayName: Slowing Shots I
-  tagline: 
+  accentColor: {r: 0.18039216, g: 0.78431374, b: 0.8980392, a: 1}
+  displayName: Slow I
+  tagline: Subzero
   icon: {fileID: 21300000, guid: 26113de79f28b44a0a142b348a0eaba3, type: 3}
   effectText: Slows enemies hit by 10%
   validTypes: 000000000100000002000000

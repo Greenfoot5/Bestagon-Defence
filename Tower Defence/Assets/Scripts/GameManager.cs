@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
         {
             EndGame();
         }
+
+        Shader.SetGlobalFloat("_UnscaledTime", Time.unscaledTime);
     }
     
     // Called when we reach 0 lives

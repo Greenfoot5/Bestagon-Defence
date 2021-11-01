@@ -14,10 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeType: Sniper
   upgradeTier: 1
-  primaryColor: {r: 0.75294125, g: 0.10980393, b: 0.3137255, a: 1}
-  bgColor: {r: 0.603, g: 0.14110202, b: 0.2827885, a: 0.29803923}
+  accentColor: {r: 0.8117647, g: 0.23529412, b: 0.14901961, a: 1}
   displayName: Sniper I
-  tagline: Takes targets down from afar
+  tagline: Expert ranger
   icon: {fileID: 21300000, guid: 8c7d34e13e49c4eb0848f6234ee43269, type: 3}
   effectText: Shorts further, deals more damage, but takes time to do so
   validTypes: 000000000100000002000000
