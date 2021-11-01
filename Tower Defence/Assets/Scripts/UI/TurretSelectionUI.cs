@@ -14,8 +14,11 @@ public class TurretSelectionUI : MonoBehaviour
     public TextMeshProUGUI tagline;
 
     public Image icon;
-
-    public TextMeshProUGUI noneText;
+    
+    [Header("Upgrades")]
+    public GameObject noneText;
+    public GameObject upgradesLayout;
+    public GameObject upgradeUI;
 
     [Header("Stats")]
     public TurretStat damage;
@@ -60,7 +63,19 @@ public class TurretSelectionUI : MonoBehaviour
         rate.SetData(turretPrefab.fireRate);
         range.SetData(turretPrefab.range);
 
-        // TODO - Display Upgrades
+        if (turret.upgrades.Count == 0)
+        {
+            noneText.SetActive(true);
+        }
+        else
+        {
+            foreach (var upgrade in turret.upgrades)
+            {
+                var up = Instantiate(upgradeUI, upgradesLayout.transform);
+                up.GetComponentInChildren<Image>().sprite = upgrade.icon;
+                up.GetComponentInChildren<TextMeshProUGUI>().text = upgrade.displayName;
+            }
+        }
 
         // Colors
         tagline.color = turret.accent;
