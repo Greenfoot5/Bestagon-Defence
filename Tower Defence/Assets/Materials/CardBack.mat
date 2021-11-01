@@ -18,8 +18,13 @@ Material:
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _HexScale: 6
     - _Overlay: 0.15
     m_Colors:
     - _Tint: {r: 0.1254902, g: 0.8117647, b: 0.5372549, a: 0.29803923}

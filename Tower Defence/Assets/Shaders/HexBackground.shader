@@ -4,6 +4,7 @@ Shader "Unlit/Hex Background"
     {
         _MainTex ("Main Texture", 2D) = "white" {}
         //_Tint ("Background Tint", Color) = (1,1,1,1)
+        _HexScale ("Hexagon Scale", Float) = 5
         _Overlay ("Overlay Strength", Float) = .15
     }
     SubShader
@@ -36,6 +37,7 @@ Shader "Unlit/Hex Background"
             };
 
             fixed4 _Tint;
+            float _HexScale;
             float _Overlay;
             
             static float2 ScrollVector = float2( 1, 1 );
@@ -129,7 +131,7 @@ Shader "Unlit/Hex Background"
                 
                 // SCROLLER
                 i.uv += _Time.y * ScrollVector * ScrollSpeed;
-                i.uv *= 5;
+                i.uv *= _HexScale;
                 
                 // COLOR
                 i.color = hexagon( i.uv, i.color );
