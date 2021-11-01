@@ -2,10 +2,9 @@ Shader "Unlit/Hex Background"
 {
     Properties
     {
-        _MainTex ("Main Texture", 2D) = "white" {}
-        //_Tint ("Background Tint", Color) = (1,1,1,1)
         _HexScale ("Hexagon Scale", Float) = 5
         _Overlay ("Overlay Strength", Float) = .15
+        _Opacity ("Opacity", Float) = .2
     }
     SubShader
     {
@@ -35,10 +34,12 @@ Shader "Unlit/Hex Background"
                 float4 vertex : SV_POSITION;
                 float4 color : COLOR;
             };
-
-            fixed4 _Tint;
+            
             float _HexScale;
             float _Overlay;
+            float _Opacity;
+            
+            float _UnscaledTime;
             
             static float2 ScrollVector = float2( 1, 1 );
             static float ScrollSpeed = 0.03;
@@ -92,7 +93,7 @@ Shader "Unlit/Hex Background"
                 float id = getId( hi );
                 
                 // HEX LUMINANCE
-                float l = noise( id * 7.5 + _Time.y * .75 * id );
+                float l = noise( id * 7.5 + _UnscaledTime * .75 * id );
                 
                 // OVERLAY
                 col.rgb *= .8;
@@ -130,10 +131,11 @@ Shader "Unlit/Hex Background"
                 i.uv += 1;
                 
                 // SCROLLER
-                i.uv += _Time.y * ScrollVector * ScrollSpeed;
+                i.uv += _UnscaledTime * ScrollVector * ScrollSpeed;
                 i.uv *= _HexScale;
                 
                 // COLOR
+                i.color.a = _Opacity;
                 i.color = hexagon( i.uv, i.color );
                 
                 return i.color;
