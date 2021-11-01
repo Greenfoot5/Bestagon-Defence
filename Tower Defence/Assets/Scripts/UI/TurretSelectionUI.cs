@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using Turrets.Blueprints;
 using UnityEngine;
@@ -36,7 +37,7 @@ public class TurretSelectionUI : MonoBehaviour
 
         icon.sprite = turret.shopIcon;
 
-        Turret turretPrefab = turret.prefab.GetComponent<Turret>();
+        var turretPrefab = turret.prefab.GetComponent<Turret>();
         switch (turretPrefab.attackType)
         {
             case TurretType.Bullet:
@@ -52,6 +53,9 @@ public class TurretSelectionUI : MonoBehaviour
             case TurretType.Area:
                 damage.SetData(turretPrefab.smashDamage);
                 break;
+            
+            default:
+                throw new ArgumentOutOfRangeException();
         }
         rate.SetData(turretPrefab.fireRate);
         range.SetData(turretPrefab.range);
