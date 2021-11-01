@@ -18,7 +18,7 @@ public class UpgradeSelectionUI : MonoBehaviour
     {
         upgrade = initUpgrade;
         bg.color = initUpgrade.accentColor;
-        displayName.text = initUpgrade.GETUpgradeType();
+        displayName.text = initUpgrade.displayName;
         tagline.text = initUpgrade.tagline;
         tagline.color = initUpgrade.accentColor;
         iconImage.sprite = initUpgrade.icon;

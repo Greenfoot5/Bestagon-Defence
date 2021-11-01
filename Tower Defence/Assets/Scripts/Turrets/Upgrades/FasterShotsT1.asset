@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeType: FasterShots
   upgradeTier: 1
+  accentColor: {r: 0.39215687, g: 0.5019608, b: 0.9411765, a: 1}
   displayName: Faster Bullets I
+  tagline: Aerodynamics
   icon: {fileID: -6316171028261040934, guid: 926e5887a49c64a52afd6094c977db99, type: 3}
   effectText: Bullets move towards their target 10% faster
   validTypes: 00000000

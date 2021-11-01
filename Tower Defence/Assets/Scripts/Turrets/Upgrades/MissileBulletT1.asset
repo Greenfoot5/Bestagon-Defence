@@ -16,7 +16,7 @@ MonoBehaviour:
   upgradeTier: 1
   accentColor: {r: 0.88235295, g: 0.35686275, b: 0.06666667, a: 1}
   displayName: Missiles I
-  tagline: 
+  tagline: Rocket science
   icon: {fileID: 21300000, guid: 3abb7acaa537d4cfabf58d92931abf91, type: 3}
   effectText: Bullets explode, deal more damage, but are fired slower
   validTypes: 00000000

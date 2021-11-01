@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeType: Fire Rate Reduction
   upgradeTier: 3
+  accentColor: {r: 0.4627451, g: 0.22745098, b: 0.9411765, a: 1}
   displayName: Fire Rate III
+  tagline: Quickload
   icon: {fileID: -5817845718087999316, guid: 76cbd91640a794041b973df91c86354f, type: 3}
   effectText: Increases Fire Rate by 25%
   validTypes: 0000000002000000
