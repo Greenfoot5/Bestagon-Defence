@@ -25,6 +25,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _HexScale: 6
+    - _Opacity: 0.2
     - _Overlay: -0.2
     m_Colors:
     - _Tint: {r: 0.1254902, g: 0.8117647, b: 0.5372549, a: 0.29803923}

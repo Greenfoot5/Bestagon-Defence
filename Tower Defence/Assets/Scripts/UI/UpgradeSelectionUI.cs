@@ -6,10 +6,14 @@ using UnityEngine.UI;
 public class UpgradeSelectionUI : MonoBehaviour
 {
     public Upgrade upgrade;
+
     public Image bg;
+
     public TextMeshProUGUI displayName;
     public TextMeshProUGUI tagline;
+
     public Image iconImage;
+
     public TextMeshProUGUI effect;
     public TextMeshProUGUI restrictions;
 
@@ -17,13 +21,18 @@ public class UpgradeSelectionUI : MonoBehaviour
     public void Init (Upgrade initUpgrade, Shop shop)
     {
         upgrade = initUpgrade;
+        
         bg.color = initUpgrade.accentColor;
+
         displayName.text = initUpgrade.displayName;
         tagline.text = initUpgrade.tagline;
         tagline.color = initUpgrade.accentColor;
+        
         iconImage.sprite = initUpgrade.icon;
+        
         effect.text = initUpgrade.effectText;
         effect.color = initUpgrade.accentColor;
+
         // Set the restrictions values
         if (initUpgrade.validTypes.Length == 0)
         {
