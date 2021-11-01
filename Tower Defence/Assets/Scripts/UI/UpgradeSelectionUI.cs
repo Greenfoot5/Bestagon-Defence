@@ -17,13 +17,13 @@ public class UpgradeSelectionUI : MonoBehaviour
     public void Init (Upgrade initUpgrade, Shop shop)
     {
         upgrade = initUpgrade;
-        bg.color = initUpgrade.bgColor;
+        bg.color = initUpgrade.accentColor;
         displayName.text = initUpgrade.GETUpgradeType();
         tagline.text = initUpgrade.tagline;
-        tagline.color = initUpgrade.primaryColor;
+        tagline.color = initUpgrade.accentColor;
         iconImage.sprite = initUpgrade.icon;
         effect.text = initUpgrade.effectText;
-        effect.color = initUpgrade.primaryColor;
+        effect.color = initUpgrade.accentColor;
         // Set the restrictions values
         if (initUpgrade.validTypes.Length == 0)
         {

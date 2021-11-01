@@ -11,8 +11,7 @@ namespace Turrets.Upgrades
         [SerializeField]
         private int upgradeTier;
 
-        public Color primaryColor;
-        public Color bgColor;
+        public Color accentColor;
         public string displayName;
         public string tagline;
         public Sprite icon;
