@@ -12,9 +12,7 @@ namespace Turrets.Blueprints
         public string displayName;
         public string tagline;
 
-        public Color titleColor;
-        public Color bgColor;
-        public Color upgradeBGColor;
+        public Color accent;
         
         [Header("Turret Info")]
         [Tooltip("The prefab to use when the turret is built.")]
