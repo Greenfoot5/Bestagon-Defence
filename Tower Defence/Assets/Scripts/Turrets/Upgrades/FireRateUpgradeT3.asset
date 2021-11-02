@@ -17,7 +17,7 @@ MonoBehaviour:
   accentColor: {r: 0.4627451, g: 0.22745098, b: 0.9411765, a: 1}
   displayName: Fire Rate III
   tagline: Quickload
-  icon: {fileID: -5817845718087999316, guid: 76cbd91640a794041b973df91c86354f, type: 3}
+  icon: {fileID: 8075296294540816629, guid: 16c979c866f439b4b988e7020b313794, type: 3}
   effectText: Increases Fire Rate by 25%
   validTypes: 0000000002000000
   percentageDecrease: 0.25

@@ -17,7 +17,7 @@ MonoBehaviour:
   accentColor: {r: 0.18039216, g: 0.78431374, b: 0.8980392, a: 1}
   displayName: Slow I
   tagline: Subzero
-  icon: {fileID: 21300000, guid: 26113de79f28b44a0a142b348a0eaba3, type: 3}
+  icon: {fileID: -3843445929337379658, guid: 16c979c866f439b4b988e7020b313794, type: 3}
   effectText: Slows enemies hit by 10%
   validTypes: 000000000100000002000000
   percentageSlow: 0.1

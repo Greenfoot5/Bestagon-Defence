@@ -17,7 +17,7 @@ MonoBehaviour:
   accentColor: {r: 0.7882353, g: 0.26666668, b: 0.98039216, a: 1}
   displayName: Tracker I
   tagline: High gear
-  icon: {fileID: 21300000, guid: 7730752b64d9f46f5be77746fef76856, type: 3}
+  icon: {fileID: -4242299120216371416, guid: 16c979c866f439b4b988e7020b313794, type: 3}
   effectText: Rotates to enemies 20% faster
   validTypes: 0000000001000000
   turnSpeed: 0.2

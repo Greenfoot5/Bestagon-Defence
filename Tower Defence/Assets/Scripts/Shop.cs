@@ -61,8 +61,8 @@ public class Shop : MonoBehaviour
     public void SpawnNewUpgrade(Upgrade upgrade)
     {
         var upgradeButton = Instantiate(defaultUpgradeButton, upgradeInventory.transform);
-        upgradeButton.GetComponent<Image>().sprite = upgrade.icon;
-        upgradeButton.GetComponent<Button>().onClick.AddListener(delegate { SelectUpgrade(upgrade, upgradeButton); });
+        upgradeButton.GetComponentInChildren<UpgradeIcon>().SetData(upgrade);
+        upgradeButton.GetComponentInChildren<Button>().onClick.AddListener(delegate { SelectUpgrade(upgrade, upgradeButton); });
     }
 
     public void OpenSelectionUI()

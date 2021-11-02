@@ -12,7 +12,7 @@ public class UpgradeSelectionUI : MonoBehaviour
     public TextMeshProUGUI displayName;
     public TextMeshProUGUI tagline;
 
-    public Image iconImage;
+    public UpgradeIcon icon;
 
     public TextMeshProUGUI effect;
     public TextMeshProUGUI restrictions;
@@ -27,8 +27,8 @@ public class UpgradeSelectionUI : MonoBehaviour
         displayName.text = initUpgrade.displayName;
         tagline.text = initUpgrade.tagline;
         tagline.color = initUpgrade.accentColor;
-        
-        iconImage.sprite = initUpgrade.icon;
+
+        icon.SetData(initUpgrade);
         
         effect.text = initUpgrade.effectText;
         effect.color = initUpgrade.accentColor;

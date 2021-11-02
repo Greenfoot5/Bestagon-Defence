@@ -8,8 +8,8 @@ namespace Turrets.Upgrades
     {
         [SerializeField]
         private string upgradeType;
-        [SerializeField]
-        private int upgradeTier;
+
+        public int upgradeTier;
 
         public Color accentColor;
         public string displayName;

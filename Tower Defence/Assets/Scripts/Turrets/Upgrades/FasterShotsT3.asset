@@ -17,7 +17,7 @@ MonoBehaviour:
   accentColor: {r: 0.39215687, g: 0.5019608, b: 0.9411765, a: 1}
   displayName: Velocity III
   tagline: Aerodynamics
-  icon: {fileID: 7038897156119406477, guid: 76cbd91640a794041b973df91c86354f, type: 3}
+  icon: {fileID: -2198499569358823354, guid: 16c979c866f439b4b988e7020b313794, type: 3}
   effectText: Bullets move towards their target 35% faster
   validTypes: 00000000
   percentageIncrease: 0.35

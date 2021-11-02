@@ -72,8 +72,7 @@ public class TurretSelectionUI : MonoBehaviour
             foreach (var upgrade in turret.upgrades)
             {
                 var up = Instantiate(upgradeUI, upgradesLayout.transform);
-                up.GetComponentInChildren<Image>().sprite = upgrade.icon;
-                up.GetComponentInChildren<TextMeshProUGUI>().text = upgrade.displayName;
+                up.GetComponentInChildren<TurretUpgradesUpgrade>().SetData(upgrade);
             }
         }
 

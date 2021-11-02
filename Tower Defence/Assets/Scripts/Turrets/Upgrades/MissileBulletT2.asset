@@ -17,7 +17,7 @@ MonoBehaviour:
   accentColor: {r: 0.88235295, g: 0.35686275, b: 0.06666667, a: 1}
   displayName: Missiles II
   tagline: Rocket science
-  icon: {fileID: 21300000, guid: 3abb7acaa537d4cfabf58d92931abf91, type: 3}
+  icon: {fileID: -4264398553240656916, guid: 16c979c866f439b4b988e7020b313794, type: 3}
   effectText: Bullets explode in a radius of 0.4 units on contact
   validTypes: 00000000
   explosionRadius: 0.4

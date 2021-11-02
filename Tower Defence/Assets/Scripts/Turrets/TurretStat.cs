@@ -4,8 +4,10 @@ using TMPro;
 
 public class TurretStat : MonoBehaviour
 {
-    public Image icon;
-    public TextMeshProUGUI text;
+    [SerializeField]
+    private Image icon;
+    [SerializeField]
+    private TextMeshProUGUI text;
 
     public void SetColor(Color color)
     {
