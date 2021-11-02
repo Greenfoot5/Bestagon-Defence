@@ -4,7 +4,10 @@ Shader "Unlit/Hex Background"
     {
         _HexScale ("Hexagon Scale", Float) = 5
         _Overlay ("Overlay Strength", Float) = .15
-        _Opacity ("Opacity", Float) = .2
+        _Opacity ("Hex Opacity", Float) = .2
+        _GlowIntensity ("Glow Intensity", Float) = .5
+        _GlowClamp ("Glow Clamp", Float) = 1
+        _GlowOpacity ("Glow Opacity", Float) = .5
     }
     SubShader
     {
@@ -39,7 +42,13 @@ Shader "Unlit/Hex Background"
             float _Overlay;
             float _Opacity;
             
+            float _GlowIntensity;
+            float _GlowClamp;
+            float _GlowOpacity;
+            
             float _UnscaledTime;
+            
+            static const float pi = 3.14159265;
             
             static float2 ScrollVector = float2( 1, 1 );
             static float ScrollSpeed = 0.03;
@@ -78,6 +87,10 @@ Shader "Unlit/Hex Background"
             
             float4 hexagon ( in float2 uv, in float4 col )
             {
+            
+                // SCROLLER
+                uv.xy += _UnscaledTime * ScrollVector * ScrollSpeed;
+                uv *= _HexScale;
                 
                 // HEX UV
                 float2 r = normalize( float2( 1.0, 1.73 ) );
@@ -103,6 +116,15 @@ Shader "Unlit/Hex Background"
                 return col;
             
             }
+            
+            float4 glow ( in float2 uv, in float4 col )
+            {
+                
+                float2 n = abs( 1 / sin( uv * pi ) * 0.05 * _GlowIntensity );
+                float v = min( distance( n, 0 ), _GlowClamp );
+                return float4( v * col.rgb, v * _GlowOpacity );
+                
+            }
 
             v2f vert (appdata v)
             {
@@ -125,20 +147,19 @@ Shader "Unlit/Hex Background"
                 // ASPECT RATIO
                 float dx = ddx(i.uv.x);
                 float dy = ddy(i.uv.y);
-                float aspect = dy/dx;
+                float aspect = -abs( dy/dx );
                 
-                i.uv.x *= aspect;
-                i.uv += 1;
-                
-                // SCROLLER
-                i.uv += _UnscaledTime * ScrollVector * ScrollSpeed;
-                i.uv *= _HexScale;
+                float2 huv = i.uv;
+                huv.x *= aspect;
+                huv += 1;
                 
                 // COLOR
-                i.color.a = _Opacity;
-                i.color = hexagon( i.uv, i.color );
+                float4 color = float4(0, 0, 0, 0);
+                color.a = _Opacity;
+                color.rgb += hexagon( huv, i.color );
+                color += glow( i.uv, i.color );
                 
-                return i.color;
+                return color;
                 
             }
             ENDCG
