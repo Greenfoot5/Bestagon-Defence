@@ -4977,7 +4977,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 4
   turnSpeed: 3
-  attackType: 0
+  attackType: 1
   fireRate: 1
   bulletPrefab: {fileID: 0}
   damageOverTime: 20
