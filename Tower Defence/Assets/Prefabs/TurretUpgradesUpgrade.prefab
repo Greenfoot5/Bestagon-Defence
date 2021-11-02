@@ -32,10 +32,10 @@ RectTransform:
   m_Father: {fileID: 5208938700202321047}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000019073486, y: 0}
-  m_SizeDelta: {x: 186.8091, y: 157.9955}
+  m_AnchorMin: {x: 0.5, y: 0.2}
+  m_AnchorMax: {x: 0.5, y: 0.4}
+  m_AnchoredPosition: {x: -0.0000019073486, y: -19.274006}
+  m_SizeDelta: {x: 186.8091, y: -1.9013748}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3151052176041807963
 CanvasRenderer:
@@ -95,9 +95,9 @@ MonoBehaviour:
   m_fontSize: 25
   m_fontSizeBase: 25
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 10
+  m_fontSizeMax: 25
   m_fontStyle: 16
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 1024
@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 2240060381206450547}
   - component: {fileID: 5105439738101414673}
   - component: {fileID: 4987575067004862175}
+  - component: {fileID: 862048118202686304}
   m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
@@ -167,9 +168,9 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 17.314}
-  m_SizeDelta: {x: 123.3673, y: 123.3673}
+  m_AnchorMax: {x: 0.5, y: 0.9}
+  m_AnchoredPosition: {x: 0, y: -23.13537}
+  m_SizeDelta: {x: 0, y: 42.468555}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5105439738101414673
 CanvasRenderer:
@@ -209,6 +210,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &862048118202686304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5533529702607784156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 2
+  m_AspectRatio: 0.9999997
 --- !u!1 &6726336910582392263
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,7 +260,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -113.5435, y: -149.93}
+  m_SizeDelta: {x: 113.5435, y: 149.93}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8755226041463282370
 CanvasRenderer:
