@@ -65,7 +65,6 @@ Shader "Unlit/Hex Background"
 
             float noise( in float x ) 
             {
-    
                 float i = floor(x);
 	            float f = frac(x);
 	            float u = f * f * ( 3.0 - 2.0 * f );
@@ -90,6 +89,7 @@ Shader "Unlit/Hex Background"
             
                 // SCROLLER
                 uv.xy += _UnscaledTime * ScrollVector * ScrollSpeed;
+                uv.x = abs(uv.x);
                 uv *= _HexScale;
                 
                 // HEX UV
