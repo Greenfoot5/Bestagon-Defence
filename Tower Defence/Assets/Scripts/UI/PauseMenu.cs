@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace UI
@@ -6,6 +7,9 @@ namespace UI
     public class PauseMenu : MonoBehaviour
     {
         public GameObject ui;
+        
+        public Animator transition;
+        public float transitionTime;
     
         private bool _hasBeenToggled;
 
@@ -24,12 +28,21 @@ namespace UI
                 Time.timeScale = 1f;
             }
         }
+        
+        private IEnumerator Transition(string sceneName)
+        {
+            transition.SetTrigger("Start");
+
+            yield return new WaitForSeconds(transitionTime);
+            
+            SceneManager.LoadScene(sceneName);
+        }
     
         // The retry button, reloads the current scene
         public void Retry()
         {
             Toggle();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            StartCoroutine(Transition(SceneManager.GetActiveScene().name));
         }
     
         // The Main Menu button that returns us to the main menu
@@ -37,7 +50,7 @@ namespace UI
         public void Menu()
         {
             Toggle();
-            SceneManager.LoadScene("MainMenu");
+            StartCoroutine(Transition("MainMenu"));
         }
     
         // Called each frame

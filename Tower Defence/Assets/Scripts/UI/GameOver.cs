@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +8,18 @@ namespace UI
     public class GameOver : MonoBehaviour
     {
         public TMP_Text roundsText;
+        
+        public Animator transition;
+        public float transitionTime;
+        
+        private IEnumerator Transition(string sceneName)
+        {
+            transition.SetTrigger("Start");
+
+            yield return new WaitForSeconds(transitionTime);
+            
+            SceneManager.LoadScene(sceneName);
+        }
 
         public void OnEnable()
         {
@@ -15,12 +28,12 @@ namespace UI
 
         public void Retry()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            StartCoroutine(Transition(SceneManager.GetActiveScene().name));;
         }
 
         public void Menu()
         {
-            SceneManager.LoadScene("MainMenu");
+            StartCoroutine(Transition("MainMenu"));;
         }
     }
 }
