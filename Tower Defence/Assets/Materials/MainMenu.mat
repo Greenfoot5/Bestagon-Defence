@@ -25,11 +25,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _GlowClamp: 0.5
-    - _GlowIntensity: 0.3
+    - _GlowIntensity: 0.1
     - _GlowLimit: 1
     - _GlowOpacity: 0.25
     - _HexScale: 6
-    - _Opacity: 0.2
+    - _Opacity: 0.5
     - _Overlay: -0.2
     m_Colors:
     - _Tint: {r: 0.1254902, g: 0.8117647, b: 0.5372549, a: 0.29803923}
