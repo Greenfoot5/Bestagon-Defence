@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 6316183151972274250}
   - component: {fileID: 6316183151972274248}
   - component: {fileID: 6316183151972274251}
+  - component: {fileID: 4813204089207063353}
   m_Layer: 0
   m_Name: RightPanel
   m_TagString: Untagged
@@ -110,7 +111,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 200, y: 0}
-  m_SizeDelta: {x: 400, y: 0}
+  m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6316183151972274248
 CanvasRenderer:
@@ -132,8 +133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 3e3b977197fb64be18079882d2b1c2ba, type: 2}
-  m_Color: {r: 0.71444464, g: 0.8962264, b: 0.83712155, a: 1}
+  m_Material: {fileID: 2100000, guid: f1705c9cbfe9bc341be3c91aa54551f2, type: 2}
+  m_Color: {r: 0.16862746, g: 0.16862746, b: 0.16078432, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -150,6 +151,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4813204089207063353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6316183151972274253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9aabeb06183bf4409f41dfda4cf0536, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 6316183151972274251}
+  _glowIntensity: 0
 --- !u!1 &6316183152098550577
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,6 +342,7 @@ GameObject:
   - component: {fileID: 3935187129419580915}
   - component: {fileID: 3886024851988726396}
   - component: {fileID: 6435827035352789395}
+  - component: {fileID: 9000271862542493779}
   m_Layer: 0
   m_Name: LeftPanel
   m_TagString: Untagged
@@ -351,7 +367,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: -200, y: 0}
-  m_SizeDelta: {x: 400, y: 0}
+  m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3886024851988726396
 CanvasRenderer:
@@ -374,7 +390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 3e3b977197fb64be18079882d2b1c2ba, type: 2}
-  m_Color: {r: 0.7137255, g: 0.8980392, b: 0.8352941, a: 1}
+  m_Color: {r: 0.16862746, g: 0.16862746, b: 0.16078432, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -391,3 +407,17 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &9000271862542493779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8912200011324295322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9aabeb06183bf4409f41dfda4cf0536, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 6435827035352789395}
+  _glowIntensity: 0
