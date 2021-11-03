@@ -100,7 +100,8 @@ public class WaveSpawner : MonoBehaviour
     // What else would it do!?
     private void SpawnEnemy(GameObject enemy)
     {
-        Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
+        var spawnedEnemy = Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
+        spawnedEnemy.layer = LayerMask.NameToLayer("Enemies");
         enemiesAlive++;
     }
 }
