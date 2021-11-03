@@ -77,8 +77,8 @@ Shader "Unlit/Hex Background"
 	            
                 // RANDOM VALUES FOR NOISE
 	            return noise( 
-		            hp.x * 5.5 +
-		            hp.y * -5.5 +
+		            hp.x * 5000 +
+		            hp.y * -5000 +
 		            2.5
 	            );
 	
