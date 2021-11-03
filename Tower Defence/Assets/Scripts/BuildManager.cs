@@ -78,40 +78,9 @@ public class BuildManager : MonoBehaviour
         nodeUI.Hide();
     }
 
-    private void Deselect()
+    public void Deselect()
     {
         DeselectNode();
         _turretToBuild = null;
-    }
-
-    private void Update()
-    {
-        if (!Input.GetMouseButtonDown(0))
-        {
-            return;
-        }
-        
-        //Set up the new Pointer Event
-        var pointerEventData = new PointerEventData(eventSystem)
-        {
-            //Set the Pointer Event Position to that of the mouse position
-            position = Input.mousePosition
-        };
-
-        //Create a list of Raycast Results
-        var results = new List<RaycastResult>();
-
-        //Raycast using the Graphics Raycaster and mouse click position
-        screenRaycaster.Raycast(pointerEventData, results);
-
-        var cam = Camera.main;
-        if (cam is { })
-        {
-            var origin = cam.ScreenToViewportPoint(Input.mousePosition);
-            var hit = Physics2D.Raycast(origin, Vector3.forward, 100);
-            if (hit || results.Count != 0) return;
-        }
-
-        Deselect();
     }
 }

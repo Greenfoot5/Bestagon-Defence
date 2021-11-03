@@ -28,7 +28,7 @@ Material:
     - _GlowIntensity: 0.3
     - _GlowLimit: 1
     - _GlowOpacity: 0.25
-    - _HexScale: 5
+    - _HexScale: 6
     - _Opacity: 0.2
     - _Overlay: -0.2
     m_Colors:
