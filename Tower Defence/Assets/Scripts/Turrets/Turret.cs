@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Turrets.Upgrades;
 using UnityEngine;
 
@@ -111,10 +112,20 @@ namespace Turrets
             }
         
             // Rotates the turret each frame
-            if (attackType != TurretType.Area)
-                LookAtTarget();
+            if (attackType != TurretType.Area) LookAtTarget();
+
+            if (!IsLookingAtTarget() && attackType != TurretType.Area)
+            {
+                _fireCountdown -= Time.deltaTime;
+                if (attackType != TurretType.Laser || !lineRenderer.enabled) return;
+                
+                lineRenderer.enabled = false;
+                impactEffect.Stop();
+                return;
+            }
+            
         
-            // Check which attack type we're using
+            // Check which attack type we're using so we cann attack correctly
             if (attackType == TurretType.Laser)
             {
                 FireLaser();
@@ -141,6 +152,28 @@ namespace Turrets
             var up = partToRotate.up;
             var lookDir = Vector3.Lerp(up, aimDir, Time.deltaTime * turnSpeed);
             transform.rotation *= Quaternion.FromToRotation(up, lookDir);
+        }
+        
+        // Check we're actually looking at the target before shooting
+        private bool IsLookingAtTarget()
+        {
+            if (_targetEnemy == null) return false;
+            
+            // Setup the raycast
+            var results = new List<RaycastHit2D>();
+            var contactFilter = new ContactFilter2D()
+            {
+                layerMask = LayerMask.GetMask(new[] { "Enemies" })
+            };
+            Physics2D.Raycast(firePoint.position, firePoint.up, contactFilter, results, range);
+            
+            // Loop through the hits to see if we can hit the target
+            var foundEnemy = false;
+            foreach (var hit in results.Where(hit => hit.transform == _targetEnemy.transform))
+            {
+                foundEnemy = true;
+            }
+            return foundEnemy;
         }
 
         // Create the bullet and set the target
