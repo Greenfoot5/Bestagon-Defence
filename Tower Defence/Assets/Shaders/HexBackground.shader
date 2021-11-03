@@ -2,7 +2,9 @@ Shader "Unlit/Hex Background"
 {
     Properties
     {
+        _OffsetUV ("Offset UV", Vector) = (0, 0, 0, 0)
         _HexScale ("Hexagon Scale", Float) = 5
+        _ShiftSpeed ("Luminance Shift Speed", Float) = .75
         _Overlay ("Overlay Strength", Float) = .15
         _Opacity ("Hex Opacity", Float) = .2
         _GlowIntensity ("Glow Intensity", Float) = .5
@@ -38,7 +40,9 @@ Shader "Unlit/Hex Background"
                 float4 color : COLOR;
             };
             
+            float4 _OffsetUV;
             float _HexScale;
+            float _ShiftSpeed;
             float _Overlay;
             float _Opacity;
             
@@ -71,17 +75,27 @@ Shader "Unlit/Hex Background"
 	            return lerp( hash(i), hash( i + 1.0 ), u );
     
             }
-
-            float getId ( in float2 hp )
+            
+            float rand2d( in float2 n )
             {
-	            
-                // RANDOM VALUES FOR NOISE
-	            return noise( 
-		            hp.x * 5000 +
-		            hp.y * -5000 +
-		            2.5
-	            );
+            
+	            return frac( sin( dot( n, float2(12.9898, 4.1414) ) ) * 43758.5453 );
+                
+            }
+
+            float noise2d( in float2 p )
+            {
+            
+	            float2 ip = floor(p);
+	            float2 u = frac(p);
+	            u = u*u*(3.0-2.0*u);
 	
+	            float res = lerp(
+		            lerp( rand2d(ip), rand2d( ip + float2(1.0,0.0) ), u.x ),
+		            lerp( rand2d( ip + float2(0.0,1.0) ),rand2d( ip + float2(1.0,1.0) ), u.x ),
+                    u.y );
+	            return res*res;
+                
             }
             
             float4 hexagon ( in float2 uv, in float4 col )
@@ -89,7 +103,7 @@ Shader "Unlit/Hex Background"
             
                 // SCROLLER
                 uv.xy += _UnscaledTime * ScrollVector * ScrollSpeed;
-                uv.x = abs(uv.x);
+                //uv.x = abs(uv.x) + .0418;
                 uv *= _HexScale;
                 
                 // HEX UV
@@ -98,15 +112,21 @@ Shader "Unlit/Hex Background"
 	            float2 a = fmod( uv, r ) - h;
 	            float2 b = fmod( uv - h, r ) - h;
                 
-                // HEX ID
-                float2 gv = length(a) < length(b) ? a : b;
-                float2 hi = uv - gv;
+                // NEGATIVE CORRECTION
+                if (uv.x < 0)
+                    a.x += .5;
+                if (uv.x - h.x < 0)
+                    b.x += .5;
                 
-                // INSTANCE ID
-                float id = getId( hi );
+                // HEX SEED
+                float2 gv = length(a) < length(b) ? a : b;
+                float2 hs = uv - gv;
+                
+                // INSTANCE SEED
+                float seed = noise2d( hs * 10 );
                 
                 // HEX LUMINANCE
-                float l = noise( id * 7.5 + _UnscaledTime * .75 * id );
+                float l = noise( seed * 30 + _UnscaledTime * _ShiftSpeed * seed );
                 
                 // OVERLAY
                 col.rgb *= .8;
@@ -120,8 +140,13 @@ Shader "Unlit/Hex Background"
             float4 glow ( in float2 uv, in float4 col )
             {
                 
+                // NORMALS TO GLOW
                 float2 n = abs( 1 / sin( uv * pi ) * 0.05 * _GlowIntensity );
+                
+                // INTENSITY BASED ON NORMAL VALUE
                 float v = min( distance( n, 0 ), _GlowClamp );
+                
+                // COLOR
                 return float4( v * col.rgb, v * _GlowOpacity );
                 
             }
@@ -144,11 +169,15 @@ Shader "Unlit/Hex Background"
             fixed4 frag(v2f i) : SV_Target
             {
             
+                // OFFSET
+                i.uv += _OffsetUV;
+            
                 // ASPECT RATIO
                 float dx = ddx(i.uv.x);
                 float dy = ddy(i.uv.y);
                 float aspect = -abs( dy/dx );
                 
+                // HEXAGON UV (CORRECTED RATIO)
                 float2 huv = i.uv;
                 huv.x *= aspect;
                 huv += 1;
@@ -158,6 +187,8 @@ Shader "Unlit/Hex Background"
                 color.a = _Opacity;
                 color.rgb += hexagon( huv, i.color );
                 color += glow( i.uv, i.color );
+                
+                color.a = clamp( color.a, 0, 1 );
                 
                 return color;
                 
