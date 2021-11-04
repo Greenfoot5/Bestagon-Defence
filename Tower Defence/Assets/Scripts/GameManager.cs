@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverUI;
 
     public LevelData.LevelData levelData;
-    private static readonly int UnscaledTime = Shader.PropertyToID("_UnscaledTime");
 
     void Start()
     {
@@ -30,8 +29,6 @@ public class GameManager : MonoBehaviour
         {
             EndGame();
         }
-
-        Shader.SetGlobalFloat(UnscaledTime, Time.unscaledTime);
     }
     
     // Called when we reach 0 lives

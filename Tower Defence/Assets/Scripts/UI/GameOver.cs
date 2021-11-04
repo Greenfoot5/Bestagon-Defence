@@ -10,13 +10,12 @@ namespace UI
         public TMP_Text roundsText;
         
         public Animator transition;
-        public float transitionTime;
         
         private IEnumerator Transition(string sceneName)
         {
             transition.SetTrigger("Start");
 
-            yield return new WaitForSeconds(transitionTime);
+            yield return new WaitForSeconds(transition.GetCurrentAnimatorClipInfo(0)[0].clip.length);
             
             SceneManager.LoadScene(sceneName);
         }

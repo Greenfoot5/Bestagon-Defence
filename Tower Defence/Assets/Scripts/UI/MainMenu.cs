@@ -7,7 +7,6 @@ namespace UI
     public class MainMenu : MonoBehaviour
     {
         public Animator transition;
-        public float transitionTime;
 
         public void Play()
         {
@@ -18,7 +17,7 @@ namespace UI
         {
             transition.SetTrigger("Start");
 
-            yield return new WaitForSeconds(transitionTime);
+            yield return new WaitForSeconds(transition.GetCurrentAnimatorClipInfo(0)[0].clip.length);
             
             SceneManager.LoadScene(sceneName);
         }

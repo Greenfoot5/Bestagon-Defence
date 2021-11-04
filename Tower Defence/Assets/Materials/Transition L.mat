@@ -23,7 +23,7 @@ Material:
     - _GlowClamp: 5
     - _GlowIntensity: 0
     - _GlowOpacity: 1
-    - _HexScale: 5
+    - _HexScale: 8
     - _Opacity: 1
     - _Overlay: -0.05
     - _ShiftSpeed: 0.75

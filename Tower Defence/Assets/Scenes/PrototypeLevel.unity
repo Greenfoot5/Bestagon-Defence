@@ -4643,7 +4643,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roundsText: {fileID: 1385690651}
   transition: {fileID: 2028204708}
-  transitionTime: 1
 --- !u!1001 &1237841378
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4782,6 +4781,7 @@ GameObject:
   - component: {fileID: 1262650575}
   - component: {fileID: 1262650576}
   - component: {fileID: 1262650577}
+  - component: {fileID: 1262650578}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -5019,7 +5019,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ui: {fileID: 626264397}
   transition: {fileID: 2028204708}
-  transitionTime: 1
+--- !u!114 &1262650578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262650571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a426f1eef228184b8291fe251437393, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1272866068
 PrefabInstance:
   m_ObjectHideFlags: 0

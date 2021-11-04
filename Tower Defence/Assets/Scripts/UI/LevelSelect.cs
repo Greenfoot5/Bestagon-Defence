@@ -9,7 +9,6 @@ namespace UI
     public class LevelSelect : MonoBehaviour
     {
         public Animator transition;
-        public float transitionTime;
         
         private string _selectedLevel;
         public Button playButton;
@@ -40,7 +39,7 @@ namespace UI
         {
             transition.SetTrigger("Start");
 
-            yield return new WaitForSeconds(transitionTime);
+            yield return new WaitForSeconds(transition.GetCurrentAnimatorClipInfo(0)[0].clip.length);
             
             SceneManager.LoadScene(sceneName);
         }

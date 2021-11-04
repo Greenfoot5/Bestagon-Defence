@@ -9,7 +9,6 @@ namespace UI
         public GameObject ui;
         
         public Animator transition;
-        public float transitionTime;
     
         private bool _hasBeenToggled;
 
@@ -33,7 +32,7 @@ namespace UI
         {
             transition.SetTrigger("Start");
 
-            yield return new WaitForSeconds(transitionTime);
+            yield return new WaitForSeconds(transition.GetCurrentAnimatorClipInfo(0)[0].clip.length);
             
             SceneManager.LoadScene(sceneName);
         }

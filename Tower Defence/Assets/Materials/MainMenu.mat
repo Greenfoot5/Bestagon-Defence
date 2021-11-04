@@ -25,12 +25,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _GlowClamp: 0.5
-    - _GlowIntensity: 0.1
+    - _GlowIntensity: 0.2
     - _GlowLimit: 1
-    - _GlowOpacity: 0.25
+    - _GlowOpacity: 1
     - _HexScale: 6
-    - _Opacity: 0.5
-    - _Overlay: -0.2
+    - _Opacity: 1
+    - _Overlay: -0.03
+    - _ShiftSpeed: 0.75
     m_Colors:
+    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
     - _Tint: {r: 0.1254902, g: 0.8117647, b: 0.5372549, a: 0.29803923}
   m_BuildTextureStacks: []
