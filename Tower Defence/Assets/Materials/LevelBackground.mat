@@ -73,7 +73,7 @@ Material:
     - _Opacity: 1
     - _Overlay: 0.05
     - _Parallax: 0.02
-    - _ScrollSpeed: 0.005
+    - _ScrollSpeed: 0.001
     - _ShiftSpeed: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
