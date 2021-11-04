@@ -10,6 +10,7 @@ Shader "Unlit/Hex Background"
         _GlowIntensity ("Glow Intensity", Float) = .5
         _GlowClamp ("Glow Clamp", Float) = 1
         _GlowOpacity ("Glow Opacity", Float) = .5
+        _ScrollSpeed ("Scroll Speed", Float) = 0.03
         _MainTex ("Texture", 2D) = "white" {}
     }
     SubShader
@@ -56,7 +57,7 @@ Shader "Unlit/Hex Background"
             static const float pi = 3.14159265;
             
             static float2 ScrollVector = float2( 1, 1 );
-            static float ScrollSpeed = 0.03;
+            float _ScrollSpeed;
             
             float hash( in float p )
             {
@@ -103,7 +104,7 @@ Shader "Unlit/Hex Background"
             {
             
                 // SCROLLER
-                uv.xy += _UnscaledTime * ScrollVector * ScrollSpeed;
+                uv.xy += _UnscaledTime * ScrollVector * _ScrollSpeed;
                 //uv.x = abs(uv.x) + .0418;
                 uv *= _HexScale;
                 

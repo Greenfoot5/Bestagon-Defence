@@ -30,6 +30,7 @@ Material:
     - _HexScale: 8
     - _Opacity: 1
     - _Overlay: -0.05
+    - _ScrollSpeed: 0.03
     - _ShiftSpeed: 0.75
     m_Colors:
     - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
