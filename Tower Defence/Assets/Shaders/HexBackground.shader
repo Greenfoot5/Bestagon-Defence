@@ -10,6 +10,7 @@ Shader "Unlit/Hex Background"
         _GlowIntensity ("Glow Intensity", Float) = .5
         _GlowClamp ("Glow Clamp", Float) = 1
         _GlowOpacity ("Glow Opacity", Float) = .5
+        _MainTex ("Texture", 2D) = "white" {}
     }
     SubShader
     {
