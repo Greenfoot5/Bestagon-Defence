@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: BasicAreaTurret
   m_EditorClassIdentifier: 
   shopIcon: {fileID: 21300000, guid: 09ccc79e8ff7d46b9a6f48318f10d1d9, type: 3}
-  displayName: Bomber
-  tagline: HULK SMASH
+  displayName: Smasher
+  tagline: SMASH
   accent: {r: 0.88235295, g: 0.11764706, b: 0.36862746, a: 1}
   prefab: {fileID: 3974544501041316794, guid: fdd375ca6f6204cc5bbfe7da05610de0, type: 3}
   upgrades: []
