@@ -1,9 +1,6 @@
-﻿using System.Collections.Generic;
-using Turrets.Blueprints;
+﻿using Turrets.Blueprints;
 using UI;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class BuildManager : MonoBehaviour
 {
@@ -31,9 +28,6 @@ public class BuildManager : MonoBehaviour
     
     [Tooltip("The UI to move above the turret")]
     public NodeUI nodeUI;
-
-    public GraphicRaycaster screenRaycaster;
-    public EventSystem eventSystem;
 
     public bool CanBuild => _turretToBuild != null;
 

@@ -10,8 +10,6 @@ public class Background : MonoBehaviour
         {
             return;
         }
-        
-        Debug.Log("Deselected");
         BuildManager.instance.Deselect();
     }
 }
