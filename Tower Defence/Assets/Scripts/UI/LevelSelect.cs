@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -7,7 +8,9 @@ namespace UI
 {
     public class LevelSelect : MonoBehaviour
     {
-        private String _selectedLevel;
+        public Animator transition;
+        
+        private string _selectedLevel;
         public Button playButton;
 
         public void Awake()
@@ -16,7 +19,7 @@ namespace UI
             playButton.interactable = false;
         }
 
-        public void SelectLevel(String levelName)
+        public void SelectLevel(string levelName)
         {
             _selectedLevel = levelName;
             playButton.interactable = true;
@@ -24,12 +27,21 @@ namespace UI
 
         public void Play()
         {
-            SceneManager.LoadScene(_selectedLevel);
+            StartCoroutine(Transition(_selectedLevel));
         }
 
         public void MainMenu()
         {
-            SceneManager.LoadScene("MainMenu");
+            StartCoroutine(Transition("MainMenu"));
+        }
+        
+        private IEnumerator Transition(string sceneName)
+        {
+            transition.SetTrigger("Start");
+
+            yield return new WaitForSeconds(transition.GetCurrentAnimatorClipInfo(0)[0].clip.length);
+            
+            SceneManager.LoadScene(sceneName);
         }
     }
 }

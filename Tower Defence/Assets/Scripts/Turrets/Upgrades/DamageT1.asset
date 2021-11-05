@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeType: Damage
   upgradeTier: 1
-  displayName: Damage+ I
-  icon: {fileID: 8249173878090774016, guid: 926e5887a49c64a52afd6094c977db99, type: 3}
+  accentColor: {r: 0.9647059, g: 0.7882353, b: 0.0627451, a: 1}
+  displayName: Damage I
+  tagline: Death wonder
+  icon: {fileID: -4062769898107646306, guid: 16c979c866f439b4b988e7020b313794, type: 3}
   effectText: Increase Damage by 10%
   validTypes: 000000000100000002000000
   percentageIncrease: 0.1

@@ -55,7 +55,7 @@ public class WaveSpawner : MonoBehaviour
         _countdown -= Time.deltaTime;
         _countdown = Mathf.Clamp(_countdown, 0f, Mathf.Infinity);
         
-        waveCountdownText.text = string.Format("<sprite=\"UI-Icons\" name=\"Clock\"> {0:0.00}", _countdown);
+        waveCountdownText.text = string.Format("<sprite=\"UI-Icons\" name=\"Clock\">{0:0.00}", _countdown);
 
         GameStats.rounds = _waveIndex + 1;
     }
