@@ -14,23 +14,18 @@ public class Hexagons : Graphic
             material = new Material(Shader.Find(m_ShaderName));
     }
 
-    protected override void Awake()
-    {
-        LoadMaterial();
-    }
-
     public Color Color { get => color; set => color = value; }
     public Vector2 OffsetUV;
 
-    public float HexagonScale;
-    public float ScrollSpeed;
-    public float LuminanceShiftSpeed;
-    public float OverlayStrength;
-    public float HexagonOpacity;
+    public float HexagonScale = 5;
+    public float ScrollSpeed = .03f;
+    public float LuminanceShiftSpeed = .75f;
+    public float OverlayStrength = -.3f;
+    public float HexagonOpacity = 1;
 
-    public float GlowIntensity;
-    public float GlowClamp;
-    public float GlowOpacity;
+    public float GlowIntensity = 1;
+    public float GlowClamp = 5;
+    public float GlowOpacity = 1;
 
     protected override void OnValidate()
     {
