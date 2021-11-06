@@ -6,9 +6,17 @@ public class Hexagons : Graphic
 {
     private static readonly string m_ShaderName = "Unlit/Hex Background";
 
+    // Sometimes material resets when 'Reverting'
+    // This is to reload that
+    private void LoadMaterial()
+    {
+        if (material == null || material.shader.name != m_ShaderName)
+            material = new Material(Shader.Find(m_ShaderName));
+    }
+
     protected override void Awake()
     {
-        material = new Material(Shader.Find(m_ShaderName));
+        LoadMaterial();
     }
 
     public Color Color { get => color; set => color = value; }
@@ -28,6 +36,7 @@ public class Hexagons : Graphic
     {
         RefreshMaterial();
         UpdateGeometry();
+        LoadMaterial();
     }
 
     protected override void OnPopulateMesh(VertexHelper vh)
