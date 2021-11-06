@@ -195,10 +195,10 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: _glowIntensity
+    attribute: GlowIntensity
     path: LeftPanel
     classID: 114
-    script: {fileID: 11500000, guid: f9aabeb06183bf4409f41dfda4cf0536, type: 3}
+    script: {fileID: 11500000, guid: 81c539d1bed6fb24fa8f48ee788db0e9, type: 3}
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -250,10 +250,10 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: _glowIntensity
+    attribute: GlowIntensity
     path: RightPanel
     classID: 114
-    script: {fileID: 11500000, guid: f9aabeb06183bf4409f41dfda4cf0536, type: 3}
+    script: {fileID: 11500000, guid: 81c539d1bed6fb24fa8f48ee788db0e9, type: 3}
   m_PPtrCurves: []
   m_SampleRate: 60
   m_WrapMode: 0
@@ -292,15 +292,15 @@ AnimationClip:
       isPPtrCurve: 0
     - serializedVersion: 2
       path: 2604627836
-      attribute: 2752457123
-      script: {fileID: 11500000, guid: f9aabeb06183bf4409f41dfda4cf0536, type: 3}
+      attribute: 3089179256
+      script: {fileID: 11500000, guid: 81c539d1bed6fb24fa8f48ee788db0e9, type: 3}
       typeID: 114
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
       path: 4179748381
-      attribute: 2752457123
-      script: {fileID: 11500000, guid: f9aabeb06183bf4409f41dfda4cf0536, type: 3}
+      attribute: 3089179256
+      script: {fileID: 11500000, guid: 81c539d1bed6fb24fa8f48ee788db0e9, type: 3}
       typeID: 114
       customType: 0
       isPPtrCurve: 0
@@ -563,10 +563,10 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: _glowIntensity
+    attribute: GlowIntensity
     path: LeftPanel
     classID: 114
-    script: {fileID: 11500000, guid: f9aabeb06183bf4409f41dfda4cf0536, type: 3}
+    script: {fileID: 11500000, guid: 81c539d1bed6fb24fa8f48ee788db0e9, type: 3}
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -618,10 +618,10 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: _glowIntensity
+    attribute: GlowIntensity
     path: RightPanel
     classID: 114
-    script: {fileID: 11500000, guid: f9aabeb06183bf4409f41dfda4cf0536, type: 3}
+    script: {fileID: 11500000, guid: 81c539d1bed6fb24fa8f48ee788db0e9, type: 3}
   m_EulerEditorCurves:
   - curve:
       serializedVersion: 2

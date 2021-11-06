@@ -31,6 +31,7 @@ Material:
     - _HexScale: 6
     - _Opacity: 0.2
     - _Overlay: -0.2
+    - _ScrollSpeed: 0.03
     - _ShiftSpeed: 2.5
     m_Colors:
     - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}

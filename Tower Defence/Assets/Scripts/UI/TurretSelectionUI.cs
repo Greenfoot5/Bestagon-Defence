@@ -26,7 +26,7 @@ public class TurretSelectionUI : MonoBehaviour
     public TurretStat range;
 
     [Header("Colors")]
-    public Image bg;
+    public Hexagons bg;
     public Image upgradesBG;
     public TextMeshProUGUI upgradesTitle;
 

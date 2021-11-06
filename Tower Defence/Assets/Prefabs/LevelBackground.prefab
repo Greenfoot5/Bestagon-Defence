@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7964934783628850435}
   - component: {fileID: 7964934783628850433}
-  - component: {fileID: 7964934783628850432}
+  - component: {fileID: 2074779797649780833}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -127,7 +127,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7964934783628850434}
   m_CullTransparentMesh: 1
---- !u!114 &7964934783628850432
+--- !u!114 &2074779797649780833
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,24 +136,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 7964934783628850434}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: 81c539d1bed6fb24fa8f48ee788db0e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: fd6e4eb79c5ba4c088d744bfe2586093, type: 2}
-  m_Color: {r: 0.06686275, g: 0.09421568, b: 0.12156863, a: 1}
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.06666667, g: 0.09411765, b: 0.12156863, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  OffsetUV: {x: 0, y: 0}
+  HexagonScale: 50
+  ScrollSpeed: 0.001
+  LuminanceShiftSpeed: 0.5
+  OverlayStrength: 0.05
+  HexagonOpacity: 1
+  GlowIntensity: 0.5
+  GlowClamp: 1
+  GlowOpacity: 0.5

@@ -561,8 +561,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6790927375620142659}
   - component: {fileID: 8016604717271126832}
-  - component: {fileID: 1331070367045150480}
   - component: {fileID: 2625635825713022322}
+  - component: {fileID: 4383904401948862874}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -602,36 +602,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2851594762066517449}
   m_CullTransparentMesh: 1
---- !u!114 &1331070367045150480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2851594762066517449}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: fb2018e30adde104e8ebcf24ef2b7689, type: 2}
-  m_Color: {r: 0.12156863, g: 0.8117647, b: 0.53333336, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!114 &2625635825713022322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -672,10 +642,35 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1331070367045150480}
+  m_TargetGraphic: {fileID: 4383904401948862874}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4383904401948862874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2851594762066517449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81c539d1bed6fb24fa8f48ee788db0e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.12156863, g: 0.8117647, b: 0.53333336, a: 0.2}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  OffsetUV: {x: 0, y: 0}
+  HexagonScale: 6
+  ScrollSpeed: 0.03
+  LuminanceShiftSpeed: 2.5
+  OverlayStrength: -0.2
+  HexagonOpacity: 0.2
+  GlowIntensity: 0.3
+  GlowClamp: 0.5
+  GlowOpacity: 0.25
 --- !u!1 &2859882678539946580
 GameObject:
   m_ObjectHideFlags: 0
@@ -1946,7 +1941,7 @@ MonoBehaviour:
   damage: {fileID: 7660657442979008724}
   rate: {fileID: 8542615657366772621}
   range: {fileID: 479643702489982858}
-  bg: {fileID: 1331070367045150480}
+  bg: {fileID: 4383904401948862874}
   upgradesBG: {fileID: 4915407304425592310}
   upgradesTitle: {fileID: 7904156540936728002}
 --- !u!1 &7762068933265054922

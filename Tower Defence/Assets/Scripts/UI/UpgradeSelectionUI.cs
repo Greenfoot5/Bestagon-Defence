@@ -7,7 +7,7 @@ public class UpgradeSelectionUI : MonoBehaviour
 {
     public Upgrade upgrade;
 
-    public Image bg;
+    public Hexagons bg;
 
     public TextMeshProUGUI displayName;
     public TextMeshProUGUI tagline;
