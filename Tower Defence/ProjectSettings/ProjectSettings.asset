@@ -134,7 +134,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.1-alpha.21
+  bundleVersion: 1.1-alpha.1
   preloadedAssets:
   - {fileID: 11400000, guid: f7e4968f6dea44f07805c614cb315fab, type: 2}
   metroInputSource: 0
@@ -157,7 +157,7 @@ PlayerSettings:
     Android: com.Bestagon.BestagonDefence
     Standalone: com.Bestagon.BestagonDefence
   buildNumber:
-    Standalone: 0
+    Standalone: 1.1-alpha.1
     iPhone: 0
     tvOS: 0
   overrideDefaultApplicationIdentifier: 0
