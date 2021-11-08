@@ -5,7 +5,8 @@ using UnityEngine;
 
 namespace Turrets
 {
-    public abstract class Turret : MonoBehaviour
+
+    public class Shooter : Turret
     {
         private Transform _target;
         private Enemy _targetEnemy;
@@ -22,16 +23,7 @@ namespace Turrets
         
         // Bullets
         public GameObject bulletPrefab;
-        
-        // Lasers
-        public float damageOverTime = 5;
-        public LineRenderer lineRenderer;
-        public ParticleSystem impactEffect;
-        
-        // Area
-        public float smashDamage = 20f;
-        public ParticleSystem smashEffect;
-        
+
         // Effects
         public float slowPercentage;
         
@@ -94,7 +86,6 @@ namespace Turrets
             if (_target == null)
             {
                 _fireCountdown -= Time.deltaTime;
-                //if (attackType != TurretType.Laser || !lineRenderer.enabled) return;
                 
                 lineRenderer.enabled = false;
                 impactEffect.Stop();
@@ -102,35 +93,21 @@ namespace Turrets
             }
         
             // Rotates the turret each frame
-            //if (attackType != TurretType.Area) LookAtTarget();
+            LookAtTarget();
 
-            if (!IsLookingAtTarget())// && attackType != TurretType.Area)
+            if (!IsLookingAtTarget())
             {
                 _fireCountdown -= Time.deltaTime;
-                //if (attackType != TurretType.Laser || !lineRenderer.enabled) return;
-                
-                lineRenderer.enabled = false;
                 impactEffect.Stop();
                 return;
             }
             
-        
-            // Check which attack type we're using so we cann attack correctly
-            // if (attackType == TurretType.Laser)
-            // {
-            //     FireLaser();
-            // }
-            // else switch (_fireCountdown <= 0)
-            // {
-            //     case true when attackType == TurretType.Bullet:
-            //         Shoot();
-            //         _fireCountdown = 1 / fireRate;
-            //         break;
-            //     case true when attackType == TurretType.Area:
-            //         Smash();
-            //         _fireCountdown = 1 / fireRate;
-            //         break;
-            // }
+            
+            if (_fireCountdown <= 0)
+            {
+                Shoot();
+                _fireCountdown = 1 / fireRate;
+            }
             
             _fireCountdown -= Time.deltaTime;
         }
@@ -180,62 +157,7 @@ namespace Turrets
             }
             bullet.Seek(_target);
         }
-    
-        // TODO - Animate the laser slightly (make it pulse)
-        private void FireLaser()
-        {
-            // Deal damage
-            _targetEnemy.TakeDamage(damageOverTime * Time.deltaTime);
 
-            foreach (var upgrade in upgrades)
-            {
-                upgrade.OnHit(new [] {_targetEnemy});
-            }
-
-            // Enable visuals
-            if (!lineRenderer.enabled)
-            {
-                lineRenderer.enabled = true;
-                impactEffect.Play();
-            }
-        
-            // Set Laser positions
-            var targetPosition = _target.position;
-            var firePointPosition = firePoint.position;
-            lineRenderer.SetPosition(0, firePointPosition);
-            lineRenderer.SetPosition(1, targetPosition);
-
-            // Set impact effect rotation
-            var impactEffectTransform = impactEffect.transform;
-            var aimDir = (Vector3)((Vector2)firePointPosition - (Vector2)impactEffectTransform.position).normalized;
-            impactEffectTransform.rotation = Quaternion.LookRotation(aimDir);
-
-            // Set impact effect position
-            impactEffectTransform.position = targetPosition + aimDir * 0.2f;
-        }
-
-        private void Smash()
-        {
-            smashEffect.Play();
-            
-            // Get's all the enemies in the AoE and calls Damage on them
-            var colliders = Physics2D.OverlapCircleAll(transform.position, range);
-            var enemies = new List<Enemy>();
-            foreach (var collider2d in colliders)
-            {
-                if (!collider2d.CompareTag("Enemy")) continue;
-                
-                var enemy = collider2d.GetComponent<Enemy>();
-                enemies.Add(enemy);
-                enemy.TakeDamage(smashDamage);
-            }
-
-            foreach (var upgrade in upgrades)
-            {
-                upgrade.OnHit(enemies.ToArray());
-            }
-        }
-    
         // Visualises a circle of range when turret is selected
         private void OnDrawGizmosSelected()
         {
