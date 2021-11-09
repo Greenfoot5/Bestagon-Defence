@@ -3,7 +3,7 @@
 namespace Turrets
 {
 
-    public class Laser : Turret
+    public class Laser : DynamicTurret
     {
         // Lasers
         public LineRenderer lineRenderer;

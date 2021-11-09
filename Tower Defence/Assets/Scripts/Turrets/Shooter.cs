@@ -3,7 +3,7 @@
 namespace Turrets
 {
 
-    public class Shooter : Turret
+    public class Shooter : DynamicTurret
     {
         // Bullets
         public GameObject bulletPrefab;
@@ -42,6 +42,7 @@ namespace Turrets
         {
             var bulletGO = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             var bullet = bulletGO.GetComponent<Bullet>();
+            bullet.damage = damage;
 
             if (bullet == null) return;
             

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Turrets
@@ -11,8 +12,8 @@ namespace Turrets
         // Update is called once per frame
         private void Update()
         {
-            // Don't do anything if we don't have a target
-            if (_target == null)
+            // Don't do anything if no enemy is in range
+            if (!Physics2D.OverlapCircleAll(transform.position, range).Any(x => x.CompareTag(enemyTag)))
             {
                 _fireCountdown -= Time.deltaTime;
                 return;
@@ -36,7 +37,7 @@ namespace Turrets
             var enemies = new List<Enemy>();
             foreach (var collider2d in colliders)
             {
-                if (!collider2d.CompareTag("Enemy")) continue;
+                if (!collider2d.CompareTag(enemyTag)) continue;
                 
                 var enemy = collider2d.GetComponent<Enemy>();
                 enemies.Add(enemy);
