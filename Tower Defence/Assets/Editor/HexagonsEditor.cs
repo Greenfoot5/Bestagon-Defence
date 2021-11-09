@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 
 [CustomEditor(typeof(Hexagons))]
-public class Hexagons_Editor : UnityEditor.Editor
+public class Hexagons_Editor : Editor
 {
     // DISPLAY FLAGS
 
