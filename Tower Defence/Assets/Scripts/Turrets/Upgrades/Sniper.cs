@@ -26,19 +26,19 @@ namespace Turrets.Upgrades
         
         public override void AddUpgrade(Turret turret)
         {
-            switch (turret.GetType().ToString())
+            switch (turret)
             {
-                case "Bullet":
+                case Shooter shooter:
                     turret.range += turret.range * bulletRange;
                     turret.fireRate *= 1 + bulletFireRate;
-                    turret.turnSpeed -= turret.turnSpeed * bulletTurnSpeed;
+                    shooter.turnSpeed -= shooter.turnSpeed * bulletTurnSpeed;
                     break;
-                case "Laser":
+                case Laser laser:
                     turret.range += turret.range * laserRange;
-                    turret.turnSpeed -= turret.turnSpeed * laserTurnSpeed;
+                    laser.turnSpeed -= laser.turnSpeed * laserTurnSpeed;
                     turret.damage += turret.damage * laserDamage;
                     break;
-                case "Smasher":
+                case Smasher _:
                     turret.range += turret.range * areaRange;
                     turret.damage += turret.damage * areaDamage;
                     turret.fireRate *= 1 + areaFireRate;
@@ -50,19 +50,19 @@ namespace Turrets.Upgrades
 
         public override void RemoveUpgrade(Turret turret)
         {
-            switch (turret.GetType().ToString())
+            switch (turret)
             {
-                case "Bullet":
+                case Shooter shooter:
                     turret.range -= turret.range * bulletRange;
                     turret.fireRate /= 1 + bulletFireRate;
-                    turret.turnSpeed -= turret.turnSpeed * bulletTurnSpeed;
+                    shooter.turnSpeed -= shooter.turnSpeed * bulletTurnSpeed;
                     break;
-                case "Laser":
+                case Laser laser:
                     turret.range -= turret.range * laserRange;
-                    turret.turnSpeed -= turret.turnSpeed * laserTurnSpeed;
+                    laser.turnSpeed -= laser.turnSpeed * laserTurnSpeed;
                     turret.damage -= turret.damage * laserDamage;
                     break;
-                case "Smasher":
+                case Smasher _:
                     turret.range -= turret.range * areaRange;
                     turret.damage -= turret.damage * areaDamage;
                     turret.fireRate /= 1 + areaFireRate;

@@ -6,16 +6,16 @@ namespace Turrets.Upgrades
     [CreateAssetMenu(fileName = "TrackerUpgradeT0", menuName = "Upgrades/Tracker")]
     public class Tracker : Upgrade
     {
-        [SerializeField]
+        [SerializeField]    
         private float turnSpeed;
         public override void AddUpgrade(Turret turret)
         {
-            turret.turnSpeed *= 1 + turnSpeed;
+            ((DynamicTurret)turret).turnSpeed *= 1 + turnSpeed;
         }
 
         public override void RemoveUpgrade(Turret turret)
         {
-            turret.turnSpeed /= 1 + turnSpeed;
+            ((DynamicTurret)turret).turnSpeed /= 1 + turnSpeed;
         }
 
         public override void OnShoot(Bullet bullet) { }
