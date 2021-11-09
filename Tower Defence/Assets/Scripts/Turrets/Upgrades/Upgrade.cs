@@ -17,11 +17,11 @@ namespace Turrets.Upgrades
         public Sprite icon;
         [Multiline]
         public string effectText;
-        public TurretType[] validTypes;
+        public string[] validTypes;
 
         public bool ValidUpgrade(Turret turret)
         {
-            return validTypes.Contains(turret.attackType);
+            return validTypes.Contains(turret.GetType().ToString());
         }
 
         public abstract void AddUpgrade(Turret turret);

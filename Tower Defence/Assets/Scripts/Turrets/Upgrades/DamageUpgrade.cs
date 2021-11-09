@@ -10,14 +10,12 @@ namespace Turrets.Upgrades
         private float percentageIncrease;
         public override void AddUpgrade(Turret turret)
         {
-            turret.damageOverTime += percentageIncrease * turret.damageOverTime;
-            turret.smashDamage += percentageIncrease * turret.smashDamage;
+            turret.damage += percentageIncrease * turret.damage;
         }
 
         public override void RemoveUpgrade(Turret turret)
         {
-            turret.damageOverTime -= percentageIncrease * turret.damageOverTime;
-            turret.smashDamage -= percentageIncrease * turret.smashDamage;
+            turret.damage -= percentageIncrease * turret.damage;
         }
 
         public override void OnShoot(Bullet bullet)
