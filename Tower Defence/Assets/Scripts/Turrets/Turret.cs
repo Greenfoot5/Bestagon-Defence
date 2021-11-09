@@ -1,44 +1,47 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Turrets.Upgrades;
 using UnityEngine;
 
 namespace Turrets
 {
+    /// <summary>
+    /// The various targeting methods a turret can use to find a target
+    /// </summary>
+    public enum TargetingMethod
+    {
+        Closest = 0,
+        Weakest = 1,
+        Strongest = 2
+    }
+    
     public abstract class Turret : MonoBehaviour
     {
-        private Transform _target;
-        private Enemy _targetEnemy;
+        public float damage;
+        
+        // Targeting
+        protected Transform _target;
+        protected Enemy _targetEnemy;
+        public string enemyTag = "Enemy";
         
         public float range = 2.5f;
+        public TargetingMethod targetingMethod = TargetingMethod.Closest;
+        public bool aggressiveRetargeting = true;
 
-        // Bullets + Area
+        // Attack speed
         [Tooltip("Time between each shot")]
         public float fireRate = 1f;
-        private float _fireCountdown;
+        protected float _fireCountdown;
         
-        // Bullet + Laser
+        // Rotation
         public float turnSpeed = 3f;
+        public Transform partToRotate;
         
-        // Bullets
-        public GameObject bulletPrefab;
-        
-        // Lasers
-        public float damageOverTime = 5;
-        public LineRenderer lineRenderer;
-        public ParticleSystem impactEffect;
-        
-        // Area
-        public float smashDamage = 20f;
-        public ParticleSystem smashEffect;
+        public Transform firePoint;
         
         // Effects
         public float slowPercentage;
-        
-        // References
-        public string enemyTag = "Enemy";
-        public Transform partToRotate;
-        public Transform firePoint;
         
         // Upgrades
         public List<Upgrade> upgrades = new List<Upgrade>();
@@ -55,87 +58,93 @@ namespace Turrets
             //     AddUpgrade(upgrade);
             // }
         }
-
+        
+        /// <summary>
+        /// Update our current target to check if it's still the most valuable, or pick a new one.
+        /// </summary>
         private void UpdateTarget()
         {
-            // Create a list of enemies and remember shortest distance and enemy
-            var enemies = GameObject.FindGameObjectsWithTag(enemyTag);
-            var shortestDistance = Mathf.Infinity;
-            GameObject nearestEnemy = null;
-        
-            // Loop through the enemies and find the closest
-            foreach (var enemy in enemies)
+            // If we're not aggressively retargeting, check if the target is still in range
+            if (!aggressiveRetargeting)
             {
-                var distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
-            
-                // Save if new closest enemy
-                if (!(distanceToEnemy < shortestDistance)) continue;
-                shortestDistance = distanceToEnemy;
-                nearestEnemy = enemy;
+                var distanceToEnemy = Vector3.Distance(transform.position, _target.position);
+                if (distanceToEnemy <= range) return;
             }
-        
-            // Check if we have a target and should shoot
-            if (nearestEnemy != null && shortestDistance <= range)
+            
+            // Create a list of enemies within range
+            var enemiesInRange = (from enemy in GameObject.FindGameObjectsWithTag(enemyTag)
+                let distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position)
+                where distanceToEnemy <= range select enemy).ToArray();
+            // Set the current value to be too high or too low.
+            // Value is based on targeting method
+            var currentValue = Mathf.Infinity;
+            if (targetingMethod == TargetingMethod.Strongest)
             {
-                _target = nearestEnemy.transform;
+                currentValue = Mathf.NegativeInfinity;
+            }
+            GameObject mostValuableEnemy = null;
+            
+            // Check there are enemies in range, and if not, we have no target
+            if (enemiesInRange.Length == 0)
+            {
+                _target = null;
+                return;
+            }
+
+                // Loop through the enemies and find the most valuable
+            foreach (var enemy in enemiesInRange)
+            {
+                switch (targetingMethod)
+                {
+                    case TargetingMethod.Closest:
+                        // Find if the enemy is closer than our current most valuable
+                        var distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
+                        if (distanceToEnemy < currentValue)
+                        {
+                            currentValue = distanceToEnemy;
+                            mostValuableEnemy = enemy;
+                        }
+                        break;
+                    case TargetingMethod.Weakest:
+                        // Find if the enemy has less health than our current most valuable
+                        var health = enemy.GetComponent<Enemy>().health;
+                        if (health < currentValue)
+                        {
+                            currentValue = health;
+                            mostValuableEnemy = enemy;
+                        }
+                        break;
+                    case TargetingMethod.Strongest:
+                        // Find if the enemy has more health than our current most valuable
+                        var enemyHealth = enemy.GetComponent<Enemy>().health;
+                        if (enemyHealth > currentValue)
+                        {
+                            currentValue = enemyHealth;
+                            mostValuableEnemy = enemy;
+                        }
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+
+            // Check if we have a valid target
+            if (mostValuableEnemy != null)
+            {
+                _target = mostValuableEnemy.transform;
                 _targetEnemy = _target.GetComponent<Enemy>();
             }
-            // Set our target to null if out of range
+            // Set our target to null if there is none
             else
             {
                 _target = null;
             }
         }
-
-        // Update is called once per frame
-        private void Update()
-        {
-            // Don't do anything if we don't have a target
-            if (_target == null)
-            {
-                _fireCountdown -= Time.deltaTime;
-                //if (attackType != TurretType.Laser || !lineRenderer.enabled) return;
-                
-                lineRenderer.enabled = false;
-                impactEffect.Stop();
-                return;
-            }
         
-            // Rotates the turret each frame
-            //if (attackType != TurretType.Area) LookAtTarget();
-
-            if (!IsLookingAtTarget())// && attackType != TurretType.Area)
-            {
-                _fireCountdown -= Time.deltaTime;
-                //if (attackType != TurretType.Laser || !lineRenderer.enabled) return;
-                
-                lineRenderer.enabled = false;
-                impactEffect.Stop();
-                return;
-            }
-            
-        
-            // Check which attack type we're using so we cann attack correctly
-            // if (attackType == TurretType.Laser)
-            // {
-            //     FireLaser();
-            // }
-            // else switch (_fireCountdown <= 0)
-            // {
-            //     case true when attackType == TurretType.Bullet:
-            //         Shoot();
-            //         _fireCountdown = 1 / fireRate;
-            //         break;
-            //     case true when attackType == TurretType.Area:
-            //         Smash();
-            //         _fireCountdown = 1 / fireRate;
-            //         break;
-            // }
-            
-            _fireCountdown -= Time.deltaTime;
-        }
-
-        private void LookAtTarget()
+        /// <summary>
+        /// Rotates the turret towards our target
+        /// </summary>
+        protected void LookAtTarget()
         {
             // Get's the rotation we need to end up at, and lerp each frame towards that
             var aimDir = ((Vector2)_target.position - (Vector2)transform.position).normalized;
@@ -144,8 +153,12 @@ namespace Turrets
             transform.rotation *= Quaternion.FromToRotation(up, lookDir);
         }
         
-        // Check we're actually looking at the target before shooting
-        private bool IsLookingAtTarget()
+        /// <summary>
+        /// Check we're currently looking at our target.
+        /// Used to see if we can shoot on single-target turrets.
+        /// </summary>
+        /// <returns>If we're currently looking at the target</returns>
+        protected bool IsLookingAtTarget()
         {
             if (_targetEnemy == null) return false;
             
@@ -153,7 +166,7 @@ namespace Turrets
             var results = new List<RaycastHit2D>();
             var contactFilter = new ContactFilter2D()
             {
-                layerMask = LayerMask.GetMask(new[] { "Enemies" })
+                layerMask = LayerMask.GetMask("Enemies")
             };
             Physics2D.Raycast(firePoint.position, firePoint.up, contactFilter, results, range);
             
@@ -166,83 +179,22 @@ namespace Turrets
             return foundEnemy;
         }
 
-        // Create the bullet and set the target
-        private void Shoot()
-        {
-            var bulletGO = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-            var bullet = bulletGO.GetComponent<Bullet>();
+        protected abstract void Attack();
 
-            if (bullet == null) return;
-            
-            foreach (var upgrade in upgrades)
-            {
-                bullet.AddUpgrade(upgrade);
-            }
-            bullet.Seek(_target);
-        }
-    
-        // TODO - Animate the laser slightly (make it pulse)
-        private void FireLaser()
-        {
-            // Deal damage
-            _targetEnemy.TakeDamage(damageOverTime * Time.deltaTime);
-
-            foreach (var upgrade in upgrades)
-            {
-                upgrade.OnHit(new [] {_targetEnemy});
-            }
-
-            // Enable visuals
-            if (!lineRenderer.enabled)
-            {
-                lineRenderer.enabled = true;
-                impactEffect.Play();
-            }
-        
-            // Set Laser positions
-            var targetPosition = _target.position;
-            var firePointPosition = firePoint.position;
-            lineRenderer.SetPosition(0, firePointPosition);
-            lineRenderer.SetPosition(1, targetPosition);
-
-            // Set impact effect rotation
-            var impactEffectTransform = impactEffect.transform;
-            var aimDir = (Vector3)((Vector2)firePointPosition - (Vector2)impactEffectTransform.position).normalized;
-            impactEffectTransform.rotation = Quaternion.LookRotation(aimDir);
-
-            // Set impact effect position
-            impactEffectTransform.position = targetPosition + aimDir * 0.2f;
-        }
-
-        private void Smash()
-        {
-            smashEffect.Play();
-            
-            // Get's all the enemies in the AoE and calls Damage on them
-            var colliders = Physics2D.OverlapCircleAll(transform.position, range);
-            var enemies = new List<Enemy>();
-            foreach (var collider2d in colliders)
-            {
-                if (!collider2d.CompareTag("Enemy")) continue;
-                
-                var enemy = collider2d.GetComponent<Enemy>();
-                enemies.Add(enemy);
-                enemy.TakeDamage(smashDamage);
-            }
-
-            foreach (var upgrade in upgrades)
-            {
-                upgrade.OnHit(enemies.ToArray());
-            }
-        }
-    
-        // Visualises a circle of range when turret is selected
+        /// <summary>
+        /// Allows the editor to display the range of the turret
+        /// </summary>
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, range);
         }
-
+        
+        /// <summary>
+        /// Adds upgrades to our turret after checking they're valid.
+        /// </summary>
+        /// <param name="upgrade">The upgrade to apply to the turret</param>
+        /// <returns>true If the upgrade was applied successfully</returns>
         public bool AddUpgrade(Upgrade upgrade)
         {
             if (!upgrade.ValidUpgrade(this))
