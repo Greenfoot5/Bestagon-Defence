@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,8 @@ namespace Turrets.Upgrades
     [CreateAssetMenu(fileName = "BombBulletT0", menuName = "Upgrades/BombBullet")]
     public class BombBullet : Upgrade
     {
+        public override Type[] ValidTypes => new Type[] { typeof(Shooter) };
+
         public float explosionRadius;
         public float damageIncrease;
         public float fireRateDecrease;

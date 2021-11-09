@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,8 @@ namespace Turrets.Upgrades
     [CreateAssetMenu(fileName = "RangeUpgrade", menuName = "Upgrades/RangeUpgrade")]
     public class RangeUpgrade : Upgrade
     {
+        public override Type[] ValidTypes => null;  // any
+
         [SerializeField]
         private float percentageIncrease;
         public override void AddUpgrade(Turret turret)

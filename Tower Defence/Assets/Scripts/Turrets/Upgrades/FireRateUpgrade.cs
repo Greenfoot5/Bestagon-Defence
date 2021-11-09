@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,8 @@ namespace Turrets.Upgrades
     [CreateAssetMenu(fileName = "FireRateUpgrade", menuName = "Upgrades/FireRateUpgrade")]
     public class FireRateUpgrade : Upgrade
     {
+        public override Type[] ValidTypes => null;  // any
+
         [SerializeField]
         private float percentageDecrease;
         public override void AddUpgrade(Turret turret)
