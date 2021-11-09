@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shopIcon: {fileID: 21300000, guid: 53d2e052e8cb94f7fb4d11ccacec5eaa, type: 3}
   displayName: Advanced
-  tagline: An icy cold ray
+  tagline: Arctic beacon
   accent: {r: 0.12941177, g: 0.75686276, b: 0.84313726, a: 1}
   prefab: {fileID: 8263255388866025106, guid: f76383e69d04d405ea64aa69d096467f, type: 3}
   upgrades:
