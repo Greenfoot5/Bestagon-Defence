@@ -34,17 +34,7 @@ public class UpgradeSelectionUI : MonoBehaviour
         effect.color = initUpgrade.accentColor;
 
         // Set the restrictions values
-        if (initUpgrade.validTypes.Length == 0)
-        {
-            restrictions.text += "\n• Any";
-        }
-        else
-        {
-            foreach (var turretType in initUpgrade.validTypes)
-            {
-                restrictions.text += "\n• " + turretType + " Turret";
-            }
-        }
+        // TODO
         
         bg.GetComponent<Button>().onClick.AddListener(delegate { MakeSelection(shop); });
     }

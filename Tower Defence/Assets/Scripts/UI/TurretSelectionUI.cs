@@ -16,7 +16,7 @@ public class TurretSelectionUI : MonoBehaviour
     public Image icon;
     
     [Header("Upgrades")]
-    public GameObject noneText;
+    public GameObject upgradesSection;
     public GameObject upgradesLayout;
     public GameObject upgradeUI;
 
@@ -65,7 +65,7 @@ public class TurretSelectionUI : MonoBehaviour
 
         if (turret.upgrades.Count == 0)
         {
-            noneText.SetActive(true);
+            upgradesSection.SetActive(false);
         }
         else
         {
