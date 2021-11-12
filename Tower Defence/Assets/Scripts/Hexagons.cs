@@ -27,6 +27,11 @@ public class Hexagons : Graphic
     public float GlowClamp = 5;
     public float GlowOpacity = 1;
 
+    protected override void Awake()
+    {
+        LoadMaterial();
+    }
+
     protected override void OnValidate()
     {
         RefreshMaterial();

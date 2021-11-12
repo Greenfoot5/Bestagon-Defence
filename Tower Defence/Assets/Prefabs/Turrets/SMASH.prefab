@@ -121,7 +121,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4711107948385963260}
-  - component: {fileID: 6514982}
+  - component: {fileID: 5203603832670551793}
   m_Layer: 0
   m_Name: SMASH
   m_TagString: Untagged
@@ -146,7 +146,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6514982
+--- !u!114 &5203603832670551793
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -155,25 +155,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 3974544501041316794}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 261dc4a4fa6ac451eb7ab4605e8a51ad, type: 3}
+  m_Script: {fileID: 11500000, guid: fd846ae0434a94d0190005ad2d853fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 2
-  attackType: 2
-  fireRate: 1
-  turnSpeed: 3
-  bulletPrefab: {fileID: 8482092496986591318, guid: 2022144fe54f0497e909e81f56751da7, type: 3}
-  damageOverTime: 5
-  lineRenderer: {fileID: 0}
-  impactEffect: {fileID: 7999956124641554740, guid: e496437627ad345cfa65c42cb4a0bcb3, type: 3}
-  smashDamage: 20
-  smashEffect: {fileID: 842137340481146779}
-  slowPercentage: 0
+  damage: 20
   enemyTag: Enemy
-  partToRotate: {fileID: 4711107948385963260}
-  firePoint: {fileID: 1483480927}
-  turretUpgrades: []
-  bulletUpgrades: []
+  range: 2
+  fireRate: 1
+  slowPercentage: 0
+  upgrades: []
+  smashEffect: {fileID: 842137340481146779}
 --- !u!1 &6541947563494285959
 GameObject:
   m_ObjectHideFlags: 0

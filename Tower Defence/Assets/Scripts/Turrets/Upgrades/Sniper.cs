@@ -7,6 +7,8 @@ namespace Turrets.Upgrades
     [CreateAssetMenu(fileName = "SniperT0", menuName = "Upgrades/Sniper")]
     public class Sniper : Upgrade
     {
+        public override Type[] ValidTypes => null;  // any
+
         [Header("Bullet Turret")]
         public float bulletRange;
         public float bulletDamage;
@@ -26,21 +28,21 @@ namespace Turrets.Upgrades
         
         public override void AddUpgrade(Turret turret)
         {
-            switch (turret.attackType)
+            switch (turret)
             {
-                case TurretType.Bullet:
+                case Shooter shooter:
                     turret.range += turret.range * bulletRange;
                     turret.fireRate *= 1 + bulletFireRate;
-                    turret.turnSpeed -= turret.turnSpeed * bulletTurnSpeed;
+                    shooter.turnSpeed -= shooter.turnSpeed * bulletTurnSpeed;
                     break;
-                case TurretType.Laser:
+                case Laser laser:
                     turret.range += turret.range * laserRange;
-                    turret.turnSpeed -= turret.turnSpeed * laserTurnSpeed;
-                    turret.damageOverTime += turret.damageOverTime * laserDamage;
+                    laser.turnSpeed -= laser.turnSpeed * laserTurnSpeed;
+                    turret.damage += turret.damage * laserDamage;
                     break;
-                case TurretType.Area:
+                case Smasher _:
                     turret.range += turret.range * areaRange;
-                    turret.smashDamage += turret.smashDamage * areaDamage;
+                    turret.damage += turret.damage * areaDamage;
                     turret.fireRate *= 1 + areaFireRate;
                     break;
                 default:
@@ -50,21 +52,21 @@ namespace Turrets.Upgrades
 
         public override void RemoveUpgrade(Turret turret)
         {
-            switch (turret.attackType)
+            switch (turret)
             {
-                case TurretType.Bullet:
+                case Shooter shooter:
                     turret.range -= turret.range * bulletRange;
                     turret.fireRate /= 1 + bulletFireRate;
-                    turret.turnSpeed -= turret.turnSpeed * bulletTurnSpeed;
+                    shooter.turnSpeed -= shooter.turnSpeed * bulletTurnSpeed;
                     break;
-                case TurretType.Laser:
+                case Laser laser:
                     turret.range -= turret.range * laserRange;
-                    turret.turnSpeed -= turret.turnSpeed * laserTurnSpeed;
-                    turret.damageOverTime -= turret.damageOverTime * laserDamage;
+                    laser.turnSpeed -= laser.turnSpeed * laserTurnSpeed;
+                    turret.damage -= turret.damage * laserDamage;
                     break;
-                case TurretType.Area:
+                case Smasher _:
                     turret.range -= turret.range * areaRange;
-                    turret.smashDamage -= turret.smashDamage * areaDamage;
+                    turret.damage -= turret.damage * areaDamage;
                     turret.fireRate /= 1 + areaFireRate;
                     break;
                 default:

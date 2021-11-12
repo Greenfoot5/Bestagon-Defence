@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -17,11 +18,13 @@ namespace Turrets.Upgrades
         public Sprite icon;
         [Multiline]
         public string effectText;
-        public TurretType[] validTypes;
+
+        public abstract Type[] ValidTypes { get; }
 
         public bool ValidUpgrade(Turret turret)
         {
-            return validTypes.Contains(turret.attackType);
+            if (ValidTypes == null) return true;
+            return ValidTypes.Contains(turret.GetType());
         }
 
         public abstract void AddUpgrade(Turret turret);
