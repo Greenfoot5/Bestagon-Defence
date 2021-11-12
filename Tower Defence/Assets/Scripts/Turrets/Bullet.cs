@@ -11,7 +11,7 @@ namespace Turrets
         public float speed = 30f;
         [Tooltip("Only set if we're dealing AoE")]
         public float explosionRadius;
-        public float damage = 50;
+        [HideInInspector] public float damage = 50;
     
         [Tooltip("The effect spawned when the bullet hit's a target")]
         public GameObject impactEffect;

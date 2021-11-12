@@ -33,16 +33,16 @@ public class UpgradeSelectionUI : MonoBehaviour
         effect.text = initUpgrade.effectText;
         effect.color = initUpgrade.accentColor;
 
-        // Set the restrictions values
-        if (initUpgrade.validTypes.Length == 0)
+        // TODO: Update this to use icons
+        if (initUpgrade.ValidTypes == null)
         {
             restrictions.text += "\n• Any";
         }
         else
         {
-            foreach (var turretType in initUpgrade.validTypes)
+            foreach (var turretType in initUpgrade.ValidTypes)
             {
-                restrictions.text += "\n• " + turretType + " Turret";
+                restrictions.text += "\n• " + turretType.Name + " Turret";
             }
         }
         
