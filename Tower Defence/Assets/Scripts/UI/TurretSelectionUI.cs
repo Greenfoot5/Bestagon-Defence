@@ -17,7 +17,7 @@ namespace UI
         public Image icon;
     
         [Header("Upgrades")]
-        public GameObject noneText;
+        public GameObject upgradesSection;
         public GameObject upgradesLayout;
         public GameObject upgradeUI;
 
@@ -48,7 +48,7 @@ namespace UI
 
             if (turret.upgrades.Count == 0)
             {
-                noneText.SetActive(true);
+                upgradesSection.SetActive(true);
             }
             else
             {
