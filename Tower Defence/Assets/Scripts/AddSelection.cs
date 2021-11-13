@@ -47,7 +47,7 @@ public class AddSelection : MonoBehaviour
             if (firstPurchase)
             {
                 var turrets = _gameManager.levelData.turrets;
-                GenerateTurretUI(turrets[Random.Range(0, turrets.Count)]);
+                GenerateTurretUI(turrets.GETRandomItem());
 
                 continue;
             }
@@ -61,13 +61,13 @@ public class AddSelection : MonoBehaviour
                 {
                     // TODO - Choose which reward in that type to give
                     var upgrades = _gameManager.levelData.upgrades;
-                    GenerateEvolutionUI(upgrades[Random.Range(0, upgrades.Count)]);
+                    GenerateEvolutionUI(upgrades.GETRandomItem());
                     break;
                 }
                 case 1:
                 {
                     var turrets = _gameManager.levelData.turrets;
-                    GenerateTurretUI(turrets[Random.Range(0, turrets.Count)]);
+                    GenerateTurretUI(turrets.GETRandomItem());
                     break;
                 }
             }

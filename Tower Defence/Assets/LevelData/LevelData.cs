@@ -9,8 +9,8 @@ namespace LevelData
     public class LevelData : ScriptableObject
     {
         [Header("Selection")]
-        public List<TurretBlueprint> turrets = new List<TurretBlueprint>();
-        public List<Upgrade> upgrades = new List<Upgrade>();
+        public WeightedList<TurretBlueprint> turrets;
+        public WeightedList<Upgrade> upgrades;
         public int initialSelectionCost;
         public int selectionCostIncrement;
     }
