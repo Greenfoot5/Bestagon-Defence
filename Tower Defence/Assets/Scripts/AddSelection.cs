@@ -12,6 +12,8 @@ public class AddSelection : MonoBehaviour
     public Shop shop;
     public float random;
 
+    private bool firstPurchase;
+
     private void Init()
     {
         // Setup Game Manager reference
@@ -38,10 +40,18 @@ public class AddSelection : MonoBehaviour
         {
             Destroy(transform.GetChild(i).gameObject);
         }
-        
+
         // TODO - Perhaps modify amount of choices
         for (var i = 0; i < 3; i++)
         {
+            if (firstPurchase)
+            {
+                var turrets = _gameManager.levelData.turrets;
+                GenerateTurretUI(turrets[Random.Range(0, turrets.Count)]);
+
+                continue;
+            }
+            
             // TODO - Choose which reward type to give
             var choice = Random.Range(0, 2);
             switch (choice)
@@ -62,6 +72,8 @@ public class AddSelection : MonoBehaviour
                 }
             }
         }
+
+        if (firstPurchase) firstPurchase = false;
     }
 
     private void GenerateEvolutionUI(Upgrade upgrade)
