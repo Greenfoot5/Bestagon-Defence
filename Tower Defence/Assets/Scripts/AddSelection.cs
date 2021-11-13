@@ -10,7 +10,6 @@ public class AddSelection : MonoBehaviour
     public GameObject evolutionSelectionUI;
     private GameManager _gameManager;
     public Shop shop;
-    public float random;
 
     private bool firstPurchase;
 
@@ -44,9 +43,10 @@ public class AddSelection : MonoBehaviour
         // TODO - Perhaps modify amount of choices
         for (var i = 0; i < 3; i++)
         {
+            // If it's the first time opening the shop this level, we should display a different selection
             if (firstPurchase)
             {
-                var turrets = _gameManager.levelData.turrets;
+                var turrets = _gameManager.levelData.initialTurretSelection;
                 GenerateTurretUI(turrets.GETRandomItem());
 
                 continue;
