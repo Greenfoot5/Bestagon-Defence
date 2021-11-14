@@ -1,3 +1,6 @@
+using System;
+using System.Linq;
+using LevelData;
 using Turrets.Blueprints;
 using Turrets.Upgrades;
 using UI;
@@ -39,6 +42,11 @@ public class AddSelection : MonoBehaviour
         {
             Destroy(transform.GetChild(i).gameObject);
         }
+        
+        // Tracks what we've given, so we don't give duplicates
+        var selectedTypes = new Type[3];
+        var selectedNames = new string[3];
+        var lagCounter = 0;
 
         // TODO - Perhaps modify amount of choices
         for (var i = 0; i < 3; i++)
@@ -47,27 +55,112 @@ public class AddSelection : MonoBehaviour
             if (_firstPurchase)
             {
                 var turrets = _gameManager.levelData.initialTurretSelection;
-                GenerateTurretUI(turrets.GETRandomItem());
+                var selected = turrets.GETRandomItem();
+                switch (_gameManager.levelData.initialDuplicateCheck)
+                {
+                    case DuplicateTypes.None:
+                        break;
+                    case DuplicateTypes.ByName:
+                        while (selectedNames.Contains(selected.displayName))
+                        {
+                            selected = turrets.GETRandomItem();
+                            lagCounter++;
+                            if (lagCounter > 5000)
+                                throw new OverflowException("Too many attempts to pick new turret");
+                        }
 
+                        break;
+                    case DuplicateTypes.ByType:
+                        while (selectedTypes.Contains(selected.GetType()))
+                        {
+                            selected = turrets.GETRandomItem();
+                            lagCounter++;
+                            if (lagCounter > 5000)
+                                throw new OverflowException("Too many attempts to pick new turret");
+                        }
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+                GenerateTurretUI(selected);
+
+                selectedTypes[i] = selected.GetType();
+                selectedNames[i] = selected.displayName;
                 continue;
             }
             
-            // TODO - Choose which reward type to give
+            // TODO - Choose which reward type to give with ratios/weights
             var choice = Random.Range(0, 2);
             switch (choice)
             {
-                // TODO - Avoid duplicates
                 case 0:
                 {
-                    // TODO - Choose which reward in that type to give
                     var upgrades = _gameManager.levelData.upgrades;
-                    GenerateEvolutionUI(upgrades.GETRandomItem());
+                    var selected = upgrades.GETRandomItem();
+                    switch (_gameManager.levelData.upgradeDuplicateCheck)
+                    {
+                        case DuplicateTypes.None:
+                            break;
+                        case DuplicateTypes.ByName:
+                            while (selectedNames.Contains(selected.displayName))
+                            {
+                                selected = upgrades.GETRandomItem();
+                                lagCounter++;
+                                if (lagCounter > 5000)
+                                    throw new OverflowException("Too many attempts to pick new upgrade");
+                            }
+                            break;
+                        case DuplicateTypes.ByType:
+                            while (selectedTypes.Contains(selected.GetType()))
+                            {
+                                selected = upgrades.GETRandomItem();
+                                lagCounter++;
+                                if (lagCounter > 5000)
+                                    throw new OverflowException("Too many attempts to pick new upgrade");
+                            }
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                    GenerateEvolutionUI(selected);
+                    
+                    selectedTypes[i] = selected.GetType();
+                    selectedNames[i] = selected.displayName;
                     break;
                 }
                 case 1:
                 {
                     var turrets = _gameManager.levelData.turrets;
-                    GenerateTurretUI(turrets.GETRandomItem());
+                    var selected = turrets.GETRandomItem();
+                    switch (_gameManager.levelData.turretDuplicateCheck)
+                    {
+                        case DuplicateTypes.None:
+                            break;
+                        case DuplicateTypes.ByName:
+                            while (selectedNames.Contains(selected.displayName))
+                            {
+                                selected = turrets.GETRandomItem();
+                                lagCounter++;
+                                if (lagCounter > 5000)
+                                    throw new OverflowException("Too many attempts to pick new turret");
+                            }
+                            break;
+                        case DuplicateTypes.ByType:
+                            while (selectedTypes.Contains(selected.GetType()))
+                            {
+                                selected = turrets.GETRandomItem();
+                                lagCounter++;
+                                if (lagCounter > 5000)
+                                    throw new OverflowException("Too many attempts to pick new turret");
+                            }
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                    GenerateTurretUI(selected);
+                    
+                    selectedTypes[i] = selected.GetType();
+                    selectedNames[i] = selected.displayName;
                     break;
                 }
             }

@@ -27,7 +27,7 @@ public struct WeightedList<T>
     /// Gets a random item from the list using the weights
     /// </summary>
     /// <returns>A random item, if all weights are 0, selects a random with equal weighting</returns>
-    /// <exception cref="NullReferenceException"></exception>
+    /// <exception cref="NullReferenceException">The list is empty</exception>
     public T GETRandomItem()
     {
         if (list.Count == 0) throw new NullReferenceException("WeightedList is empty");
@@ -45,7 +45,10 @@ public struct WeightedList<T>
             total -= list[i].weight;
             i++;
         }
-
+        
+        // It's not perfect, but it's better than nothing
+        if (total == 0) return list[Random.Range(0, list.Count)].item;
+        
         throw new NullReferenceException("Cannot return a random item from the WeightedList");
     }
     
