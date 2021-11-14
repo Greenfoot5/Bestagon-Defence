@@ -11,7 +11,7 @@ public class AddSelection : MonoBehaviour
     private GameManager _gameManager;
     public Shop shop;
 
-    private bool firstPurchase;
+    private bool _firstPurchase = true;
 
     private void Init()
     {
@@ -44,7 +44,7 @@ public class AddSelection : MonoBehaviour
         for (var i = 0; i < 3; i++)
         {
             // If it's the first time opening the shop this level, we should display a different selection
-            if (firstPurchase)
+            if (_firstPurchase)
             {
                 var turrets = _gameManager.levelData.initialTurretSelection;
                 GenerateTurretUI(turrets.GETRandomItem());
@@ -73,7 +73,7 @@ public class AddSelection : MonoBehaviour
             }
         }
 
-        if (firstPurchase) firstPurchase = false;
+        if (_firstPurchase) _firstPurchase = false;
     }
 
     private void GenerateEvolutionUI(Upgrade upgrade)

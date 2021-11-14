@@ -8,6 +8,7 @@ namespace LevelData
     public class LevelData : ScriptableObject
     {
         [Header("InitialSelection")]
+        [Tooltip("These chances overwrite base chances")]
         public WeightedList<TurretBlueprint> initialTurretSelection;
         [Header("Selection")]
         public WeightedList<TurretBlueprint> turrets;

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 using Random = UnityEngine.Random;
 
 /// <summary>
@@ -32,14 +33,14 @@ public struct WeightedList<T>
         if (list.Count == 0) throw new NullReferenceException("WeightedList is empty");
         
         var total = list.Sum(t => t.weight);
-        Random.Range(0, total);
+        total = Random.Range(0f, total);
 
         if (total == 0) return list[Random.Range(0, list.Count)].item;
 
         var i = 0;
-        while (total >= 0)
+        while (total >= 0 && i < list.Count)
         {
-            if (total < list[i].weight) return list[0].item;
+            if (total < list[i].weight) return list[i].item;
 
             total -= list[i].weight;
             i++;
