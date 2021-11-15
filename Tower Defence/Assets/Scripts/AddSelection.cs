@@ -11,7 +11,7 @@ public class AddSelection : MonoBehaviour
 {
     public GameObject turretSelectionUI;
     public GameObject upgradeSelectionUI;
-    private GameManager _gameManager;
+    private LevelData.LevelData _levelData;
     public Shop shop;
 
     private bool _firstPurchase = true;
@@ -21,8 +21,8 @@ public class AddSelection : MonoBehaviour
     /// </summary>
     private void Init()
     {
-        // Setup Game Manager reference
-        if (_gameManager == null) _gameManager = BuildManager.instance.GetComponent<GameManager>();
+        // Setup Level Manager reference
+        _levelData = BuildManager.instance.GetComponent<GameManager>().levelData;
 
         // Check we can afford to open the shop
         if (GameStats.money < shop.GetSelectionCost())
@@ -65,11 +65,105 @@ public class AddSelection : MonoBehaviour
             if (_firstPurchase)
             {
                 // Add a new turret to the selection
-                var turrets = _gameManager.levelData.initialTurretSelection;
+                var turrets = _levelData.initialTurretSelection;
+                var selected = turrets.GETRandomItem();
+
+                // Gets a new turret if we have a duplicate (depending on settings)
+                switch (_levelData.initialDuplicateCheck)
+                {
+                    case DuplicateTypes.None:
+                        break;
+
+                    case DuplicateTypes.ByName:
+                        while (selectedNames.Contains(selected.displayName))
+                        {
+                            selected = turrets.GETRandomItem();
+                            lagCounter++;
+                            if (lagCounter > lagCap)
+                                throw new OverflowException("Too many attempts to pick new turret");
+                        }
+
+                        break;
+
+                    case DuplicateTypes.ByType:
+                        while (selectedTypes.Contains(selected.GetType()))
+                        {
+                            selected = turrets.GETRandomItem();
+                            lagCounter++;
+                            if (lagCounter > lagCap)
+                                throw new OverflowException("Too many attempts to pick new turret");
+                        }
+
+                        break;
+
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+
+                // Adds our selection to the UI
+                GenerateTurretUI(selected);
+
+                // Add the selection to our selected arrays to avoid duplicates
+                selectedTypes[i] = selected.GetType();
+                selectedNames[i] = selected.displayName;
+                continue;
+            }
+
+            // Select if we should get an upgrade or a turret
+            var choice = Random.Range(0f, _levelData.turretOptionWeight + _levelData.upgradeOptionWeight);
+            if (choice > _levelData.turretOptionWeight)
+            {
+                // Grants an upgrade option
+                var upgrades = _levelData.upgrades;
+                var selected = upgrades.GETRandomItem();
+
+                // Gets a new upgrade if we have picked a duplicate (depending on settings)
+                switch (_levelData.upgradeDuplicateCheck)
+                {
+                    case DuplicateTypes.None:
+                        break;
+
+                    case DuplicateTypes.ByName:
+                        while (selectedNames.Contains(selected.displayName))
+                        {
+                            selected = upgrades.GETRandomItem();
+                            lagCounter++;
+                            if (lagCounter > lagCap)
+                                throw new OverflowException("Too many attempts to pick new upgrade");
+                        }
+
+                        break;
+
+                    case DuplicateTypes.ByType:
+                        while (selectedTypes.Contains(selected.GetType()))
+                        {
+                            selected = upgrades.GETRandomItem();
+                            lagCounter++;
+                            if (lagCounter > lagCap)
+                                throw new OverflowException("Too many attempts to pick new upgrade");
+                        }
+
+                        break;
+
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+
+                // Adds the upgrade as an option to the user
+                GenerateUpgradeUI(selected);
+
+                // Add it to our "history" to avoid duplicates on our next selection
+                selectedTypes[i] = selected.GetType();
+                selectedNames[i] = selected.displayName;
+            }
+            else
+            {
+                // Grants a turret option
+                var turrets = _levelData.turrets;
                 var selected = turrets.GETRandomItem();
                 
-                // Gets a new turret if we have a duplicate (depending on settings)
-                switch (_gameManager.levelData.initialDuplicateCheck)
+                // Check we didn't pick something we've already picked (depending on duplicate checking type)
+                switch (_levelData.turretDuplicateCheck)
                 {
                     case DuplicateTypes.None:
                         break;
@@ -82,7 +176,6 @@ public class AddSelection : MonoBehaviour
                             if (lagCounter > lagCap)
                                 throw new OverflowException("Too many attempts to pick new turret");
                         }
-
                         break;
                     
                     case DuplicateTypes.ByType:
@@ -99,108 +192,12 @@ public class AddSelection : MonoBehaviour
                         throw new ArgumentOutOfRangeException();
                 }
                 
-                // Adds our selection to the UI
+                // Add the turret to the ui for the user to pick
                 GenerateTurretUI(selected);
                 
-                // Add the selection to our selected arrays to avoid duplicates
+                // Add the turret to our history so we don't pick it again
                 selectedTypes[i] = selected.GetType();
                 selectedNames[i] = selected.displayName;
-                continue;
-            }
-            
-            // TODO - Choose which reward type to give with ratios/weights
-            // Select if we should get an upgrade or a turret
-            var choice = Random.Range(0, 2);
-            switch (choice)
-            {
-                case 0:
-                {
-                    // Grants an upgrade option
-                    var upgrades = _gameManager.levelData.upgrades;
-                    var selected = upgrades.GETRandomItem();
-                    
-                    // Gets a new upgrade if we have picked a duplicate (depending on settings)
-                    switch (_gameManager.levelData.upgradeDuplicateCheck)
-                    {
-                        case DuplicateTypes.None:
-                            break;
-                        
-                        case DuplicateTypes.ByName:
-                            while (selectedNames.Contains(selected.displayName))
-                            {
-                                selected = upgrades.GETRandomItem();
-                                lagCounter++;
-                                if (lagCounter > lagCap)
-                                    throw new OverflowException("Too many attempts to pick new upgrade");
-                            }
-                            break;
-                        
-                        case DuplicateTypes.ByType:
-                            while (selectedTypes.Contains(selected.GetType()))
-                            {
-                                selected = upgrades.GETRandomItem();
-                                lagCounter++;
-                                if (lagCounter > lagCap)
-                                    throw new OverflowException("Too many attempts to pick new upgrade");
-                            }
-                            break;
-                        
-                        default:
-                            throw new ArgumentOutOfRangeException();
-                    }
-                    
-                    // Adds the upgrade as an option to the user
-                    GenerateUpgradeUI(selected);
-                    
-                    // Add it to our "history" to avoid duplicates on our next selection
-                    selectedTypes[i] = selected.GetType();
-                    selectedNames[i] = selected.displayName;
-                    break;
-                }
-                case 1:
-                {
-                    // Grants a turret option
-                    var turrets = _gameManager.levelData.turrets;
-                    var selected = turrets.GETRandomItem();
-                    
-                    // Check we didn't pick something we've already picked (depending on duplicate checking type)
-                    switch (_gameManager.levelData.turretDuplicateCheck)
-                    {
-                        case DuplicateTypes.None:
-                            break;
-                        
-                        case DuplicateTypes.ByName:
-                            while (selectedNames.Contains(selected.displayName))
-                            {
-                                selected = turrets.GETRandomItem();
-                                lagCounter++;
-                                if (lagCounter > lagCap)
-                                    throw new OverflowException("Too many attempts to pick new turret");
-                            }
-                            break;
-                        
-                        case DuplicateTypes.ByType:
-                            while (selectedTypes.Contains(selected.GetType()))
-                            {
-                                selected = turrets.GETRandomItem();
-                                lagCounter++;
-                                if (lagCounter > lagCap)
-                                    throw new OverflowException("Too many attempts to pick new turret");
-                            }
-                            break;
-                        
-                        default:
-                            throw new ArgumentOutOfRangeException();
-                    }
-                    
-                    // Add the turret to the ui for the user to pick
-                    GenerateTurretUI(selected);
-                    
-                    // Add the turret to our history so we don't pick it again
-                    selectedTypes[i] = selected.GetType();
-                    selectedNames[i] = selected.displayName;
-                    break;
-                }
             }
         }
         
