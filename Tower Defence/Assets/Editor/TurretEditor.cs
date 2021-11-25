@@ -2,7 +2,7 @@ using Turrets;
 using UnityEditor;
 
 [CustomEditor(typeof(Turret), true)]
-public class TurretEditor : Editor
+public class TurretEditor : UnityEditor.Editor
 {
     // PROPERTIES
 

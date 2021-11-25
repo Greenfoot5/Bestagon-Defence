@@ -66,27 +66,27 @@ public class WaveSpawner : MonoBehaviour
         isSpawning = true;
         var wave = waves[_waveIndex];
 
-        for (var i = 0; i < wave.waveSets.Length; i++)
-        {
-            var set = wave.waveSets[i];
-            
-            // For all the enemies we will spawn,
-            // spawn one, then wait timeBetweenEnemies seconds
-            for (var j = 0; j < set.count; j++)
-            {
-                SpawnEnemy(set.enemy);
-
-                if (j + 1 != set.count)
-                {
-                    yield return new WaitForSeconds(set.rate);
-                }
-            }
-
-            if (i + 1 != wave.waveSets.Length)
-            {
-                yield return new WaitForSeconds(wave.setDelays[i]);
-            }
-        }
+        // for (var i = 0; i < wave.waveSets.Length; i++)
+        // {
+        //     var set = wave.waveSets[i];
+        //     
+        //     // For all the enemies we will spawn,
+        //     // spawn one, then wait timeBetweenEnemies seconds
+        //     for (var j = 0; j < set.count; j++)
+        //     {
+        //         SpawnEnemy(set.enemy);
+        //
+        //         if (j + 1 != set.count)
+        //         {
+        //             yield return new WaitForSeconds(set.rate);
+        //         }
+        //     }
+        //
+        //     if (i + 1 != wave.waveSets.Length)
+        //     {
+        //         yield return new WaitForSeconds(wave.setDelays[i]);
+        //     }
+        // }
 
         _waveIndex++;
         isSpawning = false;
