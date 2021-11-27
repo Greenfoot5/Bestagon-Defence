@@ -13,7 +13,7 @@ namespace LevelData
     [CreateAssetMenu(fileName = "LevelName", menuName = "LevelData", order = 2)]
     public class LevelData : ScriptableObject
     {
-        [Header("InitialSelection")]
+        [Header("Initial Selection")]
         [Tooltip("These chances overwrite base chances")]
         public WeightedList<TurretBlueprint> initialTurretSelection;
         public DuplicateTypes initialDuplicateCheck = DuplicateTypes.None;
@@ -30,5 +30,9 @@ namespace LevelData
         [Header("Costs")]
         public int initialSelectionCost;
         public int selectionCostIncrement;
+
+        [Header("Waves")]
+        [HideInInspector]
+        public WeightedList<WaveSet> waveSets;
     }
 }

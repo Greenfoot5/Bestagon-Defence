@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Waves;
 
 /*
  * A script to move the enemy along our designated path

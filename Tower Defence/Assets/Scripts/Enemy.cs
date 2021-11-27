@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using Waves;
 
 public class Enemy : MonoBehaviour
 {
