@@ -15,17 +15,17 @@ namespace Turrets
             // Don't do anything if no enemy is in range
             if (!Physics2D.OverlapCircleAll(transform.position, range).Any(x => x.CompareTag(enemyTag)))
             {
-                _fireCountdown -= Time.deltaTime;
+                fireCountdown -= Time.deltaTime;
                 return;
             }
 
-            if (_fireCountdown <= 0)
+            if (fireCountdown <= 0)
             {
                 Attack();
-                _fireCountdown = 1 / fireRate;
+                fireCountdown = 1 / fireRate;
             }
             
-            _fireCountdown -= Time.deltaTime;
+            fireCountdown -= Time.deltaTime;
         }
 
         protected override void Attack()

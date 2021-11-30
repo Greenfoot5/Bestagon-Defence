@@ -14,7 +14,7 @@ namespace Turrets
             // Don't do anything if we don't have a target
             if (_target == null)
             {
-                _fireCountdown -= Time.deltaTime;
+                fireCountdown -= Time.deltaTime;
                 return;
             }
         
@@ -23,18 +23,18 @@ namespace Turrets
 
             if (!IsLookingAtTarget())
             {
-                _fireCountdown -= Time.deltaTime;
+                fireCountdown -= Time.deltaTime;
                 return;
             }
             
             
-            if (_fireCountdown <= 0)
+            if (fireCountdown <= 0)
             {
                 Attack();
-                _fireCountdown = 1 / fireRate;
+                fireCountdown = 1 / fireRate;
             }
             
-            _fireCountdown -= Time.deltaTime;
+            fireCountdown -= Time.deltaTime;
         }
 
         // Create the bullet and set the target

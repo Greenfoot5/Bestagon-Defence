@@ -31,6 +31,9 @@ namespace UI
                 var upgradeIcon = Instantiate(upgradeIconPrefab, upgrades);
                 upgradeIcon.GetComponent<UpgradeIcon>().SetData(upgrade);
             }
+            
+            // Display the radius of the turret
+            _target.turret.GetComponent<Turret>().Selected();
 
             // Enable the UI
             ui.SetActive(true);

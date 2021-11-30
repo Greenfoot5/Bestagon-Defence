@@ -28,32 +28,6 @@ public class Node : MonoBehaviour
         _buildManager = BuildManager.instance;
     }
 
-    private void OnMouseDown()
-    {
-        // Make sure we're hovering over the node and nothing else
-        if (EventSystem.current.IsPointerOverGameObject())
-        {
-            return;
-        }
-    
-        // Select the node/turret
-        if (turret != null)
-        {
-            _buildManager.SelectNode(this);
-            return;
-        }
-        
-        // Check we are trying to build
-        if (!_buildManager.CanBuild)
-        {
-            return;
-        }
-        
-        // Construct a turret
-        BuildTurret(_buildManager.GetTurretToBuild());
-        _buildManager.BuiltTurret();
-    }
-    
     // Called when we're building a turret
     private void BuildTurret(TurretBlueprint blueprint)
     {
@@ -105,6 +79,36 @@ public class Node : MonoBehaviour
         isUpgraded = false;
 
         BuildManager.instance.DeselectNode();
+    }
+    
+    /// <summary>
+    /// Called when the mouse is down.
+    /// Either Selects the turret or builds
+    /// </summary>
+    private void OnMouseDown()
+    {
+        // Make sure we're hovering over the node and nothing else
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
+    
+        // Select the node/turret
+        if (turret != null)
+        {
+            _buildManager.SelectNode(this);
+            return;
+        }
+        
+        // Check we are trying to build
+        if (!_buildManager.CanBuild)
+        {
+            return;
+        }
+        
+        // Construct a turret
+        BuildTurret(_buildManager.GetTurretToBuild());
+        _buildManager.BuiltTurret();
     }
     
     // Called when the mouse hovers over the object
