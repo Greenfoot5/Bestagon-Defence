@@ -74,7 +74,7 @@ namespace Editor.Waves
                     break;
                 // We want to edit the waves
                 case 1:
-                    GUILayout.Label("Waves!");
+                    GUILayout.Label("");
                     break;
                 default:
                     EditorGUILayout.HelpBox(new GUIContent("It broke :'("));
