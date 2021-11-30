@@ -68,6 +68,12 @@ namespace Turrets
 
             upgrade.AddUpgrade(this);
             upgrades.Add(upgrade);
+            
+            // Update the range shader's size
+            rangeDisplay.transform.localScale = new Vector3(
+                range / transform.localScale.x * 2,
+                range / transform.localScale.y * 2,
+                1);
             return true;
         }
 

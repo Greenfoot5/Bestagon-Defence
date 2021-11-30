@@ -72,7 +72,7 @@ public class BuildManager : MonoBehaviour
     // Deselects the node
     public void DeselectNode()
     {
-        if (_selectedNode.turret != null)
+        if (_selectedNode != null && _selectedNode.turret != null)
         {
             _selectedNode.turret.GetComponent<Turret>().Deselected();
         }
