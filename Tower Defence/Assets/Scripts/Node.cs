@@ -11,7 +11,7 @@ public class Node : MonoBehaviour
     public Color cantAffordColour;
     private Color _defaultColour;
 
-    [HideInInspector]
+    //[HideInInspector]
     public GameObject turret;
     [HideInInspector]
     public TurretBlueprint turretBlueprint;

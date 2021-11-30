@@ -1,6 +1,5 @@
-﻿using TMPro;
+﻿using Turrets;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace UI
 {
@@ -11,9 +10,8 @@ namespace UI
     
         private Node _target;
     
-        public TMP_Text upgradeText;
-        public Button upgradeButton;
-        public TMP_Text sellText;
+        public Transform upgrades;
+        public GameObject upgradeIconPrefab;
 
         // Called when we select a node
         public void SetTarget(Node node)
@@ -24,22 +22,16 @@ namespace UI
         
             // Move the UI to be above the node
             transform.position = _target.transform.position;
-        
-            // Check if the turret is already upgraded and if we need to enable the upgrade button
-            // if (_target.isUpgraded)
-            // {
-            //     upgradeText.text = "<b>Upgrade\nPurchased</b>";
-            //     upgradeButton.interactable = false;
-            // }
-            // else
-            // {
-            //     upgradeText.text = "<b>Upgrade</b>";
-            //     upgradeButton.interactable = true;
-            // }
-        
-            // // Set sell amount
-            // sellText.text = "<b>Sell</b>";
-        
+            
+            upgrades.DetachChildren();
+            
+            // Add each upgrade as an icon
+            foreach (var upgrade in _target.turret.GetComponent<Turret>().upgrades)
+            {
+                var upgradeIcon = Instantiate(upgradeIconPrefab, upgrades);
+                upgradeIcon.GetComponent<UpgradeIcon>().SetData(upgrade);
+            }
+
             // Enable the UI
             ui.SetActive(true);
         }
