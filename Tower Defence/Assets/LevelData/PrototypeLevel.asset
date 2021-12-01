@@ -44,3 +44,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2a42e155c209b403eb3e9155f49abcfa, type: 2}
   initialSelectionCost: 100
   selectionCostIncrement: 10
+  health: 1.1
+  enemyCount: 1

@@ -244,7 +244,7 @@ MonoBehaviour:
   enemyTag: Enemy
   range: 3
   rangeDisplay: {fileID: 1139687739}
-  fireRate: 1.1
+  fireRate: 1.2
   slowPercentage: 0
   upgrades: []
   targetingMethod: 0

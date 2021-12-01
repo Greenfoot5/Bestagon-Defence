@@ -67,7 +67,7 @@ public class WaveSpawner : MonoBehaviour
     private IEnumerator SpawnWave()
     {
         isSpawning = true;
-        var wave = waves[_waveIndex];
+        var wave = waves[_waveIndex % waves.Length];
 
         for (var i = 0; i < wave.waveSets.Length; i++)
         {
@@ -95,9 +95,8 @@ public class WaveSpawner : MonoBehaviour
         _waveIndex++;
         isSpawning = false;
 
-        if (_waveIndex != waves.Length) yield break;
+        if (_waveIndex % waves.Length != 0) yield break;
         Debug.Log("Level complete!");
-        enabled = false;
     }
     
     /// <summary>
