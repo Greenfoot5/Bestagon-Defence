@@ -241,7 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd846ae0434a94d0190005ad2d853fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 15
   enemyTag: Enemy
   range: 2
   rangeDisplay: {fileID: 3255284869200513298}

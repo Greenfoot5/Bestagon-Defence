@@ -13,5 +13,9 @@ namespace LevelData
         public List<Upgrade> upgrades = new List<Upgrade>();
         public int initialSelectionCost;
         public int selectionCostIncrement;
+
+        [Header("Wave Scaling")]
+        public float health = 1f;
+        public float enemyCount = 1f;
     }
 }
