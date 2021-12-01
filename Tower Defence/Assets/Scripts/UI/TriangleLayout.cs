@@ -27,10 +27,8 @@ namespace UI
                 // Calculate Offset Based on line
                 var lineIndex = i - TriangleCount(i + 1);
                 var inset = lineIndex * cellSize.x; // Offset from line
-                Debug.Log(inset);
                 if (lineIndex != 0)
                     inset += lineIndex * spacing.x; // Offset based on spacing
-                Debug.Log(inset);
                 switch(GetHorizontalEdge())
                 {
                     case RectTransform.Edge.Left:
@@ -48,9 +46,6 @@ namespace UI
                         child.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, inset, cellSize.x);
                         break;
                 }
-
-                // Set stuff
-                
             }
         }
 
@@ -61,10 +56,26 @@ namespace UI
                 var child = (RectTransform)transform.GetChild(i);
 
                 var lineNumber = CalculateLine(i + 1) + 1;
-                //Debug.Log(CalculateLine(i));
-                var inset = (lineNumber * cellSize.y / 2); //+ (lineNumber - 1) * spacing.y + top;
-                //Debug.Log(inset);
-                child.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, inset, cellSize.x);
+                var inset = ((lineNumber - 1) * cellSize.y);
+                if (lineNumber != 0)
+                    inset += lineNumber * spacing.y;
+                
+                switch(GetVerticalEdge())
+                {
+                    case RectTransform.Edge.Top:
+                        inset += top;
+                        child.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, inset, cellSize.y);
+                        break;
+                    case RectTransform.Edge.Bottom:
+                        inset += bottom;
+                        child.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Bottom, inset, cellSize.y);
+                        break;
+                    default:
+                        inset += top;
+                        inset -= ((lineNumber - 1) * cellSize.y) / 2;
+                        child.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, inset, cellSize.y);
+                        break;
+                }
             }
         }
 
@@ -82,6 +93,19 @@ namespace UI
             
             // Centre or custom
             return RectTransform.Edge.Top;
+        }
+
+        private RectTransform.Edge GetVerticalEdge()
+        {
+            if (alignment == SpriteAlignment.BottomLeft || alignment == SpriteAlignment.BottomCenter ||
+                alignment == SpriteAlignment.BottomRight)
+                return RectTransform.Edge.Bottom;
+
+            if (alignment == SpriteAlignment.TopLeft || alignment == SpriteAlignment.TopCenter ||
+                alignment == SpriteAlignment.TopRight)
+                return RectTransform.Edge.Top;
+
+            return RectTransform.Edge.Right;
         }
         
         private static int CalculateLine(int i)
