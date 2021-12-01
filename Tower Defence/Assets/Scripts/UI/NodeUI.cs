@@ -1,4 +1,5 @@
-﻿using Turrets;
+﻿using TMPro;
+using Turrets;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +17,8 @@ namespace UI
     
         public Transform upgrades;
         public GameObject upgradeIconPrefab;
+
+        public TMP_Text stats;
 
         /// <summary>
         /// Called when selecting a new node
@@ -45,6 +48,7 @@ namespace UI
             // Enable the UI
             ui.SetActive(true);
             LayoutRebuilder.MarkLayoutForRebuild((RectTransform) upgrades);
+            AddStats();
         }
     
         /// <summary>
@@ -69,6 +73,15 @@ namespace UI
             if (!applied) return;
             
             shop.RemoveUpgrade();
-            }
+        }
+
+        private void AddStats()
+        {
+            if (_target.turret == null) return;
+            var turret = _target.turret.GetComponent<Turret>();
+            stats.text = "<sprite=\"Stats\" name=\"damage\"> " + turret.damage + "\n" +
+                         "<sprite=\"Stats\" name=\"range\"> " + turret.range +
+                         " <sprite=\"Stats\" name=\"rate\"> " + turret.fireRate;
+        }
     }
 }
