@@ -1,5 +1,6 @@
 ﻿using Turrets;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UI
 {
@@ -37,6 +38,7 @@ namespace UI
 
             // Enable the UI
             ui.SetActive(true);
+            LayoutRebuilder.MarkLayoutForRebuild((RectTransform) upgrades);
         }
     
         // Hide's the UI
