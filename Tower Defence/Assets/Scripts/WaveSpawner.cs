@@ -26,9 +26,12 @@ public class WaveSpawner : MonoBehaviour
 
     public bool isSpawning;
 
+    private LevelData.LevelData _levelData;
+
     void Start()
     {
         enemiesAlive = 0;
+        _levelData = gameObject.GetComponent<GameManager>().levelData;
     }
 
     private void Update()
@@ -64,7 +67,7 @@ public class WaveSpawner : MonoBehaviour
     private IEnumerator SpawnWave()
     {
         isSpawning = true;
-        var wave = waves[_waveIndex];
+        var wave = waves[_waveIndex % waves.Length];
 
         for (var i = 0; i < wave.waveSets.Length; i++)
         {
@@ -72,7 +75,8 @@ public class WaveSpawner : MonoBehaviour
             
             // For all the enemies we will spawn,
             // spawn one, then wait timeBetweenEnemies seconds
-            for (var j = 0; j < set.count; j++)
+            var setCount = Mathf.FloorToInt(set.count * Mathf.Pow(_levelData.enemyCount, _waveIndex));
+            for (var j = 0; j < setCount; j++)
             {
                 SpawnEnemy(set.enemy);
 
@@ -91,17 +95,23 @@ public class WaveSpawner : MonoBehaviour
         _waveIndex++;
         isSpawning = false;
 
-        if (_waveIndex != waves.Length) yield break;
+        if (_waveIndex % waves.Length != 0) yield break;
         Debug.Log("Level complete!");
-        enabled = false;
     }
     
-    // Spawns an enemy.
-    // What else would it do!?
+    /// <summary>
+    /// Spawns enemies and applies scaling
+    /// </summary>
+    /// <param name="enemy">The enemy to spawn</param>
     private void SpawnEnemy(GameObject enemy)
     {
+        // Spawn Enemy
         var spawnedEnemy = Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
         spawnedEnemy.layer = LayerMask.NameToLayer("Enemies");
+        
+        // Apply scaling
+        spawnedEnemy.GetComponent<Enemy>().startHealth *= Mathf.Pow(_levelData.health, _waveIndex);
+        
         enemiesAlive++;
     }
 }

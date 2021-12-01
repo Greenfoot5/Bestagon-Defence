@@ -244,12 +244,12 @@ MonoBehaviour:
   enemyTag: Enemy
   range: 3
   rangeDisplay: {fileID: 1139687739}
-  fireRate: 1
+  fireRate: 1.2
   slowPercentage: 0
   upgrades: []
   targetingMethod: 0
   aggressiveRetargeting: 1
   firePoint: {fileID: 1483480927}
-  turnSpeed: 3
+  turnSpeed: 6
   partToRotate: {fileID: 4656168879664339822}
   bulletPrefab: {fileID: 8554329261332597528, guid: 73df7aaa5f02848a59285b946c547b07, type: 3}

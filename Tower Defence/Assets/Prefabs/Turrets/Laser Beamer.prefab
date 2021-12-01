@@ -5058,7 +5058,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65a035bfb1ad34e0d8b3465c8ade3762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 30
   enemyTag: Enemy
   range: 4
   rangeDisplay: {fileID: 3222738067758489047}
@@ -5068,7 +5068,7 @@ MonoBehaviour:
   targetingMethod: 0
   aggressiveRetargeting: 1
   firePoint: {fileID: 5009289029243488887}
-  turnSpeed: 3
+  turnSpeed: 5
   partToRotate: {fileID: 367774791884787270}
   lineRenderer: {fileID: 2486436700464072617}
   impactEffect: {fileID: 1957792540}
