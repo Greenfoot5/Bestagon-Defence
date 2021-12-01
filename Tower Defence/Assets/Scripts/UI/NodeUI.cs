@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 namespace UI
 {
+    /// <summary>
+    /// Manages the UI that displays when you click on a node with a turret
+    /// </summary>
     public class NodeUI : MonoBehaviour
     {
         public GameObject ui;
@@ -14,7 +17,10 @@ namespace UI
         public Transform upgrades;
         public GameObject upgradeIconPrefab;
 
-        // Called when we select a node
+        /// <summary>
+        /// Called when selecting a new node
+        /// </summary>
+        /// <param name="node">The new node to display UI for</param>
         public void SetTarget(Node node)
         {
             _target = node;
@@ -41,15 +47,19 @@ namespace UI
             LayoutRebuilder.MarkLayoutForRebuild((RectTransform) upgrades);
         }
     
-        // Hide's the UI
-        // Called when we deselect a node
+        /// <summary>
+        /// Hides the UI
+        /// Is called when deselecting a node
+        /// </summary>
         public void Hide()
         {
             ui.SetActive(false);
             shop.EnableTurretInventory();
         }
     
-        // Upgrades the turret
+        /// <summary>
+        /// Upgrades the currently selected turret
+        /// </summary>
         public void UpgradeNode()
         {
             var upgrade = shop.GetUpgrade();
@@ -60,11 +70,5 @@ namespace UI
             
             shop.RemoveUpgrade();
             }
-    
-        // Sells the turret
-        public void Sell()
-        {
-            _target.SellTurret();
-        }
     }
 }
