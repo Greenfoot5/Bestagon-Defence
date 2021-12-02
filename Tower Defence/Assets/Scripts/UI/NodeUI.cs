@@ -79,9 +79,10 @@ namespace UI
         {
             if (_target.turret == null) return;
             var turret = _target.turret.GetComponent<Turret>();
-            stats.text = "<sprite=\"Stats\" name=\"damage\"> " + turret.damage + "\n" +
-                         "<sprite=\"Stats\" name=\"range\"> " + turret.range +
-                         " <sprite=\"Stats\" name=\"rate\"> " + turret.fireRate;
+            var color = ColorUtility.ToHtmlStringRGBA(stats.color);
+            stats.text = $"<sprite=\"Stats\" name=\"damage\" color=#{color}> {turret.damage}\n" +
+                         $"<sprite=\"Stats\" name=\"range\" color=#{color}> {turret.range}\n" +
+                         $" <sprite=\"Stats\" name=\"rate\" color=#{color}> {turret.fireRate}";
         }
     }
 }
