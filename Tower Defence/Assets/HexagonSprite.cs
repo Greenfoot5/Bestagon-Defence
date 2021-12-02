@@ -29,13 +29,14 @@ public class HexagonSprite : Graphic
 
     private Rect m_scaleReference = Rect.zero;
 
-
+    #if UNITY_EDITOR
     protected override void OnValidate()
     {
         bool colorsFlag = meshType == MeshType.V18_T6 && useTriUniqueColors;
         Array.Resize(ref colors, colorsFlag ? 6 : 0);
         UpdateGeometry();
     }
+    #endif
 
 
     // SCALE REFERENCE

@@ -31,13 +31,15 @@ public class Hexagons : Graphic
     {
         LoadMaterial();
     }
-
+    
+    #if UNITY_EDITOR
     protected override void OnValidate()
     {
         RefreshMaterial();
         UpdateGeometry();
         LoadMaterial();
     }
+    #endif
 
     protected override void OnPopulateMesh(VertexHelper vh)
     {
@@ -114,8 +116,10 @@ public class Hexagons : Graphic
         GlowIntensity = material.GetFloat("_GlowIntensity");
         GlowClamp = material.GetFloat("_GlowClamp");
         GlowOpacity = material.GetFloat("_GlowOpacity");
-
+        
+        #if UNITY_EDITOR
         OnValidate();
+        #endif
     }
 
     private void RefreshMaterial()

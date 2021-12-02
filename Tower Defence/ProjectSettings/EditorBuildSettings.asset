@@ -20,5 +20,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PolygonLevel.unity
     guid: 9eb7a85ac13264cdba210105834fbd89
+  - enabled: 1
+    path: Assets/Scenes/LoopLevel.unity
+    guid: 158c840c834e34d658cad8cfe7cfbf91
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: f7e4968f6dea44f07805c614cb315fab, type: 2}
