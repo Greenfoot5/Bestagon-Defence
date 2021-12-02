@@ -1101,6 +1101,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TurretGlyph (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3688469175720797820, guid: ce51595031e3355478e8d944509a4d88, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6098185077617060591, guid: ce51595031e3355478e8d944509a4d88, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -1131,6 +1135,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8958256594847968358, guid: ce51595031e3355478e8d944509a4d88, type: 3}
       propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8958256594847968358, guid: ce51595031e3355478e8d944509a4d88, type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8958256594847968358, guid: ce51595031e3355478e8d944509a4d88, type: 3}
@@ -1244,6 +1252,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8958256594847968358, guid: ce51595031e3355478e8d944509a4d88, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 119
+      objectReference: {fileID: 0}
+    - target: {fileID: 8958256594847968358, guid: ce51595031e3355478e8d944509a4d88, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1320,6 +1332,10 @@ PrefabInstance:
     - target: {fileID: 8958256594847968358, guid: ce51595031e3355478e8d944509a4d88, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8958256594847968358, guid: ce51595031e3355478e8d944509a4d88, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 119
       objectReference: {fileID: 0}
     - target: {fileID: 8958256594847968358, guid: ce51595031e3355478e8d944509a4d88, type: 3}
       propertyPath: m_LocalPosition.x

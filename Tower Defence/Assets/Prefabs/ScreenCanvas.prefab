@@ -386,9 +386,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turretSelectionUI: {fileID: 7349952435930394342, guid: 5453fbd1fffdc4a799b811ae56769adb, type: 3}
-  evolutionSelectionUI: {fileID: 7349952435930394342, guid: 2c152cea0b9334ff7b4ae9dfbbcfe040, type: 3}
+  upgradeSelectionUI: {fileID: 7349952435930394342, guid: 2c152cea0b9334ff7b4ae9dfbbcfe040, type: 3}
   shop: {fileID: 4077244561648582632}
-  random: 0
 --- !u!1 &4077244561414875947
 GameObject:
   m_ObjectHideFlags: 0
@@ -3935,6 +3934,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9058011448771378881, guid: 2c152cea0b9334ff7b4ae9dfbbcfe040, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c152cea0b9334ff7b4ae9dfbbcfe040, type: 3}
 --- !u!224 &6004221437146632574 stripped
@@ -4056,6 +4059,10 @@ PrefabInstance:
     - target: {fileID: 8986622328517586240, guid: 2c152cea0b9334ff7b4ae9dfbbcfe040, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9058011448771378881, guid: 2c152cea0b9334ff7b4ae9dfbbcfe040, type: 3}
+      propertyPath: m_Material
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c152cea0b9334ff7b4ae9dfbbcfe040, type: 3}
@@ -4190,6 +4197,10 @@ PrefabInstance:
     - target: {fileID: 8047922210373222496, guid: 2c152cea0b9334ff7b4ae9dfbbcfe040, type: 3}
       propertyPath: m_text
       value: Turret Evolution
+      objectReference: {fileID: 0}
+    - target: {fileID: 9058011448771378881, guid: 2c152cea0b9334ff7b4ae9dfbbcfe040, type: 3}
+      propertyPath: m_Material
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c152cea0b9334ff7b4ae9dfbbcfe040, type: 3}

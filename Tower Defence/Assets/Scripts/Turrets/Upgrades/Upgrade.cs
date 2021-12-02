@@ -23,8 +23,7 @@ namespace Turrets.Upgrades
 
         public bool ValidUpgrade(Turret turret)
         {
-            if (ValidTypes == null) return true;
-            return ValidTypes.Contains(turret.GetType());
+            return ValidTypes == null || ValidTypes.Contains(turret.GetType());
         }
 
         public abstract void AddUpgrade(Turret turret);
