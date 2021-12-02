@@ -24,6 +24,9 @@ public class Shop : MonoBehaviour
         _buildManager = BuildManager.instance;
         _levelData = _buildManager.GetComponent<GameManager>().levelData;
         _selectionCost = _levelData.initialSelectionCost;
+        // Update button text
+        turretInventory.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "<sprite=\"UI-Icons\" name=\"Coin\"> " + _selectionCost;
+        upgradeInventory.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "<sprite=\"UI-Icons\" name=\"Coin\"> " + _selectionCost;
     }
     
     private void SelectTurret(TurretBlueprint turret, GameObject button)
