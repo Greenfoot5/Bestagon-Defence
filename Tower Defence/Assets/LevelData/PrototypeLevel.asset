@@ -12,15 +12,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fd92d5c95da242598d43eb06f883d13, type: 3}
   m_Name: PrototypeLevel
   m_EditorClassIdentifier: 
+  initialTurretSelection:
+    list:
+    - item: {fileID: 11400000, guid: d2db62c1bef594027b45aec4631e1e6a, type: 2}
+      weight: 0
+    - item: {fileID: 11400000, guid: 40dc94d320d594a5fad076af47f85c42, type: 2}
+      weight: 0
+    - item: {fileID: 11400000, guid: 957e7ef90aad744a4bf2718c30338651, type: 2}
+      weight: 0
+  initialDuplicateCheck: 0
   turrets:
-  - {fileID: 11400000, guid: 957e7ef90aad744a4bf2718c30338651, type: 2}
-  - {fileID: 11400000, guid: d2db62c1bef594027b45aec4631e1e6a, type: 2}
-  - {fileID: 11400000, guid: 40dc94d320d594a5fad076af47f85c42, type: 2}
+    list:
+    - item: {fileID: 11400000, guid: d2db62c1bef594027b45aec4631e1e6a, type: 2}
+      weight: 0
+    - item: {fileID: 11400000, guid: 40dc94d320d594a5fad076af47f85c42, type: 2}
+      weight: 0
+    - item: {fileID: 11400000, guid: 957e7ef90aad744a4bf2718c30338651, type: 2}
+      weight: 0
+    - item: {fileID: 11400000, guid: defe6f09e3fbf44f49bd14d47ebcb305, type: 2}
+      weight: 0
+    - item: {fileID: 11400000, guid: d34ca52000d774b7b8ca6a25dbf8b6b0, type: 2}
+      weight: 0
+  turretDuplicateCheck: 1
+  turretOptionWeight: 1
   upgrades:
-  - {fileID: 11400000, guid: a0c38167287c8451a8852957968ab515, type: 2}
-  - {fileID: 11400000, guid: b0d0ae1af2298453c9cbeba82f4ab064, type: 2}
-  - {fileID: 11400000, guid: 2843a599f232045cd84bddb4bfdc34b5, type: 2}
-  initialSelectionCost: 100
-  selectionCostIncrement: 10
+    list:
+    - item: {fileID: 11400000, guid: 0da67581e745c4e708a1b6172cb3d6ef, type: 2}
+      weight: 0
+    - item: {fileID: 11400000, guid: 7c7e505c5536a4df684108f83d159ad6, type: 2}
+      weight: 0
+    - item: {fileID: 11400000, guid: b07b4ca124a454693aad3534ab3ec8fd, type: 2}
+      weight: 0
+    - item: {fileID: 11400000, guid: fd238766202484223ad41e159363d2d9, type: 2}
+      weight: 0
+    - item: {fileID: 11400000, guid: c90507ecd7ed843958d400aaaeaf6e18, type: 2}
+      weight: 0
+    - item: {fileID: 11400000, guid: a36951a90c6c44391a71cbd17ff8c4c9, type: 2}
+      weight: 0
+    - item: {fileID: 11400000, guid: 2a42e155c209b403eb3e9155f49abcfa, type: 2}
+      weight: 0
+  upgradeDuplicateCheck: 2
+  upgradeOptionWeight: 1
+  initialSelectionCost: 1
+  selectionCostIncrement: 1
   health: 1.1
   enemyCount: 1
