@@ -1,9 +1,13 @@
 ﻿using TMPro;
+using Turrets;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace UI
 {
+    /// <summary>
+    /// Manages the UI that displays when you click on a node with a turret
+    /// </summary>
     public class NodeUI : MonoBehaviour
     {
         public GameObject ui;
@@ -11,11 +15,15 @@ namespace UI
     
         private Node _target;
     
-        public TMP_Text upgradeText;
-        public Button upgradeButton;
-        public TMP_Text sellText;
+        public Transform upgrades;
+        public GameObject upgradeIconPrefab;
 
-        // Called when we select a node
+        public TMP_Text stats;
+
+        /// <summary>
+        /// Called when selecting a new node
+        /// </summary>
+        /// <param name="node">The new node to display UI for</param>
         public void SetTarget(Node node)
         {
             _target = node;
@@ -24,35 +32,38 @@ namespace UI
         
             // Move the UI to be above the node
             transform.position = _target.transform.position;
-        
-            // Check if the turret is already upgraded and if we need to enable the upgrade button
-            // if (_target.isUpgraded)
-            // {
-            //     upgradeText.text = "<b>Upgrade\nPurchased</b>";
-            //     upgradeButton.interactable = false;
-            // }
-            // else
-            // {
-            //     upgradeText.text = "<b>Upgrade</b>";
-            //     upgradeButton.interactable = true;
-            // }
-        
-            // // Set sell amount
-            // sellText.text = "<b>Sell</b>";
-        
+            
+            upgrades.DetachChildren();
+            
+            // Add each upgrade as an icon
+            foreach (var upgrade in _target.turret.GetComponent<Turret>().upgrades)
+            {
+                var upgradeIcon = Instantiate(upgradeIconPrefab, upgrades);
+                upgradeIcon.GetComponent<UpgradeIcon>().SetData(upgrade);
+            }
+            
+            // Display the radius of the turret
+            _target.turret.GetComponent<Turret>().Selected();
+
             // Enable the UI
             ui.SetActive(true);
+            LayoutRebuilder.MarkLayoutForRebuild((RectTransform) upgrades);
+            AddStats();
         }
     
-        // Hide's the UI
-        // Called when we deselect a node
+        /// <summary>
+        /// Hides the UI
+        /// Is called when deselecting a node
+        /// </summary>
         public void Hide()
         {
             ui.SetActive(false);
             shop.EnableTurretInventory();
         }
     
-        // Upgrades the turret
+        /// <summary>
+        /// Upgrades the currently selected turret
+        /// </summary>
         public void UpgradeNode()
         {
             var upgrade = shop.GetUpgrade();
@@ -62,12 +73,16 @@ namespace UI
             if (!applied) return;
             
             shop.RemoveUpgrade();
-            }
-    
-        // Sells the turret
-        public void Sell()
+        }
+
+        private void AddStats()
         {
-            _target.SellTurret();
+            if (_target.turret == null) return;
+            var turret = _target.turret.GetComponent<Turret>();
+            var color = ColorUtility.ToHtmlStringRGBA(stats.color);
+            stats.text = $"<sprite=\"Stats\" name=\"damage\" color=#{color}> {turret.damage}\n" +
+                         $"<sprite=\"Stats\" name=\"range\" color=#{color}> {turret.range}\n" +
+                         $" <sprite=\"Stats\" name=\"rate\" color=#{color}> {turret.fireRate}";
         }
     }
 }

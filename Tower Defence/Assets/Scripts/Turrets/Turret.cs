@@ -19,22 +19,28 @@ namespace Turrets
     public abstract class Turret : MonoBehaviour
     {
         public float damage;
-        
+
         // System
         public string enemyTag = "Enemy";
         
         public float range = 2.5f;
+        public GameObject rangeDisplay;
 
         // Attack speed
         [Tooltip("Time between each shot")]
         public float fireRate = 1f;
-        protected float _fireCountdown;
+        protected float fireCountdown;
         
         // Effects
         public float slowPercentage;
         
         // Upgrades
         public List<Upgrade> upgrades = new List<Upgrade>();
+
+        private void Awake()
+        {
+            rangeDisplay.SetActive(false);
+        }
 
         protected abstract void Attack();
 
@@ -62,7 +68,23 @@ namespace Turrets
 
             upgrade.AddUpgrade(this);
             upgrades.Add(upgrade);
+            
+            // Update the range shader's size
+            rangeDisplay.transform.localScale = new Vector3(
+                range / transform.localScale.x * 2,
+                range / transform.localScale.y * 2,
+                1);
             return true;
+        }
+
+        public void Selected()
+        {
+            rangeDisplay.SetActive(true);
+        }
+
+        public void Deselected()
+        {
+            rangeDisplay.SetActive(false);
         }
 
         public virtual void OnInspectorGUI() { }

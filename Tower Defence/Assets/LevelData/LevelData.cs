@@ -30,5 +30,9 @@ namespace LevelData
         [Header("Costs")]
         public int initialSelectionCost;
         public int selectionCostIncrement;
+
+        [Header("Wave Scaling")]
+        public float health = 1f;
+        public float enemyCount = 1f;
     }
 }

@@ -1,4 +1,5 @@
-﻿using Turrets.Blueprints;
+﻿using Turrets;
+using Turrets.Blueprints;
 using UI;
 using UnityEngine;
 
@@ -59,6 +60,9 @@ public class BuildManager : MonoBehaviour
             DeselectNode();
             return;
         }
+        if (_selectedNode != null)
+            DeselectNode();
+        
         _selectedNode = node;
         _turretToBuild = null;
 
@@ -68,6 +72,11 @@ public class BuildManager : MonoBehaviour
     // Deselects the node
     public void DeselectNode()
     {
+        if (_selectedNode != null && _selectedNode.turret != null)
+        {
+            _selectedNode.turret.GetComponent<Turret>().Deselected();
+        }
+
         _selectedNode = null;
         nodeUI.Hide();
     }

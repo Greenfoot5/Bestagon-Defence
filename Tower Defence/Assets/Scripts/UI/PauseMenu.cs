@@ -55,9 +55,6 @@ namespace UI
         // Called each frame
         public void Update()
         {
-            if (Input.GetAxis("Pause") != 0)
-                Debug.Log(Input.GetAxis("Pause"));
-        
             // On press, pause the game
             if (Input.GetAxis("Pause") > 0 && !_hasBeenToggled)
             {
