@@ -3,32 +3,37 @@ using System;
 [Serializable]
 public struct UpgradableStat
 {
-    private float _stat;
-    private float _modifier;
+    public float stat;
+    public float modifier;
 
     public UpgradableStat(float baseValue)
     {
-        _stat = baseValue;
-        _modifier = 0f;
+        stat = baseValue;
+        modifier = 1f;
     }
 
     public float GetBase()
     {
-        return _stat;
+        return stat;
     }
 
     public float GetStat()
     {
-        return _stat * _modifier;
+        return stat * modifier;
     }
 
     public void AddModifier(float newValue)
     {
-        _modifier += newValue;
+        modifier += newValue;
     }
 
     public void TakeModifier(float oldValue)
     {
-        _modifier -= oldValue;
+        modifier -= oldValue;
+    }
+
+    public override string ToString()
+    {
+        return $"{modifier * stat:#,##0.#}";
     }
 }

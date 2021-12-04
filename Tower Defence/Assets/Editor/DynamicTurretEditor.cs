@@ -1,55 +1,58 @@
 ﻿using Turrets;
 using UnityEditor;
 
-[CustomEditor(typeof(DynamicTurret), true)]
-public class DynamicTurretEditor : TurretEditor
+namespace Editor
 {
-    // PROPERTIES
-    private SerializedProperty TargetingMethod;
-    private SerializedProperty AggressiveRetargeting;
-
-    private SerializedProperty TurnSpeed;
-    private SerializedProperty PartToRotate;
-
-    private SerializedProperty FirePoint;
-
-
-    protected new void OnEnable()
+    [CustomEditor(typeof(DynamicTurret), true)]
+    public class DynamicTurretEditor : TurretEditor
     {
-        base.OnEnable();
+        // PROPERTIES
+        private SerializedProperty _targetingMethod;
+        private SerializedProperty _aggressiveRetargeting;
 
-        TargetingMethod = serializedObject.FindProperty("targetingMethod");
-        AggressiveRetargeting = serializedObject.FindProperty("aggressiveRetargeting");
+        private SerializedProperty _rotationSpeed;
+        private SerializedProperty _partToRotate;
 
-        TurnSpeed = serializedObject.FindProperty("turnSpeed");
-        PartToRotate = serializedObject.FindProperty("partToRotate");
+        private SerializedProperty _firePoint;
 
-        FirePoint = serializedObject.FindProperty("firePoint");
-    }
 
-    public override void OnInspectorGUI()
-    {
-        base.OnInspectorGUI();
+        protected new void OnEnable()
+        {
+            base.OnEnable();
 
-        serializedObject.Update();
+            _targetingMethod = serializedObject.FindProperty("targetingMethod");
+            _aggressiveRetargeting = serializedObject.FindProperty("aggressiveRetargeting");
 
-        EditorGUILayout.Space();
-        EditorGUILayout.LabelField("Targeting", EditorStyles.boldLabel);
+            _rotationSpeed = serializedObject.FindProperty("rotationSpeed");
+            _partToRotate = serializedObject.FindProperty("partToRotate");
 
-        EditorGUILayout.PropertyField(TargetingMethod);
-        EditorGUILayout.PropertyField(AggressiveRetargeting);
+            _firePoint = serializedObject.FindProperty("firePoint");
+        }
 
-        EditorGUILayout.Space();
-        EditorGUILayout.LabelField("Rotation", EditorStyles.boldLabel);
+        public override void OnInspectorGUI()
+        {
+            base.OnInspectorGUI();
 
-        EditorGUILayout.PropertyField(TurnSpeed);
-        EditorGUILayout.PropertyField(PartToRotate);
+            serializedObject.Update();
 
-        EditorGUILayout.Space();
-        EditorGUILayout.LabelField("Reference", EditorStyles.boldLabel);
+            EditorGUILayout.Space();
+            EditorGUILayout.LabelField("Targeting", EditorStyles.boldLabel);
 
-        EditorGUILayout.PropertyField(FirePoint);
+            EditorGUILayout.PropertyField(_targetingMethod);
+            EditorGUILayout.PropertyField(_aggressiveRetargeting);
 
-        serializedObject.ApplyModifiedProperties();
+            EditorGUILayout.Space();
+            EditorGUILayout.LabelField("Rotation", EditorStyles.boldLabel);
+
+            EditorGUILayout.PropertyField(_rotationSpeed);
+            EditorGUILayout.PropertyField(_partToRotate);
+
+            EditorGUILayout.Space();
+            EditorGUILayout.LabelField("Reference", EditorStyles.boldLabel);
+
+            EditorGUILayout.PropertyField(_firePoint);
+
+            serializedObject.ApplyModifiedProperties();
+        }
     }
 }

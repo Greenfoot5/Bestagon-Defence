@@ -1,4 +1,5 @@
-﻿using Turrets;
+﻿using Editor;
+using Turrets;
 using UnityEditor;
 
 [CustomEditor(typeof(Shooter), true)]
