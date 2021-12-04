@@ -59,7 +59,9 @@ public class Node : MonoBehaviour
         var effect = Instantiate(_buildManager.buildEffect, transform.position, Quaternion.identity);
         Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
         
+        // Deselect and reselect to avoid issues from upgrading
         BuildManager.instance.DeselectNode();
+        BuildManager.instance.SelectNode(this);
         return true;
     }
     
