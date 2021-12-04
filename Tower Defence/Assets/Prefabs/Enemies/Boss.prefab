@@ -347,7 +347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startSpeed: 1
-  startHealth: 750
+  startHealth: 500
   speed: 0
   health: 20
   deathMoney: 150
