@@ -10,7 +10,7 @@ namespace Turrets.Upgrades
     {
         public override Type[] ValidTypes => null;  // any
 
-        [FormerlySerializedAs("percentageSlow")] [SerializeField]
+        [SerializeField]
         private float slowPercentage;
         public override void AddUpgrade(Turret turret) { }
 

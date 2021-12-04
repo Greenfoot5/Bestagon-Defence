@@ -10,7 +10,7 @@ namespace Turrets.Upgrades
     {
         public override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Laser) };
 
-        [FormerlySerializedAs("rotationSpeedPercenageChange")] [FormerlySerializedAs("turnSpeed")] [SerializeField]    
+        [SerializeField]    
         private float rotationSpeedPercentageChange;
         public override void AddUpgrade(Turret turret)
         {
