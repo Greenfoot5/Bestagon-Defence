@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d437c567020b4f2599bfd79f544c3bc, type: 3}
-  m_Name: MeltingLaser
+  m_Name: MelterLaser
   m_EditorClassIdentifier: 
   shopIcon: {fileID: 21300000, guid: 53d2e052e8cb94f7fb4d11ccacec5eaa, type: 3}
   displayName: Melting
