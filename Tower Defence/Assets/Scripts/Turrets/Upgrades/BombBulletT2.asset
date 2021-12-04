@@ -18,9 +18,8 @@ MonoBehaviour:
   displayName: Bombs II
   tagline: Quite explosive
   icon: {fileID: 8811115329238573457, guid: 16c979c866f439b4b988e7020b313794, type: 3}
-  effectText: Bullets explode, with increades damage but are shot slower, with a
-    slower range
-  validTypes: 00000000
+  effectText: Bullets explode, with increased damage but are shot slower, with a
+    lower range
   explosionRadius: 0.6
   damageIncrease: 0.4
   fireRateDecrease: 0.85
