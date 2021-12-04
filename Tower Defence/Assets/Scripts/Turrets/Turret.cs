@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Turrets.Upgrades;
 using UnityEngine;
 
@@ -62,6 +63,31 @@ namespace Turrets
             {
                 Debug.Log("Invalid Upgrade");
                 return false;
+            }
+
+            Upgrade oldUpgrade = null;
+            // Check if we already have an upgrade of the same type
+            foreach (var turretUpgrade in upgrades.Where(turretUpgrade => turretUpgrade.GETUpgradeType() == upgrade.GETUpgradeType()))
+            {
+                // If it's of a higher level, remove the current level
+                if (turretUpgrade.upgradeTier < upgrade.upgradeTier)
+                {
+                    Debug.Log("Removing lower level upgrade");
+                    oldUpgrade = turretUpgrade;
+                }
+                // If it's of a lower level, we can't upgrade
+                else
+                {
+                    Debug.Log("This turret already has an upgrade of the same type at" +
+                              " the same level or better!");
+                    return false;
+                }
+            }
+
+            if (oldUpgrade != null)
+            {
+                oldUpgrade.RemoveUpgrade(this);
+                upgrades.Remove(oldUpgrade);
             }
 
             upgrade.AddUpgrade(this);
