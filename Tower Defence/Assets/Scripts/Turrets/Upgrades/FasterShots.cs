@@ -8,7 +8,7 @@ namespace Turrets.Upgrades
     [CreateAssetMenu(fileName = "FasterShotsT0", menuName = "Upgrades/FasterShots")]
     public class FasterShots : Upgrade
     {
-        public override Type[] ValidTypes => new[] { typeof(Shooter) };
+        protected override Type[] ValidTypes => new[] { typeof(Shooter) };
 
         [SerializeField]
         private float percentageChange;

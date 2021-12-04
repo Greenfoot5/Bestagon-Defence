@@ -8,7 +8,7 @@ namespace Turrets.Upgrades
     [CreateAssetMenu(fileName = "MissileBulletT0", menuName = "Upgrades/MissileBullet")]
     public class MissileBullet : Upgrade
     {
-        public override Type[] ValidTypes => new[] { typeof(Shooter) };
+        protected override Type[] ValidTypes => new[] { typeof(Shooter) };
 
         public float explosionRadiusChange;
         public float damagePercentageChange;

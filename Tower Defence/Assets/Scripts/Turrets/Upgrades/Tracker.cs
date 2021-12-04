@@ -8,7 +8,7 @@ namespace Turrets.Upgrades
     [CreateAssetMenu(fileName = "TrackerUpgradeT0", menuName = "Upgrades/Tracker")]
     public class Tracker : Upgrade
     {
-        public override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Laser) };
+        protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Laser) };
 
         [SerializeField]    
         private float rotationSpeedPercentageChange;

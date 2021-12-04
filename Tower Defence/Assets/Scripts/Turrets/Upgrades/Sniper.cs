@@ -8,7 +8,7 @@ namespace Turrets.Upgrades
     [CreateAssetMenu(fileName = "SniperT0", menuName = "Upgrades/Sniper")]
     public class Sniper : Upgrade
     {
-        public override Type[] ValidTypes => null;  // any
+        protected override Type[] ValidTypes => null;  // any
 
         [Header("Shooter Turret")]
         public float shooterRangePercentageChange;

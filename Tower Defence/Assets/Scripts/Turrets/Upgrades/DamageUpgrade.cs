@@ -8,7 +8,7 @@ namespace Turrets.Upgrades
     [CreateAssetMenu(fileName = "DamageT0", menuName = "Upgrades/Damage")]
     public class DamageUpgrade : Upgrade
     {
-        public override Type[] ValidTypes => null;  // any
+        protected override Type[] ValidTypes => null;  // any
 
         [SerializeField]
         private float percentageChange;
