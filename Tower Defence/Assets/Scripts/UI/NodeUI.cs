@@ -40,6 +40,12 @@ namespace UI
             {
                 var upgradeIcon = Instantiate(upgradeIconPrefab, upgrades);
                 upgradeIcon.GetComponent<UpgradeIcon>().SetData(upgrade);
+                foreach (var image in upgradeIcon.GetComponentsInChildren<Image>())
+                {
+                    image.raycastTarget = false;
+                }
+
+                upgradeIcon.GetComponentsInChildren<Image>();
             }
             
             // Display the radius of the turret
