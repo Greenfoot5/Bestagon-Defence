@@ -25,8 +25,8 @@ public class Shop : MonoBehaviour
         _levelData = _buildManager.GetComponent<GameManager>().levelData;
         _selectionCost = _levelData.initialSelectionCost;
         // Update button text
-        turretInventory.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "<sprite=\"UI-Icons\" name=\"gold\"> " + _selectionCost;
-        upgradeInventory.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "<sprite=\"UI-Icons\" name=\"gold\"> " + _selectionCost;
+        turretInventory.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "<sprite=\"UI-Gold\" name=\"gold\"> " + _selectionCost;
+        upgradeInventory.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "<sprite=\"UI-Gold\" name=\"gold\"> " + _selectionCost;
     }
     
     private void SelectTurret(TurretBlueprint turret, GameObject button)
@@ -83,8 +83,8 @@ public class Shop : MonoBehaviour
         GameStats.money -= _selectionCost;
         _selectionCost += _levelData.selectionCostIncrement;
         // Update button text
-        turretInventory.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "<sprite=\"UI-Icons\" name=\"gold\"> " + _selectionCost;
-        upgradeInventory.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "<sprite=\"UI-Icons\" name=\"gold\"> " + _selectionCost;
+        turretInventory.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "<sprite=\"UI-Gold\" name=\"gold\"> " + _selectionCost;
+        upgradeInventory.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "<sprite=\"UI-Gold\" name=\"gold\"> " + _selectionCost;
     }
 
     public void EnableUpgradeInventory()
