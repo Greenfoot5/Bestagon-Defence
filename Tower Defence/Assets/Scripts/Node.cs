@@ -103,6 +103,7 @@ public class Node : MonoBehaviour
         // Check we are trying to build
         if (!_buildManager.CanBuild)
         {
+            _buildManager.Deselect();
             return;
         }
         
