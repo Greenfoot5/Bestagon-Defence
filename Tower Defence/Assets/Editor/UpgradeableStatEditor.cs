@@ -41,7 +41,7 @@ namespace Editor
 
             // Add the fields to the gui
             statProp.floatValue = EditorGUI.FloatField(statPropInput, statValue);
-            EditorGUI.LabelField(modInputRect, $"* {modValue:p} = {statValue * modValue:#,###.#}");
+            EditorGUI.LabelField(modInputRect, $"* {modValue:##0.0#} = {statValue * modValue:#,##0.##}");
 
             EditorGUI.EndProperty();
         }

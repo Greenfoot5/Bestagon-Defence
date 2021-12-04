@@ -241,11 +241,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd846ae0434a94d0190005ad2d853fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 15
+  damage:
+    stat: 15
+    modifier: 1
   enemyTag: Enemy
-  range: 2
+  range:
+    stat: 2
+    modifier: 1
   rangeDisplay: {fileID: 3255284869200513298}
-  fireRate: 1
+  fireRate:
+    stat: 1
+    modifier: 1
   slowPercentage: 0
   upgrades: []
   smashEffect: {fileID: 842137340481146779}
