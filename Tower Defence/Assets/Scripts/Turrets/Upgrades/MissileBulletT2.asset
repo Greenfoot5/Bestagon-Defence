@@ -19,8 +19,7 @@ MonoBehaviour:
   tagline: Rocket science
   icon: {fileID: -4264398553240656916, guid: 16c979c866f439b4b988e7020b313794, type: 3}
   effectText: Bullets explode in a radius of 0.4 units on contact
-  validTypes: 00000000
-  explosionRadius: 0.4
-  damageIncrease: 0.3
-  fireRateDecrease: 0.75
-  speedIncrease: 0.3
+  explosionRadiusChange: 0.4
+  damagePercentageChange: 0.3
+  fireRatePercentageChange: -0.15
+  speedPercentageChange: 0.3

@@ -10,7 +10,7 @@ namespace Turrets.Upgrades
     {
         public override Type[] ValidTypes => new[] { typeof(Shooter) };
 
-        public float explosionRadius;
+        [FormerlySerializedAs("explosionRadius")] public float explosionRadiusChange;
         [FormerlySerializedAs("damageIncrease")] public float damagePercentageChange;
         [FormerlySerializedAs("fireRateDecrease")] public float fireRatePercentageChange;
         [FormerlySerializedAs("rangeDecrease")] public float rangePercentageChange;
@@ -30,7 +30,7 @@ namespace Turrets.Upgrades
 
         public override void OnShoot(Bullet bullet)
         {
-            bullet.explosionRadius += explosionRadius;
+            bullet.explosionRadius += explosionRadiusChange;
             bullet.damage.AddModifier(damagePercentageChange);
             bullet.speed.AddModifier(speedPercentageChange);
         }
