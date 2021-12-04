@@ -20,8 +20,8 @@ MonoBehaviour:
   icon: {fileID: 8811115329238573457, guid: 16c979c866f439b4b988e7020b313794, type: 3}
   effectText: Bullets explode, with increased damage but are shot slower, with a
     lower range
-  explosionRadius: 0.6
-  damageIncrease: 0.4
-  fireRateDecrease: 0.85
-  rangeDecrease: 0.6
-  speedDecrease: 0.85
+  explosionRadiusChange: 0.6
+  damagePercentageChange: 0.4
+  fireRatePercentageChange: -0.15
+  rangePercentageChange: -0.4
+  speedPercentageChange: -0.15

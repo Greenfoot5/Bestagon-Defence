@@ -19,7 +19,7 @@ namespace Turrets.Upgrades
         [Multiline]
         public string effectText;
 
-        public abstract Type[] ValidTypes { get; }
+        protected abstract Type[] ValidTypes { get; }
 
         public bool ValidUpgrade(Turret turret)
         {

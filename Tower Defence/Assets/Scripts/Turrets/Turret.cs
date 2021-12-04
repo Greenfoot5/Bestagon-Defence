@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Turrets.Upgrades;
 using UnityEngine;
@@ -18,17 +17,17 @@ namespace Turrets
     
     public abstract class Turret : MonoBehaviour
     {
-        public float damage;
+        public UpgradableStat damage;
 
         // System
         public string enemyTag = "Enemy";
         
-        public float range = 2.5f;
+        public UpgradableStat range = new UpgradableStat(2.5f);
         public GameObject rangeDisplay;
 
         // Attack speed
         [Tooltip("Time between each shot")]
-        public float fireRate = 1f;
+        public UpgradableStat fireRate = new UpgradableStat(1f);
         protected float fireCountdown;
         
         // Effects
@@ -50,7 +49,7 @@ namespace Turrets
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, range);
+            Gizmos.DrawWireSphere(transform.position, range.GetStat());
         }
         
         /// <summary>
@@ -66,13 +65,39 @@ namespace Turrets
                 return false;
             }
 
+            Upgrade oldUpgrade = null;
+            // Check if we already have an upgrade of the same type
+            foreach (var turretUpgrade in upgrades.Where(turretUpgrade => turretUpgrade.GETUpgradeType() == upgrade.GETUpgradeType()))
+            {
+                // If it's of a higher level, remove the current level
+                if (turretUpgrade.upgradeTier < upgrade.upgradeTier)
+                {
+                    Debug.Log("Removing lower level upgrade");
+                    oldUpgrade = turretUpgrade;
+                }
+                // If it's of a lower level, we can't upgrade
+                else
+                {
+                    Debug.Log("This turret already has an upgrade of the same type at" +
+                              " the same level or better!");
+                    return false;
+                }
+            }
+
+            if (oldUpgrade != null)
+            {
+                oldUpgrade.RemoveUpgrade(this);
+                upgrades.Remove(oldUpgrade);
+            }
+
             upgrade.AddUpgrade(this);
             upgrades.Add(upgrade);
             
             // Update the range shader's size
+            var localScale = transform.localScale;
             rangeDisplay.transform.localScale = new Vector3(
-                range / transform.localScale.x * 2,
-                range / transform.localScale.y * 2,
+                range.GetStat() / localScale.x * 2,
+                range.GetStat() / localScale.y * 2,
                 1);
             return true;
         }

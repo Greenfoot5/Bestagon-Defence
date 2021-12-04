@@ -1,49 +1,51 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Turrets.Upgrades
 {
     [CreateAssetMenu(fileName = "SniperT0", menuName = "Upgrades/Sniper")]
     public class Sniper : Upgrade
     {
-        public override Type[] ValidTypes => null;  // any
+        protected override Type[] ValidTypes => null;  // any
 
-        [Header("Bullet Turret")]
-        public float bulletRange;
-        public float bulletDamage;
-        public float bulletFireRate;
-        public float bulletTurnSpeed;
-        public float bulletSpeed;
+        [Header("Shooter Turret")]
+        public float shooterRangePercentageChange;
+        public float shooterDamagePercentageChange;
+        public float shooterFireRatePercentageChange;
+        public float shooterRotationSpeedPercentageChange;
+        public float shooterBulletSpeedPercentageChange;
 
         [Header("Laser Turret")]
-        public float laserRange;
-        public float laserTurnSpeed;
-        public float laserDamage;
+        public float laserRangePercentageChange;
+        public float laserRotationSpeedPercentageChange;
+        public float laserDamagePercentageChange;
 
-        [Header("Area")]
-        public float areaRange;
-        public float areaDamage;
-        public float areaFireRate;
+        [Header("Smasher Turret")]
+        public float smasherRangePercentageChange;
+        public float smasherDamagePercentageChange;
+        public float smasherFireRatePercentageChange;
         
         public override void AddUpgrade(Turret turret)
         {
             switch (turret)
             {
                 case Shooter shooter:
-                    turret.range += turret.range * bulletRange;
-                    turret.fireRate *= 1 + bulletFireRate;
-                    shooter.turnSpeed -= shooter.turnSpeed * bulletTurnSpeed;
+                    turret.damage.AddModifier(shooterDamagePercentageChange);
+                    turret.range.AddModifier(shooterRangePercentageChange);
+                    turret.fireRate.AddModifier(shooterFireRatePercentageChange);
+                    shooter.rotationSpeed.AddModifier(shooterRotationSpeedPercentageChange);
                     break;
                 case Laser laser:
-                    turret.range += turret.range * laserRange;
-                    laser.turnSpeed -= laser.turnSpeed * laserTurnSpeed;
-                    turret.damage += turret.damage * laserDamage;
+                    turret.range.AddModifier(laserRangePercentageChange);
+                    laser.rotationSpeed.AddModifier(laserRotationSpeedPercentageChange);
+                    turret.damage.AddModifier(laserDamagePercentageChange);
                     break;
                 case Smasher _:
-                    turret.range += turret.range * areaRange;
-                    turret.damage += turret.damage * areaDamage;
-                    turret.fireRate *= 1 + areaFireRate;
+                    turret.range.AddModifier(smasherRangePercentageChange);
+                    turret.damage.AddModifier(smasherDamagePercentageChange);
+                    turret.fireRate.AddModifier(smasherFireRatePercentageChange);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -55,19 +57,20 @@ namespace Turrets.Upgrades
             switch (turret)
             {
                 case Shooter shooter:
-                    turret.range -= turret.range * bulletRange;
-                    turret.fireRate /= 1 + bulletFireRate;
-                    shooter.turnSpeed -= shooter.turnSpeed * bulletTurnSpeed;
+                    turret.damage.TakeModifier(shooterDamagePercentageChange);
+                    turret.range.TakeModifier(shooterRangePercentageChange);
+                    turret.fireRate.TakeModifier(shooterFireRatePercentageChange);
+                    shooter.rotationSpeed.TakeModifier(shooterRotationSpeedPercentageChange);
                     break;
                 case Laser laser:
-                    turret.range -= turret.range * laserRange;
-                    laser.turnSpeed -= laser.turnSpeed * laserTurnSpeed;
-                    turret.damage -= turret.damage * laserDamage;
+                    turret.range.TakeModifier(laserRangePercentageChange);
+                    laser.rotationSpeed.TakeModifier(laserRotationSpeedPercentageChange);
+                    turret.damage.TakeModifier(laserDamagePercentageChange);
                     break;
                 case Smasher _:
-                    turret.range -= turret.range * areaRange;
-                    turret.damage -= turret.damage * areaDamage;
-                    turret.fireRate /= 1 + areaFireRate;
+                    turret.range.TakeModifier(smasherRangePercentageChange);
+                    turret.damage.TakeModifier(smasherDamagePercentageChange);
+                    turret.fireRate.TakeModifier(smasherFireRatePercentageChange);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -76,8 +79,8 @@ namespace Turrets.Upgrades
 
         public override void OnShoot(Bullet bullet)
         {
-            bullet.damage += bullet.damage * bulletDamage;
-            bullet.speed += bullet.speed * bulletSpeed;
+            bullet.damage.AddModifier(shooterDamagePercentageChange);
+            bullet.speed.AddModifier(shooterBulletSpeedPercentageChange);
         }
 
         public override void OnHit(IEnumerable<Enemy> targets) { }

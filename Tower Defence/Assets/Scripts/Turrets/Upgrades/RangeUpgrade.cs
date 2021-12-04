@@ -1,24 +1,25 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Turrets.Upgrades
 {
     [CreateAssetMenu(fileName = "RangeUpgrade", menuName = "Upgrades/RangeUpgrade")]
     public class RangeUpgrade : Upgrade
     {
-        public override Type[] ValidTypes => null;  // any
+        protected override Type[] ValidTypes => null;  // any
 
         [SerializeField]
-        private float percentageIncrease;
+        private float percentageChange;
         public override void AddUpgrade(Turret turret)
         {
-            turret.range *= 1 + percentageIncrease;
+            turret.range.AddModifier(percentageChange);
         }
 
         public override void RemoveUpgrade(Turret turret)
         {
-            turret.fireRate /= 1 + percentageIncrease;
+            turret.fireRate.TakeModifier(percentageChange);
         }
 
         public override void OnShoot(Bullet bullet) { }

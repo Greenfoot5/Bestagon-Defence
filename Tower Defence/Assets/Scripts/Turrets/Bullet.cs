@@ -8,15 +8,16 @@ namespace Turrets
     {
         private Transform _target;
     
-        public float speed = 30f;
+        public UpgradableStat speed = new UpgradableStat(30f);
         [Tooltip("Only set if we're dealing AoE")]
         public float explosionRadius;
-        [HideInInspector] public float damage = 50;
+        [HideInInspector]
+        public UpgradableStat damage = new UpgradableStat(50f);
     
         [Tooltip("The effect spawned when the bullet hit's a target")]
         public GameObject impactEffect;
 
-        private List<Upgrade> upgrades = new List<Upgrade>();
+        private readonly List<Upgrade> _upgrades = new List<Upgrade>();
 
         public void Seek(Transform newTarget)
         {
@@ -35,7 +36,7 @@ namespace Turrets
             // Get the direction of the target, and the distance to move this frame
             var position = transform.position;
             var dir = ((Vector2)_target.position - (Vector2)position);
-            var distanceThisFrame = speed * Time.deltaTime;
+            var distanceThisFrame = speed.GetStat() * Time.deltaTime;
         
             // TODO - Make it based on target size
             const float targetSize = 0.25f;
@@ -63,7 +64,7 @@ namespace Turrets
             
             // Add upgrade effects
             var enemy = _target.GetComponent<Enemy>();
-            foreach (var upgrade in upgrades)
+            foreach (var upgrade in _upgrades)
             {
                 upgrade.OnHit(new []{enemy});
             }
@@ -91,7 +92,7 @@ namespace Turrets
 
             if (em != null)
             {
-                em.TakeDamage(damage);
+                em.TakeDamage(damage.GetStat());
             }
         }
     
@@ -112,7 +113,7 @@ namespace Turrets
         public void AddUpgrade(Upgrade upgrade)
         {
             upgrade.OnShoot(this);
-            upgrades.Add(upgrade);
+            _upgrades.Add(upgrade);
         }
     
         // Allows us to visualise the bullet's AoE in the editor

@@ -1,16 +1,17 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Turrets.Upgrades
 {
     [CreateAssetMenu(fileName = "SlowUpgrade", menuName = "Upgrades/SlowsEnemyUpgrade")]
     public class SlowUpgrade : Upgrade
     {
-        public override Type[] ValidTypes => null;  // any
+        protected override Type[] ValidTypes => null;  // any
 
         [SerializeField]
-        private float percentageSlow;
+        private float slowPercentage;
         public override void AddUpgrade(Turret turret) { }
 
         public override void RemoveUpgrade(Turret turret) { }
@@ -24,7 +25,7 @@ namespace Turrets.Upgrades
         {
             foreach (var target in targets)
             {
-                target.Slow(percentageSlow);
+                target.Slow(slowPercentage);
             }
         }
     }

@@ -12,7 +12,7 @@ namespace Turrets
         private void Update()
         {
             // Don't do anything if we don't have a target
-            if (_target == null)
+            if (target == null)
             {
                 fireCountdown -= Time.deltaTime;
                 return;
@@ -31,7 +31,7 @@ namespace Turrets
             if (fireCountdown <= 0)
             {
                 Attack();
-                fireCountdown = 1 / fireRate;
+                fireCountdown = 1 / fireRate.GetStat();
             }
             
             fireCountdown -= Time.deltaTime;
@@ -50,7 +50,7 @@ namespace Turrets
             {
                 bullet.AddUpgrade(upgrade);
             }
-            bullet.Seek(_target);
+            bullet.Seek(target);
         }
     }
 }
