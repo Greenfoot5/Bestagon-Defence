@@ -13,7 +13,7 @@ namespace Turrets
         private void Update()
         {
             // Don't do anything if we don't have a target
-            if (_target == null)
+            if (target == null)
             {
                 if (!lineRenderer.enabled) return;
                 
@@ -41,11 +41,11 @@ namespace Turrets
         protected override void Attack()
         {
             // Deal damage
-            _targetEnemy.TakeDamage(damage * Time.deltaTime);
+            targetEnemy.TakeDamage(damage.GetStat() * Time.deltaTime);
 
             foreach (var upgrade in upgrades)
             {
-                upgrade.OnHit(new [] {_targetEnemy});
+                upgrade.OnHit(new [] {targetEnemy});
             }
 
             // Enable visuals
@@ -56,7 +56,7 @@ namespace Turrets
             }
         
             // Set Laser positions
-            var targetPosition = _target.position;
+            var targetPosition = target.position;
             var firePointPosition = firePoint.position;
             lineRenderer.SetPosition(0, firePointPosition);
             lineRenderer.SetPosition(1, targetPosition);

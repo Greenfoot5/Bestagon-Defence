@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Turrets.Upgrades
 {
@@ -9,8 +10,8 @@ namespace Turrets.Upgrades
     {
         public override Type[] ValidTypes => null;  // any
 
-        [SerializeField]
-        private float percentageSlow;
+        [FormerlySerializedAs("percentageSlow")] [SerializeField]
+        private float slowPercentage;
         public override void AddUpgrade(Turret turret) { }
 
         public override void RemoveUpgrade(Turret turret) { }
@@ -24,7 +25,7 @@ namespace Turrets.Upgrades
         {
             foreach (var target in targets)
             {
-                target.Slow(percentageSlow);
+                target.Slow(slowPercentage);
             }
         }
     }

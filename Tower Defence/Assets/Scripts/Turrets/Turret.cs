@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using Turrets.Upgrades;
 using UnityEngine;
 
@@ -18,17 +16,17 @@ namespace Turrets
     
     public abstract class Turret : MonoBehaviour
     {
-        public float damage;
+        public UpgradableStat damage;
 
         // System
         public string enemyTag = "Enemy";
         
-        public float range = 2.5f;
+        public UpgradableStat range = new UpgradableStat(2.5f);
         public GameObject rangeDisplay;
 
         // Attack speed
         [Tooltip("Time between each shot")]
-        public float fireRate = 1f;
+        public UpgradableStat fireRate = new UpgradableStat(1f);
         protected float fireCountdown;
         
         // Effects
@@ -50,7 +48,7 @@ namespace Turrets
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, range);
+            Gizmos.DrawWireSphere(transform.position, range.GetStat());
         }
         
         /// <summary>
@@ -70,9 +68,10 @@ namespace Turrets
             upgrades.Add(upgrade);
             
             // Update the range shader's size
+            var localScale = transform.localScale;
             rangeDisplay.transform.localScale = new Vector3(
-                range / transform.localScale.x * 2,
-                range / transform.localScale.y * 2,
+                range.GetStat() / localScale.x * 2,
+                range.GetStat() / localScale.y * 2,
                 1);
             return true;
         }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Turrets.Upgrades
 {
@@ -9,21 +10,21 @@ namespace Turrets.Upgrades
     {
         public override Type[] ValidTypes => null;  // any
 
-        [SerializeField]
-        private float percentageIncrease;
+        [FormerlySerializedAs("percentageIncrease")] [SerializeField]
+        private float percentageChange;
         public override void AddUpgrade(Turret turret)
         {
-            turret.damage += percentageIncrease * turret.damage;
+            turret.damage.AddModifier(percentageChange);
         }
 
         public override void RemoveUpgrade(Turret turret)
         {
-            turret.damage -= percentageIncrease * turret.damage;
+            turret.damage.TakeModifier(percentageChange);
         }
 
         public override void OnShoot(Bullet bullet)
         {
-            bullet.damage += (percentageIncrease * bullet.damage);
+            bullet.damage.AddModifier(percentageChange);
         }
 
         public override void OnHit(IEnumerable<Enemy> targets) { }

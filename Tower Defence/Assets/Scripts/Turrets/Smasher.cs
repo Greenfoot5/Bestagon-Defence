@@ -13,7 +13,8 @@ namespace Turrets
         private void Update()
         {
             // Don't do anything if no enemy is in range
-            if (!Physics2D.OverlapCircleAll(transform.position, range).Any(x => x.CompareTag(enemyTag)))
+            if (!Physics2D.OverlapCircleAll(transform.position, range.GetStat()).Any(x => 
+                x.CompareTag(enemyTag)))
             {
                 fireCountdown -= Time.deltaTime;
                 return;
@@ -22,7 +23,7 @@ namespace Turrets
             if (fireCountdown <= 0)
             {
                 Attack();
-                fireCountdown = 1 / fireRate;
+                fireCountdown = 1 / fireRate.GetStat();
             }
             
             fireCountdown -= Time.deltaTime;
@@ -33,7 +34,7 @@ namespace Turrets
             smashEffect.Play();
             
             // Get's all the enemies in the AoE and calls Damage on them
-            var colliders = Physics2D.OverlapCircleAll(transform.position, range);
+            var colliders = Physics2D.OverlapCircleAll(transform.position, range.GetStat());
             var enemies = new List<Enemy>();
             foreach (var collider2d in colliders)
             {
@@ -41,7 +42,7 @@ namespace Turrets
                 
                 var enemy = collider2d.GetComponent<Enemy>();
                 enemies.Add(enemy);
-                enemy.TakeDamage(damage);
+                enemy.TakeDamage(damage.GetStat());
             }
 
             foreach (var upgrade in upgrades)
