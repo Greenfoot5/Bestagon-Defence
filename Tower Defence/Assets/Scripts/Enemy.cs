@@ -6,12 +6,16 @@ public class Enemy : MonoBehaviour
     [Header("Stats")]
     public float startSpeed = 2f;
     public float startHealth = 20f;
-    
+
     [HideInInspector]
     public float speed;
-    //[HideInInspector]
+    [HideInInspector]
     public float health;
+    
+    [Header("Death Stats")]
     public int deathMoney = 10;
+    public int deathLives = 1;
+    public int endPathMoney = 10;
 
     [Header("Health Bar")]
     public Image leftBar;

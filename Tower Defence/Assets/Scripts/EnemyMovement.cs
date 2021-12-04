@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 
-/*
- * A script to move the enemy along our designated path
- * Set out by a waypoints array
- */
+
+/// <summary>
+/// A script to move the enemy along our designated path
+/// Set out by a waypoints array
+/// </summary>
 
 [RequireComponent(typeof(Enemy))]
 public class EnemyMovement : MonoBehaviour
@@ -18,7 +19,6 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] 
     private float distanceToWaypoint = 0.05f;
     
-    // Called when the scene starts
     private void Start()
     {
         // Set the next target to the first waypoint.
@@ -28,7 +28,9 @@ public class EnemyMovement : MonoBehaviour
         _enemy = GetComponent<Enemy>();
     }
 
-    // Every scene, we need to move the enemy
+    /// <summary>
+    /// Every scene, we need to move the enemy
+    /// </summary>
     private void Update()
     {
         // Get the direction and move in that direction
@@ -45,7 +47,9 @@ public class EnemyMovement : MonoBehaviour
         // _enemy.speed = _enemy.startSpeed;
     }
     
-    // Gets the next waypoint in the waypoints array
+    /// <summary>
+    /// Gets the next waypoint in the waypoints array
+    /// </summary>
     private void GetNextWaypoint()
     {
         // If we've reached the end, destroy
@@ -60,12 +64,15 @@ public class EnemyMovement : MonoBehaviour
         _target = Waypoints.points[_waypointIndex];
     }
     
-    // Called when we reach the final waypoint
-    void EndPath()
+    /// <summary>
+    /// Called when we reach the final waypoint
+    /// </summary>
+    private void EndPath()
     {
         // Let our other systems know the enemy reached the end
-        GameStats.lives--;
+        GameStats.lives -= _enemy.deathLives;
         WaveSpawner.enemiesAlive--;
+        GameStats.money += _enemy.endPathMoney;
         
         Destroy(gameObject);
     }
