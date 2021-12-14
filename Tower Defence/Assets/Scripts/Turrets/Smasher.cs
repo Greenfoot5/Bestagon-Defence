@@ -43,7 +43,7 @@ namespace Turrets
                 
                 var enemy = collider2d.GetComponent<Enemy>();
                 enemies.Add(enemy);
-                enemy.TakeDamage(damage.GetStat());
+                enemy.TakeDamage(damage.GetStat(), gameObject);
             }
 
             foreach (var upgrade in upgrades)

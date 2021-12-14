@@ -70,12 +70,7 @@ namespace Enemies
         /// </summary>
         private void EndPath()
         {
-            // Let our other systems know the enemy reached the end
-            GameStats.lives -= _enemy.deathLives;
-            WaveSpawner.enemiesAlive--;
-            GameStats.money += _enemy.endPathMoney;
-        
-            Destroy(gameObject);
+            _enemy.FinishPath();
         }
     }
 }

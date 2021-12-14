@@ -41,7 +41,7 @@ namespace Turrets
         protected override void Attack()
         {
             // Deal damage
-            targetEnemy.TakeDamage(damage.GetStat() * Time.deltaTime);
+            targetEnemy.TakeDamage(damage.GetStat() * Time.deltaTime, gameObject);
 
             foreach (var upgrade in upgrades)
             {

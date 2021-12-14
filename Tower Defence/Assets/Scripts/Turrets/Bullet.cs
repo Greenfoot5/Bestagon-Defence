@@ -93,7 +93,7 @@ namespace Turrets
 
             if (em != null)
             {
-                em.TakeDamage(damage.GetStat());
+                em.TakeDamage(damage.GetStat(), gameObject);
             }
         }
     

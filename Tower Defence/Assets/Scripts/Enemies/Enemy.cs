@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Enemies
@@ -7,11 +8,11 @@ namespace Enemies
     {
         [Header("Stats")]
         public float startSpeed = 2f;
-        public float startHealth = 20f;
+        [FormerlySerializedAs("startHealth")] public float maxHealth = 20f;
 
         [HideInInspector]
         public float speed;
-        [HideInInspector]
+        //[HideInInspector]
         public float health;
     
         [Header("Death Stats")]
@@ -24,20 +25,21 @@ namespace Enemies
         public Image rightBar;
 
         public GameObject deathEffect;
+        
 
         private void Start()
         {
             speed = startSpeed;
-            health = startHealth;
+            health = maxHealth;
         }
     
         // Called when the enemy takes damage
-        public void TakeDamage(float amount)
+        public void TakeDamage(float amount, GameObject source)
         {
             health -= amount;
 
-            leftBar.fillAmount = health / startHealth;
-            rightBar.fillAmount = health / startHealth;
+            leftBar.fillAmount = health / maxHealth;
+            rightBar.fillAmount = health / maxHealth;
 
             if (health <= 0)
             {
@@ -52,7 +54,7 @@ namespace Enemies
         }
     
         // Called when we die
-        protected void Die()
+        private void Die()
         {
             // Spawn death effect
             var effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
@@ -63,6 +65,16 @@ namespace Enemies
         
             // Grant money and destroy self
             GameStats.money += deathMoney;
+            Destroy(gameObject);
+        }
+
+        public void FinishPath()
+        {
+            // Let our other systems know the enemy reached the end
+            GameStats.lives -= deathLives;
+            WaveSpawner.enemiesAlive--;
+            GameStats.money += endPathMoney;
+        
             Destroy(gameObject);
         }
     }
