@@ -6,6 +6,9 @@ namespace Enemies
     {
         public AbilityTarget targetingType = AbilityTarget.Single;
         public AbilityTrigger[] triggers;
+
+        public Sprite abilityIcon;
+        public GameObject abilityEffect;
         
         [Header("Radius Stats")]
         public float range = 3f;
