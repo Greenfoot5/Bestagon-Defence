@@ -34,7 +34,7 @@ namespace Enemies
         }
     
         // Called when the enemy takes damage
-        public void TakeDamage(float amount, GameObject source)
+        public virtual void TakeDamage(float amount, GameObject source)
         {
             health -= amount;
 
@@ -68,7 +68,7 @@ namespace Enemies
             Destroy(gameObject);
         }
 
-        public void FinishPath()
+        public virtual void FinishPath()
         {
             // Let our other systems know the enemy reached the end
             GameStats.lives -= deathLives;

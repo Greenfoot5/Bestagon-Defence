@@ -81,7 +81,7 @@ namespace Enemies
         }
         
         // Called when the enemy takes damage
-        public new void TakeDamage(float amount, GameObject source)
+        public override void TakeDamage(float amount, GameObject source)
         {
             ActivateAbilities(_hitAbilities, source);
             
@@ -114,7 +114,7 @@ namespace Enemies
             Destroy(gameObject);
         }
         
-        public new void FinishPath()
+        public override void FinishPath()
         {
             ActivateAbilities(_finishAbilities, null);
             
