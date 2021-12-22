@@ -23,7 +23,6 @@ namespace Enemies
             if (isPercentage)
             {
                 enemyComponent.health += enemyComponent.maxHealth * healPercentage;
-                Debug.Log(enemyComponent.health);
             }
             else
             {

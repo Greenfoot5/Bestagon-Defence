@@ -27,7 +27,7 @@ namespace Enemies
         public GameObject deathEffect;
         
 
-        private void Start()
+        private void Awake()
         {
             speed = startSpeed;
             health = maxHealth;

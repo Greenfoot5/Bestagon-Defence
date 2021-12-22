@@ -14,10 +14,10 @@ namespace Enemies
         public GameObject iconLayout;
         
         // Abilities for each trigger
-        private List<EnemyAbility> _timerAbilities = new List<EnemyAbility>();
-        private List<EnemyAbility> _hitAbilities = new List<EnemyAbility>();
-        private List<EnemyAbility> _deathAbilities = new List<EnemyAbility>();
-        private List<EnemyAbility> _finishAbilities = new List<EnemyAbility>();
+        private readonly List<EnemyAbility> _timerAbilities = new List<EnemyAbility>();
+        private readonly List<EnemyAbility> _hitAbilities = new List<EnemyAbility>();
+        private readonly List<EnemyAbility> _deathAbilities = new List<EnemyAbility>();
+        private readonly List<EnemyAbility> _finishAbilities = new List<EnemyAbility>();
 
         private void Start()
         {
@@ -32,7 +32,7 @@ namespace Enemies
             }
         }
 
-        public void GrantAbility(EnemyAbility ability)
+        private void GrantAbility(EnemyAbility ability)
         {
             if (ability.triggers.Contains(AbilityTrigger.OnTimer))
             {
@@ -51,11 +51,17 @@ namespace Enemies
             {
                 _finishAbilities.Add(ability);
             }
-
-            var icon = Instantiate(new GameObject(), iconLayout.transform);
+            
+            var icon = new GameObject("Ability Icon");
             icon.AddComponent(typeof(Image));
             icon.GetComponent<Image>().sprite = ability.abilityIcon;
+            icon.transform.SetParent(iconLayout.transform);
 
+            // Fix the icon's size
+            var iLayoutTransform = (RectTransform)iconLayout.transform;
+            var iTransform = (RectTransform)icon.transform;
+            var ratio = ability.abilityIcon.rect.height / iLayoutTransform.rect.height;
+            iTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, ability.abilityIcon.rect.width / ratio);
         }
         
         /// <summary>
@@ -140,7 +146,6 @@ namespace Enemies
                         {
                             if (!coll.CompareTag("Enemy") && !coll.CompareTag("Turret")) continue;
                             
-                            Debug.Log(coll.gameObject.name);
                             ability.Activate(coll.gameObject);
                         }
                         break;
