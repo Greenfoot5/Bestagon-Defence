@@ -16,7 +16,7 @@ namespace Enemies
             var enemyComponent = target.GetComponent<Enemy>();
             if (enemyComponent == null)
             {
-                Debug.LogAssertion("Target for enemy healing did not have Enemy component");
+                return;
             }
             
             // Heal the target
