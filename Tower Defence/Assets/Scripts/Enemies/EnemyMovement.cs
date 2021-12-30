@@ -34,6 +34,12 @@ namespace Enemies
         /// </summary>
         private void Update()
         {
+            // If we aren't going to move forward, we aren't going to move.
+            if (_enemy.speed < 0)
+            {
+                return;
+            }
+            
             // Get the direction and move in that direction
             var dir = _target.position - transform.position;
             transform.Translate(dir.normalized * (_enemy.speed * Time.deltaTime), Space.World);
@@ -43,9 +49,6 @@ namespace Enemies
             {
                 GetNextWaypoint();
             }
-        
-            // Reset speed in case we've been slowed
-            // _enemy.speed = _enemy.startSpeed;
         }
     
         /// <summary>

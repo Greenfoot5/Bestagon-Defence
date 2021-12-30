@@ -41,9 +41,6 @@ namespace Enemies
             return;
         }
 
-        public override void OnCounterEnd()
-        {
-            Debug.Log("Finished Counting");
-        }
+        public override void OnCounterEnd() { }
     }
 }
