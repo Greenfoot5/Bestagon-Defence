@@ -18,10 +18,7 @@ namespace Turrets.Upgrades
 
         public override void RemoveUpgrade(Turret turret) { }
 
-        public override void OnShoot(Bullet bullet)
-        {
-            bullet.AddUpgrade(this);
-        }
+        public override void OnShoot(Bullet bullet) { }
 
         public override void OnHit(IEnumerable<Enemy> targets)
         {

@@ -34,7 +34,7 @@ namespace Enemies
             }
         }
 
-        public override void OnCounterEnd()
+        public override void OnCounterEnd(GameObject target)
         {
             throw new System.NotImplementedException();
         }

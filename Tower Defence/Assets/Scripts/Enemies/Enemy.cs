@@ -14,7 +14,7 @@ namespace Enemies
         public float startSpeed = 2f;
         [FormerlySerializedAs("startHealth")] public float maxHealth = 20f;
 
-        [HideInInspector]
+        //[HideInInspector]
         public float speed;
         [HideInInspector]
         public float health;
@@ -54,6 +54,14 @@ namespace Enemies
         
         public void GrantAbility(EnemyAbility ability)
         {
+            // TODO - Have better ability checking. Perhaps check if one is a higher tier than another,
+            // TODO - or, for an extra challenge, reset the timer on the current one.
+            var existingIcon = iconLayout.transform.Find($"{ability.name} Icon");
+            if (existingIcon != null)
+            {
+                return;
+            }
+            
             if (ability.triggers.Contains(AbilityTrigger.OnTimer))
             {
                 _timerAbilities.Add(ability);
@@ -73,7 +81,11 @@ namespace Enemies
             }
             if (ability.triggers.Contains(AbilityTrigger.OnGrant))
             {
-                //ActivateAbilities(new[] {(ability, -1)}, gameObject);
+                ActivateAbilities(new[] {ability}, gameObject);
+                if (ability.startCount > 0)
+                {
+                    StartCoroutine(GrantedAbilityCounter(ability));
+                }
             }
             
             var icon = new GameObject($"{ability.name} Icon");
@@ -88,7 +100,7 @@ namespace Enemies
             iTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, ability.abilityIcon.rect.width / ratio);
         }
 
-        public void RevokeAbility(EnemyAbility ability)
+        private void RevokeAbility(EnemyAbility ability)
         {
             if (ability.triggers.Contains(AbilityTrigger.OnTimer))
             {
@@ -112,6 +124,14 @@ namespace Enemies
             Debug.Log($"{ability.name} Icon");
             Destroy(icon.gameObject);
         }
+
+        private IEnumerator GrantedAbilityCounter(EnemyAbility ability)
+        {
+            yield return new WaitForSeconds(ability.startCount);
+            
+            RevokeAbility(ability);
+            EndCounterAbility(ability, null);
+        }
         
         /// <summary>
         /// Activates abilities on a timer
@@ -134,7 +154,7 @@ namespace Enemies
                 
                 // Remove the ability
                 RevokeAbility(ability);
-                ability.OnCounterEnd();
+                EndCounterAbility(ability, null);
                 yield break;
                 
             }
@@ -155,7 +175,7 @@ namespace Enemies
                 
                 // Remove the ability
                 RevokeAbility(ability);
-                ability.OnCounterEnd();
+                EndCounterAbility(ability, source);
             }
             
             // Base health stuff
@@ -238,6 +258,45 @@ namespace Enemies
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
+            }
+        }
+        
+        private void EndCounterAbility(EnemyAbility ability, GameObject source)
+        {
+            // Spawn ability effect
+            var effect = Instantiate(ability.abilityEffect, transform.position, Quaternion.identity);
+            Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
+            switch (ability.targetingType)
+            {
+                case AbilityTarget.Single:
+                    // The target may be the damage source or the enemy itself
+                    ability.OnCounterEnd(source);
+                    ability.OnCounterEnd(gameObject);
+                    break;
+                case AbilityTarget.Radius:
+                    var colliders = Physics2D.OverlapCircleAll(transform.position, ability.range);
+                    foreach (var coll in colliders)
+                    {
+                        if (!coll.CompareTag("Enemy") && !coll.CompareTag("Turret")) continue;
+                        
+                        ability.OnCounterEnd(coll.gameObject);
+                    }
+                    break;
+                case AbilityTarget.All:
+                    var turrets = GameObject.FindGameObjectsWithTag("Turret");
+                    foreach (var target in turrets)
+                    {
+                        ability.OnCounterEnd(target);
+                    }
+                    
+                    var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+                    foreach (var target in enemies)
+                    {
+                        ability.OnCounterEnd(target);
+                    }
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
     }

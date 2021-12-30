@@ -41,6 +41,6 @@ namespace Enemies
             return;
         }
 
-        public override void OnCounterEnd() { }
+        public override void OnCounterEnd(GameObject target) { }
     }
 }

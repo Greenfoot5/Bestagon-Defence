@@ -21,6 +21,6 @@ namespace Enemies
         public int startCount = -1;
         
         public abstract void Activate(GameObject target);
-        public abstract void OnCounterEnd();
+        public abstract void OnCounterEnd(GameObject target);
     }
 }
