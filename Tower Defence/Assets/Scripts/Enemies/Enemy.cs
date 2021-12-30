@@ -35,11 +35,10 @@ namespace Enemies
         public GameObject iconLayout;
         
         // Abilities for each trigger
-        private List<(EnemyAbility ability, int count)> _timerAbilities = new List<(EnemyAbility, int)>();
-        private List<(EnemyAbility ability, int count)> _hitAbilities = new List<(EnemyAbility, int)>();
-        private List<(EnemyAbility ability, int count)> _deathAbilities = new List<(EnemyAbility, int)>();
-        private List<(EnemyAbility ability, int count)> _finishAbilities = new List<(EnemyAbility, int)>();
-
+        private readonly List<EnemyAbility> _timerAbilities = new List<EnemyAbility>();
+        private readonly List<(EnemyAbility ability, int count)> _hitAbilities = new List<(EnemyAbility, int)>();
+        private readonly List<EnemyAbility> _deathAbilities = new List<EnemyAbility>();
+        private readonly List<EnemyAbility> _finishAbilities = new List<EnemyAbility>();
 
         private void Awake()
         {
@@ -57,7 +56,7 @@ namespace Enemies
         {
             if (ability.triggers.Contains(AbilityTrigger.OnTimer))
             {
-                _timerAbilities.Add((ability, ability.startCount));
+                _timerAbilities.Add(ability);
                 StartCoroutine(TimerAbility(ability));
             }
             if (ability.triggers.Contains(AbilityTrigger.OnDamage))
@@ -66,11 +65,11 @@ namespace Enemies
             }
             if (ability.triggers.Contains(AbilityTrigger.OnDeath))
             {
-                _deathAbilities.Add((ability, ability.startCount));
+                _deathAbilities.Add(ability);
             }
             if (ability.triggers.Contains(AbilityTrigger.OnEnd))
             {
-                _finishAbilities.Add((ability, ability.startCount));
+                _finishAbilities.Add(ability);
             }
             if (ability.triggers.Contains(AbilityTrigger.OnGrant))
             {
@@ -98,18 +97,18 @@ namespace Enemies
         {
             var counter = ability.startCount;
             // Check we still have the ability to use
-            while (_timerAbilities.Any(timerAbility => timerAbility.ability == ability))
+            while (_timerAbilities.Contains(ability))
             {
                 yield return new WaitForSeconds(ability.timer);
 
-                ActivateAbilities(new[] { (ability, counter) }, null);
+                ActivateAbilities(new[] { ability}, null);
                 
                 // Decrease the counter
                 counter -= 1;
                 if (counter != 0) continue;
                 
                 // Remove the ability
-                _timerAbilities.Remove((ability, ability.startCount));
+                _timerAbilities.Remove(ability);
                 ability.OnCounterEnd();
                 yield break;
                 
@@ -119,7 +118,8 @@ namespace Enemies
         // Called when the enemy takes damage
         public void TakeDamage(float amount, GameObject source)
         {
-            ActivateAbilities(_hitAbilities, source);
+            var abilities = _hitAbilities.Select(item => item.ability).ToList();
+            ActivateAbilities(abilities, source);
 
             for (var i = 0; i < _hitAbilities.Count; i++)
             {
@@ -174,40 +174,40 @@ namespace Enemies
             Destroy(gameObject);
         }
         
-        private void ActivateAbilities(IEnumerable<(EnemyAbility ability, int counter)> abilities, GameObject source)
+        private void ActivateAbilities(IEnumerable<EnemyAbility> abilities, GameObject source)
         {
-            foreach (var item in abilities)
+            foreach (var ability in abilities)
             {
                 // Spawn ability effect
-                var effect = Instantiate(item.ability.abilityEffect, transform.position, Quaternion.identity);
+                var effect = Instantiate(ability.abilityEffect, transform.position, Quaternion.identity);
                 Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
-                switch (item.ability.targetingType)
+                switch (ability.targetingType)
                 {
                     case AbilityTarget.Single:
                         // The target may be the damage source or the enemy itself
-                        item.ability.Activate(source);
-                        item.ability.Activate(gameObject);
+                        ability.Activate(source);
+                        ability.Activate(gameObject);
                         break;
                     case AbilityTarget.Radius:
-                        var colliders = Physics2D.OverlapCircleAll(transform.position, item.ability.range);
+                        var colliders = Physics2D.OverlapCircleAll(transform.position, ability.range);
                         foreach (var coll in colliders)
                         {
                             if (!coll.CompareTag("Enemy") && !coll.CompareTag("Turret")) continue;
                             
-                            item.ability.Activate(coll.gameObject);
+                            ability.Activate(coll.gameObject);
                         }
                         break;
                     case AbilityTarget.All:
                         var turrets = GameObject.FindGameObjectsWithTag("Turret");
                         foreach (var target in turrets)
                         {
-                            item.ability.Activate(target);
+                            ability.Activate(target);
                         }
                         
                         var enemies = GameObject.FindGameObjectsWithTag("Enemy");
                         foreach (var target in enemies)
                         {
-                            item.ability.Activate(target);
+                            ability.Activate(target);
                         }
                         break;
                     default:
