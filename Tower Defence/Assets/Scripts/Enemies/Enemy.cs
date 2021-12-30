@@ -76,7 +76,7 @@ namespace Enemies
                 //ActivateAbilities(new[] {(ability, -1)}, gameObject);
             }
             
-            var icon = new GameObject("Ability Icon");
+            var icon = new GameObject($"{ability.name} Icon");
             icon.AddComponent(typeof(Image));
             icon.GetComponent<Image>().sprite = ability.abilityIcon;
             icon.transform.SetParent(iconLayout.transform);
@@ -86,6 +86,31 @@ namespace Enemies
             var iTransform = (RectTransform)icon.transform;
             var ratio = ability.abilityIcon.rect.height / iLayoutTransform.rect.height;
             iTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, ability.abilityIcon.rect.width / ratio);
+        }
+
+        public void RevokeAbility(EnemyAbility ability)
+        {
+            if (ability.triggers.Contains(AbilityTrigger.OnTimer))
+            {
+                _timerAbilities.Remove(ability);
+            }
+            if (ability.triggers.Contains(AbilityTrigger.OnDamage))
+            {
+                // TODO - Find the counter properly
+                _hitAbilities.Remove((ability, 0));
+            }
+            if (ability.triggers.Contains(AbilityTrigger.OnDeath))
+            {
+                _deathAbilities.Remove(ability);
+            }
+            if (ability.triggers.Contains(AbilityTrigger.OnEnd))
+            {
+                _finishAbilities.Remove(ability);
+            }
+
+            var icon = iconLayout.transform.Find($"{ability.name} Icon");
+            Debug.Log($"{ability.name} Icon");
+            Destroy(icon.gameObject);
         }
         
         /// <summary>
@@ -108,7 +133,7 @@ namespace Enemies
                 if (counter != 0) continue;
                 
                 // Remove the ability
-                _timerAbilities.Remove(ability);
+                RevokeAbility(ability);
                 ability.OnCounterEnd();
                 yield break;
                 
@@ -129,7 +154,7 @@ namespace Enemies
                 if (count != 0) continue;
                 
                 // Remove the ability
-                _hitAbilities.Remove((ability, ability.startCount));
+                RevokeAbility(ability);
                 ability.OnCounterEnd();
             }
             
