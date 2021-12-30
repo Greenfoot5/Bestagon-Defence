@@ -88,9 +88,9 @@ MonoBehaviour:
     - item: {fileID: 11400000, guid: 2843a599f232045cd84bddb4bfdc34b5, type: 2}
       weight: 25
     - item: {fileID: 11400000, guid: fd238766202484223ad41e159363d2d9, type: 2}
-      weight: 25
+      weight: 250
     - item: {fileID: 11400000, guid: c90507ecd7ed843958d400aaaeaf6e18, type: 2}
-      weight: 10
+      weight: 1000
     - item: {fileID: 11400000, guid: a36951a90c6c44391a71cbd17ff8c4c9, type: 2}
       weight: 25
     - item: {fileID: 11400000, guid: 2a42e155c209b403eb3e9155f49abcfa, type: 2}

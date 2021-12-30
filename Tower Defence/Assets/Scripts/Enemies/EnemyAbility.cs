@@ -15,7 +15,12 @@ namespace Enemies
 
         [Header("Timer Stats")]
         public float timer = 5f;
+
+        [Header("Counter")]
+        [Tooltip("Set as -1 to not use timer")]
+        public int startCount = -1;
         
         public abstract void Activate(GameObject target);
+        public abstract void OnCounterEnd();
     }
 }

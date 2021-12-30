@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Turrets;
 using Turrets.Upgrades;
-using UI;
 using UnityEngine;
 
 namespace Enemies
@@ -11,7 +10,14 @@ namespace Enemies
     {
         [Header("Ability Stats")]
         public List<Upgrade> debuffs;
-
+        
+        
+        /// <summary>
+        /// Performs the ability on the target.
+        /// In this case, adds debuff(s) to the target
+        /// </summary>
+        /// <param name="target">The turret to debuff</param>
+        /// <returns>If the Ability has expired</returns>
         public override void Activate(GameObject target)
         {
             // Check we have an turret to downgrade
@@ -26,6 +32,11 @@ namespace Enemies
             {
                 turretComponent.AddUpgrade(upgrade);
             }
+        }
+
+        public override void OnCounterEnd()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

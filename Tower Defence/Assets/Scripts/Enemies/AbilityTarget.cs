@@ -12,6 +12,7 @@ namespace Enemies
         OnEnd = 0,
         OnDeath = 1,
         OnTimer = 2,
-        OnDamage = 3
+        OnDamage = 3,
+        OnGrant = 4
     }
 }

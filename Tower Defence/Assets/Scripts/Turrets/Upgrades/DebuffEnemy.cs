@@ -2,17 +2,18 @@ using System;
 using System.Collections.Generic;
 using Enemies;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Turrets.Upgrades
 {
-    [CreateAssetMenu(fileName = "SlowUpgrade", menuName = "Upgrades/SlowsEnemyUpgrade")]
-    public class SlowUpgrade : Upgrade
+    [CreateAssetMenu(fileName = "DebuffEnemy", menuName = "Upgrades/DebuffEnemy")]
+    public class DebuffEnemy : Upgrade
     {
         protected override Type[] ValidTypes => null;  // any
 
         [SerializeField]
-        private float slowPercentage;
+        private List<EnemyAbility> debuffs;
+        
+        
         public override void AddUpgrade(Turret turret) { }
 
         public override void RemoveUpgrade(Turret turret) { }
@@ -26,7 +27,10 @@ namespace Turrets.Upgrades
         {
             foreach (var target in targets)
             {
-                target.Slow(slowPercentage);
+                foreach (var debuff in debuffs)
+                {
+                    target.GrantAbility(debuff);
+                }
             }
         }
     }

@@ -9,14 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c414644e81344033bd089428148d5b0, type: 3}
-  m_Name: WeakenTurret
+  m_Script: {fileID: 11500000, guid: ac6bfaf8b7d98427889e5043725f94e2, type: 3}
+  m_Name: 20%Slow
   m_EditorClassIdentifier: 
   targetingType: 2
-  triggers: 01000000
-  abilityIcon: {fileID: 21300000, guid: 7558f700791474075a7a2f9025007751, type: 3}
-  abilityEffect: {fileID: 2228279973635050725, guid: 0819bd4b36b114943ba247527c0225db, type: 3}
+  triggers: 04000000
+  abilityIcon: {fileID: 1595557568634733894, guid: 2cede4385411542b29f7b2c61a9e1053, type: 3}
+  abilityEffect: {fileID: 1404681256839616, guid: 3640199bf9dc32f4da57c37d57581f57, type: 3}
   range: 3
   timer: 5
-  debuffs:
-  - {fileID: 0}
+  slowPercentage: 0.2

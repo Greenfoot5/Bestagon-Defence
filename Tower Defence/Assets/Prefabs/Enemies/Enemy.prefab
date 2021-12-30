@@ -108,6 +108,8 @@ MonoBehaviour:
   leftBar: {fileID: 3405873017015568044}
   rightBar: {fileID: 6983167930260378702}
   deathEffect: {fileID: 710779272522642178, guid: d286b443e8ade4d4cb1ec3e2a41a94f8, type: 3}
+  startingAbilities: []
+  iconLayout: {fileID: 6477750728705386477}
 --- !u!114 &7336438465809873736
 MonoBehaviour:
   m_ObjectHideFlags: 0

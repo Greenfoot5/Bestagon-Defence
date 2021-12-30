@@ -12,21 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc10d9db80e244b291978caa6ba6ec7, type: 3}
   m_Name: CrippleDebuff
   m_EditorClassIdentifier: 
-  upgradeType: 
-  upgradeTier: 0
+  upgradeType: Cripple
+  upgradeTier: 1
   accentColor: {r: 0, g: 0, b: 0, a: 0}
-  displayName: 
-  tagline: 
-  icon: {fileID: 0}
-  effectText: 
-  shooterRangePercentageChange: 0
-  shooterDamagePercentageChange: 0
-  shooterFireRatePercentageChange: 0
-  shooterRotationSpeedPercentageChange: 0
-  shooterBulletSpeedPercentageChange: 0
-  laserRangePercentageChange: 0
-  laserRotationSpeedPercentageChange: 0
-  laserDamagePercentageChange: 0
-  smasherRangePercentageChange: 0
-  smasherDamagePercentageChange: 0
-  smasherFireRatePercentageChange: 0
+  displayName: Cripple
+  tagline: Break your kneecaps
+  icon: {fileID: 21300000, guid: 3a8c48efe02e240a5baa4fec7b82fb67, type: 3}
+  effectText: Severely damages your turret
+  shooterRangePercentageChange: -0.1
+  shooterDamagePercentageChange: -0.1
+  shooterFireRatePercentageChange: -0.1
+  shooterRotationSpeedPercentageChange: -0.1
+  shooterBulletSpeedPercentageChange: -0.1
+  laserRangePercentageChange: -0.2
+  laserRotationSpeedPercentageChange: -0.1
+  laserDamagePercentageChange: -0.15
+  smasherRangePercentageChange: -0.2
+  smasherDamagePercentageChange: -0.1
+  smasherFireRatePercentageChange: -0.2

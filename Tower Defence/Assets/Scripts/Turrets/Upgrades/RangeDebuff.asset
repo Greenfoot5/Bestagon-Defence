@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d28255eabac146d3b78df34a0b72660, type: 3}
   m_Name: RangeDebuff
   m_EditorClassIdentifier: 
-  upgradeType: 
-  upgradeTier: 0
+  upgradeType: Range Decrease
+  upgradeTier: 1
   accentColor: {r: 0, g: 0, b: 0, a: 0}
-  displayName: 
-  tagline: 
-  icon: {fileID: 0}
-  effectText: 
-  percentageChange: 0
+  displayName: Blindness
+  tagline: You need glasses
+  icon: {fileID: 21300000, guid: 0f12e0e56894f4095bf4f3942750b547, type: 3}
+  effectText: Reduces range by 15%
+  percentageChange: -0.15

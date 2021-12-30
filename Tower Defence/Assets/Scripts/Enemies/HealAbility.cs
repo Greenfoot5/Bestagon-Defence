@@ -37,6 +37,13 @@ namespace Enemies
 
             enemyComponent.leftBar.fillAmount = enemyComponent.health / enemyComponent.maxHealth;
             enemyComponent.rightBar.fillAmount = enemyComponent.health / enemyComponent.maxHealth;
+
+            return;
+        }
+
+        public override void OnCounterEnd()
+        {
+            Debug.Log("Finished Counting");
         }
     }
 }
