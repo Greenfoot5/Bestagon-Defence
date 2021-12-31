@@ -70,7 +70,7 @@ namespace Enemies
             }
             if (ability.triggers.Contains(AbilityTrigger.OnDamage))
             {
-                _hitAbilities.Add((ability, ability.startCount));
+                _hitAbilities.Add((ability, (int) ability.startCount));
             }
             if (ability.triggers.Contains(AbilityTrigger.OnDeath))
             {
@@ -167,10 +167,10 @@ namespace Enemies
             var abilities = _hitAbilities.Select(item => item.ability).ToList();
             ActivateAbilities(abilities, source);
 
-            for (var i = 0; i < _hitAbilities.Count; i++)
+            foreach (var t in _hitAbilities)
             {
                 // Decrease the counter
-                var (ability, count) = _hitAbilities[i];
+                var (ability, count) = t;
                 count -= 1;
                 if (count != 0) continue;
                 

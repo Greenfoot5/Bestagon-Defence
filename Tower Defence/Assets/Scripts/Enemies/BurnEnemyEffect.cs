@@ -2,11 +2,11 @@ using UnityEngine;
 
 namespace Enemies
 {
-    [CreateAssetMenu(fileName = "PoisonEnemy", menuName = "Enemy Abilities/Poison Enemy")]
-    public class PoisonEnemy : EnemyAbility
+    [CreateAssetMenu(fileName = "BurnEnemy", menuName = "Enemy Abilities/Burn Enemy")]
+    public class BurnEnemyEffect : EnemyAbility
     {
         [Header("Ability Stats")]
-        [Tooltip("Static damage amount that's removed every tick, ticks being the timer")]
+        [Tooltip("% of max health damage per tick")]
         public float damage;
     
         public override void Activate(GameObject target)
@@ -23,7 +23,7 @@ namespace Enemies
                 return;
             }
 
-            enemyComponent.health -= damage;
+            enemyComponent.health = enemyComponent.maxHealth * damage;
         }
 
         public override void OnCounterEnd(GameObject target) { }

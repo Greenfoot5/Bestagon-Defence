@@ -2,12 +2,9 @@ using UnityEngine;
 
 namespace Enemies
 {
-    [CreateAssetMenu(fileName = "SlowEnemy", menuName = "Enemy Abilities/Slow Enemy")]
-    public class SlowEnemy : EnemyAbility
+    [CreateAssetMenu(fileName = "StunEnemy", menuName = "Enemy Abilities/Stun Enemy")]
+    public class StunEnemyEffect : EnemyAbility
     {
-        [Header("Ability Stats")]
-        public float slowPercentage = 0.2f;
-
         public override void Activate(GameObject target)
         {
             if (target == null)
@@ -21,14 +18,8 @@ namespace Enemies
             {
                 return;
             }
-            
-            // Don't slow if there's already a greater slow, or one of the same value
-            if (!(enemyComponent.startSpeed * (1 - slowPercentage) < enemyComponent.speed))
-            {
-                return;
-            }
-            
-            enemyComponent.speed *= 1f - slowPercentage;
+
+            enemyComponent.speed -= enemyComponent.startSpeed * 5000f;
         }
 
         public override void OnCounterEnd(GameObject target)
@@ -38,14 +29,14 @@ namespace Enemies
                 return;
             }
             
+            // Check we have an enemy to heal
             var enemyComponent = target.GetComponent<Enemy>();
-            
             if (enemyComponent == null)
             {
                 return;
             }
-            
-            enemyComponent.speed /= 1f - slowPercentage;
+
+            enemyComponent.speed += enemyComponent.startSpeed * 5000f;
         }
     }
 }

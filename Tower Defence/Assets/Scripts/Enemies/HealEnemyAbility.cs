@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Enemies
 {
     [CreateAssetMenu(fileName = "TimedMinorSelfHeal", menuName = "Enemy Abilities/Heal Enemy")]
-    public class HealAbility : EnemyAbility
+    public class HealEnemyAbility : EnemyAbility
     {
         [Header("Ability Stats")]
         public bool isPercentage = true;
@@ -42,8 +42,6 @@ namespace Enemies
 
             enemyComponent.leftBar.fillAmount = enemyComponent.health / enemyComponent.maxHealth;
             enemyComponent.rightBar.fillAmount = enemyComponent.health / enemyComponent.maxHealth;
-
-            return;
         }
 
         public override void OnCounterEnd(GameObject target) { }

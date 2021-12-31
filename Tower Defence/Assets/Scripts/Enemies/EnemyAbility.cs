@@ -18,7 +18,7 @@ namespace Enemies
 
         [Header("Counter")]
         [Tooltip("Set as -1 to not use timer")]
-        public int startCount = -1;
+        public float startCount = -1f;
         
         public abstract void Activate(GameObject target);
         public abstract void OnCounterEnd(GameObject target);
