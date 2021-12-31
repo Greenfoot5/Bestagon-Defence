@@ -61,6 +61,7 @@ namespace Enemies
             {
                 return;
             }
+            Debug.Log($"Granting Ability: {ability.name}");
             
             if (ability.triggers.Contains(AbilityTrigger.OnTimer))
             {
@@ -81,7 +82,7 @@ namespace Enemies
             }
             if (ability.triggers.Contains(AbilityTrigger.OnGrant))
             {
-                ActivateAbilities(new[] {ability}, gameObject);
+                ActivateAbilities(new[] {ability}, null);
                 if (ability.startCount > 0)
                 {
                     StartCoroutine(GrantedAbilityCounter(ability));
@@ -102,6 +103,7 @@ namespace Enemies
 
         private void RevokeAbility(EnemyAbility ability)
         {
+            Debug.Log($"Revoked Ability: {ability.name}");
             if (ability.triggers.Contains(AbilityTrigger.OnTimer))
             {
                 _timerAbilities.Remove(ability);
@@ -121,7 +123,6 @@ namespace Enemies
             }
 
             var icon = iconLayout.transform.Find($"{ability.name} Icon");
-            Debug.Log($"{ability.name} Icon");
             Destroy(icon.gameObject);
         }
 
@@ -223,6 +224,7 @@ namespace Enemies
         {
             foreach (var ability in abilities)
             {
+                Debug.Log($"Activating Ability: {ability.name}");
                 // Spawn ability effect
                 var effect = Instantiate(ability.abilityEffect, transform.position, Quaternion.identity);
                 Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);

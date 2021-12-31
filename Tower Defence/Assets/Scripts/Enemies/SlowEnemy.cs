@@ -2,13 +2,11 @@ using UnityEngine;
 
 namespace Enemies
 {
-    [CreateAssetMenu(fileName = "SlowEnemy", menuName = "EnemyAbilities/SlowSelf")]
+    [CreateAssetMenu(fileName = "SlowEnemy", menuName = "Enemy Abilities/Slow Enemy")]
     public class SlowEnemy : EnemyAbility
     {
         [Header("Ability Stats")]
-        //public bool isPermanent = true;
         public float slowPercentage = 0.2f;
-        //public float slow duration;
 
         public override void Activate(GameObject target)
         {
