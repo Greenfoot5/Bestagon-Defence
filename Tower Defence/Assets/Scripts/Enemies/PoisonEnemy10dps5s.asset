@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71557601c690b47389a8a9e77db3b4f6, type: 3}
-  m_Name: PoisonEnemy5dps5s
+  m_Name: PoisonEnemy10dps5s
   m_EditorClassIdentifier: 
   targetingType: 2
   triggers: 02000000
@@ -19,4 +19,4 @@ MonoBehaviour:
   range: 3
   timer: 1
   startCount: 5
-  damage: 5
+  damage: 10

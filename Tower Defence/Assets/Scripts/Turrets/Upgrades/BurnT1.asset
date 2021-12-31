@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2db0c3d1579341f8bd90af8aa9e324d, type: 3}
+  m_Name: BurnT1
+  m_EditorClassIdentifier: 
+  upgradeType: 
+  upgradeTier: 0
+  accentColor: {r: 0, g: 0, b: 0, a: 0}
+  displayName: 
+  tagline: 
+  icon: {fileID: 0}
+  effectText: 
+  debuffs: []
