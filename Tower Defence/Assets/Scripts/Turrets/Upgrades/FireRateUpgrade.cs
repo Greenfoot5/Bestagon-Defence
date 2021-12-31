@@ -6,7 +6,7 @@ using UnityEngine.Serialization;
 
 namespace Turrets.Upgrades
 {
-    [CreateAssetMenu(fileName = "FireRateUpgrade", menuName = "Upgrades/FireRateUpgrade")]
+    [CreateAssetMenu(fileName = "FireRateUpgrade", menuName = "Upgrades/Fire Rate")]
     public class FireRateUpgrade : Upgrade
     {
         protected override Type[] ValidTypes => null;  // any

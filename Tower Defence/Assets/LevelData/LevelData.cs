@@ -10,7 +10,7 @@ namespace LevelData
         ByName,
         ByType
     }
-    [CreateAssetMenu(fileName = "LevelName", menuName = "LevelData", order = 2)]
+    [CreateAssetMenu(fileName = "LevelName", menuName = "Level Data", order = 2)]
     public class LevelData : ScriptableObject
     {
         [Header("InitialSelection")]

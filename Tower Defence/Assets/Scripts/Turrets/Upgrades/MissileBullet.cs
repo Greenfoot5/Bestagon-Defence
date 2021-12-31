@@ -6,7 +6,7 @@ using UnityEngine.Serialization;
 
 namespace Turrets.Upgrades
 {
-    [CreateAssetMenu(fileName = "MissileBulletT0", menuName = "Upgrades/MissileBullet")]
+    [CreateAssetMenu(fileName = "MissileBulletT0", menuName = "Upgrades/Missile Bullet")]
     public class MissileBullet : Upgrade
     {
         protected override Type[] ValidTypes => new[] { typeof(Shooter) };

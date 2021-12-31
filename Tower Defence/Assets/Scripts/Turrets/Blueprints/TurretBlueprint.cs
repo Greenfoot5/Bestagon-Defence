@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Turrets.Blueprints
 {
-    [CreateAssetMenu(fileName = "TurretBlueprint", menuName = "TurretBlueprint", order = 0)]
+    [CreateAssetMenu(fileName = "TurretBlueprint", menuName = "Turret Blueprint", order = 0)]
     public class TurretBlueprint : ScriptableObject
     {
         [Header("Shop Info")]
