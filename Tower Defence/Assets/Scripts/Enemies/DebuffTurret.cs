@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Enemies
 {
     [CreateAssetMenu(fileName = "DebuffTurret", menuName = "Enemy Abilities/Debuff Turret")]
-    public class DebuffTargets : EnemyAbility
+    public class DebuffTurret : EnemyAbility
     {
         [Header("Ability Stats")]
         public List<Upgrade> debuffs;
