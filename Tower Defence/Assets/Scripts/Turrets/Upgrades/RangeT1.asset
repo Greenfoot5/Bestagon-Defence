@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d28255eabac146d3b78df34a0b72660, type: 3}
-  m_Name: RangeUpgradeT2
+  m_Name: RangeT1
   m_EditorClassIdentifier: 
   upgradeType: Range Increase
-  upgradeTier: 2
+  upgradeTier: 1
   accentColor: {r: 0.5176471, g: 0.85882354, b: 0.10980392, a: 1}
-  displayName: Range II
+  displayName: Range I
   tagline: Visionary
   icon: {fileID: -1435114285472068323, guid: 16c979c866f439b4b988e7020b313794, type: 3}
-  effectText: Increases Range by 20%
+  effectText: Increases Range by 10%
   validTypes: 000000000100000002000000
-  percentageIncrease: 0.2
+  percentageIncrease: 0.1

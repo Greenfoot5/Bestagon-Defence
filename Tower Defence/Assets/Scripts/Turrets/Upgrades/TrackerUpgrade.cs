@@ -7,7 +7,7 @@ using UnityEngine.Serialization;
 namespace Turrets.Upgrades
 {
     [CreateAssetMenu(fileName = "TrackerUpgradeT0", menuName = "Upgrades/Tracker")]
-    public class Tracker : Upgrade
+    public class TrackerUpgrade : Upgrade
     {
         protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Laser) };
 

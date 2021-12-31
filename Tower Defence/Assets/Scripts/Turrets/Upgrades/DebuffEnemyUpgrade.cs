@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Turrets.Upgrades
 {
     [CreateAssetMenu(fileName = "DebuffEnemy", menuName = "Upgrades/Debuff Enemy")]
-    public class DebuffEnemy : Upgrade
+    public class DebuffEnemyUpgrade : Upgrade
     {
         protected override Type[] ValidTypes => null;  // any
 
