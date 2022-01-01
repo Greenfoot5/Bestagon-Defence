@@ -102,7 +102,7 @@ MonoBehaviour:
     - item: {fileID: 11400000, guid: ca2487ad135c84afb92976ce624fe568, type: 2}
       weight: 15
   upgradeDuplicateCheck: 2
-  upgradeOptionWeight: 1
+  upgradeOptionWeight: 2
   initialSelectionCost: 100
   selectionCostIncrement: 10
   health: 1.1
