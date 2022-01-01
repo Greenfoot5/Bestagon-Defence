@@ -85,6 +85,7 @@ public class CameraController : MonoBehaviour
         else
         {
             _prevPinchMag = 0f;
+            _scrolling = 0f;
         }
         #endif
     }
@@ -114,7 +115,6 @@ public class CameraController : MonoBehaviour
         var orthSize = _camera.orthographicSize;
         orthSize -= _scrolling * Time.deltaTime;
         orthSize = Mathf.Clamp(orthSize, minOrthSize, maxOrthSize);
-
         _camera.orthographicSize = orthSize;
     }
 }
