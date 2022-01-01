@@ -19,5 +19,4 @@ MonoBehaviour:
   tagline: Quickload
   icon: {fileID: 8075296294540816629, guid: 16c979c866f439b4b988e7020b313794, type: 3}
   effectText: Increases Fire Rate by 15%
-  validTypes: 0000000002000000
-  percentageDecrease: 0.15
+  percentageChange: 0.15

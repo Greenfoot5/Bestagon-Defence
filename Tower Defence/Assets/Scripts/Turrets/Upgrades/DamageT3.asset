@@ -19,5 +19,4 @@ MonoBehaviour:
   tagline: Death wonder
   icon: {fileID: -4062769898107646306, guid: 16c979c866f439b4b988e7020b313794, type: 3}
   effectText: Increase Damage by 40%
-  validTypes: 000000000100000002000000
-  percentageIncrease: 0.4
+  percentageChange: 0.4

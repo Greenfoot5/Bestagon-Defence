@@ -19,15 +19,14 @@ MonoBehaviour:
   tagline: Expert ranger
   icon: {fileID: 2691302287683433475, guid: 16c979c866f439b4b988e7020b313794, type: 3}
   effectText: Shorts further, deals more damage, but takes time to do so
-  validTypes: 000000000100000002000000
-  bulletRange: 1
-  bulletDamage: 1
-  bulletFireRate: -0.5
-  bulletTurnSpeed: -0.3
-  bulletSpeed: 1
-  laserRange: 0.5
-  laserTurnSpeed: -0.5
-  laserDamage: 0
-  areaRange: 1
-  areaDamage: 1
-  areaFireRate: -0.5
+  shooterRangePercentageChange: 1
+  shooterDamagePercentageChange: 1
+  shooterFireRatePercentageChange: -0.5
+  shooterRotationSpeedPercentageChange: -0.3
+  shooterBulletSpeedPercentageChange: 1
+  laserRangePercentageChange: 0.5
+  laserRotationSpeedPercentageChange: -0.5
+  laserDamagePercentageChange: 0
+  smasherRangePercentageChange: 1
+  smasherDamagePercentageChange: 1
+  smasherFireRatePercentageChange: -0.5
