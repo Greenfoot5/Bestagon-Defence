@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
+using Enemies;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace Turrets.Upgrades
 {
-    [CreateAssetMenu(fileName = "FasterShotsT0", menuName = "Upgrades/FasterShots")]
-    public class FasterShots : Upgrade
+    [CreateAssetMenu(fileName = "FasterShotsT0", menuName = "Upgrades/Faster Shots")]
+    public class FasterShotsUpgrade : Upgrade
     {
         protected override Type[] ValidTypes => new[] { typeof(Shooter) };
 

@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Enemies;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -8,6 +10,8 @@ namespace Turrets
 {
     public abstract class DynamicTurret : Turret
     {
+        private const float UpdateTargetTimer = 0.5f;
+        
         // Targeting
         public TargetingMethod targetingMethod = TargetingMethod.Closest;
         public bool aggressiveRetargeting = true;
@@ -27,8 +31,8 @@ namespace Turrets
         // Start is called before the first frame update
         private void Start()
         {
-            // Call the function every 2s
-            InvokeRepeating(nameof(UpdateTarget), 0f, 0.5f);
+            // Start finding targets
+            StartCoroutine(TargetCoroutine());
             // Added when a turret is built.
             // TODO - Apply effects for pre-placed turrets in maps
             // foreach (var upgrade in turretUpgrades)
@@ -36,15 +40,27 @@ namespace Turrets
             //     AddUpgrade(upgrade);
             // }
         }
-
-
+        
+        /// <summary>
+        /// Calls our targeting method every 0.5s.
+        /// </summary>
+        /// <returns></returns>
+        private IEnumerator TargetCoroutine()
+        {
+            while (gameObject.activeSelf)
+            {
+                UpdateTarget();
+                yield return new WaitForSeconds(UpdateTargetTimer);
+            }
+        }
+        
         /// <summary>
         /// Update our current target to check if it's still the most valuable, or pick a new one.
         /// </summary>
         private void UpdateTarget()
         {
             // If we're not aggressively retargeting, check if the target is still in range
-            if (!aggressiveRetargeting)
+            if (!aggressiveRetargeting && target != null)
             {
                 var distanceToEnemy = Vector3.Distance(transform.position, target.position);
                 if (distanceToEnemy <= range.GetStat()) return;
@@ -62,6 +78,7 @@ namespace Turrets
             {
                 currentValue = Mathf.NegativeInfinity;
             }
+
             GameObject mostValuableEnemy = null;
 
             // Check there are enemies in range, and if not, we have no target
@@ -84,6 +101,7 @@ namespace Turrets
                             currentValue = distanceToEnemy;
                             mostValuableEnemy = enemy;
                         }
+
                         break;
                     case TargetingMethod.Weakest:
                         // Find if the enemy has less health than our current most valuable
@@ -93,6 +111,7 @@ namespace Turrets
                             currentValue = health;
                             mostValuableEnemy = enemy;
                         }
+
                         break;
                     case TargetingMethod.Strongest:
                         // Find if the enemy has more health than our current most valuable
@@ -102,6 +121,7 @@ namespace Turrets
                             currentValue = enemyHealth;
                             mostValuableEnemy = enemy;
                         }
+
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
@@ -126,7 +146,7 @@ namespace Turrets
         /// </summary>
         protected void LookAtTarget()
         {
-            // Get's the rotation we need to end up at, and lerp each frame towards that
+            // Gets the rotation we need to end up at, and lerp each frame towards that
             var aimDir = ((Vector2)target.position - (Vector2)transform.position).normalized;
             var up = partToRotate.up;
             var lookDir = Vector3.Lerp(up, aimDir, Time.deltaTime * rotationSpeed.GetStat());
@@ -152,7 +172,7 @@ namespace Turrets
 
             // Loop through the hits to see if we can hit the target
             var foundEnemy = false;
-            foreach (var hit in results.Where(hit => hit.transform == targetEnemy.transform))
+            foreach (var unused in results.Where(hit => hit.transform == targetEnemy.transform))
             {
                 foundEnemy = true;
             }

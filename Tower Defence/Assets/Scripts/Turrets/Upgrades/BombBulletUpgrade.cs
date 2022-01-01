@@ -1,28 +1,32 @@
 using System;
 using System.Collections.Generic;
+using Enemies;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace Turrets.Upgrades
 {
-    [CreateAssetMenu(fileName = "MissileBulletT0", menuName = "Upgrades/MissileBullet")]
-    public class MissileBullet : Upgrade
+    [CreateAssetMenu(fileName = "BombBulletT0", menuName = "Upgrades/Bomb Bullet")]
+    public class BombBulletUpgrade : Upgrade
     {
         protected override Type[] ValidTypes => new[] { typeof(Shooter) };
 
         public float explosionRadiusChange;
         public float damagePercentageChange;
         public float fireRatePercentageChange;
+        public float rangePercentageChange;
         public float speedPercentageChange;
 
         public override void AddUpgrade(Turret turret)
         {
             turret.fireRate.AddModifier(fireRatePercentageChange);
+            turret.range.AddModifier(rangePercentageChange);
         }
 
         public override void RemoveUpgrade(Turret turret)
         {
             turret.fireRate.TakeModifier(fireRatePercentageChange);
+            turret.range.TakeModifier(rangePercentageChange);
         }
 
         public override void OnShoot(Bullet bullet)

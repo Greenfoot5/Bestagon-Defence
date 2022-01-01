@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 5203603832670551793}
   m_Layer: 0
   m_Name: SMASH
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -246,7 +246,7 @@ MonoBehaviour:
     modifier: 1
   enemyTag: Enemy
   range:
-    stat: 2
+    stat: 1.5
     modifier: 1
   rangeDisplay: {fileID: 3255284869200513298}
   fireRate:

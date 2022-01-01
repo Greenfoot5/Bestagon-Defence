@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Enemies;
 using UnityEngine;
 using TMPro;
 
@@ -110,7 +111,7 @@ public class WaveSpawner : MonoBehaviour
         spawnedEnemy.layer = LayerMask.NameToLayer("Enemies");
         
         // Apply scaling
-        spawnedEnemy.GetComponent<Enemy>().startHealth *= Mathf.Pow(_levelData.health, _waveIndex);
+        spawnedEnemy.GetComponent<Enemy>().maxHealth *= Mathf.Pow(_levelData.health, _waveIndex);
         
         enemiesAlive++;
     }

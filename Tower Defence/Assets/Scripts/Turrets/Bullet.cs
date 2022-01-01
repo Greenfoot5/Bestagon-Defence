@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Enemies;
 using Turrets.Upgrades;
 using UnityEngine;
 
@@ -92,7 +93,7 @@ namespace Turrets
 
             if (em != null)
             {
-                em.TakeDamage(damage.GetStat());
+                em.TakeDamage(damage.GetStat(), gameObject);
             }
         }
     

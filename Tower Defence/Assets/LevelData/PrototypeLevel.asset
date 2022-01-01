@@ -95,6 +95,12 @@ MonoBehaviour:
       weight: 25
     - item: {fileID: 11400000, guid: 2a42e155c209b403eb3e9155f49abcfa, type: 2}
       weight: 100
+    - item: {fileID: 11400000, guid: 40447ddddb5494584b504d93d3f1caa5, type: 2}
+      weight: 25
+    - item: {fileID: 11400000, guid: de7bb3dd1d7c642acbd2c447a2a5dcc6, type: 2}
+      weight: 25
+    - item: {fileID: 11400000, guid: ca2487ad135c84afb92976ce624fe568, type: 2}
+      weight: 15
   upgradeDuplicateCheck: 2
   upgradeOptionWeight: 1
   initialSelectionCost: 100
