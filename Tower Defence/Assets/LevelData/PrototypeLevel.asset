@@ -56,7 +56,7 @@ MonoBehaviour:
     - item: {fileID: 11400000, guid: 217bfad42a1e84cc9822aab6c7631ddb, type: 2}
       weight: 50
     - item: {fileID: 11400000, guid: e51d8f8c8fdf2433197f9df264a59986, type: 2}
-      weight: 25
+      weight: 2500000
     - item: {fileID: 11400000, guid: 0da67581e745c4e708a1b6172cb3d6ef, type: 2}
       weight: 100
     - item: {fileID: 11400000, guid: 7c7e505c5536a4df684108f83d159ad6, type: 2}
