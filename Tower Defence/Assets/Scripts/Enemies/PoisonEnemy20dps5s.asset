@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71557601c690b47389a8a9e77db3b4f6, type: 3}
-  m_Name: PoisonEnemy10dps5s
+  m_Name: PoisonEnemy20dps5s
   m_EditorClassIdentifier: 
   targetingType: 2
   triggers: 02000000
-  abilityIcon: {fileID: 21300000, guid: 6a74d6a2fc63047609663c6de6cd6812, type: 3}
-  abilityEffect: {fileID: 5606335261930595536, guid: 410840a991e414225baff388418be600, type: 3}
+  abilityIcon: {fileID: -3015200091239744399, guid: 16c979c866f439b4b988e7020b313794, type: 3}
+  abilityEffect: {fileID: 2228279973635050725, guid: eb419feb1cb89450e96b41b060330a85, type: 3}
   range: 3
   timer: 1
   startCount: 5

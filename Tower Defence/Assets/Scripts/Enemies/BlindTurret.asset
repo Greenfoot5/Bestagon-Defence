@@ -18,5 +18,6 @@ MonoBehaviour:
   abilityEffect: {fileID: 2228279973635050725, guid: 0819bd4b36b114943ba247527c0225db, type: 3}
   range: 3
   timer: 5
+  startCount: 10
   debuffs:
   - {fileID: 11400000, guid: 8060c990c6117490dbc4db4d468e6b2f, type: 2}

@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2db0c3d1579341f8bd90af8aa9e324d, type: 3}
   m_Name: StunT1
   m_EditorClassIdentifier: 
-  upgradeType: 
-  upgradeTier: 0
-  accentColor: {r: 0, g: 0, b: 0, a: 0}
-  displayName: 
-  tagline: 
-  icon: {fileID: 0}
-  effectText: 
-  debuffs: []
+  upgradeType: Stun
+  upgradeTier: 1
+  accentColor: {r: 0.33521715, g: 0.68705505, b: 0.764151, a: 1}
+  displayName: Stun
+  tagline: Bzzzzzzzzt
+  icon: {fileID: 21300000, guid: 011f516e778814d47825209b8acbd3f2, type: 3}
+  effectText: Freezes the enemy in place for 1s
+  debuffs:
+  - {fileID: 11400000, guid: e32eacb7260724d5c8515ff5a49205d8, type: 2}

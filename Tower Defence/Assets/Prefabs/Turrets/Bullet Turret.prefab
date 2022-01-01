@@ -241,7 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage:
-    stat: 15
+    stat: 20
     modifier: 1
   enemyTag: Enemy
   range:
@@ -254,7 +254,7 @@ MonoBehaviour:
   slowPercentage: 0
   upgrades: []
   targetingMethod: 0
-  aggressiveRetargeting: 1
+  aggressiveRetargeting: 0
   firePoint: {fileID: 1483480927}
   rotationSpeed:
     stat: 6

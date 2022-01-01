@@ -23,7 +23,7 @@ namespace Enemies
                 return;
             }
 
-            enemyComponent.health = enemyComponent.maxHealth * damage;
+            enemyComponent.TakeDamageWithoutAbilities(enemyComponent.maxHealth * damage);
         }
 
         public override void OnCounterEnd(GameObject target) { }

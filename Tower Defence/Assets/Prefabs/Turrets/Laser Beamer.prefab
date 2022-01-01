@@ -5072,7 +5072,7 @@ MonoBehaviour:
   slowPercentage: 0
   upgrades: []
   targetingMethod: 0
-  aggressiveRetargeting: 1
+  aggressiveRetargeting: 0
   firePoint: {fileID: 5009289029243488887}
   rotationSpeed:
     stat: 5

@@ -16,7 +16,7 @@ namespace Enemies
 
         //[HideInInspector]
         public float speed;
-        [HideInInspector]
+        //[HideInInspector]
         public float health;
     
         [Header("Death Stats")]
@@ -61,7 +61,6 @@ namespace Enemies
             {
                 return;
             }
-            Debug.Log($"Granting Ability: {ability.name}");
             
             if (ability.triggers.Contains(AbilityTrigger.OnTimer))
             {
@@ -103,7 +102,6 @@ namespace Enemies
 
         private void RevokeAbility(EnemyAbility ability)
         {
-            Debug.Log($"Revoked Ability: {ability.name}");
             if (ability.triggers.Contains(AbilityTrigger.OnTimer))
             {
                 _timerAbilities.Remove(ability);
@@ -191,6 +189,20 @@ namespace Enemies
             }
         }
 
+        public void TakeDamageWithoutAbilities(float amount)
+        {
+            // Base health stuff
+            health -= amount;
+
+            leftBar.fillAmount = health / maxHealth;
+            rightBar.fillAmount = health / maxHealth;
+
+            if (health <= 0)
+            {
+                Die(gameObject);
+            }
+        }
+
         // Called when we die
         private void Die(GameObject source)
         {
@@ -224,7 +236,6 @@ namespace Enemies
         {
             foreach (var ability in abilities)
             {
-                Debug.Log($"Activating Ability: {ability.name}");
                 // Spawn ability effect
                 var effect = Instantiate(ability.abilityEffect, transform.position, Quaternion.identity);
                 Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);

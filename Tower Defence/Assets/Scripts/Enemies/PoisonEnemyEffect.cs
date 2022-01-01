@@ -23,7 +23,7 @@ namespace Enemies
                 return;
             }
 
-            enemyComponent.health -= damage;
+            enemyComponent.TakeDamageWithoutAbilities(damage);
         }
 
         public override void OnCounterEnd(GameObject target) { }

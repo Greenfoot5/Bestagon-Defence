@@ -8,11 +8,10 @@ namespace Turrets.Upgrades
     [CreateAssetMenu(fileName = "DebuffEnemy", menuName = "Upgrades/Debuff Enemy")]
     public class DebuffEnemyUpgrade : Upgrade
     {
-        protected override Type[] ValidTypes => null;  // any
+        protected override Type[] ValidTypes => null; // TODO - Update to allow to be edited based on debuffs
 
         [SerializeField]
         private List<EnemyAbility> debuffs;
-        
         
         public override void AddUpgrade(Turret turret) { }
 

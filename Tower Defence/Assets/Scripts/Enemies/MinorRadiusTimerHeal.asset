@@ -18,7 +18,7 @@ MonoBehaviour:
   abilityEffect: {fileID: 2228279973635050725, guid: 113efd59cc3914d1da68e83f518085f1, type: 3}
   range: 3
   timer: 3
-  startCount: 3
+  startCount: -1
   isPercentage: 0
   healAmount: 25
   healPercentage: 0.5

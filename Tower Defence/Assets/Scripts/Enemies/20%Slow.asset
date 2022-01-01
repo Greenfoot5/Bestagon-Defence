@@ -18,4 +18,5 @@ MonoBehaviour:
   abilityEffect: {fileID: 1404681256839616, guid: 3640199bf9dc32f4da57c37d57581f57, type: 3}
   range: 3
   timer: 5
+  startCount: 5
   slowPercentage: 0.2

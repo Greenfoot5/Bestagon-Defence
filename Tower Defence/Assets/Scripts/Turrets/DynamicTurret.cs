@@ -60,7 +60,7 @@ namespace Turrets
         private void UpdateTarget()
         {
             // If we're not aggressively retargeting, check if the target is still in range
-            if (!aggressiveRetargeting)
+            if (!aggressiveRetargeting && target != null)
             {
                 var distanceToEnemy = Vector3.Distance(transform.position, target.position);
                 if (distanceToEnemy <= range.GetStat()) return;

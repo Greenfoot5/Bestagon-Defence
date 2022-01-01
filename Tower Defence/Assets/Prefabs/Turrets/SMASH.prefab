@@ -246,7 +246,7 @@ MonoBehaviour:
     modifier: 1
   enemyTag: Enemy
   range:
-    stat: 2
+    stat: 1.5
     modifier: 1
   rangeDisplay: {fileID: 3255284869200513298}
   fireRate:
