@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 
     public LevelData.LevelData levelData;
 
-    void Start()
+    private void Start()
     {
         isGameOver = false;
         if (levelData == null)
@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     }
     
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (isGameOver)
         {
