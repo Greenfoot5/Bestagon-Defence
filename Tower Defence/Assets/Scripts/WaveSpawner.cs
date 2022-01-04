@@ -2,6 +2,7 @@
 using Enemies;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class WaveSpawner : MonoBehaviour
 {
@@ -29,7 +30,7 @@ public class WaveSpawner : MonoBehaviour
 
     private LevelData.LevelData _levelData;
 
-    void Start()
+    private void Start()
     {
         enemiesAlive = 0;
         _levelData = gameObject.GetComponent<GameManager>().levelData;
@@ -62,6 +63,7 @@ public class WaveSpawner : MonoBehaviour
         waveCountdownText.text = string.Format("<sprite=\"UI-Icons\" name=\"Clock\">{0:0.00}", _countdown);
 
         GameStats.rounds = _waveIndex + 1;
+        DiscordController.instance.Refresh();
     }
     
     // Spawns in our enemies

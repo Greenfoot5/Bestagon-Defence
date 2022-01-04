@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Text;
 using UnityEngine;
 using Discord;
 using UnityEngine.SceneManagement;
@@ -8,18 +9,22 @@ public class DiscordController : MonoBehaviour
 {
     private Discord.Discord _discord;
     private Activity _richPresence;
-    
-    public const long ClientId = 927337431303352441;
+
+    private const long ClientId = 927337431303352441;
 
     public static DiscordController instance;
+    
+    public SceneState[] sceneStates;
 
     private IEnumerator CreateDiscord()
     {
         while (_discord == null)
         {
+            Debug.Log("Attempting to find Discord");
             try
             {
                 _discord = new Discord.Discord(ClientId, (ulong)CreateFlags.NoRequireDiscord);
+                Debug.Log("Found Discord!");
             }
             catch (ResultException res)
             {
@@ -47,7 +52,7 @@ public class DiscordController : MonoBehaviour
 
         if (_discord != null)
         {
-            UpdateDiscord(SceneManager.GetActiveScene(), SceneManager.GetActiveScene());
+            Refresh();
         }
 
         SceneManager.activeSceneChanged += UpdateDiscord;
@@ -76,6 +81,11 @@ public class DiscordController : MonoBehaviour
             }
         }
     }
+
+    public void Refresh()
+    {
+        UpdateDiscord(SceneManager.GetActiveScene(), SceneManager.GetActiveScene());
+    }
     
     private void UpdatePresence(Scene next)
     {
@@ -83,18 +93,13 @@ public class DiscordController : MonoBehaviour
         {
             Start = ((DateTimeOffset)DateTime.Now).ToUnixTimeSeconds()
         };
-        var assets = new ActivityAssets()
-        {
-            LargeImage = "hexagon",
-            LargeText = next.name,
-            SmallImage = "bestagon_logo_square_large",
-            SmallText = "Hexagons are the Bestagons!"
-        };
-        
+        var assets = GetAssets(next);
+        var (state, desc) = GetGameState(next);
+
         var activity = new Activity
         {
-            State = "Wave 5",
-            Details = "Hexagon Level",
+            State = state,
+            Details = desc,
             Timestamps = timestamps,
             Assets = assets
         };
@@ -104,11 +109,80 @@ public class DiscordController : MonoBehaviour
 
     private static void HandleResult(Result res)
     {
-        if (res == Result.NotRunning || res == Result.InternalError)
+        if (res == Result.NotRunning || res == Result.InternalError || res == Result.Ok)
         {
             return;
         }
 
         throw new ResultException(res);
+    }
+
+    private static ActivityAssets GetAssets(Scene next)
+    {
+        Debug.Log(next.name.Substring(0, next.name.Length - 5));
+        var assets = new ActivityAssets()
+        {
+            LargeImage = "bestagon_logo_square_large",
+            LargeText = "Main Menu",
+            SmallImage = "bestagon_logo_square_large",
+            SmallText = "Hexagons are the Bestagons!"
+        };
+        if (next.name.Substring(0, next.name.Length - 5) != "Level") return assets;
+        
+        assets.LargeText = next.name.Substring(0, next.name.Length - 5);
+        assets.LargeImage = next.name.Substring(0, next.name.Length - 5).ToLower();
+
+        return assets;
+    }
+
+    private (string, string) GetGameState(Scene next)
+    {
+        var result = (State : "Defending the Hexagons", Desc : "");
+        // We're in a level
+        if (next.name.Substring(0, next.name.Length - 5) == "Level")
+        {
+            result.Item1 = AddSpacesToSentence(next.name.Substring(next.name.Length - 5));
+            if (GameStats.lives > 0)
+            {
+                result.State = "Wave " + GameStats.rounds;
+            }
+            else
+            {
+                result.Desc = "Game Over";
+            }
+
+            return result;
+        }
+        
+        foreach (var sceneState in sceneStates)
+        {
+            if (next.name != sceneState.sceneName) continue;
+            
+            result.State = sceneState.state;
+            result.Desc = sceneState.desc;
+        }
+
+        return result;
+    }
+    
+    private static string AddSpacesToSentence(string text)
+    {
+        if (string.IsNullOrWhiteSpace(text))
+            return "";
+        var newText = new StringBuilder(text.Length * 2);
+        newText.Append(text[0]);
+        for (var i = 1; i < text.Length; i++)
+        {
+            if (char.IsUpper(text[i]) && text[i - 1] != ' ')
+                newText.Append(' ');
+            newText.Append(text[i]);
+        }
+        return newText.ToString();
+    }
+
+    private void OnApplicationQuit()
+    {
+        Debug.Log("Quit the application");
+        _discord.GetActivityManager().ClearActivity(result => {});
     }
 }
