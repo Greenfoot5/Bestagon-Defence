@@ -138,9 +138,9 @@ public class DiscordController : MonoBehaviour
         // We're in a level
         if (next.name.Substring(next.name.Length - 5) == "Level")
         {
-            result.State = "Playing on " + AddSpacesToSentence(next.name.Substring(0, next.name.Length - 5));
+            result.Desc = "Playing on " + AddSpacesToSentence(next.name.Substring(0, next.name.Length - 5));
             
-            result.Desc = (GameStats.lives > 0) switch
+            result.State = (GameStats.lives > 0) switch
             {
                 true when GameStats.rounds == 0 => "Preparation Phase",
                 true => "Wave " + GameStats.rounds,
