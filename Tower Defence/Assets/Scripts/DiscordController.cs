@@ -20,11 +20,9 @@ public class DiscordController : MonoBehaviour
     {
         while (_discord == null)
         {
-            Debug.Log("Attempting to find Discord");
             try
             {
                 _discord = new Discord.Discord(ClientId, (ulong)CreateFlags.NoRequireDiscord);
-                Debug.Log("Found Discord!");
             }
             catch (ResultException res)
             {
@@ -119,7 +117,6 @@ public class DiscordController : MonoBehaviour
 
     private static ActivityAssets GetAssets(Scene next)
     {
-        Debug.Log(next.name.Substring(0, next.name.Length - 5));
         var assets = new ActivityAssets()
         {
             LargeImage = "bestagon_logo_square_large",
@@ -127,7 +124,7 @@ public class DiscordController : MonoBehaviour
             SmallImage = "bestagon_logo_square_large",
             SmallText = "Hexagons are the Bestagons!"
         };
-        if (next.name.Substring(0, next.name.Length - 5) != "Level") return assets;
+        if (next.name.Substring(next.name.Length - 5) != "Level") return assets;
         
         assets.LargeText = next.name.Substring(0, next.name.Length - 5);
         assets.LargeImage = next.name.Substring(0, next.name.Length - 5).ToLower();
@@ -139,17 +136,16 @@ public class DiscordController : MonoBehaviour
     {
         var result = (State : "Defending the Hexagons", Desc : "");
         // We're in a level
-        if (next.name.Substring(0, next.name.Length - 5) == "Level")
+        if (next.name.Substring(next.name.Length - 5) == "Level")
         {
-            result.Item1 = AddSpacesToSentence(next.name.Substring(next.name.Length - 5));
-            if (GameStats.lives > 0)
+            result.State = "Playing on " + AddSpacesToSentence(next.name.Substring(0, next.name.Length - 5));
+            
+            result.Desc = (GameStats.lives > 0) switch
             {
-                result.State = "Wave " + GameStats.rounds;
-            }
-            else
-            {
-                result.Desc = "Game Over";
-            }
+                true when GameStats.rounds == 0 => "Preparation Phase",
+                true => "Wave " + GameStats.rounds,
+                _ => "Game Over"
+            };
 
             return result;
         }
