@@ -47,6 +47,6 @@ public class GameManager : MonoBehaviour
             System.Environment.GetEnvironmentVariable(SceneManager.GetActiveScene().name + "Leaderboard");
         if (leaderboardData == null) return;
         var splitData = leaderboardData.Split(';');
-        bridge.SendUserValue("Steve", GameStats.rounds, splitData[0], splitData[1]);
+        bridge.SendUserValue(PlayerPrefs.GetString("Username"), GameStats.rounds, splitData[0], splitData[1]);
     }
 }
