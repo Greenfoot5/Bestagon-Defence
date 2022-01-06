@@ -40,7 +40,11 @@ public class DiscordController : MonoBehaviour
         if (instance != null)
         {
             Debug.LogWarning("More than one Discord Controller in scene!");
-            Destroy(gameObject);
+            if (this != instance)
+            {
+                Destroy(gameObject);
+            }
+
             return;
         }
         instance = this;
@@ -176,9 +180,10 @@ public class DiscordController : MonoBehaviour
         return newText.ToString();
     }
 
-    private void OnApplicationQuit()
+    private void OnDestroy()
     {
         Debug.Log("Quit the application");
         _discord.GetActivityManager().ClearActivity(result => {});
+        _discord.Dispose();
     }
 }
