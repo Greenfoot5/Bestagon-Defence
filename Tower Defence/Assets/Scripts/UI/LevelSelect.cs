@@ -52,7 +52,7 @@ namespace UI
                 infoButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Levels";
                 
                 // Display the level info
-                levelName.text = _selectedLevel.Substring(_selectedLevel.Length - 5) + " Scores";
+                levelName.text = _selectedLevel.Substring(0, _selectedLevel.Length - 5) + " Scores";
                 
                 // Setup to display scores
                 var bridge = levelInfo.GetComponent<LeaderboardServerBridge>();
