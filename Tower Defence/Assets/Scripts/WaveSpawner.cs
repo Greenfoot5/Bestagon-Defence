@@ -29,7 +29,7 @@ public class WaveSpawner : MonoBehaviour
 
     private LevelData.LevelData _levelData;
 
-    void Start()
+    private void Start()
     {
         enemiesAlive = 0;
         _levelData = gameObject.GetComponent<GameManager>().levelData;
@@ -52,6 +52,9 @@ public class WaveSpawner : MonoBehaviour
             StartCoroutine(SpawnWave());
             // Reset the timer
             _countdown = timeBetweenWaves;
+            
+            // Update Discord's rich presence
+            DiscordController.Refresh();
 
             return;
         }
@@ -59,7 +62,7 @@ public class WaveSpawner : MonoBehaviour
         _countdown -= Time.deltaTime;
         _countdown = Mathf.Clamp(_countdown, 0f, Mathf.Infinity);
         
-        waveCountdownText.text = string.Format("<sprite=\"UI-Icons\" name=\"Clock\">{0:0.00}", _countdown);
+        waveCountdownText.text = $"<sprite=\"UI-Icons\" name=\"Clock\">{_countdown:0.00}";
 
         GameStats.rounds = _waveIndex + 1;
     }

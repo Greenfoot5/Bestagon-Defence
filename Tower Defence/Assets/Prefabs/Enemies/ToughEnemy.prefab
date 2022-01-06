@@ -163,7 +163,7 @@ MonoBehaviour:
   startSpeed: 1.75
   maxHealth: 50
   speed: 0
-  health: 20
+  health: 50
   deathMoney: 15
   deathLives: 2
   endPathMoney: 10
