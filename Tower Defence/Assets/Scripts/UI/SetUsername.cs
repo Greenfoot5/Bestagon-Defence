@@ -21,7 +21,7 @@ namespace UI
             }
             else
             {
-                PlayerPrefs.SetString("Username", input.text);
+                PlayerPrefs.SetString("Username", input.text.Replace("​", ""));
                 mainMenu.DisplayUsername();
                 gameObject.SetActive(false);
             }
