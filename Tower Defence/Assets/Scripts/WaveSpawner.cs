@@ -63,8 +63,9 @@ public class WaveSpawner : MonoBehaviour
         _countdown = Mathf.Clamp(_countdown, 0f, Mathf.Infinity);
         
         waveCountdownText.text = $"<sprite=\"UI-Icons\" name=\"Clock\">{_countdown:0.00}";
-
-        GameStats.rounds = _waveIndex + 1;
+        
+        if (GameStats.lives > 0)
+            GameStats.rounds = _waveIndex + 1;
     }
     
     // Spawns in our enemies
