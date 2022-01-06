@@ -73,3 +73,6 @@ crashlytics-build.properties
 # Ignore VSCode and .idea
 .idea
 .vscode
+
+# Ignore Environment Data
+*[Hh]idden*

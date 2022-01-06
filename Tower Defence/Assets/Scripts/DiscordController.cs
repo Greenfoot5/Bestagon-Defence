@@ -184,6 +184,7 @@ public class DiscordController : MonoBehaviour
     {
         Debug.Log("Quit the application");
         _discord.GetActivityManager().ClearActivity(result => {});
-        _discord.Dispose();
     }
+    
+    private void OnApplicationQuit() => _discord.Dispose();
 }
