@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverUI;
 
     public LevelData.LevelData levelData;
+
+    public LeaderboardServerBridge bridge;
 
     private void Start()
     {
@@ -38,5 +41,12 @@ public class GameManager : MonoBehaviour
         
         gameOverUI.SetActive(true);
         DiscordController.Refresh();
+        
+        // Tell our leaderboard API to add the user
+        var leaderboardData =
+            System.Environment.GetEnvironmentVariable(SceneManager.GetActiveScene().name + "Leaderboard");
+        if (leaderboardData == null) return;
+        var splitData = leaderboardData.Split(';');
+        bridge.SendUserValue("Steve", GameStats.rounds, splitData[0], splitData[1]);
     }
 }
