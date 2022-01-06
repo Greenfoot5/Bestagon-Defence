@@ -54,7 +54,7 @@ public class WaveSpawner : MonoBehaviour
             _countdown = timeBetweenWaves;
             
             // Update Discord's rich presence
-            DiscordController.instance.Refresh();
+            DiscordController.Refresh();
 
             return;
         }

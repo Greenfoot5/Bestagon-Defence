@@ -12,10 +12,13 @@ public class DiscordController : MonoBehaviour
 
     private const long ClientId = 927337431303352441;
 
-    public static DiscordController instance;
+    private static DiscordController _instance;
     
     public SceneState[] sceneStates;
-
+    
+    /// <summary>
+    /// If we can't find Discord, check every 30s to see if the user opened it
+    /// </summary>
     private IEnumerator CreateDiscord()
     {
         while (_discord == null)
@@ -33,21 +36,23 @@ public class DiscordController : MonoBehaviour
         }
     }
 
-    // Use this for initialization
+    /// <summary>
+    /// Attempts to connect to discord, and sets up the rest of the stuff
+    /// </summary>
     private void Start ()
     {
         // Make sure we only ever have one DiscordController
-        if (instance != null)
+        if (_instance != null)
         {
             Debug.LogWarning("More than one Discord Controller in scene!");
-            if (this != instance)
+            if (this != _instance)
             {
                 Destroy(gameObject);
             }
 
             return;
         }
-        instance = this;
+        _instance = this;
         
         DontDestroyOnLoad(gameObject);
         StartCoroutine(CreateDiscord());
@@ -60,7 +65,12 @@ public class DiscordController : MonoBehaviour
         SceneManager.activeSceneChanged += UpdateDiscord;
     }
 	
-    // Called anytime we want to update Discord
+    /// <summary>
+    /// Called when we need to update the presence for the user
+    /// Note, current and next may be the same if we aren't changing scenes (e.g. the user beat the level)
+    /// </summary>
+    /// <param name="current">The scene we're leaving</param>
+    /// <param name="next">The scene we're loading next</param>
     private void UpdateDiscord (Scene current, Scene next)
     {
         try
@@ -83,20 +93,27 @@ public class DiscordController : MonoBehaviour
             }
         }
     }
-
-    public void Refresh()
+    
+    /// <summary>
+    /// Called in other scripts to update the rich presence
+    /// </summary>
+    public static void Refresh()
     {
-        UpdateDiscord(SceneManager.GetActiveScene(), SceneManager.GetActiveScene());
+        _instance.UpdateDiscord(SceneManager.GetActiveScene(), SceneManager.GetActiveScene());
     }
     
-    private void UpdatePresence(Scene next)
+    /// <summary>
+    /// Used to actually update the presence
+    /// </summary>
+    /// <param name="scene">The scene the user is in</param>
+    private void UpdatePresence(Scene scene)
     {
         var timestamps = new ActivityTimestamps
         {
             Start = ((DateTimeOffset)DateTime.Now).ToUnixTimeSeconds()
         };
-        var assets = GetAssets(next);
-        var (state, desc) = GetGameState(next);
+        var assets = GetAssets(scene);
+        var (state, desc) = GetGameState(scene);
 
         var activity = new Activity
         {
@@ -118,8 +135,13 @@ public class DiscordController : MonoBehaviour
 
         throw new ResultException(res);
     }
-
-    private static ActivityAssets GetAssets(Scene next)
+    
+    /// <summary>
+    /// Gets the ActivityAssets to display
+    /// </summary>
+    /// <param name="scene">The scene the player is currently in</param>
+    /// <returns>The assets to display in the rich presence</returns>
+    private static ActivityAssets GetAssets(Scene scene)
     {
         var assets = new ActivityAssets()
         {
@@ -128,21 +150,26 @@ public class DiscordController : MonoBehaviour
             SmallImage = "bestagon_logo_square_large",
             SmallText = "Hexagons are the Bestagons!"
         };
-        if (next.name.Substring(next.name.Length - 5) != "Level") return assets;
+        if (scene.name.Substring(scene.name.Length - 5) != "Level") return assets;
         
-        assets.LargeText = next.name.Substring(0, next.name.Length - 5);
-        assets.LargeImage = next.name.Substring(0, next.name.Length - 5).ToLower();
+        assets.LargeText = scene.name.Substring(0, scene.name.Length - 5);
+        assets.LargeImage = scene.name.Substring(0, scene.name.Length - 5).ToLower();
 
         return assets;
     }
-
-    private (string, string) GetGameState(Scene next)
+    
+    /// <summary>
+    /// Gets the current state of the game, so what the user is doing
+    /// </summary>
+    /// <param name="scene">The scene the user is currently in</param>
+    /// <returns>The State and Details to display in the rich presence</returns>
+    private (string, string) GetGameState(Scene scene)
     {
         var result = (State : "Defending the Hexagons", Desc : "");
         // We're in a level
-        if (next.name.Substring(next.name.Length - 5) == "Level")
+        if (scene.name.Substring(scene.name.Length - 5) == "Level")
         {
-            result.Desc = "Playing on " + AddSpacesToSentence(next.name.Substring(0, next.name.Length - 5));
+            result.Desc = "Playing on " + AddSpacesToSentence(scene.name.Substring(0, scene.name.Length - 5));
             
             result.State = (GameStats.lives > 0) switch
             {
@@ -153,10 +180,10 @@ public class DiscordController : MonoBehaviour
 
             return result;
         }
-        
+        // We're got custom details for the scene
         foreach (var sceneState in sceneStates)
         {
-            if (next.name != sceneState.sceneName) continue;
+            if (scene.name != sceneState.sceneName) continue;
             
             result.State = sceneState.state;
             result.Desc = sceneState.desc;
@@ -165,6 +192,12 @@ public class DiscordController : MonoBehaviour
         return result;
     }
     
+    /// <summary>
+    /// Adds a space before every capital if it doesn't have one already.
+    /// Useful for translating scene names into displayed text
+    /// </summary>
+    /// <param name="text">The text to add spaces to</param>
+    /// <returns>The string with spaces</returns>
     private static string AddSpacesToSentence(string text)
     {
         if (string.IsNullOrWhiteSpace(text))
@@ -180,11 +213,7 @@ public class DiscordController : MonoBehaviour
         return newText.ToString();
     }
 
-    private void OnDestroy()
-    {
-        Debug.Log("Quit the application");
-        _discord.GetActivityManager().ClearActivity(result => {});
-    }
-    
+    // Clean up when we finish
+    private void OnDestroy() => _discord.GetActivityManager().ClearActivity(result => {});
     private void OnApplicationQuit() => _discord.Dispose();
 }

@@ -37,6 +37,6 @@ public class GameManager : MonoBehaviour
         isGameOver = true;
         
         gameOverUI.SetActive(true);
-        DiscordController.instance.Refresh();
+        DiscordController.Refresh();
     }
 }
