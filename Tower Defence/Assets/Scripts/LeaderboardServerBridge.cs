@@ -94,17 +94,42 @@ public class LeaderboardServerBridge : MonoBehaviour
     {
         return SendUserValue(username, (IConvertible)value, leaderboardID, leaderboardSecret);
     }
-
+    
+    /// <summary>
+    /// Sends a value to the leaderboard
+    /// </summary>
+    /// <param name="username">The username to file the data under</param>
+    /// <param name="value">The user's score</param>
+    /// <param name="leaderboardID">The leaderboard id</param>
+    /// <param name="leaderboardSecret">The secret</param>
+    /// <returns></returns>
     public Task<bool> SendUserValue(string username, float value, string leaderboardID, string leaderboardSecret)
     {
         return SendUserValue(username, (IConvertible)value, leaderboardID, leaderboardSecret);
     }
 
+    /// <summary>
+    /// Sends a value to the leaderboard
+    /// </summary>
+    /// <param name="username">The username to file the data under</param>
+    /// <param name="value">The user's score</param>
+    /// <param name="leaderboardID">The leaderboard id</param>
+    /// <param name="leaderboardSecret">The secret</param>
+    /// <returns></returns>
     public Task<bool> SendUserValue(string username, double value, string leaderboardID, string leaderboardSecret)
     {
         return SendUserValue(username, (IConvertible)value, leaderboardID, leaderboardSecret);
     }
 
+    /// <summary>
+    /// Sends a user's data to the api
+    /// </summary>
+    /// <param name="username">The username to input</param>
+    /// <param name="value">The value the user scored</param>
+    /// <param name="leaderboardID">The id of the leaderboard to add it to</param>
+    /// <param name="leaderboardSecret">The leaderboard's deepest darkest secret</param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentOutOfRangeException"></exception>
     private async Task<bool> SendUserValue(string username, IConvertible value, string leaderboardID, string leaderboardSecret)
     {
         var url = serverEndpoint + "/update_entry";
@@ -143,6 +168,12 @@ public class LeaderboardServerBridge : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// Does what it says on the tin. Deserializes Jason.
+    /// </summary>
+    /// <param name="result">The result of the api request</param>
+    /// <typeparam name="T">Jason, but deserialized</typeparam>
+    /// <returns></returns>
     private static T DeserializeJson<T>(string result)
     {
         var jsonSer = new DataContractJsonSerializer(typeof(T));
