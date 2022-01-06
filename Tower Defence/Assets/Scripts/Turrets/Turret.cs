@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Turrets.Upgrades;
 using UnityEngine;
 
@@ -105,6 +104,12 @@ namespace Turrets
 
         public void Selected()
         {
+            // Update the range shader's size
+            var localScale = transform.localScale;
+            rangeDisplay.transform.localScale = new Vector3(
+                range.GetStat() / localScale.x * 2,
+                range.GetStat() / localScale.y * 2,
+                1);
             rangeDisplay.SetActive(true);
         }
 

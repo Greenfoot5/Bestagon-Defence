@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +8,17 @@ namespace UI
     public class MainMenu : MonoBehaviour
     {
         public Animator transition;
+        public TMP_Text loggedInAs;
+
+        private void Start()
+        {
+            DisplayUsername();
+        }
+
+        public void DisplayUsername()
+        {
+            loggedInAs.text = "Logged in as \n" + PlayerPrefs.GetString("Username");
+        }
 
         public void Play()
         {
