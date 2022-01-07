@@ -59,9 +59,9 @@ namespace UI
                 var leaderboardID =
                     System.Environment.GetEnvironmentVariable(_selectedLevel + "Leaderboard")?.Split(';')[0];
                 // Check we've actually got a leaderboard
-                if (leaderboardID == null)
+                if (leaderboardID == null || bridge == null)
                 {
-                    Debug.LogWarning("Could not get leaderboard");
+                    Debug.LogWarning("Could not get leaderboard for level " + _selectedLevel);
                     return;
                 }
 
