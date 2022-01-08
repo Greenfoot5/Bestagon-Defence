@@ -15,7 +15,7 @@ MonoBehaviour:
   targetingType: 2
   triggers: 04000000
   abilityIcon: {fileID: 6987985247385777121, guid: 2cede4385411542b29f7b2c61a9e1053, type: 3}
-  abilityEffect: {fileID: 1404681256839616, guid: 3640199bf9dc32f4da57c37d57581f57, type: 3}
+  abilityEffect: {fileID: 2228279973635050725, guid: b8190a0ded1f64e43ab3623d3a4bb6d5, type: 3}
   range: 3
   timer: 5
   startCount: 3
