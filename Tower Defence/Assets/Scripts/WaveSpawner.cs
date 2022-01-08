@@ -115,7 +115,9 @@ public class WaveSpawner : MonoBehaviour
         spawnedEnemy.layer = LayerMask.NameToLayer("Enemies");
         
         // Apply scaling
+        var prevHealth = spawnedEnemy.GetComponent<Enemy>().maxHealth;
         spawnedEnemy.GetComponent<Enemy>().maxHealth *= Mathf.Pow(_levelData.health, _waveIndex);
+        Debug.Log(prevHealth + " to " + spawnedEnemy.GetComponent<Enemy>().maxHealth);
         
         enemiesAlive++;
     }

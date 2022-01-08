@@ -242,7 +242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage:
-    stat: 15
+    stat: 10
     modifier: 1
   enemyTag: Enemy
   range:

@@ -103,7 +103,7 @@ MonoBehaviour:
       weight: 15
   upgradeDuplicateCheck: 2
   upgradeOptionWeight: 4
-  initialSelectionCost: 80
-  selectionCostIncrement: 25
-  health: 1.1
+  initialSelectionCost: 100
+  selectionCostIncrement: 10
+  health: 1.2
   enemyCount: 1.05
