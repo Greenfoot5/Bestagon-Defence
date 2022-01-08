@@ -40,7 +40,6 @@ public class GameManager : MonoBehaviour
         isGameOver = true;
         
         gameOverUI.SetActive(true);
-        DiscordController.Refresh();
         
         // Tell our leaderboard API to add the user
         var leaderboardData =

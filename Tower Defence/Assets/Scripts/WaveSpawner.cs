@@ -52,9 +52,6 @@ public class WaveSpawner : MonoBehaviour
             StartCoroutine(SpawnWave());
             // Reset the timer
             _countdown = timeBetweenWaves;
-            
-            // Update Discord's rich presence
-            DiscordController.Refresh();
 
             return;
         }
