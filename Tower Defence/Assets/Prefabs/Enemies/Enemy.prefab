@@ -102,9 +102,9 @@ MonoBehaviour:
   maxHealth: 25
   speed: 0
   health: 20
-  deathMoney: 10
+  deathMoney: 8
   deathLives: 1
-  endPathMoney: 8
+  endPathMoney: 6
   leftBar: {fileID: 3405873017015568044}
   rightBar: {fileID: 6983167930260378702}
   deathEffect: {fileID: 710779272522642178, guid: d286b443e8ade4d4cb1ec3e2a41a94f8, type: 3}

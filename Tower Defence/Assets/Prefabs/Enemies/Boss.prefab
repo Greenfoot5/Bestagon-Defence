@@ -414,7 +414,7 @@ MonoBehaviour:
   maxHealth: 500
   speed: 0
   health: 500
-  deathMoney: 150
+  deathMoney: 120
   deathLives: 5
   endPathMoney: 100
   leftBar: {fileID: 2116079699}
