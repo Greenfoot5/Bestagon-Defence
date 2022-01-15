@@ -11,7 +11,9 @@ namespace Turrets
     {
         Closest = 0,
         Weakest,
-        Strongest
+        Strongest,
+        First,
+        Last
     }
     
     public abstract class Turret : MonoBehaviour

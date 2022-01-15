@@ -123,6 +123,24 @@ namespace Turrets
                         }
 
                         break;
+                    case TargetingMethod.First:
+                        // Find if the enemy has the most map progress than our current most valuable
+                        var mapProgress = enemy.GetComponent<EnemyMovement>().mapProgress;
+                        if (mapProgress > currentValue)
+                        {
+                            currentValue = mapProgress;
+                            mostValuableEnemy = enemy;
+                        }
+                        break;
+                    case TargetingMethod.Last:
+                        // Find if the enemy has the lease map progress than our current most valuable
+                        var pathProgress = enemy.GetComponent<EnemyMovement>().mapProgress;
+                        if (pathProgress < currentValue)
+                        {
+                            currentValue = pathProgress;
+                            mostValuableEnemy = enemy;
+                        }
+                        break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
