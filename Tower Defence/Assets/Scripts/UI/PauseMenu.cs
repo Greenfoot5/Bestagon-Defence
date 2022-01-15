@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,6 +12,8 @@ namespace UI
         public Animator transition;
     
         private bool _hasBeenToggled;
+        
+        public LeaderboardServerBridge bridge;
 
         // Pauses/unpauses the game, and toggles the UI
         public void Toggle()
@@ -45,9 +48,22 @@ namespace UI
         }
     
         // The Main Menu button that returns us to the main menu
-        // TODO - return to level select, not main menu
         public void Menu()
         {
+            try
+            {
+                // Tell our leaderboard API to add the user
+                var leaderboardData =
+                    Environment.GetEnvironmentVariable(SceneManager.GetActiveScene().name + "Leaderboard");
+                if (leaderboardData == null) return;
+                var splitData = leaderboardData.Split(';');
+                bridge.SendUserValue(PlayerPrefs.GetString("Username"), GameStats.rounds, splitData[0], splitData[1]);
+            }
+            catch (Exception)
+            {
+                // TODO - Now ignore the error
+            }
+
             Toggle();
             StartCoroutine(Transition("MainMenu"));
         }
