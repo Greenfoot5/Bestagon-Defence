@@ -19,6 +19,9 @@ namespace Enemies
         // The distance from enemy to waypoint before it's considered reached
         [SerializeField] 
         private float distanceToWaypoint = 0.05f;
+
+        public float mapProgress;
+        private float _maxDistance;
     
         private void Start()
         {
@@ -43,6 +46,7 @@ namespace Enemies
             // Get the direction and move in that direction
             var dir = _target.position - transform.position;
             transform.Translate(dir.normalized * (_enemy.speed * Time.deltaTime), Space.World);
+            mapProgress = _waypointIndex + 1 - (distanceToWaypoint / _maxDistance);
         
             // If we're within the set distance, get the next waypoint
             if (Vector3.Distance(transform.position, _target.position) <= distanceToWaypoint)
@@ -66,6 +70,8 @@ namespace Enemies
             // Get the next waypoint
             _waypointIndex++;
             _target = Waypoints.points[_waypointIndex];
+            mapProgress = _waypointIndex;
+            _maxDistance = Vector3.Distance(transform.position, _target.position);
         }
     
         /// <summary>

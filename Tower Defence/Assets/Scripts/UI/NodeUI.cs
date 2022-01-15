@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using Turrets;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,6 +20,8 @@ namespace UI
         public GameObject upgradeIconPrefab;
 
         public TMP_Text stats;
+
+        public GameObject cycleTargetingButton;
 
         /// <summary>
         /// Called when selecting a new node
@@ -53,6 +56,21 @@ namespace UI
 
             // Enable the UI
             ui.SetActive(true);
+            
+            // Enable/Disable Targeting types cycle button if it's (not) a dynamic turret.
+            if (_target.turret.GetComponent<Turret>() is DynamicTurret)
+            {
+                cycleTargetingButton.SetActive(true);
+                cycleTargetingButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "<b>Targeting:</b>\n" +
+                    _target.turret.GetComponent<DynamicTurret>().targetingMethod;
+            }
+            else
+            {
+                cycleTargetingButton.SetActive(false);
+            }
+            
+
+            // Rebuild the upgrades and add the stats
             LayoutRebuilder.MarkLayoutForRebuild((RectTransform) upgrades);
             AddStats();
         }
@@ -79,6 +97,20 @@ namespace UI
             if (!applied) return;
             
             shop.RemoveUpgrade();
+        }
+        
+        /// <summary>
+        /// Turret's targeting method increments once through the cycle of targeting methods
+        /// </summary>
+        public void CycleTargeting()
+        {
+            var types = Enum.GetValues(typeof(TargetingMethod));
+            var currentMethod = (int)_target.turret.GetComponent<DynamicTurret>().targetingMethod;
+            _target.turret.GetComponent<DynamicTurret>().targetingMethod = (TargetingMethod)( (currentMethod + 1) % types.Length);
+            
+            // Update our button text
+            cycleTargetingButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "<b>Targeting:</b>\n" +
+                _target.turret.GetComponent<DynamicTurret>().targetingMethod;
         }
 
         private void AddStats()
