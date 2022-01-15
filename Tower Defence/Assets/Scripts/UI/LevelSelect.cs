@@ -28,7 +28,6 @@ namespace UI
             _selectedLevel = null;
             playButton.interactable = false;
             infoButton.GetComponent<Button>().interactable = false;
-            Debug.Log(PlayerPrefs.GetString("Username"));
         }
 
         public void SelectLevel(string sceneName)

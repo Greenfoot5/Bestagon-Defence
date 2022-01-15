@@ -32,7 +32,7 @@ namespace UI
         public TextMeshProUGUI upgradesTitle;
 
         // Called when creating the UI
-        public void Init (TurretBlueprint turret, Shop shop)
+        public void Init (TurretBlueprint turret, Shop shop, TypeSpriteLookup lookup)
         {
             _turretBlueprint = turret;
 

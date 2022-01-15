@@ -388,6 +388,12 @@ MonoBehaviour:
   turretSelectionUI: {fileID: 7349952435930394342, guid: 5453fbd1fffdc4a799b811ae56769adb, type: 3}
   upgradeSelectionUI: {fileID: 7349952435930394342, guid: 2c152cea0b9334ff7b4ae9dfbbcfe040, type: 3}
   shop: {fileID: 4077244561648582632}
+  glyphsLookup:
+    sprites:
+    - {fileID: 11400000, guid: 49504fee69ac947e29cccad1da730902, type: 2}
+    - {fileID: 11400000, guid: e3767d3ff0aee4d4b8b3375f8677b042, type: 2}
+    - {fileID: 11400000, guid: fa447f2b0617b42ff9f08e910fa3e554, type: 2}
+    - {fileID: 11400000, guid: bed22f2549eb24cf59e80fef4cf4c712, type: 2}
 --- !u!1 &4077244561414875947
 GameObject:
   m_ObjectHideFlags: 0

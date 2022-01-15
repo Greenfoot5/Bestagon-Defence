@@ -27,6 +27,11 @@ namespace Turrets.Upgrades
             return ValidTypes == null || ValidTypes.Contains(turret.GetType());
         }
 
+        public Type[] GetValidTypes()
+        {
+            return ValidTypes;
+        }
+
         public abstract void AddUpgrade(Turret turret);
 
         public abstract void RemoveUpgrade(Turret turret);
@@ -35,7 +40,7 @@ namespace Turrets.Upgrades
 
         public abstract void OnHit(IEnumerable<Enemy> targets);
 
-        public string GETUpgradeType()
+        public string GetUpgradeType()
         {
             return upgradeType;
         }

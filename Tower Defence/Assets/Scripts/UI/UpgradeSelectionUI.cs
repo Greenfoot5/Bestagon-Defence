@@ -17,10 +17,12 @@ namespace UI
         public UpgradeIcon icon;
 
         public TextMeshProUGUI effect;
-        // public TextMeshProUGUI restrictions;
+
+        public GameObject glyphPrefab;
+        public Transform applicableGlyphs;
 
         // Called when creating the UI
-        public void Init (Upgrade initUpgrade, Shop shop)
+        public void Init (Upgrade initUpgrade, Shop shop, TypeSpriteLookup lookup)
         {
             upgrade = initUpgrade;
         
@@ -35,26 +37,32 @@ namespace UI
             effect.text = initUpgrade.effectText;
             effect.color = initUpgrade.accentColor;
 
-            // TODO: Update this to use icons
-            // if (initUpgrade.ValidTypes == null)
-            // {
-            //     restrictions.text += "\n• Any";
-            // }
-            // else
-            // {
-            //     foreach (var turretType in initUpgrade.ValidTypes)
-            //     {
-            //         restrictions.text += "\n• " + turretType.Name + " Turret";
-            //     }
-            // }
-        
+            if (initUpgrade.GetValidTypes() == null)
+            {
+                var glyphSo = lookup.GetForType(null);
+                var glyph = Instantiate(glyphPrefab, applicableGlyphs.transform).transform;
+                glyph.Find("Body").GetComponent<HexagonSprite>().color = glyphSo.body;
+                glyph.Find("Shade").GetComponent<HexagonSprite>().color = glyphSo.shade;
+                glyph.Find("Glyph").GetComponent<Image>().sprite = glyphSo.glyph;
+            }
+            else
+            {
+                foreach (var turretType in initUpgrade.GetValidTypes())
+                {
+                    var glyphSo = lookup.GetForType(turretType);
+                    var glyph = Instantiate(glyphPrefab, applicableGlyphs).transform;
+                    glyph.Find("Body").GetComponent<HexagonSprite>().color = glyphSo.body;
+                    glyph.Find("Shade").GetComponent<HexagonSprite>().color = glyphSo.shade;
+                    glyph.Find("Glyph").GetComponent<Image>().sprite = glyphSo.glyph;
+                }
+            }
+
             bg.GetComponent<Button>().onClick.AddListener(delegate { MakeSelection(shop); });
         }
 
         // Called when the user clicks on the button
         private void MakeSelection (Shop shop)
         {
-            // TODO - Grant the user's choice
             transform.parent.gameObject.SetActive (false);
             Time.timeScale = 1f;
         

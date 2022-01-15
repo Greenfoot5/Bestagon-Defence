@@ -117,7 +117,5 @@ namespace Turrets
         {
             rangeDisplay.SetActive(false);
         }
-
-        public virtual void OnInspectorGUI() { }
     }
 }
