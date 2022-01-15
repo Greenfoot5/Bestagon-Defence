@@ -32,6 +32,16 @@ public struct UpgradableStat
     {
         return stat * modifier <= 0f ? 0f : stat * modifier;
     }
+    
+    /// <summary>
+    /// Gets the stat after it's been modified
+    /// If the value is less than 0, it will still return it's actual value
+    /// </summary>
+    /// <returns>The stat after being multiplied by the modifier</returns>
+    public float GetTrueStat()
+    {
+        return stat * modifier;
+    }
 
     public void AddModifier(float newValue)
     {

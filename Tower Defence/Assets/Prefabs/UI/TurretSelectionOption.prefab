@@ -2085,6 +2085,7 @@ MonoBehaviour:
   displayName: {fileID: 6914971811649882500}
   tagline: {fileID: 1296342664285512328}
   icon: {fileID: 4543250165993662423}
+  glyph: {fileID: 973773982435086148}
   upgradesSection: {fileID: 5328360382693673385}
   upgradesLayout: {fileID: 2361648762527175755}
   upgradeUI: {fileID: 6726336910582392263, guid: 49b2b3617a38f4df8bcca9a6eabde7b0, type: 3}

@@ -13,6 +13,9 @@ public class AddSelection : MonoBehaviour
     public GameObject upgradeSelectionUI;
     private LevelData.LevelData _levelData;
     public Shop shop;
+    
+    [SerializeField]
+    public TypeSpriteLookup glyphsLookup;
 
     private bool _firstPurchase = true;
     
@@ -213,7 +216,7 @@ public class AddSelection : MonoBehaviour
     {
         // Create the ui as a child
         var upgradeUI = Instantiate(upgradeSelectionUI, transform);
-        upgradeUI.GetComponent<UpgradeSelectionUI>().Init(upgrade, shop);
+        upgradeUI.GetComponent<UpgradeSelectionUI>().Init(upgrade, shop, glyphsLookup);
     }
     
     /// <summary>
@@ -223,6 +226,6 @@ public class AddSelection : MonoBehaviour
     private void GenerateTurretUI(TurretBlueprint turret)
     {
         var turretUI = Instantiate(turretSelectionUI, transform);
-        turretUI.GetComponent<TurretSelectionUI>().Init(turret, shop);
+        turretUI.GetComponent<TurretSelectionUI>().Init(turret, shop, glyphsLookup);
     }
 }
