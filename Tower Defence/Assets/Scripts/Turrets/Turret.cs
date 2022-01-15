@@ -10,8 +10,10 @@ namespace Turrets
     public enum TargetingMethod
     {
         Closest = 0,
-        Weakest = 1,
-        Strongest = 2
+        Weakest,
+        Strongest,
+        First,
+        Last
     }
     
     public abstract class Turret : MonoBehaviour

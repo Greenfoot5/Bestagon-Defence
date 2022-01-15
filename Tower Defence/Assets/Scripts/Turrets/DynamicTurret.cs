@@ -14,7 +14,7 @@ namespace Turrets
         
         // Targeting
         public TargetingMethod targetingMethod = TargetingMethod.Closest;
-        public bool aggressiveRetargeting = true;
+        public bool aggressiveRetargeting;
 
         protected Transform target;
         protected Enemy targetEnemy;
@@ -74,7 +74,7 @@ namespace Turrets
             // Set the current value to be too high or too low.
             // Value is based on targeting method
             var currentValue = Mathf.Infinity;
-            if (targetingMethod == TargetingMethod.Strongest)
+            if (targetingMethod == TargetingMethod.Strongest || targetingMethod == TargetingMethod.First)
             {
                 currentValue = Mathf.NegativeInfinity;
             }
@@ -122,6 +122,24 @@ namespace Turrets
                             mostValuableEnemy = enemy;
                         }
 
+                        break;
+                    case TargetingMethod.First:
+                        // Find if the enemy has the most map progress than our current most valuable
+                        var mapProgress = enemy.GetComponent<EnemyMovement>().mapProgress;
+                        if (mapProgress > currentValue)
+                        {
+                            currentValue = mapProgress;
+                            mostValuableEnemy = enemy;
+                        }
+                        break;
+                    case TargetingMethod.Last:
+                        // Find if the enemy has the lease map progress than our current most valuable
+                        var pathProgress = enemy.GetComponent<EnemyMovement>().mapProgress;
+                        if (pathProgress < currentValue)
+                        {
+                            currentValue = pathProgress;
+                            mostValuableEnemy = enemy;
+                        }
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();

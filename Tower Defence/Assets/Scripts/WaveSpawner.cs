@@ -82,7 +82,7 @@ public class WaveSpawner : MonoBehaviour
             {
                 SpawnEnemy(set.enemy);
 
-                if (j + 1 != set.count)
+                if (j + 1 != setCount)
                 {
                     yield return new WaitForSeconds(set.rate);
                 }
