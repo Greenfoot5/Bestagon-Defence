@@ -15,6 +15,7 @@ namespace UI
         public TextMeshProUGUI tagline;
 
         public Image icon;
+        public Image glyph;
     
         [Header("Upgrades")]
         public GameObject upgradesSection;
@@ -31,21 +32,33 @@ namespace UI
         public Image upgradesBG;
         public TextMeshProUGUI upgradesTitle;
 
-        // Called when creating the UI
+        /// <summary>
+        /// Creates and sets up the Selection UI.
+        /// </summary>
+        /// <param name="turret">The turret the option selects</param>
+        /// <param name="shop">The Shop (allows us to select the turret when we click the panel</param>
+        /// <param name="lookup">The turret type to glyph lookup</param>
         public void Init (TurretBlueprint turret, Shop shop, TypeSpriteLookup lookup)
         {
             _turretBlueprint = turret;
-
+            
+            // Turret text
             displayName.text = turret.displayName;
             tagline.text = turret.tagline;
-
+            
+            // Icon and Glyph
             icon.sprite = turret.shopIcon;
-
+            var glyphSo = lookup.GetForType(turret.prefab.GetComponent<Turret>().GetType());
+            glyph.sprite = glyphSo.glyph;
+            glyph.color = glyphSo.body;
+            
+            // Turret stats
             var turretPrefab = turret.prefab.GetComponent<Turret>();
             damage.SetData(turretPrefab.damage);
             rate.SetData(turretPrefab.fireRate);
             range.SetData(turretPrefab.range);
-
+            
+            // Turret's upgrades
             if (turret.upgrades.Count == 0)
             {
                 upgradesSection.SetActive(true);

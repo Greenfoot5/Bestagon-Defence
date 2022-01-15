@@ -28,10 +28,13 @@ public class TypeSpriteLookup
         {
             return sprites[Types.IndexOf(t)]; 
         }
-        catch (IndexOutOfRangeException)
+        catch (Exception ex)
         {
+            if (!(ex is IndexOutOfRangeException) && !(ex is ArgumentOutOfRangeException)) throw;
+            
             Debug.LogError("Can't find sprite of type " + t);
             return sprites[0];
+
         }
     } 
 }
