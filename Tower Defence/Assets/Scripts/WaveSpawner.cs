@@ -113,6 +113,7 @@ public class WaveSpawner : MonoBehaviour
         
         // Apply scaling
         spawnedEnemy.GetComponent<Enemy>().maxHealth *= Mathf.Pow(_levelData.health, _waveIndex);
+        spawnedEnemy.GetComponent<Enemy>().health = spawnedEnemy.GetComponent<Enemy>().maxHealth;
         
         enemiesAlive++;
     }
