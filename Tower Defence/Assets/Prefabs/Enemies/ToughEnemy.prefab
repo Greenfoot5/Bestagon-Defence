@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startSpeed: 1.75
-  maxHealth: 50
+  maxHealth: 500
   speed: 0
   health: 50
   deathMoney: 15
@@ -185,6 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceToWaypoint: 0.05
+  mapProgress: 0
 --- !u!60 &4532340251281591674
 PolygonCollider2D:
   m_ObjectHideFlags: 0

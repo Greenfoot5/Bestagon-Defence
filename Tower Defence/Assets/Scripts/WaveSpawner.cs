@@ -9,9 +9,11 @@ public class WaveSpawner : MonoBehaviour
     
     // All the waves in the level
     public Wave[] waves;
-
+    
     // Times before sending waves
     public float timeBetweenWaves = 5f;
+    [Tooltip("The time at the beginning before the start of the game")]
+    public float preparationTime = 5f;
     // Set to first countdown
     private float _countdown = 5f;
     
@@ -25,7 +27,7 @@ public class WaveSpawner : MonoBehaviour
     // Should be waypoint 0
     public Transform spawnPoint;
 
-    public bool isSpawning;
+    private bool _isSpawning;
 
     private LevelData.LevelData _levelData;
 
@@ -33,13 +35,14 @@ public class WaveSpawner : MonoBehaviour
     {
         enemiesAlive = 0;
         _levelData = gameObject.GetComponent<GameManager>().levelData;
+        _countdown = preparationTime;
     }
 
     private void Update()
     {
         // Only reduce the countdown if there are enemies remaining
         // TODO - Update countdown text to enemies remaining
-        if (enemiesAlive > 0 || isSpawning)
+        if (enemiesAlive > 0 || _isSpawning)
         {
             return;
         }
@@ -68,7 +71,7 @@ public class WaveSpawner : MonoBehaviour
     // Spawns in our enemies
     private IEnumerator SpawnWave()
     {
-        isSpawning = true;
+        _isSpawning = true;
         var wave = waves[_waveIndex % waves.Length];
 
         for (var i = 0; i < wave.waveSets.Length; i++)
@@ -95,7 +98,7 @@ public class WaveSpawner : MonoBehaviour
         }
 
         _waveIndex++;
-        isSpawning = false;
+        _isSpawning = false;
 
         if (_waveIndex % waves.Length != 0) yield break;
         Debug.Log("Level complete!");

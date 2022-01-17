@@ -23,7 +23,7 @@ namespace UI
             if (ui.activeSelf)
             {
                 Time.timeScale = 0f;
-                Input.ResetInputAxes();
+                //Input.ResetInputAxes();
             }
             else
             {
@@ -71,17 +71,20 @@ namespace UI
         // Called each frame
         public void Update()
         {
+            Debug.Log ($"Been toggled? {_hasBeenToggled}. Input = {Input.GetAxis("Pause")}");
             // On press, pause the game
-            if (Input.GetAxis("Pause") > 0 && !_hasBeenToggled)
+            if (Input.GetKeyDown(KeyCode.P))// && !_hasBeenToggled)
             {
+                Debug.Log("Pausing");
                 Toggle();
                 _hasBeenToggled = true;
             }
             // Set's _hasBeenToggled on release
-            else if (Input.GetAxis("Pause") == 0)
-            {
-                _hasBeenToggled = false;
-            }
+            // else if (Input.GetKeyDown("paus") == 0)
+            // {
+            //     //Debug.Log("Unpausing");
+            //     _hasBeenToggled = false;
+            // }
         }
     }
 }

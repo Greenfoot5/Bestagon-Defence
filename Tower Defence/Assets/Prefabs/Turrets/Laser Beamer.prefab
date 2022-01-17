@@ -5059,7 +5059,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage:
-    stat: 15
+    stat: 150
     modifier: 1
   enemyTag: Enemy
   range:

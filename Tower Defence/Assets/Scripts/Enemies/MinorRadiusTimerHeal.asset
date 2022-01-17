@@ -19,6 +19,6 @@ MonoBehaviour:
   range: 3
   timer: 3
   startCount: -1
-  isPercentage: 0
-  healAmount: 25
-  healPercentage: 0.5
+  isPercentage: 1
+  healAmount: 100
+  healPercentage: 0.1
