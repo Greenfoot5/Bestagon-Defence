@@ -18,4 +18,4 @@ MonoBehaviour:
   abilityEffect: {fileID: 2228279973635050725, guid: 5e3d22129f7954f86b2f7812bf954492, type: 3}
   range: 3
   timer: 5
-  startCount: 1
+  startCount: 0.5
