@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 namespace UI
@@ -15,20 +16,17 @@ namespace UI
         
         public LeaderboardServerBridge bridge;
 
+        private void Start()
+        {
+            GameStats.controls.Default.Pause.performed += Toggle;
+        }
+
         // Pauses/unpauses the game, and toggles the UI
-        public void Toggle()
+        public void Toggle(InputAction.CallbackContext ctx)
         {
             ui.SetActive(!ui.activeSelf);
 
-            if (ui.activeSelf)
-            {
-                Time.timeScale = 0f;
-                //Input.ResetInputAxes();
-            }
-            else
-            {
-                Time.timeScale = 1f;
-            }
+            Time.timeScale = ui.activeSelf ? 0f : 1f;
         }
         
         private IEnumerator Transition(string sceneName)
@@ -43,7 +41,7 @@ namespace UI
         // The retry button, reloads the current scene
         public void Retry()
         {
-            Toggle();
+            Toggle(new InputAction.CallbackContext());
             StartCoroutine(Transition(SceneManager.GetActiveScene().name));
         }
     
@@ -64,27 +62,8 @@ namespace UI
                 // TODO - Now ignore the error
             }
 
-            Toggle();
+            Toggle(new InputAction.CallbackContext());
             StartCoroutine(Transition("MainMenu"));
-        }
-    
-        // Called each frame
-        public void Update()
-        {
-            Debug.Log ($"Been toggled? {_hasBeenToggled}. Input = {Input.GetAxis("Pause")}");
-            // On press, pause the game
-            if (Input.GetKeyDown(KeyCode.P))// && !_hasBeenToggled)
-            {
-                Debug.Log("Pausing");
-                Toggle();
-                _hasBeenToggled = true;
-            }
-            // Set's _hasBeenToggled on release
-            // else if (Input.GetKeyDown("paus") == 0)
-            // {
-            //     //Debug.Log("Unpausing");
-            //     _hasBeenToggled = false;
-            // }
         }
     }
 }
