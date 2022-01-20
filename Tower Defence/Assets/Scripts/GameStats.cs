@@ -23,6 +23,6 @@ public class GameStats : MonoBehaviour
         controls = new GameControls();
         controls.Enable();
         EnhancedTouchSupport.Enable();
-        TouchSimulation.Enable();
+        //TouchSimulation.Enable();
     }
 }
