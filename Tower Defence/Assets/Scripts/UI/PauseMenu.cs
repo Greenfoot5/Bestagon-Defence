@@ -29,6 +29,13 @@ namespace UI
             Time.timeScale = ui.activeSelf ? 0f : 1f;
         }
         
+        public void Toggle()
+        {
+            ui.SetActive(!ui.activeSelf);
+
+            Time.timeScale = ui.activeSelf ? 0f : 1f;
+        }
+        
         private IEnumerator Transition(string sceneName)
         {
             transition.SetTrigger("Start");
@@ -50,12 +57,12 @@ namespace UI
         {
             try
             {
-                // Tell our leaderboard API to add the user
+                // Tell our leaderboard API to add the player
                 var leaderboardData =
                     Environment.GetEnvironmentVariable(SceneManager.GetActiveScene().name + "Leaderboard");
                 if (leaderboardData == null) return;
                 var splitData = leaderboardData.Split(';');
-                bridge.SendUserValue(PlayerPrefs.GetString("Username"), GameStats.rounds, splitData[0], splitData[1]);
+                bridge.SendPlayerValue(PlayerPrefs.GetString("Username"), GameStats.rounds, splitData[0], splitData[1]);
             }
             catch (Exception)
             {

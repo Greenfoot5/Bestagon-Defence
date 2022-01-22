@@ -1,41 +1,37 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
-using TouchPhase = UnityEngine.InputSystem.TouchPhase;
 
 public class CameraController : MonoBehaviour
 {
+    [Header("Panning")]
     [Tooltip("Keyboard panning multiplier")]
     public float keyboardPanSpeed = 10f;
-
     [Tooltip("Swipe panning multiplier")]
     public float swipePanSpeed = 1f;
-    
     [Tooltip("The minimum position the camera can reach")]
     public Vector2 minPos = new Vector2(0, 0);
     [Tooltip("The maximum position the camera can reach")]
     public Vector2 maxPos = new Vector2(0, 0);
     
-    // Used when changing the camera size
+    [Header("Zoom")]
     [Tooltip("Multiplier for the mouse scroll speed")]
-    public float scrollSpeed = 5000f;
+    public float scrollSpeed = 10f;
+    [Tooltip("Multiplier for the pinch zoom speed")]
+    public float pinchSpeed = 1f;
     [Tooltip("The minimum Orthographic size that can be reached (maximum zoom)")]
     public float minOrthSize = 3;
     [Tooltip("The maximum Orthographic size that can be reached (minimum zoom)")]
     public float maxOrthSize = 9;
     private Camera _camera;
 
-    private Vector2 _cameraSpeed;
-    private float _scrolling;
-
-    private float _prevPinchMag;
-    
-    private float _lastMultiTouchDistance;
-    
     // Input System
     private InputAction _moveCamera;
     private InputAction _zoomCamera;
-
+    
+    /// <summary>
+    /// Called at the start of the level. Sets up internal variables.
+    /// </summary>
     private void Start()
     {
         _camera = transform.GetComponent<Camera>();
@@ -44,65 +40,65 @@ public class CameraController : MonoBehaviour
     }
     
     /// <summary>
-    /// Called every update. Used when the player wants to move the camera
+    /// Gets the camera movement speed based on player input
     /// </summary>
-    private void Move()
+    /// <returns>The speed the camera should move in the next frame, may be 0</returns>
+    private Vector2 Move()
     {
         if (_moveCamera.activeControl == null)
         {
-            return;
+            return new Vector2();
         }
         
         // Keyboard & Mouse Input
         if (_moveCamera.activeControl.device == Keyboard.current)
         {
-            _cameraSpeed = _moveCamera.ReadValue<Vector2>() * keyboardPanSpeed;
-        }
-    }
-
-    private void Scroll()
-    {
-        if (_zoomCamera.activeControl == null)
-        {
-            return;
+            return _moveCamera.ReadValue<Vector2>() * keyboardPanSpeed;
         }
         
-        if (_zoomCamera.activeControl.device == Mouse.current)
-        {
-            _scrolling = _zoomCamera.ReadValue<float>() * scrollSpeed;
-        }
-    }
-
-    private void TouchMovement()
-    {
         // Mobile Input
-        // Camera Movement
-        if (_moveCamera.activeControl != null && _moveCamera.activeControl.device == Touchscreen.current)
+        if (_moveCamera.activeControl.device == Touchscreen.current)
         {
-            _cameraSpeed = _moveCamera.ReadValue<Vector2>() * swipePanSpeed;
+            return _moveCamera.ReadValue<Vector2>() * swipePanSpeed;
         }
-        // Camera Zoom
-        else if (Touch.activeFingers.Count == 2)
-        {
-            var touchZero = Touchscreen.current.touches[0];
-            var touchOne = Touchscreen.current.touches[1];
-        
-            // Find the position in the previous frame of each touch.
-            var touchZeroPrevPos = touchZero.position.ReadValue() - touchZero.delta.ReadValue();
-            var touchOnePrevPos = touchOne.position.ReadValue() - touchOne.delta.ReadValue();
-        
-            // Find the magnitude of the vector (the distance) between the touches in each frame.
-            var prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
-            var touchDeltaMag = (touchZero.position.ReadValue() - touchOne.position.ReadValue()).magnitude;
-            var touchZeroDeltaMag = Touch.activeTouches[0].delta.magnitude;
-            var touchOneDeltaMag = Touch.activeTouches[1].delta.magnitude;
-        
-            // Find the difference in the distances between each frame.
-            _scrolling = 0.01f * (touchZeroDeltaMag - touchOneDeltaMag);
-            Debug.Log(_scrolling);
-        }
-    }
 
+        return new Vector2();
+    }
+    
+    /// <summary>
+    /// Gets the zoom speed based on player input
+    /// </summary>
+    /// <returns>The speed the camera should zoom in/out during the next frame, may be 0</returns>
+    private float Scroll()
+    {
+        if (_zoomCamera.activeControl != null && _zoomCamera.activeControl.device == Mouse.current)
+        {
+            return _zoomCamera.ReadValue<float>() * scrollSpeed;
+        }
+
+        if (Touch.activeFingers.Count != 2) return 0f;
+        
+        var touchZero = Touch.activeTouches[0];
+        var touchOne = Touch.activeTouches[1];
+        
+        // Find the position in the previous frame of each touch.
+        var touchZeroPrevPos = touchZero.screenPosition - touchZero.delta;
+        var touchOnePrevPos = touchOne.screenPosition - touchOne.delta;
+        
+        // Find the magnitude of the vector (the distance) between the touches in each frame.
+        var prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
+        var touchDeltaMag = (touchZero.screenPosition - touchOne.screenPosition).magnitude;
+        // var touchZeroDeltaMag = Touch.activeTouches[0].delta.magnitude;
+        // var touchOneDeltaMag = Touch.activeTouches[1].delta.magnitude;
+        
+        // Find the difference in the distances between each frame.
+        return (touchDeltaMag - prevTouchDeltaMag) * pinchSpeed;
+
+    }
+    
+    /// <summary>
+    /// Called every frame. Moves camera and zooms camera
+    /// </summary>
     private void Update()
     {
         // Disable panning if the game is over
@@ -113,21 +109,18 @@ public class CameraController : MonoBehaviour
         }
         
         // TODO - Check if we actually need to call them.
-        Move();
-        Scroll();
-        TouchMovement();
+        var panSpeed = Move();
+        var zoomSpeed = Scroll();
 
         // Move's the camera
         var transformPosition = transform.position;
-        var newPositionX = Mathf.Clamp(transformPosition.x + _cameraSpeed.x * Time.deltaTime, minPos.x, maxPos.x);
-        var newPositionY = Mathf.Clamp(transformPosition.y + _cameraSpeed.y * Time.deltaTime, minPos.y, maxPos.y);
+        var newPositionX = Mathf.Clamp(transformPosition.x + panSpeed.x * Time.deltaTime, minPos.x, maxPos.x);
+        var newPositionY = Mathf.Clamp(transformPosition.y + panSpeed.y * Time.deltaTime, minPos.y, maxPos.y);
         transform.Translate(new Vector3(newPositionX, newPositionY, transformPosition.z) - transformPosition, Space.World);
-        // Reset the camera's speed, in case the user stops moving
-        _cameraSpeed = new Vector2();
 
         // Implement scrolling by changing the Orthographic Size on the camera
         var orthSize = _camera.orthographicSize;
-        orthSize -= _scrolling * Time.deltaTime;
+        orthSize -= zoomSpeed * Time.deltaTime;
         orthSize = Mathf.Clamp(orthSize, minOrthSize, maxOrthSize);
         _camera.orthographicSize = orthSize;
     }
