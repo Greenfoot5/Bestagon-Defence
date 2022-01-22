@@ -152,7 +152,7 @@ public class AddSelection : MonoBehaviour
                         throw new ArgumentOutOfRangeException();
                 }
 
-                // Adds the upgrade as an option to the user
+                // Adds the upgrade as an option to the player
                 GenerateUpgradeUI(selected);
 
                 // Add it to our "history" to avoid duplicates on our next selection
@@ -195,7 +195,7 @@ public class AddSelection : MonoBehaviour
                         throw new ArgumentOutOfRangeException();
                 }
                 
-                // Add the turret to the ui for the user to pick
+                // Add the turret to the ui for the player to pick
                 GenerateTurretUI(selected);
                 
                 // Add the turret to our history so we don't pick it again
@@ -209,9 +209,9 @@ public class AddSelection : MonoBehaviour
     }
     
     /// <summary>
-    /// Adds a new upgrade UI option to the user's choice
+    /// Adds a new upgrade UI option to the player's choice
     /// </summary>
-    /// <param name="upgrade">The upgrade the user can pick</param>
+    /// <param name="upgrade">The upgrade the player can pick</param>
     private void GenerateUpgradeUI(Upgrade upgrade)
     {
         // Create the ui as a child
@@ -220,9 +220,9 @@ public class AddSelection : MonoBehaviour
     }
     
     /// <summary>
-    /// Adds a new turret UI option to the user's choice
+    /// Adds a new turret UI option to the player's choice
     /// </summary>
-    /// <param name="turret">The turret the user can pick</param>
+    /// <param name="turret">The turret the player can pick</param>
     private void GenerateTurretUI(TurretBlueprint turret)
     {
         var turretUI = Instantiate(turretSelectionUI, transform);

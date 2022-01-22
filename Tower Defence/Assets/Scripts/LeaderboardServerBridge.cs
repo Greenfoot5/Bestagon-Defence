@@ -47,13 +47,13 @@ public class LeaderboardServerBridge : MonoBehaviour
     }
     
     /// <summary>
-    /// Gets the user's 
+    /// Gets the players 
     /// </summary>
     /// <param name="username"></param>
     /// <param name="leaderboardID"></param>
     /// <returns></returns>
     /// <exception cref="ArgumentOutOfRangeException"></exception>
-    public async Task<LeaderboardEntry> RequestUserEntry(string username, string leaderboardID)
+    public async Task<LeaderboardEntry> RequestPlayerEntry(string username, string leaderboardID)
     {
         var url = serverEndpoint + $"/get_entries?leaderboard_id={leaderboardID}&start=1&count=1&search={username}";
         using var unityWebRequest = UnityWebRequest.Get(url);
@@ -86,51 +86,51 @@ public class LeaderboardServerBridge : MonoBehaviour
     /// Sends a value to the leaderboard
     /// </summary>
     /// <param name="username">The username to file the data under</param>
-    /// <param name="value">The user's score</param>
+    /// <param name="value">The players's score</param>
     /// <param name="leaderboardID">The leaderboard id</param>
     /// <param name="leaderboardSecret">The secret</param>
     /// <returns></returns>
-    public Task<bool> SendUserValue(string username, int value, string leaderboardID, string leaderboardSecret)
+    public Task<bool> SendPlayerValue(string username, int value, string leaderboardID, string leaderboardSecret)
     {
-        return SendUserValue(username, (IConvertible)value, leaderboardID, leaderboardSecret);
+        return SendPlayerValue(username, (IConvertible)value, leaderboardID, leaderboardSecret);
     }
     
     /// <summary>
     /// Sends a value to the leaderboard
     /// </summary>
     /// <param name="username">The username to file the data under</param>
-    /// <param name="value">The user's score</param>
+    /// <param name="value">The player's score</param>
     /// <param name="leaderboardID">The leaderboard id</param>
     /// <param name="leaderboardSecret">The secret</param>
     /// <returns></returns>
-    public Task<bool> SendUserValue(string username, float value, string leaderboardID, string leaderboardSecret)
+    public Task<bool> SendPlayerValue(string username, float value, string leaderboardID, string leaderboardSecret)
     {
-        return SendUserValue(username, (IConvertible)value, leaderboardID, leaderboardSecret);
+        return SendPlayerValue(username, (IConvertible)value, leaderboardID, leaderboardSecret);
     }
 
     /// <summary>
     /// Sends a value to the leaderboard
     /// </summary>
     /// <param name="username">The username to file the data under</param>
-    /// <param name="value">The user's score</param>
+    /// <param name="value">The player's score</param>
     /// <param name="leaderboardID">The leaderboard id</param>
     /// <param name="leaderboardSecret">The secret</param>
     /// <returns></returns>
-    public Task<bool> SendUserValue(string username, double value, string leaderboardID, string leaderboardSecret)
+    public Task<bool> SendPlayerValue(string username, double value, string leaderboardID, string leaderboardSecret)
     {
-        return SendUserValue(username, (IConvertible)value, leaderboardID, leaderboardSecret);
+        return SendPlayerValue(username, (IConvertible)value, leaderboardID, leaderboardSecret);
     }
 
     /// <summary>
-    /// Sends a user's data to the api
+    /// Sends a player's data to the api
     /// </summary>
     /// <param name="username">The username to input</param>
-    /// <param name="value">The value the user scored</param>
+    /// <param name="value">The value the player scored</param>
     /// <param name="leaderboardID">The id of the leaderboard to add it to</param>
     /// <param name="leaderboardSecret">The leaderboard's deepest darkest secret</param>
     /// <returns></returns>
     /// <exception cref="ArgumentOutOfRangeException"></exception>
-    private async Task<bool> SendUserValue(string username, IConvertible value, string leaderboardID, string leaderboardSecret)
+    private async Task<bool> SendPlayerValue(string username, IConvertible value, string leaderboardID, string leaderboardSecret)
     {
         var url = serverEndpoint + "/update_entry";
         var valueString = value.ToString();

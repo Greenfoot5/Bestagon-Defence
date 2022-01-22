@@ -85,7 +85,7 @@ namespace UI
             bg.GetComponent<Button>().onClick.AddListener(delegate { MakeSelection(shop); });
         }
 
-        // Called when the user clicks on the button
+        // Called when the player clicks on the button
         private void MakeSelection (Shop shop)
         {
             transform.parent.gameObject.SetActive (false);

@@ -78,10 +78,10 @@ namespace UI
                 }
                 
                 // Display the player's high score
-                var userScore = await bridge.RequestUserEntry(PlayerPrefs.GetString("Username"), leaderboardID);
-                if (userScore != null)
+                var playerScore = await bridge.RequestPlayerEntry(PlayerPrefs.GetString("Username"), leaderboardID);
+                if (playerScore != null)
                 {
-                    highScore.text = userScore.GetValueAsString();
+                    highScore.text = playerScore.GetValueAsString();
                 }
             }
             else
