@@ -58,13 +58,6 @@ public class CameraController : MonoBehaviour
         {
             _cameraSpeed = _moveCamera.ReadValue<Vector2>() * keyboardPanSpeed;
         }
-        
-        // Mobile Input
-        // TODO - Implement EnhancedTouch
-        if (Touch.activeFingers.Count == 2)
-        {
-            _cameraSpeed = _moveCamera.ReadValue<Vector2>() * swipePanSpeed;
-        }
     }
 
     private void Scroll()
@@ -78,25 +71,36 @@ public class CameraController : MonoBehaviour
         {
             _scrolling = _zoomCamera.ReadValue<float>() * scrollSpeed;
         }
+    }
+
+    private void TouchMovement()
+    {
+        // Mobile Input
+        // Camera Movement
+        if (_moveCamera.activeControl != null && _moveCamera.activeControl.device == Touchscreen.current)
+        {
+            _cameraSpeed = _moveCamera.ReadValue<Vector2>() * swipePanSpeed;
+        }
+        // Camera Zoom
+        else if (Touch.activeFingers.Count == 2)
+        {
+            var touchZero = Touchscreen.current.touches[0];
+            var touchOne = Touchscreen.current.touches[1];
         
-        // TODO - Switch to EnhancedTouch
-        // else if (_zoomCamera.activeControl.device == Touchscreen.current)
-        // {
-        //     var touchZero = Touchscreen.current.touches[0];
-        //     var touchOne = Touchscreen.current.touches[1];
-        //
-        //     // Find the position in the previous frame of each touch.
-        //     var touchZeroPrevPos = touchZero.position.ReadValue() - touchZero.delta.ReadValue();
-        //     var touchOnePrevPos = touchOne.position.ReadValue() - touchOne.delta.ReadValue();
-        //
-        //     // Find the magnitude of the vector (the distance) between the touches in each frame.
-        //     var prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
-        //     var touchDeltaMag = (touchZero.position.ReadValue() - touchOne.position.ReadValue()).magnitude;
-        //
-        //     // Find the difference in the distances between each frame.
-        //     _scrolling = 0.01f * (touchDeltaMag - prevTouchDeltaMag);
-        //     Debug.Log(_scrolling);
-        // }
+            // Find the position in the previous frame of each touch.
+            var touchZeroPrevPos = touchZero.position.ReadValue() - touchZero.delta.ReadValue();
+            var touchOnePrevPos = touchOne.position.ReadValue() - touchOne.delta.ReadValue();
+        
+            // Find the magnitude of the vector (the distance) between the touches in each frame.
+            var prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
+            var touchDeltaMag = (touchZero.position.ReadValue() - touchOne.position.ReadValue()).magnitude;
+            var touchZeroDeltaMag = Touch.activeTouches[0].delta.magnitude;
+            var touchOneDeltaMag = Touch.activeTouches[1].delta.magnitude;
+        
+            // Find the difference in the distances between each frame.
+            _scrolling = 0.01f * (touchZeroDeltaMag - touchOneDeltaMag);
+            Debug.Log(_scrolling);
+        }
     }
 
     private void Update()
@@ -111,6 +115,7 @@ public class CameraController : MonoBehaviour
         // TODO - Check if we actually need to call them.
         Move();
         Scroll();
+        TouchMovement();
 
         // Move's the camera
         var transformPosition = transform.position;
