@@ -4,7 +4,7 @@ using Turrets.Upgrades;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Node : MonoBehaviour
+public class Node : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
     // The colour to set out node to
     public Color hoverColour;
@@ -21,14 +21,17 @@ public class Node : MonoBehaviour
     private Renderer _rend;
     private BuildManager _buildManager;
 
-    void Start()
+    private void Start()
     {
         _rend = GetComponent<Renderer>();
         _defaultColour = _rend.material.color;
         _buildManager = BuildManager.instance;
     }
 
-    // Called when we're building a turret
+    /// <summary>
+    /// Places the turret on the node
+    /// </summary>
+    /// <param name="blueprint">The blueprint of the turret to build</param>
     private void BuildTurret(TurretBlueprint blueprint)
     {
         // Spawn the turret and set the turret and blueprint
@@ -48,7 +51,11 @@ public class Node : MonoBehaviour
         Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
     }
     
-    // Called when we upgrade the turret
+    /// <summary>
+    /// Called when upgrading a turret
+    /// </summary>
+    /// <param name="upgrade">The upgrade to add to the turret</param>
+    /// <returns>If the upgrade was applied</returns>
     public bool UpgradeTurret(Upgrade upgrade)
     {
         // Apply the upgrade
@@ -65,14 +72,16 @@ public class Node : MonoBehaviour
         return true;
     }
     
-    // Called when we sell turrets
+    /// <summary>
+    /// Called when the turret is sold
+    /// </summary>
     public void SellTurret()
     {
         // // Grant the money
         // GameStats.money += turretBlueprint.GetSellAmount();
         
         // Spawn the sell effect
-        GameObject effect = Instantiate(_buildManager.sellEffect, transform.position, Quaternion.identity);
+        var effect = Instantiate(_buildManager.sellEffect, transform.position, Quaternion.identity);
         Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
         
         // Destroy the turret and reset any of the node's selection variables
@@ -87,14 +96,8 @@ public class Node : MonoBehaviour
     /// Called when the mouse is down.
     /// Either Selects the turret or builds
     /// </summary>
-    private void OnMouseDown()
+    public void OnPointerDown(PointerEventData eventData)
     {
-        // Make sure we're hovering over the node and nothing else
-        if (EventSystem.current.IsPointerOverGameObject())
-        {
-            return;
-        }
-    
         // Select the node/turret
         if (turret != null)
         {
@@ -114,14 +117,9 @@ public class Node : MonoBehaviour
         _buildManager.BuiltTurret();
     }
     
-    // Called when the mouse hovers over the object
-    private void OnMouseEnter()
+    // Called when the mouse hovers over the node
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        // Make sure we're hovering over the node and nothing else
-        if (EventSystem.current.IsPointerOverGameObject())
-        {
-            return;
-        }
         // Make sure we're trying to build
         if (!_buildManager.CanBuild)
         {
@@ -131,8 +129,11 @@ public class Node : MonoBehaviour
         _rend.material.color = hoverColour;
     }
     
-    // Reset colour when we no longer hover.
-    private void OnMouseExit()
+    /// <summary>
+    /// Called when the mouse is no longer over the node
+    /// </summary>
+    /// <param name="eventData"></param>
+    public void OnPointerExit(PointerEventData eventData)
     {
         _rend.material.color = _defaultColour;
     }
