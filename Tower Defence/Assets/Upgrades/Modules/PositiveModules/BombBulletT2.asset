@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8062262321bc543138867258ea3b19a7, type: 3}
+  m_Name: BombBulletT2
+  m_EditorClassIdentifier: 
+  ModuleType: Bomb
+  ModuleTier: 2
+  accentColor: {r: 0.85490197, g: 0.14509805, b: 0.27058825, a: 1}
+  displayName: Bombs II
+  tagline: Quite explosive
+  icon: {fileID: 8811115329238573457, guid: 16c979c866f439b4b988e7020b313794, type: 3}
+  effectText: Bullets explode, with increased damage but are shot slower, with a
+    lower range
+  explosionRadiusChange: 0.6
+  damagePercentageChange: 0.4
+  fireRatePercentageChange: -0.15
+  rangePercentageChange: -0.4
+  speedPercentageChange: -0.15
