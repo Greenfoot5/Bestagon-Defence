@@ -7,7 +7,6 @@ namespace Enemies
     /// A script to move the enemy along our designated path
     /// Set out by a waypoints array
     /// </summary>
-
     [RequireComponent(typeof(Enemy))]
     public class EnemyMovement : MonoBehaviour
     {
@@ -23,7 +22,10 @@ namespace Enemies
 
         public float mapProgress;
         private float _maxDistance;
-    
+        
+        /// <summary>
+        /// Initialises relevant variables
+        /// </summary>
         private void Start()
         {
             // Set the next target to the first waypoint.

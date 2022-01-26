@@ -118,7 +118,7 @@ namespace Turrets
             _modules.Add(module);
         }
     
-        // Allows us to visualise the bullet's AoE in the editor
+        // Easily visualise the bullet's AoE in the editor
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.cyan;

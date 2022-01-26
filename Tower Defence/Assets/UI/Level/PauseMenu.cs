@@ -54,7 +54,7 @@ namespace UI
             StartCoroutine(Transition(SceneManager.GetActiveScene().name));
         }
     
-        // The Main Menu button that returns us to the main menu
+        // The Main Menu button that returns the player to the main menu
         public void Menu()
         {
             try

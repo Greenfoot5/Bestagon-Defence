@@ -37,7 +37,7 @@ namespace UI
         /// Creates and setups the Selection UI.
         /// </summary>
         /// <param name="turret">The turret the option selects</param>
-        /// <param name="shop">The Shop (allows us to select the turret when the player clicks the panel)</param>
+        /// <param name="shop">The Shop (allows the game to select the turret when the player clicks the panel)</param>
         /// <param name="lookup">The turret type to glyph lookup</param>
         public void Init (TurretBlueprint turret, Shop shop, TypeSpriteLookup lookup)
         {

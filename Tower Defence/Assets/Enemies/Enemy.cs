@@ -11,6 +11,9 @@ using UnityEngine.UI;
 
 namespace Enemies
 {
+    /// <summary>
+    /// The base skeleton for the enemy, holding it's stats and abilities
+    /// </summary>
     public class Enemy : MonoBehaviour
     {
         [Header("Stats")]
@@ -42,7 +45,10 @@ namespace Enemies
         private readonly List<(EnemyAbility ability, int count)> _hitAbilities = new List<(EnemyAbility, int)>();
         private readonly List<EnemyAbility> _deathAbilities = new List<EnemyAbility>();
         private readonly List<EnemyAbility> _finishAbilities = new List<EnemyAbility>();
-
+        
+        /// <summary>
+        /// Grants abilities and sets current stats to max when spawning the enemy
+        /// </summary>
         private void Awake()
         {
             speed = startSpeed;
@@ -55,6 +61,10 @@ namespace Enemies
             }
         }
         
+        /// <summary>
+        /// Grants the enemy an ability so they can use it when triggered
+        /// </summary>
+        /// <param name="ability">The ability to grant</param>
         public void GrantAbility(EnemyAbility ability)
         {
             // TODO - Have better ability checking. Perhaps check if one is a higher tier than another,
@@ -65,6 +75,7 @@ namespace Enemies
                 return;
             }
             
+            // Adds to ability to the lists based on it's trigger(s)
             if (ability.triggers.Contains(AbilityTrigger.OnTimer))
             {
                 _timerAbilities.Add(ability);
@@ -91,6 +102,7 @@ namespace Enemies
                 }
             }
             
+            // Adds the icon above the enemy's health bar
             var icon = new GameObject($"{ability.name} Icon");
             icon.AddComponent(typeof(Image));
             icon.GetComponent<Image>().sprite = ability.abilityIcon;
@@ -102,7 +114,11 @@ namespace Enemies
             var ratio = ability.abilityIcon.rect.height / iLayoutTransform.rect.height;
             iTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, ability.abilityIcon.rect.width / ratio);
         }
-
+        
+        /// <summary>
+        /// Removes an ability from the enemy
+        /// </summary>
+        /// <param name="ability">The ability to remove</param>
         private void RevokeAbility(EnemyAbility ability)
         {
             if (ability.triggers.Contains(AbilityTrigger.OnTimer))
@@ -162,7 +178,12 @@ namespace Enemies
             }
         }
     
-        // Called when the enemy takes damage
+        /// <summary>
+        /// Called whenever the enemy takes damage.
+        /// This activates any ability with the OnDamage trigger
+        /// </summary>
+        /// <param name="amount">The amount of damage to deal</param>
+        /// <param name="source">The GameObject that hurt the enemy</param>
         public void TakeDamage(float amount, GameObject source)
         {
             var abilities = _hitAbilities.Select(item => item.ability).ToList();
@@ -180,7 +201,7 @@ namespace Enemies
                 EndCounterAbility(ability, source);
             }
             
-            // Base health stuff
+            // Edit the health
             health -= amount;
 
             leftBar.fillAmount = health / maxHealth;
@@ -191,7 +212,13 @@ namespace Enemies
                 Die(gameObject);
             }
         }
-
+        
+        /// <summary>
+        /// Called whenever the enemy takes damage
+        /// but the source doesn't want OnDamage abilities to activate.
+        /// For example, when taking effect damage.
+        /// </summary>
+        /// <param name="amount">The amount of damage to deal</param>
         public void TakeDamageWithoutAbilities(float amount)
         {
             // Base health stuff
@@ -206,7 +233,11 @@ namespace Enemies
             }
         }
 
-        // Called when the enemy dies
+        /// <summary>
+        /// Called when the enemy dies
+        /// allows the game to clean up anything when removing the GameObject
+        /// </summary>
+        /// <param name="source">What killed the enemy</param>
         private void Die(GameObject source)
         {
             ActivateAbilities(_deathAbilities, source);

@@ -2,15 +2,18 @@ using Abstract.Managers;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Background : MonoBehaviour
+namespace Levels
 {
-    private void OnMouseDown()
+    public class Background : MonoBehaviour
     {
-        // Make sure the player is hovering over the node and nothing else
-        if (EventSystem.current.IsPointerOverGameObject())
+        private void OnMouseDown()
         {
-            return;
+            // Make sure the player is hovering over the node and nothing else
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                return;
+            }
+            BuildManager.instance.Deselect();
         }
-        BuildManager.instance.Deselect();
     }
 }
