@@ -1,4 +1,5 @@
-﻿using Abstract.Managers;
+﻿using Abstract;
+using Abstract.Managers;
 using TMPro;
 using Turrets.Blueprints;
 using Turrets.Modules;

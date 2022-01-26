@@ -87,7 +87,9 @@ namespace Abstract.Managers
             nodeUI.SetTarget(node);
         }
     
-        // Deselects the node
+        /// <summary>
+        /// Deselects the node the player currently has selected
+        /// </summary>
         public void DeselectNode()
         {
             if (_selectedNode != null && _selectedNode.turret != null)
@@ -98,7 +100,10 @@ namespace Abstract.Managers
             _selectedNode = null;
             nodeUI.Hide();
         }
-
+        
+        /// <summary>
+        /// Deselects both the node and the turret the player wants to build
+        /// </summary>
         public void Deselect()
         {
             DeselectNode();

@@ -3,6 +3,9 @@ using UnityEngine.SceneManagement;
 
 namespace Abstract.Managers
 {
+    /// <summary>
+    /// Manages the current game's state
+    /// </summary>
     public class GameManager : MonoBehaviour
     {
         public static bool isGameOver;
@@ -12,7 +15,11 @@ namespace Abstract.Managers
         public LevelData.LevelData levelData;
 
         public LeaderboardServerBridge bridge;
-
+        
+        /// <summary>
+        /// Makes sure the level has some data to run with
+        /// Makes sure that the game isn't over.
+        /// </summary>
         private void Start()
         {
             isGameOver = false;
@@ -22,7 +29,9 @@ namespace Abstract.Managers
             }
         }
     
-        // Update is called once per frame
+        /// <summary>
+        /// Checks if the game is over yet
+        /// </summary>
         private void Update()
         {
             if (isGameOver)
@@ -36,7 +45,10 @@ namespace Abstract.Managers
             }
         }
     
-        // Called when the player reaches 0 lives
+        /// <summary>
+        /// Ends the game.
+        /// Displays the game over screen and saves the user's score.
+        /// </summary>
         private void EndGame()
         {
             isGameOver = true;

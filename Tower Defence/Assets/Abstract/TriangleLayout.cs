@@ -4,7 +4,7 @@ using UnityEngine.UI;
 namespace UI
 {
     /// <summary>
-    /// A layout in the form of a triangle
+    /// A UI layout that forms a triangle with it's elements
     /// </summary>
     public class TriangleLayout : MonoBehaviour, ILayoutGroup
     {
