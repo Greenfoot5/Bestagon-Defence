@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Abstract.Managers;
+using UnityEngine;
 using UnityEngine.InputSystem;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
@@ -108,7 +109,7 @@ public class CameraController : MonoBehaviour
             return;
         }
         
-        // TODO - Check if we actually need to call them.
+        // TODO - Check if the game actually need to call them.
         var panSpeed = Move();
         var zoomSpeed = Scroll();
 

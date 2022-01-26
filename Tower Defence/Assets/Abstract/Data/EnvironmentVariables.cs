@@ -1,8 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "HiddenVariables", menuName = "EnvironmentVariables")]
-public class EnvironmentVariables : ScriptableObject
+namespace Abstract.Data
 {
-    public List<EnvironmentVariable> variables;
+    /// <summary>
+    /// An SO that allows us to easily store and reference some environment variables
+    /// </summary>
+    [CreateAssetMenu(fileName = "HiddenVariables", menuName = "EnvironmentVariables")]
+    public class EnvironmentVariables : ScriptableObject
+    {
+        public List<EnvironmentVariable> variables;
+    }
 }

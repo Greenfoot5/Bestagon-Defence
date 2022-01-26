@@ -1,4 +1,6 @@
 ﻿using System.Collections;
+using Abstract.Data;
+using Abstract.Managers;
 using Enemies;
 using UnityEngine;
 using TMPro;
@@ -20,7 +22,7 @@ public class WaveSpawner : MonoBehaviour
     // The countdown text timer
     public TMP_Text waveCountdownText;
     
-    // The current wave we're on
+    // The current wave the player is on
     private int _waveIndex;
     
     // The point to spawn in the enemy.
@@ -47,8 +49,7 @@ public class WaveSpawner : MonoBehaviour
             return;
         }
 
-        // If we've reached the end of the countdown,
-        // call the next wave
+        // If the countdown has finished, call the next wave
         if (_countdown <= 0f)
         {
             // Start spawning in the enemies
@@ -74,11 +75,11 @@ public class WaveSpawner : MonoBehaviour
         _isSpawning = true;
         var wave = waves[_waveIndex % waves.Length];
 
-        for (var i = 0; i < wave.waveSets.Length; i++)
+        for (var i = 0; i < wave.enemySets.Length; i++)
         {
-            var set = wave.waveSets[i];
+            var set = wave.enemySets[i];
             
-            // For all the enemies we will spawn,
+            // For all the enemies the enemySet will spawn,
             // spawn one, then wait timeBetweenEnemies seconds
             var setCount = Mathf.FloorToInt(set.count * Mathf.Pow(_levelData.enemyCount, _waveIndex));
             for (var j = 0; j < setCount; j++)
@@ -91,7 +92,7 @@ public class WaveSpawner : MonoBehaviour
                 }
             }
 
-            if (i + 1 != wave.waveSets.Length)
+            if (i + 1 != wave.enemySets.Length)
             {
                 yield return new WaitForSeconds(wave.setDelays[i]);
             }

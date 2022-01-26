@@ -141,7 +141,7 @@ namespace Enemies
         private IEnumerator TimerAbility(EnemyAbility ability)
         {
             var counter = ability.startCount;
-            // Check we still have the ability to use
+            // Check the enemy still has the ability to use
             while (_timerAbilities.Contains(ability))
             {
                 yield return new WaitForSeconds(ability.timer);
@@ -204,7 +204,7 @@ namespace Enemies
             }
         }
 
-        // Called when we die
+        // Called when the enemy dies
         private void Die(GameObject source)
         {
             ActivateAbilities(_deathAbilities, source);

@@ -1,3 +1,4 @@
+using Abstract.Data;
 using Turrets.Blueprints;
 using Turrets.Modules;
 using UnityEngine;

@@ -1,3 +1,4 @@
+using Abstract.Data;
 using TMPro;
 using Turrets;
 using Turrets.Blueprints;
@@ -36,7 +37,7 @@ namespace UI
         /// Creates and setups the Selection UI.
         /// </summary>
         /// <param name="turret">The turret the option selects</param>
-        /// <param name="shop">The Shop (allows us to select the turret when we click the panel</param>
+        /// <param name="shop">The Shop (allows us to select the turret when the player clicks the panel)</param>
         /// <param name="lookup">The turret type to glyph lookup</param>
         public void Init (TurretBlueprint turret, Shop shop, TypeSpriteLookup lookup)
         {

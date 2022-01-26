@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Abstract.Data;
 using Enemies;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -59,7 +60,7 @@ namespace Turrets
         /// </summary>
         private void UpdateTarget()
         {
-            // If we're not aggressively retargeting, check if the target is still in range
+            // If the turret is not aggressively retargeting, check if the target is still in range
             if (!aggressiveRetargeting && target != null)
             {
                 var distanceToEnemy = Vector3.Distance(transform.position, target.position);
@@ -81,7 +82,7 @@ namespace Turrets
 
             GameObject mostValuableEnemy = null;
 
-            // Check there are enemies in range, and if not, we have no target
+            // Check there are enemies in range, and if not, the turret has no target
             if (enemiesInRange.Length == 0)
             {
                 target = null;
@@ -146,7 +147,7 @@ namespace Turrets
                 }
             }
 
-            // Check if we have a valid target
+            // Check if the turret have a valid target
             if (mostValuableEnemy != null)
             {
                 target = mostValuableEnemy.transform;
@@ -164,7 +165,7 @@ namespace Turrets
         /// </summary>
         protected void LookAtTarget()
         {
-            // Gets the rotation we need to end up at, and lerp each frame towards that
+            // Gets the rotation the turret need to end up at, and lerp each frame towards that
             var aimDir = ((Vector2)target.position - (Vector2)transform.position).normalized;
             var up = partToRotate.up;
             var lookDir = Vector3.Lerp(up, aimDir, Time.deltaTime * rotationSpeed.GetStat());
@@ -172,10 +173,10 @@ namespace Turrets
         }
 
         /// <summary>
-        /// Check we're currently looking at our target.
-        /// Used to see if we can shoot on single-target turrets.
+        /// Check the turret is currently looking at our target.
+        /// Used to see if the turret can shoot or needs to rotate more
         /// </summary>
-        /// <returns>If we're currently looking at the target</returns>
+        /// <returns>If the turret is currently looking at the target</returns>
         protected bool IsLookingAtTarget()
         {
             if (targetEnemy == null) return false;
@@ -188,7 +189,7 @@ namespace Turrets
             };
             Physics2D.Raycast(firePoint.position, firePoint.up, contactFilter, results, range.GetStat());
 
-            // Loop through the hits to see if we can hit the target
+            // Loop through the hits to see if the turret can hit the target
             var foundEnemy = false;
             foreach (var unused in results.Where(hit => hit.transform == targetEnemy.transform))
             {

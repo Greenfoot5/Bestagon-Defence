@@ -1,19 +1,24 @@
 using UnityEngine;
 
-public class EnvironmentVariableSetter : MonoBehaviour
+namespace Abstract.Data
 {
-    public EnvironmentVariables variables;
-    private void Awake()
+    /// <summary>
+    /// Sets up the variable in the system environment at the start of the game
+    /// </summary>
+    public class EnvironmentVariableSetter : MonoBehaviour
     {
-        foreach (var variable in variables.variables)
+        public EnvironmentVariables variables;
+        
+        /// <summary>
+        /// Called when the object is first created.
+        /// Saves each variable into the system's environment variables
+        /// </summary>
+        private void Awake()
         {
-#if UNITY_EDITOR
-            System.Environment.SetEnvironmentVariable(variable.name, variable.editor);
-#elif DEVELOPMENT_BUILD
-            System.Environment.SetEnvironmentVariable(variable.name, variable.devBuild);
-#else
-            System.Envirnment.SetEnvironmentVariable(variable.name, variable.stable);
-#endif
+            foreach (var variable in variables.variables)
+            {
+                variable.SetData();
+            }
         }
     }
 }

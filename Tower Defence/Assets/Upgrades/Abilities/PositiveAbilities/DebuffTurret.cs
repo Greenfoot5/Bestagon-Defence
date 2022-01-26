@@ -20,7 +20,7 @@ namespace Enemies
         /// <returns>If the Ability has expired</returns>
         public override void Activate(GameObject target)
         {
-            // Check we have an turret to downgrade
+            // Check there is a turret to downgrade
             var turretComponent = target.GetComponent<Turret>();
             if (turretComponent == null)
             {

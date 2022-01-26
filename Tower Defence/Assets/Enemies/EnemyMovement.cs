@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Abstract.Data;
+using UnityEngine;
 
 namespace Enemies
 {
@@ -33,11 +34,11 @@ namespace Enemies
         }
 
         /// <summary>
-        /// Every scene, we need to move the enemy
+        /// Every scene, the enemy needs to move
         /// </summary>
         private void Update()
         {
-            // If we aren't going to move forward, we aren't going to move.
+            // If the enemy aren't going to move forward, the enemy shouldn't move at all.
             if (_enemy.speed < 0)
             {
                 return;
@@ -48,7 +49,7 @@ namespace Enemies
             transform.Translate(dir.normalized * (_enemy.speed * Time.deltaTime), Space.World);
             mapProgress = _waypointIndex + 1 - (distanceToWaypoint / _maxDistance);
         
-            // If we're within the set distance, get the next waypoint
+            // If the enemy is within the set distance, get the next waypoint
             if (Vector3.Distance(transform.position, _target.position) <= distanceToWaypoint)
             {
                 GetNextWaypoint();
@@ -60,7 +61,7 @@ namespace Enemies
         /// </summary>
         private void GetNextWaypoint()
         {
-            // If we've reached the end, destroy
+            // If the enemy has reached the end, destroy
             if (_waypointIndex >= Waypoints.points.Length - 1)
             {
                 EndPath();
@@ -75,7 +76,7 @@ namespace Enemies
         }
     
         /// <summary>
-        /// Called when we reach the final waypoint
+        /// Called when the enemy reach the final waypoint
         /// </summary>
         private void EndPath()
         {

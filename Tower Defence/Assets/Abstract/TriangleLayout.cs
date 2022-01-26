@@ -54,6 +54,8 @@ namespace UI
                             child.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Right, inset, cellSize.x);
                             break;
                         // Centre based
+                        case RectTransform.Edge.Top:
+                        case RectTransform.Edge.Bottom:
                         default:
                             var width = ((RectTransform)transform).rect.width;
                             inset += (width - left - right) / 2;
@@ -91,6 +93,8 @@ namespace UI
                             child.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Right, inset, cellSize.x);
                             break;
                         // Centre based
+                        case RectTransform.Edge.Top:
+                        case RectTransform.Edge.Bottom:
                         default:
                             var width = ((RectTransform)transform).rect.width;
                             inset += (width - left - right) / 2; // offset all rects to the centre
@@ -135,9 +139,11 @@ namespace UI
                             child.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Bottom, inset, cellSize.y);
                             break;
                         // Centre based
+                        case RectTransform.Edge.Left:
+                        case RectTransform.Edge.Right:
                         default:
                             inset += top;
-                            // We can move them up slightly as they are offset horizontally by .5
+                            // The icons should be moved up slightly as they are offset horizontally by .5
                             inset -= ((lineNumber - 1) * cellSize.y) / 2;
                             child.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, inset, cellSize.y);
                             break;
@@ -172,6 +178,8 @@ namespace UI
                             child.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Bottom, inset, cellSize.y);
                             break;
                         // Centre based
+                        case RectTransform.Edge.Left:
+                        case RectTransform.Edge.Right:
                         default:
                             inset += top;
                             inset -= ((lineNumber - 1) * cellSize.y) / 2;
@@ -188,18 +196,26 @@ namespace UI
         /// <returns>Left/Right for horizontal edge alignments, or Top for centre and custom</returns>
         private RectTransform.Edge GetHorizontalEdge()
         {
-            // We use the left edge
-            if (alignment == SpriteAlignment.BottomLeft || alignment == SpriteAlignment.LeftCenter ||
-                alignment == SpriteAlignment.TopLeft)
-                return RectTransform.Edge.Left;
-            
-            // We use the right edge
-            if (alignment == SpriteAlignment.BottomRight || alignment == SpriteAlignment.RightCenter ||
-                alignment == SpriteAlignment.TopRight)
-                return RectTransform.Edge.Right;
-            
-            // Centre or custom
-            return RectTransform.Edge.Top;
+            switch (alignment)
+            {
+                // We use the left edge
+                case SpriteAlignment.BottomLeft:
+                case SpriteAlignment.LeftCenter:
+                case SpriteAlignment.TopLeft:
+                    return RectTransform.Edge.Left;
+                // We use the right edge
+                case SpriteAlignment.BottomRight:
+                case SpriteAlignment.RightCenter:
+                case SpriteAlignment.TopRight:
+                    return RectTransform.Edge.Right;
+                case SpriteAlignment.Center:
+                case SpriteAlignment.TopCenter:
+                case SpriteAlignment.BottomCenter:
+                case SpriteAlignment.Custom:
+                default:
+                    // Centre or custom
+                    return RectTransform.Edge.Top;
+            }
         }
         
         /// <summary>
@@ -208,15 +224,23 @@ namespace UI
         /// <returns>Left/Right for horizontal edge alignments, or Top for centre and custom</returns>
         private RectTransform.Edge GetVerticalEdge()
         {
-            if (alignment == SpriteAlignment.BottomLeft || alignment == SpriteAlignment.BottomCenter ||
-                alignment == SpriteAlignment.BottomRight)
-                return RectTransform.Edge.Bottom;
-
-            if (alignment == SpriteAlignment.TopLeft || alignment == SpriteAlignment.TopCenter ||
-                alignment == SpriteAlignment.TopRight)
-                return RectTransform.Edge.Top;
-
-            return RectTransform.Edge.Right;
+            switch (alignment)
+            {
+                case SpriteAlignment.BottomLeft:
+                case SpriteAlignment.BottomCenter:
+                case SpriteAlignment.BottomRight:
+                    return RectTransform.Edge.Bottom;
+                case SpriteAlignment.TopLeft:
+                case SpriteAlignment.TopCenter:
+                case SpriteAlignment.TopRight:
+                    return RectTransform.Edge.Top;
+                case SpriteAlignment.Center:
+                case SpriteAlignment.LeftCenter:
+                case SpriteAlignment.RightCenter:
+                case SpriteAlignment.Custom:
+                default:
+                    return RectTransform.Edge.Right;
+            }
         }
         
         /// <summary>

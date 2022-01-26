@@ -1,22 +1,27 @@
 ﻿using UnityEngine;
 
-/*
- * A class to contain all of our waypoint data
- */
-
-public class Waypoints : MonoBehaviour
+namespace Abstract.Data
 {
-    // Has a array of all the waypoints
-    public static Transform[] points;
-
-    private void Awake()
+    /// <summary>
+    /// A directory of all the waypoints in a map
+    /// </summary>
+    public class Waypoints : MonoBehaviour
     {
-        // Creates and adds all waypoints to the array
-        points = new Transform[transform.childCount];
+        // Has a array of all the waypoints
+        public static Transform[] points;
         
-        for (var i = 0; i < points.Length; i++)
+        /// <summary>
+        /// Stores all the waypoints in the local array
+        /// </summary>
+        private void Awake()
         {
-            points[i] = transform.GetChild(i);
+            // Creates and adds all waypoints to the array
+            points = new Transform[transform.childCount];
+        
+            for (var i = 0; i < points.Length; i++)
+            {
+                points[i] = transform.GetChild(i);
+            }
         }
     }
 }

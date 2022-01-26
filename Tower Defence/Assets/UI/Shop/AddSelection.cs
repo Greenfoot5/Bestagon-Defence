@@ -1,5 +1,7 @@
 using System;
 using System.Linq;
+using Abstract.Data;
+using Abstract.Managers;
 using LevelData;
 using Turrets.Blueprints;
 using Turrets.Modules;
@@ -20,14 +22,14 @@ public class AddSelection : MonoBehaviour
     private bool _firstPurchase = true;
     
     /// <summary>
-    /// Setups references, checks we have enough gold and freezes the game when enabled
+    /// Setups references, checks the player has enough gold and freezes the game when enabled
     /// </summary>
     private void Init()
     {
         // Setup Level Manager reference
         _levelData = BuildManager.instance.GetComponent<GameManager>().levelData;
 
-        // Check we can afford to open the shop
+        // Check the player can afford to open the shop
         if (GameStats.money < shop.GetSelectionCost())
         {
             Debug.Log("Not enough gold!");
@@ -43,7 +45,7 @@ public class AddSelection : MonoBehaviour
     /// Creates the new selection based on the GameManager's LevelData
     /// </summary>
     /// <exception cref="OverflowException">Removed duplicates too many times. Likely to have too few options</exception>
-    /// <exception cref="ArgumentOutOfRangeException">We cannot pick a new item from the LevelData lists</exception>
+    /// <exception cref="ArgumentOutOfRangeException">The game cannot pick a new item from the LevelData lists</exception>
     private void OnEnable()
     {
         Init();
@@ -54,24 +56,24 @@ public class AddSelection : MonoBehaviour
             Destroy(transform.GetChild(i).gameObject);
         }
         
-        // Tracks what we've given, so we don't give duplicates
+        // Tracks what the game has given the player, so the game don't give duplicates
         var selectedTypes = new Type[3];
         var selectedNames = new string[3];
-        // So we don't keep retying to select a non-duplicate option forever
+        // So the game doesn't keep retying to select a non-duplicate option forever
         var lagCounter = 0;
         const int lagCap = 5000;
 
         // TODO - Perhaps modify amount of choices
         for (var i = 0; i < 3; i++)
         {
-            // If it's the first time opening the shop this level, we should display a different selection
+            // If it's the first time opening the shop this level, the game should display a different selection
             if (_firstPurchase)
             {
                 // Add a new turret to the selection
                 var turrets = _levelData.initialTurretSelection;
-                var selected = turrets.GETRandomItem();
+                var selected = turrets.GetRandomItem();
 
-                // Gets a new turret if we have a duplicate (depending on settings)
+                // Gets a new turret if there is a duplicate (depending on settings)
                 switch (_levelData.initialDuplicateCheck)
                 {
                     case DuplicateTypes.None:
@@ -80,7 +82,7 @@ public class AddSelection : MonoBehaviour
                     case DuplicateTypes.ByName:
                         while (selectedNames.Contains(selected.displayName))
                         {
-                            selected = turrets.GETRandomItem();
+                            selected = turrets.GetRandomItem();
                             lagCounter++;
                             if (lagCounter > lagCap)
                                 throw new OverflowException("Too many attempts to pick new turret");
@@ -91,7 +93,7 @@ public class AddSelection : MonoBehaviour
                     case DuplicateTypes.ByType:
                         while (selectedTypes.Contains(selected.GetType()))
                         {
-                            selected = turrets.GETRandomItem();
+                            selected = turrets.GetRandomItem();
                             lagCounter++;
                             if (lagCounter > lagCap)
                                 throw new OverflowException("Too many attempts to pick new turret");
@@ -112,15 +114,15 @@ public class AddSelection : MonoBehaviour
                 continue;
             }
 
-            // Select if we should get an Module or a turret
+            // Select if the game should get an Module or a turret
             var choice = Random.Range(0f, _levelData.turretOptionWeight + _levelData.ModuleOptionWeight);
             if (choice > _levelData.turretOptionWeight)
             {
                 // Grants an Module option
-                var Modules = _levelData.Modules;
-                var selected = Modules.GETRandomItem();
+                var modules = _levelData.Modules;
+                var selected = modules.GetRandomItem();
 
-                // Gets a new Module if we have picked a duplicate (depending on settings)
+                // Gets a new Module if the random has picked a duplicate (depending on settings)
                 switch (_levelData.ModuleDuplicateCheck)
                 {
                     case DuplicateTypes.None:
@@ -129,7 +131,7 @@ public class AddSelection : MonoBehaviour
                     case DuplicateTypes.ByName:
                         while (selectedNames.Contains(selected.displayName))
                         {
-                            selected = Modules.GETRandomItem();
+                            selected = modules.GetRandomItem();
                             lagCounter++;
                             if (lagCounter > lagCap)
                                 throw new OverflowException("Too many attempts to pick new Module");
@@ -140,7 +142,7 @@ public class AddSelection : MonoBehaviour
                     case DuplicateTypes.ByType:
                         while (selectedTypes.Contains(selected.GetType()))
                         {
-                            selected = Modules.GETRandomItem();
+                            selected = modules.GetRandomItem();
                             lagCounter++;
                             if (lagCounter > lagCap)
                                 throw new OverflowException("Too many attempts to pick new Module");
@@ -163,9 +165,9 @@ public class AddSelection : MonoBehaviour
             {
                 // Grants a turret option
                 var turrets = _levelData.turrets;
-                var selected = turrets.GETRandomItem();
+                var selected = turrets.GetRandomItem();
                 
-                // Check we didn't pick something we've already picked (depending on duplicate checking type)
+                // Check the game didn't pick something it's already picked (depending on duplicate checking type)
                 switch (_levelData.turretDuplicateCheck)
                 {
                     case DuplicateTypes.None:
@@ -174,7 +176,7 @@ public class AddSelection : MonoBehaviour
                     case DuplicateTypes.ByName:
                         while (selectedNames.Contains(selected.displayName))
                         {
-                            selected = turrets.GETRandomItem();
+                            selected = turrets.GetRandomItem();
                             lagCounter++;
                             if (lagCounter > lagCap)
                                 throw new OverflowException("Too many attempts to pick new turret");
@@ -184,7 +186,7 @@ public class AddSelection : MonoBehaviour
                     case DuplicateTypes.ByType:
                         while (selectedTypes.Contains(selected.GetType()))
                         {
-                            selected = turrets.GETRandomItem();
+                            selected = turrets.GetRandomItem();
                             lagCounter++;
                             if (lagCounter > lagCap)
                                 throw new OverflowException("Too many attempts to pick new turret");
@@ -198,13 +200,13 @@ public class AddSelection : MonoBehaviour
                 // Add the turret to the ui for the player to pick
                 GenerateTurretUI(selected);
                 
-                // Add the turret to our history so we don't pick it again
+                // Add the turret to our history so the game don't pick it again
                 selectedTypes[i] = selected.GetType();
                 selectedNames[i] = selected.displayName;
             }
         }
         
-        // We can only have a first purchase once
+        // The player can only have a first purchase once
         if (_firstPurchase) _firstPurchase = false;
     }
     

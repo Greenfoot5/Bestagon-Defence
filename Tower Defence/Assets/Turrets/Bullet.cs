@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Abstract.Data;
 using Enemies;
 using Turrets.Modules;
 using UnityEngine;
@@ -10,7 +11,7 @@ namespace Turrets
         private Transform _target;
     
         public UpgradableStat speed = new UpgradableStat(30f);
-        [Tooltip("Only set if we're dealing AoE")]
+        [Tooltip("Only set if the bullet deals AoE damage")]
         public float explosionRadius;
         [HideInInspector]
         public UpgradableStat damage = new UpgradableStat(50f);
@@ -41,7 +42,7 @@ namespace Turrets
         
             // TODO - Make it based on target size
             const float targetSize = 0.25f;
-            // Have we "hit" the target
+            // Has the bullet "hit" the target
             if (dir.magnitude <= targetSize)
             {
                 HitTarget();
@@ -56,7 +57,7 @@ namespace Turrets
 
         }
     
-        // Called when we hit the target
+        // Called when the bullet hits the target
         private void HitTarget()
         {
             // Spawn hit effect
@@ -72,7 +73,7 @@ namespace Turrets
             
             Destroy(effectIns, 2f);
         
-            // If we have AoE effect or not
+            // If the bullet has AoE damage or not
             if (explosionRadius > 0f)
             {
                 Explode();
@@ -82,7 +83,7 @@ namespace Turrets
                 Damage(_target);
             }
 
-            // Destroy so we only hit once
+            // Destroy so the bullet only hits the target once
             Destroy(gameObject);
         }
     
@@ -97,10 +98,10 @@ namespace Turrets
             }
         }
     
-        // Called if we have an AoE effect
+        // Called if the bullet deals AoE damage
         private void Explode()
         {
-            // Get's all the enemies in the AoE and calls Damage on them
+            // Gets all the enemies in the AoE and calls Damage on them
             var colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
             foreach (var collider2d in colliders)
             {

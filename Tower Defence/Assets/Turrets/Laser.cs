@@ -12,7 +12,7 @@ namespace Turrets
         // Update is called once per frame
         private void Update()
         {
-            // Don't do anything if we don't have a target
+            // Don't do anything if the turret doesn't have a target
             if (target == null)
             {
                 if (!lineRenderer.enabled) return;

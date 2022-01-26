@@ -57,7 +57,7 @@ namespace UI
                 var bridge = levelInfo.GetComponent<LeaderboardServerBridge>();
                 var leaderboardID =
                     System.Environment.GetEnvironmentVariable(_selectedLevel + "Leaderboard")?.Split(';')[0];
-                // Check we've actually got a leaderboard
+                // Check the level has a leaderboard
                 if (leaderboardID == null)
                 {
                     Debug.LogWarning("Could not get leaderboard for level " + _selectedLevel);

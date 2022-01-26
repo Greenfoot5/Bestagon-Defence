@@ -15,7 +15,7 @@ namespace Enemies
                 return;
             }
             
-            // Check we have an enemy to heal
+            // Check the target is an enemy
             var enemyComponent = target.GetComponent<Enemy>();
             if (enemyComponent == null)
             {

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Abstract.Data;
 using Turrets.Modules;
 using UnityEngine;
 
@@ -68,7 +69,7 @@ namespace Turrets
             
             // TODO - Add as difficulty modifier
             // Module oldModule = null;
-            // // Check if we already have an Module of the same type
+            // // Check if the turret already have an Module of the same type
             // foreach (var turretModule in Modules.Where(turretModule => turretModule.GETModuleType() == Module.GETModuleType()))
             // {
             //     // If it's of a higher level, remove the current level
@@ -77,7 +78,7 @@ namespace Turrets
             //         Debug.Log("Removing lower level Module");
             //         oldModule = turretModule;
             //     }
-            //     // If it's of a lower level, we can't Module
+            //     // If it's of a lower level, the module can't be added
             //     else
             //     {
             //         Debug.Log("This turret already has an Module of the same type at" +

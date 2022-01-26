@@ -1,3 +1,4 @@
+using Abstract.Data;
 using TMPro;
 using Turrets.Modules;
 using UnityEngine;

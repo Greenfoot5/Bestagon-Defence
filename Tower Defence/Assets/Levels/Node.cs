@@ -1,4 +1,5 @@
-﻿using Turrets;
+﻿using Abstract.Managers;
+using Turrets;
 using Turrets.Blueprints;
 using Turrets.Modules;
 using UnityEngine;
@@ -102,7 +103,7 @@ public class Node : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
             return;
         }
         
-        // Check we are trying to build
+        // Check the player is trying to build
         if (!_buildManager.CanBuild)
         {
             _buildManager.Deselect();
@@ -117,12 +118,12 @@ public class Node : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
     // Called when the mouse hovers over the node
     public void OnPointerEnter(PointerEventData eventData)
     {
-        // Make sure we're trying to build
+        // Make sure the player is trying to build
         if (!_buildManager.CanBuild)
         {
             return;
         }
-        // Check if we can afford the select turret
+        // Check if the player can afford the selected turret
         _rend.material.color = hoverColour;
     }
     

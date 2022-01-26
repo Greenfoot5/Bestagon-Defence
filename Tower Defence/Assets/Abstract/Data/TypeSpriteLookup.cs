@@ -4,37 +4,52 @@ using Turrets;
 using UI;
 using UnityEngine;
 
-[Serializable]
-public class TypeSpriteLookup
+namespace Abstract.Data
 {
-    private static readonly List<Type> Types = new List<Type>
+    /// <summary>
+    /// A class to reference between turret types and turret glyphs
+    /// </summary>
+    [Serializable]
+    public class TypeSpriteLookup
     {
-        null,
-        typeof(Shooter),
-        typeof(Laser),
-        typeof(Smasher)
-    };
-
-    [SerializeField] private List<TurretGlyphSo> sprites;
-
-    public static List<Type> GetAllTypes()
-    {
-        return Types;
-    }
-
-    public TurretGlyphSo GetForType(Type t)
-    {
-        try
+        private static readonly List<Type> Types = new List<Type>
         {
-            return sprites[Types.IndexOf(t)]; 
+            null, // Represents no specific turret type
+            typeof(Shooter),
+            typeof(Laser),
+            typeof(Smasher)
+        };
+
+        [SerializeField] private List<TurretGlyphSo> sprites;
+        
+        /// <summary>
+        /// Get all the types the game currently has stored
+        /// </summary>
+        /// <returns>All the types current stored</returns>
+        public static List<Type> GetAllTypes()
+        {
+            return Types;
         }
-        catch (Exception ex)
+        
+        /// <summary>
+        /// Gets the glyph for a specific turret type
+        /// </summary>
+        /// <param name="t">The turret type to get the glyph for</param>
+        /// <returns>The turret's glyph</returns>
+        public TurretGlyphSo GetForType(Type t)
         {
-            if (!(ex is IndexOutOfRangeException) && !(ex is ArgumentOutOfRangeException)) throw;
+            try
+            {
+                return sprites[Types.IndexOf(t)]; 
+            }
+            catch (Exception ex)
+            {
+                if (!(ex is IndexOutOfRangeException) && !(ex is ArgumentOutOfRangeException)) throw;
             
-            Debug.LogError("Can't find sprite of type " + t);
-            return sprites[0];
+                Debug.LogError("Can't find sprite of type " + t);
+                return sprites[0];
 
-        }
-    } 
+            }
+        } 
+    }
 }
