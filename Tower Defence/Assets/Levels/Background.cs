@@ -4,15 +4,16 @@ using UnityEngine.EventSystems;
 
 namespace Levels
 {
-    public class Background : MonoBehaviour
+    /// <summary>
+    /// Deselects the background when the player clicks on it
+    /// </summary>
+    public class Background : MonoBehaviour, IPointerDownHandler
     {
-        private void OnMouseDown()
+        /// <summary>
+        /// Deselects anything the player has selected when the background is clicked
+        /// </summary>
+        public void OnPointerDown(PointerEventData eventData)
         {
-            // Make sure the player is hovering over the node and nothing else
-            if (EventSystem.current.IsPointerOverGameObject())
-            {
-                return;
-            }
             BuildManager.instance.Deselect();
         }
     }
