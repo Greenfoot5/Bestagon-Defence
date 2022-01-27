@@ -3,10 +3,10 @@ using Abstract.Managers;
 using Scenes.Levels;
 using TMPro;
 using Turrets.Blueprints;
-using Turrets.Modules;
 using UI.Shop;
 using UnityEngine;
 using UnityEngine.UI;
+using Upgrades.Modules;
 
 namespace Levels
 {

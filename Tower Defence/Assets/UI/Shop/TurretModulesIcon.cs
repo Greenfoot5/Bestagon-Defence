@@ -1,6 +1,6 @@
 using TMPro;
-using Turrets.Modules;
 using UnityEngine;
+using Upgrades.Modules;
 
 namespace UI.Shop
 {

@@ -2,9 +2,9 @@ using Abstract.Data;
 using Shaders;
 using Shaders.Hexagons;
 using TMPro;
-using Turrets.Modules;
 using UnityEngine;
 using UnityEngine.UI;
+using Upgrades.Modules;
 
 namespace UI.Shop
 {

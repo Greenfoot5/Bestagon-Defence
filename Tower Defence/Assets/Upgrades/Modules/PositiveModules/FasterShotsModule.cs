@@ -1,11 +1,14 @@
 using System;
 using System.Collections.Generic;
 using Enemies;
+using Turrets;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Turrets.Modules
+namespace Upgrades.Modules.PositiveModules
 {
+    /// <summary>
+    /// Increases the speed of bullets
+    /// </summary>
     [CreateAssetMenu(fileName = "FasterShotsT0", menuName = "Modules/Faster Shots")]
     public class FasterShotsModule : Module
     {
@@ -13,15 +16,14 @@ namespace Turrets.Modules
 
         [SerializeField]
         private float percentageChange;
-        public override void AddModule(Turret turret) { }
-
-        public override void RemoveModule(Turret turret) { }
-
+        
+        /// <summary>
+        /// Increases the speed of the bullet once fired
+        /// </summary>
+        /// <param name="bullet">The bullet to accelerate</param>
         public override void OnShoot(Bullet bullet)
         {
             bullet.speed.AddModifier(percentageChange);
         }
-
-        public override void OnHit(IEnumerable<Enemy> targets) { }
     }
 }

@@ -1,11 +1,14 @@
 using System;
 using System.Collections.Generic;
 using Enemies;
+using Turrets;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Turrets.Modules
+namespace Upgrades.Modules.PositiveModules
 {
+    /// <summary>
+    /// Extends the Module class to create a Sniper upgrade
+    /// </summary>
     [CreateAssetMenu(fileName = "SniperT0", menuName = "Modules/Sniper")]
     public class SniperModule : Module
     {
@@ -28,6 +31,11 @@ namespace Turrets.Modules
         public float smasherDamagePercentageChange;
         public float smasherFireRatePercentageChange;
         
+        /// <summary>
+        /// Modifies a turret's stats
+        /// </summary>
+        /// <param name="turret">The turret's stats to modify</param>
+        /// <exception cref="ArgumentOutOfRangeException">An invalid turret is being modified</exception>
         public override void AddModule(Turret turret)
         {
             switch (turret)
@@ -52,7 +60,12 @@ namespace Turrets.Modules
                     throw new ArgumentOutOfRangeException();
             }
         }
-
+        
+        /// <summary>
+        /// Removes any stats modifications from the module
+        /// </summary>
+        /// <param name="turret">The turret to remove the modifications from</param>
+        /// <exception cref="ArgumentOutOfRangeException">An invalid turret</exception>
         public override void RemoveModule(Turret turret)
         {
             switch (turret)
@@ -78,12 +91,14 @@ namespace Turrets.Modules
             }
         }
 
+        /// <summary>
+        /// Applies stat modifications when the bullet when fired
+        /// </summary>
+        /// <param name="bullet">The bullet to modify</param>
         public override void OnShoot(Bullet bullet)
         {
             bullet.damage.AddModifier(shooterDamagePercentageChange);
             bullet.speed.AddModifier(shooterBulletSpeedPercentageChange);
         }
-
-        public override void OnHit(IEnumerable<Enemy> targets) { }
     }
 }

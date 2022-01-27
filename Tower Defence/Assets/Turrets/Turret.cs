@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Abstract.Data;
-using Turrets.Modules;
 using UnityEngine;
+using Upgrades.Modules;
 
 namespace Turrets
 {

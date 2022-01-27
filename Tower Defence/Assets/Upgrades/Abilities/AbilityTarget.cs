@@ -1,12 +1,18 @@
-namespace Enemies
+namespace Upgrades.Abilities
 {
+    /// <summary>
+    /// Specifies what targets are in range
+    /// </summary>
     public enum AbilityTarget
     {
         All,
         Radius,
         Single
     }
-
+    
+    /// <summary>
+    ///  Specifies what can trigger an ability
+    /// </summary>
     public enum AbilityTrigger
     {
         OnEnd,

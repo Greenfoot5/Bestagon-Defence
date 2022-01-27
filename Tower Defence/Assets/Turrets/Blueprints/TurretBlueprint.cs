@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using Turrets.Modules;
 using UnityEngine;
+using Upgrades.Modules;
 
 namespace Turrets.Blueprints
 {

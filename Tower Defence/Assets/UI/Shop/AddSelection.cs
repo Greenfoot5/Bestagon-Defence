@@ -5,8 +5,8 @@ using Abstract.Data;
 using Abstract.Managers;
 using Scenes.Levels;
 using Turrets.Blueprints;
-using Turrets.Modules;
 using UnityEngine;
+using Upgrades.Modules;
 using Random = UnityEngine.Random;
 
 namespace UI.Shop

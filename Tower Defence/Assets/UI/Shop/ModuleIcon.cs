@@ -1,7 +1,7 @@
 using TMPro;
-using Turrets.Modules;
 using UnityEngine;
 using UnityEngine.UI;
+using Upgrades.Modules;
 
 namespace UI.Shop
 {
@@ -42,7 +42,7 @@ namespace UI.Shop
         public void SetData(Module module)
         {
             SetSprite(module.icon);
-            SetLevel(module.ModuleTier);
+            SetLevel(module.moduleTier);
         }
     }
 }

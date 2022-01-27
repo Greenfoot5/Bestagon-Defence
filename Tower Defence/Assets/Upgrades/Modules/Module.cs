@@ -2,16 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Enemies;
+using Turrets;
 using UnityEngine;
 
-namespace Turrets.Modules
+namespace Upgrades.Modules
 {
+    /// <summary>
+    /// A base abstract class to create a turret module from.
+    /// </summary>
     public abstract class Module : ScriptableObject
     {
-        [SerializeField]
-        private string ModuleType;
-
-        public int ModuleTier;
+        public int moduleTier;
 
         public Color accentColor;
         public string displayName;
@@ -22,27 +23,47 @@ namespace Turrets.Modules
 
         protected abstract Type[] ValidTypes { get; }
 
+        /// <summary>
+        /// Checks if a turret is of a valid type for the module to work
+        /// </summary>
+        /// <param name="turret">The turret to check</param>
+        /// <returns>If the turret is in the valid types</returns>
         public bool ValidModule(Turret turret)
         {
             return ValidTypes == null || ValidTypes.Contains(turret.GetType());
         }
-
+        
+        /// <summary>
+        /// Gets all the turrets that the module can be applied to
+        /// </summary>
+        /// <returns>A list of valid turret types</returns>
         public Type[] GetValidTypes()
         {
             return ValidTypes;
         }
+        
+        /// <summary>
+        /// Called when a module is added to a turret
+        /// </summary>
+        /// <param name="turret">The turret to mofidy</param>
+        public virtual void AddModule(Turret turret) { }
+        
+        /// <summary>
+        /// Called when a module is removed from a turret
+        /// </summary>
+        /// <param name="turret">The turret to modify</param>
+        public virtual void RemoveModule(Turret turret) { }
 
-        public abstract void AddModule(Turret turret);
+        /// <summary>
+        /// Called when a turret that fires bullets shoots
+        /// </summary>
+        /// <param name="bullet">The bullet to modify</param>
+        public virtual void OnShoot(Bullet bullet) { }
 
-        public abstract void RemoveModule(Turret turret);
-
-        public abstract void OnShoot(Bullet bullet);
-
-        public abstract void OnHit(IEnumerable<Enemy> targets);
-
-        public string GetModuleType()
-        {
-            return ModuleType;
-        }
+        /// <summary>
+        /// Called when a turret its an enemy
+        /// </summary>
+        /// <param name="targets">The enemy/ies to apply effect to</param>
+        public virtual void OnHit(IEnumerable<Enemy> targets) { }
     }
 }

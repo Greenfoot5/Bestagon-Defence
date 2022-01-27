@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using Abstract.Data;
 using Enemies;
-using Turrets.Modules;
 using UnityEngine;
+using Upgrades.Modules;
 
 namespace Turrets
 {
