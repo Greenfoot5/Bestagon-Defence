@@ -62,13 +62,13 @@ namespace UI
             range.SetData(turretPrefab.range);
             
             // Turret's Modules
-            if (turret.Modules.Count == 0)
+            if (turret.modules.Count == 0)
             {
                 modulesSection.SetActive(true);
             }
             else
             {
-                foreach (var module in turret.Modules)
+                foreach (var module in turret.modules)
                 {
                     var mod = Instantiate(moduleUI, modulesLayout.transform);
                     mod.GetComponentInChildren<TurretModulesIcon>().SetData(module);

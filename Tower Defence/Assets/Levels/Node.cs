@@ -46,7 +46,7 @@ namespace Levels
             var turretClass = turret.GetComponent<Turret>();
             turretBlueprint = blueprint;
         
-            foreach (var turretModule in blueprint.Modules)
+            foreach (var turretModule in blueprint.modules)
             {
                 turretClass.AddModule(turretModule);
             }

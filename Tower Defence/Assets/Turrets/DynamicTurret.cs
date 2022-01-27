@@ -9,6 +9,9 @@ using UnityEngine.Serialization;
 
 namespace Turrets
 {
+    /// <summary>
+    /// Extends the turret class with rotation and targeting abilities
+    /// </summary>
     public abstract class DynamicTurret : Turret
     {
         private const float UpdateTargetTimer = 0.5f;
@@ -29,23 +32,18 @@ namespace Turrets
         public Transform partToRotate;
 
 
-        // Start is called before the first frame update
+        /// <summary>
+        /// Begins the target searching
+        /// </summary>
         private void Start()
         {
             // Start finding targets
             StartCoroutine(TargetCoroutine());
-            // Added when a turret is built.
-            // TODO - Apply effects for pre-placed turrets in maps
-            // foreach (var Module in turretModules)
-            // {
-            //     AddModule(Module);
-            // }
         }
         
         /// <summary>
         /// Calls our targeting method every 0.5s.
         /// </summary>
-        /// <returns></returns>
         private IEnumerator TargetCoroutine()
         {
             while (gameObject.activeSelf)

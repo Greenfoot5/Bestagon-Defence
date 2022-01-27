@@ -2,13 +2,18 @@
 
 namespace Turrets
 {
-
+    /// <summary>
+    /// Extends DynamicTurret to add Shooting functionality.
+    /// </summary>
     public class Shooter : DynamicTurret
     {
         // Bullets
         public GameObject bulletPrefab;
 
-        // Update is called once per frame
+        /// <summary>
+        /// Rotates towards the target if the turret have one.
+        /// Shoots if the turret is looking towards the target
+        /// </summary>
         private void Update()
         {
             // Don't do anything if the turret doesn't have a target
@@ -37,19 +42,25 @@ namespace Turrets
             fireCountdown -= Time.deltaTime;
         }
 
-        // Create the bullet and set the target
+        /// <summary>
+        /// Create the bullet and give it a target
+        /// </summary>
         protected override void Attack()
         {
+            // Creates the bullet
             var bulletGo = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             var bullet = bulletGo.GetComponent<Bullet>();
             bullet.damage = damage;
-
+            
+            // If for some reason the bullet no longer has a Bullet component
             if (bullet == null) return;
             
+            // Adds the modules to the buller
             foreach (var module in modules)
             {
                 bullet.AddModule(module);
             }
+            
             bullet.Seek(target);
         }
     }

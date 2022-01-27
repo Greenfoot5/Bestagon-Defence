@@ -5,12 +5,16 @@ using UnityEngine;
 
 namespace Turrets
 {
-
+    /// <summary>
+    /// Extends Turret to add smashing functionality
+    /// </summary>
     public class Smasher : Turret
     {
         public ParticleSystem smashEffect;
 
-        // Update is called once per frame
+        /// <summary>
+        /// Check for new enemies in radius and attacks if there are.
+        /// </summary>
         private void Update()
         {
             // Don't do anything if no enemy is in range
@@ -20,7 +24,8 @@ namespace Turrets
                 fireCountdown -= Time.deltaTime;
                 return;
             }
-
+            
+            // If our attack is off cooldown
             if (fireCountdown <= 0)
             {
                 Attack();
@@ -29,7 +34,10 @@ namespace Turrets
             
             fireCountdown -= Time.deltaTime;
         }
-
+        
+        /// <summary>
+        /// Deals damage to all enemies in range
+        /// </summary>
         protected override void Attack()
         {
             smashEffect.Play();
@@ -45,7 +53,8 @@ namespace Turrets
                 enemies.Add(enemy);
                 enemy.TakeDamage(damage.GetStat(), gameObject);
             }
-
+            
+            // Activates the turret's OnHit modules
             foreach (var module in modules)
             {
                 module.OnHit(enemies.ToArray());

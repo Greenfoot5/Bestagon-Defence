@@ -17,6 +17,9 @@ namespace Turrets
         Last
     }
     
+    /// <summary>
+    /// The base Turret class that can be extended to add other turret types
+    /// </summary>
     public abstract class Turret : MonoBehaviour
     {
         public UpgradableStat damage;
@@ -31,18 +34,21 @@ namespace Turrets
         [Tooltip("Time between each shot")]
         public UpgradableStat fireRate = new UpgradableStat(1f);
         protected float fireCountdown;
-        
-        // Effects
-        public float slowPercentage;
-        
+
         // Modules
         public List<Module> modules = new List<Module>();
-
+        
+        /// <summary>
+        /// Disables the range dislaying
+        /// </summary>
         private void Awake()
         {
             rangeDisplay.SetActive(false);
         }
-
+        
+        /// <summary>
+        /// Turret types will override this as attack type will be different for each turret
+        /// </summary>
         protected abstract void Attack();
 
         /// <summary>
@@ -104,7 +110,10 @@ namespace Turrets
                 1);
             return true;
         }
-
+        
+        /// <summary>
+        /// Called when the turret is selected, displays the turret's range
+        /// </summary>
         public void Selected()
         {
             // Update the range shader's size
@@ -115,7 +124,10 @@ namespace Turrets
                 1);
             rangeDisplay.SetActive(true);
         }
-
+        
+        /// <summary>
+        /// Called when the turret is deselected, disables the turret's range view.
+        /// </summary>
         public void Deselected()
         {
             rangeDisplay.SetActive(false);

@@ -2,7 +2,6 @@ using Abstract.Data;
 using Turrets.Blueprints;
 using Turrets.Modules;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Scenes.Levels
 {

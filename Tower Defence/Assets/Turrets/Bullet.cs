@@ -6,6 +6,9 @@ using UnityEngine;
 
 namespace Turrets
 {
+    /// <summary>
+    /// The bullet shot from a turret
+    /// </summary>
     public class Bullet : MonoBehaviour
     {
         private Transform _target;
@@ -20,15 +23,22 @@ namespace Turrets
         public GameObject impactEffect;
 
         private readonly List<Module> _modules = new List<Module>();
-
+        
+        /// <summary>
+        /// Sets the new transform the bullet shoot go towards
+        /// </summary>
+        /// <param name="newTarget">The transform of the new target</param>
         public void Seek(Transform newTarget)
         {
             _target = newTarget;
         }
 
-        // Update is called once per frame
+        /// <summary>
+        /// Moves the bullet towards the target and check if it hits
+        /// </summary>
         private void Update()
         {
+            // Check the bullet still have a target to move towards
             if (_target == null)
             {
                 Destroy(gameObject);
@@ -42,7 +52,7 @@ namespace Turrets
         
             // TODO - Make it based on target size
             const float targetSize = 0.25f;
-            // Has the bullet "hit" the target
+            // Has the bullet "hit" the target?
             if (dir.magnitude <= targetSize)
             {
                 HitTarget();
@@ -57,14 +67,16 @@ namespace Turrets
 
         }
     
-        // Called when the bullet hits the target
+        /// <summary>
+        /// Called when the bullet hits the target
+        /// </summary>
         private void HitTarget()
         {
             // Spawn hit effect
             var position = transform;
             var effectIns = Instantiate(impactEffect, position.position, position.rotation);
             
-            // Add Module effects
+            // Add module effects
             var enemy = _target.GetComponent<Enemy>();
             foreach (var module in _modules)
             {
@@ -87,7 +99,10 @@ namespace Turrets
             Destroy(gameObject);
         }
     
-        // Called when dealing damage to a single enemy
+        /// <summary>
+        /// Used to deal damage to a single enemy
+        /// </summary>
+        /// <param name="enemy">The enemy to deal damage to</param>
         private void Damage(Component enemy)
         {
             var em = enemy.GetComponent<Enemy>();
@@ -98,7 +113,9 @@ namespace Turrets
             }
         }
     
-        // Called if the bullet deals AoE damage
+        /// <summary>
+        /// Used to deal damage to multiple enemies
+        /// </summary>
         private void Explode()
         {
             // Gets all the enemies in the AoE and calls Damage on them
@@ -111,14 +128,20 @@ namespace Turrets
                 }
             }
         }
-
+        
+        /// <summary>
+        /// Adds a module to the bullet
+        /// </summary>
+        /// <param name="module">The module to add</param>
         public void AddModule(Module module)
         {
             module.OnShoot(this);
             _modules.Add(module);
         }
     
-        // Easily visualise the bullet's AoE in the editor
+        /// <summary>
+        /// Displays the bullet's AoE in the editor
+        /// </summary>
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.cyan;

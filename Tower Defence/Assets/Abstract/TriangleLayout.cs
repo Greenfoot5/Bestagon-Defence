@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI
+namespace Abstract
 {
     /// <summary>
     /// A UI layout that forms a triangle with it's elements

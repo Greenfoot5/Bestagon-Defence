@@ -2,14 +2,19 @@
 
 namespace Turrets
 {
-
+    /// <summary>
+    /// Extends DynamicTurret to add Laser functionality
+    /// </summary>
     public class Laser : DynamicTurret
     {
         // Lasers
         public LineRenderer lineRenderer;
         public ParticleSystem impactEffect;
 
-        // Update is called once per frame
+        /// <summary>
+        /// Fires the laser if the turret have a target and are looking at them.
+        /// Otherwise rotate to target if there is one.
+        /// </summary>
         private void Update()
         {
             // Don't do anything if the turret doesn't have a target
@@ -36,7 +41,10 @@ namespace Turrets
 
             Attack();
         }
-
+        
+        /// <summary>
+        /// Fires the laser towards the enemy and deals damage
+        /// </summary>
         // TODO - Animate the laser slightly (make it pulse)
         protected override void Attack()
         {
