@@ -1,11 +1,14 @@
 using UnityEngine;
 
-public class ShaderGlobal : MonoBehaviour
+namespace Shaders
 {
-    private static readonly int UnscaledTime = Shader.PropertyToID("_UnscaledTime");
-
-    void Update()
+    public class ShaderGlobal : MonoBehaviour
     {
-        Shader.SetGlobalFloat(UnscaledTime, Time.unscaledTime);
+        private static readonly int UnscaledTime = Shader.PropertyToID("_UnscaledTime");
+
+        private void Update()
+        {
+            Shader.SetGlobalFloat(UnscaledTime, Time.unscaledTime);
+        }
     }
 }

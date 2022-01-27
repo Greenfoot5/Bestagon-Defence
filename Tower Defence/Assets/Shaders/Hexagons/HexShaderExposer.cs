@@ -1,29 +1,32 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-[ExecuteAlways]
-public class HexShaderExposer : MonoBehaviour
+namespace Shaders.Hexagons
 {
-    [SerializeField]
-    private Image image;
-
-    [SerializeField] private float _glowIntensity;
-
-    private float _glowIntensityCache;
-    private static readonly int GlowIntensity = Shader.PropertyToID("_GlowIntensity");
-
-    private void Awake()
+    [ExecuteAlways]
+    public class HexShaderExposer : MonoBehaviour
     {
-        _glowIntensityCache = image.material.GetFloat(GlowIntensity);
-    }
+        [SerializeField]
+        private Image image;
 
-    private void LateUpdate()
-    {
-        if (_glowIntensity != _glowIntensityCache)
+        [SerializeField] private float _glowIntensity;
+
+        private float _glowIntensityCache;
+        private static readonly int GlowIntensity = Shader.PropertyToID("_GlowIntensity");
+
+        private void Awake()
         {
-            _glowIntensityCache = _glowIntensity;
-            image.material.SetFloat(GlowIntensity, _glowIntensity);
+            _glowIntensityCache = image.material.GetFloat(GlowIntensity);
         }
-    }
 
+        private void LateUpdate()
+        {
+            if (_glowIntensity != _glowIntensityCache)
+            {
+                _glowIntensityCache = _glowIntensity;
+                image.material.SetFloat(GlowIntensity, _glowIntensity);
+            }
+        }
+
+    }
 }
