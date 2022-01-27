@@ -5,7 +5,6 @@ using System.Linq;
 using Abstract.Data;
 using Enemies;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Turrets
 {
@@ -27,7 +26,6 @@ namespace Turrets
         public Transform firePoint;
 
         // Rotation
-        [FormerlySerializedAs("turnSpeed")]
         public UpgradableStat rotationSpeed = new UpgradableStat(3f);
         public Transform partToRotate;
 

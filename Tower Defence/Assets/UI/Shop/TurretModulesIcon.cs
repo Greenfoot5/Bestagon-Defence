@@ -1,17 +1,27 @@
-using UnityEngine;
 using TMPro;
 using Turrets.Modules;
+using UnityEngine;
 
-public class TurretModulesIcon : MonoBehaviour
+namespace UI.Shop
 {
-    [SerializeField]
-    private ModuleIcon icon;
-    [SerializeField]
-    private TextMeshProUGUI text;
-
-    public void SetData(Module module)
+    /// <summary>
+    /// Sets the module icon for each module in a turret's upgrades on selection
+    /// </summary>
+    public class TurretModulesIcon : MonoBehaviour
     {
-        icon.SetData(module);
-        text.text = module.displayName;
+        [SerializeField]
+        private ModuleIcon icon;
+        [SerializeField]
+        private TextMeshProUGUI text;
+        
+        /// <summary>
+        /// Sets the data
+        /// </summary>
+        /// <param name="module">The module the icon is for</param>
+        public void SetData(Module module)
+        {
+            icon.SetData(module);
+            text.text = module.displayName;
+        }
     }
 }

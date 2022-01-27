@@ -1,7 +1,10 @@
 using UnityEngine;
 
-namespace UI
+namespace UI.Shop
 {
+    /// <summary>
+    /// Stores the settings for a glyph
+    /// </summary>
     [CreateAssetMenu(fileName = "NewTurretGlyph", menuName = "TurretGlyph", order=1)]
     public class TurretGlyphSo : ScriptableObject
     {

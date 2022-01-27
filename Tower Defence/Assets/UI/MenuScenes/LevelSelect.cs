@@ -5,8 +5,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace UI
+namespace UI.MenuScenes
 {
+    /// <summary>
+    /// Handles any UI actions on the level select screen
+    /// </summary>
     public class LevelSelect : MonoBehaviour
     {
         public Animator transition;
@@ -23,30 +26,44 @@ namespace UI
         public GameObject leaderboardEntry;
         public Transform leaderboardContent;
         public TMP_Text highScore;
-
+        
+        /// <summary>
+        /// Disables play and info buttons
+        /// </summary>
         public void Awake()
         {
             _selectedLevel = null;
             playButton.interactable = false;
             infoButton.GetComponent<Button>().interactable = false;
         }
-
+        
+        /// <summary>
+        /// Selects a level
+        /// </summary>
+        /// <param name="sceneName">The name of the level's scene to select</param>
         public void SelectLevel(string sceneName)
         {
             _selectedLevel = sceneName;
             playButton.interactable = true;
             infoButton.GetComponent<Button>().interactable = true;
         }
-
+        
+        /// <summary>
+        /// Starts the selected level
+        /// </summary>
         public void Play()
         {
             StartCoroutine(Transition(_selectedLevel));
         }
-
+        
+        /// <summary>
+        /// Toggles the leaderboard display for the selected level
+        /// </summary>
         public async void DisplayLeaderboard()
         {
             if (levelSelect.activeSelf)
             {
+                // Display the leaderboard
                 levelInfo.SetActive(true);
                 levelSelect.SetActive(false);
                 infoButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Levels";
@@ -87,17 +104,25 @@ namespace UI
             }
             else
             {
+                // Display the level selection menu
                 levelInfo.SetActive(false);
                 levelSelect.SetActive(true);
                 infoButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Info";
             }
         }
-
+        
+        /// <summary>
+        /// Returns the player to the main menu
+        /// </summary>
         public void MainMenu()
         {
             StartCoroutine(Transition("MainMenu"));
         }
         
+        /// <summary>
+        /// Transition to the next scene
+        /// </summary>
+        /// <param name="sceneName">The scene to transition to</param>
         private IEnumerator Transition(string sceneName)
         {
             transition.SetTrigger("Start");

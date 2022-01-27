@@ -3,28 +3,44 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace UI
+namespace UI.MenuScenes
 {
+    /// <summary>
+    /// Handles all UI actions for the main menu
+    /// </summary>
     public class MainMenu : MonoBehaviour
     {
         public Animator transition;
         public TMP_Text loggedInAs;
-
+        
+        /// <summary>
+        /// Sets the username text
+        /// </summary>
         private void Start()
         {
             DisplayUsername();
         }
-
+        
+        /// <summary>
+        /// Display the user's current username
+        /// </summary>
         public void DisplayUsername()
         {
             loggedInAs.text = "Logged in as \n" + PlayerPrefs.GetString("Username");
         }
-
+        
+        /// <summary>
+        /// Sends the player to the level select scene
+        /// </summary>
         public void Play()
         {
             StartCoroutine(Transition("LevelSelect"));
         }
         
+        /// <summary>
+        /// Transitions the user to the next scene
+        /// </summary>
+        /// <param name="sceneName">The scene to transition the user to</param>
         private IEnumerator Transition(string sceneName)
         {
             transition.SetTrigger("Start");
@@ -33,12 +49,18 @@ namespace UI
             
             SceneManager.LoadScene(sceneName);
         }
-
+        
+        /// <summary>
+        /// Transition the user to the settings scene
+        /// </summary>
         public void Settings()
         {
             StartCoroutine(Transition("Settings"));
         }
-
+        
+        /// <summary>
+        /// Quits the application
+        /// </summary>
         public void Quit()
         {
             Debug.Log("Exiting...");

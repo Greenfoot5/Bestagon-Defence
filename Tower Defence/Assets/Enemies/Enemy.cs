@@ -6,7 +6,6 @@ using Abstract;
 using Abstract.Managers;
 using Unity.Collections;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Enemies
@@ -18,7 +17,7 @@ namespace Enemies
     {
         [Header("Stats")]
         public float startSpeed = 2f;
-        [FormerlySerializedAs("startHealth")] public float maxHealth = 20f;
+        public float maxHealth = 20f;
 
         [ReadOnly]
         public float speed;

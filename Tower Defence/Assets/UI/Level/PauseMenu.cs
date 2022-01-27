@@ -6,8 +6,11 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-namespace UI
+namespace UI.Level
 {
+    /// <summary>
+    /// Handles the pause menu in a level
+    /// </summary>
     public class PauseMenu : MonoBehaviour
     {
         public GameObject ui;
@@ -17,13 +20,18 @@ namespace UI
         private bool _hasBeenToggled;
         
         public LeaderboardServerBridge bridge;
-
+        
+        /// <summary>
+        /// Allows the class to listen to the pause button press
+        /// </summary>
         private void Start()
         {
             GameStats.controls.Default.Pause.performed += Toggle;
         }
 
-        // Pauses/unpauses the game, and toggles the UI
+        /// <summary>
+        /// Pauses/unpauses the game, and enables/disables the UI by input button press
+        /// </summary>
         public void Toggle(InputAction.CallbackContext ctx)
         {
             ui.SetActive(!ui.activeSelf);
@@ -31,6 +39,9 @@ namespace UI
             Time.timeScale = ui.activeSelf ? 0f : 1f;
         }
         
+        /// <summary>
+        /// Pauses/unpauses the game and enables/disables the UI by UI button press
+        /// </summary>
         public void Toggle()
         {
             ui.SetActive(!ui.activeSelf);
@@ -38,6 +49,10 @@ namespace UI
             Time.timeScale = ui.activeSelf ? 0f : 1f;
         }
         
+        /// <summary>
+        /// Starts the transition when changing scenes
+        /// </summary>
+        /// <param name="sceneName">The scene to transition to</param>
         private IEnumerator Transition(string sceneName)
         {
             transition.SetTrigger("Start");
@@ -47,14 +62,18 @@ namespace UI
             SceneManager.LoadScene(sceneName);
         }
     
-        // The retry button, reloads the current scene
+        /// <summary>
+        /// Restarts the current level
+        /// </summary>
         public void Retry()
         {
             Toggle(new InputAction.CallbackContext());
             StartCoroutine(Transition(SceneManager.GetActiveScene().name));
         }
     
-        // The Main Menu button that returns the player to the main menu
+        /// <summary>
+        /// Returns the player to the main menu
+        /// </summary>
         public void Menu()
         {
             try
@@ -70,7 +89,8 @@ namespace UI
             {
                 // TODO - Now ignore the error
             }
-
+            
+            // Transition to the main menu
             Toggle(new InputAction.CallbackContext());
             StartCoroutine(Transition("MainMenu"));
         }

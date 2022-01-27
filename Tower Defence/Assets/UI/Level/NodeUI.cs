@@ -2,11 +2,11 @@
 using Levels;
 using TMPro;
 using Turrets;
+using UI.Shop;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-namespace UI
+namespace UI.Level
 {
     /// <summary>
     /// Manages the UI that displays when you click on a node with a turret
@@ -14,12 +14,12 @@ namespace UI
     public class NodeUI : MonoBehaviour
     {
         public GameObject ui;
-        public Shop shop;
+        public Levels.Shop shop;
     
         private Node _target;
     
-        [FormerlySerializedAs("Modules")] public Transform modules;
-        [FormerlySerializedAs("ModuleIconPrefab")] public GameObject moduleIconPrefab;
+        public Transform modules;
+        public GameObject moduleIconPrefab;
 
         public TMP_Text stats;
 
@@ -114,7 +114,10 @@ namespace UI
             cycleTargetingButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "<b>Targeting:</b>\n" +
                 _target.turret.GetComponent<DynamicTurret>().targetingMethod;
         }
-
+        
+        /// <summary>
+        /// Updates the stats display when the turret is selected or upgraded
+        /// </summary>
         private void AddStats()
         {
             if (_target.turret == null) return;

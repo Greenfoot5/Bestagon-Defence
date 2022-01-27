@@ -4,8 +4,8 @@ using Scenes.Levels;
 using TMPro;
 using Turrets.Blueprints;
 using Turrets.Modules;
+using UI.Shop;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Levels
@@ -20,8 +20,8 @@ namespace Levels
         private Module _selectedModule;
         private GameObject _selectedModuleButton;
 
-        public GameObject turretInventory;
-        [FormerlySerializedAs("ModuleInventory")] public GameObject moduleInventory;
+        public GameObject turretInventory; 
+        public GameObject moduleInventory;
         public GameObject defaultTurretButton;
         public GameObject defaultModuleButton;
 

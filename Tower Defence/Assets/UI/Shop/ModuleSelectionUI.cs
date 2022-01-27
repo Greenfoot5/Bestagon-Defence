@@ -1,5 +1,4 @@
 using Abstract.Data;
-using Levels;
 using Shaders;
 using Shaders.Hexagons;
 using TMPro;
@@ -7,11 +6,14 @@ using Turrets.Modules;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI
+namespace UI.Shop
 {
+    /// <summary>
+    /// Displays a shop card for a Module
+    /// </summary>
     public class ModuleSelectionUI : MonoBehaviour
     {
-        public Module Module;
+        public Module module;
 
         public Hexagons bg;
 
@@ -25,10 +27,15 @@ namespace UI
         public GameObject glyphPrefab;
         public Transform applicableGlyphs;
 
-        // Called when creating the UI
-        public void Init (Module initModule, Shop shop, TypeSpriteLookup lookup)
+        /// <summary>
+        /// Creates the UI
+        /// </summary>
+        /// <param name="initModule">The module the card is for</param>
+        /// <param name="shop">The shop script</param>
+        /// <param name="lookup">The TypeSpriteLookup to get the glyph</param>
+        public void Init (Module initModule, Levels.Shop shop, TypeSpriteLookup lookup)
         {
-            Module = initModule;
+            module = initModule;
         
             bg.color = initModule.accentColor;
 
@@ -40,7 +47,8 @@ namespace UI
         
             effect.text = initModule.effectText;
             effect.color = initModule.accentColor;
-
+            
+            // Adds the any glyph
             if (initModule.GetValidTypes() == null)
             {
                 var glyphSo = lookup.GetForType(null);
@@ -49,6 +57,7 @@ namespace UI
                 glyph.Find("Shade").GetComponent<HexagonSprite>().color = glyphSo.shade;
                 glyph.Find("Glyph").GetComponent<Image>().sprite = glyphSo.glyph;
             }
+            // Adds the glyph for every turret the module supports
             else
             {
                 foreach (var turretType in initModule.GetValidTypes())
@@ -60,17 +69,22 @@ namespace UI
                     glyph.Find("Glyph").GetComponent<Image>().sprite = glyphSo.glyph;
                 }
             }
-
+            
+            // When the card is clicked, we pick the module
             bg.GetComponent<Button>().onClick.AddListener(delegate { MakeSelection(shop); });
         }
 
-        // Called when the player clicks on the button
-        private void MakeSelection (Shop shop)
+        /// <summary>
+        /// Called when the player clicks on the card.
+        /// Selects the module and closes the shop
+        /// </summary>
+        /// <param name="shop"></param>
+        private void MakeSelection (Levels.Shop shop)
         {
             transform.parent.gameObject.SetActive (false);
             Time.timeScale = 1f;
         
-            shop.SpawnNewModule(Module);
+            shop.SpawnNewModule(module);
         }
     }
 }

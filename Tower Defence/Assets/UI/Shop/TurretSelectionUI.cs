@@ -1,5 +1,4 @@
 using Abstract.Data;
-using Levels;
 using Shaders.Hexagons;
 using TMPro;
 using Turrets;
@@ -7,8 +6,11 @@ using Turrets.Blueprints;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI
+namespace UI.Shop
 {
+    /// <summary>
+    /// Displays the data for a turret shop card
+    /// </summary>
     public class TurretSelectionUI : MonoBehaviour
     {
         private TurretBlueprint _turretBlueprint;
@@ -41,7 +43,7 @@ namespace UI
         /// <param name="turret">The turret the option selects</param>
         /// <param name="shop">The Shop (allows the game to select the turret when the player clicks the panel)</param>
         /// <param name="lookup">The turret type to glyph lookup</param>
-        public void Init (TurretBlueprint turret, Shop shop, TypeSpriteLookup lookup)
+        public void Init (TurretBlueprint turret, Levels.Shop shop, TypeSpriteLookup lookup)
         {
             _turretBlueprint = turret;
             
@@ -84,12 +86,17 @@ namespace UI
             damage.SetColor(turret.accent);
             rate.SetColor(turret.accent);
             range.SetColor(turret.accent);
-
+            
+            // Adds the click event to the card
             bg.GetComponent<Button>().onClick.AddListener(delegate { MakeSelection(shop); });
         }
 
-        // Called when the player clicks on the button
-        private void MakeSelection (Shop shop)
+        /// <summary>
+        /// Called when a player clicks the card,
+        /// selecting it and closing the shop
+        /// </summary>
+        /// <param name="shop"></param>
+        private void MakeSelection (Levels.Shop shop)
         {
             transform.parent.gameObject.SetActive (false);
             Time.timeScale = 1f;
