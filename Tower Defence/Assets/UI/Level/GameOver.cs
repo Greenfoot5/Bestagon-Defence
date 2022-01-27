@@ -41,7 +41,7 @@ namespace UI.Level
         /// </summary>
         public void Retry()
         {
-            StartCoroutine(Transition(SceneManager.GetActiveScene().name));;
+            StartCoroutine(Transition(SceneManager.GetActiveScene().name));
         }
         
         /// <summary>
@@ -49,7 +49,7 @@ namespace UI.Level
         /// </summary>
         public void Menu()
         {
-            StartCoroutine(Transition("MainMenu"));;
+            StartCoroutine(Transition("MainMenu"));
         }
     }
 }
