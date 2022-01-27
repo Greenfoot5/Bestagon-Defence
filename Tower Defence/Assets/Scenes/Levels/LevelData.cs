@@ -2,15 +2,23 @@ using Abstract.Data;
 using Turrets.Blueprints;
 using Turrets.Modules;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-namespace LevelData
+namespace Scenes.Levels
 {
+    /// <summary>
+    /// A way to disable duplicates in random selections
+    /// </summary>
     public enum DuplicateTypes
     {
         None,
         ByName,
         ByType
     }
+    
+    /// <summary>
+    /// Allows us to save data to allow levels to be different
+    /// </summary>
     [CreateAssetMenu(fileName = "LevelName", menuName = "Level Data", order = 2)]
     public class LevelData : ScriptableObject
     {
@@ -20,13 +28,12 @@ namespace LevelData
         public DuplicateTypes initialDuplicateCheck = DuplicateTypes.None;
 
         [Header("Selection")]
-        
         public WeightedList<TurretBlueprint> turrets;
         public DuplicateTypes turretDuplicateCheck = DuplicateTypes.ByName;
         public float turretOptionWeight = 1f;
-        public WeightedList<Module> Modules;
-        public DuplicateTypes ModuleDuplicateCheck = DuplicateTypes.ByType;
-        public float ModuleOptionWeight = 1f;
+        public WeightedList<Module> modules;
+        public DuplicateTypes moduleDuplicateCheck = DuplicateTypes.ByType;
+        public float moduleOptionWeight = 1f;
         
         [Header("Costs")]
         public int initialSelectionCost;

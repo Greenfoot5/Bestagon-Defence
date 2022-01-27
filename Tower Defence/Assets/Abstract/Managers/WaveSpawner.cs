@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using Abstract.Data;
 using Enemies;
+using Scenes.Levels;
 using TMPro;
 using UnityEngine;
 
@@ -35,7 +36,7 @@ namespace Abstract.Managers
 
         private bool _isSpawning;
 
-        private LevelData.LevelData _levelData;
+        private LevelData _levelData;
 
         /// <summary>
         /// Sets the starting variables

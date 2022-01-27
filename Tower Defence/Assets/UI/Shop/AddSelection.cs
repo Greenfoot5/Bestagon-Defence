@@ -3,8 +3,8 @@ using System.Linq;
 using Abstract;
 using Abstract.Data;
 using Abstract.Managers;
-using LevelData;
 using Levels;
+using Scenes.Levels;
 using Turrets.Blueprints;
 using Turrets.Modules;
 using UI;
@@ -15,7 +15,7 @@ public class AddSelection : MonoBehaviour
 {
     public GameObject turretSelectionUI;
     public GameObject ModuleSelectionUI;
-    private LevelData.LevelData _levelData;
+    private LevelData _levelData;
     public Shop shop;
     
     [SerializeField]
@@ -117,15 +117,15 @@ public class AddSelection : MonoBehaviour
             }
 
             // Select if the game should get an Module or a turret
-            var choice = Random.Range(0f, _levelData.turretOptionWeight + _levelData.ModuleOptionWeight);
+            var choice = Random.Range(0f, _levelData.turretOptionWeight + _levelData.moduleOptionWeight);
             if (choice > _levelData.turretOptionWeight)
             {
                 // Grants an Module option
-                var modules = _levelData.Modules;
+                var modules = _levelData.modules;
                 var selected = modules.GetRandomItem();
 
                 // Gets a new Module if the random has picked a duplicate (depending on settings)
-                switch (_levelData.ModuleDuplicateCheck)
+                switch (_levelData.moduleDuplicateCheck)
                 {
                     case DuplicateTypes.None:
                         break;

@@ -1,5 +1,6 @@
 ﻿using Abstract;
 using Abstract.Managers;
+using Scenes.Levels;
 using TMPro;
 using Turrets.Blueprints;
 using Turrets.Modules;
@@ -15,7 +16,7 @@ namespace Levels
     public class Shop : MonoBehaviour
     {
         private BuildManager _buildManager;
-        private LevelData.LevelData _levelData;
+        private LevelData _levelData;
         private Module _selectedModule;
         private GameObject _selectedModuleButton;
 

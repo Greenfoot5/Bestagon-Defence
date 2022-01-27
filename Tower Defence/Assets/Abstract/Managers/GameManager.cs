@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Scenes.Levels;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Abstract.Managers
@@ -12,7 +13,7 @@ namespace Abstract.Managers
 
         public GameObject gameOverUI;
 
-        public LevelData.LevelData levelData;
+        public LevelData levelData;
 
         public LeaderboardServerBridge bridge;
         
