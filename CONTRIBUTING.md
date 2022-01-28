@@ -11,7 +11,7 @@ Any IDE that can understand C# is ok, but preferably one with Unity support. [Yo
 Do not submit something without at least running the game to see if it compiles.  
 
 ### Do not make large changes before discussing them first.
-If you are interested in adding a large mechanic/feature or changing large amounts of code, first contact me (Greenfoot5) via [Discord](https://discord.gg/zeDey9v) (preferred method) or open an issue on Github. (I'll sort out an email at some point)
+If you are interested in adding a large mechanic/feature or changing large amounts of code, first contact me (Greenfoot5) via [Discord](https://discord.gg/zeDey9v) (preferred method) or send an email to `bestagon-defence@protonmail.com`
 For smaller changes, this isn't required, but it's still useful if we have a chat.
 
 ### Do not make formatting PRs.
