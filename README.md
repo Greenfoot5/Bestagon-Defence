@@ -2,7 +2,7 @@
 ![Support Platforms: Android | MacOS/OS X | Windows](https://img.shields.io/badge/platform-Android_|_MacOS/OSX_|_Windows-lightgrey)
 ![Unity Version: 2020.3.26f1](https://img.shields.io/static/v1?logo=unity&label=Unity%20Version&message=2020.3.26f1&color=blue)
 
-# Tower Defence
+# Bestagon Defence
 
 A tower defence with roguelike elements so it never gets boring. Themed around [Bestagons](https://youtu.be/thOifuHs6eY).
 
