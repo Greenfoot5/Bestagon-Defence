@@ -18,4 +18,4 @@ A tower defence with roguelike elements so it never gets boring. Themed around [
 
 [![Notion.so link for documentation](https://img.shields.io/static/v1?logo=notion&label=Notion.so&message=Documentation&color=blue)](https://www.notion.so/Bestagon-Defence-Design-Document-3af38b2be320481580979110f3c373ef)
 [![Itch.io link for downloading](https://img.shields.io/static/v1?logo=itchdotio&label=Itch.io&message=Download&color=success)](https://greenfoot5.itch.io/bestagon-defence)
-[![Discord link for support](https://img.shields.io/static/v1?logo=discord&logoColor=FFFFFF&label=Itch.io&message=Community&color=5865F2)](https://discord.gg/zeDey9v)
+[![Discord link for support](https://img.shields.io/discord/694196573181050880.svg?logo=discord&logoColor=white&logoWidth=20&labelColor=7289DA&label=Discord&color=17cf48)](https://discord.gg/zeDey9v)
