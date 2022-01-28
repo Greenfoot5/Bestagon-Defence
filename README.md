@@ -7,7 +7,7 @@
 A tower defence with roguelike elements so it never gets boring. Themed around [Bestagons](https://youtu.be/thOifuHs6eY).
 
 ## Contributing
-*For guidelines on how/what to contribute, please read `CONTRIBUTING.md`*
+*For guidelines on how/what to contribute, please read [CONTRIBUTING.md](CONTRIBUTING.md)*
 
 1. Clone the project
 2. Open the project in the same Unity version, and it should work
