@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47c396cb5ca4b4f9a9a46a24e22514d5, type: 3}
+  m_Name: MissileBulletT1
+  m_EditorClassIdentifier: 
+  ModuleType: MissileBullet
+  ModuleTier: 1
+  accentColor: {r: 0.88235295, g: 0.35686275, b: 0.06666667, a: 1}
+  displayName: Missiles I
+  tagline: Rocket science
+  icon: {fileID: -4264398553240656916, guid: 16c979c866f439b4b988e7020b313794, type: 3}
+  effectText: Bullets explode, deal more damage, but are fired slower
+  explosionRadiusChange: 0.2
+  damagePercentageChange: 0.2
+  fireRatePercentageChange: -0.2
+  speedPercentageChange: 0.2

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fd92d5c95da242598d43eb06f883d13, type: 3}
+  m_Name: Test
+  m_EditorClassIdentifier: 
+  turrets:
+  - {fileID: 11400000, guid: d2db62c1bef594027b45aec4631e1e6a, type: 2}
+  - {fileID: 11400000, guid: 40dc94d320d594a5fad076af47f85c42, type: 2}
+  - {fileID: 11400000, guid: 957e7ef90aad744a4bf2718c30338651, type: 2}
+  - {fileID: 11400000, guid: 5958a675ba690410eb9254a851560e75, type: 2}
+  Modules:
+  - {fileID: 11400000, guid: a36951a90c6c44391a71cbd17ff8c4c9, type: 2}
+  - {fileID: 11400000, guid: a36951a90c6c44391a71cbd17ff8c4c9, type: 2}
+  - {fileID: 11400000, guid: a36951a90c6c44391a71cbd17ff8c4c9, type: 2}
+  initialSelectionCost: 100
+  selectionCostIncrement: 10
