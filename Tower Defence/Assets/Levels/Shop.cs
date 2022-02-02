@@ -154,10 +154,11 @@ namespace Levels
             for(var i = 0; i < moduleInventory.transform.childCount; i++)
             {
                 var child = moduleInventory.transform.GetChild(i);
+                Debug.Log(child.GetComponentInChildren<ModuleIcon>());
                 try
                 {
                     child.GetComponentInChildren<Button>().interactable =
-                        child.GetComponent<ModuleIcon>().GetModule().ValidModule(turret);
+                        child.GetComponentInChildren<ModuleIcon>().GetModule().ValidModule(turret);
                 }
                 // One will be the shop button
                 catch (NullReferenceException)
