@@ -386,7 +386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turretSelectionUI: {fileID: 7349952435930394342, guid: 5453fbd1fffdc4a799b811ae56769adb, type: 3}
-  ModuleSelectionUI: {fileID: 7349952435930394342, guid: 2c152cea0b9334ff7b4ae9dfbbcfe040, type: 3}
+  moduleSelectionUI: {fileID: 0}
   shop: {fileID: 4077244561648582632}
   glyphsLookup:
     sprites:
@@ -1004,7 +1004,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turretInventory: {fileID: 4077244561951124530}
-  ModuleInventory: {fileID: 4077244561858672952}
+  moduleInventory: {fileID: 0}
   defaultTurretButton: {fileID: 3942835963936203607, guid: 21ef1708a1b044572a19bf8492b39c3f, type: 3}
   defaultModuleButton: {fileID: 4985354737434308386, guid: ac85ed0e8185d4caab087c3c4d95c178, type: 3}
   selectionUI: {fileID: 4077244561405541611}
@@ -1659,7 +1659,7 @@ MonoBehaviour:
     m_Top: 10
     m_Bottom: 10
   m_ChildAlignment: 4
-  m_Spacing: 75
+  m_Spacing: 0
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
