@@ -2086,15 +2086,15 @@ MonoBehaviour:
   tagline: {fileID: 1296342664285512328}
   icon: {fileID: 4543250165993662423}
   glyph: {fileID: 973773982435086148}
-  ModulesSection: {fileID: 5328360382693673385}
-  ModulesLayout: {fileID: 2361648762527175755}
-  ModuleUI: {fileID: 6726336910582392263, guid: 49b2b3617a38f4df8bcca9a6eabde7b0, type: 3}
+  modulesSection: {fileID: 5328360382693673385}
+  modulesLayout: {fileID: 2361648762527175755}
+  moduleUI: {fileID: 2469623391304704137, guid: 199784de83837a343bb9f0740a40d2ce, type: 3}
   damage: {fileID: 7660657442979008724}
   rate: {fileID: 8542615657366772621}
   range: {fileID: 479643702489982858}
   bg: {fileID: 4383904401948862874}
-  ModulesBG: {fileID: 4915407304425592310}
-  ModulesTitle: {fileID: 7904156540936728002}
+  modulesBg: {fileID: 4915407304425592310}
+  modulesTitle: {fileID: 7904156540936728002}
 --- !u!1 &7914413072770771451
 GameObject:
   m_ObjectHideFlags: 0

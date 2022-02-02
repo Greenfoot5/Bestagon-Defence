@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2db0c3d1579341f8bd90af8aa9e324d, type: 3}
   m_Name: SlowT1
   m_EditorClassIdentifier: 
-  ModuleType: Slow Module
-  ModuleTier: 1
+  moduleTier: 1
   accentColor: {r: 0.18039216, g: 0.78431374, b: 0.8980392, a: 1}
   displayName: Slow I
   tagline: Subzero

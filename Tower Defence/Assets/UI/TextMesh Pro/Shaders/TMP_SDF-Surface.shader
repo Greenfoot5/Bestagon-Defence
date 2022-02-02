@@ -118,7 +118,7 @@ SubShader {
 		#pragma multi_compile_shadowcaster
 		#include "UnityCG.cginc"
 
-		struct v2f {
+		struct v2_f {
 			V2F_SHADOW_CASTER;
 			float2	uv			: TEXCOORD1;
 			float2	uv2			: TEXCOORD3;
@@ -131,9 +131,9 @@ SubShader {
 		float _FaceDilate;
 		float _ScaleRatioA;
 
-		v2f vert( appdata_base v )
+		v2_f vert( appdata_base v )
 		{
-			v2f o;
+			v2_f o;
 			TRANSFER_SHADOW_CASTER(o)
 			o.uv = TRANSFORM_TEX(v.texcoord, _MainTex);
 			o.uv2 = TRANSFORM_TEX(v.texcoord, _OutlineTex);
@@ -143,7 +143,7 @@ SubShader {
 
 		uniform sampler2D _MainTex;
 
-		float4 frag(v2f i) : COLOR
+		float4 frag(v2_f i) : COLOR
 		{
 			fixed4 texcol = tex2D(_MainTex, i.uv).a;
 			clip(texcol.a - i.alphaClip);

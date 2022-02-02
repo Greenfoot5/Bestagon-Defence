@@ -1,7 +1,7 @@
 ﻿using Turrets;
 using UnityEditor;
 
-namespace Editor
+namespace Editor.Turrets
 {
     [CustomEditor(typeof(DynamicTurret), true)]
     public class DynamicTurretEditor : TurretEditor

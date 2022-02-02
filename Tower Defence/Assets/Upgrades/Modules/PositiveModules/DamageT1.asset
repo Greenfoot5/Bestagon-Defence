@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1296562320c7941648b7fb9646f0e2f9, type: 3}
   m_Name: DamageT1
   m_EditorClassIdentifier: 
-  ModuleType: Damage
-  ModuleTier: 1
+  moduleTier: 1
   accentColor: {r: 0.9647059, g: 0.7882353, b: 0.0627451, a: 1}
   displayName: Damage I
   tagline: Death wonder

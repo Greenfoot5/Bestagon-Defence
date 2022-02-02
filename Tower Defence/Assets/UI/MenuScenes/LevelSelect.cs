@@ -26,7 +26,8 @@ namespace UI.MenuScenes
         public GameObject leaderboardEntry;
         public Transform leaderboardContent;
         public TMP_Text highScore;
-        
+        private static readonly int Start = Animator.StringToHash("Start");
+
         /// <summary>
         /// Disables play and info buttons
         /// </summary>
@@ -125,7 +126,7 @@ namespace UI.MenuScenes
         /// <param name="sceneName">The scene to transition to</param>
         private IEnumerator Transition(string sceneName)
         {
-            transition.SetTrigger("Start");
+            transition.SetTrigger(Start);
 
             yield return new WaitForSeconds(transition.GetCurrentAnimatorClipInfo(0)[0].clip.length);
             

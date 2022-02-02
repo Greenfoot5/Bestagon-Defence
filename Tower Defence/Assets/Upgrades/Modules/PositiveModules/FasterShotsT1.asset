@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c62fa3adf3d14b4982b34740095f952, type: 3}
   m_Name: FasterShotsT1
   m_EditorClassIdentifier: 
-  ModuleType: FasterShots
-  ModuleTier: 1
+  moduleTier: 1
   accentColor: {r: 0.39215687, g: 0.5019608, b: 0.9411765, a: 1}
   displayName: Velocity I
   tagline: Aerodynamics

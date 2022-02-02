@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d28255eabac146d3b78df34a0b72660, type: 3}
   m_Name: RangeT1
   m_EditorClassIdentifier: 
-  ModuleType: Range Increase
-  ModuleTier: 1
+  moduleTier: 1
   accentColor: {r: 0.5176471, g: 0.85882354, b: 0.10980392, a: 1}
   displayName: Range I
   tagline: Visionary

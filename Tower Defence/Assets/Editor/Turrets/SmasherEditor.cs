@@ -1,32 +1,35 @@
 ﻿using Turrets;
 using UnityEditor;
 
-[CustomEditor(typeof(Smasher), true)]
-public class SmasherEditor : TurretEditor
+namespace Editor.Turrets
 {
-    // PROPERTIES
-
-    private SerializedProperty SmashEffect;
-
-
-    protected new void OnEnable()
+    [CustomEditor(typeof(Smasher), true)]
+    public class SmasherEditor : TurretEditor
     {
-        base.OnEnable();
+        // PROPERTIES
 
-        SmashEffect = serializedObject.FindProperty("smashEffect");
-    }
+        private SerializedProperty _smashEffect;
 
-    public override void OnInspectorGUI()
-    {
-        base.OnInspectorGUI();
 
-        serializedObject.Update();
+        protected new void OnEnable()
+        {
+            base.OnEnable();
 
-        EditorGUILayout.Space();
-        EditorGUILayout.LabelField("Smasher", EditorStyles.boldLabel);
+            _smashEffect = serializedObject.FindProperty("smashEffect");
+        }
 
-        EditorGUILayout.PropertyField(SmashEffect);
+        public override void OnInspectorGUI()
+        {
+            base.OnInspectorGUI();
 
-        serializedObject.ApplyModifiedProperties();
+            serializedObject.Update();
+
+            EditorGUILayout.Space();
+            EditorGUILayout.LabelField("Smasher", EditorStyles.boldLabel);
+
+            EditorGUILayout.PropertyField(_smashEffect);
+
+            serializedObject.ApplyModifiedProperties();
+        }
     }
 }

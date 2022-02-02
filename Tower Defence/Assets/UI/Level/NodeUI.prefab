@@ -593,7 +593,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<b>Module</b>
+  m_text: '<b>Apply Module</b>
 
 '
   m_isRightToLeft: 0
@@ -946,8 +946,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ui: {fileID: 7935189851697781635}
   shop: {fileID: 0}
-  Modules: {fileID: 29836560320163569}
-  ModuleIconPrefab: {fileID: 2469623391304704137, guid: 199784de83837a343bb9f0740a40d2ce, type: 3}
+  modules: {fileID: 29836560320163569}
+  moduleIconPrefab: {fileID: 2469623391304704137, guid: 199784de83837a343bb9f0740a40d2ce, type: 3}
   stats: {fileID: 9179573187891978655}
   cycleTargetingButton: {fileID: 2528514122654825105}
 --- !u!1 &8129663177253190219

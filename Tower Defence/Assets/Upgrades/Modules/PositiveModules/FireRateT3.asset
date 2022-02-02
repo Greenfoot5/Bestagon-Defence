@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 392646548d607415eae9890069c98df4, type: 3}
   m_Name: FireRateT3
   m_EditorClassIdentifier: 
-  ModuleType: Fire Rate Reduction
-  ModuleTier: 3
+  moduleTier: 3
   accentColor: {r: 0.4627451, g: 0.22745098, b: 0.9411765, a: 1}
   displayName: Fire Rate III
   tagline: Quickload

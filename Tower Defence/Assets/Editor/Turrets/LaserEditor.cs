@@ -1,36 +1,38 @@
-﻿using Editor;
-using Turrets;
+﻿using Turrets;
 using UnityEditor;
 
-[CustomEditor(typeof(Laser), true)]
-public class LaserEditor : DynamicTurretEditor
+namespace Editor.Turrets
 {
-    // PROPERTIES
-
-    private SerializedProperty LineRenderer;
-    private SerializedProperty ImpactEffect;
-
-
-    protected new void OnEnable()
+    [CustomEditor(typeof(Laser), true)]
+    public class LaserEditor : DynamicTurretEditor
     {
-        base.OnEnable();
+        // PROPERTIES
 
-        LineRenderer = serializedObject.FindProperty("lineRenderer");
-        ImpactEffect = serializedObject.FindProperty("impactEffect");
-    }
+        private SerializedProperty _lineRenderer;
+        private SerializedProperty _impactEffect;
 
-    public override void OnInspectorGUI()
-    {
-        base.OnInspectorGUI();
 
-        serializedObject.Update();
+        protected new void OnEnable()
+        {
+            base.OnEnable();
 
-        EditorGUILayout.Space();
-        EditorGUILayout.LabelField("Laser", EditorStyles.boldLabel);
+            _lineRenderer = serializedObject.FindProperty("lineRenderer");
+            _impactEffect = serializedObject.FindProperty("impactEffect");
+        }
 
-        EditorGUILayout.PropertyField(LineRenderer);
-        EditorGUILayout.PropertyField(ImpactEffect);
+        public override void OnInspectorGUI()
+        {
+            base.OnInspectorGUI();
 
-        serializedObject.ApplyModifiedProperties();
+            serializedObject.Update();
+
+            EditorGUILayout.Space();
+            EditorGUILayout.LabelField("Laser", EditorStyles.boldLabel);
+
+            EditorGUILayout.PropertyField(_lineRenderer);
+            EditorGUILayout.PropertyField(_impactEffect);
+
+            serializedObject.ApplyModifiedProperties();
+        }
     }
 }

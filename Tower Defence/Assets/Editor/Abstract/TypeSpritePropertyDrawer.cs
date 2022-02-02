@@ -2,7 +2,7 @@ using Abstract.Data;
 using UnityEditor;
 using UnityEngine;
 
-namespace Editor
+namespace Editor.Abstract
 {
     [CustomPropertyDrawer(typeof(TypeSpriteLookup))]
     public class TypeSpriteLookupPropertyDrawer : PropertyDrawer

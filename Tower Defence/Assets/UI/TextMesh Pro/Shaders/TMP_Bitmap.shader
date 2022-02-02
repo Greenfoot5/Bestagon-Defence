@@ -62,7 +62,7 @@ SubShader{
 			float2 texcoord1	: TEXCOORD1;
 		};
 
-		struct v2f {
+		struct v2_f {
 			float4	vertex		: SV_POSITION;
 			fixed4	color		: COLOR;
 			float2	texcoord0	: TEXCOORD0;
@@ -90,7 +90,7 @@ SubShader{
 			return output * 0.001953125;
 		}
 
-		v2f vert (appdata_t v)
+		v2_f vert (appdata_t v)
 		{
 			float4 vert = v.vertex;
 			vert.x += _VertexOffsetX;
@@ -103,7 +103,7 @@ SubShader{
 			fixed4 faceColor = v.color;
 			faceColor *= _FaceColor;
 
-			v2f OUT;
+			v2_f OUT;
 			OUT.vertex = vPosition;
 			OUT.color = faceColor;
 			OUT.texcoord0 = v.texcoord0;
@@ -118,7 +118,7 @@ SubShader{
 			return OUT;
 		}
 
-		fixed4 frag (v2f IN) : SV_Target
+		fixed4 frag (v2_f IN) : SV_Target
 		{
 			fixed4 color = tex2D(_MainTex, IN.texcoord0);
 			color = fixed4 (tex2D(_FaceTex, IN.texcoord1).rgb * IN.color.rgb, IN.color.a * color.a);

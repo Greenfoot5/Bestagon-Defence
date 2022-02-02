@@ -71,8 +71,8 @@ crashlytics-build.properties
 [Aa]ssets/[Ss]treamingAssets/aa/*
 
 # Ignore VSCode and .idea
-.idea
-.vscode
+.idea/
+.vscode/
 
 # Ignore Environment Data
 *[Hh]idden*

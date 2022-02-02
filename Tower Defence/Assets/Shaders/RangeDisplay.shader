@@ -31,7 +31,7 @@ Shader "Unlit/Circle"
                 float4 color : COLOR;
             };
 
-            struct v2f {
+            struct v2_f {
                 float4 vertex : POSITION;
                 float2 uv : TEXCOORD0;
                 float4 color : COLOR;
@@ -42,16 +42,16 @@ Shader "Unlit/Circle"
             float _GlowRadius;
             float _GlowSize;
 
-            v2f vert ( appdata v )
+            v2_f vert ( appdata v )
             {
-                v2f o;
+                v2_f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 o.uv = v.uv;
                 o.color = v.color;
                 return o;
             }
 
-            fixed4 frag ( v2f i ) : SV_Target
+            fixed4 frag ( v2_f i ) : SV_Target
             {
                 float4 color = 0;
             

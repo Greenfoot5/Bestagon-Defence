@@ -1,33 +1,35 @@
-﻿using Editor;
-using Turrets;
+﻿using Turrets;
 using UnityEditor;
 
-[CustomEditor(typeof(Shooter), true)]
-public class ShooterEditor : DynamicTurretEditor
+namespace Editor.Turrets
 {
-    // PROPERTIES
-
-    private SerializedProperty BulletPrefab;
-
-
-    protected new void OnEnable()
+    [CustomEditor(typeof(Shooter), true)]
+    public class ShooterEditor : DynamicTurretEditor
     {
-        base.OnEnable();
+        // PROPERTIES
 
-        BulletPrefab = serializedObject.FindProperty("bulletPrefab");
-    }
+        private SerializedProperty _bulletPrefab;
 
-    public override void OnInspectorGUI()
-    {
-        base.OnInspectorGUI();
 
-        serializedObject.Update();
+        protected new void OnEnable()
+        {
+            base.OnEnable();
 
-        EditorGUILayout.Space();
-        EditorGUILayout.LabelField("Shooter", EditorStyles.boldLabel);
+            _bulletPrefab = serializedObject.FindProperty("bulletPrefab");
+        }
 
-        EditorGUILayout.PropertyField(BulletPrefab);
+        public override void OnInspectorGUI()
+        {
+            base.OnInspectorGUI();
 
-        serializedObject.ApplyModifiedProperties();
+            serializedObject.Update();
+
+            EditorGUILayout.Space();
+            EditorGUILayout.LabelField("Shooter", EditorStyles.boldLabel);
+
+            EditorGUILayout.PropertyField(_bulletPrefab);
+
+            serializedObject.ApplyModifiedProperties();
+        }
     }
 }

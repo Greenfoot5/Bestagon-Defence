@@ -4,6 +4,7 @@ using TMPro;
 using Turrets;
 using UI.Shop;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace UI.Level
@@ -18,7 +19,7 @@ namespace UI.Level
     
         private Node _target;
     
-        public Transform modules;
+        [FormerlySerializedAs("_modules")] public Transform modules;
         public GameObject moduleIconPrefab;
 
         public TMP_Text stats;
@@ -33,7 +34,7 @@ namespace UI.Level
         {
             _target = node;
 
-            shop.EnableModuleInventory();
+            shop.EnableModuleInventory(node.turret.GetComponent<Turret>());
         
             // Move the UI to be above the node
             transform.position = _target.transform.position;

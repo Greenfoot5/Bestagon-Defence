@@ -1,42 +1,45 @@
 using Turrets;
 using UnityEditor;
 
-[CustomEditor(typeof(Turret), true)]
-public class TurretEditor : UnityEditor.Editor
+namespace Editor.Turrets
 {
-    // PROPERTIES
-
-    private SerializedProperty EnemyTag;
-
-    private SerializedProperty Damage;
-    private SerializedProperty Range;
-    private SerializedProperty FireRate;
-
-
-    protected void OnEnable()
+    [CustomEditor(typeof(Turret), true)]
+    public class TurretEditor : UnityEditor.Editor
     {
-        EnemyTag = serializedObject.FindProperty("enemyTag");
+        // PROPERTIES
 
-        Damage = serializedObject.FindProperty("damage");
-        Range = serializedObject.FindProperty("range");
-        FireRate = serializedObject.FindProperty("fireRate");
-    }
+        private SerializedProperty _enemyTag;
 
-    public override void OnInspectorGUI()
-    {
-        serializedObject.Update();
+        private SerializedProperty _damage;
+        private SerializedProperty _range;
+        private SerializedProperty _fireRate;
 
-        EditorGUILayout.LabelField("System", EditorStyles.boldLabel);
 
-        EditorGUILayout.PropertyField(EnemyTag);
+        protected void OnEnable()
+        {
+            _enemyTag = serializedObject.FindProperty("enemyTag");
 
-        EditorGUILayout.Space();
-        EditorGUILayout.LabelField("Stats", EditorStyles.boldLabel);
+            _damage = serializedObject.FindProperty("damage");
+            _range = serializedObject.FindProperty("range");
+            _fireRate = serializedObject.FindProperty("fireRate");
+        }
 
-        EditorGUILayout.PropertyField(Damage);
-        EditorGUILayout.PropertyField(Range);
-        EditorGUILayout.PropertyField(FireRate);
+        public override void OnInspectorGUI()
+        {
+            serializedObject.Update();
 
-        serializedObject.ApplyModifiedProperties();
+            EditorGUILayout.LabelField("System", EditorStyles.boldLabel);
+
+            EditorGUILayout.PropertyField(_enemyTag);
+
+            EditorGUILayout.Space();
+            EditorGUILayout.LabelField("Stats", EditorStyles.boldLabel);
+
+            EditorGUILayout.PropertyField(_damage);
+            EditorGUILayout.PropertyField(_range);
+            EditorGUILayout.PropertyField(_fireRate);
+
+            serializedObject.ApplyModifiedProperties();
+        }
     }
 }

@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c396cb5ca4b4f9a9a46a24e22514d5, type: 3}
   m_Name: MissileBulletT2
   m_EditorClassIdentifier: 
-  ModuleType: MissileBullet
-  ModuleTier: 2
+  moduleTier: 2
   accentColor: {r: 0.88235295, g: 0.35686275, b: 0.06666667, a: 1}
   displayName: Missiles II
   tagline: Rocket science

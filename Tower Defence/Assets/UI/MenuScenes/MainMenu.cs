@@ -12,7 +12,8 @@ namespace UI.MenuScenes
     {
         public Animator transition;
         public TMP_Text loggedInAs;
-        
+        private static readonly int Start1 = Animator.StringToHash("Start");
+
         /// <summary>
         /// Sets the username text
         /// </summary>
@@ -43,7 +44,7 @@ namespace UI.MenuScenes
         /// <param name="sceneName">The scene to transition the user to</param>
         private IEnumerator Transition(string sceneName)
         {
-            transition.SetTrigger("Start");
+            transition.SetTrigger(Start1);
 
             yield return new WaitForSeconds(transition.GetCurrentAnimatorClipInfo(0)[0].clip.length);
             

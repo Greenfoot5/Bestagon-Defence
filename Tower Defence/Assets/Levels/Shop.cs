@@ -1,7 +1,9 @@
-﻿using Abstract;
+﻿using System;
+using Abstract;
 using Abstract.Managers;
 using Scenes.Levels;
 using TMPro;
+using Turrets;
 using Turrets.Blueprints;
 using UI.Shop;
 using UnityEngine;
@@ -142,10 +144,27 @@ namespace Levels
         /// <summary>
         /// Displays the module inventory and hides the turret inventory
         /// </summary>
-        public void EnableModuleInventory()
+        /// <param name="turret">The selected turret</param>
+        public void EnableModuleInventory(Turret turret)
         {
             turretInventory.SetActive(false);
             moduleInventory.SetActive(true);
+            
+            // Loop through all modules and check if they are applicable
+            for(var i = 0; i < moduleInventory.transform.childCount; i++)
+            {
+                var child = moduleInventory.transform.GetChild(i);
+                try
+                {
+                    child.GetComponentInChildren<Button>().interactable =
+                        child.GetComponent<ModuleIcon>().GetModule().ValidModule(turret);
+                }
+                // One will be the shop button
+                catch (NullReferenceException)
+                {
+                    Debug.Log("Passed Module inventory button");
+                }
+            }
         }
         
         /// <summary>

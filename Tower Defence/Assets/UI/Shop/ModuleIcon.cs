@@ -15,6 +15,8 @@ namespace UI.Shop
         [SerializeField]
         private TextMeshProUGUI text;
 
+        private Module _module;
+
         private static readonly string[] Levels = { "-", "I", "II", "III", "IV", "V" };
         
         /// <summary>
@@ -38,11 +40,17 @@ namespace UI.Shop
         /// <summary>
         /// Sets all values for the module icon
         /// </summary>
-        /// <param name="module">The module to display the icon for</param>
-        public void SetData(Module module)
+        /// <param name="newModule">The module to display the icon for</param>
+        public void SetData(Module newModule)
         {
-            SetSprite(module.icon);
-            SetLevel(module.moduleTier);
+            _module = newModule;
+            SetSprite(newModule.icon);
+            SetLevel(newModule.moduleTier);
+        }
+
+        public Module GetModule()
+        {
+            return _module;
         }
     }
 }

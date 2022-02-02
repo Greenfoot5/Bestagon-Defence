@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2db0c3d1579341f8bd90af8aa9e324d, type: 3}
   m_Name: StunT1
   m_EditorClassIdentifier: 
-  ModuleType: Stun
-  ModuleTier: 1
+  moduleTier: 1
   accentColor: {r: 0.33521715, g: 0.68705505, b: 0.764151, a: 1}
   displayName: Stun
   tagline: Bzzzzzzzzt

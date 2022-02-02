@@ -14,14 +14,15 @@ namespace UI.Level
         public TMP_Text roundsText;
         
         public Animator transition;
-        
+        private static readonly int Start = Animator.StringToHash("Start");
+
         /// <summary>
         /// Begins the transition to the new level
         /// </summary>
         /// <param name="sceneName">The scene to transition to</param>
         private IEnumerator Transition(string sceneName)
         {
-            transition.SetTrigger("Start");
+            transition.SetTrigger(Start);
 
             yield return new WaitForSeconds(transition.GetCurrentAnimatorClipInfo(0)[0].clip.length);
             

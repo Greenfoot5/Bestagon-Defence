@@ -35,7 +35,7 @@ Shader "Unlit/Hex Background"
                 float4 color : COLOR;
             };
 
-            struct v2f
+            struct v2_f
             {
                 float2 uv : TEXCOORD0;
                 float4 vertex : SV_POSITION;
@@ -153,11 +153,11 @@ Shader "Unlit/Hex Background"
                 
             }
 
-            v2f vert (appdata v)
+            v2_f vert (appdata v)
             {
             
                 // VERTEX OUT
-                v2f o;
+                v2_f o;
                 
                 // DATA
                 o.vertex = UnityObjectToClipPos(v.vertex);
@@ -168,7 +168,7 @@ Shader "Unlit/Hex Background"
                 
             }
 
-            fixed4 frag(v2f i) : SV_Target
+            fixed4 frag(v2_f i) : SV_Target
             {
             
                 // OFFSET

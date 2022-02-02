@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aa272a0b8d4542a8b8f213b6038ec00, type: 3}
   m_Name: TrackerT2
   m_EditorClassIdentifier: 
-  ModuleType: Tracker
-  ModuleTier: 2
+  moduleTier: 2
   accentColor: {r: 0.7882353, g: 0.26666668, b: 0.98039216, a: 1}
   displayName: Tracker II
   tagline: High gear

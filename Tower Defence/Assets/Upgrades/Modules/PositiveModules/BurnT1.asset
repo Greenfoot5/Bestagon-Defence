@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2db0c3d1579341f8bd90af8aa9e324d, type: 3}
   m_Name: BurnT1
   m_EditorClassIdentifier: 
-  ModuleType: Burn
-  ModuleTier: 1
+  moduleTier: 1
   accentColor: {r: 1, g: 0.5678642, b: 0.33490568, a: 1}
   displayName: Burn
   tagline: Burn baby burn!

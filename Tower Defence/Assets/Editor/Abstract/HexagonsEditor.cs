@@ -2,128 +2,131 @@ using Shaders.Hexagons;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(Hexagons))]
-public class Hexagons_Editor : UnityEditor.Editor
+namespace Editor.Abstract
 {
-    // DISPLAY FLAGS
-
-    public bool showHexagons;
-    public bool animateHexagons;
-    public bool glow;
-    public bool import;
-    public bool loaded = false;
-
-
-    // PROPERTIES
-
-    private SerializedProperty Color;
-    private SerializedProperty OffsetUV;
-
-    private SerializedProperty HexagonScale;
-    private SerializedProperty ScrollSpeed;
-    private SerializedProperty LuminanceShiftSpeed;
-    private SerializedProperty OverlayStrength;
-    private SerializedProperty HexagonOpacity;
-
-    private SerializedProperty GlowIntensity;
-    private SerializedProperty GlowClamp;
-    private SerializedProperty GlowOpacity;
-
-
-    // IMPORT
-
-    private Material Material;
-
-    private void OnEnable()
+    [CustomEditor(typeof(Hexagons))]
+    public class HexagonsEditor : UnityEditor.Editor
     {
-        Color = serializedObject.FindProperty("m_Color");
-        OffsetUV = serializedObject.FindProperty("OffsetUV");
+        // DISPLAY FLAGS
 
-        HexagonScale = serializedObject.FindProperty("HexagonScale");
-        ScrollSpeed = serializedObject.FindProperty("ScrollSpeed");
-        LuminanceShiftSpeed = serializedObject.FindProperty("LuminanceShiftSpeed");
-        OverlayStrength = serializedObject.FindProperty("OverlayStrength");
-        HexagonOpacity = serializedObject.FindProperty("HexagonOpacity");
+        public bool showHexagons;
+        public bool animateHexagons;
+        public bool glow;
+        public bool import;
+        public bool loaded;
 
-        GlowIntensity = serializedObject.FindProperty("GlowIntensity");
-        GlowClamp = serializedObject.FindProperty("GlowClamp");
-        GlowOpacity = serializedObject.FindProperty("GlowOpacity");
-    }
 
-    public override void OnInspectorGUI()
-    {
-        serializedObject.Update();
+        // PROPERTIES
 
-        EditorGUILayout.LabelField("General", EditorStyles.boldLabel);
+        private SerializedProperty _color;
+        private SerializedProperty _offsetUV;
 
-        EditorGUILayout.PropertyField(Color);
-        EditorGUILayout.PropertyField(OffsetUV);
+        private SerializedProperty _hexagonScale;
+        private SerializedProperty _scrollSpeed;
+        private SerializedProperty _luminanceShiftSpeed;
+        private SerializedProperty _overlayStrength;
+        private SerializedProperty _hexagonOpacity;
 
-        EditorGUILayout.Separator();
+        private SerializedProperty _glowIntensity;
+        private SerializedProperty _glowClamp;
+        private SerializedProperty _glowOpacity;
 
-        EditorGUILayout.LabelField("Hexagons", EditorStyles.boldLabel);
 
-        EditorGUILayout.PropertyField(HexagonScale);
-        EditorGUILayout.PropertyField(OverlayStrength);
-        EditorGUILayout.PropertyField(HexagonOpacity);
+        // IMPORT
 
-        EditorGUILayout.Separator();
+        private Material _material;
 
-        animateHexagons = EditorGUILayout.Foldout(animateHexagons, "Animation");
-        if (animateHexagons)
+        private void OnEnable()
         {
-            EditorGUILayout.Separator();
+            _color = serializedObject.FindProperty("m_Color");
+            _offsetUV = serializedObject.FindProperty("OffsetUV");
 
-            EditorGUILayout.PropertyField(ScrollSpeed);
-            EditorGUILayout.PropertyField(LuminanceShiftSpeed);
+            _hexagonScale = serializedObject.FindProperty("HexagonScale");
+            _scrollSpeed = serializedObject.FindProperty("ScrollSpeed");
+            _luminanceShiftSpeed = serializedObject.FindProperty("LuminanceShiftSpeed");
+            _overlayStrength = serializedObject.FindProperty("OverlayStrength");
+            _hexagonOpacity = serializedObject.FindProperty("HexagonOpacity");
+
+            _glowIntensity = serializedObject.FindProperty("GlowIntensity");
+            _glowClamp = serializedObject.FindProperty("GlowClamp");
+            _glowOpacity = serializedObject.FindProperty("GlowOpacity");
         }
 
-        EditorGUILayout.Separator();
-
-        glow = EditorGUILayout.Foldout(glow, "Inner Edge Glow");
-        if (glow)
+        public override void OnInspectorGUI()
         {
+            serializedObject.Update();
+
+            EditorGUILayout.LabelField("General", EditorStyles.boldLabel);
+
+            EditorGUILayout.PropertyField(_color);
+            EditorGUILayout.PropertyField(_offsetUV);
+
             EditorGUILayout.Separator();
 
-            EditorGUILayout.PropertyField(GlowIntensity);
-            EditorGUILayout.PropertyField(GlowClamp);
-            EditorGUILayout.PropertyField(GlowOpacity);
-        }
+            EditorGUILayout.LabelField("Hexagons", EditorStyles.boldLabel);
 
-        EditorGUILayout.Separator();
+            EditorGUILayout.PropertyField(_hexagonScale);
+            EditorGUILayout.PropertyField(_overlayStrength);
+            EditorGUILayout.PropertyField(_hexagonOpacity);
 
-        import = EditorGUILayout.Foldout(import, "Import Parameters");
-        if (import)
-        {
             EditorGUILayout.Separator();
 
-            Material = (Material)EditorGUILayout.ObjectField(Material, typeof(Material), false);
-
-            if (Material != null)
+            animateHexagons = EditorGUILayout.Foldout(animateHexagons, "Animation");
+            if (animateHexagons)
             {
-                try
-                {
-                    ((Hexagons)serializedObject.targetObject).ImportMaterial(Material);
-                    Material = null;
-                    loaded = true;
+                EditorGUILayout.Separator();
 
-                    PrefabUtility.RecordPrefabInstancePropertyModifications(serializedObject.targetObject);
-                }
-                catch (UnityException e)
-                {
-                    EditorGUILayout.HelpBox($"Failed to load:\n{e.Message}", MessageType.Error);
-                    throw e;
-                }
+                EditorGUILayout.PropertyField(_scrollSpeed);
+                EditorGUILayout.PropertyField(_luminanceShiftSpeed);
             }
 
-            if (loaded)
-                EditorGUILayout.HelpBox($"Loaded!", MessageType.Info);
-        }
-        else
-        {
-            loaded = false;
-        }
+            EditorGUILayout.Separator();
 
-        serializedObject.ApplyModifiedProperties();
+            glow = EditorGUILayout.Foldout(glow, "Inner Edge Glow");
+            if (glow)
+            {
+                EditorGUILayout.Separator();
+
+                EditorGUILayout.PropertyField(_glowIntensity);
+                EditorGUILayout.PropertyField(_glowClamp);
+                EditorGUILayout.PropertyField(_glowOpacity);
+            }
+
+            EditorGUILayout.Separator();
+
+            import = EditorGUILayout.Foldout(import, "Import Parameters");
+            if (import)
+            {
+                EditorGUILayout.Separator();
+
+                _material = (Material)EditorGUILayout.ObjectField(_material, typeof(Material), false);
+
+                if (_material != null)
+                {
+                    try
+                    {
+                        ((Hexagons)serializedObject.targetObject).ImportMaterial(_material);
+                        _material = null;
+                        loaded = true;
+
+                        PrefabUtility.RecordPrefabInstancePropertyModifications(serializedObject.targetObject);
+                    }
+                    catch (UnityException e)
+                    {
+                        EditorGUILayout.HelpBox($"Failed to load:\n{e.Message}", MessageType.Error);
+                        throw;
+                    }
+                }
+
+                if (loaded)
+                    EditorGUILayout.HelpBox($"Loaded!", MessageType.Info);
+            }
+            else
+            {
+                loaded = false;
+            }
+
+            serializedObject.ApplyModifiedProperties();
+        }
     }
 }

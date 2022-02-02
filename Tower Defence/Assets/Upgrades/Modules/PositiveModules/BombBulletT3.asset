@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8062262321bc543138867258ea3b19a7, type: 3}
   m_Name: BombBulletT3
   m_EditorClassIdentifier: 
-  ModuleType: Bomb
-  ModuleTier: 3
+  moduleTier: 3
   accentColor: {r: 0.85490197, g: 0.14509805, b: 0.27058825, a: 1}
   displayName: Bombs III
   tagline: Quite explosive

@@ -20,7 +20,8 @@ namespace UI.Level
         private bool _hasBeenToggled;
         
         public LeaderboardServerBridge bridge;
-        
+        private static readonly int Start1 = Animator.StringToHash("Start");
+
         /// <summary>
         /// Allows the class to listen to the pause button press
         /// </summary>
@@ -55,7 +56,7 @@ namespace UI.Level
         /// <param name="sceneName">The scene to transition to</param>
         private IEnumerator Transition(string sceneName)
         {
-            transition.SetTrigger("Start");
+            transition.SetTrigger(Start1);
 
             yield return new WaitForSeconds(transition.GetCurrentAnimatorClipInfo(0)[0].clip.length);
             
