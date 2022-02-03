@@ -15,7 +15,7 @@ namespace Levels
         [Tooltip("Keyboard panning multiplier")]
         public float keyboardPanSpeed = 10f;
         [Tooltip("Swipe panning multiplier")]
-        public float swipePanSpeed = 1f;
+        public float swipePanSpeed = 0.5f;
         [Tooltip("The minimum position the camera can reach")]
         public Vector2 minPos = new Vector2(0, 0);
         [Tooltip("The maximum position the camera can reach")]
