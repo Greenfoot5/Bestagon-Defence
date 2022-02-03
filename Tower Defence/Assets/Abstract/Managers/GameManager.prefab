@@ -50,32 +50,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
-  - waveSets:
+  - enemySets:
     - enemy: {fileID: 895393602812883857, guid: 458780032aac64edd9cb81311c5de419, type: 3}
       count: 3
       rate: 0.5
     setDelays: []
-  - waveSets:
+  - enemySets:
     - enemy: {fileID: 895393602812883857, guid: 458780032aac64edd9cb81311c5de419, type: 3}
       count: 5
       rate: 0.5
     setDelays: []
-  - waveSets:
+  - enemySets:
     - enemy: {fileID: 895393602812883857, guid: 21c83274303cd4ff08005873713c1dd9, type: 3}
       count: 7
       rate: 0.4
     setDelays: []
-  - waveSets:
+  - enemySets:
     - enemy: {fileID: 895393602812883857, guid: 21c83274303cd4ff08005873713c1dd9, type: 3}
       count: 10
       rate: 0.2
     setDelays: []
-  - waveSets:
+  - enemySets:
     - enemy: {fileID: 895393602812883857, guid: e4eab0df5aaf742809bdca0445f62663, type: 3}
       count: 5
       rate: 1
     setDelays: []
-  - waveSets:
+  - enemySets:
     - enemy: {fileID: 895393602812883857, guid: 458780032aac64edd9cb81311c5de419, type: 3}
       count: 5
       rate: 0.5
@@ -84,7 +84,7 @@ MonoBehaviour:
       rate: 0.7
     setDelays:
     - 1.5
-  - waveSets:
+  - enemySets:
     - enemy: {fileID: 895393602812883857, guid: 458780032aac64edd9cb81311c5de419, type: 3}
       count: 3
       rate: 0.5
@@ -93,7 +93,7 @@ MonoBehaviour:
       rate: 0.5
     setDelays:
     - 1
-  - waveSets:
+  - enemySets:
     - enemy: {fileID: 895393602812883857, guid: 21c83274303cd4ff08005873713c1dd9, type: 3}
       count: 5
       rate: 0.2
@@ -102,7 +102,7 @@ MonoBehaviour:
       rate: 0.1
     setDelays:
     - 0.4
-  - waveSets:
+  - enemySets:
     - enemy: {fileID: 895393602812883857, guid: 21c83274303cd4ff08005873713c1dd9, type: 3}
       count: 10
       rate: 0.2
@@ -111,7 +111,7 @@ MonoBehaviour:
       rate: 0.1
     setDelays:
     - 1
-  - waveSets:
+  - enemySets:
     - enemy: {fileID: 895393602812883857, guid: e4eab0df5aaf742809bdca0445f62663, type: 3}
       count: 10
       rate: 1
@@ -120,8 +120,8 @@ MonoBehaviour:
       rate: 1
     setDelays:
     - 3
-  - waveSets:
-    - enemy: {fileID: 895393602812883857, guid: 458780032aac64edd9cb81311c5de419, type: 3}
+  - enemySets:
+    - enemy: {fileID: 895393602812883857, guid: f4060fe5c4ca441109eb978e9195116e, type: 3}
       count: 3
       rate: 0.5
     - enemy: {fileID: 895393602812883857, guid: f3b905df6ab284e478d20d18c5d9e33c, type: 3}
@@ -129,16 +129,16 @@ MonoBehaviour:
       rate: 0.5
     setDelays:
     - 0.5
-  - waveSets:
+  - enemySets:
     - enemy: {fileID: 895393602812883857, guid: f3b905df6ab284e478d20d18c5d9e33c, type: 3}
       count: 10
       rate: 0.2
     - enemy: {fileID: 895393602812883857, guid: 22ab1e0fa4cca4734967d023c1bec9ac, type: 3}
-      count: 10
+      count: 0
       rate: 0.1
     setDelays:
     - 0.4
-  - waveSets:
+  - enemySets:
     - enemy: {fileID: 895393602812883857, guid: f4060fe5c4ca441109eb978e9195116e, type: 3}
       count: 3
       rate: 0.4
@@ -151,7 +151,7 @@ MonoBehaviour:
     setDelays:
     - 0.1
     - 0.5
-  - waveSets:
+  - enemySets:
     - enemy: {fileID: 895393602812883857, guid: f4060fe5c4ca441109eb978e9195116e, type: 3}
       count: 7
       rate: 0.4
@@ -168,7 +168,7 @@ MonoBehaviour:
     - 0.1
     - 3
     - 0.1
-  - waveSets:
+  - enemySets:
     - enemy: {fileID: 895393602812883857, guid: f4060fe5c4ca441109eb978e9195116e, type: 3}
       count: 10
       rate: 0.2
@@ -177,18 +177,18 @@ MonoBehaviour:
       rate: 0.5
     - enemy: {fileID: 895393602812883857, guid: f3b905df6ab284e478d20d18c5d9e33c, type: 3}
       count: 10
-      rate: 0.75
+      rate: 0.2
     - enemy: {fileID: 895393602812883857, guid: 22ab1e0fa4cca4734967d023c1bec9ac, type: 3}
       count: 15
-      rate: 0.5
+      rate: 0.1
     setDelays:
     - 0.1
-    - 0.1
-    - 0.1
+    - 0.5
+    - 0.5
   timeBetweenWaves: 5
+  preparationTime: 5
   waveCountdownText: {fileID: 0}
   spawnPoint: {fileID: 0}
-  isSpawning: 0
 --- !u!114 &5782079356602982467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,6 +247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ui: {fileID: 0}
   transition: {fileID: 0}
+  bridge: {fileID: 5782079356602982494}
 --- !u!114 &5782079356602982495
 MonoBehaviour:
   m_ObjectHideFlags: 0

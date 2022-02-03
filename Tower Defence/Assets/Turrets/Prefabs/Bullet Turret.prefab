@@ -251,8 +251,7 @@ MonoBehaviour:
   fireRate:
     stat: 1.2
     modifier: 1
-  slowPercentage: 0
-  Modules: []
+  modules: []
   targetingMethod: 0
   aggressiveRetargeting: 0
   firePoint: {fileID: 1483480927}

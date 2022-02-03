@@ -386,7 +386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turretSelectionUI: {fileID: 7349952435930394342, guid: 5453fbd1fffdc4a799b811ae56769adb, type: 3}
-  moduleSelectionUI: {fileID: 0}
+  moduleSelectionUI: {fileID: 7349952435930394342, guid: 2c152cea0b9334ff7b4ae9dfbbcfe040, type: 3}
   shop: {fileID: 4077244561648582632}
   glyphsLookup:
     sprites:
