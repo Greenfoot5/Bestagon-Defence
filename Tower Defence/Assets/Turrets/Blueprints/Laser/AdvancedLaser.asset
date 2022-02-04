@@ -17,5 +17,5 @@ MonoBehaviour:
   tagline: Arctic beacon
   accent: {r: 0.12941177, g: 0.75686276, b: 0.84313726, a: 1}
   prefab: {fileID: 8263255388866025106, guid: f76383e69d04d405ea64aa69d096467f, type: 3}
-  Modules:
-  - {fileID: 11400000, guid: fd238766202484223ad41e159363d2d9, type: 2}
+  modules:
+  - {fileID: 11400000, guid: 7c7e505c5536a4df684108f83d159ad6, type: 2}

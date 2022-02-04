@@ -92,16 +92,13 @@ namespace UI.MenuScenes
                 foreach (var entry in scores)
                 {
                     var leaderboardItem = Instantiate(leaderboardEntry, leaderboardContent);
-                    leaderboardItem.transform.Find("Username").GetComponent<TMP_Text>().text = entry.name;
-                    leaderboardItem.transform.Find("Score").GetComponent<TMP_Text>().text = entry.GetValueAsString();
+                    leaderboardItem.transform.Find("UsernameBackground").GetComponentInChildren<TMP_Text>().text = entry.name;
+                    leaderboardItem.transform.Find("ScoreBackground").GetComponentInChildren<TMP_Text>().text = entry.GetValueAsString();
                 }
                 
                 // Display the player's high score
                 var playerScore = await bridge.RequestPlayerEntry(PlayerPrefs.GetString("Username"), leaderboardID);
-                if (playerScore != null)
-                {
-                    highScore.text = playerScore.GetValueAsString();
-                }
+                highScore.text = playerScore != null ? playerScore.GetValueAsString() : "N/A";
             }
             else
             {
