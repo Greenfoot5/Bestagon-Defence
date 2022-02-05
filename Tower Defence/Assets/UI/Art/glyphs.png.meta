@@ -10,7 +10,7 @@ TextureImporter:
     second: laser
   - first:
       213: 1392073463733565543
-    second: smasher
+    second: laser
   - first:
       213: -4731689706235513701
     second: lobber
@@ -142,7 +142,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: laser
+      name: smasher
       rect:
         serializedVersion: 2
         x: 72
@@ -163,7 +163,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: smasher
+      name: laser
       rect:
         serializedVersion: 2
         x: 143
