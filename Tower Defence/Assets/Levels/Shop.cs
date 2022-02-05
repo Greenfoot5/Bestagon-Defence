@@ -161,9 +161,7 @@ namespace Levels
                 }
                 // One will be the shop button
                 catch (NullReferenceException)
-                {
-                    Debug.Log("Passed Module inventory button");
-                }
+                { }
             }
         }
         

@@ -69,7 +69,7 @@ namespace Turrets
         {
             if (!module.ValidModule(this))
             {
-                Debug.Log("Invalid Module");
+                //Debug.Log("Invalid Module");
                 return false;
             }
             

@@ -34,7 +34,7 @@ namespace UI.Shop
             // Check the player can afford to open the shop
             if (GameStats.money < shop.GetSelectionCost())
             {
-                Debug.Log("Not enough gold!");
+                //Debug.Log("Not enough gold!");
                 gameObject.SetActive(false);
                 return;
             }
