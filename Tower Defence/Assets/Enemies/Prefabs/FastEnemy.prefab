@@ -174,12 +174,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startSpeed: 3
-  maxHealth: 150
+  maxHealth: 100
   speed: 0
   health: 20
   deathMoney: 5
   deathLives: 1
-  endPathMoney: 3
+  endPathMoney: 7
   leftBar: {fileID: 6852925304048568335}
   rightBar: {fileID: 744072786682037078}
   deathEffect: {fileID: 710779272522642178, guid: d286b443e8ade4d4cb1ec3e2a41a94f8, type: 3}
