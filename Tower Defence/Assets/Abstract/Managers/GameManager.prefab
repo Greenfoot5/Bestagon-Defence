@@ -165,7 +165,11 @@ MonoBehaviour:
       count: 14
       rate: 0.1
     setDelays:
-    - 0.4
+    - 1
+    - 1
+    - 3
+    - 1
+    - 1
   - enemySets:
     - enemy: {fileID: 895393602812883857, guid: e4eab0df5aaf742809bdca0445f62663, type: 3}
       count: 7
