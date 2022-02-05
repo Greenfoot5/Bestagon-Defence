@@ -237,7 +237,7 @@ public partial class @GameControls : IInputActionCollection2, IDisposable
                     ""id"": ""343669a7-471d-4a00-89d0-32d7f069f374"",
                     ""path"": ""<Touchscreen>/primaryTouch/delta"",
                     ""interactions"": """",
-                    ""processors"": ""StickDeadzone(min=3,max=1),InvertVector2"",
+                    ""processors"": ""StickDeadzone(min=1,max=1),InvertVector2"",
                     ""groups"": ""Touch"",
                     ""action"": ""CameraMovement"",
                     ""isComposite"": false,

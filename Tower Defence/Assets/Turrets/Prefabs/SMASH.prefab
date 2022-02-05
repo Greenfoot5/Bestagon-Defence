@@ -242,7 +242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage:
-    stat: 100
+    stat: 125
     modifier: 1
   enemyTag: Enemy
   range:
@@ -252,8 +252,7 @@ MonoBehaviour:
   fireRate:
     stat: 1
     modifier: 1
-  slowPercentage: 0
-  Modules: []
+  modules: []
   smashEffect: {fileID: 842137340481146779}
 --- !u!1 &6541947563494285959
 GameObject:

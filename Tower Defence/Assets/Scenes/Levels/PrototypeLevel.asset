@@ -108,4 +108,4 @@ MonoBehaviour:
   initialSelectionCost: 100
   selectionCostIncrement: 10
   health: 1.1
-  enemyCount: 1.05
+  enemyCount: 1.02
