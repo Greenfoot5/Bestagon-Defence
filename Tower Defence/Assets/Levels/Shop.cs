@@ -154,7 +154,6 @@ namespace Levels
             for(var i = 0; i < moduleInventory.transform.childCount; i++)
             {
                 var child = moduleInventory.transform.GetChild(i);
-                Debug.Log(child.GetComponentInChildren<ModuleIcon>());
                 try
                 {
                     child.GetComponentInChildren<Button>().interactable =
