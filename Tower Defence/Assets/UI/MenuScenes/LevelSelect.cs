@@ -105,7 +105,7 @@ namespace UI.MenuScenes
                 // Display the level selection menu
                 levelInfo.SetActive(false);
                 levelSelect.SetActive(true);
-                infoButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Info";
+                infoButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Leaderboard";
             }
         }
         
