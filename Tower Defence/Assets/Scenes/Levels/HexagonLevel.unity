@@ -237,7 +237,7 @@ PrefabInstance:
     - target: {fileID: 7964934783553584943, guid: b2ea44161d17645878b76380d08af4a8, type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 519420031}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2ea44161d17645878b76380d08af4a8, type: 3}
 --- !u!1001 &24332019
@@ -674,7 +674,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4077244561858672952, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
   m_PrefabInstance: {fileID: 68072685}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &101467497
+--- !u!21 &83038335
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -2022,41 +2022,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4559129809900468847, guid: f8c5804ade5de404db89023d77cf7f43, type: 3}
   m_PrefabInstance: {fileID: 316364538}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &327789155
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Unlit/Hex Background
-  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _GlowClamp: 5
-    - _GlowIntensity: 0
-    - _GlowOpacity: 1
-    - _HexScale: 8
-    - _Opacity: 1
-    - _Overlay: -0.05
-    - _ScrollSpeed: 0.03
-    - _ShiftSpeed: 0.75
-    m_Colors:
-    - _OffsetUV: {r: 1, g: 0, b: 0, a: 0}
-  m_BuildTextureStacks: []
 --- !u!4 &361826251 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6595278417362797558, guid: 137f8506d4db341d1a8874fe8ad95496, type: 3}
@@ -2422,6 +2387,41 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 281d0192933e0421985ef273d47c611c, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 137f8506d4db341d1a8874fe8ad95496, type: 3}
+--- !u!21 &407874349
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Unlit/Hex Background
+  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _GlowClamp: 5
+    - _GlowIntensity: 0
+    - _GlowOpacity: 1
+    - _HexScale: 8
+    - _Opacity: 1
+    - _Overlay: -0.05
+    - _ScrollSpeed: 0.03
+    - _ShiftSpeed: 0.75
+    m_Colors:
+    - _OffsetUV: {r: 1, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1001 &429208894
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2837,127 +2837,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8c5804ade5de404db89023d77cf7f43, type: 3}
---- !u!1 &519420028
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 519420032}
-  - component: {fileID: 519420031}
-  - component: {fileID: 519420029}
-  - component: {fileID: 519420030}
-  - component: {fileID: 519420033}
-  m_Layer: 0
-  m_Name: Main Camera
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!81 &519420029
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
---- !u!114 &519420030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20c2dd081d37948ecbb87a4d0c6e0f34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyboardPanSpeed: 10
-  swipePanSpeed: 15
-  minPos: {x: -8, y: -5}
-  maxPos: {x: 8, y: 5}
-  scrollSpeed: 15
-  pinchSpeed: 0.75
-  minOrthSize: 4
-  maxOrthSize: 13
---- !u!20 &519420031
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19607843, g: 0.16078432, b: 0.2784314, a: 0}
-  m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 1
-  orthographic size: 8
-  m_Depth: -1
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 0
-  m_HDR: 1
-  m_AllowMSAA: 0
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 0
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
---- !u!4 &519420032
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &519420033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56666c5a40171f54783dd416a44f42bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EventMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_MaxRayIntersections: 0
 --- !u!4 &528623852 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6595278417362797558, guid: 137f8506d4db341d1a8874fe8ad95496, type: 3}
@@ -4472,76 +4351,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6595278417362797558, guid: 137f8506d4db341d1a8874fe8ad95496, type: 3}
   m_PrefabInstance: {fileID: 1587358871}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &884783841
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Unlit/Hex Background
-  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _GlowClamp: 1
-    - _GlowIntensity: 0.5
-    - _GlowOpacity: 0.5
-    - _HexScale: 5
-    - _Opacity: 0.2
-    - _Overlay: 0.15
-    - _ScrollSpeed: 0.03
-    - _ShiftSpeed: 0.75
-    m_Colors:
-    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
-  m_BuildTextureStacks: []
---- !u!21 &900827933
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Unlit/Hex Background
-  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _GlowClamp: 1
-    - _GlowIntensity: 0.5
-    - _GlowOpacity: 0.5
-    - _HexScale: 5
-    - _Opacity: 0.2
-    - _Overlay: 0.15
-    - _ScrollSpeed: 0.03
-    - _ShiftSpeed: 0.75
-    m_Colors:
-    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
-  m_BuildTextureStacks: []
 --- !u!1001 &902643292
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4773,6 +4582,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89744f11922744baab6ff29557d16f75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!21 &974333322
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Unlit/Hex Background
+  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _GlowClamp: 1
+    - _GlowIntensity: 0.5
+    - _GlowOpacity: 0.5
+    - _HexScale: 5
+    - _Opacity: 0.2
+    - _Overlay: 0.15
+    - _ScrollSpeed: 0.03
+    - _ShiftSpeed: 0.75
+    m_Colors:
+    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1001 &999972925
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5071,6 +4915,41 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4559129809900468847, guid: f8c5804ade5de404db89023d77cf7f43, type: 3}
   m_PrefabInstance: {fileID: 1108307681}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &1117615396
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Unlit/Hex Background
+  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _GlowClamp: 1
+    - _GlowIntensity: 0.5
+    - _GlowOpacity: 0.5
+    - _HexScale: 5
+    - _Opacity: 0.2
+    - _Overlay: 0.15
+    - _ScrollSpeed: 0.03
+    - _ShiftSpeed: 0.75
+    m_Colors:
+    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1001 &1123553970
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5133,6 +5012,41 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4559129809900468847, guid: f8c5804ade5de404db89023d77cf7f43, type: 3}
   m_PrefabInstance: {fileID: 1123553970}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &1123716148
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Unlit/Hex Background
+  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _GlowClamp: 1
+    - _GlowIntensity: 0.5
+    - _GlowOpacity: 0.5
+    - _HexScale: 5
+    - _Opacity: 0.2
+    - _Overlay: 0.15
+    - _ScrollSpeed: 0.03
+    - _ShiftSpeed: 0.75
+    m_Colors:
+    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!4 &1129326352 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6595278417362797558, guid: 137f8506d4db341d1a8874fe8ad95496, type: 3}
@@ -5596,41 +5510,6 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 281d0192933e0421985ef273d47c611c, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 137f8506d4db341d1a8874fe8ad95496, type: 3}
---- !u!21 &1233130310
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Unlit/Hex Background
-  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _GlowClamp: 1
-    - _GlowIntensity: 0.5
-    - _GlowOpacity: 0.5
-    - _HexScale: 5
-    - _Opacity: 0.2
-    - _Overlay: 0.15
-    - _ScrollSpeed: 0.03
-    - _ShiftSpeed: 0.75
-    m_Colors:
-    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
-  m_BuildTextureStacks: []
 --- !u!1001 &1233358330
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8257,6 +8136,75 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 2890640062200027566, guid: f3587694556224242bba9c3791c43922, type: 3}
   m_PrefabInstance: {fileID: 1269768603}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1751815133
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5837894107962673261, guid: 84f5c17147e1542e289158835f7db2e2, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837894107962673261, guid: 84f5c17147e1542e289158835f7db2e2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837894107962673261, guid: 84f5c17147e1542e289158835f7db2e2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837894107962673261, guid: 84f5c17147e1542e289158835f7db2e2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837894107962673261, guid: 84f5c17147e1542e289158835f7db2e2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837894107962673261, guid: 84f5c17147e1542e289158835f7db2e2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837894107962673261, guid: 84f5c17147e1542e289158835f7db2e2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837894107962673261, guid: 84f5c17147e1542e289158835f7db2e2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837894107962673261, guid: 84f5c17147e1542e289158835f7db2e2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837894107962673261, guid: 84f5c17147e1542e289158835f7db2e2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837894107962673261, guid: 84f5c17147e1542e289158835f7db2e2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837894107962673297, guid: 84f5c17147e1542e289158835f7db2e2, type: 3}
+      propertyPath: m_Name
+      value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837894107962673298, guid: 84f5c17147e1542e289158835f7db2e2, type: 3}
+      propertyPath: orthographic size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837894107962673299, guid: 84f5c17147e1542e289158835f7db2e2, type: 3}
+      propertyPath: maxOrthSize
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837894107962673299, guid: 84f5c17147e1542e289158835f7db2e2, type: 3}
+      propertyPath: minOrthSize
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 84f5c17147e1542e289158835f7db2e2, type: 3}
 --- !u!4 &1754589404 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6595278417362797558, guid: 137f8506d4db341d1a8874fe8ad95496, type: 3}
