@@ -20,6 +20,12 @@ TextureImporter:
   - first:
       213: -8677258743389966027
     second: any
+  - first:
+      213: 3893561245061915230
+    second: gunner
+  - first:
+      213: 1038264309740246206
+    second: choker
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -124,8 +130,8 @@ TextureImporter:
       name: shooter
       rect:
         serializedVersion: 2
-        x: 1
-        y: 83
+        x: 0
+        y: 0
         width: 70
         height: 81
       alignment: 0
@@ -145,8 +151,8 @@ TextureImporter:
       name: smasher
       rect:
         serializedVersion: 2
-        x: 72
-        y: 83
+        x: 74
+        y: 0
         width: 70
         height: 81
       alignment: 0
@@ -166,8 +172,8 @@ TextureImporter:
       name: laser
       rect:
         serializedVersion: 2
-        x: 143
-        y: 83
+        x: 74
+        y: 85
         width: 70
         height: 81
       alignment: 0
@@ -187,8 +193,8 @@ TextureImporter:
       name: lobber
       rect:
         serializedVersion: 2
-        x: 1
-        y: 1
+        x: 148
+        y: 85
         width: 70
         height: 81
       alignment: 0
@@ -208,8 +214,8 @@ TextureImporter:
       name: lancer
       rect:
         serializedVersion: 2
-        x: 72
-        y: 1
+        x: 148
+        y: 0
         width: 70
         height: 81
       alignment: 0
@@ -229,8 +235,8 @@ TextureImporter:
       name: any
       rect:
         serializedVersion: 2
-        x: 143
-        y: 1
+        x: 0
+        y: 85
         width: 70
         height: 81
       alignment: 0
@@ -242,6 +248,48 @@ TextureImporter:
       bones: []
       spriteID: 531b610a52f249780800000000000000
       internalID: -8677258743389966027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gunner
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 85
+        width: 70
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e52a42bc255b80630800000000000000
+      internalID: 3893561245061915230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: choker
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 0
+        width: 70
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb4980583e7a86e00800000000000000
+      internalID: 1038264309740246206
       vertices: []
       indices: 
       edges: []
