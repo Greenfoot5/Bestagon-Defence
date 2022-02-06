@@ -17,7 +17,8 @@ namespace Abstract.Data
             null, // Represents no specific turret type
             typeof(Shooter),
             typeof(Laser),
-            typeof(Smasher)
+            typeof(Smasher),
+            typeof(Gunner)
         };
 
         [SerializeField] private List<TurretGlyphSo> sprites;
