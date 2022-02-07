@@ -9,6 +9,10 @@ namespace Editor.Turrets
         // PROPERTIES
 
         private SerializedProperty _bulletPrefab;
+        
+        private SerializedProperty _spinMultiplier;
+        private SerializedProperty _maxFireRate;
+        private SerializedProperty _spinCooldown;
 
 
         protected new void OnEnable()
@@ -16,6 +20,9 @@ namespace Editor.Turrets
             base.OnEnable();
 
             _bulletPrefab = serializedObject.FindProperty("bulletPrefab");
+            _spinMultiplier = serializedObject.FindProperty("spinMultiplier");
+            _maxFireRate = serializedObject.FindProperty("maxFireRate");
+            _spinCooldown = serializedObject.FindProperty("spinCooldown");
         }
 
         public override void OnInspectorGUI()
@@ -25,9 +32,15 @@ namespace Editor.Turrets
             serializedObject.Update();
 
             EditorGUILayout.Space();
-            EditorGUILayout.LabelField("Shooter", EditorStyles.boldLabel);
+            EditorGUILayout.LabelField("Gunner", EditorStyles.boldLabel);
 
             EditorGUILayout.PropertyField(_bulletPrefab);
+            
+            EditorGUILayout.Space();
+
+            EditorGUILayout.PropertyField(_spinMultiplier);
+            EditorGUILayout.PropertyField(_spinCooldown);
+            EditorGUILayout.PropertyField(_maxFireRate);
 
             serializedObject.ApplyModifiedProperties();
         }

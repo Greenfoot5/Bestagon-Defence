@@ -10,7 +10,7 @@ namespace Upgrades.Modules.PositiveModules
     [CreateAssetMenu(fileName = "BombBulletT0", menuName = "Modules/Bomb Bullet")]
     public class BombBulletModule : Module
     {
-        protected override Type[] ValidTypes => new[] { typeof(Shooter) };
+        protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Gunner)};
 
         public float explosionRadiusChange;
         public float damagePercentageChange;

@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UI.Level;
+using UnityEngine;
 
 namespace Turrets
 {
@@ -9,6 +11,17 @@ namespace Turrets
     {
         // Bullets
         public GameObject bulletPrefab;
+        
+        // Spin up stats
+        private float _fireRateIncrease = 1f;
+        private float _oldIncrease = 1f;
+        [Tooltip("That amount to increase the fireRate by each attack")]
+        public float spinMultiplier = 1.01f;
+        [Tooltip("How much to divide the fire rate when not attacking")]
+        public float spinCooldown = 1.004f;
+        [Tooltip("The maximum fire rate increase the gunner can reach without modules")]
+        public float maxFireRate = 3f;
+
 
         /// <summary>
         /// Rotates towards the target if the turret have one.
@@ -19,7 +32,14 @@ namespace Turrets
             // Don't do anything if the turret doesn't have a target
             if (target == null)
             {
+                if (fireCountdown <= 0f)
+                {
+                    UpdateFireRate(false);
+                    fireCountdown = 1 / fireRate.GetStat();
+                }
+                
                 fireCountdown -= Time.deltaTime;
+
                 return;
             }
         
@@ -28,6 +48,12 @@ namespace Turrets
 
             if (!IsLookingAtTarget())
             {
+                if (fireCountdown <= 0f)
+                {
+                    UpdateFireRate(false);
+                    fireCountdown = 1 / fireRate.GetStat();
+                }
+
                 fireCountdown -= Time.deltaTime;
                 return;
             }
@@ -36,10 +62,53 @@ namespace Turrets
             if (fireCountdown <= 0)
             {
                 Attack();
+                
+                UpdateFireRate(true);
+                
                 fireCountdown = 1 / fireRate.GetStat();
+                
+            }
+
+            fireCountdown -= Time.deltaTime;
+        }
+        
+        /// <summary>
+        /// Updates the fire rate so we don't have duplicated code in Attack().
+        /// Also handles all edge cases with the increase being too low or high
+        /// </summary>
+        /// <param name="isIncrease">To increase or decrease the fireRate</param>
+        private void UpdateFireRate(bool isIncrease)
+        {
+            if (isIncrease)
+            {
+                _fireRateIncrease *= spinMultiplier;
+                if (_fireRateIncrease > maxFireRate)
+                {
+                    _fireRateIncrease = maxFireRate;
+                }
+            }
+            else
+            {
+                _fireRateIncrease /= spinCooldown;
+                if (_fireRateIncrease < 1f)
+                {
+                    _fireRateIncrease = 1f;
+                }
             }
             
-            fireCountdown -= Time.deltaTime;
+            // Check the old and new values are actually different
+            if (Math.Abs(_fireRateIncrease - _oldIncrease) > 0.0001)
+            {
+                fireRate.TakeModifier(_oldIncrease - 1);
+                fireRate.AddModifier(_fireRateIncrease - 1);
+                _oldIncrease = _fireRateIncrease;
+            }
+            
+            // Update the stats of the turret if it's selected
+            if (NodeUI.instance.GetTurret() != null && NodeUI.instance.GetTurret() == gameObject)
+            {
+                NodeUI.instance.UpdateStats();
+            }
         }
 
         /// <summary>

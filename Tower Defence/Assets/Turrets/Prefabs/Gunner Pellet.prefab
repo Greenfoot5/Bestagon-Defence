@@ -96,10 +96,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed:
-    stat: 5
+    stat: 15
     modifier: 1
   explosionRadius: 0
   damage:
     stat: 50
     modifier: 0
-  impactEffect: {fileID: 5606335261930595536, guid: 410840a991e414225baff388418be600, type: 3}
+  impactEffect: {fileID: 5606335261930595536, guid: 79704d342ebc848e4811ae6127d42c40, type: 3}

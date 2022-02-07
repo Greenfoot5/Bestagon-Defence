@@ -10,7 +10,7 @@ namespace Upgrades.Modules.PositiveModules
     [CreateAssetMenu(fileName = "TrackerModuleT0", menuName = "Modules/Tracker")]
     public class TrackerModule : Module
     {
-        protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Laser) };
+        protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Laser), typeof(Gunner) };
 
         [SerializeField]    
         private float rotationSpeedPercentageChange;

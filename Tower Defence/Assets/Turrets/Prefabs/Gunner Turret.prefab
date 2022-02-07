@@ -241,22 +241,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage:
-    stat: 25
-    modifier: 0
+    stat: 50
+    modifier: 1
   enemyTag: Enemy
   range:
-    stat: 3
+    stat: 2.5
     modifier: 1
-  rangeDisplay: {fileID: 0}
+  rangeDisplay: {fileID: 1139687739}
   fireRate:
-    stat: 0.7
+    stat: 1.5
     modifier: 1
   modules: []
   targetingMethod: 0
   aggressiveRetargeting: 0
   firePoint: {fileID: 1483480927}
   rotationSpeed:
-    stat: 4
+    stat: 7.5
     modifier: 1
   partToRotate: {fileID: 4656168879664339822}
   bulletPrefab: {fileID: 8554329261332597528, guid: 7918a479628b945539b9ed050eacb045, type: 3}
+  spinMultiplier: 1.1
+  spinCooldown: 1.08
+  maxFireRate: 6.5

@@ -14,6 +14,8 @@ namespace UI.Level
     /// </summary>
     public class NodeUI : MonoBehaviour
     {
+        public static NodeUI instance;
+        
         public GameObject ui;
         public Levels.Shop shop;
     
@@ -25,6 +27,20 @@ namespace UI.Level
         public TMP_Text stats;
 
         public GameObject cycleTargetingButton;
+        
+        /// <summary>
+        /// Check there is only one NodeUI when loading in
+        /// </summary>
+        private void Awake()
+        {
+            // Make sure there is only ever have one NodeUI
+            if (instance != null)
+            {
+                Debug.LogError("More than one NodeUI in scene!");
+                return;
+            }
+            instance = this;
+        }
 
         /// <summary>
         /// Called when selecting a new node
@@ -75,7 +91,7 @@ namespace UI.Level
 
             // Rebuild the Modules and add the stats
             LayoutRebuilder.MarkLayoutForRebuild((RectTransform) modules);
-            AddStats();
+            UpdateStats();
         }
     
         /// <summary>
@@ -89,7 +105,7 @@ namespace UI.Level
         }
     
         /// <summary>
-        /// Modules the currently selected turret
+        /// Applies a module to the currently selected turret
         /// </summary>
         public void ModuleNode()
         {
@@ -119,14 +135,23 @@ namespace UI.Level
         /// <summary>
         /// Updates the stats display when the turret is selected or upgraded
         /// </summary>
-        private void AddStats()
+        public void UpdateStats()
         {
             if (_target.turret == null) return;
             var turret = _target.turret.GetComponent<Turret>();
             var color = ColorUtility.ToHtmlStringRGBA(stats.color);
             stats.text = $"<sprite=\"Stats\" name=\"damage\" color=#{color}> {turret.damage}\n" +
                          $"<sprite=\"Stats\" name=\"range\" color=#{color}> {turret.range}\n" +
-                         $" <sprite=\"Stats\" name=\"rate\" color=#{color}> {turret.fireRate}";
+                         $" <sprite=\"Stats\" name=\"rate\" color=#{color}> {turret.fireRate.ToString()}";
+        }
+        
+        /// <summary>
+        /// Gets the turret the NodeUI is targeting
+        /// </summary>
+        /// <returns>The turret the NodeUI is targeting</returns>
+        public GameObject GetTurret()
+        {
+            return _target != null ? _target.turret : null;
         }
     }
 }

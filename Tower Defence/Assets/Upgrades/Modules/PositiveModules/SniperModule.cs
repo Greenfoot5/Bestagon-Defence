@@ -10,7 +10,7 @@ namespace Upgrades.Modules.PositiveModules
     [CreateAssetMenu(fileName = "SniperT0", menuName = "Modules/Sniper")]
     public class SniperModule : Module
     {
-        protected override Type[] ValidTypes => null;  // any
+        protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Laser), typeof(Smasher) };  // any
 
         [Header("Shooter Turret")]
         public float shooterRangePercentageChange;

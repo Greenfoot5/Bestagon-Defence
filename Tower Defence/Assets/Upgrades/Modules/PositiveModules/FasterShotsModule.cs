@@ -10,7 +10,7 @@ namespace Upgrades.Modules.PositiveModules
     [CreateAssetMenu(fileName = "FasterShotsT0", menuName = "Modules/Faster Shots")]
     public class FasterShotsModule : Module
     {
-        protected override Type[] ValidTypes => new[] { typeof(Shooter) };
+        protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Gunner) };
 
         [SerializeField]
         private float percentageChange;
