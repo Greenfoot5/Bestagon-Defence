@@ -17,7 +17,11 @@ MonoBehaviour:
   displayName: Sniper I
   tagline: Expert ranger
   icon: {fileID: 2691302287683433475, guid: 16c979c866f439b4b988e7020b313794, type: 3}
-  effectText: Shorts further, deals more damage, but takes time to do so
+  effectText: 'Bigger range
+
+    Greater damage
+
+    Lower Fire Rate'
   shooterRangePercentageChange: 1
   shooterDamagePercentageChange: 1
   shooterFireRatePercentageChange: -0.5

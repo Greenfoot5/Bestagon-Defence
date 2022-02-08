@@ -28,7 +28,7 @@ namespace Upgrades.Modules
         /// </summary>
         /// <param name="turret">The turret to check</param>
         /// <returns>If the turret is in the valid types</returns>
-        public bool ValidModule(Turret turret)
+        public virtual bool ValidModule(Turret turret)
         {
             return ValidTypes == null || ValidTypes.Contains(turret.GetType());
         }

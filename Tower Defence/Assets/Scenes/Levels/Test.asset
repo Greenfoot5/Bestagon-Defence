@@ -12,14 +12,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fd92d5c95da242598d43eb06f883d13, type: 3}
   m_Name: Test
   m_EditorClassIdentifier: 
+  initialTurretSelection:
+    list:
+    - item: {fileID: 11400000, guid: 4aedceea9b860486d9797fb4dfb62a16, type: 2}
+      weight: 0
+    - item: {fileID: 11400000, guid: 4aedceea9b860486d9797fb4dfb62a16, type: 2}
+      weight: 0
+    - item: {fileID: 11400000, guid: 4aedceea9b860486d9797fb4dfb62a16, type: 2}
+      weight: 0
+  initialDuplicateCheck: 0
   turrets:
-  - {fileID: 11400000, guid: d2db62c1bef594027b45aec4631e1e6a, type: 2}
-  - {fileID: 11400000, guid: 40dc94d320d594a5fad076af47f85c42, type: 2}
-  - {fileID: 11400000, guid: 957e7ef90aad744a4bf2718c30338651, type: 2}
-  - {fileID: 11400000, guid: 5958a675ba690410eb9254a851560e75, type: 2}
-  Modules:
-  - {fileID: 11400000, guid: a36951a90c6c44391a71cbd17ff8c4c9, type: 2}
-  - {fileID: 11400000, guid: a36951a90c6c44391a71cbd17ff8c4c9, type: 2}
-  - {fileID: 11400000, guid: a36951a90c6c44391a71cbd17ff8c4c9, type: 2}
+    list:
+    - item: {fileID: 0}
+      weight: 0
+    - item: {fileID: 0}
+      weight: 0
+    - item: {fileID: 0}
+      weight: 0
+  turretDuplicateCheck: 1
+  turretOptionWeight: 0
+  modules:
+    list:
+    - item: {fileID: 11400000, guid: 9595822f285bf468f8c04c3d49a93ccf, type: 2}
+      weight: 0
+    - item: {fileID: 11400000, guid: 0da67581e745c4e708a1b6172cb3d6ef, type: 2}
+      weight: 0
+    - item: {fileID: 11400000, guid: 41511553a2ec047d9bb11d891330f653, type: 2}
+      weight: 0
+  moduleDuplicateCheck: 2
+  moduleOptionWeight: 1
   initialSelectionCost: 100
   selectionCostIncrement: 10
+  health: 1
+  enemyCount: 1
