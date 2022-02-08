@@ -35,6 +35,9 @@ namespace UI.Level
         /// </summary>
         public void Toggle(InputAction.CallbackContext ctx)
         {
+            // Check time isn't already paused
+            if (!ui.activeSelf && Time.timeScale == 0f) return;
+            
             ui.SetActive(!ui.activeSelf);
 
             Time.timeScale = ui.activeSelf ? 0f : 1f;
