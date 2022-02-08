@@ -1,8 +1,10 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using Abstract;
 using Enemies;
+using Turrets;
 using UnityEngine;
-using Upgrades.Abilities;
 
 namespace Upgrades.Modules.PositiveModules
 {
@@ -13,10 +15,13 @@ namespace Upgrades.Modules.PositiveModules
     [CreateAssetMenu(fileName = "SlowT0", menuName = "Modules/Slow")]
     public class SlowModule : Module
     {
-        protected override Type[] ValidTypes => null;
+        protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Smasher), typeof(Gunner) };
 
         [SerializeField]
-        private List<EnemyAbility> debuffs;
+        [Tooltip("The percentage the slow the enemy's movement speed")]
+        private float slowPercentage;
+        [SerializeField]
+        private float duration;
 
         /// <summary>
         /// Adds the EnemyAbility to some target(s)
@@ -26,11 +31,21 @@ namespace Upgrades.Modules.PositiveModules
         {
             foreach (var target in targets)
             {
-                foreach (var debuff in debuffs)
-                {
-                    target.GrantAbility(debuff);
-                }
+                Runner.Run(SlowEnemy(target));
             }
+        }
+        
+        /// <summary>
+        /// Applies the slow effect for a set duration
+        /// </summary>
+        /// <param name="target">The enemy to slow</param>
+        private IEnumerator SlowEnemy(Enemy target)
+        {
+            target.speed *= 1f - slowPercentage;
+
+            yield return new WaitForSeconds(duration);
+
+            target.speed /= 1f - slowPercentage;
         }
     }
 }

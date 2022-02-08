@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2db0c3d1579341f8bd90af8aa9e324d, type: 3}
+  m_Script: {fileID: 11500000, guid: 511ad0b555d6e4079bc07b09d7197c3a, type: 3}
   m_Name: SlowT2
   m_EditorClassIdentifier: 
   moduleTier: 2
@@ -17,6 +17,6 @@ MonoBehaviour:
   displayName: Slow II
   tagline: Subzero
   icon: {fileID: -3843445929337379658, guid: 16c979c866f439b4b988e7020b313794, type: 3}
-  effectText: Slows enemies by 50%
-  debuffs:
-  - {fileID: 11400000, guid: f3f45f90c3d2c40c09e6f2aabccd1f38, type: 2}
+  effectText: Slows enemies per hit by 15% for 3s
+  slowPercentage: 0.15
+  duration: 3
