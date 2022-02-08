@@ -1,4 +1,5 @@
 ﻿using System;
+using Abstract.Data;
 using UI.Level;
 using UnityEngine;
 
@@ -16,11 +17,11 @@ namespace Turrets
         private float _fireRateIncrease = 1f;
         private float _oldIncrease = 1f;
         [Tooltip("That amount to increase the fireRate by each attack")]
-        public float spinMultiplier = 1.01f;
+        public UpgradableStat spinMultiplier = new UpgradableStat(1.1f);
         [Tooltip("How much to divide the fire rate when not attacking")]
-        public float spinCooldown = 1.004f;
+        public UpgradableStat spinCooldown = new UpgradableStat(1.08f);
         [Tooltip("The maximum fire rate increase the gunner can reach without modules")]
-        public float maxFireRate = 3f;
+        public UpgradableStat maxFireRate = new UpgradableStat(6.5f);
 
 
         /// <summary>
@@ -81,15 +82,15 @@ namespace Turrets
         {
             if (isIncrease)
             {
-                _fireRateIncrease *= spinMultiplier;
-                if (_fireRateIncrease > maxFireRate)
+                _fireRateIncrease *= spinMultiplier.GetStat();
+                if (_fireRateIncrease > maxFireRate.GetStat())
                 {
-                    _fireRateIncrease = maxFireRate;
+                    _fireRateIncrease = maxFireRate.GetStat();
                 }
             }
             else
             {
-                _fireRateIncrease /= spinCooldown;
+                _fireRateIncrease /= spinCooldown.GetStat();
                 if (_fireRateIncrease < 1f)
                 {
                     _fireRateIncrease = 1f;
