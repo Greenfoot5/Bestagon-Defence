@@ -19,4 +19,4 @@ MonoBehaviour:
   range: 3
   timer: 5
   startCount: 3
-  slowPercentage: 0.1
+  slowPercentage: 0.25
