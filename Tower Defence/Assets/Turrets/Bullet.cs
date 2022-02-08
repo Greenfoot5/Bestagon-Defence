@@ -75,14 +75,7 @@ namespace Turrets
             // Spawn hit effect
             var position = transform;
             var effectIns = Instantiate(impactEffect, position.position, position.rotation);
-            
-            // Add module effects
-            var enemy = _target.GetComponent<Enemy>();
-            foreach (var module in _modules)
-            {
-                module.OnHit(new []{enemy});
-            }
-            
+
             Destroy(effectIns, 2f);
         
             // If the bullet has AoE damage or not
@@ -106,6 +99,12 @@ namespace Turrets
         private void Damage(Component enemy)
         {
             var em = enemy.GetComponent<Enemy>();
+            
+            // Add module effects
+            foreach (var module in _modules)
+            {
+                module.OnHit(new []{em});
+            }
 
             if (em != null)
             {
@@ -122,10 +121,13 @@ namespace Turrets
             var colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
             foreach (var collider2d in colliders)
             {
-                if (collider2d.CompareTag("Enemy"))
+                if (!collider2d.CompareTag("Enemy")) continue;
+                
+                foreach (var module in _modules)
                 {
-                    Damage(collider2d.transform);
+                    module.OnHit(new []{collider2d.GetComponent<Enemy>()});
                 }
+                Damage(collider2d.transform);
             }
         }
         

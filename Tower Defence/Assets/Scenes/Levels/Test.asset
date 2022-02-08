@@ -33,7 +33,7 @@ MonoBehaviour:
   turretOptionWeight: 0
   modules:
     list:
-    - item: {fileID: 11400000, guid: 9595822f285bf468f8c04c3d49a93ccf, type: 2}
+    - item: {fileID: 11400000, guid: de7bb3dd1d7c642acbd2c447a2a5dcc6, type: 2}
       weight: 0
     - item: {fileID: 11400000, guid: fd238766202484223ad41e159363d2d9, type: 2}
       weight: 0
