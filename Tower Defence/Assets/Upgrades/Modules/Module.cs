@@ -45,7 +45,7 @@ namespace Upgrades.Modules
         /// <summary>
         /// Called when a module is added to a turret
         /// </summary>
-        /// <param name="turret">The turret to mofidy</param>
+        /// <param name="turret">The turret to modify</param>
         public virtual void AddModule(Turret turret) { }
         
         /// <summary>
