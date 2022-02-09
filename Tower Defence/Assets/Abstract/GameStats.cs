@@ -12,12 +12,35 @@ namespace Abstract
         public static int money;
         public int startMoney = 200;
 
-        public static int lives;
+        private static int _lives;
         public int startLives = 20;
+        public static int lives
+        {
+            get => _lives;
+            set
+            {
+                _lives = value;
+                if (value == 0)
+                    gameOver();
+            }
+        }
 
-        public static int rounds;
-    
+        private static int _rounds;
+        public static int rounds
+        { 
+            get => _rounds;
+            set
+            {
+                _rounds = value;
+                roundProgress();
+            }
+        }
+
         public static GameControls controls;
+
+        // Events
+        public static event RoundProgressEvent roundProgress;
+        public static event GameOverEvent gameOver;
         
         /// <summary>
         /// Resets all stats and enables the game's controls at the start of the game
@@ -25,8 +48,8 @@ namespace Abstract
         private void Awake()
         {
             money = startMoney;
-            lives = startLives;
-            rounds = 0;
+            _lives = startLives;
+            _rounds = 0;
         
             // Controls
             controls = new GameControls();
@@ -34,4 +57,7 @@ namespace Abstract
             EnhancedTouchSupport.Enable();
         }
     }
+
+    public delegate void RoundProgressEvent();
+    public delegate void GameOverEvent();
 }
