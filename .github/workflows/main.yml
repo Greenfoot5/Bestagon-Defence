@@ -1,0 +1,76 @@
+name: Bestagone-Defence build
+
+on: [push, pull_request]
+
+jobs:
+  buildForAllSupportedPlatforms:
+    name: Build for ${{ matrix.targetPlatform }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        targetPlatform:
+          - StandaloneOSX # Build a macOS standalone (Intel 64-bit).
+          - StandaloneWindows # Build a Windows standalone.
+          - StandaloneWindows64 # Build a Windows 64-bit standalone.
+          - StandaloneLinux64 # Build a Linux 64-bit standalone.
+          #- iOS # Build an iOS player.
+          - Android # Build an Android .apk standalone app.
+          #- WebGL # WebGL.
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - uses: actions/cache@v2
+        with:
+          path: Library
+          key: Library-${{ matrix.targetPlatform }}
+          restore-keys: Library-
+
+      - uses: game-ci/unity-builder@v2
+        env:
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+
+          # Use for paid version:
+          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+
+          # Use for free version:
+          #UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        with:
+          projectPath: 'Tower Defence'
+          targetPlatform: ${{ matrix.targetPlatform }}
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Build-${{ matrix.targetPlatform }}
+          path: 'Tower Defence/build/${{ matrix.targetPlatform }}'
+
+      # Return License
+      - uses: game-ci/unity-return-license@v1
+        if: always()
+
+      - uses: paulhatch/semantic-version@v4.0.2
+        with:
+          tag_prefix: "v"
+          # A string which, if present in a git commit, indicates that a change represents a
+          # major (breaking) change, supports regular expressions wrapped with '/'
+          major_pattern: "(MAJOR)"
+          # Same as above except indicating a minor change, supports regular expressions wrapped with '/'
+          minor_pattern: "(MINOR)"
+          # A string to determine the format of the version output
+          format: "${major}.${minor}.${patch}"
+          # Optional path to check for changes. If any changes are detected in the path the
+          # 'changed' output will true. Enter multiple paths separated by spaces.
+          change_path: "Tower Defence"
+          # Named version, will be used as suffix for name version tag
+          namespace: Bestagone-Defence
+          # Indicate whether short tags like 'v1' should be supported. If false only full
+          # tags like 'v1.0.0' will be recognized.
+          short_tags: false
+          # If this is set to true, *every* commit will be treated as a new version.
+          bump_each_commit: false
+          
