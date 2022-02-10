@@ -1,4 +1,6 @@
 using System;
+using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Abstract.Data
 {
@@ -9,8 +11,10 @@ namespace Abstract.Data
     [Serializable]
     public struct UpgradableStat
     {
-        public float stat;
-        public float modifier;
+        [SerializeField]
+        private float stat;
+        [SerializeField]
+        private float modifier;
 
         public UpgradableStat(float baseValue)
         {
@@ -27,8 +31,16 @@ namespace Abstract.Data
         {
             return stat <= 0f ? 0f : stat;
         }
-    
-    
+        
+        /// <summary>
+        /// Gets the modifier of the stat
+        /// </summary>
+        /// <returns>The current modifier</returns>
+        public float GetModifier()
+        {
+            return modifier;
+        }
+
         /// <summary>
         /// Gets the stat after it's been modified
         /// If the value is less than 0, it will return 0

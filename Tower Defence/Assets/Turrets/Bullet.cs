@@ -15,7 +15,7 @@ namespace Turrets
     
         public UpgradableStat speed = new UpgradableStat(30f);
         [Tooltip("Only set if the bullet deals AoE damage")]
-        public float explosionRadius;
+        public UpgradableStat explosionRadius;
         [HideInInspector]
         public UpgradableStat damage = new UpgradableStat(50f);
     
@@ -79,7 +79,7 @@ namespace Turrets
             Destroy(effectIns, 2f);
         
             // If the bullet has AoE damage or not
-            if (explosionRadius > 0f)
+            if (explosionRadius.GetStat() > 0f)
             {
                 Explode();
             }
@@ -118,7 +118,7 @@ namespace Turrets
         private void Explode()
         {
             // Gets all the enemies in the AoE and calls Damage on them
-            var colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
+            var colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius.GetStat());
             foreach (var collider2d in colliders)
             {
                 if (!collider2d.CompareTag("Enemy")) continue;
@@ -147,7 +147,7 @@ namespace Turrets
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.cyan;
-            Gizmos.DrawWireSphere(transform.position, explosionRadius);
+            Gizmos.DrawWireSphere(transform.position, explosionRadius.GetStat());
         }
     }
 }

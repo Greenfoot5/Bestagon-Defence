@@ -44,7 +44,7 @@ namespace Upgrades.Modules.PositiveModules
         /// <param name="bullet">The bullet to add stats for</param>
         public override void OnShoot(Bullet bullet)
         {
-            bullet.explosionRadius += explosionRadiusChange;
+            bullet.explosionRadius.AddModifier(explosionRadiusChange);
             bullet.damage.AddModifier(damagePercentageChange);
             bullet.speed.AddModifier(speedPercentageChange);
         }

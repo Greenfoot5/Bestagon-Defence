@@ -24,6 +24,8 @@ MonoBehaviour:
       weight: 0
     - item: {fileID: 11400000, guid: ac091f4cd04e6400f8fa5eb75b85934b, type: 2}
       weight: 0
+    - item: {fileID: 11400000, guid: 564156d9aff4b4edd9bad5078427e665, type: 2}
+      weight: 0
   initialDuplicateCheck: 1
   turrets:
     list:
@@ -33,7 +35,11 @@ MonoBehaviour:
       weight: 100
     - item: {fileID: 11400000, guid: 0d5f1a13a72504c058f85636be33284b, type: 2}
       weight: 100
+    - item: {fileID: 11400000, guid: 0f0a6da7d36a64a3a89ddcc104e995c0, type: 2}
+      weight: 100
     - item: {fileID: 11400000, guid: 0e6d2889320bf4e3eaff513a492ccf6d, type: 2}
+      weight: 75
+    - item: {fileID: 11400000, guid: 4aedceea9b860486d9797fb4dfb62a16, type: 2}
       weight: 75
     - item: {fileID: 11400000, guid: 40dc94d320d594a5fad076af47f85c42, type: 2}
       weight: 25
@@ -50,6 +56,8 @@ MonoBehaviour:
     - item: {fileID: 11400000, guid: 263ef519110164b4a93f4335a6c4966c, type: 2}
       weight: 5
     - item: {fileID: 11400000, guid: 200d032e925f4427581197dacf1c0089, type: 2}
+      weight: 5
+    - item: {fileID: 11400000, guid: 564156d9aff4b4edd9bad5078427e665, type: 2}
       weight: 5
   turretDuplicateCheck: 1
   turretOptionWeight: 1
@@ -85,7 +93,7 @@ MonoBehaviour:
       weight: 100
   moduleDuplicateCheck: 2
   moduleOptionWeight: 1
-  initialSelectionCost: 150
-  selectionCostIncrement: 15
+  initialSelectionCost: 130
+  selectionCostIncrement: 14
   health: 1.2
   enemyCount: 1.04

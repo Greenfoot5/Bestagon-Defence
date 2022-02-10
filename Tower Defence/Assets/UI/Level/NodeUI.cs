@@ -21,7 +21,7 @@ namespace UI.Level
     
         private Node _target;
     
-        [FormerlySerializedAs("_modules")] public Transform modules;
+        public Transform modules;
         public GameObject moduleIconPrefab;
 
         public TMP_Text stats;

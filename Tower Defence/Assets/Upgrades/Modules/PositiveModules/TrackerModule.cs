@@ -14,6 +14,8 @@ namespace Upgrades.Modules.PositiveModules
 
         [SerializeField]    
         private float rotationSpeedPercentageChange;
+        [SerializeField]
+        private float damagePercentageChange;
         
         /// <summary>
         /// Increases the rotation speed of a turret
@@ -22,6 +24,7 @@ namespace Upgrades.Modules.PositiveModules
         public override void AddModule(Turret turret)
         {
             ((DynamicTurret)turret).rotationSpeed.AddModifier(rotationSpeedPercentageChange);
+            turret.damage.AddModifier(damagePercentageChange);
         }
         
         /// <summary>
@@ -31,6 +34,7 @@ namespace Upgrades.Modules.PositiveModules
         public override void RemoveModule(Turret turret)
         {
             ((DynamicTurret)turret).rotationSpeed.TakeModifier(rotationSpeedPercentageChange);
+            turret.damage.TakeModifier(damagePercentageChange);
         }
     }
 }
