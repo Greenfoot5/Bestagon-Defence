@@ -60,7 +60,7 @@ MonoBehaviour:
     - item: {fileID: 11400000, guid: 564156d9aff4b4edd9bad5078427e665, type: 2}
       weight: 5
   turretDuplicateCheck: 1
-  turretOptionWeight: 1
+  turretOptionWeight: 12
   modules:
     list:
     - item: {fileID: 11400000, guid: ed82589302c26471c93da2205759f4d3, type: 2}
@@ -90,7 +90,7 @@ MonoBehaviour:
     - item: {fileID: 11400000, guid: 2a42e155c209b403eb3e9155f49abcfa, type: 2}
       weight: 100
   moduleDuplicateCheck: 2
-  moduleOptionWeight: 1
+  moduleOptionWeight: 10
   initialSelectionCost: 130
   selectionCostIncrement: 14
   health: 1.2
