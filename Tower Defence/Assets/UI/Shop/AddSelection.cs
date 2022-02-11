@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Abstract;
 using Abstract.Data;
@@ -22,6 +23,8 @@ namespace UI.Shop
         public TypeSpriteLookup glyphsLookup;
 
         private bool _firstPurchase = true;
+
+        private readonly List<Type> _turretTypes = new List<Type>();
     
         /// <summary>
         /// Setups references, checks the player has enough gold and freezes the game when enabled
@@ -123,6 +126,20 @@ namespace UI.Shop
                     // Grants an Module option
                     var modules = _levelData.modules;
                     var selected = modules.GetRandomItem();
+                    
+                    // Check the player actually has a turret of the modules type
+                    // But only if they have actually bought some turrets
+                    if (_turretTypes.Any())
+                    {
+                        while (!(selected.GetValidTypes() == null ||
+                                 _turretTypes.Any(x => selected.GetValidTypes().Contains(x))))
+                        {
+                            selected = modules.GetRandomItem();
+                            lagCounter++;
+                            if (lagCounter > lagCap)
+                                throw new OverflowException("Too many attempts to pick new Module");
+                        }
+                    }
 
                     // Gets a new Module if the random has picked a duplicate (depending on settings)
                     switch (_levelData.moduleDuplicateCheck)
@@ -231,6 +248,12 @@ namespace UI.Shop
         {
             var turretUI = Instantiate(turretSelectionUI, transform);
             turretUI.GetComponent<TurretSelectionUI>().Init(turret, shop, glyphsLookup);
+        }
+
+        public void AddTurretType(Type type)
+        {
+            if (!_turretTypes.Contains(type))
+                _turretTypes.Add(type);
         }
     }
 }

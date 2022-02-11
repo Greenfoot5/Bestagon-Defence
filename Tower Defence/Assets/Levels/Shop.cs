@@ -99,6 +99,8 @@ namespace Levels
             var turretButton = Instantiate(defaultTurretButton, turretInventory.transform);
             turretButton.GetComponent<Image>().sprite = turret.shopIcon;
             turretButton.GetComponent<Button>().onClick.AddListener(delegate { SelectTurret(turret, turretButton); });
+            
+            selectionUI.GetComponent<AddSelection>().AddTurretType(turret.prefab.GetComponent<Turret>().GetType());
         }
         
         /// <summary>

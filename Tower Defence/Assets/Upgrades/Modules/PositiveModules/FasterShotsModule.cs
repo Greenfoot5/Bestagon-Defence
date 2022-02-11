@@ -1,7 +1,6 @@
 using System;
 using Turrets;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Upgrades.Modules.PositiveModules
 {
