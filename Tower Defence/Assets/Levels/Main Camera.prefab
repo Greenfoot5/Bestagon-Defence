@@ -98,7 +98,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyboardPanSpeed: 10
-  swipePanSpeed: 10
+  mouseSensitivity: 1
+  touchSensitivity: 1
+  zoomInfluence: 3
   minPos: {x: -8, y: -5}
   maxPos: {x: 8, y: 5}
   scrollSpeed: 5
