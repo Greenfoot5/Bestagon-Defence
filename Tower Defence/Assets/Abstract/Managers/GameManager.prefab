@@ -218,7 +218,7 @@ MonoBehaviour:
     - 1
     - 1
   timeBetweenWaves: 5
-  preparationTime: 5
+  preparationTime: 8
   waveCountdownText: {fileID: 0}
   spawnPoint: {fileID: 0}
 --- !u!114 &5782079356602982467
