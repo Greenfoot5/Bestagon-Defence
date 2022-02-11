@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using Abstract;
 using Abstract.Managers;
 using Scenes.Levels;
@@ -168,10 +169,10 @@ namespace Levels
                 { }
             }
             
-            if (moduleTransform.childCount == 2 && moduleTransform.GetChild(1).GetComponentInChildren<Button>().interactable)
-            {
-                moduleTransform.GetChild(1).GetComponent<Button>().onClick.Invoke();
-            }
+            // if (moduleTransform.childCount == 2 && moduleTransform.GetChild(1).GetComponentInChildren<Button>().interactable)
+            // {
+            //     moduleTransform.GetChild(1).GetComponent<Button>().onClick.Invoke();
+            // }
         }
         
         /// <summary>
@@ -181,11 +182,14 @@ namespace Levels
         {
             turretInventory.SetActive(true);
             moduleInventory.SetActive(false);
-
-            if (turretInventory.transform.childCount == 2)
-            {
-                turretInventory.transform.GetChild(1).GetComponent<Button>().onClick.Invoke();
-            }
+            
+            // Debug.Log(turretInventory.transform.childCount);
+            //
+            // if (turretInventory.transform.childCount != 2) return;
+            //
+            // Debug.Log(turretInventory.transform.GetChild(1).name);
+            // turretInventory.transform.GetChild(1).GetComponent<Button>().onClick.Invoke();
+            // turretInventory.transform.GetChild(1).GetComponent<Button>().Select();
         }
     }
 }
