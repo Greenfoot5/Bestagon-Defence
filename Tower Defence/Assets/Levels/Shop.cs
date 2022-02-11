@@ -151,11 +151,13 @@ namespace Levels
         {
             turretInventory.SetActive(false);
             moduleInventory.SetActive(true);
+
+            var moduleTransform = moduleInventory.transform;
             
             // Loop through all modules and check if they are applicable
-            for(var i = 0; i < moduleInventory.transform.childCount; i++)
+            for(var i = 0; i < moduleTransform.childCount; i++)
             {
-                var child = moduleInventory.transform.GetChild(i);
+                var child = moduleTransform.GetChild(i);
                 try
                 {
                     child.GetComponentInChildren<Button>().interactable =
@@ -164,6 +166,11 @@ namespace Levels
                 // One will be the shop button
                 catch (NullReferenceException)
                 { }
+            }
+            
+            if (moduleTransform.childCount == 2 && moduleTransform.GetChild(1).GetComponentInChildren<Button>().interactable)
+            {
+                moduleTransform.GetChild(1).GetComponent<Button>().onClick.Invoke();
             }
         }
         
@@ -174,6 +181,11 @@ namespace Levels
         {
             turretInventory.SetActive(true);
             moduleInventory.SetActive(false);
+
+            if (turretInventory.transform.childCount == 2)
+            {
+                turretInventory.transform.GetChild(1).GetComponent<Button>().onClick.Invoke();
+            }
         }
     }
 }
