@@ -18,7 +18,7 @@ public class VersionText : MonoBehaviour
         StringBuilder text = new StringBuilder();
 
         text.AppendLine("Bestagon Defence");
-        text.AppendFormat("{0} - Build {1}\n", Application.version, 0);
+        text.AppendFormat("{0}\n", Application.version);
         text.AppendFormat("Unity {0}\n", Application.unityVersion);
         text.Append(SystemInfo.operatingSystem);
 
