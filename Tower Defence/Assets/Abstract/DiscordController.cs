@@ -42,7 +42,15 @@ namespace Abstract
                 return;
             }
 
-            _activity = new Activity() { Name = "Bestagon Defence" };
+            _activity = new Activity() 
+            {
+                Name = "Bestagon Defence",
+                Assets = new ActivityAssets()
+                {
+                    SmallImage = "bestagon_logo_square_large",
+                    SmallText = "v" + Application.version
+                }
+            };
 
             DontDestroyOnLoad(this);
 
@@ -71,36 +79,53 @@ namespace Abstract
         /// </summary>
         public void UpdateActivity()
         {
-            (_activity.Details, _activity.State) = GetState(_currentScene.name);
+            GetState(_currentScene.name);
             _discord.GetActivityManager().UpdateActivity(_activity, (res) => { });
         }
 
         /// <summary>
-        /// Creates 2 strings for use in the Rich Presence display based on the scene name and game state.
+        /// Updates the <see cref="_activity"/> field to contain strings for display in the Rich Presence
+        /// based on the scene name and game state.
         /// </summary>
         /// <param name="sceneName">The scene name for processing</param>
-        /// <returns>The <see cref="Activity.Details"/> and <see cref="Activity.State"/> strings</returns>
-        private (string, string) GetState(string sceneName)
+        private void GetState(string sceneName)
         {
+            _activity.State = "";
+            _activity.Assets.LargeImage = "";
+            _activity.Assets.LargeText = "";
+
             // Hard coded scenes
             switch (sceneName)
             {
                 case "MainMenu":
-                    return ("𝗠𝗮𝗶𝗻 Menu", "");
+                    _activity.Details = "𝗠𝗮𝗶𝗻 Menu";
+                    return;
 
                 case "LevelSelect":
-                    return ("𝗟𝗲𝘃𝗲𝗹 Select", "");
+                    _activity.Details = "𝗟𝗲𝘃𝗲𝗹 Select";
+                    return;
             }
 
             // Any other scene that isn't a level too
             if (sceneName.Substring(sceneName.Length - 5) != "Level")
-                return ("Somewhere far away", "");
+            {
+                _activity.Details = "Somewhere far away";
+                return;
+            }
 
             // A playable level
-            return (
-                "𝗣𝗹𝗮𝘆𝗶𝗻𝗴 " + AddSpacesToSentence(sceneName.Substring(0, sceneName.Length - 5)),
-                GameStats.lives > 0 ? string.Format("𝗪𝗮𝘃𝗲 {0}｜𝗟𝗶𝘃𝗲𝘀 {1}", GameStats.rounds, GameStats.lives) : "𝗚𝗮𝗺𝗲 Over"
-                );
+            string level = sceneName.Substring(0, sceneName.Length - 5);
+            string levelName = AddSpacesToSentence(level);
+
+            // Large image of the level
+            _activity.Assets.LargeImage = level.ToLower();
+            _activity.Assets.LargeText = levelName;
+
+            // Game state text based on lives count
+            _activity.Details = "𝗣𝗹𝗮𝘆𝗶𝗻𝗴 " + levelName;
+            _activity.State = GameStats.lives > 0
+                ? string.Format("𝗪𝗮𝘃𝗲 {0}｜𝗟𝗶𝘃𝗲𝘀 {1}", GameStats.rounds, GameStats.lives)
+                : "𝗚𝗮𝗺𝗲 Over";
         }
 
         /// <summary>
