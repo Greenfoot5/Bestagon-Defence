@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
 using Abstract;
 using Abstract.Managers;
 using Scenes.Levels;
@@ -182,14 +181,12 @@ namespace Levels
         {
             turretInventory.SetActive(true);
             moduleInventory.SetActive(false);
-            
-            // Debug.Log(turretInventory.transform.childCount);
-            //
-            // if (turretInventory.transform.childCount != 2) return;
-            //
-            // Debug.Log(turretInventory.transform.GetChild(1).name);
-            // turretInventory.transform.GetChild(1).GetComponent<Button>().onClick.Invoke();
-            // turretInventory.transform.GetChild(1).GetComponent<Button>().Select();
+
+            if (turretInventory.transform.childCount != 2) return;
+
+            // var button = turretInventory.transform.GetChild(1).GetComponent<Button>();
+            // button.onClick.Invoke();
+            // button.Select();
         }
     }
 }
