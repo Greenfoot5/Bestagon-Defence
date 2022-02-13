@@ -179,14 +179,15 @@ namespace Levels
         /// </summary>
         public void EnableTurretInventory()
         {
+            Debug.Log("ENABLING!");
             turretInventory.SetActive(true);
             moduleInventory.SetActive(false);
 
             if (turretInventory.transform.childCount != 2) return;
 
-            // var button = turretInventory.transform.GetChild(1).GetComponent<Button>();
-            // button.onClick.Invoke();
-            // button.Select();
+            var button = turretInventory.transform.GetChild(1).GetComponent<Button>();
+            button.onClick.Invoke();
+            button.Select();
         }
     }
 }

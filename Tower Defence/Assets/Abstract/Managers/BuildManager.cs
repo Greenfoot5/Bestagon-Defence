@@ -53,7 +53,7 @@ namespace Abstract.Managers
         {
             _turretToBuild = turret;
             _buildingButton = buttonToDelete;
-            DeselectNode();
+            //DeselectNode();
         }
         
         /// <summary>
