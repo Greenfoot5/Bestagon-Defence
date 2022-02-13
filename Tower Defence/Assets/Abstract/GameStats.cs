@@ -21,7 +21,9 @@ namespace Abstract
             {
                 _lives = value;
                 if (value == 0)
-                    gameOver();
+                {
+                    gameOver?.Invoke();
+                }
             }
         }
 
@@ -32,7 +34,7 @@ namespace Abstract
             set
             {
                 _rounds = value;
-                roundProgress();
+                roundProgress?.Invoke();
             }
         }
 
