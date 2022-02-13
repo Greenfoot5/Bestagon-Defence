@@ -21,5 +21,5 @@ MonoBehaviour:
 
     Range increased
     by 15%'
-  bulletSpeedChange: 0.2
+  bulletSpeedChange: 1
   rangeChange: 0.15
