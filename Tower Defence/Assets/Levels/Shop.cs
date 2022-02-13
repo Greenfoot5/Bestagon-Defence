@@ -167,11 +167,13 @@ namespace Levels
                 catch (NullReferenceException)
                 { }
             }
+
+            if (moduleTransform.childCount != 2 ||
+                !moduleTransform.GetChild(1).GetComponentInChildren<Button>().interactable) return;
             
-            // if (moduleTransform.childCount == 2 && moduleTransform.GetChild(1).GetComponentInChildren<Button>().interactable)
-            // {
-            //     moduleTransform.GetChild(1).GetComponent<Button>().onClick.Invoke();
-            // }
+            var button = moduleTransform.GetChild(1).GetComponent<Button>();
+            button.onClick.Invoke();
+            button.Select();
         }
         
         /// <summary>
