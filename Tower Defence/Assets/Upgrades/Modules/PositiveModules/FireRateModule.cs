@@ -10,7 +10,7 @@ namespace Upgrades.Modules.PositiveModules
     [CreateAssetMenu(fileName = "FireRateModule", menuName = "Modules/Fire Rate")]
     public class FireRateModule : Module
     {
-        protected override Type[] ValidTypes => null;  // any
+        protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Smasher), typeof(Gunner) };
 
         [SerializeField]
         private float percentageChange;
@@ -21,7 +21,17 @@ namespace Upgrades.Modules.PositiveModules
         /// <param name="turret">The turret to increase the fire rate for</param>
         public override void AddModule(Turret turret)
         {
-            turret.fireRate.AddModifier(percentageChange);
+            if (turret.GetType() != typeof(Gunner))
+            {
+                turret.fireRate.AddModifier(percentageChange);
+            }
+            else
+            {
+                var gunner = (Gunner)turret;
+                gunner.maxFireRate.AddModifier(percentageChange);
+                gunner.spinCooldown.AddModifier(percentageChange);
+                gunner.spinMultiplier.AddModifier(percentageChange);
+            }
         }
         
         /// <summary>

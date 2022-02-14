@@ -114,7 +114,7 @@ namespace Abstract.Managers
             _waveIndex++;
             _isSpawning = false;
 
-            if (_waveIndex % waves.Length != 0) yield break;
+            //if (_waveIndex % waves.Length != 0) yield break;
             //Debug.Log("Level complete!");
         }
     

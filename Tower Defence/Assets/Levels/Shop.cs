@@ -99,6 +99,8 @@ namespace Levels
             var turretButton = Instantiate(defaultTurretButton, turretInventory.transform);
             turretButton.GetComponent<Image>().sprite = turret.shopIcon;
             turretButton.GetComponent<Button>().onClick.AddListener(delegate { SelectTurret(turret, turretButton); });
+            
+            selectionUI.GetComponent<AddSelection>().AddTurretType(turret.prefab.GetComponent<Turret>().GetType());
         }
         
         /// <summary>
@@ -149,11 +151,13 @@ namespace Levels
         {
             turretInventory.SetActive(false);
             moduleInventory.SetActive(true);
+
+            var moduleTransform = moduleInventory.transform;
             
             // Loop through all modules and check if they are applicable
-            for(var i = 0; i < moduleInventory.transform.childCount; i++)
+            for(var i = 0; i < moduleTransform.childCount; i++)
             {
-                var child = moduleInventory.transform.GetChild(i);
+                var child = moduleTransform.GetChild(i);
                 try
                 {
                     child.GetComponentInChildren<Button>().interactable =
@@ -163,6 +167,13 @@ namespace Levels
                 catch (NullReferenceException)
                 { }
             }
+
+            if (moduleTransform.childCount != 2 ||
+                !moduleTransform.GetChild(1).GetComponentInChildren<Button>().interactable) return;
+            
+            var button = moduleTransform.GetChild(1).GetComponentInChildren<Button>();
+            button.onClick.Invoke();
+            button.Select();
         }
         
         /// <summary>
@@ -172,6 +183,12 @@ namespace Levels
         {
             turretInventory.SetActive(true);
             moduleInventory.SetActive(false);
+
+            if (turretInventory.transform.childCount != 2) return;
+
+            var button = turretInventory.transform.GetChild(1).GetComponent<Button>();
+            button.onClick.Invoke();
+            button.Select();
         }
     }
 }

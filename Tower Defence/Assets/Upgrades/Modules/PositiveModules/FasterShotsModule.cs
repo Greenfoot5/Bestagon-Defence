@@ -10,10 +10,26 @@ namespace Upgrades.Modules.PositiveModules
     [CreateAssetMenu(fileName = "FasterShotsT0", menuName = "Modules/Faster Shots")]
     public class FasterShotsModule : Module
     {
-        protected override Type[] ValidTypes => new[] { typeof(Shooter) };
+        protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Gunner) };
 
         [SerializeField]
-        private float percentageChange;
+        private float bulletSpeedChange;
+        [SerializeField]
+        private float rangeChange;
+        
+        /// <summary>
+        /// Increases the range of a turret
+        /// </summary>
+        /// <param name="turret">The turret to apply the modifications to</param>
+        public override void AddModule(Turret turret)
+        {
+            turret.range.AddModifier(rangeChange);
+        }
+
+        public override void RemoveModule(Turret turret)
+        {
+            turret.range.TakeModifier(rangeChange);
+        }
         
         /// <summary>
         /// Increases the speed of the bullet once fired
@@ -21,7 +37,7 @@ namespace Upgrades.Modules.PositiveModules
         /// <param name="bullet">The bullet to accelerate</param>
         public override void OnShoot(Bullet bullet)
         {
-            bullet.speed.AddModifier(percentageChange);
+            bullet.speed.AddModifier(bulletSpeedChange);
         }
     }
 }

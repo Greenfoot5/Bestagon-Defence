@@ -14,6 +14,8 @@ namespace Editor.Turrets
         private SerializedProperty _range;
         private SerializedProperty _fireRate;
 
+        private SerializedProperty _rangeDisplay;
+
 
         protected void OnEnable()
         {
@@ -22,6 +24,8 @@ namespace Editor.Turrets
             _damage = serializedObject.FindProperty("damage");
             _range = serializedObject.FindProperty("range");
             _fireRate = serializedObject.FindProperty("fireRate");
+
+            _rangeDisplay = serializedObject.FindProperty("rangeDisplay");
         }
 
         public override void OnInspectorGUI()
@@ -38,6 +42,8 @@ namespace Editor.Turrets
             EditorGUILayout.PropertyField(_damage);
             EditorGUILayout.PropertyField(_range);
             EditorGUILayout.PropertyField(_fireRate);
+            
+            EditorGUILayout.PropertyField(_rangeDisplay);
 
             serializedObject.ApplyModifiedProperties();
         }

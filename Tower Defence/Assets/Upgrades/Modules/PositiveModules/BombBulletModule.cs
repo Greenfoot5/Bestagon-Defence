@@ -10,7 +10,7 @@ namespace Upgrades.Modules.PositiveModules
     [CreateAssetMenu(fileName = "BombBulletT0", menuName = "Modules/Bomb Bullet")]
     public class BombBulletModule : Module
     {
-        protected override Type[] ValidTypes => new[] { typeof(Shooter) };
+        protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Gunner)};
 
         public float explosionRadiusChange;
         public float damagePercentageChange;
@@ -44,7 +44,7 @@ namespace Upgrades.Modules.PositiveModules
         /// <param name="bullet">The bullet to add stats for</param>
         public override void OnShoot(Bullet bullet)
         {
-            bullet.explosionRadius += explosionRadiusChange;
+            bullet.explosionRadius.AddModifier(explosionRadiusChange);
             bullet.damage.AddModifier(damagePercentageChange);
             bullet.speed.AddModifier(speedPercentageChange);
         }

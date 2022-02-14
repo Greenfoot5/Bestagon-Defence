@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace Abstract.Data
 {
     /// <summary>

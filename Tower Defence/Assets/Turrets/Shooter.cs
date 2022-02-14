@@ -55,7 +55,7 @@ namespace Turrets
             // If for some reason the bullet no longer has a Bullet component
             if (bullet == null) return;
             
-            // Adds the modules to the buller
+            // Adds the modules to the bullet
             foreach (var module in modules)
             {
                 bullet.AddModule(module);
