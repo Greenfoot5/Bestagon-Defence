@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 8755226041463282370}
   - component: {fileID: 2977480083643760686}
   m_Layer: 0
-  m_Name: TurretSelectionModulesIcon
+  m_Name: TurretSelectionCardModuleIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

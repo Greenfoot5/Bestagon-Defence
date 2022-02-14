@@ -171,7 +171,7 @@ namespace Levels
             if (moduleTransform.childCount != 2 ||
                 !moduleTransform.GetChild(1).GetComponentInChildren<Button>().interactable) return;
             
-            var button = moduleTransform.GetChild(1).GetComponent<Button>();
+            var button = moduleTransform.GetChild(1).GetComponentInChildren<Button>();
             button.onClick.Invoke();
             button.Select();
         }
