@@ -1994,7 +1994,7 @@ GameObject:
   - component: {fileID: 4356707813417822490}
   - component: {fileID: 767975858313691649}
   m_Layer: 5
-  m_Name: TurretSelectionOption
+  m_Name: SelectionTurretCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

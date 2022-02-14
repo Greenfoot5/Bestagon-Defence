@@ -24,6 +24,8 @@ MonoBehaviour:
       weight: 0
     - item: {fileID: 11400000, guid: ac091f4cd04e6400f8fa5eb75b85934b, type: 2}
       weight: 0
+    - item: {fileID: 11400000, guid: 564156d9aff4b4edd9bad5078427e665, type: 2}
+      weight: 0
   initialDuplicateCheck: 1
   turrets:
     list:
@@ -33,7 +35,11 @@ MonoBehaviour:
       weight: 100
     - item: {fileID: 11400000, guid: 0d5f1a13a72504c058f85636be33284b, type: 2}
       weight: 100
+    - item: {fileID: 11400000, guid: 0f0a6da7d36a64a3a89ddcc104e995c0, type: 2}
+      weight: 100
     - item: {fileID: 11400000, guid: 0e6d2889320bf4e3eaff513a492ccf6d, type: 2}
+      weight: 75
+    - item: {fileID: 11400000, guid: 4aedceea9b860486d9797fb4dfb62a16, type: 2}
       weight: 75
     - item: {fileID: 11400000, guid: 40dc94d320d594a5fad076af47f85c42, type: 2}
       weight: 25
@@ -51,8 +57,10 @@ MonoBehaviour:
       weight: 5
     - item: {fileID: 11400000, guid: 200d032e925f4427581197dacf1c0089, type: 2}
       weight: 5
+    - item: {fileID: 11400000, guid: 564156d9aff4b4edd9bad5078427e665, type: 2}
+      weight: 5
   turretDuplicateCheck: 1
-  turretOptionWeight: 1
+  turretOptionWeight: 12
   modules:
     list:
     - item: {fileID: 11400000, guid: ed82589302c26471c93da2205759f4d3, type: 2}
@@ -65,8 +73,6 @@ MonoBehaviour:
       weight: 50
     - item: {fileID: 11400000, guid: 93c709e1323f24997afed2605b01ff51, type: 2}
       weight: 100
-    - item: {fileID: 11400000, guid: b27a173d3675244dd8aa830dafac9f53, type: 2}
-      weight: 50
     - item: {fileID: 11400000, guid: 103873ced36d04d7288e4b0b48a679ab, type: 2}
       weight: 100
     - item: {fileID: 11400000, guid: f488ec51e287048928b2b94b48e4abef, type: 2}
@@ -84,8 +90,8 @@ MonoBehaviour:
     - item: {fileID: 11400000, guid: 2a42e155c209b403eb3e9155f49abcfa, type: 2}
       weight: 100
   moduleDuplicateCheck: 2
-  moduleOptionWeight: 1
-  initialSelectionCost: 150
-  selectionCostIncrement: 15
+  moduleOptionWeight: 10
+  initialSelectionCost: 130
+  selectionCostIncrement: 14
   health: 1.2
   enemyCount: 1.04

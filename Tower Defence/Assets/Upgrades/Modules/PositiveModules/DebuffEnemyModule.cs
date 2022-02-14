@@ -14,7 +14,7 @@ namespace Upgrades.Modules.PositiveModules
     [CreateAssetMenu(fileName = "DebuffEnemy", menuName = "Modules/Debuff Enemy")]
     public class DebuffEnemyModule : Module
     {
-        protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Laser) };
+        protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Laser), typeof(Gunner) };
 
         [SerializeField]
         private List<EnemyAbility> debuffs;

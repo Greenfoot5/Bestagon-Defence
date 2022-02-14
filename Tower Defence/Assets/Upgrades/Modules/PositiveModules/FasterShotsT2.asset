@@ -17,5 +17,9 @@ MonoBehaviour:
   displayName: Velocity II
   tagline: Aerodynamics
   icon: {fileID: -2198499569358823354, guid: 16c979c866f439b4b988e7020b313794, type: 3}
-  effectText: Bullets move towards their target 20% faster
-  percentageChange: 0.2
+  effectText: 'Bullets move towards their target 100% faster
+
+    Range increased
+    by 15%'
+  bulletSpeedChange: 1
+  rangeChange: 0.15

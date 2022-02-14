@@ -1,4 +1,5 @@
-﻿using Levels;
+﻿using System.Collections.Generic;
+using Levels;
 using Turrets;
 using Turrets.Blueprints;
 using UI.Level;
@@ -25,6 +26,8 @@ namespace Abstract.Managers
         [Tooltip("The UI to move above the turret")]
         public NodeUI nodeUI;
 
+        public static List<Turret> builtTurretTypes = new List<Turret>();
+
         public bool CanBuild => _turretToBuild != null;
         
         /// <summary>
@@ -50,7 +53,7 @@ namespace Abstract.Managers
         {
             _turretToBuild = turret;
             _buildingButton = buttonToDelete;
-            DeselectNode();
+            //DeselectNode();
         }
         
         /// <summary>

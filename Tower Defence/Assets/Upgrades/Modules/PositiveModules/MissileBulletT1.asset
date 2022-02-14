@@ -17,8 +17,12 @@ MonoBehaviour:
   displayName: Missiles I
   tagline: Rocket science
   icon: {fileID: -4264398553240656916, guid: 16c979c866f439b4b988e7020b313794, type: 3}
-  effectText: Bullets explode, deal more damage, but are fired slower
+  effectText: 'Bullets explode
+
+    deal more damage
+
+    but are fired slower'
   explosionRadiusChange: 0.2
   damagePercentageChange: 0.2
   fireRatePercentageChange: -0.2
-  speedPercentageChange: 0.2
+  speedPercentageChange: 0.35

@@ -21,4 +21,4 @@ MonoBehaviour:
   explosionRadiusChange: 0.75
   damagePercentageChange: 1
   fireRatePercentageChange: -0.4
-  speedPercentageChange: 0.4
+  speedPercentageChange: 0.65

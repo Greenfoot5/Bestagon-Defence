@@ -98,7 +98,9 @@ MonoBehaviour:
   speed:
     stat: 5
     modifier: 1
-  explosionRadius: 0
+  explosionRadius:
+    stat: 1
+    modifier: 0
   damage:
     stat: 50
     modifier: 0

@@ -20,7 +20,7 @@ MonoBehaviour:
   effectText: Bullets explode, with increased damage but are shot slower, with a
     lower range
   explosionRadiusChange: 0.6
-  damagePercentageChange: 0.4
+  damagePercentageChange: 0.5
   fireRatePercentageChange: -0.15
-  rangePercentageChange: -0.4
+  rangePercentageChange: -0.35
   speedPercentageChange: -0.15
