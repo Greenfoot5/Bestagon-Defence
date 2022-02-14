@@ -181,7 +181,6 @@ namespace Levels
         /// </summary>
         public void EnableTurretInventory()
         {
-            Debug.Log("ENABLING!");
             turretInventory.SetActive(true);
             moduleInventory.SetActive(false);
 
