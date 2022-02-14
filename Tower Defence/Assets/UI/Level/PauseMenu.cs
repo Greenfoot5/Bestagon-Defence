@@ -27,7 +27,7 @@ namespace UI.Level
         /// </summary>
         private void Start()
         {
-            GameStats.controls.Default.Pause.performed += Toggle;
+            GameStats.controls.Game.Pause.performed += Toggle;
         }
 
         /// <summary>

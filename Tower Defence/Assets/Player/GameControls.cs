@@ -24,26 +24,17 @@ public partial class @GameControls : IInputActionCollection2, IDisposable
     ""name"": ""GameControls"",
     ""maps"": [
         {
-            ""name"": ""Default"",
+            ""name"": ""Camera"",
             ""id"": ""5f7271d8-a2fe-4b5d-93ef-a86fea9af07e"",
             ""actions"": [
                 {
-                    ""name"": ""CameraMovement"",
+                    ""name"": ""Pan"",
                     ""type"": ""Value"",
                     ""id"": ""a41de434-4957-4979-b961-75f7dd009f9a"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Pause"",
-                    ""type"": ""Button"",
-                    ""id"": ""ebda4955-f8f5-4934-adeb-761a64c00e95"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 },
                 {
                     ""name"": ""Zoom"",
@@ -63,7 +54,7 @@ public partial class @GameControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""CameraMovement"",
+                    ""action"": ""Pan"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -74,7 +65,7 @@ public partial class @GameControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard and Mouse"",
-                    ""action"": ""CameraMovement"",
+                    ""action"": ""Pan"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -85,7 +76,7 @@ public partial class @GameControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard and Mouse"",
-                    ""action"": ""CameraMovement"",
+                    ""action"": ""Pan"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -96,7 +87,7 @@ public partial class @GameControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard and Mouse"",
-                    ""action"": ""CameraMovement"",
+                    ""action"": ""Pan"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -107,18 +98,18 @@ public partial class @GameControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard and Mouse"",
-                    ""action"": ""CameraMovement"",
+                    ""action"": ""Pan"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""ArrowKeys"",
+                    ""name"": ""Arrow Keys"",
                     ""id"": ""6a855d79-e1e2-4b97-8df9-9227fa07e699"",
                     ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""CameraMovement"",
+                    ""action"": ""Pan"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -129,7 +120,7 @@ public partial class @GameControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard and Mouse"",
-                    ""action"": ""CameraMovement"",
+                    ""action"": ""Pan"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -140,7 +131,7 @@ public partial class @GameControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard and Mouse"",
-                    ""action"": ""CameraMovement"",
+                    ""action"": ""Pan"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -151,7 +142,7 @@ public partial class @GameControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard and Mouse"",
-                    ""action"": ""CameraMovement"",
+                    ""action"": ""Pan"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -162,18 +153,18 @@ public partial class @GameControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard and Mouse"",
-                    ""action"": ""CameraMovement"",
+                    ""action"": ""Pan"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""MiddleMousePan"",
+                    ""name"": ""Middle Mouse"",
                     ""id"": ""778734a9-cc58-4cbe-812f-eb3681b104d2"",
                     ""path"": ""OneModifier"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""CameraMovement"",
+                    ""action"": ""Pan"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -184,7 +175,7 @@ public partial class @GameControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard and Mouse"",
-                    ""action"": ""CameraMovement"",
+                    ""action"": ""Pan"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -193,64 +184,20 @@ public partial class @GameControls : IInputActionCollection2, IDisposable
                     ""id"": ""e87f207f-50b8-4baa-ad71-6672d4eef21e"",
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
-                    ""processors"": ""NormalizeVector2"",
+                    ""processors"": ""InvertVector2"",
                     ""groups"": ""Keyboard and Mouse"",
-                    ""action"": ""CameraMovement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""One Modifier"",
-                    ""id"": ""35626156-c916-439b-8216-ed11c36ef80c"",
-                    ""path"": ""OneModifier"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""CameraMovement"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""modifier"",
-                    ""id"": ""3c4693fa-d36c-441a-ae2c-258584a0346f"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard and Mouse"",
-                    ""action"": ""CameraMovement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""binding"",
-                    ""id"": ""797a4005-00ea-4042-b35f-19c598384fa5"",
-                    ""path"": ""<Mouse>/delta"",
-                    ""interactions"": """",
-                    ""processors"": ""NormalizeVector2"",
-                    ""groups"": ""Keyboard and Mouse"",
-                    ""action"": ""CameraMovement"",
+                    ""action"": ""Pan"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": """",
                     ""id"": ""343669a7-471d-4a00-89d0-32d7f069f374"",
-                    ""path"": ""<Touchscreen>/primaryTouch/delta"",
+                    ""path"": ""<Touchscreen>/delta"",
                     ""interactions"": """",
-                    ""processors"": ""StickDeadzone(min=1,max=1),InvertVector2"",
+                    ""processors"": ""InvertVector2"",
                     ""groups"": ""Touch"",
-                    ""action"": ""CameraMovement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""551d6a9c-ec95-45cc-8f7a-f7e180a12be0"",
-                    ""path"": ""<Keyboard>/p"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard and Mouse"",
-                    ""action"": ""Pause"",
+                    ""action"": ""Pan"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -273,6 +220,45 @@ public partial class @GameControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard and Mouse"",
                     ""action"": ""Zoom"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Game"",
+            ""id"": ""396c2f15-4716-4648-a6da-e40a65ff4e10"",
+            ""actions"": [
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""41fe8cbc-7b72-4f4b-a87d-4af6383e2ca3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""31f9de6b-1380-4352-a593-b0b26ce5e5d2"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4aaf84a9-e979-4783-9efb-e65688b280b7"",
+                    ""path"": ""*/{Back}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Touch"",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -309,11 +295,13 @@ public partial class @GameControls : IInputActionCollection2, IDisposable
         }
     ]
 }");
-        // Default
-        m_Default = asset.FindActionMap("Default", throwIfNotFound: true);
-        m_Default_CameraMovement = m_Default.FindAction("CameraMovement", throwIfNotFound: true);
-        m_Default_Pause = m_Default.FindAction("Pause", throwIfNotFound: true);
-        m_Default_Zoom = m_Default.FindAction("Zoom", throwIfNotFound: true);
+        // Camera
+        m_Camera = asset.FindActionMap("Camera", throwIfNotFound: true);
+        m_Camera_Pan = m_Camera.FindAction("Pan", throwIfNotFound: true);
+        m_Camera_Zoom = m_Camera.FindAction("Zoom", throwIfNotFound: true);
+        // Game
+        m_Game = asset.FindActionMap("Game", throwIfNotFound: true);
+        m_Game_Pause = m_Game.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -370,54 +358,79 @@ public partial class @GameControls : IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Default
-    private readonly InputActionMap m_Default;
-    private IDefaultActions m_DefaultActionsCallbackInterface;
-    private readonly InputAction m_Default_CameraMovement;
-    private readonly InputAction m_Default_Pause;
-    private readonly InputAction m_Default_Zoom;
-    public struct DefaultActions
+    // Camera
+    private readonly InputActionMap m_Camera;
+    private ICameraActions m_CameraActionsCallbackInterface;
+    private readonly InputAction m_Camera_Pan;
+    private readonly InputAction m_Camera_Zoom;
+    public struct CameraActions
     {
         private @GameControls m_Wrapper;
-        public DefaultActions(@GameControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @CameraMovement => m_Wrapper.m_Default_CameraMovement;
-        public InputAction @Pause => m_Wrapper.m_Default_Pause;
-        public InputAction @Zoom => m_Wrapper.m_Default_Zoom;
-        public InputActionMap Get() { return m_Wrapper.m_Default; }
+        public CameraActions(@GameControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Pan => m_Wrapper.m_Camera_Pan;
+        public InputAction @Zoom => m_Wrapper.m_Camera_Zoom;
+        public InputActionMap Get() { return m_Wrapper.m_Camera; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(DefaultActions set) { return set.Get(); }
-        public void SetCallbacks(IDefaultActions instance)
+        public static implicit operator InputActionMap(CameraActions set) { return set.Get(); }
+        public void SetCallbacks(ICameraActions instance)
         {
-            if (m_Wrapper.m_DefaultActionsCallbackInterface != null)
+            if (m_Wrapper.m_CameraActionsCallbackInterface != null)
             {
-                @CameraMovement.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnCameraMovement;
-                @CameraMovement.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnCameraMovement;
-                @CameraMovement.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnCameraMovement;
-                @Pause.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnPause;
-                @Pause.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnPause;
-                @Pause.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnPause;
-                @Zoom.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnZoom;
-                @Zoom.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnZoom;
-                @Zoom.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnZoom;
+                @Pan.started -= m_Wrapper.m_CameraActionsCallbackInterface.OnPan;
+                @Pan.performed -= m_Wrapper.m_CameraActionsCallbackInterface.OnPan;
+                @Pan.canceled -= m_Wrapper.m_CameraActionsCallbackInterface.OnPan;
+                @Zoom.started -= m_Wrapper.m_CameraActionsCallbackInterface.OnZoom;
+                @Zoom.performed -= m_Wrapper.m_CameraActionsCallbackInterface.OnZoom;
+                @Zoom.canceled -= m_Wrapper.m_CameraActionsCallbackInterface.OnZoom;
             }
-            m_Wrapper.m_DefaultActionsCallbackInterface = instance;
+            m_Wrapper.m_CameraActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @CameraMovement.started += instance.OnCameraMovement;
-                @CameraMovement.performed += instance.OnCameraMovement;
-                @CameraMovement.canceled += instance.OnCameraMovement;
-                @Pause.started += instance.OnPause;
-                @Pause.performed += instance.OnPause;
-                @Pause.canceled += instance.OnPause;
+                @Pan.started += instance.OnPan;
+                @Pan.performed += instance.OnPan;
+                @Pan.canceled += instance.OnPan;
                 @Zoom.started += instance.OnZoom;
                 @Zoom.performed += instance.OnZoom;
                 @Zoom.canceled += instance.OnZoom;
             }
         }
     }
-    public DefaultActions @Default => new DefaultActions(this);
+    public CameraActions @Camera => new CameraActions(this);
+
+    // Game
+    private readonly InputActionMap m_Game;
+    private IGameActions m_GameActionsCallbackInterface;
+    private readonly InputAction m_Game_Pause;
+    public struct GameActions
+    {
+        private @GameControls m_Wrapper;
+        public GameActions(@GameControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Pause => m_Wrapper.m_Game_Pause;
+        public InputActionMap Get() { return m_Wrapper.m_Game; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(GameActions set) { return set.Get(); }
+        public void SetCallbacks(IGameActions instance)
+        {
+            if (m_Wrapper.m_GameActionsCallbackInterface != null)
+            {
+                @Pause.started -= m_Wrapper.m_GameActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnPause;
+            }
+            m_Wrapper.m_GameActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
+            }
+        }
+    }
+    public GameActions @Game => new GameActions(this);
     private int m_KeyboardandMouseSchemeIndex = -1;
     public InputControlScheme KeyboardandMouseScheme
     {
@@ -436,10 +449,13 @@ public partial class @GameControls : IInputActionCollection2, IDisposable
             return asset.controlSchemes[m_TouchSchemeIndex];
         }
     }
-    public interface IDefaultActions
+    public interface ICameraActions
     {
-        void OnCameraMovement(InputAction.CallbackContext context);
-        void OnPause(InputAction.CallbackContext context);
+        void OnPan(InputAction.CallbackContext context);
         void OnZoom(InputAction.CallbackContext context);
+    }
+    public interface IGameActions
+    {
+        void OnPause(InputAction.CallbackContext context);
     }
 }

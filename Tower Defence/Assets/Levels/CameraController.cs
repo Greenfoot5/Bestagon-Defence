@@ -14,8 +14,12 @@ namespace Levels
         [Header("Panning")]
         [Tooltip("Keyboard panning multiplier")]
         public float keyboardPanSpeed = 10f;
-        [Tooltip("Swipe panning multiplier")]
-        public float swipePanSpeed = 0.5f;
+        [Tooltip("Mouse panning multiplier")]
+        public float mouseSensitivity = 1f;
+        [Tooltip("Touch panning multiplier")]
+        public float touchSensitivity = 1f;
+        [Tooltip("Panning multiplier based on zoom")]
+        public float zoomInfluence = 3f;
         [Tooltip("The minimum position the camera can reach")]
         public Vector2 minPos = new Vector2(0, 0);
         [Tooltip("The maximum position the camera can reach")]
@@ -42,10 +46,14 @@ namespace Levels
         private void Start()
         {
             _camera = transform.GetComponent<Camera>();
-            _moveCamera = GameStats.controls.Default.CameraMovement;
-            _zoomCamera = GameStats.controls.Default.Zoom;
+            _moveCamera = GameStats.controls.Camera.Pan;
+            _zoomCamera = GameStats.controls.Camera.Zoom;
+
+            // Yaw
+            mouseSensitivity /= 180;
+            touchSensitivity /= 180;
         }
-    
+
         /// <summary>
         /// Gets the camera movement speed based on player input
         /// </summary>
@@ -56,17 +64,23 @@ namespace Levels
             {
                 return new Vector2();
             }
-        
-            // Keyboard & Mouse Input
+
+            // Keyboard Input
             if (_moveCamera.activeControl.device == Keyboard.current)
             {
-                return _moveCamera.ReadValue<Vector2>() * keyboardPanSpeed;
+                return _moveCamera.ReadValue<Vector2>() * keyboardPanSpeed * Time.deltaTime;
             }
-        
+
+            // Mouse Input
+            if (_moveCamera.activeControl.device == Pointer.current)
+            {
+                return _moveCamera.ReadValue<Vector2>() * mouseSensitivity;
+            }
+
             // Mobile Input
             if (_moveCamera.activeControl.device == Touchscreen.current)
             {
-                return _moveCamera.ReadValue<Vector2>() * swipePanSpeed;
+                return _moveCamera.ReadValue<Vector2>() * touchSensitivity;
             }
 
             return new Vector2();
@@ -119,14 +133,17 @@ namespace Levels
             var panSpeed = Move();
             var zoomSpeed = Scroll();
 
-            // Move's the camera
+            // Gets the current camera transform
             var transformPosition = transform.position;
-            var newPositionX = Mathf.Clamp(transformPosition.x + panSpeed.x * Time.deltaTime, minPos.x, maxPos.x);
-            var newPositionY = Mathf.Clamp(transformPosition.y + panSpeed.y * Time.deltaTime, minPos.y, maxPos.y);
+            var orthSize = _camera.orthographicSize;
+
+            // Moves the camera
+            panSpeed *= orthSize / zoomInfluence;
+            var newPositionX = Mathf.Clamp(transformPosition.x + panSpeed.x, minPos.x, maxPos.x);
+            var newPositionY = Mathf.Clamp(transformPosition.y + panSpeed.y, minPos.y, maxPos.y);
             transform.Translate(new Vector3(newPositionX, newPositionY, transformPosition.z) - transformPosition, Space.World);
 
             // Implement scrolling by changing the Orthographic Size on the camera
-            var orthSize = _camera.orthographicSize;
             orthSize -= zoomSpeed * Time.deltaTime;
             orthSize = Mathf.Clamp(orthSize, minOrthSize, maxOrthSize);
             _camera.orthographicSize = orthSize;
