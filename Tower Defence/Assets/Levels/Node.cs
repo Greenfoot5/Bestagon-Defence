@@ -10,7 +10,7 @@ namespace Levels
     /// <summary>
     /// Manages all data and actions for a single node on a level map
     /// </summary>
-    public class Node : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
+    public class Node : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler, IDragHandler, IPointerUpHandler
     {
         // The colour to set out node to
         public Color hoverColour;
@@ -25,6 +25,9 @@ namespace Levels
     
         private Renderer _rend;
         private BuildManager _buildManager;
+
+        // Pointer handling
+        private bool _pressOnRelease;
 
         private void Start()
         {
@@ -98,9 +101,50 @@ namespace Levels
     
         /// <summary>
         /// Called when the mouse is down.
-        /// Either Selects the turret or builds
+        /// Depending on platform, processes the input for later interaction of the node
         /// </summary>
         public void OnPointerDown(PointerEventData eventData)
+        {
+            // Ingore camera pan as a click
+            if (eventData.button == PointerEventData.InputButton.Middle)
+                return;
+
+            // If on Android, queue interaction for release of touch
+            // Makes it possible to cancel the input if the touch was meant to drag the camera
+            if (Application.platform == RuntimePlatform.Android)
+            {
+                _pressOnRelease = true;
+                return;
+            }
+
+            // If on Desktop and click wasn't a camera pan - handle input as normal
+            HandlePointerInteract();
+        }
+
+        /// <summary>
+        /// Called when the pointer was dragged.
+        /// Acts as a cancel for interaction on Android
+        /// </summary>
+        public void OnDrag(PointerEventData eventData)
+        {
+            _pressOnRelease = false;
+        }
+
+        /// <summary>
+        /// Called when the pointer was released.
+        /// If the pointer wasn't dragged, then on Android this calls the interaction handler
+        /// </summary>
+        public void OnPointerUp(PointerEventData eventData)
+        {
+            if (_pressOnRelease)
+                HandlePointerInteract();
+        }
+
+        /// <summary>
+        /// Handles interaction.
+        /// Either Selects the turret or builds
+        /// </summary>
+        private void HandlePointerInteract()
         {
             // Select the node/turret
             if (turret != null)
@@ -108,19 +152,19 @@ namespace Levels
                 _buildManager.SelectNode(this);
                 return;
             }
-        
+
             // Check the player is trying to build
             if (!_buildManager.CanBuild)
             {
                 _buildManager.Deselect();
                 return;
             }
-        
+
             // Construct a turret
             BuildTurret(_buildManager.GetTurretToBuild());
             _buildManager.BuiltTurret();
         }
-    
+
         // Called when the mouse hovers over the node
         public void OnPointerEnter(PointerEventData eventData)
         {
