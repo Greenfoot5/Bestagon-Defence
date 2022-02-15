@@ -16,12 +16,12 @@
                 },
                 {
                     "name": "Zoom",
-                    "type": "PassThrough",
+                    "type": "Value",
                     "id": "e67cee83-a506-4eac-b002-a0b054aa6052",
                     "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -180,22 +180,44 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "ae51b7f5-05bc-49e3-834f-bade8635eacb",
-                    "path": "<Mouse>/scroll/y",
+                    "name": "Stronger Scroll",
+                    "id": "8f7077b9-1281-4a07-b0e3-0dc52b7a4b73",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Zoom",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "977290ec-4341-471e-b6a1-89f517ca9041",
+                    "path": "<Keyboard>/shift",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard and Mouse",
                     "action": "Zoom",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "f1d31e34-9f48-43f8-9c4c-2e99377ac807",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "Scale(factor=0.2)",
+                    "groups": "Keyboard and Mouse",
+                    "action": "Zoom",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
-                    "id": "4468df69-b47d-489c-892f-9499474fd717",
-                    "path": "<VirtualMouse>/scroll/y",
+                    "id": "ae51b7f5-05bc-49e3-834f-bade8635eacb",
+                    "path": "<Mouse>/scroll/y",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "Scale(factor=0.05)",
                     "groups": "Keyboard and Mouse",
                     "action": "Zoom",
                     "isComposite": false,
