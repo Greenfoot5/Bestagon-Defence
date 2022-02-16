@@ -4,34 +4,43 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: -3843445929337379658
-    second: slow
+    second: T_Module_Slow
   - first:
       213: 2691302287683433475
-    second: sniper
+    second: T_Module_Sniper
   - first:
       213: -3015200091239744399
-    second: poison
+    second: T_Module_Poison
   - first:
       213: -4242299120216371416
-    second: tracker
+    second: T_Module_Tracker
   - first:
       213: -4264398553240656916
-    second: missiles
+    second: T_Module_Missiles
   - first:
       213: 8811115329238573457
-    second: bombs
+    second: T_Module_Bombs
   - first:
       213: -4062769898107646306
-    second: damage
+    second: T_Module_Damage
   - first:
       213: -2198499569358823354
-    second: velocity
+    second: T_Module_Velocity
   - first:
       213: 8075296294540816629
-    second: fire rate
+    second: T_Module_FireRate
   - first:
       213: -1435114285472068323
-    second: range
+    second: T_Module_Range
+  - first:
+      213: -7464220177990265132
+    second: T_Module_Burn
+  - first:
+      213: 1892315637792861288
+    second: T_Module_Stun
+  - first:
+      213: 2903838018198858911
+    second: T_Module_Execute
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -133,13 +142,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: slow
+      name: T_Module_Slow
       rect:
         serializedVersion: 2
-        x: 0
-        y: 100
-        width: 100
-        height: 100
+        x: 386
+        y: 258
+        width: 124
+        height: 124
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,13 +163,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sniper
+      name: T_Module_Sniper
       rect:
         serializedVersion: 2
-        x: 100
-        y: 100
-        width: 100
-        height: 100
+        x: 2
+        y: 130
+        width: 124
+        height: 124
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -175,13 +184,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: poison
+      name: T_Module_Poison
       rect:
         serializedVersion: 2
-        x: 200
-        y: 100
-        width: 100
-        height: 100
+        x: 130
+        y: 258
+        width: 124
+        height: 124
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -196,13 +205,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tracker
+      name: T_Module_Tracker
       rect:
         serializedVersion: 2
-        x: 300
-        y: 100
-        width: 100
-        height: 100
+        x: 258
+        y: 130
+        width: 124
+        height: 124
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -217,13 +226,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: missiles
+      name: T_Module_Missiles
       rect:
         serializedVersion: 2
-        x: 400
-        y: 100
-        width: 100
-        height: 100
+        x: 2
+        y: 258
+        width: 124
+        height: 124
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -238,13 +247,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bombs
+      name: T_Module_Bombs
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 100
-        height: 100
+        x: 2
+        y: 2
+        width: 124
+        height: 124
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -259,13 +268,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: damage
+      name: T_Module_Damage
       rect:
         serializedVersion: 2
-        x: 100
-        y: 0
-        width: 100
-        height: 100
+        x: 130
+        y: 386
+        width: 124
+        height: 124
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -280,13 +289,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: velocity
+      name: T_Module_Velocity
       rect:
         serializedVersion: 2
-        x: 200
-        y: 0
-        width: 100
-        height: 100
+        x: 386
+        y: 130
+        width: 124
+        height: 124
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -301,13 +310,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fire rate
+      name: T_Module_FireRate
       rect:
         serializedVersion: 2
-        x: 300
-        y: 0
-        width: 100
-        height: 100
+        x: 386
+        y: 386
+        width: 124
+        height: 124
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -322,13 +331,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: range
+      name: T_Module_Range
       rect:
         serializedVersion: 2
-        x: 400
-        y: 0
-        width: 100
-        height: 100
+        x: 258
+        y: 258
+        width: 124
+        height: 124
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -338,6 +347,69 @@ TextureImporter:
       bones: []
       spriteID: d1d49523923751ce0800000000000000
       internalID: -1435114285472068323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_Module_Burn
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 386
+        width: 124
+        height: 124
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d656959b43c96890800000000000000
+      internalID: -7464220177990265132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_Module_Stun
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 130
+        width: 124
+        height: 124
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86c6f81fb0bd24a10800000000000000
+      internalID: 1892315637792861288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_Module_Execute
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 386
+        width: 124
+        height: 124
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9c6408da418c4820800000000000000
+      internalID: 2903838018198858911
       vertices: []
       indices: 
       edges: []

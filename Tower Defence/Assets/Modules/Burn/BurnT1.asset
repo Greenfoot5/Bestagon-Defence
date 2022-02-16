@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: BurnT1
   m_EditorClassIdentifier: 
   moduleTier: 1
-  accentColor: {r: 1, g: 0.5678642, b: 0.33490568, a: 1}
+  accentColor: {r: 0.9607843, g: 0.28627452, b: 0.30980393, a: 1}
   displayName: Burn I
   tagline: Burn baby burn!
-  icon: {fileID: 21300000, guid: 3a8c48efe02e240a5baa4fec7b82fb67, type: 3}
+  icon: {fileID: -7464220177990265132, guid: 16c979c866f439b4b988e7020b313794, type: 3}
   effectText: Burns 2%dps of the enemy's max health for 3s
   debuffs:
   - {fileID: 11400000, guid: feaad6f55b8ef476d97d3f756ed81db8, type: 2}
