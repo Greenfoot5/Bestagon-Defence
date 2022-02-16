@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2fd92d5c95da242598d43eb06f883d13, type: 3}
-  m_Name: Loop
+  m_Name: LoopData
   m_EditorClassIdentifier: 
   initialTurretSelection:
     list:
