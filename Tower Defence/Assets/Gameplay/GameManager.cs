@@ -1,8 +1,10 @@
-﻿using Scenes.Levels;
+﻿using Abstract;
+using Levels.Generic.LevelSelect;
+using Levels.Maps;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Abstract.Managers
+namespace Gameplay
 {
     /// <summary>
     /// Manages the current game's state
@@ -40,7 +42,7 @@ namespace Abstract.Managers
                 return;
             }
         
-            if (GameStats.lives <= 0)
+            if (GameStats.Lives <= 0)
             {
                 EndGame();
             }
@@ -57,11 +59,11 @@ namespace Abstract.Managers
             gameOverUI.SetActive(true);
         
             // Tell our leaderboard API to add the player
-            var leaderboardData =
+            string leaderboardData =
                 System.Environment.GetEnvironmentVariable(SceneManager.GetActiveScene().name + "Leaderboard");
             if (leaderboardData == null) return;
-            var splitData = leaderboardData.Split(';');
-            bridge.SendPlayerValue(PlayerPrefs.GetString("Username"), GameStats.rounds, splitData[0], splitData[1]);
+            string[] splitData = leaderboardData.Split(';');
+            bridge.SendPlayerValue(PlayerPrefs.GetString("Username"), GameStats.Rounds, splitData[0], splitData[1]);
         }
     }
 }

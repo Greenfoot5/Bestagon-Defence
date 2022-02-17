@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Modules;
+using UnityEngine;
 
-namespace Turrets
+namespace Turrets.Laser
 {
     /// <summary>
     /// Extends DynamicTurret to add Laser functionality
@@ -51,7 +52,7 @@ namespace Turrets
             // Deal damage
             targetEnemy.TakeDamage(damage.GetStat() * Time.deltaTime, gameObject);
 
-            foreach (var module in modules)
+            foreach (Module module in modules)
             {
                 module.OnHit(new [] {targetEnemy});
             }
@@ -64,13 +65,13 @@ namespace Turrets
             }
         
             // Set Laser positions
-            var targetPosition = target.position;
-            var firePointPosition = firePoint.position;
+            Vector3 targetPosition = target.position;
+            Vector3 firePointPosition = firePoint.position;
             lineRenderer.SetPosition(0, firePointPosition);
             lineRenderer.SetPosition(1, targetPosition);
 
             // Set impact effect rotation
-            var impactEffectTransform = impactEffect.transform;
+            Transform impactEffectTransform = impactEffect.transform;
             var aimDir = (Vector3)((Vector2)firePointPosition - (Vector2)impactEffectTransform.position).normalized;
             impactEffectTransform.rotation = Quaternion.LookRotation(aimDir);
 

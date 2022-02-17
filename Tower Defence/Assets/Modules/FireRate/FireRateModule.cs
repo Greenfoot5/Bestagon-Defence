@@ -1,8 +1,11 @@
 using System;
 using Turrets;
+using Turrets.Gunner;
+using Turrets.Shooter;
+using Turrets.Smasher;
 using UnityEngine;
 
-namespace Upgrades.Modules.PositiveModules
+namespace Modules.FireRate
 {
     /// <summary>
     /// Increases the fire rate of a turret

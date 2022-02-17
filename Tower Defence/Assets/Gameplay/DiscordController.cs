@@ -1,10 +1,11 @@
-﻿using UnityEngine;
-using Discord;
-using UnityEngine.SceneManagement;
-using System;
+﻿using System;
 using System.Text;
+using Abstract;
+using Discord;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
-namespace Abstract
+namespace Gameplay
 {
     /// <summary>
     /// Discord Rich Presence activity controller.
@@ -17,12 +18,12 @@ namespace Abstract
 
         private Scene _currentScene;
 
-        public static readonly long applicationId = 927337431303352441;
+        private const long ApplicationId = 927337431303352441;
 
         /// <summary>
         /// Prepares the bridge to Discord and ensures a singleton pattern.
         /// </summary>
-        void Awake()
+        private void Awake()
         {
             // Singleton pattern
             if (_discord != null)
@@ -35,7 +36,7 @@ namespace Abstract
             // Catch the error if Discord was not detected
             try
             {
-                _discord = new Discord.Discord(applicationId, (ulong)CreateFlags.NoRequireDiscord);
+                _discord = new Discord.Discord(ApplicationId, (ulong)CreateFlags.NoRequireDiscord);
             }
             catch (ResultException)
             {
@@ -56,8 +57,8 @@ namespace Abstract
 
             // Assign all events for Rich Presence updates
             SceneManager.activeSceneChanged += OnSceneChange;
-            GameStats.roundProgress += UpdateActivity;
-            GameStats.gameOver += UpdateActivity;
+            GameStats.RoundProgress += UpdateActivity;
+            GameStats.GameOver += UpdateActivity;
         }
 
         /// <summary>
@@ -77,7 +78,7 @@ namespace Abstract
         /// <summary>
         /// Updates the activity to display new stats, such as wave number, remaining lives.
         /// </summary>
-        public void UpdateActivity()
+        private void UpdateActivity()
         {
             GetState(_currentScene.name);
             _discord.GetActivityManager().UpdateActivity(_activity, (res) => { });
@@ -123,8 +124,8 @@ namespace Abstract
 
             // Game state text based on lives count
             _activity.Details = "𝗣𝗹𝗮𝘆𝗶𝗻𝗴 " + levelName;
-            _activity.State = GameStats.lives > 0
-                ? string.Format("𝗪𝗮𝘃𝗲 {0}｜𝗟𝗶𝘃𝗲𝘀 {1}", GameStats.rounds, GameStats.lives)
+            _activity.State = GameStats.Lives > 0
+                ? $"𝗪𝗮𝘃𝗲 {GameStats.Rounds}｜𝗟𝗶𝘃𝗲𝘀 {GameStats.Lives}"
                 : "𝗚𝗮𝗺𝗲 Over";
         }
 
@@ -133,7 +134,7 @@ namespace Abstract
         /// </summary>
         /// <param name="text">String to space</param>
         /// <returns>Spaced <see cref="string"/></returns>
-        public static string AddSpacesToSentence(string text)
+        private static string AddSpacesToSentence(string text)
         {
             if (string.IsNullOrWhiteSpace(text))
                 return "";
@@ -151,10 +152,9 @@ namespace Abstract
         /// <summary>
         /// Runs Discord Rich Presence callbacks every frame.
         /// </summary>
-        void Update()
+        private void Update()
         {
-            if (_discord != null)
-                _discord.RunCallbacks();
+            _discord?.RunCallbacks();
         }
 
         /// <summary>

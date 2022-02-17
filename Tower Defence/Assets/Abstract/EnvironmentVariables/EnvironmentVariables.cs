@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Abstract.Data
+namespace Abstract.EnvironmentVariables
 {
     /// <summary>
     /// An SO that allows us to easily store and reference some environment variables

@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace UI.MenuScenes
+namespace Levels.Generic.MainMenu
 {
     /// <summary>
     /// Handles all UI actions for the main menu

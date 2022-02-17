@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Enemies;
+using Modules;
 using UnityEngine;
 
-namespace Turrets
+namespace Turrets.Smasher
 {
     /// <summary>
     /// Extends Turret to add smashing functionality
@@ -43,9 +44,9 @@ namespace Turrets
             smashEffect.Play();
             
             // Gets all the enemies in the AoE and calls Damage on them
-            var colliders = Physics2D.OverlapCircleAll(transform.position, range.GetStat());
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, range.GetStat());
             var enemies = new List<Enemy>();
-            foreach (var collider2d in colliders)
+            foreach (Collider2D collider2d in colliders)
             {
                 if (!collider2d.CompareTag(enemyTag)) continue;
                 
@@ -55,7 +56,7 @@ namespace Turrets
             }
             
             // Activates the turret's OnHit modules
-            foreach (var module in modules)
+            foreach (Module module in modules)
             {
                 module.OnHit(enemies.ToArray());
             }

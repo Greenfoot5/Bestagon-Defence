@@ -1,4 +1,5 @@
 ﻿using Turrets;
+using Turrets.Shooter;
 using UnityEditor;
 
 namespace Editor.Turrets

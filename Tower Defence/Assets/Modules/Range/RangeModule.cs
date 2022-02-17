@@ -2,7 +2,7 @@ using System;
 using Turrets;
 using UnityEngine;
 
-namespace Upgrades.Modules.PositiveModules
+namespace Modules.Range
 {
     /// <summary>
     /// Increases the range of a turret

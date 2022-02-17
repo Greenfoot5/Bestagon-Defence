@@ -1,8 +1,8 @@
-using Shaders.Hexagons;
+using MaterialLibrary.Hexagons;
 using UnityEditor;
 using UnityEngine;
 
-namespace Editor.Abstract
+namespace Editor
 {
     [CustomEditor(typeof(Hexagons))]
     public class HexagonsEditor : UnityEditor.Editor

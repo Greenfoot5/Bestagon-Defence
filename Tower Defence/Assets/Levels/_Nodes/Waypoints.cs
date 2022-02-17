@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Abstract.Data
+namespace Levels._Nodes
 {
     /// <summary>
     /// A directory of all the waypoints in a map

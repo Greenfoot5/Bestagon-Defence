@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Abstract.Data
+namespace Gameplay.Waves
 {
     /// <summary>
     /// A set of a single enemy type making up part of a wave

@@ -1,4 +1,4 @@
-namespace Abstract.Data
+namespace Abstract.EnvironmentVariables
 {
     /// <summary>
     /// Allows us to store data and get it depending on if the game is in the editor, stable or development build.

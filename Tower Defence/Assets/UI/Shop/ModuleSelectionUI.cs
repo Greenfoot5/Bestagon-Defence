@@ -1,10 +1,13 @@
-using Abstract.Data;
-using Shaders;
-using Shaders.Hexagons;
+using System;
+using Abstract;
+using MaterialLibrary;
+using MaterialLibrary.Hexagons;
+using Modules;
 using TMPro;
+using UI.Glyphs;
+using UI.Modules;
 using UnityEngine;
 using UnityEngine.UI;
-using Upgrades.Modules;
 
 namespace UI.Shop
 {
@@ -33,7 +36,7 @@ namespace UI.Shop
         /// <param name="initModule">The module the card is for</param>
         /// <param name="shop">The shop script</param>
         /// <param name="lookup">The TypeSpriteLookup to get the glyph</param>
-        public void Init (Module initModule, Levels.Shop shop, TypeSpriteLookup lookup)
+        public void Init (Module initModule, Gameplay.Shop shop, TypeSpriteLookup lookup)
         {
             module = initModule;
         
@@ -51,8 +54,8 @@ namespace UI.Shop
             // Adds the any glyph
             if (initModule.GetValidTypes() == null)
             {
-                var glyphSo = lookup.GetForType(null);
-                var glyph = Instantiate(glyphPrefab, applicableGlyphs.transform).transform;
+                TurretGlyphSo glyphSo = lookup.GetForType(null);
+                Transform glyph = Instantiate(glyphPrefab, applicableGlyphs.transform).transform;
                 glyph.Find("Body").GetComponent<HexagonSprite>().color = glyphSo.body;
                 glyph.Find("Shade").GetComponent<HexagonSprite>().color = glyphSo.shade;
                 glyph.Find("Glyph").GetComponent<Image>().sprite = glyphSo.glyph;
@@ -60,10 +63,10 @@ namespace UI.Shop
             // Adds the glyph for every turret the module supports
             else
             {
-                foreach (var turretType in initModule.GetValidTypes())
+                foreach (Type turretType in initModule.GetValidTypes())
                 {
-                    var glyphSo = lookup.GetForType(turretType);
-                    var glyph = Instantiate(glyphPrefab, applicableGlyphs).transform;
+                    TurretGlyphSo glyphSo = lookup.GetForType(turretType);
+                    Transform glyph = Instantiate(glyphPrefab, applicableGlyphs).transform;
                     glyph.Find("Body").GetComponent<HexagonSprite>().color = glyphSo.body;
                     glyph.Find("Shade").GetComponent<HexagonSprite>().color = glyphSo.shade;
                     glyph.Find("Glyph").GetComponent<Image>().sprite = glyphSo.glyph;
@@ -79,7 +82,7 @@ namespace UI.Shop
         /// Selects the module and closes the shop
         /// </summary>
         /// <param name="shop"></param>
-        private void MakeSelection (Levels.Shop shop)
+        private void MakeSelection (Gameplay.Shop shop)
         {
             transform.parent.gameObject.SetActive (false);
             Time.timeScale = 1f;

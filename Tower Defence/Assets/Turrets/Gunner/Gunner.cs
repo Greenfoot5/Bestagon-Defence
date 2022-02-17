@@ -1,9 +1,10 @@
 ﻿using System;
 using Abstract.Data;
-using UI.Level;
+using Modules;
+using UI.Nodes;
 using UnityEngine;
 
-namespace Turrets
+namespace Turrets.Gunner
 {
     /// <summary>
     /// Extends DynamicTurret to add Shooting functionality.
@@ -118,7 +119,7 @@ namespace Turrets
         protected override void Attack()
         {
             // Creates the bullet
-            var bulletGo = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            GameObject bulletGo = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             var bullet = bulletGo.GetComponent<Bullet>();
             bullet.damage = damage;
             
@@ -126,7 +127,7 @@ namespace Turrets
             if (bullet == null) return;
             
             // Adds the modules to the bullet
-            foreach (var module in modules)
+            foreach (Module module in modules)
             {
                 bullet.AddModule(module);
             }

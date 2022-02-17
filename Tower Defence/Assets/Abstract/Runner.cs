@@ -3,6 +3,9 @@ using System.Collections;
 
 namespace Abstract
 {
+    /// <summary>
+    /// Allows us to start coroutines outside MonoBehaviours
+    /// </summary>
     public class Runner : MonoBehaviour
     {
         public static Runner runner; 

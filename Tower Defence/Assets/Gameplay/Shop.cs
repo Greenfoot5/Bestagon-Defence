@@ -1,16 +1,15 @@
 ﻿using System;
-using Abstract;
-using Abstract.Managers;
-using Scenes.Levels;
+using Levels.Maps;
+using Modules;
 using TMPro;
 using Turrets;
 using Turrets.Blueprints;
+using UI.Modules;
 using UI.Shop;
 using UnityEngine;
 using UnityEngine.UI;
-using Upgrades.Modules;
 
-namespace Levels
+namespace Gameplay
 {
     /// <summary>
     /// Handles the shop and inventory of the player
@@ -96,7 +95,7 @@ namespace Levels
         public void SpawnNewTurret(TurretBlueprint turret)
         {
             // Add and display the new item
-            var turretButton = Instantiate(defaultTurretButton, turretInventory.transform);
+            GameObject turretButton = Instantiate(defaultTurretButton, turretInventory.transform);
             turretButton.GetComponent<Image>().sprite = turret.shopIcon;
             turretButton.GetComponent<Button>().onClick.AddListener(delegate { SelectTurret(turret, turretButton); });
             
@@ -109,7 +108,7 @@ namespace Levels
         /// <param name="module">The module to add</param>
         public void SpawnNewModule(Module module)
         {
-            var moduleButton = Instantiate(defaultModuleButton, moduleInventory.transform);
+            GameObject moduleButton = Instantiate(defaultModuleButton, moduleInventory.transform);
             moduleButton.GetComponentInChildren<ModuleIcon>().SetData(module);
             moduleButton.GetComponentInChildren<Button>().onClick.AddListener(delegate { SelectModule(module, moduleButton); });
         }
@@ -152,12 +151,12 @@ namespace Levels
             turretInventory.SetActive(false);
             moduleInventory.SetActive(true);
 
-            var moduleTransform = moduleInventory.transform;
+            Transform moduleTransform = moduleInventory.transform;
             
             // Loop through all modules and check if they are applicable
             for(var i = 0; i < moduleTransform.childCount; i++)
             {
-                var child = moduleTransform.GetChild(i);
+                Transform child = moduleTransform.GetChild(i);
                 try
                 {
                     child.GetComponentInChildren<Button>().interactable =

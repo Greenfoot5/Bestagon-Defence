@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Abstract.Data
+namespace Abstract.EnvironmentVariables
 {
     /// <summary>
     /// Sets up the variable in the system environment at the start of the game
@@ -15,7 +15,7 @@ namespace Abstract.Data
         /// </summary>
         private void Awake()
         {
-            foreach (var variable in variables.variables)
+            foreach (EnvironmentVariable variable in variables.variables)
             {
                 variable.SetData();
             }

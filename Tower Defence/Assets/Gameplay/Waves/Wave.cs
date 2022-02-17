@@ -1,4 +1,4 @@
-namespace Abstract.Data
+namespace Gameplay.Waves
 {
     /// <summary>
     /// A group of Enemy Sets that represents a full wave

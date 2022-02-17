@@ -1,11 +1,14 @@
 using System;
 using System.Collections.Generic;
+using _WIP.Abilities;
 using Enemies;
 using Turrets;
+using Turrets.Gunner;
+using Turrets.Laser;
+using Turrets.Shooter;
 using UnityEngine;
-using Upgrades.Abilities;
 
-namespace Upgrades.Modules.PositiveModules
+namespace Modules
 {
     /// <summary>
     /// Extends the Module class to create a DebuffEnemy upgrade,
@@ -25,9 +28,9 @@ namespace Upgrades.Modules.PositiveModules
         /// <param name="targets">The target(s) to apply the ability to</param>
         public override void OnHit(IEnumerable<Enemy> targets)
         {
-            foreach (var target in targets)
+            foreach (Enemy target in targets)
             {
-                foreach (var debuff in debuffs)
+                foreach (EnemyAbility debuff in debuffs)
                 {
                     target.GrantAbility(debuff);
                 }

@@ -1,9 +1,9 @@
+using Modules;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Upgrades.Modules;
 
-namespace UI.Shop
+namespace UI.Modules
 {
     /// <summary>
     /// Updates the module icon with data
@@ -47,7 +47,11 @@ namespace UI.Shop
             SetSprite(newModule.icon);
             SetLevel(newModule.moduleTier);
         }
-
+        
+        /// <summary>
+        /// Gets the module the icon is for
+        /// </summary>
+        /// <returns>The module the icon represents</returns>
         public Module GetModule()
         {
             return _module;

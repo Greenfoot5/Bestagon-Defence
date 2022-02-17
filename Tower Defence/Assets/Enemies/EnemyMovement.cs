@@ -1,4 +1,5 @@
 ﻿using Abstract.Data;
+using Levels._Nodes;
 using UnityEngine;
 
 namespace Enemies
@@ -47,7 +48,7 @@ namespace Enemies
             }
             
             // Get the direction and move in that direction
-            var dir = _target.position - transform.position;
+            Vector3 dir = _target.position - transform.position;
             transform.Translate(dir.normalized * (_enemy.speed * Time.deltaTime), Space.World);
             mapProgress = _waypointIndex + 1 - (distanceToWaypoint / _maxDistance);
         

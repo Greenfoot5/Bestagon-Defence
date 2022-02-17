@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
+using Modules;
 using Turrets;
 using UnityEngine;
-using Upgrades.Modules;
 
-namespace Upgrades.Abilities.PositiveAbilities
+namespace _WIP.Abilities.PositiveAbilities
 {
     /// <summary>
     /// Applies a module to turret(s)

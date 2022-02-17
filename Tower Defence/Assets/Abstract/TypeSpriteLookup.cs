@@ -1,10 +1,15 @@
 using System;
 using System.Collections.Generic;
 using Turrets;
+using Turrets.Gunner;
+using Turrets.Laser;
+using Turrets.Shooter;
+using Turrets.Smasher;
+using UI.Glyphs;
 using UI.Shop;
 using UnityEngine;
 
-namespace Abstract.Data
+namespace Abstract
 {
     /// <summary>
     /// A class to reference between turret types and turret glyphs

@@ -2,7 +2,7 @@ using Abstract.Data;
 using UnityEditor;
 using UnityEngine;
 
-namespace Editor.Abstract
+namespace Editor.PropertyDrawers
 {
     [CustomPropertyDrawer(typeof(UpgradableStat))]
     public class UpgradableStatEditor : PropertyDrawer
@@ -20,12 +20,12 @@ namespace Editor.Abstract
             position = EditorGUI.PrefixLabel(position, label); 
             
             // The properties of UpgradableStat
-            var statProp = property.FindPropertyRelative("stat");
-            var modProp = property.FindPropertyRelative("modifier");
+            SerializedProperty statProp = property.FindPropertyRelative("stat");
+            SerializedProperty modProp = property.FindPropertyRelative("modifier");
 
             // Get the value of the floats
-            var statValue = statProp.floatValue;
-            var modValue = modProp.floatValue;
+            float statValue = statProp.floatValue;
+            float modValue = modProp.floatValue;
 
             // Set the percentage of the width the stat input will take
             const float statFieldPercent = 0.4f;

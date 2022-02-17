@@ -2,7 +2,7 @@ using Abstract.Data;
 using UnityEditor;
 using UnityEngine;
 
-namespace Editor.Abstract
+namespace Editor.PropertyDrawers
 {
     [CustomPropertyDrawer(typeof(WeightedItem<>))]
     public class WeightedItemEditor : PropertyDrawer
@@ -20,11 +20,11 @@ namespace Editor.Abstract
             position = EditorGUI.PrefixLabel(position, label);
 
             // The properties of WeightedPrefab
-            var itemProp = property.FindPropertyRelative("item");
-            var weightProp = property.FindPropertyRelative("weight");
+            SerializedProperty itemProp = property.FindPropertyRelative("item");
+            SerializedProperty weightProp = property.FindPropertyRelative("weight");
 
             // Get the value of the float (we don't need the value of the prefab)
-            var weightValue = weightProp.floatValue;
+            float weightValue = weightProp.floatValue;
 
             // Set the percentage of the width the prefab input will take
             const float prefabFieldPercent = 0.75f;

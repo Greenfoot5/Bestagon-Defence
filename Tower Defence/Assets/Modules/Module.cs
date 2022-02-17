@@ -5,7 +5,7 @@ using Enemies;
 using Turrets;
 using UnityEngine;
 
-namespace Upgrades.Modules
+namespace Modules
 {
     /// <summary>
     /// A base abstract class to create a turret module from.

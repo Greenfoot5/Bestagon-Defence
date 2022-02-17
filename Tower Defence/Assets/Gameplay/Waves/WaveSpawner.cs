@@ -1,11 +1,11 @@
 ﻿using System.Collections;
-using Abstract.Data;
+using Abstract;
 using Enemies;
-using Scenes.Levels;
+using Levels.Maps;
 using TMPro;
 using UnityEngine;
 
-namespace Abstract.Managers
+namespace Gameplay.Waves
 {
     /// <summary>
     /// Handles the current wave and spawning of enemies
@@ -76,8 +76,8 @@ namespace Abstract.Managers
         
             waveCountdownText.text = $"<sprite=\"UI-Icons\" name=\"Clock\">{_countdown:0.00}";
         
-            if (GameStats.lives > 0)
-                GameStats.rounds = _waveIndex + 1;
+            if (GameStats.Lives > 0)
+                GameStats.Rounds = _waveIndex + 1;
         }
     
         /// <summary>
@@ -86,15 +86,15 @@ namespace Abstract.Managers
         private IEnumerator SpawnWave()
         {
             _isSpawning = true;
-            var wave = waves[_waveIndex % waves.Length];
+            Wave wave = waves[_waveIndex % waves.Length];
 
             for (var i = 0; i < wave.enemySets.Length; i++)
             {
-                var set = wave.enemySets[i];
+                EnemySet set = wave.enemySets[i];
             
                 // For all the enemies the enemySet will spawn,
                 // spawn one, then wait timeBetweenEnemies seconds
-                var setCount = Mathf.FloorToInt(set.count * Mathf.Pow(_levelData.enemyCount, _waveIndex));
+                int setCount = Mathf.FloorToInt(set.count * Mathf.Pow(_levelData.enemyCount, _waveIndex));
                 for (var j = 0; j < setCount; j++)
                 {
                     SpawnEnemy(set.enemy);
@@ -125,7 +125,7 @@ namespace Abstract.Managers
         private void SpawnEnemy(GameObject enemy)
         {
             // Spawn Enemy
-            var spawnedEnemy = Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
+            GameObject spawnedEnemy = Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
             spawnedEnemy.layer = LayerMask.NameToLayer("Enemies");
         
             // Apply scaling

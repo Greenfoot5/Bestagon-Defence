@@ -1,11 +1,11 @@
 using System.Collections;
-using Abstract.Managers;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace UI.MenuScenes
+namespace Levels.Generic.LevelSelect
 {
     /// <summary>
     /// Handles any UI actions on the level select screen
@@ -74,7 +74,7 @@ namespace UI.MenuScenes
                 
                 // Setup to display scores
                 var bridge = levelInfo.GetComponent<LeaderboardServerBridge>();
-                var leaderboardID =
+                string leaderboardID =
                     System.Environment.GetEnvironmentVariable(_selectedLevel + "Leaderboard")?.Split(';')[0];
                 // Check the level has a leaderboard
                 if (leaderboardID == null)
@@ -88,16 +88,16 @@ namespace UI.MenuScenes
                 }
                 
                 // Display leaderboard
-                var scores = await bridge.RequestEntries(10, leaderboardID);
-                foreach (var entry in scores)
+                List<LeaderboardEntry> scores = await bridge.RequestEntries(10, leaderboardID);
+                foreach (LeaderboardEntry entry in scores)
                 {
-                    var leaderboardItem = Instantiate(leaderboardEntry, leaderboardContent);
+                    GameObject leaderboardItem = Instantiate(leaderboardEntry, leaderboardContent);
                     leaderboardItem.transform.Find("UsernameBackground").GetComponentInChildren<TMP_Text>().text = entry.name;
                     leaderboardItem.transform.Find("ScoreBackground").GetComponentInChildren<TMP_Text>().text = entry.GetValueAsString();
                 }
                 
                 // Display the player's high score
-                var playerScore = await bridge.RequestPlayerEntry(PlayerPrefs.GetString("Username"), leaderboardID);
+                LeaderboardEntry playerScore = await bridge.RequestPlayerEntry(PlayerPrefs.GetString("Username"), leaderboardID);
                 highScore.text = playerScore != null ? playerScore.GetValueAsString() : "N/A";
             }
             else

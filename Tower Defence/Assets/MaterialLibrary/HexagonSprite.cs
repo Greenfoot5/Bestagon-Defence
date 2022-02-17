@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Shaders
+namespace MaterialLibrary
 {
     [ExecuteInEditMode]
     public class HexagonSprite : Graphic

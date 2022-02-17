@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Abstract.Data;
+using Modules;
 using UnityEngine;
-using Upgrades.Modules;
 
 namespace Turrets
 {
@@ -39,7 +39,7 @@ namespace Turrets
         public List<Module> modules = new List<Module>();
         
         /// <summary>
-        /// Disables the range dislaying
+        /// Stops the range displaying
         /// </summary>
         private void Awake()
         {
@@ -103,7 +103,7 @@ namespace Turrets
             modules.Add(module);
             
             // Update the range shader's size
-            var localScale = transform.localScale;
+            Vector3 localScale = transform.localScale;
             rangeDisplay.transform.localScale = new Vector3(
                 range.GetStat() / localScale.x * 2,
                 range.GetStat() / localScale.y * 2,
@@ -117,7 +117,7 @@ namespace Turrets
         public void Selected()
         {
             // Update the range shader's size
-            var localScale = transform.localScale;
+            Vector3 localScale = transform.localScale;
             rangeDisplay.transform.localScale = new Vector3(
                 range.GetStat() / localScale.x * 2,
                 range.GetStat() / localScale.y * 2,

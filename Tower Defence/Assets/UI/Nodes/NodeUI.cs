@@ -1,12 +1,13 @@
 ﻿using System;
-using Levels;
+using Levels._Nodes;
+using Modules;
 using TMPro;
 using Turrets;
-using UI.Shop;
+using UI.Modules;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.Level
+namespace UI.Nodes
 {
     /// <summary>
     /// Manages the UI that displays when you click on a node with a turret
@@ -16,7 +17,7 @@ namespace UI.Level
         public static NodeUI instance;
         
         public GameObject ui;
-        public Levels.Shop shop;
+        public Gameplay.Shop shop;
     
         private Node _target;
     
@@ -57,11 +58,11 @@ namespace UI.Level
             modules.DetachChildren();
             
             // Add each Module as an icon
-            foreach (var module in _target.turret.GetComponent<Turret>().modules)
+            foreach (Module module in _target.turret.GetComponent<Turret>().modules)
             {
-                var moduleIcon = Instantiate(moduleIconPrefab, modules);
+                GameObject moduleIcon = Instantiate(moduleIconPrefab, modules);
                 moduleIcon.GetComponent<ModuleIcon>().SetData(module);
-                foreach (var image in moduleIcon.GetComponentsInChildren<Image>())
+                foreach (Image image in moduleIcon.GetComponentsInChildren<Image>())
                 {
                     image.raycastTarget = false;
                 }
@@ -108,10 +109,10 @@ namespace UI.Level
         /// </summary>
         public void ModuleNode()
         {
-            var module = shop.GetModule();
+            Module module = shop.GetModule();
             if (module == null) return;
             
-            var applied = _target.ModuleTurret(module);
+            bool applied = _target.ModuleTurret(module);
             if (!applied) return;
             
             shop.RemoveModule();
@@ -122,7 +123,7 @@ namespace UI.Level
         /// </summary>
         public void CycleTargeting()
         {
-            var types = Enum.GetValues(typeof(TargetingMethod));
+            Array types = Enum.GetValues(typeof(TargetingMethod));
             var currentMethod = (int)_target.turret.GetComponent<DynamicTurret>().targetingMethod;
             _target.turret.GetComponent<DynamicTurret>().targetingMethod = (TargetingMethod)( (currentMethod + 1) % types.Length);
             
@@ -138,7 +139,7 @@ namespace UI.Level
         {
             if (_target.turret == null) return;
             var turret = _target.turret.GetComponent<Turret>();
-            var color = ColorUtility.ToHtmlStringRGBA(stats.color);
+            string color = ColorUtility.ToHtmlStringRGBA(stats.color);
             stats.text = $"<sprite=\"Stats\" name=\"damage\" color=#{color}> {turret.damage}\n" +
                          $"<sprite=\"Stats\" name=\"range\" color=#{color}> {turret.range}\n" +
                          $" <sprite=\"Stats\" name=\"rate\" color=#{color}> {turret.fireRate.ToString()}";

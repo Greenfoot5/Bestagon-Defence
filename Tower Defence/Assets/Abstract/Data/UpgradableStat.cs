@@ -14,7 +14,11 @@ namespace Abstract.Data
         private float stat;
         [SerializeField]
         private float modifier;
-
+        
+        /// <summary>
+        /// Creates an Upgradable stat, with default 1f for modifier
+        /// </summary>
+        /// <param name="baseValue">The staring base value</param>
         public UpgradableStat(float baseValue)
         {
             stat = baseValue;

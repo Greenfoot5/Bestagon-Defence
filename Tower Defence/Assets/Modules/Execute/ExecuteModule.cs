@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using Enemies;
 using Turrets;
+using Turrets.Gunner;
+using Turrets.Shooter;
 using UnityEngine;
 
-namespace Upgrades.Modules.PositiveModules
+namespace Modules.Execute
 {
     /// <summary>
     /// Extends the module class to create the execute module
@@ -38,7 +40,7 @@ namespace Upgrades.Modules.PositiveModules
         /// <param name="targets">The target(s) to apply the ability to</param>
         public override void OnHit(IEnumerable<Enemy> targets)
         {
-            foreach (var target in targets)
+            foreach (Enemy target in targets)
             {
                 if ((target.health / target.maxHealth) <= percentageHealthRemaining)
                 {

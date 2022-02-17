@@ -1,9 +1,9 @@
 using Abstract.Data;
+using Modules;
 using Turrets.Blueprints;
 using UnityEngine;
-using Upgrades.Modules;
 
-namespace Scenes.Levels
+namespace Levels.Maps
 {
     /// <summary>
     /// A way to disable duplicates in random selections

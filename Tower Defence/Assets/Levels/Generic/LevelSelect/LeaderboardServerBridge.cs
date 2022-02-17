@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Abstract.Managers
+namespace Levels.Generic.LevelSelect
 {
     /// <summary>
     /// The bridge that allows for easy communication between the leaderboard API and the game
@@ -28,8 +28,8 @@ namespace Abstract.Managers
         /// <exception cref="ArgumentOutOfRangeException"></exception>
         public async Task<List<LeaderboardEntry>> RequestEntries(int count, string leaderboardID, int start = 1)
         {
-            var url = serverEndpoint + $"/get_entries?leaderboard_id={leaderboardID}&start={start}&count={count}";
-            using var unityWebRequest = UnityWebRequest.Get(url);
+            string url = serverEndpoint + $"/get_entries?leaderboard_id={leaderboardID}&start={start}&count={count}";
+            using UnityWebRequest unityWebRequest = UnityWebRequest.Get(url);
             await unityWebRequest.SendWebRequestAsync();
             switch (unityWebRequest.result)
             {
@@ -60,8 +60,8 @@ namespace Abstract.Managers
         /// <exception cref="ArgumentOutOfRangeException"></exception>
         public async Task<LeaderboardEntry> RequestPlayerEntry(string username, string leaderboardID)
         {
-            var url = serverEndpoint + $"/get_entries?leaderboard_id={leaderboardID}&start=1&count=1&search={username}";
-            using var unityWebRequest = UnityWebRequest.Get(url);
+            string url = serverEndpoint + $"/get_entries?leaderboard_id={leaderboardID}&start=1&count=1&search={username}";
+            using UnityWebRequest unityWebRequest = UnityWebRequest.Get(url);
             await unityWebRequest.SendWebRequestAsync();
             switch (unityWebRequest.result)
             {
@@ -137,18 +137,18 @@ namespace Abstract.Managers
         /// <exception cref="ArgumentOutOfRangeException"></exception>
         private async Task<bool> SendPlayerValue(string username, IConvertible value, string leaderboardID, string leaderboardSecret)
         {
-            var url = serverEndpoint + "/update_entry";
+            string url = serverEndpoint + "/update_entry";
             var valueString = value.ToString();
             var uploadJson = $"{{\"name\":\"{username}\", \"value\":{valueString}, \"leaderboard_id\":{leaderboardID}}}";
-            var toHash = "/update_entry" + uploadJson + leaderboardSecret;
+            string toHash = "/update_entry" + uploadJson + leaderboardSecret;
 
-            var utfBytes = Encoding.UTF8.GetBytes(toHash);
+            byte[] utfBytes = Encoding.UTF8.GetBytes(toHash);
             SHA256 shaM = new SHA256Managed();
-            var result = shaM.ComputeHash(utfBytes);
+            byte[] result = shaM.ComputeHash(utfBytes);
 
-            var hashString = BitConverter.ToString(result).Replace("-", "");
+            string hashString = BitConverter.ToString(result).Replace("-", "");
 
-            var rawBytes = Encoding.UTF8.GetBytes(uploadJson + hashString);
+            byte[] rawBytes = Encoding.UTF8.GetBytes(uploadJson + hashString);
 
             var d = new DownloadHandlerBuffer();
             var u = new UploadHandlerRaw(rawBytes);
@@ -219,7 +219,7 @@ namespace Abstract.Managers
 
         public int GetValueAsInt()
         {
-            if(int.TryParse(_value, out var result))
+            if(int.TryParse(_value, out int result))
             {
                 return result;
             }

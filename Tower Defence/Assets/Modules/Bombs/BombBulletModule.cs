@@ -1,8 +1,10 @@
 using System;
 using Turrets;
+using Turrets.Gunner;
+using Turrets.Shooter;
 using UnityEngine;
 
-namespace Upgrades.Modules.PositiveModules
+namespace Modules.Bombs
 {
     /// <summary>
     /// Extends the Module class to create a BombBullet upgrade

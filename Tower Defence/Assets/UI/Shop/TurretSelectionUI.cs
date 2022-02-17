@@ -1,8 +1,11 @@
-using Abstract.Data;
-using Shaders.Hexagons;
+using Abstract;
+using MaterialLibrary.Hexagons;
+using Modules;
 using TMPro;
 using Turrets;
 using Turrets.Blueprints;
+using UI.Glyphs;
+using UI.TurretStats;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -43,7 +46,7 @@ namespace UI.Shop
         /// <param name="turret">The turret the option selects</param>
         /// <param name="shop">The Shop (allows the game to select the turret when the player clicks the panel)</param>
         /// <param name="lookup">The turret type to glyph lookup</param>
-        public void Init (TurretBlueprint turret, Levels.Shop shop, TypeSpriteLookup lookup)
+        public void Init (TurretBlueprint turret, Gameplay.Shop shop, TypeSpriteLookup lookup)
         {
             _turretBlueprint = turret;
             
@@ -53,7 +56,7 @@ namespace UI.Shop
             
             // Icon and Glyph
             icon.sprite = turret.shopIcon;
-            var glyphSo = lookup.GetForType(turret.prefab.GetComponent<Turret>().GetType());
+            TurretGlyphSo glyphSo = lookup.GetForType(turret.prefab.GetComponent<Turret>().GetType());
             glyph.sprite = glyphSo.glyph;
             glyph.color = glyphSo.body;
             
@@ -70,9 +73,9 @@ namespace UI.Shop
             }
             else
             {
-                foreach (var module in turret.modules)
+                foreach (Module module in turret.modules)
                 {
-                    var mod = Instantiate(moduleUI, modulesLayout.transform);
+                    GameObject mod = Instantiate(moduleUI, modulesLayout.transform);
                     mod.GetComponentInChildren<TurretModulesIcon>().SetData(module);
                 }
             }
@@ -96,7 +99,7 @@ namespace UI.Shop
         /// selecting it and closing the shop
         /// </summary>
         /// <param name="shop"></param>
-        private void MakeSelection (Levels.Shop shop)
+        private void MakeSelection (Gameplay.Shop shop)
         {
             transform.parent.gameObject.SetActive (false);
             Time.timeScale = 1f;

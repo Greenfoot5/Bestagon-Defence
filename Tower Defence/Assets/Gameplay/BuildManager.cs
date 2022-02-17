@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using Levels;
+using Levels._Nodes;
 using Turrets;
 using Turrets.Blueprints;
-using UI.Level;
+using UI.Nodes;
 using UnityEngine;
 
-namespace Abstract.Managers
+namespace Gameplay
 {
     /// <summary>
     /// Handles all tasks related to building turrets and selecting nodes
@@ -74,7 +75,10 @@ namespace Abstract.Managers
             return _turretToBuild;
         }
     
-        // Set's the selected node so the game can move the NodeUI
+        /// <summary>
+        /// Sets the selected node and moves the NodeUI
+        /// </summary>
+        /// <param name="node">The selected node</param>
         public void SelectNode(Node node)
         {
             if (_selectedNode == node)

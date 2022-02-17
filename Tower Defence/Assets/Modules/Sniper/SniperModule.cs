@@ -1,8 +1,11 @@
 using System;
 using Turrets;
+using Turrets.Laser;
+using Turrets.Shooter;
+using Turrets.Smasher;
 using UnityEngine;
 
-namespace Upgrades.Modules.PositiveModules
+namespace Modules.Sniper
 {
     /// <summary>
     /// Extends the Module class to create a Sniper upgrade

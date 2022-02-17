@@ -1,6 +1,7 @@
+using Modules;
 using TMPro;
+using UI.Modules;
 using UnityEngine;
-using Upgrades.Modules;
 
 namespace UI.Shop
 {

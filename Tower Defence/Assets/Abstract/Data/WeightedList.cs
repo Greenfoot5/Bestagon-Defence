@@ -62,7 +62,7 @@ namespace Abstract.Data
         {
             if (list.Count == 0) throw new NullReferenceException("WeightedList is empty");
         
-            var total = list.Sum(t => t.weight);
+            float total = list.Sum(t => t.weight);
 
             return total;
         }

@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI
+namespace UI.TurretStats
 {
     /// <summary>
     /// Displays a single stat on a turret's shop card

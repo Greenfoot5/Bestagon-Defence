@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Shaders.Hexagons
+namespace MaterialLibrary.Hexagons
 {
     [ExecuteAlways]
     public class HexShaderExposer : MonoBehaviour

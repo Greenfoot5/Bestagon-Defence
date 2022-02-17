@@ -1,7 +1,7 @@
 using Enemies;
 using UnityEngine;
 
-namespace Upgrades.Abilities.NegativeAbilities
+namespace _WIP.Abilities.NegativeAbilities
 {
     /// <summary>
     /// Slows the enemy the ability is attached to

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem.EnhancedTouch;
 
-namespace Abstract
+namespace Gameplay
 {
     /// <summary>
     /// Holds the stats for the current game
@@ -14,7 +14,7 @@ namespace Abstract
 
         private static int _lives;
         public int startLives = 20;
-        public static int lives
+        public static int Lives
         {
             get => _lives;
             set
@@ -22,27 +22,27 @@ namespace Abstract
                 _lives = value;
                 if (value == 0)
                 {
-                    gameOver?.Invoke();
+                    GameOver?.Invoke();
                 }
             }
         }
 
         private static int _rounds;
-        public static int rounds
+        public static int Rounds
         { 
             get => _rounds;
             set
             {
                 _rounds = value;
-                roundProgress?.Invoke();
+                RoundProgress?.Invoke();
             }
         }
 
         public static GameControls controls;
 
         // Events
-        public static event RoundProgressEvent roundProgress;
-        public static event GameOverEvent gameOver;
+        public static event RoundProgressEvent RoundProgress;
+        public static event GameOverEvent GameOver;
         
         /// <summary>
         /// Resets all stats and enables the game's controls at the start of the game

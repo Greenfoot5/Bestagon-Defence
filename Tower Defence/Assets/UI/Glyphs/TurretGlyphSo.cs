@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace UI.Shop
+namespace UI.Glyphs
 {
     /// <summary>
     /// Stores the settings for a glyph

@@ -1,11 +1,11 @@
-﻿using Abstract.Managers;
+﻿using Gameplay;
+using Modules;
 using Turrets;
 using Turrets.Blueprints;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using Upgrades.Modules;
 
-namespace Levels
+namespace Levels._Nodes
 {
     /// <summary>
     /// Manages all data and actions for a single node on a level map
@@ -43,19 +43,19 @@ namespace Levels
         private void BuildTurret(TurretBlueprint blueprint)
         {
             // Spawn the turret and set the turret and blueprint
-            var nodePosition = transform.position;
-            var newTurret = Instantiate(blueprint.prefab, nodePosition, Quaternion.identity);
+            Vector3 nodePosition = transform.position;
+            GameObject newTurret = Instantiate(blueprint.prefab, nodePosition, Quaternion.identity);
             turret = newTurret;
             var turretClass = turret.GetComponent<Turret>();
             turretBlueprint = blueprint;
         
-            foreach (var turretModule in blueprint.modules)
+            foreach (Module turretModule in blueprint.modules)
             {
                 turretClass.AddModule(turretModule);
             }
         
             // Spawn the build effect and destroy after
-            var effect = Instantiate(_buildManager.buildEffect, nodePosition, Quaternion.identity);
+            GameObject effect = Instantiate(_buildManager.buildEffect, nodePosition, Quaternion.identity);
             Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
         }
     
@@ -67,11 +67,11 @@ namespace Levels
         public bool ModuleTurret(Module module)
         {
             // Apply the Module
-            var appliedModule = turret.GetComponent<Turret>().AddModule(module);
+            bool appliedModule = turret.GetComponent<Turret>().AddModule(module);
             if (!appliedModule) return false;
 
             // Spawn the build effect
-            var effect = Instantiate(_buildManager.buildEffect, transform.position, Quaternion.identity);
+            GameObject effect = Instantiate(_buildManager.buildEffect, transform.position, Quaternion.identity);
             Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
         
             // Deselect and reselect to avoid issues from upgrading
@@ -89,7 +89,7 @@ namespace Levels
             // GameStats.money += turretBlueprint.GetSellAmount();
         
             // Spawn the sell effect
-            var effect = Instantiate(_buildManager.sellEffect, transform.position, Quaternion.identity);
+            GameObject effect = Instantiate(_buildManager.sellEffect, transform.position, Quaternion.identity);
             Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
         
             // Destroy the turret and reset any of the node's selection variables
@@ -105,7 +105,7 @@ namespace Levels
         /// </summary>
         public void OnPointerDown(PointerEventData eventData)
         {
-            // Ingore camera pan as a click
+            // Ignore camera pan as a click
             if (eventData.button == PointerEventData.InputButton.Middle)
                 return;
 

@@ -1,8 +1,8 @@
-using Abstract;
+using Gameplay;
 using TMPro;
 using UnityEngine;
 
-namespace UI.Level
+namespace UI
 {
     /// <summary>
     /// Displays the user's stats in world space
@@ -19,8 +19,8 @@ namespace UI.Level
         private void Update()
         {
             moneyText.text = "<sprite=\"UI-Gold\" name=\"gold\"> " + GameStats.money;
-            livesText.text = "<sprite=\"UI-Life\" name=\"life\"> " + GameStats.lives;
-            waveCountText.text = " # " + GameStats.rounds;
+            livesText.text = "<sprite=\"UI-Life\" name=\"life\"> " + GameStats.Lives;
+            waveCountText.text = " # " + GameStats.Rounds;
         }
     }
 }

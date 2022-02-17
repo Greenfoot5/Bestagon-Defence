@@ -1,8 +1,10 @@
 using System;
 using Turrets;
+using Turrets.Gunner;
+using Turrets.Shooter;
 using UnityEngine;
 
-namespace Upgrades.Modules.PositiveModules
+namespace Modules.Velocity
 {
     /// <summary>
     /// Increases the speed of bullets

@@ -1,10 +1,10 @@
 ﻿using System.Collections;
-using Abstract;
+using Gameplay;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace UI.Level
+namespace UI
 {
     /// <summary>
     /// A UI handler for the GameOver UI in a level
@@ -34,7 +34,7 @@ namespace UI.Level
         /// </summary>
         public void OnEnable()
         {
-            roundsText.text = "<size=4em><b>" + GameStats.rounds + "</b></size>";
+            roundsText.text = "<size=4em><b>" + GameStats.Rounds + "</b></size>";
         }
         
         /// <summary>

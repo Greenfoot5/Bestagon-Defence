@@ -1,4 +1,4 @@
-namespace Upgrades.Abilities
+namespace _WIP.Abilities
 {
     /// <summary>
     /// Specifies what targets are in range

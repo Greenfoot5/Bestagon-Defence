@@ -59,18 +59,18 @@ namespace Turrets
             // If the turret is not aggressively retargeting, check if the target is still in range
             if (!aggressiveRetargeting && target != null)
             {
-                var distanceToEnemy = Vector3.Distance(transform.position, target.position);
+                float distanceToEnemy = Vector3.Distance(transform.position, target.position);
                 if (distanceToEnemy <= range.GetStat()) return;
             }
 
             // Create a list of enemies within range
-            var enemiesInRange = (from enemy in GameObject.FindGameObjectsWithTag(enemyTag)
+            GameObject[] enemiesInRange = (from enemy in GameObject.FindGameObjectsWithTag(enemyTag)
                 let distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position)
                 where distanceToEnemy <= range.GetStat()
                 select enemy).ToArray();
             // Set the current value to be too high or too low.
             // Value is based on targeting method
-            var currentValue = Mathf.Infinity;
+            float currentValue = Mathf.Infinity;
             if (targetingMethod == TargetingMethod.Strongest || targetingMethod == TargetingMethod.First)
             {
                 currentValue = Mathf.NegativeInfinity;
@@ -86,13 +86,13 @@ namespace Turrets
             }
 
             // Loop through the enemies and find the most valuable
-            foreach (var enemy in enemiesInRange)
+            foreach (GameObject enemy in enemiesInRange)
             {
                 switch (targetingMethod)
                 {
                     case TargetingMethod.Closest:
                         // Find if the enemy is closer than our current most valuable
-                        var distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
+                        float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
                         if (distanceToEnemy < currentValue)
                         {
                             currentValue = distanceToEnemy;
@@ -102,7 +102,7 @@ namespace Turrets
                         break;
                     case TargetingMethod.Weakest:
                         // Find if the enemy has less health than our current most valuable
-                        var health = enemy.GetComponent<Enemy>().health;
+                        float health = enemy.GetComponent<Enemy>().health;
                         if (health < currentValue)
                         {
                             currentValue = health;
@@ -112,7 +112,7 @@ namespace Turrets
                         break;
                     case TargetingMethod.Strongest:
                         // Find if the enemy has more health than our current most valuable
-                        var enemyHealth = enemy.GetComponent<Enemy>().health;
+                        float enemyHealth = enemy.GetComponent<Enemy>().health;
                         if (enemyHealth > currentValue)
                         {
                             currentValue = enemyHealth;
@@ -122,7 +122,7 @@ namespace Turrets
                         break;
                     case TargetingMethod.First:
                         // Find if the enemy has the most map progress than our current most valuable
-                        var mapProgress = enemy.GetComponent<EnemyMovement>().mapProgress;
+                        float mapProgress = enemy.GetComponent<EnemyMovement>().mapProgress;
                         if (mapProgress > currentValue)
                         {
                             currentValue = mapProgress;
@@ -131,7 +131,7 @@ namespace Turrets
                         break;
                     case TargetingMethod.Last:
                         // Find if the enemy has the lease map progress than our current most valuable
-                        var pathProgress = enemy.GetComponent<EnemyMovement>().mapProgress;
+                        float pathProgress = enemy.GetComponent<EnemyMovement>().mapProgress;
                         if (pathProgress < currentValue)
                         {
                             currentValue = pathProgress;
@@ -162,9 +162,9 @@ namespace Turrets
         protected void LookAtTarget()
         {
             // Gets the rotation the turret need to end up at, and lerp each frame towards that
-            var aimDir = ((Vector2)target.position - (Vector2)transform.position).normalized;
-            var up = partToRotate.up;
-            var lookDir = Vector3.Lerp(up, aimDir, Time.deltaTime * rotationSpeed.GetStat());
+            Vector2 aimDir = ((Vector2)target.position - (Vector2)transform.position).normalized;
+            Vector3 up = partToRotate.up;
+            Vector3 lookDir = Vector3.Lerp(up, aimDir, Time.deltaTime * rotationSpeed.GetStat());
             transform.rotation *= Quaternion.FromToRotation(up, lookDir);
         }
 
@@ -187,7 +187,7 @@ namespace Turrets
 
             // Loop through the hits to see if the turret can hit the target
             var foundEnemy = false;
-            foreach (var unused in results.Where(hit => hit.transform == targetEnemy.transform))
+            foreach (RaycastHit2D unused in results.Where(hit => hit.transform == targetEnemy.transform))
             {
                 foundEnemy = true;
             }

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Abstract
+namespace UI
 {
     /// <summary>
     /// A UI layout that forms a triangle with it's elements
@@ -35,8 +35,8 @@ namespace Abstract
                     var child = (RectTransform)transform.GetChild(i);
                     
                     // Calculate Offset Based on line
-                    var lineIndex = i - TriangleCount(i + 1);
-                    var inset = lineIndex * cellSize.x; // Offset from line
+                    int lineIndex = i - TriangleCount(i + 1);
+                    float inset = lineIndex * cellSize.x; // Offset from line
                     if (lineIndex != 0)
                         inset += lineIndex * spacing.x; // Offset based on spacing
                     
@@ -57,7 +57,7 @@ namespace Abstract
                         case RectTransform.Edge.Top:
                         case RectTransform.Edge.Bottom:
                         default:
-                            var width = ((RectTransform)transform).rect.width;
+                            float width = ((RectTransform)transform).rect.width;
                             inset += (width - left - right) / 2;
                             inset -= CalculateLine(i + 1) * 0.5f * cellSize.x;
                             child.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, inset, cellSize.x);
@@ -69,13 +69,13 @@ namespace Abstract
             else
             {
                 // Loop through all the children, but backwards
-                for (var i = transform.childCount - 1; i >= 0; i--)
+                for (int i = transform.childCount - 1; i >= 0; i--)
                 {
                     var child = (RectTransform)transform.GetChild(i);
                     
                     // Calculate Offset Based on line
-                    var lineIndex = i - TriangleCount(i + 1);
-                    var inset = lineIndex * cellSize.x; // Offset from line
+                    int lineIndex = i - TriangleCount(i + 1);
+                    float inset = lineIndex * cellSize.x; // Offset from line
                     if (lineIndex != 0)
                         inset += lineIndex * spacing.x; // Offset based on spacing
                     
@@ -96,7 +96,7 @@ namespace Abstract
                         case RectTransform.Edge.Top:
                         case RectTransform.Edge.Bottom:
                         default:
-                            var width = ((RectTransform)transform).rect.width;
+                            float width = ((RectTransform)transform).rect.width;
                             inset += (width - left - right) / 2; // offset all rects to the centre
                             // Offset to the left based on line number
                             inset -= CalculateLine(i + 1) * 0.5f * cellSize.x;
@@ -120,8 +120,8 @@ namespace Abstract
                     var child = (RectTransform)transform.GetChild(i);
                     
                     // Calculate offsets based off line
-                    var lineNumber = CalculateLine(i + 1) + 1;
-                    var inset = ((lineNumber - 1) * cellSize.y); // So they don't overlap
+                    int lineNumber = CalculateLine(i + 1) + 1;
+                    float inset = ((lineNumber - 1) * cellSize.y); // So they don't overlap
                     if (lineNumber != 0)
                         inset += lineNumber * spacing.y; // Padding offset
                     
@@ -154,13 +154,13 @@ namespace Abstract
             else
             {
                 // Loop through the children
-                for (var i = transform.childCount - 1; i >= 0; i--)
+                for (int i = transform.childCount - 1; i >= 0; i--)
                 {
                     var child = (RectTransform)transform.GetChild(i);
                     
                     // Calculate offsets based off line
-                    var lineNumber = CalculateLine(transform.childCount) - CalculateLine(i + 1) + 1;
-                    var inset = ((lineNumber - 1) * cellSize.y); // So they don't overlap
+                    int lineNumber = CalculateLine(transform.childCount) - CalculateLine(i + 1) + 1;
+                    float inset = ((lineNumber - 1) * cellSize.y); // So they don't overlap
                     if (lineNumber != 0)
                         inset -= lineNumber * spacing.y; // Padding offset
                     

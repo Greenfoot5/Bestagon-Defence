@@ -1,9 +1,9 @@
 using UnityEngine;
 
-namespace Upgrades.Abilities
+namespace _WIP.Abilities
 {
     /// <summary>
-    /// The base for any enemy abilitiy
+    /// The base for any enemy ability
     /// </summary>
     public abstract class EnemyAbility : ScriptableObject
     {

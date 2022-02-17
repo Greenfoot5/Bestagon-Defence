@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace UI.MenuScenes
+namespace Levels.Generic.MainMenu
 {
     /// <summary>
     /// Handles asking the user to input a username if they don't have one already
@@ -28,6 +28,7 @@ namespace UI.MenuScenes
             else
             {
                 // The username is valid and we can save it
+                // We need to remove some weird input character Unity adds
                 PlayerPrefs.SetString("Username", input.text.Replace("​", ""));
                 mainMenu.DisplayUsername();
                 gameObject.SetActive(false);

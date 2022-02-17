@@ -1,10 +1,9 @@
 ﻿using Abstract;
-using Abstract.Managers;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
-namespace Levels
+namespace Gameplay.Camera
 {
     /// <summary>
     /// Allows the player to move the camera during gameplay
@@ -34,7 +33,7 @@ namespace Levels
         public float minOrthSize = 3;
         [Tooltip("The maximum Orthographic size that can be reached (minimum zoom)")]
         public float maxOrthSize = 9;
-        private Camera _camera;
+        private UnityEngine.Camera _camera;
 
         // Input System
         private InputAction _moveCamera;
@@ -45,7 +44,7 @@ namespace Levels
         /// </summary>
         private void Start()
         {
-            _camera = transform.GetComponent<Camera>();
+            _camera = transform.GetComponent<UnityEngine.Camera>();
             _moveCamera = GameStats.controls.Camera.Pan;
             _zoomCamera = GameStats.controls.Camera.Zoom;
 
@@ -68,7 +67,7 @@ namespace Levels
             // Keyboard Input
             if (_moveCamera.activeControl.device == Keyboard.current)
             {
-                return _moveCamera.ReadValue<Vector2>() * keyboardPanSpeed * Time.deltaTime;
+                return _moveCamera.ReadValue<Vector2>() * (keyboardPanSpeed * Time.deltaTime);
             }
 
             // Mouse Input
@@ -99,16 +98,16 @@ namespace Levels
 
             if (Touch.activeFingers.Count != 2) return 0f;
         
-            var touchZero = Touch.activeTouches[0];
-            var touchOne = Touch.activeTouches[1];
+            Touch touchZero = Touch.activeTouches[0];
+            Touch touchOne = Touch.activeTouches[1];
         
             // Find the position in the previous frame of each touch.
-            var touchZeroPrevPos = touchZero.screenPosition - touchZero.delta;
-            var touchOnePrevPos = touchOne.screenPosition - touchOne.delta;
+            Vector2 touchZeroPrevPos = touchZero.screenPosition - touchZero.delta;
+            Vector2 touchOnePrevPos = touchOne.screenPosition - touchOne.delta;
         
             // Find the magnitude of the vector (the distance) between the touches in each frame.
-            var prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
-            var touchDeltaMag = (touchZero.screenPosition - touchOne.screenPosition).magnitude;
+            float prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
+            float touchDeltaMag = (touchZero.screenPosition - touchOne.screenPosition).magnitude;
             // var touchZeroDeltaMag = Touch.activeTouches[0].delta.magnitude;
             // var touchOneDeltaMag = Touch.activeTouches[1].delta.magnitude;
         
@@ -130,17 +129,17 @@ namespace Levels
             }
         
             // TODO - Check if the game actually need to call them.
-            var panSpeed = Move();
-            var zoomSpeed = Scroll();
+            Vector2 panSpeed = Move();
+            float zoomSpeed = Scroll();
 
             // Gets the current camera transform
-            var transformPosition = transform.position;
-            var orthSize = _camera.orthographicSize;
+            Vector3 transformPosition = transform.position;
+            float orthSize = _camera.orthographicSize;
 
             // Moves the camera
             panSpeed *= orthSize / zoomInfluence;
-            var newPositionX = Mathf.Clamp(transformPosition.x + panSpeed.x, minPos.x, maxPos.x);
-            var newPositionY = Mathf.Clamp(transformPosition.y + panSpeed.y, minPos.y, maxPos.y);
+            float newPositionX = Mathf.Clamp(transformPosition.x + panSpeed.x, minPos.x, maxPos.x);
+            float newPositionY = Mathf.Clamp(transformPosition.y + panSpeed.y, minPos.y, maxPos.y);
             transform.Translate(new Vector3(newPositionX, newPositionY, transformPosition.z) - transformPosition, Space.World);
 
             // Implement scrolling by changing the Orthographic Size on the camera

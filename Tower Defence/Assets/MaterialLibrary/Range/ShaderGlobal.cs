@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Shaders
+namespace MaterialLibrary.Range
 {
     public class ShaderGlobal : MonoBehaviour
     {

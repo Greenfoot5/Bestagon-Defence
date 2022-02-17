@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections;
-using Abstract;
-using Abstract.Managers;
+using Gameplay;
+using Levels.Generic.LevelSelect;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-namespace UI.Level
+namespace UI
 {
     /// <summary>
     /// Handles the pause menu in a level
@@ -83,11 +83,11 @@ namespace UI.Level
             try
             {
                 // Tell our leaderboard API to add the player
-                var leaderboardData =
+                string leaderboardData =
                     Environment.GetEnvironmentVariable(SceneManager.GetActiveScene().name + "Leaderboard");
                 if (leaderboardData == null) return;
-                var splitData = leaderboardData.Split(';');
-                bridge.SendPlayerValue(PlayerPrefs.GetString("Username"), GameStats.rounds, splitData[0], splitData[1]);
+                string[] splitData = leaderboardData.Split(';');
+                bridge.SendPlayerValue(PlayerPrefs.GetString("Username"), GameStats.Rounds, splitData[0], splitData[1]);
             }
             catch (Exception)
             {

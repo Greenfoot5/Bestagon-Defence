@@ -2,7 +2,7 @@ using System;
 using Turrets;
 using UnityEngine;
 
-namespace Upgrades.Modules.PositiveModules
+namespace Modules.Damage
 {
     /// <summary>
     /// Extends the Module class to create a Damage upgrade

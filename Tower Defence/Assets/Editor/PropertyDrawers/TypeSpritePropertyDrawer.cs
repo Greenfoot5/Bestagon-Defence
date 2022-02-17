@@ -1,8 +1,10 @@
-using Abstract.Data;
+using System;
+using System.Collections.Generic;
+using Abstract;
 using UnityEditor;
 using UnityEngine;
 
-namespace Editor.Abstract
+namespace Editor.PropertyDrawers
 {
     [CustomPropertyDrawer(typeof(TypeSpriteLookup))]
     public class TypeSpriteLookupPropertyDrawer : PropertyDrawer
@@ -12,8 +14,8 @@ namespace Editor.Abstract
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             // Setup
-            var sprites = property.FindPropertyRelative("sprites");
-            var types = TypeSpriteLookup.GetAllTypes();
+            SerializedProperty sprites = property.FindPropertyRelative("sprites");
+            List<Type> types = TypeSpriteLookup.GetAllTypes();
             // Make sure the arrays are the same length
             if (sprites.arraySize != types.Count)
             {

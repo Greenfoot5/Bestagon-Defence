@@ -1,8 +1,11 @@
 using System;
 using Turrets;
+using Turrets.Gunner;
+using Turrets.Laser;
+using Turrets.Shooter;
 using UnityEngine;
 
-namespace Upgrades.Modules.PositiveModules
+namespace Modules.Tracker
 {
     /// <summary>
     /// Increases the rotation speed of a dynamic turret

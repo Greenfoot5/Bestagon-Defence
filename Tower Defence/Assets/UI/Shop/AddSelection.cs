@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using Abstract;
 using Abstract.Data;
-using Abstract.Managers;
-using Scenes.Levels;
+using Gameplay;
+using Levels.Maps;
+using Modules;
 using Turrets.Blueprints;
 using UnityEngine;
-using Upgrades.Modules;
 using Random = UnityEngine.Random;
 
 namespace UI.Shop
@@ -17,7 +17,7 @@ namespace UI.Shop
         public GameObject turretSelectionUI;
         public GameObject moduleSelectionUI;
         private LevelData _levelData;
-        public Levels.Shop shop;
+        public Gameplay.Shop shop;
     
         [SerializeField]
         public TypeSpriteLookup glyphsLookup;
@@ -56,7 +56,7 @@ namespace UI.Shop
             Init();
         
             // Destroy the previous selection
-            for (var i = transform.childCount - 1; i >= 0; i--)
+            for (int i = transform.childCount - 1; i >= 0; i--)
             {
                 Destroy(transform.GetChild(i).gameObject);
             }
@@ -75,8 +75,8 @@ namespace UI.Shop
                 if (_firstPurchase)
                 {
                     // Add a new turret to the selection
-                    var turrets = _levelData.initialTurretSelection;
-                    var selected = turrets.GetRandomItem();
+                    WeightedList<TurretBlueprint> turrets = _levelData.initialTurretSelection;
+                    TurretBlueprint selected = turrets.GetRandomItem();
 
                     // Gets a new turret if there is a duplicate (depending on settings)
                     switch (_levelData.initialDuplicateCheck)
@@ -120,12 +120,12 @@ namespace UI.Shop
                 }
 
                 // Select if the game should get an Module or a turret
-                var choice = Random.Range(0f, _levelData.turretOptionWeight + _levelData.moduleOptionWeight);
+                float choice = Random.Range(0f, _levelData.turretOptionWeight + _levelData.moduleOptionWeight);
                 if (choice > _levelData.turretOptionWeight)
                 {
                     // Grants an Module option
-                    var modules = _levelData.modules;
-                    var selected = modules.GetRandomItem();
+                    WeightedList<Module> modules = _levelData.modules;
+                    Module selected = modules.GetRandomItem();
                     
                     // Check the player actually has a turret of the modules type
                     // But only if they have actually bought some turrets
@@ -183,8 +183,8 @@ namespace UI.Shop
                 else
                 {
                     // Grants a turret option
-                    var turrets = _levelData.turrets;
-                    var selected = turrets.GetRandomItem();
+                    WeightedList<TurretBlueprint> turrets = _levelData.turrets;
+                    TurretBlueprint selected = turrets.GetRandomItem();
                 
                     // Check the game didn't pick something it's already picked (depending on duplicate checking type)
                     switch (_levelData.turretDuplicateCheck)
@@ -236,7 +236,7 @@ namespace UI.Shop
         private void GenerateModuleUI(Module module)
         {
             // Create the ui as a child
-            var moduleUI = Instantiate(moduleSelectionUI, transform);
+            GameObject moduleUI = Instantiate(moduleSelectionUI, transform);
             moduleUI.GetComponent<ModuleSelectionUI>().Init(module, shop, glyphsLookup);
         }
     
@@ -246,7 +246,7 @@ namespace UI.Shop
         /// <param name="turret">The turret the player can pick</param>
         private void GenerateTurretUI(TurretBlueprint turret)
         {
-            var turretUI = Instantiate(turretSelectionUI, transform);
+            GameObject turretUI = Instantiate(turretSelectionUI, transform);
             turretUI.GetComponent<TurretSelectionUI>().Init(turret, shop, glyphsLookup);
         }
 

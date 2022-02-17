@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using Abstract.Data;
 using Enemies;
+using Modules;
 using UnityEngine;
-using Upgrades.Modules;
 
 namespace Turrets
 {
@@ -46,9 +46,9 @@ namespace Turrets
             }
         
             // Get the direction of the target, and the distance to move this frame
-            var position = transform.position;
-            var dir = ((Vector2)_target.position - (Vector2)position);
-            var distanceThisFrame = speed.GetStat() * Time.deltaTime;
+            Vector3 position = transform.position;
+            Vector2 dir = ((Vector2)_target.position - (Vector2)position);
+            float distanceThisFrame = speed.GetStat() * Time.deltaTime;
         
             // TODO - Make it based on target size
             const float targetSize = 0.25f;
@@ -61,7 +61,7 @@ namespace Turrets
         
             // Move the bullet towards the target
             transform.Translate(dir.normalized * distanceThisFrame, Space.World);
-            var toTarget = _target.position - position;
+            Vector3 toTarget = _target.position - position;
             Vector3.Normalize(toTarget);
             transform.up = toTarget;
 
@@ -73,8 +73,8 @@ namespace Turrets
         private void HitTarget()
         {
             // Spawn hit effect
-            var position = transform;
-            var effectIns = Instantiate(impactEffect, position.position, position.rotation);
+            Transform position = transform;
+            GameObject effectIns = Instantiate(impactEffect, position.position, position.rotation);
 
             Destroy(effectIns, 2f);
         
@@ -101,7 +101,7 @@ namespace Turrets
             var em = enemy.GetComponent<Enemy>();
             
             // Add module effects
-            foreach (var module in _modules)
+            foreach (Module module in _modules)
             {
                 module.OnHit(new []{em});
             }
@@ -118,12 +118,12 @@ namespace Turrets
         private void Explode()
         {
             // Gets all the enemies in the AoE and calls Damage on them
-            var colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius.GetStat());
-            foreach (var collider2d in colliders)
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius.GetStat());
+            foreach (Collider2D collider2d in colliders)
             {
                 if (!collider2d.CompareTag("Enemy")) continue;
                 
-                foreach (var module in _modules)
+                foreach (Module module in _modules)
                 {
                     module.OnHit(new []{collider2d.GetComponent<Enemy>()});
                 }

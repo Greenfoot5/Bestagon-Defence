@@ -1,7 +1,7 @@
 using Enemies;
 using UnityEngine;
 
-namespace Upgrades.Abilities.PositiveAbilities
+namespace _WIP.Abilities.PositiveAbilities
 {
     /// <summary>
     /// Heals enemy/ies on activation

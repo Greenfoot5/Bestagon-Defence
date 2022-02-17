@@ -4,9 +4,12 @@ using System.Collections.Generic;
 using Abstract;
 using Enemies;
 using Turrets;
+using Turrets.Gunner;
+using Turrets.Shooter;
+using Turrets.Smasher;
 using UnityEngine;
 
-namespace Upgrades.Modules.PositiveModules
+namespace Modules.Slow
 {
     /// <summary>
     /// Extends the Module class to create a DebuffEnemy upgrade,
@@ -29,7 +32,7 @@ namespace Upgrades.Modules.PositiveModules
         /// <param name="targets">The target(s) to apply the ability to</param>
         public override void OnHit(IEnumerable<Enemy> targets)
         {
-            foreach (var target in targets)
+            foreach (Enemy target in targets)
             {
                 Runner.Run(SlowEnemy(target));
             }
