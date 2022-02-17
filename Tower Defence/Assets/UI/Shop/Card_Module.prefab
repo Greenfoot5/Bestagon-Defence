@@ -481,7 +481,7 @@ MonoBehaviour:
   OffsetUV: {x: 0, y: 0}
   HexagonScale: 6
   ScrollSpeed: 0.03
-  LuminanceShiftSpeed: 2.5
+  LuminanceShiftSpeed: 1.5
   OverlayStrength: -0.2
   HexagonOpacity: 0.2
   GlowIntensity: 0.3

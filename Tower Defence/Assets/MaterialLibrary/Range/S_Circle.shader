@@ -1,17 +1,21 @@
+// Draws a circle that gradients out in the middle of the quad
+
 Shader "Unlit/Circle"
 {
     Properties
     {
-        _MainTex ( "Texture", 2D ) = "white" {}
-        
         _CircleColor ( "Circle Color", Color ) = (1, 1, 1, 1)
         
         _GlowColor ( "Glow Color", Color ) = (1, 1, 1, 1)
         _GlowRadius ( "Glow Radius", Float ) = 1
         _GlowSize ( "Glow Size", Float ) = 1
+
+        // Unity complains if the shader has no texture input when it's used in an Image component
+        _MainTex ( "Texture", 2D ) = "white" {}
     }
     SubShader
     {
+        // Set up for transparent rendering
         Tags { "Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent" }
         ZWrite Off
         Blend SrcAlpha OneMinusSrcAlpha
@@ -20,38 +24,44 @@ Shader "Unlit/Circle"
         Pass
         {
             CGPROGRAM
+
             #pragma vertex vert
             #pragma fragment frag
 
             #include "UnityCG.cginc"
 
-            struct appdata {
+            struct Input {
                 float4 vertex : POSITION;
                 float2 uv : TEXCOORD0;
                 float4 color : COLOR;
             };
 
-            struct v2_f {
-                float4 vertex : POSITION;
+            struct Output {
+                float4 vertex : SV_POSITION;
                 float2 uv : TEXCOORD0;
                 float4 color : COLOR;
             };
             
+            // PROPERTIES
             float4 _CircleColor;
             float4 _GlowColor;
             float _GlowRadius;
             float _GlowSize;
 
-            v2_f vert ( appdata v )
+            // VERTEX SHADER
+            // Only passes data to the fragment shader
+            Output vert ( Input i )
             {
-                v2_f o;
-                o.vertex = UnityObjectToClipPos(v.vertex);
-                o.uv = v.uv;
-                o.color = v.color;
+                Output o;
+                o.vertex = UnityObjectToClipPos(i.vertex);
+                o.uv = i.uv;
+                o.color = i.color;
                 return o;
             }
 
-            fixed4 frag ( v2_f i ) : SV_Target
+            // FRAGMENT SHADER
+            // Draws the circle itself
+            fixed4 frag ( Output i ) : SV_Target
             {
                 float4 color = 0;
             
@@ -68,6 +78,7 @@ Shader "Unlit/Circle"
                 float value = max( _GlowRadius - _GlowSize / length(i.uv), 0 );
                 color += fixed4( _GlowColor.rgb * value, _GlowColor.a * value );
                 
+                // final multiply
                 return color * i.color;
             }
         

@@ -1,16 +1,23 @@
+// Draws a bunch of neon hexagons with a possible edge glow on the quad
+
 Shader "Unlit/Hex Background"
 {
     Properties
     {
         _OffsetUV ("Offset UV", Vector) = (0, 0, 0, 0)
+
         _HexScale ("Hexagon Scale", Float) = 5
-        _ShiftSpeed ("Luminance Shift Speed", Float) = .75
         _Overlay ("Overlay Strength", Float) = .15
         _Opacity ("Hex Opacity", Float) = .2
+        
         _GlowIntensity ("Glow Intensity", Float) = .5
         _GlowClamp ("Glow Clamp", Float) = 1
         _GlowOpacity ("Glow Opacity", Float) = .5
+
+        _ShiftSpeed ("Luminance Shift Speed", Float) = .75
         _ScrollSpeed ("Scroll Speed", Float) = 0.03
+        
+        // Unity complains if the shader has no texture input when it's used in an Image component
         _MainTex ("Texture", 2D) = "white" {}
     }
     SubShader
@@ -28,17 +35,22 @@ Shader "Unlit/Hex Background"
 
             #include "UnityCG.cginc"
 
-            struct appdata
+            // hexagon vertex (a normalized (1; √3) )
+            #define r float2( 0.57735, 1.0 )
+            // half a hexagon vertex (r/2)
+            #define h float2( 0.28868, 0.5 )
+
+            struct Input
             {
                 float4 vertex : POSITION;
                 float2 uv : TEXCOORD0;
                 float4 color : COLOR;
             };
 
-            struct v2_f
+            struct Output
             {
-                float2 uv : TEXCOORD0;
                 float4 vertex : SV_POSITION;
+                float2 uv : TEXCOORD0;
                 float4 color : COLOR;
             };
             
@@ -59,6 +71,8 @@ Shader "Unlit/Hex Background"
             static float2 ScrollVector = float2( 1, 1 );
             float _ScrollSpeed;
             
+            // <https://www.shadertoy.com/view/4dS3Wd>
+            // 1D Noise by Morgan McGuire @morgan3d, http://graphicscodex.com
             float hash( in float p )
             {
     
@@ -71,17 +85,21 @@ Shader "Unlit/Hex Background"
 
             float noise( in float x ) 
             {
+
                 float i = floor(x);
 	            float f = frac(x);
 	            float u = f * f * ( 3.0 - 2.0 * f );
 	            return lerp( hash(i), hash( i + 1.0 ), u );
     
             }
+            // --- 1D NOISE
             
+            // <https://gist.github.com/patriciogonzalezvivo/670c22f3966e662d2f83>
+            // Generic 2D Noise
             float rand2d( in float2 n )
             {
             
-	            return frac( sin( dot( n, float2(12.9898, 4.1414) ) ) * 43758.5453 );
+	            return frac( sin( dot( n, float2( 12.9898, 4.1414 ) ) ) * 43758.5453 );
                 
             }
 
@@ -99,38 +117,38 @@ Shader "Unlit/Hex Background"
 	            return res*res;
                 
             }
+            // --- 2D NOISE
             
+            // Creates the hexagonal image
             float4 hexagon ( in float2 uv, in float4 col )
             {
             
-                // SCROLLER
+                // scroller
                 uv.xy += _UnscaledTime * ScrollVector * _ScrollSpeed;
                 //uv.x = abs(uv.x) + .0418;
                 uv *= _HexScale;
                 
-                // HEX UV
-                float2 r = normalize( float2( 1.0, 1.73 ) );
-	            float2 h = r * 0.5;
+                // hexagon uv
 	            float2 a = fmod( uv, r ) - h;
 	            float2 b = fmod( uv - h, r ) - h;
                 
-                // NEGATIVE CORRECTION
+                // negative uv correction
                 if (uv.x < 0)
                     a.x += .5;
                 if (uv.x - h.x < 0)
                     b.x += .5;
                 
-                // HEX SEED
+                // hexagon seed
                 float2 gv = length(a) < length(b) ? a : b;
                 float2 hs = uv - gv;
                 
-                // INSTANCE SEED
+                // instance seed
                 float seed = noise2d( hs * 10 );
                 
-                // HEX LUMINANCE
-                float l = noise( seed * 30 + _UnscaledTime * _ShiftSpeed * seed );
+                // hexagon luminance
+                float l = noise( seed * 30 + _UnscaledTime * _ShiftSpeed );
                 
-                // OVERLAY
+                // overlay
                 col.rgb *= .8;
 	            col.rgb = col * ( 1 - l * _Overlay * 2 );
 	            col.rgb = col.rgb + _Overlay * ( 1 - l );
@@ -139,57 +157,58 @@ Shader "Unlit/Hex Background"
             
             }
             
+            // Adds an edge glow
             float4 glow ( in float2 uv, in float4 col )
             {
                 
-                // NORMALS TO GLOW
+                // normals to edges
                 float2 n = abs( 1 / sin( uv * pi ) * 0.05 * _GlowIntensity );
                 
-                // INTENSITY BASED ON NORMAL VALUE
+                // intensity based on edge value
                 float v = min( distance( n, 0 ), _GlowClamp );
                 
-                // COLOR
+                // color
                 return float4( v * col.rgb, v * _GlowOpacity );
                 
             }
 
-            v2_f vert (appdata v)
+            // VERTEX SHADER
+            // Only passes data to the fragment shader
+            Output vert ( Input i )
             {
-            
-                // VERTEX OUT
-                v2_f o;
-                
-                // DATA
-                o.vertex = UnityObjectToClipPos(v.vertex);
-                o.uv = v.uv;
-                o.color = v.color;
-                
+                Output o;
+                o.vertex = UnityObjectToClipPos(i.vertex);
+                o.uv = i.uv;
+                o.color = i.color;
                 return o;
                 
             }
 
-            fixed4 frag(v2_f i) : SV_Target
+            // FRAGMENT SHADER
+            // Colors the hexagons and glow effects in
+            fixed4 frag ( Output i ) : SV_Target
             {
             
-                // OFFSET
+                // offset
                 i.uv += _OffsetUV;
             
-                // ASPECT RATIO
+                // aspect ratio
                 float dx = ddx(i.uv.x);
                 float dy = ddy(i.uv.y);
                 float aspect = -abs( dy/dx );
                 
-                // HEXAGON UV (CORRECTED RATIO)
+                // hexagon uv (corrected ratio)
                 float2 huv = i.uv;
                 huv.x *= aspect;
                 huv += 1;
                 
-                // COLOR
+                // color
                 float4 color = float4(0, 0, 0, 0);
                 color.a = _Opacity;
                 color.rgb += hexagon( huv, i.color );
                 color += glow( i.uv, i.color );
                 
+                // limiting alpha (weird stuff can happen with negative or above 1)
                 color.a = clamp( color.a, 0, 1 );
                 
                 return color;
