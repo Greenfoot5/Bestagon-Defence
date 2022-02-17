@@ -31,6 +31,14 @@ namespace UI.Level
         }
 
         /// <summary>
+        /// Disconnects the event from running when the level is closed
+        /// </summary>
+        private void OnDestroy()
+        {
+            GameStats.controls.Game.Pause.performed -= Toggle;
+        }
+
+        /// <summary>
         /// Pauses/unpauses the game, and enables/disables the UI by input button press
         /// </summary>
         public void Toggle(InputAction.CallbackContext ctx)
@@ -85,9 +93,11 @@ namespace UI.Level
                 // Tell our leaderboard API to add the player
                 var leaderboardData =
                     Environment.GetEnvironmentVariable(SceneManager.GetActiveScene().name + "Leaderboard");
-                if (leaderboardData == null) return;
-                var splitData = leaderboardData.Split(';');
-                bridge.SendPlayerValue(PlayerPrefs.GetString("Username"), GameStats.rounds, splitData[0], splitData[1]);
+                if (leaderboardData != null)
+                {
+                    var splitData = leaderboardData.Split(';');
+                    bridge.SendPlayerValue(PlayerPrefs.GetString("Username"), GameStats.rounds, splitData[0], splitData[1]);
+                }
             }
             catch (Exception)
             {

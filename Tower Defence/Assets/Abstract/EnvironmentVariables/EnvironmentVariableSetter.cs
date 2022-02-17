@@ -15,6 +15,10 @@ namespace Abstract.Data
         /// </summary>
         private void Awake()
         {
+            // If no variables were assigned, skip
+            if (variables == null)
+                return;
+
             foreach (var variable in variables.variables)
             {
                 variable.SetData();
