@@ -1,4 +1,4 @@
-name: Bestagone-Defence build
+name: Bestagon-Defence build
 
 on: [push, pull_request]
 
