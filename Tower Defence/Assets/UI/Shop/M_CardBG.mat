@@ -32,7 +32,7 @@ Material:
     - _Opacity: 0.2
     - _Overlay: -0.2
     - _ScrollSpeed: 0.03
-    - _ShiftSpeed: 2.5
+    - _ShiftSpeed: 1.5
     m_Colors:
     - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
     - _Tint: {r: 0.1254902, g: 0.8117647, b: 0.5372549, a: 0.29803923}

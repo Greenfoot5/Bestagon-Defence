@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace MaterialLibrary.Hexagons
@@ -9,10 +11,11 @@ namespace MaterialLibrary.Hexagons
         [SerializeField]
         private Image image;
 
-        [SerializeField] private float _glowIntensity;
+        [FormerlySerializedAs("_glowIntensity")] [SerializeField] private float glowIntensity;
 
         private float _glowIntensityCache;
         private static readonly int GlowIntensity = Shader.PropertyToID("_GlowIntensity");
+        private const float Tolerance = 0.1f;
 
         private void Awake()
         {
@@ -21,11 +24,10 @@ namespace MaterialLibrary.Hexagons
 
         private void LateUpdate()
         {
-            if (_glowIntensity != _glowIntensityCache)
-            {
-                _glowIntensityCache = _glowIntensity;
-                image.material.SetFloat(GlowIntensity, _glowIntensity);
-            }
+            if (!(Math.Abs(glowIntensity - _glowIntensityCache) > Tolerance)) return;
+            
+            _glowIntensityCache = glowIntensity;
+            image.material.SetFloat(GlowIntensity, glowIntensity);
         }
 
     }

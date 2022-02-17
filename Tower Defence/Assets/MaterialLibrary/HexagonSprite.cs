@@ -19,9 +19,9 @@ namespace MaterialLibrary
 
         public enum MeshType
         {
-            V6_T4,
-            V7_T6,
-            V18_T6
+            V6T4,
+            V7T6,
+            V18T6
         }
 
         public MeshType meshType;
@@ -29,12 +29,12 @@ namespace MaterialLibrary
         public bool useTriUniqueColors;
         public Color[] colors;
 
-        private Rect m_scaleReference = Rect.zero;
+        private Rect _mScaleReference = Rect.zero;
 
 #if UNITY_EDITOR
         protected override void OnValidate()
         {
-            bool colorsFlag = meshType == MeshType.V18_T6 && useTriUniqueColors;
+            bool colorsFlag = meshType == MeshType.V18T6 && useTriUniqueColors;
             Array.Resize(ref colors, colorsFlag ? 6 : 0);
             UpdateGeometry();
         }
@@ -45,32 +45,30 @@ namespace MaterialLibrary
 
         private void UpdateScaleReference()
         {
-            float w = 1.1547f * rectTransform.rect.width,
-                h = rectTransform.rect.height;
+            Rect rect = rectTransform.rect;
+            float w = 1.1547f * rect.width,
+                h = rect.height;
 
             switch (scalingType)
             {
                 case ScaleType.Regular:
-                    if (w > h)
-                        m_scaleReference.size = new Vector2(h, h);
-                    else
-                        m_scaleReference.size = new Vector2(w, w);
+                    _mScaleReference.size = w > h ? new Vector2(h, h) : new Vector2(w, w);
                     break;
 
                 case ScaleType.FitToWidth:
-                    m_scaleReference.size = new Vector2(w, w);
+                    _mScaleReference.size = new Vector2(w, w);
                     break;
 
                 case ScaleType.FitToHeight:
-                    m_scaleReference.size = new Vector2(h, h);
+                    _mScaleReference.size = new Vector2(h, h);
                     break;
 
                 case ScaleType.Fill:
-                    m_scaleReference.size = new Vector2(w, h);
+                    _mScaleReference.size = new Vector2(w, h);
                     break;
 
                 default:
-                    m_scaleReference = rectTransform.rect;
+                    _mScaleReference = rectTransform.rect;
                     break;
             }
         }
@@ -78,13 +76,13 @@ namespace MaterialLibrary
 
         // VERTEX GENERATORS
 
-        private void AddVertexOfPositions(VertexHelper vh, UIVertex vert, int color, params Vector2[] positions)
+        private void AddVertexOfPositions(VertexHelper vh, UIVertex vert, int colour, params Vector2[] positions)
         {
             if (useTriUniqueColors)
-                vert.color = colors[color];
+                vert.color = colors[colour];
             AddVertexOfPositions(vh, vert, positions);
         }
-        private void AddVertexOfPositions(VertexHelper vh, UIVertex vert, params Vector2[] positions)
+        private static void AddVertexOfPositions(VertexHelper vh, UIVertex vert, params Vector2[] positions)
         {
             foreach (Vector2 pos in positions)
             {
@@ -95,7 +93,7 @@ namespace MaterialLibrary
 
         private void GenerateV6T4(VertexHelper vh, Vector2 apex, Vector2 side)
         {
-            float flipVer = -.866f * m_scaleReference.width;
+            float flipVer = -.866f * _mScaleReference.width;
 
 
             // VERTICES
@@ -109,13 +107,13 @@ namespace MaterialLibrary
             vert.position = new Vector2(side.x, side.y); // Top Right
             vh.AddVert(vert);
 
-            vert.position = new Vector2(side.x, side.y - m_scaleReference.height / 2); // Bottom Right
+            vert.position = new Vector2(side.x, side.y - _mScaleReference.height / 2); // Bottom Right
             vh.AddVert(vert);
 
-            vert.position = new Vector2(apex.x, apex.y - m_scaleReference.height); // Bottom
+            vert.position = new Vector2(apex.x, apex.y - _mScaleReference.height); // Bottom
             vh.AddVert(vert);
 
-            vert.position = new Vector2(side.x + flipVer, side.y - m_scaleReference.height / 2); // Bottom Left
+            vert.position = new Vector2(side.x + flipVer, side.y - _mScaleReference.height / 2); // Bottom Left
             vh.AddVert(vert);
 
             vert.position = new Vector2(side.x + flipVer, side.y); // Top Left
@@ -132,7 +130,7 @@ namespace MaterialLibrary
 
         private void GenerateV7T6(VertexHelper vh, Vector2 apex, Vector2 side)
         {
-            float flipVer = -.866f * m_scaleReference.width;
+            float flipVer = -.866f * _mScaleReference.width;
 
 
             // VERTICES
@@ -140,7 +138,7 @@ namespace MaterialLibrary
             UIVertex vert = UIVertex.simpleVert;
             vert.color = color;
 
-            vert.position = new Vector2(apex.x, apex.y - m_scaleReference.height / 2);  // Middle
+            vert.position = new Vector2(apex.x, apex.y - _mScaleReference.height / 2);  // Middle
             vh.AddVert(vert);
 
             vert.position = new Vector2(apex.x, apex.y); // Top
@@ -149,13 +147,13 @@ namespace MaterialLibrary
             vert.position = new Vector2(side.x, side.y); // Top Right
             vh.AddVert(vert);
 
-            vert.position = new Vector2(side.x, side.y - m_scaleReference.height / 2); // Bottom Right
+            vert.position = new Vector2(side.x, side.y - _mScaleReference.height / 2); // Bottom Right
             vh.AddVert(vert);
 
-            vert.position = new Vector2(apex.x, apex.y - m_scaleReference.height); // Bottom
+            vert.position = new Vector2(apex.x, apex.y - _mScaleReference.height); // Bottom
             vh.AddVert(vert);
 
-            vert.position = new Vector2(side.x + flipVer, side.y - m_scaleReference.height / 2); // Bottom Left
+            vert.position = new Vector2(side.x + flipVer, side.y - _mScaleReference.height / 2); // Bottom Left
             vh.AddVert(vert);
 
             vert.position = new Vector2(side.x + flipVer, side.y); // Top Left
@@ -174,7 +172,7 @@ namespace MaterialLibrary
 
         private void GenerateV18T6(VertexHelper vh, Vector2 apex, Vector2 side)
         {
-            float flipVer = -.866f * m_scaleReference.width;
+            float flipVer = -.866f * _mScaleReference.width;
 
 
             // VERTICES
@@ -184,11 +182,11 @@ namespace MaterialLibrary
 
             Vector2 v0 = new Vector2(apex.x, apex.y),
                 v1 = new Vector2(side.x, side.y),
-                v2 = new Vector2(side.x, side.y - m_scaleReference.height / 2),
-                v3 = new Vector2(apex.x, apex.y - m_scaleReference.height),
-                v4 = new Vector2(side.x + flipVer, side.y - m_scaleReference.height / 2),
+                v2 = new Vector2(side.x, side.y - _mScaleReference.height / 2),
+                v3 = new Vector2(apex.x, apex.y - _mScaleReference.height),
+                v4 = new Vector2(side.x + flipVer, side.y - _mScaleReference.height / 2),
                 v5 = new Vector2(side.x + flipVer, side.y),
-                o  = new Vector2(apex.x, apex.y - m_scaleReference.height / 2);
+                o  = new Vector2(apex.x, apex.y - _mScaleReference.height / 2);
 
             AddVertexOfPositions(vh, vert, 0, o, v0, v1);
             AddVertexOfPositions(vh, vert, 1, o, v1, v2);
@@ -200,7 +198,7 @@ namespace MaterialLibrary
 
             // TRIANGLES
 
-            for (int i = 0; i < 6; i++)
+            for (var i = 0; i < 6; i++)
                 vh.AddTriangle(3*i, 3*i+1, 3*i+2);
         }
 
@@ -211,21 +209,22 @@ namespace MaterialLibrary
 
             // GENERATIVE POINTS
 
-            Vector2 apex = new Vector2( .5f, 1f );
-            Vector2 side = new Vector2( .933f, .75f );
+            var apex = new Vector2( .5f, 1f );
+            var side = new Vector2( .933f, .75f );
 
 
             // OFFSET
 
-            apex.x -= rectTransform.pivot.x;
-            apex.y -= rectTransform.pivot.y;
-            side.x -= rectTransform.pivot.x;
-            side.y -= rectTransform.pivot.y;
+            Vector2 pivot = rectTransform.pivot;
+            apex.x -= pivot.x;
+            apex.y -= pivot.y;
+            side.x -= pivot.x;
+            side.y -= pivot.y;
 
-            apex.x *= m_scaleReference.width;
-            apex.y *= m_scaleReference.height;
-            side.x *= m_scaleReference.width;
-            side.y *= m_scaleReference.height;
+            apex.x *= _mScaleReference.width;
+            apex.y *= _mScaleReference.height;
+            side.x *= _mScaleReference.width;
+            side.y *= _mScaleReference.height;
 
 
             // GENERATOR
@@ -234,17 +233,19 @@ namespace MaterialLibrary
 
             switch (meshType)
             {
-                case MeshType.V6_T4:
+                case MeshType.V6T4:
                     GenerateV6T4(vh, apex, side);
                     break;
 
-                case MeshType.V7_T6:
+                case MeshType.V7T6:
                     GenerateV7T6(vh, apex, side);
                     break;
 
-                case MeshType.V18_T6:
+                case MeshType.V18T6:
                     GenerateV18T6(vh, apex, side);
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
     }

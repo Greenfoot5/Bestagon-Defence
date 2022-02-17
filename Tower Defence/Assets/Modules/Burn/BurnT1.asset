@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BurnT1
   m_EditorClassIdentifier: 
   moduleTier: 1
-  accentColor: {r: 0.9607843, g: 0.28627452, b: 0.30980393, a: 1}
+  accentColor: {r: 0.9764706, g: 0.3764706, b: 0.24313726, a: 1}
   displayName: Burn I
   tagline: Burn baby burn!
   icon: {fileID: -7464220177990265132, guid: 16c979c866f439b4b988e7020b313794, type: 3}

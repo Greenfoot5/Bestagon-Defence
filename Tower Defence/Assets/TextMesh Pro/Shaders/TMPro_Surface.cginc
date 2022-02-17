@@ -1,9 +1,9 @@
-void VertShader(inout appdata_full v, out Input data)
+void VertShader(inout appdata_full v, out input data)
 {
 	v.vertex.x += _VertexOffsetX;
 	v.vertex.y += _VertexOffsetY;
 
-	UNITY_INITIALIZE_OUTPUT(Input, data);
+	UNITY_INITIALIZE_OUTPUT(input, data);
 
 	float bold = step(v.texcoord1.y, 0);
 
@@ -31,7 +31,7 @@ void VertShader(inout appdata_full v, out Input data)
 	data.viewDirEnv = mul((float3x3)_EnvMatrix, WorldSpaceViewDir(v.vertex));
 }
 
-void PixShader(Input input, inout SurfaceOutput o)
+void PixShader(input input, inout SurfaceOutput o)
 {
 
 #if USE_DERIVATIVE

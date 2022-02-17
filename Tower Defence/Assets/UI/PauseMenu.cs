@@ -31,6 +31,14 @@ namespace UI
         }
 
         /// <summary>
+        /// Disconnects the event from running when the level is closed
+        /// </summary>
+        private void OnDestroy()
+        {
+            GameStats.controls.Game.Pause.performed -= Toggle;
+        }
+
+        /// <summary>
         /// Pauses/unpauses the game, and enables/disables the UI by input button press
         /// </summary>
         public void Toggle(InputAction.CallbackContext ctx)

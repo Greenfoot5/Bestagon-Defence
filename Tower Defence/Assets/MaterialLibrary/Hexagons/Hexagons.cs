@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace MaterialLibrary.Hexagons
@@ -6,28 +7,37 @@ namespace MaterialLibrary.Hexagons
     [ExecuteInEditMode]
     public class Hexagons : Graphic
     {
-        private static readonly string m_ShaderName = "Unlit/Hex Background";
+        private const string MShaderName = "Unlit/Hex Background";
 
         // Sometimes material resets when 'Reverting'
         // This is to reload that
         private void LoadMaterial()
         {
-            if (material == null || material.shader.name != m_ShaderName)
-                material = new Material(Shader.Find(m_ShaderName));
+            if (material == null || material.shader.name != MShaderName)
+                material = new Material(Shader.Find(MShaderName));
         }
 
         public Color Color { get => color; set => color = value; }
-        public Vector2 OffsetUV;
+        [FormerlySerializedAs("OffsetUV")] public Vector2 offsetUV;
 
-        public float HexagonScale = 5;
-        public float ScrollSpeed = .03f;
-        public float LuminanceShiftSpeed = .75f;
-        public float OverlayStrength = -.3f;
-        public float HexagonOpacity = 1;
+        [FormerlySerializedAs("HexagonScale")] public float hexagonScale = 5;
+        [FormerlySerializedAs("ScrollSpeed")] public float scrollSpeed = .03f;
+        [FormerlySerializedAs("LuminanceShiftSpeed")] public float luminanceShiftSpeed = .75f;
+        [FormerlySerializedAs("OverlayStrength")] public float overlayStrength = -.3f;
+        [FormerlySerializedAs("HexagonOpacity")] public float hexagonOpacity = 1;
 
-        public float GlowIntensity = 1;
-        public float GlowClamp = 5;
-        public float GlowOpacity = 1;
+        [FormerlySerializedAs("GlowIntensity")] public float glowIntensity = 1;
+        [FormerlySerializedAs("GlowClamp")] public float glowClamp = 5;
+        [FormerlySerializedAs("GlowOpacity")] public float glowOpacity = 1;
+        private static readonly int OffsetUV = Shader.PropertyToID("_OffsetUV");
+        private static readonly int HexScale = Shader.PropertyToID("_HexScale");
+        private static readonly int ScrollSpeed = Shader.PropertyToID("_ScrollSpeed");
+        private static readonly int ShiftSpeed = Shader.PropertyToID("_ShiftSpeed");
+        private static readonly int Opacity = Shader.PropertyToID("_Opacity");
+        private static readonly int Overlay = Shader.PropertyToID("_Overlay");
+        private static readonly int GlowIntensity = Shader.PropertyToID("_GlowIntensity");
+        private static readonly int GlowClamp = Shader.PropertyToID("_GlowClamp");
+        private static readonly int GlowOpacity = Shader.PropertyToID("_GlowOpacity");
 
         protected override void Awake()
         {
@@ -58,15 +68,17 @@ namespace MaterialLibrary.Hexagons
 
             // OFFSET
 
-            corner1.x -= rectTransform.pivot.x;
-            corner1.y -= rectTransform.pivot.y;
-            corner2.x -= rectTransform.pivot.x;
-            corner2.y -= rectTransform.pivot.y;
+            Vector2 pivot = rectTransform.pivot;
+            corner1.x -= pivot.x;
+            corner1.y -= pivot.y;
+            corner2.x -= pivot.x;
+            corner2.y -= pivot.y;
 
-            corner1.x *= rectTransform.rect.width;
-            corner1.y *= rectTransform.rect.height;
-            corner2.x *= rectTransform.rect.width;
-            corner2.y *= rectTransform.rect.height;
+            Rect rect = rectTransform.rect;
+            corner1.x *= rect.width;
+            corner1.y *= rect.height;
+            corner2.x *= rect.width;
+            corner2.y *= rect.height;
 
 
             // VERTICES
@@ -102,22 +114,22 @@ namespace MaterialLibrary.Hexagons
             vh.AddTriangle(2, 3, 0);
         }
 
-        public void ImportMaterial(Material material)
+        public void ImportMaterial(Material mat)
         {
-            if (material.shader.name != m_ShaderName)
+            if (mat.shader.name != MShaderName)
                 throw new UnityException("Invalid shader");
 
-            OffsetUV = material.GetVector("_OffsetUV");
+            offsetUV = mat.GetVector(OffsetUV);
 
-            HexagonScale = material.GetFloat("_HexScale");
-            ScrollSpeed = material.GetFloat("_ScrollSpeed");
-            LuminanceShiftSpeed = material.GetFloat("_ShiftSpeed");
-            OverlayStrength = material.GetFloat("_Overlay");
-            HexagonOpacity = material.GetFloat("_Opacity");
+            hexagonScale = mat.GetFloat(HexScale);
+            scrollSpeed = mat.GetFloat(ScrollSpeed);
+            luminanceShiftSpeed = mat.GetFloat(ShiftSpeed);
+            overlayStrength = mat.GetFloat(Overlay);
+            hexagonOpacity = mat.GetFloat(Opacity);
 
-            GlowIntensity = material.GetFloat("_GlowIntensity");
-            GlowClamp = material.GetFloat("_GlowClamp");
-            GlowOpacity = material.GetFloat("_GlowOpacity");
+            glowIntensity = mat.GetFloat(GlowIntensity);
+            glowClamp = mat.GetFloat(GlowClamp);
+            glowOpacity = mat.GetFloat(GlowOpacity);
         
 #if UNITY_EDITOR
             OnValidate();
@@ -126,17 +138,17 @@ namespace MaterialLibrary.Hexagons
 
         private void RefreshMaterial()
         {
-            material.SetVector("_OffsetUV", OffsetUV);
+            material.SetVector(OffsetUV, offsetUV);
 
-            material.SetFloat("_HexScale", HexagonScale);
-            material.SetFloat("_ScrollSpeed", ScrollSpeed);
-            material.SetFloat("_ShiftSpeed", LuminanceShiftSpeed);
-            material.SetFloat("_Overlay", OverlayStrength);
-            material.SetFloat("_Opacity", HexagonOpacity);
+            material.SetFloat(HexScale, hexagonScale);
+            material.SetFloat(ScrollSpeed, scrollSpeed);
+            material.SetFloat(ShiftSpeed, luminanceShiftSpeed);
+            material.SetFloat(Overlay, overlayStrength);
+            material.SetFloat(Opacity, hexagonOpacity);
 
-            material.SetFloat("_GlowIntensity", GlowIntensity);
-            material.SetFloat("_GlowClamp", GlowClamp);
-            material.SetFloat("_GlowOpacity", GlowOpacity);
+            material.SetFloat(GlowIntensity, glowIntensity);
+            material.SetFloat(GlowClamp, glowClamp);
+            material.SetFloat(GlowOpacity, glowOpacity);
         }
 
         private void Update()
