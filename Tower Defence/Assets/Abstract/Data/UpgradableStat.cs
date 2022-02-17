@@ -66,20 +66,42 @@ namespace Abstract.Data
         
         /// <summary>
         /// Increases the stat's modifier by a certain amount
+        /// Upgrades the stat in an additive way
         /// </summary>
         /// <param name="newValue">How much increase the modifier by</param>
         public void AddModifier(float newValue)
         {
             modifier += newValue;
         }
+        
+        /// <summary>
+        /// Multiplies the modifier by a value
+        /// Upgrades the stat in a multiplicative way
+        /// </summary>
+        /// <param name="multiplier">What to multiply the modifier by</param>
+        public void MultiplyModifier(float multiplier)
+        {
+            modifier *= multiplier;
+        }
 
         /// <summary>
         /// Decreases the stat's modifier by a certain amount
+        /// Downgrades the stat in an additive way
         /// </summary>
         /// <param name="oldValue">How much decrease the modifier by</param>
         public void TakeModifier(float oldValue)
         {
             modifier -= oldValue;
+        }
+        
+        /// <summary>
+        /// Divides the modifier by a value
+        /// Downgrades the stat in a multiplicative way
+        /// </summary>
+        /// <param name="multiplier">What to multiply the modifier by</param>
+        public void DivideModifier(float multiplier)
+        {
+            modifier /= multiplier;
         }
         
         /// <summary>
