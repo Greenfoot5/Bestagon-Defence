@@ -1,5 +1,4 @@
-﻿using Abstract.Data;
-using Levels._Nodes;
+﻿using Levels._Nodes;
 using UnityEngine;
 
 namespace Enemies
@@ -41,15 +40,9 @@ namespace Enemies
         /// </summary>
         private void Update()
         {
-            // If the enemy aren't going to move forward, the enemy shouldn't move at all.
-            if (_enemy.speed < 0)
-            {
-                return;
-            }
-            
             // Get the direction and move in that direction
             Vector3 dir = _target.position - transform.position;
-            transform.Translate(dir.normalized * (_enemy.speed * Time.deltaTime), Space.World);
+            transform.Translate(dir.normalized * (_enemy.speed.GetStat() * Time.deltaTime), Space.World);
             mapProgress = _waypointIndex + 1 - (distanceToWaypoint / _maxDistance);
         
             // If the enemy is within the set distance, get the next waypoint

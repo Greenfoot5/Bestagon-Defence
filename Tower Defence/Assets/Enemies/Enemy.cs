@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using _WIP.Abilities;
 using Abstract;
+using Abstract.Data;
 using Gameplay;
 using Gameplay.Waves;
 using Unity.Collections;
@@ -22,7 +23,7 @@ namespace Enemies
         public float maxHealth = 20f;
 
         [ReadOnly]
-        public float speed;
+        public UpgradableStat speed;
         [ReadOnly]
         public float health;
     
@@ -52,7 +53,7 @@ namespace Enemies
         /// </summary>
         private void Awake()
         {
-            speed = startSpeed;
+            speed = new UpgradableStat(startSpeed);
             health = maxHealth;
             
             // Add each starting ability to the correct list

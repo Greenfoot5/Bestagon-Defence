@@ -27,7 +27,7 @@ namespace _WIP.Abilities.NegativeAbilities
                 return;
             }
 
-            enemyComponent.speed -= enemyComponent.startSpeed * 5000f;
+            enemyComponent.speed.TakeModifier(enemyComponent.startSpeed * 5000f);
         }
         
         /// <summary>
@@ -48,7 +48,7 @@ namespace _WIP.Abilities.NegativeAbilities
                 return;
             }
 
-            enemyComponent.speed += enemyComponent.startSpeed * 5000f;
+            enemyComponent.speed.AddModifier(enemyComponent.startSpeed * 5000f);
         }
     }
 }

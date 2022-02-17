@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Abstract;
 using Enemies;
-using Turrets;
 using Turrets.Gunner;
 using Turrets.Shooter;
 using Turrets.Smasher;
@@ -44,11 +43,11 @@ namespace Modules.Slow
         /// <param name="target">The enemy to slow</param>
         private IEnumerator SlowEnemy(Enemy target)
         {
-            target.speed *= 1f - slowPercentage;
+            target.speed.MultiplyModifier(1f - slowPercentage);
 
             yield return new WaitForSeconds(duration);
 
-            target.speed /= 1f - slowPercentage;
+            target.speed.DivideModifier(1f - slowPercentage);
         }
     }
 }
