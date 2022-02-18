@@ -15,11 +15,12 @@ namespace Enemies
         private int _waypointIndex;
 
         private Enemy _enemy;
-    
-        // The distance from enemy to waypoint before it's considered reached
+        
         [SerializeField] 
+        [Tooltip("The distance from enemy to waypoint before it's considered reached")]
         private float distanceToWaypoint = 0.05f;
-
+        
+        [Tooltip("How many waypoints the enemy has passed, and the percentage to the next one")]
         public float mapProgress;
         private float _maxDistance;
 

@@ -16,19 +16,35 @@ namespace UI.Shop
     /// </summary>
     public class ModuleSelectionUI : MonoBehaviour
     {
-        public Module module;
-
-        public Hexagons bg;
-
-        public TextMeshProUGUI displayName;
-        public TextMeshProUGUI tagline;
-
-        public ModuleIcon icon;
-
-        public TextMeshProUGUI effect;
-
-        public GameObject glyphPrefab;
-        public Transform applicableGlyphs;
+        [Tooltip("The module to display on the card")]
+        [SerializeField]
+        private Module module;
+        
+        [Tooltip("The hexagons background of the card (the card's background shader)")]
+        [SerializeField]
+        private Hexagons bg;
+        
+        [Tooltip("The TMP text display name of the module")]
+        [SerializeField]
+        private TextMeshProUGUI displayName;
+        [Tooltip("The TMP text tagline of the module")]
+        [SerializeField]
+        private TextMeshProUGUI tagline;
+        
+        [Tooltip("The ModuleIcon of the module")]
+        [SerializeField]
+        private ModuleIcon icon;
+        
+        [Tooltip("The TMP text to contain the effect/description of the module")]
+        [SerializeField]
+        private TextMeshProUGUI effect;
+        
+        [Tooltip("The generic glyph prefab to use to display the applicable turrets")]
+        [SerializeField]
+        private GameObject glyphPrefab;
+        [Tooltip("The Transform to set as the parent for the module's turret glyphs")]
+        [SerializeField]
+        private Transform applicableGlyphs;
 
         /// <summary>
         /// Creates the UI
@@ -73,7 +89,7 @@ namespace UI.Shop
                 }
             }
             
-            // When the card is clicked, we pick the module
+            // When the card is clicked, the game picks the module
             bg.GetComponent<Button>().onClick.AddListener(delegate { MakeSelection(shop); });
         }
 

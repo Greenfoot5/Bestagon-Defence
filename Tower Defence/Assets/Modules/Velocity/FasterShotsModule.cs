@@ -13,9 +13,11 @@ namespace Modules.Velocity
     public class FasterShotsModule : Module
     {
         protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Gunner) };
-
+        
+        [Tooltip("The percentage to modify the speed of the bullet by")]
         [SerializeField]
         private float bulletSpeedChange;
+        [Tooltip("The percentage to modify the range of the bullet by")]
         [SerializeField]
         private float rangeChange;
         

@@ -7,7 +7,9 @@ namespace Abstract.EnvironmentVariables
     /// </summary>
     public class EnvironmentVariableSetter : MonoBehaviour
     {
-        public EnvironmentVariables variables;
+        [Tooltip("The variables to set as Environmental Variables")]
+        [SerializeField]
+        private EnvironmentVariables variables;
         
         /// <summary>
         /// Called when the object is first created.

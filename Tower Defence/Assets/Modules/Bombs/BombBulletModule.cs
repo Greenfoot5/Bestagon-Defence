@@ -13,12 +13,22 @@ namespace Modules.Bombs
     public class BombBulletModule : Module
     {
         protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Gunner)};
-
-        public float explosionRadiusChange;
-        public float damagePercentageChange;
-        public float fireRatePercentageChange;
-        public float rangePercentageChange;
-        public float speedPercentageChange;
+        
+        [Tooltip("What percentage to modify the explosion radius of bullets by")]
+        [SerializeField]
+        private float explosionRadiusChange;
+        [Tooltip("What percentage to modify the damage of the turret by")]
+        [SerializeField]
+        private float damagePercentageChange;
+        [Tooltip("What percentage to modify the fire rate of the turret by")]
+        [SerializeField]
+        private float fireRatePercentageChange;
+        [Tooltip("What percentage to modify the range of the turret by")]
+        [SerializeField]
+        private float rangePercentageChange;
+        [Tooltip("What percentage to modify the speed of the bullet by")]
+        [SerializeField]
+        private float speedPercentageChange;
         
         /// <summary>
         /// Changes the turret's stats when added

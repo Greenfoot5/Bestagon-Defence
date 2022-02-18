@@ -9,8 +9,12 @@ namespace Turrets.Laser
     public class Laser : DynamicTurret
     {
         // Lasers
-        public LineRenderer lineRenderer;
-        public ParticleSystem impactEffect;
+        [Tooltip("The line renderer that displays the laser")]
+        [SerializeField]
+        private LineRenderer lineRenderer;
+        [SerializeField]
+        [Tooltip("The particle effect that's spawned at the end of the laser's line")]
+        private ParticleSystem impactEffect;
 
         /// <summary>
         /// Fires the laser if the turret have a target and are looking at them.

@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Levels.Generic.MainMenu
 {
     /// <summary>
-    /// Handles asking the user to input a username if they don't have one already
+    /// Handles asking the player to input a username if they don't have one already
     /// </summary>
     public class SetUsername : MonoBehaviour
     {
@@ -13,7 +13,7 @@ namespace Levels.Generic.MainMenu
         public TMP_Text result;
         
         /// <summary>
-        /// Saves the username the user picked if valid
+        /// Saves the username the player picked if valid
         /// </summary>
         public void SaveUsername()
         {
@@ -27,8 +27,8 @@ namespace Levels.Generic.MainMenu
             }
             else
             {
-                // The username is valid and we can save it
-                // We need to remove some weird input character Unity adds
+                // The username is valid and the game can save it
+                // The game needs to remove some weird input character Unity adds
                 PlayerPrefs.SetString("Username", input.text.Replace("​", ""));
                 mainMenu.DisplayUsername();
                 gameObject.SetActive(false);
@@ -36,7 +36,7 @@ namespace Levels.Generic.MainMenu
         }
         
         /// <summary>
-        /// Checks if the user has a username saved, and if not, forces them to input one
+        /// Checks if the player has a username saved, and if not, forces them to input one
         /// </summary>
         private void Start()
         {

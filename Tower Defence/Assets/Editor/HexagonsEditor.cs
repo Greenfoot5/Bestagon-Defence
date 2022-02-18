@@ -8,16 +8,13 @@ namespace Editor
     public class HexagonsEditor : UnityEditor.Editor
     {
         // DISPLAY FLAGS
-
         public bool showHexagons;
         public bool animateHexagons;
         public bool glow;
         public bool import;
         public bool loaded;
-
-
+        
         // PROPERTIES
-
         private SerializedProperty _color;
         private SerializedProperty _offsetUV;
 
@@ -31,9 +28,7 @@ namespace Editor
         private SerializedProperty _glowClamp;
         private SerializedProperty _glowOpacity;
 
-
         // IMPORT
-
         private Material _material;
 
         private void OnEnable()

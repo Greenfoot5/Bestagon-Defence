@@ -11,7 +11,9 @@ namespace Turrets.Smasher
     /// </summary>
     public class Smasher : Turret
     {
-        public ParticleSystem smashEffect;
+        [Tooltip("The effect to play when the smasher attacks")]
+        [SerializeField]
+        private ParticleSystem smashEffect;
 
         /// <summary>
         /// Check for new enemies in radius and attacks if there are.

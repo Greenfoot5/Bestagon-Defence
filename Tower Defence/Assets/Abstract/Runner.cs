@@ -8,16 +8,16 @@ namespace Abstract
     /// </summary>
     public class Runner : MonoBehaviour
     {
-        public static Runner runner; 
+        private static Runner _runner; 
     
         /// <summary>
         /// When the game loads, create an instance of this class, and make sure it isn't destroyed between scenes
         /// </summary>
         private static void CreateInstance()
         {
-            runner = new GameObject ("Runner").AddComponent<Runner>();
+            _runner = new GameObject ("Runner").AddComponent<Runner>();
             
-            DontDestroyOnLoad (runner);
+            DontDestroyOnLoad (_runner);
         }
 
         /// <summary>
@@ -25,9 +25,9 @@ namespace Abstract
         /// </summary>
         public static void Run(IEnumerator coroutine)
         {
-            if (runner == null)
+            if (_runner == null)
                 CreateInstance();
-            runner.StartCoroutine(coroutine);
+            _runner.StartCoroutine(coroutine);
         }
     }
 }

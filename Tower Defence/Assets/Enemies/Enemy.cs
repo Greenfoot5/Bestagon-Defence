@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using _WIP.Abilities;
-using Abstract;
 using Abstract.Data;
 using Gameplay;
 using Gameplay.Waves;
@@ -19,27 +18,39 @@ namespace Enemies
     public class Enemy : MonoBehaviour
     {
         [Header("Stats")]
-        public float startSpeed = 2f;
+        [Tooltip("The starting speed of the enemy")]
+        [SerializeField]
+        private float startSpeed = 2f;
+        [Tooltip("The starting maximum health of the enemy")]
         public float maxHealth = 20f;
-
-        [ReadOnly]
+        
+        [Tooltip("The current speed of the enemy")]
         public UpgradableStat speed;
         [ReadOnly]
+        [Tooltip("The current health of the enemy")]
         public float health;
     
         [Header("Death Stats")]
+        [Tooltip("The amount of money to grant the player when the enemy is kill")]
         public int deathMoney = 10;
+        [Tooltip("The amount of lives lost if the enemy finishes the path")]
         public int deathLives = 1;
+        [Tooltip("The amount of money to grant the player if the enemy finishes the path")]
         public int endPathMoney = 10;
 
         [Header("Health Bar")]
+        [Tooltip("The left health bar")]
         public Image leftBar;
+        [Tooltip("The right health bar")]
         public Image rightBar;
-
+        
+        [Tooltip("The particle effect prefab to spawn when the enemy dies")]
         public GameObject deathEffect;
         
         [Header("Abilities")]
+        [Tooltip("Any abilities the enemy starts with")]
         public EnemyAbility[] startingAbilities;
+        [Tooltip("The parent object for any ability icons so they have the correct layout")]
         public GameObject iconLayout;
         
         // Abilities for each trigger

@@ -18,10 +18,11 @@ namespace Modules.Slow
     public class SlowModule : Module
     {
         protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Smasher), typeof(Gunner) };
-
-        [SerializeField]
+        
         [Tooltip("The percentage the slow the enemy's movement speed")]
+        [SerializeField]
         private float slowPercentage;
+        [Tooltip("How long each slow stack should last")]
         [SerializeField]
         private float duration;
 

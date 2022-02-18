@@ -1,9 +1,9 @@
 ﻿using Gameplay;
 using Modules;
 using Turrets;
-using Turrets.Blueprints;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 namespace Levels._Nodes
 {
@@ -12,9 +12,10 @@ namespace Levels._Nodes
     /// </summary>
     public class Node : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler, IDragHandler, IPointerUpHandler
     {
-        // The colour to set out node to
+        [Tooltip("The colour to set the node when it's being hovered over and the player is trying to build something")]
         public Color hoverColour;
-        public Color cantAffordColour;
+        [Tooltip("The colour to set the node if the placement is invalid")]
+        [FormerlySerializedAs("cantAffordColour")] public Color invalidColour;
         private Color _defaultColour;
         
         // Turret info

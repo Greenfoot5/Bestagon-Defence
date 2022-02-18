@@ -11,7 +11,8 @@ namespace _WIP.Abilities.NegativeAbilities
     {
         [Header("Ability Stats")]
         [Tooltip("Static damage amount that's removed every tick, ticks being the timer")]
-        public float damage;
+        [SerializeField]
+        private float damage;
         
         /// <summary>
         /// The object to activate a poison tick

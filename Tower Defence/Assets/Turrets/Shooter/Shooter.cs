@@ -9,7 +9,9 @@ namespace Turrets.Shooter
     public class Shooter : DynamicTurret
     {
         // Bullets
-        public GameObject bulletPrefab;
+        [Tooltip("The bullet prefab to spawn each attack")]
+        [SerializeField]
+        private GameObject bulletPrefab;
 
         /// <summary>
         /// Rotates towards the target if the turret have one.

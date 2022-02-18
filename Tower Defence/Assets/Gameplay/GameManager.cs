@@ -11,12 +11,16 @@ namespace Gameplay
     /// </summary>
     public class GameManager : MonoBehaviour
     {
+        // If the game has actually finished yet
         public static bool isGameOver;
-
+        
+        [Tooltip("The UI to display when the player loses")]
         public GameObject gameOverUI;
-
+        
+        [Tooltip("The levelData to use for the current level")]
         public LevelData levelData;
-
+        
+        [Tooltip("The leaderboard bridge")]
         public LeaderboardServerBridge bridge;
         
         /// <summary>
@@ -50,7 +54,7 @@ namespace Gameplay
     
         /// <summary>
         /// Ends the game.
-        /// Displays the game over screen and saves the user's score.
+        /// Displays the game over screen and saves the player's score.
         /// </summary>
         private void EndGame()
         {

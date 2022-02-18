@@ -10,9 +10,15 @@ namespace _WIP.Abilities.PositiveAbilities
     public class HealEnemyAbility : EnemyAbility
     {
         [Header("Ability Stats")]
-        public bool isPercentage = true;
-        public int healAmount = 20;
-        public float healPercentage = 0.2f;
+        [Tooltip("If the heal is a % heal or a value heal")]
+        [SerializeField]
+        private bool isPercentage = true;
+        [Tooltip("How much to heal for (value heal only)")]
+        [SerializeField]
+        private int healAmount = 20;
+        [Tooltip("What percentage to heal by (% heal only)")]
+        [SerializeField]
+        private float healPercentage = 0.2f;
         
         /// <summary>
         /// Heals an enemy
@@ -53,7 +59,7 @@ namespace _WIP.Abilities.PositiveAbilities
         }
         
         /// <summary>
-        /// We don't do anything when the counter finishes
+        /// There's nothing to clear up after the counter finishes
         /// </summary>
         public override void OnCounterEnd(GameObject target) { }
     }

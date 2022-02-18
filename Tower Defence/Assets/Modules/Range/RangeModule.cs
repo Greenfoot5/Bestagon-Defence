@@ -12,6 +12,7 @@ namespace Modules.Range
     {
         protected override Type[] ValidTypes => null;  // any
         
+        [Tooltip("The percentage to modify the range of the turret by")]
         [SerializeField]
         private float percentageChange;
         

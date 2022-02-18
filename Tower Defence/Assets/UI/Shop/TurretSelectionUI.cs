@@ -3,7 +3,6 @@ using MaterialLibrary.Hexagons;
 using Modules;
 using TMPro;
 using Turrets;
-using Turrets.Blueprints;
 using UI.Glyphs;
 using UI.TurretStats;
 using UnityEngine;
@@ -19,26 +18,52 @@ namespace UI.Shop
         private TurretBlueprint _turretBlueprint;
     
         // Content
-        public TextMeshProUGUI displayName;
-        public TextMeshProUGUI tagline;
-
-        public Image icon;
-        public Image glyph;
+        [Tooltip("The TMP text to display the turret's display name")]
+        [SerializeField]
+        private TextMeshProUGUI displayName;
+        [Tooltip("The TMP text to display the turret's tagline")]
+        [SerializeField]
+        private TextMeshProUGUI tagline;
+        
+        [Tooltip("The Image to place the turret's icon")]
+        [SerializeField]
+        private Image icon;
+        [Tooltip("The Image to place the turret's glyph")]
+        [SerializeField]
+        private Image glyph;
     
         [Header("Modules")]
-        public GameObject modulesSection;
-        public GameObject modulesLayout;
-        public GameObject moduleUI;
+        [Tooltip("The selection of modules to enable if the turret has any modules")]
+        [SerializeField]
+        private GameObject modulesSection;
+        [Tooltip("The parent of any module icons to display")]
+        [SerializeField]
+        private GameObject modulesLayout;
+        [Tooltip("The prefab of a generic module icon to instantiate under the modulesLayout")]
+        [SerializeField]
+        private GameObject moduleUI;
 
         [Header("Stats")]
-        public TurretStat damage;
-        public TurretStat rate;
-        public TurretStat range;
+        [Tooltip("The TurretStat used to display the damage")]
+        [SerializeField]
+        private TurretStat damage;
+        [Tooltip("The TurretStat used to display the fire rate")]
+        [SerializeField]
+        private TurretStat rate;
+        [Tooltip("The TurretStat used to display the range")]
+        [SerializeField]
+        private TurretStat range;
 
         [Header("Colors")]
-        public Hexagons bg;
-        public Image modulesBg;
-        public TextMeshProUGUI modulesTitle;
+        [Tooltip("The Hexagons shader background of the card")]
+        [SerializeField]
+        private Hexagons bg;
+        [Tooltip("The background Image of the modules section")]
+        [SerializeField]
+        private Image modulesBg;
+        [Tooltip("The title of the module section (so we can set the colour to match the turret)")]
+        [SerializeField]
+        private TextMeshProUGUI modulesTitle;
 
         /// <summary>
         /// Creates and setups the Selection UI.
@@ -69,7 +94,7 @@ namespace UI.Shop
             // Turret's Modules
             if (turret.modules.Count == 0)
             {
-                modulesSection.SetActive(true);
+                modulesSection.SetActive(false);
             }
             else
             {

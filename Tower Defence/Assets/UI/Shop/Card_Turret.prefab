@@ -626,15 +626,15 @@ MonoBehaviour:
   m_Color: {r: 0.12156863, g: 0.8117647, b: 0.53333336, a: 0.2}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  OffsetUV: {x: 0, y: 0}
-  HexagonScale: 6
-  ScrollSpeed: 0.03
-  LuminanceShiftSpeed: 1.5
-  OverlayStrength: -0.2
-  HexagonOpacity: 0.2
-  GlowIntensity: 0.3
-  GlowClamp: 0.5
-  GlowOpacity: 0.25
+  offsetUV: {x: 0, y: 0}
+  hexagonScale: 6
+  scrollSpeed: 0.03
+  luminanceShiftSpeed: 1.5
+  overlayStrength: -0.2
+  hexagonOpacity: 0.2
+  glowIntensity: 0.3
+  glowClamp: 0.5
+  glowOpacity: 0.25
 --- !u!1 &2859882678539946580
 GameObject:
   m_ObjectHideFlags: 0
@@ -1078,10 +1078,10 @@ RectTransform:
   m_Father: {fileID: 4250074376577822391}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 378.55518, y: -34.301834}
+  m_SizeDelta: {x: 94.28607, y: 68.60367}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1785076879410096257
 Canvas:
@@ -1194,10 +1194,10 @@ RectTransform:
   m_Father: {fileID: 4250074376577822391}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 237.3491, y: -34.301834}
+  m_SizeDelta: {x: 94.28607, y: 68.60367}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &6566449467111071683
 Canvas:
@@ -1902,10 +1902,10 @@ RectTransform:
   m_Father: {fileID: 4250074376577822391}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 96.143036, y: -34.301834}
+  m_SizeDelta: {x: 94.28607, y: 68.60367}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &4526307475258432457
 Canvas:

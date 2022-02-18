@@ -12,11 +12,14 @@ namespace Turrets.Gunner
     public class Gunner : DynamicTurret
     {
         // Bullets
-        public GameObject bulletPrefab;
+        [Tooltip("The bullet prefab to spawn each attack")]
+        [SerializeField]
+        private GameObject bulletPrefab;
         
         // Spin up stats
         private float _fireRateIncrease = 1f;
         private float _oldIncrease = 1f;
+        
         [Tooltip("That amount to increase the fireRate by each attack")]
         public UpgradableStat spinMultiplier = new UpgradableStat(1.1f);
         [Tooltip("How much to divide the fire rate when not attacking")]
@@ -75,7 +78,7 @@ namespace Turrets.Gunner
         }
         
         /// <summary>
-        /// Updates the fire rate so we don't have duplicated code in Attack().
+        /// Updates the fire rate so there's no duplicated code in Attack().
         /// Also handles all edge cases with the increase being too low or high
         /// </summary>
         /// <param name="isIncrease">To increase or decrease the fireRate</param>

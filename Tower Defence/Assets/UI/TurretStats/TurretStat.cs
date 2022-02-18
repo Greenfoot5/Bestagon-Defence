@@ -9,8 +9,10 @@ namespace UI.TurretStats
     /// </summary>
     public class TurretStat : MonoBehaviour
     {
+        [Tooltip("The icon of the turret stat to set the colour of")]
         [SerializeField]
         private Image icon;
+        [Tooltip("The text to fill with the turret's stat")]
         [SerializeField]
         private TextMeshProUGUI text;
         

@@ -11,10 +11,14 @@ namespace UI
     /// </summary>
     public class GameOver : MonoBehaviour
     {
-        public TMP_Text roundsText;
+        [Tooltip("The text to display the current round number on")]
+        [SerializeField]
+        private TMP_Text roundsText;
         
-        public Animator transition;
-        private static readonly int Start = Animator.StringToHash("Start");
+        [Tooltip("The animation to animate the transition back to the main menu")]
+        [SerializeField]
+        private Animator transition;
+        private static readonly int AnimationTrigger = Animator.StringToHash("Start");
 
         /// <summary>
         /// Begins the transition to the new level
@@ -22,7 +26,7 @@ namespace UI
         /// <param name="sceneName">The scene to transition to</param>
         private IEnumerator Transition(string sceneName)
         {
-            transition.SetTrigger(Start);
+            transition.SetTrigger(AnimationTrigger);
 
             yield return new WaitForSeconds(transition.GetCurrentAnimatorClipInfo(0)[0].clip.length);
             

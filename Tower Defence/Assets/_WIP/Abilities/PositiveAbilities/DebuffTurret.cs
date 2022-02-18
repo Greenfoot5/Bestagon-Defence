@@ -13,7 +13,9 @@ namespace _WIP.Abilities.PositiveAbilities
     public class DebuffTurret : EnemyAbility
     {
         [Header("Ability Stats")]
-        public List<Module> debuffs;
+        [Tooltip("The list of debuffs to apply to the turret")]
+        [SerializeField]
+        private List<Module> debuffs;
         
         
         /// <summary>

@@ -16,8 +16,8 @@ namespace Levels.Generic.LevelSelect
     /// </summary>
     public class LeaderboardServerBridge : MonoBehaviour
     {
-        public string serverEndpoint = "https://exploitavoid.com/leaderboards/v1/api";
-    
+        private const string ServerEndpoint = "https://exploitavoid.com/leaderboards/v1/api";
+
         /// <summary>
         /// Gets some entries from a leaderboard
         /// </summary>
@@ -28,7 +28,7 @@ namespace Levels.Generic.LevelSelect
         /// <exception cref="ArgumentOutOfRangeException"></exception>
         public async Task<List<LeaderboardEntry>> RequestEntries(int count, string leaderboardID, int start = 1)
         {
-            string url = serverEndpoint + $"/get_entries?leaderboard_id={leaderboardID}&start={start}&count={count}";
+            string url = ServerEndpoint + $"/get_entries?leaderboard_id={leaderboardID}&start={start}&count={count}";
             using UnityWebRequest unityWebRequest = UnityWebRequest.Get(url);
             await unityWebRequest.SendWebRequestAsync();
             switch (unityWebRequest.result)
@@ -60,7 +60,7 @@ namespace Levels.Generic.LevelSelect
         /// <exception cref="ArgumentOutOfRangeException"></exception>
         public async Task<LeaderboardEntry> RequestPlayerEntry(string username, string leaderboardID)
         {
-            string url = serverEndpoint + $"/get_entries?leaderboard_id={leaderboardID}&start=1&count=1&search={username}";
+            string url = ServerEndpoint + $"/get_entries?leaderboard_id={leaderboardID}&start=1&count=1&search={username}";
             using UnityWebRequest unityWebRequest = UnityWebRequest.Get(url);
             await unityWebRequest.SendWebRequestAsync();
             switch (unityWebRequest.result)
@@ -137,7 +137,7 @@ namespace Levels.Generic.LevelSelect
         /// <exception cref="ArgumentOutOfRangeException"></exception>
         private async Task<bool> SendPlayerValue(string username, IConvertible value, string leaderboardID, string leaderboardSecret)
         {
-            string url = serverEndpoint + "/update_entry";
+            string url = ServerEndpoint + "/update_entry";
             var valueString = value.ToString();
             var uploadJson = $"{{\"name\":\"{username}\", \"value\":{valueString}, \"leaderboard_id\":{leaderboardID}}}";
             string toHash = "/update_entry" + uploadJson + leaderboardSecret;

@@ -33,7 +33,7 @@ namespace Abstract.Data
         {
             if (list.Count == 0) throw new NullReferenceException("WeightedList is empty");
         
-            var total = list.Sum(t => t.weight);
+            float total = list.Sum(t => t.weight);
             total = Random.Range(0f, total);
 
             if (total == 0) return list[Random.Range(0, list.Count)].item;

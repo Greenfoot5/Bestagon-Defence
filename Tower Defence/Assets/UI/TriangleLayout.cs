@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace UI
@@ -8,26 +9,43 @@ namespace UI
     /// </summary>
     public class TriangleLayout : MonoBehaviour, ILayoutGroup
     {
-        public bool flippedHorizontally;
+        [Tooltip("If the layout is flipped along the horizontal axis")]
+        [SerializeField]
+        private bool isFlippedHorizontally;
         
         [Header("Padding")]
-        public float left;
-        public float right;
-        public float top;
-        public float bottom;
+        [Tooltip("Any padding on the left of the layout")]
+        [SerializeField]
+        private float left;
+        [Tooltip("Any padding on the right of the layout")]
+        [SerializeField]
+        private float right;
+        [Tooltip("Any padding at the top of the layout")]
+        [SerializeField]
+        private float top;
+        [Tooltip("Any padding on the bottom of the layout")]
+        [SerializeField]
+        private float bottom;
         
         [Space(15)]
-        public Vector2 cellSize = new Vector2(50f, 50f);
+        
+        [Tooltip("The size of each cell in the layout")]
+        [SerializeField]
+        private Vector2 cellSize = new Vector2(50f, 50f);
+        [Tooltip("The spacing between each cell in the layout")]
+        [SerializeField]
         public Vector2 spacing;
         
-        public SpriteAlignment alignment;
+        [Tooltip("The alignment of the sprites")]
+        [SerializeField]
+        private SpriteAlignment alignment;
         
         /// <summary>
         /// Creates the Horizontal Layout for the group
         /// </summary>
         public void SetLayoutHorizontal()
         {
-            if (!flippedHorizontally)
+            if (!isFlippedHorizontally)
             {
                 // Loops through each of the children
                 for (var i = 0; i < transform.childCount; i++)
@@ -112,7 +130,7 @@ namespace UI
         /// </summary>
         public void SetLayoutVertical()
         {
-            if (!flippedHorizontally)
+            if (!isFlippedHorizontally)
             {
                 // Loop through all the children
                 for (var i = 0; i < transform.childCount; i++)

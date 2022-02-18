@@ -7,7 +7,7 @@ namespace Levels._Nodes
     /// </summary>
     public class Waypoints : MonoBehaviour
     {
-        // Has a array of all the waypoints
+        [Tooltip("Has an array of all the waypoints")]
         public static Transform[] points;
         
         /// <summary>

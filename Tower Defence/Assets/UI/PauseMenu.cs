@@ -13,14 +13,20 @@ namespace UI
     /// </summary>
     public class PauseMenu : MonoBehaviour
     {
-        public GameObject ui;
+        [Tooltip("The UI panel to enable when paused")]
+        [SerializeField]
+        private GameObject ui;
         
-        public Animator transition;
+        [Tooltip("The animator for the transition between scenes")]
+        [SerializeField]
+        private Animator transition;
     
         private bool _hasBeenToggled;
         
-        public LeaderboardServerBridge bridge;
-        private static readonly int Start1 = Animator.StringToHash("Start");
+        [Tooltip("The leaderboard bridge to save the player's score")]
+        [SerializeField]
+        private LeaderboardServerBridge bridge;
+        private static readonly int AnimationTrigger = Animator.StringToHash("Start");
 
         /// <summary>
         /// Allows the class to listen to the pause button press
@@ -67,7 +73,7 @@ namespace UI
         /// <param name="sceneName">The scene to transition to</param>
         private IEnumerator Transition(string sceneName)
         {
-            transition.SetTrigger(Start1);
+            transition.SetTrigger(AnimationTrigger);
 
             yield return new WaitForSeconds(transition.GetCurrentAnimatorClipInfo(0)[0].clip.length);
             

@@ -1,5 +1,4 @@
-﻿using Abstract;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
@@ -12,27 +11,37 @@ namespace Gameplay.Camera
     {
         [Header("Panning")]
         [Tooltip("Keyboard panning multiplier")]
-        public float keyboardPanSpeed = 10f;
+        [SerializeField]
+        private float keyboardPanSpeed = 10f;
         [Tooltip("Mouse panning multiplier")]
-        public float mouseSensitivity = 1f;
+        [SerializeField]
+        private float mouseSensitivity = 1f;
         [Tooltip("Touch panning multiplier")]
-        public float touchSensitivity = 1f;
+        [SerializeField]
+        private float touchSensitivity = 1f;
         [Tooltip("Panning multiplier based on zoom")]
-        public float zoomInfluence = 3f;
+        [SerializeField]
+        private float zoomInfluence = 3f;
         [Tooltip("The minimum position the camera can reach")]
-        public Vector2 minPos = new Vector2(0, 0);
+        [SerializeField]
+        private Vector2 minPos = new Vector2(0, 0);
         [Tooltip("The maximum position the camera can reach")]
-        public Vector2 maxPos = new Vector2(0, 0);
+        [SerializeField]
+        private Vector2 maxPos = new Vector2(0, 0);
     
         [Header("Zoom")]
         [Tooltip("Multiplier for the mouse scroll speed")]
-        public float scrollSpeed = 10f;
+        [SerializeField]
+        private float scrollSpeed = 10f;
         [Tooltip("Multiplier for the pinch zoom speed")]
-        public float pinchSpeed = 1f;
+        [SerializeField]
+        private float pinchSpeed = 1f;
         [Tooltip("The minimum Orthographic size that can be reached (maximum zoom)")]
-        public float minOrthSize = 3;
+        [SerializeField]
+        private float minOrthSize = 3;
         [Tooltip("The maximum Orthographic size that can be reached (minimum zoom)")]
-        public float maxOrthSize = 9;
+        [SerializeField]
+        private float maxOrthSize = 9;
         private UnityEngine.Camera _camera;
 
         // Input System

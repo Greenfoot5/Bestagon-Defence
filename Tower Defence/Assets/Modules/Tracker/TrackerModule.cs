@@ -15,8 +15,10 @@ namespace Modules.Tracker
     {
         protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Laser), typeof(Gunner) };
 
+        [Tooltip("The percentage to modify the rotation speed of the turret by")]
         [SerializeField]    
         private float rotationSpeedPercentageChange;
+        [Tooltip("The percentage to modify the damage of the turret by")]
         [SerializeField]
         private float damagePercentageChange;
         

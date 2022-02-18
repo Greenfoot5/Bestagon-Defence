@@ -10,9 +10,11 @@ namespace UI.Modules
     /// </summary>
     public class ModuleIcon : MonoBehaviour
     {
+        [Tooltip("The Image object to set the icon of")]
         [SerializeField]
         private Image icon;
         [SerializeField]
+        [Tooltip("The level text to set as the module's level")]
         private TextMeshProUGUI text;
 
         private Module _module;

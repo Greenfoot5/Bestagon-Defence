@@ -5,14 +5,14 @@ using UnityEngine;
 namespace UI
 {
     /// <summary>
-    /// Displays the version text so the user can know what version they're on
+    /// Displays the version text so the player can know what version they're on
     /// </summary>
     public class VersionText : MonoBehaviour
     {
         private static bool _exists;
         
         /// <summary>
-        /// Generates the VersionText and displays it for the user
+        /// Generates the VersionText and displays it for the player
         /// </summary>
         private void Start()
         {

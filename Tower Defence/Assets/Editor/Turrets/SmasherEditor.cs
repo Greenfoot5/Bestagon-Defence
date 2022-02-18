@@ -8,9 +8,7 @@ namespace Editor.Turrets
     public class SmasherEditor : TurretEditor
     {
         // PROPERTIES
-
         private SerializedProperty _smashEffect;
-
 
         protected new void OnEnable()
         {

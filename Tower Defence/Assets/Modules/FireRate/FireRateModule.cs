@@ -14,7 +14,9 @@ namespace Modules.FireRate
     public class FireRateModule : Module
     {
         protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Smasher), typeof(Gunner) };
-
+        
+        [Tooltip("What percentage to modify the fire rate of the turret by.\n\n" +
+                 "If it's a gunner turret, the percentage to modify the fire rate cap, spin cooldown and spin multiplier")]
         [SerializeField]
         private float percentageChange;
         

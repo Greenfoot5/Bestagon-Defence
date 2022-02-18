@@ -6,6 +6,7 @@ using Turrets;
 using UI.Modules;
 using UnityEngine;
 using UnityEngine.UI;
+using Image = UnityEngine.UI.Image;
 
 namespace UI.Nodes
 {
@@ -16,17 +17,29 @@ namespace UI.Nodes
     {
         public static NodeUI instance;
         
-        public GameObject ui;
-        public Gameplay.Shop shop;
+        [Tooltip("The main UI to enable/disable when a turret is selected")]
+        [SerializeField]
+        private GameObject ui;
+        [Tooltip("The Shop component of the scene")]
+        [SerializeField]
+        private Gameplay.Shop shop;
     
         private Node _target;
-    
-        public Transform modules;
-        public GameObject moduleIconPrefab;
-
-        public TMP_Text stats;
-
-        public GameObject cycleTargetingButton;
+        
+        [Tooltip("The GameObject to spawn the module icons as a child of")]
+        [SerializeField]
+        private Transform modules;
+        [Tooltip("The prefab of a module icon to instantiate to display the turret's modules")]
+        [SerializeField]
+        private GameObject moduleIconPrefab;
+        
+        [Tooltip("The TMP object to display the selected turret's stats in")]
+        [SerializeField]
+        private TMP_Text stats;
+        
+        [Tooltip("The button that changes the targeting method of the turret")]
+        [SerializeField]
+        private GameObject cycleTargetingButton;
         
         /// <summary>
         /// Check there is only one NodeUI when loading in
@@ -55,7 +68,10 @@ namespace UI.Nodes
             // Move the UI to be above the node
             transform.position = _target.transform.position;
             
-            modules.DetachChildren();
+            // Removes module icons created from the previously selected turret
+            while (modules.childCount > 0) {
+                Destroy(modules.GetChild(0).gameObject);
+            }
             
             // Add each Module as an icon
             foreach (Module module in _target.turret.GetComponent<Turret>().modules)

@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Abstract.EnvironmentVariables
 {
     /// <summary>
@@ -6,10 +8,14 @@ namespace Abstract.EnvironmentVariables
     [System.Serializable]
     public struct EnvironmentVariable
     {
-        public string name;
-        public string stable;
-        public string devBuild;
-        public string editor;
+        [SerializeField]
+        private string name;
+        [SerializeField]
+        private string stable;
+        [SerializeField]
+        private string devBuild;
+        [SerializeField]
+        private string editor;
         
         /// <summary>
         /// Gets the data for the correct version (Editor/Development Build/Release)

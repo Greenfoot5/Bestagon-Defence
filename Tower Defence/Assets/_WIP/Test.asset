@@ -15,9 +15,9 @@ MonoBehaviour:
   initialTurretSelection:
     list:
     - item: {fileID: 11400000, guid: d2db62c1bef594027b45aec4631e1e6a, type: 2}
-      weight: 1
-    - item: {fileID: 11400000, guid: 4aedceea9b860486d9797fb4dfb62a16, type: 2}
       weight: 0
+    - item: {fileID: 11400000, guid: 4aedceea9b860486d9797fb4dfb62a16, type: 2}
+      weight: 1
     - item: {fileID: 11400000, guid: 4aedceea9b860486d9797fb4dfb62a16, type: 2}
       weight: 0
   initialDuplicateCheck: 0
@@ -37,9 +37,9 @@ MonoBehaviour:
       weight: 0
     - item: {fileID: 11400000, guid: 8d4a998c7bcd04f18bb6d486e4f6fe4a, type: 2}
       weight: 0
-    - item: {fileID: 11400000, guid: e51d8f8c8fdf2433197f9df264a59986, type: 2}
-      weight: 0
-  moduleDuplicateCheck: 2
+    - item: {fileID: 11400000, guid: 0920c807f7c594ead86f3d1e707ab497, type: 2}
+      weight: 1
+  moduleDuplicateCheck: 0
   moduleOptionWeight: 1
   initialSelectionCost: 100
   selectionCostIncrement: 10

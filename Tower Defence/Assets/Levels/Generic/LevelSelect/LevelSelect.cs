@@ -12,20 +12,38 @@ namespace Levels.Generic.LevelSelect
     /// </summary>
     public class LevelSelect : MonoBehaviour
     {
-        public Animator transition;
+        [Tooltip("The animator for the transition")]
+        [SerializeField]
+        private Animator transition;
         
         private string _selectedLevel;
-        public Button playButton;
+        [Tooltip("The button to play the level")]
+        [SerializeField]
+        private Button playButton;
         
-        public GameObject levelInfo;
-        public GameObject levelSelect;
-        public GameObject infoButton;
+        [Tooltip("The level info/leaderboard panel")]
+        [SerializeField]
+        private GameObject levelInfo;
+        [Tooltip("The level select panel")]
+        [SerializeField]
+        private GameObject levelSelect;
+        [Tooltip("The button that toggles between the info/leaderboard and the level select panels")]
+        [SerializeField]
+        private GameObject infoButton;
 
         [Header("Level Info")]
-        public TMP_Text levelName;
-        public GameObject leaderboardEntry;
-        public Transform leaderboardContent;
-        public TMP_Text highScore;
+        [Tooltip("The level name title")]
+        [SerializeField]
+        private TMP_Text levelName;
+        [Tooltip("The prefab for an entry on the leaderboard")]
+        [SerializeField]
+        private GameObject leaderboardEntry;
+        [Tooltip("The content of the scroll view to place the leaderboard entries")]
+        [SerializeField]
+        private Transform leaderboardContent;
+        [Tooltip("The high score text")]
+        [SerializeField]
+        private TMP_Text highScore;
         private static readonly int Start = Animator.StringToHash("Start");
 
         /// <summary>
@@ -84,7 +102,7 @@ namespace Levels.Generic.LevelSelect
                 }
 
                 while (leaderboardContent.childCount > 0) {
-                    DestroyImmediate(leaderboardContent.GetChild(0).gameObject);
+                    Destroy(leaderboardContent.GetChild(0).gameObject);
                 }
                 
                 // Display leaderboard

@@ -5,16 +5,19 @@ using UnityEngine;
 namespace UI
 {
     /// <summary>
-    /// Displays the user's stats in world space
+    /// Displays the player's stats in world space
     /// </summary>
     public class WorldUI : MonoBehaviour
     {
+        [Tooltip("The TMP text to display the player's current balance")]
         public TMP_Text moneyText;
+        [Tooltip("The TMP text to display the player's lives remaining")]
         public TMP_Text livesText;
+        [Tooltip("The TMP text to display the wave number")]
         public TMP_Text waveCountText;
 
         /// <summary>
-        /// Updates the user's current stats
+        /// Updates the player's current stats
         /// </summary>
         private void Update()
         {

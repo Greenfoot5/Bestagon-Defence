@@ -12,10 +12,12 @@ namespace Turrets
     public class Bullet : MonoBehaviour
     {
         private Transform _target;
-    
+        
+        [Tooltip("The speed of the bullet")]
         public UpgradableStat speed = new UpgradableStat(30f);
-        [Tooltip("Only set if the bullet deals AoE damage")]
+        [Tooltip("The radius to deal damage in. If <= 0, will just damage the target it hits")]
         public UpgradableStat explosionRadius;
+        [Tooltip("The amount of damage the bullet deals (set bu turret)")]
         [HideInInspector]
         public UpgradableStat damage = new UpgradableStat(50f);
     

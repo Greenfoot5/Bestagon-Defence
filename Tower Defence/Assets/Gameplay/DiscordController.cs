@@ -158,7 +158,7 @@ namespace Gameplay
         }
 
         /// <summary>
-        /// Closes down the bridge and clears the Rich Presence Activity of the user.
+        /// Closes down the bridge and clears the Rich Presence Activity of the player.
         /// </summary>
         private void OnDestroy()
         {

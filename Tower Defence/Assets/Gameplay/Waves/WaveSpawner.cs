@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using Abstract;
 using Enemies;
 using Levels.Maps;
 using TMPro;
@@ -12,26 +11,27 @@ namespace Gameplay.Waves
     /// </summary>
     public class WaveSpawner : MonoBehaviour
     {
+        [Tooltip("How many enemies are still alive in the level")]
         public static int enemiesAlive;
-    
-        // All the waves in the level
+        
+        [Tooltip("The waves the level will loop through")]
         public Wave[] waves;
-    
-        // Times before sending waves
+        
+        
+        [Tooltip("How long to wait in between waves")]
         public float timeBetweenWaves = 5f;
         [Tooltip("The time at the beginning before the start of the game")]
-        public float preparationTime = 5f;
-        // Set to first countdown
+        public float preparationTime = 8f;
+
         private float _countdown = 5f;
-    
-        // The countdown text timer
+        
+        [Tooltip("The text to update with the countdown")]
         public TMP_Text waveCountdownText;
     
         // The current wave the player is on -1 (as it's indexed from 0)
         private int _waveIndex;
-    
-        // The point to spawn in the enemy.
-        // Should be waypoint 0
+        
+        [Tooltip("The location to spawn the enemies. Should be the first waypoint")]
         public Transform spawnPoint;
 
         private bool _isSpawning;

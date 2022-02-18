@@ -45,7 +45,7 @@ namespace Modules.Stun
         /// <param name="target">The enemy to slow</param>
         private IEnumerator StunEnemy(Enemy target)
         {
-            // Check the target isn't already stunned and we hit the chance
+            // Check the target isn't already stunned and the turret hit the chance
             if (target.speed.GetBase() > 0 && Random.value < stunChance) yield break;
             
             float originalSpeed = target.speed.GetBase();

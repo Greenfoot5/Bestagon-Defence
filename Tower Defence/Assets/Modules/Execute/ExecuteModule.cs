@@ -19,7 +19,8 @@ namespace Modules.Execute
         protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Gunner) };
         
         [Tooltip("The maximum percentage of health the enemy can have before they get executed")]
-        public float percentageHealthRemaining;
+        [SerializeField]
+        private float percentageHealthRemaining;
         
         /// <summary>
         /// Check if the module can be applied to the turret

@@ -15,7 +15,6 @@ namespace Editor.Turrets
 
         private SerializedProperty _firePoint;
 
-
         protected new void OnEnable()
         {
             base.OnEnable();

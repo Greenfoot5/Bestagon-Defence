@@ -10,9 +10,14 @@ namespace Levels.Generic.MainMenu
     /// </summary>
     public class MainMenu : MonoBehaviour
     {
-        public Animator transition;
-        public TMP_Text loggedInAs;
-        private static readonly int Start1 = Animator.StringToHash("Start");
+        [Tooltip("The animation for the transition")]
+        [SerializeField]
+        private Animator transition;
+        [Tooltip("The text that displays the username of the player")]
+        [SerializeField]
+        private TMP_Text loggedInAs;
+        
+        private static readonly int AnimationTrigger = Animator.StringToHash("Start");
 
         /// <summary>
         /// Sets the username text
@@ -44,7 +49,7 @@ namespace Levels.Generic.MainMenu
         /// <param name="sceneName">The scene to transition the user to</param>
         private IEnumerator Transition(string sceneName)
         {
-            transition.SetTrigger(Start1);
+            transition.SetTrigger(AnimationTrigger);
 
             yield return new WaitForSeconds(transition.GetCurrentAnimatorClipInfo(0)[0].clip.length);
             

@@ -25,8 +25,10 @@ namespace Abstract
             typeof(Smasher),
             typeof(Gunner)
         };
-
-        [SerializeField] private List<TurretGlyphSo> sprites;
+        
+        [Tooltip("The list of TurretGlyphs to use")]
+        [SerializeField]
+        private List<TurretGlyphSo> sprites;
         
         /// <summary>
         /// Get all the types the game currently has stored

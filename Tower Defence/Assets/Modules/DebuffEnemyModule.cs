@@ -18,7 +18,8 @@ namespace Modules
     public class DebuffEnemyModule : Module
     {
         protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Laser), typeof(Gunner) };
-
+        
+        [Tooltip("Which debuff enemy abilities to apply to enemies on hit")]
         [SerializeField]
         private List<EnemyAbility> debuffs;
 

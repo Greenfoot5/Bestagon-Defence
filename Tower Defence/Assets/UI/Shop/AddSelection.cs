@@ -6,7 +6,7 @@ using Abstract.Data;
 using Gameplay;
 using Levels.Maps;
 using Modules;
-using Turrets.Blueprints;
+using Turrets;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -14,15 +14,22 @@ namespace UI.Shop
 {
     public class AddSelection : MonoBehaviour
     {
-        public GameObject turretSelectionUI;
-        public GameObject moduleSelectionUI;
+        [Tooltip("The game object for a turret selection card")]
+        [SerializeField]
+        private GameObject turretSelectionUI;
+        [Tooltip("The game object for a module selection card")]
+        [SerializeField]
+        private GameObject moduleSelectionUI;
         private LevelData _levelData;
-        public Gameplay.Shop shop;
-    
+        [Tooltip("The Shop component in the scene")]
+        [SerializeField]
+        private Gameplay.Shop shop;
+        
+        [Tooltip("The GlyphsLookup index in the scene")]
         [SerializeField]
         public TypeSpriteLookup glyphsLookup;
 
-        private bool _firstPurchase = true;
+        private bool _isFirstPurchase = true;
 
         private readonly List<Type> _turretTypes = new List<Type>();
     
@@ -72,7 +79,7 @@ namespace UI.Shop
             for (var i = 0; i < 3; i++)
             {
                 // If it's the first time opening the shop this level, the game should display a different selection
-                if (_firstPurchase)
+                if (_isFirstPurchase)
                 {
                     // Add a new turret to the selection
                     WeightedList<TurretBlueprint> turrets = _levelData.initialTurretSelection;
@@ -226,7 +233,7 @@ namespace UI.Shop
             }
         
             // The player can only have a first purchase once
-            if (_firstPurchase) _firstPurchase = false;
+            if (_isFirstPurchase) _isFirstPurchase = false;
         }
     
         /// <summary>

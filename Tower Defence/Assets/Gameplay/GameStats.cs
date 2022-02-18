@@ -10,9 +10,11 @@ namespace Gameplay
     public class GameStats : MonoBehaviour
     {
         public static int money;
+        [Tooltip("How much money the player starts the level with")]
         public int startMoney = 200;
 
         private static int _lives;
+        [Tooltip("How many lives the player starts the level with")]
         public int startLives = 20;
         public static int Lives
         {

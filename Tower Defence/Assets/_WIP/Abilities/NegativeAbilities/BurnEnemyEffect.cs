@@ -11,7 +11,8 @@ namespace _WIP.Abilities.NegativeAbilities
     {
         [Header("Ability Stats")]
         [Tooltip("% of max health damage per tick")]
-        public float damage;
+        [SerializeField]
+        private float damage;
         
         /// <summary>
         /// Burn the enemy and deal damage to it

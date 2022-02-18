@@ -13,21 +13,33 @@ namespace Turrets
     /// </summary>
     public abstract class DynamicTurret : Turret
     {
+        /// <summary>How long between each target update</summary>
         private const float UpdateTargetTimer = 0.5f;
         
         // Targeting
+        [Tooltip("What TargetingMethod the turret uses to pick it's next target")]
         public TargetingMethod targetingMethod = TargetingMethod.Closest;
-        public bool aggressiveRetargeting;
-
+        [Tooltip("If the turret should always be searching for the target that best matches the targeting method.\n\n" +
+                 "If false, it keeps one until the target dies or goes out of range")]
+        [SerializeField]
+        private bool aggressiveRetargeting;
+        
+        [Tooltip("The current target")]
         protected Transform target;
+        [Tooltip("The Enemy script of the current target")]
         protected Enemy targetEnemy;
 
         // Reference
-        public Transform firePoint;
+        [Tooltip("The transform at which attack from (e.g. instantiate bullets)")]
+        [SerializeField]
+        protected Transform firePoint;
 
         // Rotation
+        [Tooltip("How fast the turret rotates towards it's target")]
         public UpgradableStat rotationSpeed = new UpgradableStat(3f);
-        public Transform partToRotate;
+        [Tooltip("The Transform to perform any rotations on")]
+        [SerializeField]
+        protected Transform partToRotate;
 
 
         /// <summary>
@@ -40,7 +52,7 @@ namespace Turrets
         }
         
         /// <summary>
-        /// Calls our targeting method every 0.5s.
+        /// Calls our targeting method every UpdateTargetTimer.
         /// </summary>
         private IEnumerator TargetCoroutine()
         {

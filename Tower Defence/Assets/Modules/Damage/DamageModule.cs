@@ -11,7 +11,8 @@ namespace Modules.Damage
     public class DamageModule : Module
     {
         protected override Type[] ValidTypes => null;  // any
-
+        
+        [Tooltip("What percentage to modify the damage by")]
         [SerializeField]
         private float percentageChange;
         

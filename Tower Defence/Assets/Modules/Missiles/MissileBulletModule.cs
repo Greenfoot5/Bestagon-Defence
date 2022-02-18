@@ -13,11 +13,19 @@ namespace Modules.Missiles
     public class MissileBulletModule : Module
     {
         protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Gunner) };
-
-        public float explosionRadiusChange;
-        public float damagePercentageChange;
-        public float fireRatePercentageChange;
-        public float speedPercentageChange;
+        
+        [Tooltip("What percentage to modify the explosion radius of the bullet by")]
+        [SerializeField]
+        private float explosionRadiusChange;
+        [Tooltip("The percentage to modify the damage of the turret by")]
+        [SerializeField]
+        private float damagePercentageChange;
+        [Tooltip("The percentage to modify the fire rate of the turret by")]
+        [SerializeField]
+        private float fireRatePercentageChange;
+        [Tooltip("The percentage to modify the speed of the bullet by")]
+        [SerializeField]
+        private float speedPercentageChange;
         
         /// <summary>
         /// Applies the stat changes to the turret

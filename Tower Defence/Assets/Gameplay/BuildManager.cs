@@ -1,8 +1,5 @@
-﻿using System.Collections.Generic;
-using Levels;
-using Levels._Nodes;
+﻿using Levels._Nodes;
 using Turrets;
-using Turrets.Blueprints;
 using UI.Nodes;
 using UnityEngine;
 
@@ -13,6 +10,7 @@ namespace Gameplay
     /// </summary>
     public class BuildManager : MonoBehaviour
     {
+        [Tooltip("The instance of the BuildManager")]
         public static BuildManager instance;
         
         [Tooltip("The effect spawned when a turret is built.")]
@@ -25,10 +23,12 @@ namespace Gameplay
         private Node _selectedNode;
     
         [Tooltip("The UI to move above the turret")]
-        public NodeUI nodeUI;
-
-        public static List<Turret> builtTurretTypes = new List<Turret>();
-
+        [SerializeField]
+        private NodeUI nodeUI;
+        
+        /// <summary>
+        /// If the player is currently building or not
+        /// </summary>
         public bool CanBuild => _turretToBuild != null;
         
         /// <summary>

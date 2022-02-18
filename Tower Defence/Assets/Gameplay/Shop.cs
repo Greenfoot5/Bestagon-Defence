@@ -3,7 +3,6 @@ using Levels.Maps;
 using Modules;
 using TMPro;
 using Turrets;
-using Turrets.Blueprints;
 using UI.Modules;
 using UI.Shop;
 using UnityEngine;
@@ -20,12 +19,17 @@ namespace Gameplay
         private LevelData _levelData;
         private Module _selectedModule;
         private GameObject _selectedModuleButton;
-
+        
+        [Tooltip("The inventory to place turret buttons")]
         public GameObject turretInventory; 
+        [Tooltip("The inventory to place module buttons under")]
         public GameObject moduleInventory;
+        [Tooltip("The generic turret button prefab")]
         public GameObject defaultTurretButton;
+        [Tooltip("The generic module button prefab")]
         public GameObject defaultModuleButton;
-
+        
+        [Tooltip("The UI to display when the player opens the shop")]
         public GameObject selectionUI;
         private int _selectionCost;
 
