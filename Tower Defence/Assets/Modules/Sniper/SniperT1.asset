@@ -23,7 +23,7 @@ MonoBehaviour:
 
     Lower Fire Rate'
   shooterRangePercentageChange: 1
-  shooterDamagePercentageChange: 1
+  shooterDamagePercentageChange: 1.2
   shooterFireRatePercentageChange: -0.5
   shooterRotationSpeedPercentageChange: -0.3
   shooterBulletSpeedPercentageChange: 1
@@ -31,5 +31,5 @@ MonoBehaviour:
   laserRotationSpeedPercentageChange: -0.5
   laserDamagePercentageChange: 0
   smasherRangePercentageChange: 1
-  smasherDamagePercentageChange: 1
+  smasherDamagePercentageChange: 1.1
   smasherFireRatePercentageChange: -0.5

@@ -241,7 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage:
-    stat: 200
+    stat: 500
     modifier: 1
   enemyTag: Enemy
   range:
@@ -249,7 +249,7 @@ MonoBehaviour:
     modifier: 1
   rangeDisplay: {fileID: 1139687739}
   fireRate:
-    stat: 1.2
+    stat: 1.1
     modifier: 1
   modules: []
   targetingMethod: 0
