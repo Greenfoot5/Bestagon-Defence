@@ -80,7 +80,7 @@ MonoBehaviour:
     - item: {fileID: 11400000, guid: f488ec51e287048928b2b94b48e4abef, type: 2}
       weight: 50
     - item: {fileID: 11400000, guid: f51f0f08791ee4076be40b4d01554f3c, type: 2}
-      weight: 25
+      weight: 2500
     - item: {fileID: 11400000, guid: 2ab08b2aea51241ffa61f0713e187ca0, type: 2}
       weight: 100
     - item: {fileID: 11400000, guid: f0fdb6c55f8f54c21b6a9f08480bd0b7, type: 2}
@@ -101,8 +101,10 @@ MonoBehaviour:
       weight: 20
     - item: {fileID: 11400000, guid: a36951a90c6c44391a71cbd17ff8c4c9, type: 2}
       weight: 20
-    - item: {fileID: 11400000, guid: ca2487ad135c84afb92976ce624fe568, type: 2}
-      weight: 10
+    - item: {fileID: 11400000, guid: 3b5ab756cc7454648aeea88e3265aaa4, type: 2}
+      weight: 50
+    - item: {fileID: 11400000, guid: 22133bf1defbe4aef9dcb1071509ae13, type: 2}
+      weight: 2000
     - item: {fileID: 11400000, guid: 2a42e155c209b403eb3e9155f49abcfa, type: 2}
       weight: 100
     - item: {fileID: 11400000, guid: d9320e9e3e54b472a9062ee565f85110, type: 2}

@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 734f8a7c9b8924e52af33b59555cc7d0, type: 3}
-  m_Name: StunT1
+  m_Name: StunT2
   m_EditorClassIdentifier: 
-  moduleTier: 1
+  moduleTier: 2
   accentColor: {r: 0.10980392, g: 0.83137256, b: 0.5882353, a: 1}
-  displayName: Stun I
+  displayName: Stun II
   tagline: Bzzzzzzzzt
   icon: {fileID: 1892315637792861288, guid: 16c979c866f439b4b988e7020b313794, type: 3}
-  effectText: 15% chance to stun the enemy in place for 0.5s
-  stunChance: 0.15
-  duration: 0.5
+  effectText: 7% chance to stun the enemy in place for 0.25s
+  stunChance: 0.7
+  duration: 0.25

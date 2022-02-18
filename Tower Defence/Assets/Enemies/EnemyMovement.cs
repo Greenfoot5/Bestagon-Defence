@@ -22,7 +22,7 @@ namespace Enemies
 
         public float mapProgress;
         private float _maxDistance;
-        
+
         /// <summary>
         /// Initialises relevant variables
         /// </summary>

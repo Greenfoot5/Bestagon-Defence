@@ -89,6 +89,10 @@ MonoBehaviour:
       weight: 100
     - item: {fileID: 11400000, guid: 2a42e155c209b403eb3e9155f49abcfa, type: 2}
       weight: 100
+    - item: {fileID: 11400000, guid: 3b5ab756cc7454648aeea88e3265aaa4, type: 2}
+      weight: 100
+    - item: {fileID: 11400000, guid: 41511553a2ec047d9bb11d891330f653, type: 2}
+      weight: 100
   moduleDuplicateCheck: 2
   moduleOptionWeight: 10
   initialSelectionCost: 130

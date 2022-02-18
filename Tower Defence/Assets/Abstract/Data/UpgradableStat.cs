@@ -65,6 +65,15 @@ namespace Abstract.Data
         }
         
         /// <summary>
+        /// Sets a new value for the base stat.
+        /// </summary>
+        /// <param name="newValue">The new value for the base stat</param>
+        public void SetBase(float newValue)
+        {
+            stat = newValue;
+        }
+        
+        /// <summary>
         /// Increases the stat's modifier by a certain amount
         /// Upgrades the stat in an additive way
         /// </summary>
