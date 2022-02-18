@@ -43,11 +43,13 @@ namespace Modules.Slow
         /// <param name="target">The enemy to slow</param>
         private IEnumerator SlowEnemy(Enemy target)
         {
-            target.speed.MultiplyModifier(1f - slowPercentage);
+            float slowValue = Mathf.Max(1f - slowPercentage, 0.2f);
+            
+            target.speed.MultiplyModifier(slowValue);
 
             yield return new WaitForSeconds(duration);
 
-            target.speed.DivideModifier(1f - slowPercentage);
+            target.speed.DivideModifier(slowValue);
         }
     }
 }
