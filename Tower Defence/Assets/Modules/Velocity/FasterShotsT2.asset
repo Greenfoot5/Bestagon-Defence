@@ -20,6 +20,9 @@ MonoBehaviour:
   effectText: 'Bullets move towards their target 100% faster
 
     Range increased
-    by 15%'
+    by 12%
+
+    Fire rate increased by 12%'
   bulletSpeedChange: 1
-  rangeChange: 0.15
+  rangeChange: 0.12
+  fireRateChange: 0.12
