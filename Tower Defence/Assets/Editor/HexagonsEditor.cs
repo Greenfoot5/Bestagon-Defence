@@ -34,17 +34,17 @@ namespace Editor
         private void OnEnable()
         {
             _color = serializedObject.FindProperty("m_Color");
-            _offsetUV = serializedObject.FindProperty("OffsetUV");
+            _offsetUV = serializedObject.FindProperty("offsetUV");
 
-            _hexagonScale = serializedObject.FindProperty("HexagonScale");
-            _scrollSpeed = serializedObject.FindProperty("ScrollSpeed");
-            _luminanceShiftSpeed = serializedObject.FindProperty("LuminanceShiftSpeed");
-            _overlayStrength = serializedObject.FindProperty("OverlayStrength");
-            _hexagonOpacity = serializedObject.FindProperty("HexagonOpacity");
+            _hexagonScale = serializedObject.FindProperty("hexagonScale");
+            _scrollSpeed = serializedObject.FindProperty("scrollSpeed");
+            _luminanceShiftSpeed = serializedObject.FindProperty("luminanceShiftSpeed");
+            _overlayStrength = serializedObject.FindProperty("overlayStrength");
+            _hexagonOpacity = serializedObject.FindProperty("hexagonOpacity");
 
-            _glowIntensity = serializedObject.FindProperty("GlowIntensity");
-            _glowClamp = serializedObject.FindProperty("GlowClamp");
-            _glowOpacity = serializedObject.FindProperty("GlowOpacity");
+            _glowIntensity = serializedObject.FindProperty("glowIntensity");
+            _glowClamp = serializedObject.FindProperty("glowClamp");
+            _glowOpacity = serializedObject.FindProperty("glowOpacity");
         }
 
         public override void OnInspectorGUI()
