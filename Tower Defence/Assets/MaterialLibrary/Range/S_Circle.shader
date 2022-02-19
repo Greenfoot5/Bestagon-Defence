@@ -31,37 +31,37 @@ Shader "Unlit/Circle"
             #include "UnityCG.cginc"
 
             /**
-             * \brief The input the shader gets
+             * \brief App to Vertex
              */
-            struct input {
+            struct a2v {
                 float4 vertex : POSITION;
                 float2 uv : TEXCOORD0;
                 float4 color : COLOR;
             };
 
             /**
-             * \brief The output the shader gives
+             * \brief Vertex To Fragment
              */
-            struct output {
+            struct v2f {
                 float4 vertex : SV_POSITION;
                 float2 uv : TEXCOORD0;
                 float4 color : COLOR;
             };
             
             // PROPERTIES
-            float4 circle_color;
-            float4 glow_color;
-            float glow_radius;
-            float glow_size;
+            float4 _CircleColor;
+            float4 _GlowColor;
+            float _GlowRadius;
+            float _GlowSize;
             
             /**
              * \brief Only passes data to the fragment shader
              * \param i 
              * \return vert
              */
-            output vert (const input i )
+            v2f vert ( const a2v i )
             {
-                output o;
+                v2f o;
                 o.vertex = UnityObjectToClipPos(i.vertex);
                 o.uv = i.uv;
                 o.color = i.color;
@@ -73,7 +73,7 @@ Shader "Unlit/Circle"
              * \param i input
              * \return A fragment
              */
-            fixed4 frag ( output i ) : SV_Target
+            fixed4 frag ( v2f i ) : SV_Target
             {
                 float4 color = 0;
             
@@ -84,11 +84,11 @@ Shader "Unlit/Circle"
                 const float alpha = floor( 2. - length(i.uv) );
                 if (alpha <= 0) // optimisation (skip glow if outside circle)
                     return 0;
-                color += fixed4( circle_color.rgb, circle_color.a * alpha );
+                color += fixed4( _CircleColor.rgb, _CircleColor.a * alpha );
                 
                 // glow
-                const float value = max( glow_radius - glow_size / length(i.uv), 0 );
-                color += fixed4( glow_color.rgb * value, glow_color.a * value );
+                const float value = max( _GlowRadius - _GlowSize / length(i.uv), 0 );
+                color += fixed4( _GlowColor.rgb * value, _GlowColor.a * value );
                 
                 // final multiply
                 return color * i.color;

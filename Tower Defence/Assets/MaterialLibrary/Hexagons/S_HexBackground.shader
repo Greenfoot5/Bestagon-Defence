@@ -4,21 +4,21 @@ Shader "Unlit/Hex Background"
 {
     Properties
     {
-        _OffsetUV ("Offset UV", Vector) = (0, 0, 0, 0)
+        [ShowAsVector2] _OffsetUV ("Offset UV", Vector) = (0, 0, 0, 0)
 
         _HexScale ("Hexagon Scale", Float) = 5
         _Overlay ("Overlay Strength", Float) = .15
-        _Opacity ("Hex Opacity", Float) = .2
+        _Opacity ("Hex Opacity", Range (0, 1)) = .2
         
         _GlowIntensity ("Glow Intensity", Float) = .5
         _GlowClamp ("Glow Clamp", Float) = 1
-        _GlowOpacity ("Glow Opacity", Float) = .5
+        _GlowOpacity ("Glow Opacity", Range (0, 1)) = .5
 
         _ShiftSpeed ("Luminance Shift Speed", Float) = .75
         _ScrollSpeed ("Scroll Speed", Float) = 0.03
         
         // Unity complains if the shader has no texture input when it's used in an Image component
-        _MainTex ("Texture", 2D) = "white" {}
+        [NoScaleOffset] _MainTex ("Texture", 2D) = "white" {}
     }
     SubShader
     {
@@ -36,14 +36,16 @@ Shader "Unlit/Hex Background"
             #include "UnityCG.cginc"
 
             // hexagon vertex (a normalized (1; √3) )
-            #define R float2( 0.57735, 1.0 )
+            #define R float2( 0.5, 0.866 )
             // half a hexagon vertex (r/2)
-            #define H float2( 0.28868, 0.5 )
+            #define H float2( 0.25, 0.433 )
+            
+            #define PI 3.14159265
 
             /**
-             * \brief It's an input!
+             * \brief App to Vertex
              */
-            struct input
+            struct a2v
             {
                 float4 vertex : POSITION;
                 float2 uv : TEXCOORD0;
@@ -51,31 +53,30 @@ Shader "Unlit/Hex Background"
             };
 
             /**
-             * \brief Guess what!? It's an output!
+             * \brief Vertex To Fragment
              */
-            struct output
+            struct v2f
             {
                 float4 vertex : SV_POSITION;
                 float2 uv : TEXCOORD0;
                 float4 color : COLOR;
             };
             
-            float4 offset_uv;
-            float hex_scale;
-            float shift_speed;
-            float overlay;
-            float opacity;
+            // PROPERTIES
+            float4 _OffsetUV;
+            float _HexScale;
+            float _ShiftSpeed;
+            float _Overlay;
+            float _Opacity;
             
-            float glow_intensity;
-            float glow_clamp;
-            float glow_opacity;
+            float _GlowIntensity;
+            float _GlowClamp;
+            float _GlowOpacity;
             
-            float unscaled_time;
-            
-            static const float pi = 3.14159265;
+            float _UnscaledTime;
             
             static float2 scroll_vector = float2( 1, 1 );
-            float scroll_speed;
+            float _ScrollSpeed;
             
             // <https://www.shadertoy.com/view/4dS3Wd>
             // 1D Noise by Morgan McGuire @morgan3d, http://graphicscodex.com
@@ -83,7 +84,7 @@ Shader "Unlit/Hex Background"
              * \brief 1D Noise by Morgan McGuire @morgan3d, http://graphicscodex.com
              * https://www.shadertoy.com/view/4dS3Wd
              * \param p 
-             * \return RETURN a float
+             * \return RETURN
              */
             float hash( in float p )
             {
@@ -96,11 +97,11 @@ Shader "Unlit/Hex Background"
             }
 
             /**
-             * \brief Make sure to wear headphones
-             * \param x I FOUND X!
-             * \return RETURN
+             * \brief 1D Noise
+             * \param x 1D Seed
+             * \return RETURN Pseudo-random 1D value
              */
-            float noise(const in float x ) 
+            float noise( const in float x ) 
             {
                 const float i = floor(x);
                 const float f = frac(x);
@@ -116,7 +117,7 @@ Shader "Unlit/Hex Background"
              * \param n 
              * \return RETURN
              */
-            float rand2d(const in float2 n )
+            float rand2d( const in float2 n )
             {
             
 	            return frac( sin( dot( n, float2( 12.9898, 4.1414 ) ) ) * 43758.5453 );
@@ -124,9 +125,9 @@ Shader "Unlit/Hex Background"
             }
 
             /**
-             * \brief Is it possible to have 2d headphones?
-             * \param p 
-             * \return RETURN
+             * \brief 2D Noise
+             * \param p 2D Seed
+             * \return RETURN Pseudo-random 1D value
              */
             float noise2d( in float2 p )
             {
@@ -145,17 +146,17 @@ Shader "Unlit/Hex Background"
             
             /**
              * \brief Creates the hexagonal image
-             * \param uv 
-             * \param col 
-             * \return RETURN
+             * \param uv UV data of the quad
+             * \param col Color option for the hexagons
+             * \return RETURN Color value generated
              */
             float4 hexagon ( in float2 uv, in float4 col )
             {
             
                 // scroller
-                uv.xy += unscaled_time * scroll_vector * scroll_speed;
+                uv.xy += _UnscaledTime * scroll_vector * _ScrollSpeed;
                 //uv.x = abs(uv.x) + .0418;
-                uv *= hex_scale;
+                uv *= _HexScale;
                 
                 // hexagon uv
 	            float2 a = fmod( uv, R ) - H;
@@ -175,46 +176,46 @@ Shader "Unlit/Hex Background"
                 const float seed = noise2d( hs * 10 );
                 
                 // hexagon luminance
-                const float l = noise( seed * 30 + unscaled_time * shift_speed );
+                const float l = noise( seed * 30 + _UnscaledTime * _ShiftSpeed );
                 
                 // overlay
                 col.rgb *= .8;
-	            col.rgb = col * ( 1 - l * overlay * 2 );
-	            col.rgb = col.rgb + overlay * ( 1 - l );
+	            col.rgb = col * ( 1 - l * _Overlay * 2 );
+	            col.rgb = col.rgb + _Overlay * ( 1 - l );
                 
                 return col;
             
             }
             
             /**
-             * \brief Adds an edge glow
-             * \param uv 
-             * \param col 
-             * \return RETURN
+             * \brief Generates an edge glow
+             * \param uv UV data of the quad
+             * \param col Color option for the glow
+             * \return RETURN Color value generated
              */
-            float4 glow (const in float2 uv, in float4 col )
+            float4 glow ( const in float2 uv, in float4 col )
             {
                 
                 // normals to edges
-                const float2 n = abs( 1 / sin( uv * pi ) * 0.05 * glow_intensity );
+                const float2 n = abs( 1 / sin( uv * PI ) * 0.05 * _GlowIntensity );
                 
                 // intensity based on edge value
-                float v = min( distance( n, 0 ), glow_clamp );
+                float v = min( distance( n, 0 ), _GlowClamp );
                 
                 // color
-                return float4( v * col.rgb, v * glow_opacity );
+                return float4( v * col.rgb, v * _GlowOpacity );
                 
             }
 
             // VERTEX SHADER
             /**
              * \brief Only passes data to the fragment shader
-             * \param i 
+             * \param i App input
              * \return RETURN
              */
-            output vert (const input i )
+            v2f vert ( const a2v i )
             {
-                output o;
+                v2f o;
                 o.vertex = UnityObjectToClipPos(i.vertex);
                 o.uv = i.uv;
                 o.color = i.color;
@@ -225,14 +226,14 @@ Shader "Unlit/Hex Background"
             // FRAGMENT SHADER
             /**
              * \brief Colours the hexagons and glow effects in
-             * \param i 
+             * \param i Vertex input
              * \return RETURN
              */
-            fixed4 frag ( output i ) : SV_Target
+            fixed4 frag ( v2f i ) : SV_Target
             {
             
                 // offset
-                i.uv += offset_uv;
+                i.uv += _OffsetUV;
             
                 // aspect ratio
                 const float dx = ddx(i.uv.x);
@@ -246,7 +247,7 @@ Shader "Unlit/Hex Background"
                 
                 // color
                 float4 color = float4(0, 0, 0, 0);
-                color.a = opacity;
+                color.a = _Opacity;
                 color.rgb += hexagon( huv, i.color );
                 color += glow( i.uv, i.color );
                 
