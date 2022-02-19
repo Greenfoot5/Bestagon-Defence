@@ -267,7 +267,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: GlowIntensity
+    attribute: glowIntensity
     path: RightPanel
     classID: 114
     script: {fileID: 11500000, guid: 81c539d1bed6fb24fa8f48ee788db0e9, type: 3}
@@ -340,7 +340,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: GlowIntensity
+    attribute: glowIntensity
     path: LeftPanel
     classID: 114
     script: {fileID: 11500000, guid: 81c539d1bed6fb24fa8f48ee788db0e9, type: 3}
@@ -760,7 +760,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: GlowIntensity
+    attribute: glowIntensity
     path: RightPanel
     classID: 114
     script: {fileID: 11500000, guid: 81c539d1bed6fb24fa8f48ee788db0e9, type: 3}
@@ -833,7 +833,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: GlowIntensity
+    attribute: glowIntensity
     path: LeftPanel
     classID: 114
     script: {fileID: 11500000, guid: 81c539d1bed6fb24fa8f48ee788db0e9, type: 3}
