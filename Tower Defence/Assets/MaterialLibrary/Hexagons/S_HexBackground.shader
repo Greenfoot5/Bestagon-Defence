@@ -260,4 +260,6 @@ Shader "Unlit/Hex Background"
             ENDCG
         }
     }
+
+    CustomEditor "HexagonsShaderEditor"
 }
