@@ -25,6 +25,9 @@ namespace Abstract.EnvironmentVariables
             {
                 variable.SetData();
             }
+
+            // Destroy when finished
+            Destroy(this);
         }
     }
 }

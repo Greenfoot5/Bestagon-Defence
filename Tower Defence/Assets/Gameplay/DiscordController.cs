@@ -12,26 +12,19 @@ namespace Gameplay
     /// </summary>
     public class DiscordController : MonoBehaviour
     {
+        private const long ApplicationId = 927337431303352441;
+
         private Discord.Discord _discord;
 
         private Activity _activity;
 
         private Scene _currentScene;
 
-        private const long ApplicationId = 927337431303352441;
-
         /// <summary>
-        /// Prepares the bridge to Discord and ensures a singleton pattern.
+        /// Prepares the bridge to Discord
         /// </summary>
-        private void Awake()
+        private void Start()
         {
-            // Singleton pattern
-            if (_discord != null)
-            {
-                Destroy(gameObject);
-                return;
-            }
-
             // Get Discord instance if it is running
             // Catch the error if Discord was not detected
             try
@@ -52,8 +45,6 @@ namespace Gameplay
                     SmallText = "v" + Application.version
                 }
             };
-
-            DontDestroyOnLoad(this);
 
             // Assign all events for Rich Presence updates
             SceneManager.activeSceneChanged += OnSceneChange;
