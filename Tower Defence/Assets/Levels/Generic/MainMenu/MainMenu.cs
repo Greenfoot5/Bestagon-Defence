@@ -1,5 +1,6 @@
 using System.Collections;
 using TMPro;
+using UI.Transitions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,9 +11,6 @@ namespace Levels.Generic.MainMenu
     /// </summary>
     public class MainMenu : MonoBehaviour
     {
-        [Tooltip("The animation for the transition")]
-        [SerializeField]
-        private Animator transition;
         [Tooltip("The text that displays the username of the player")]
         [SerializeField]
         private TMP_Text loggedInAs;
@@ -40,20 +38,7 @@ namespace Levels.Generic.MainMenu
         /// </summary>
         public void Play()
         {
-            StartCoroutine(Transition("LevelSelect"));
-        }
-        
-        /// <summary>
-        /// Transitions the user to the next scene
-        /// </summary>
-        /// <param name="sceneName">The scene to transition the user to</param>
-        private IEnumerator Transition(string sceneName)
-        {
-            transition.SetTrigger(AnimationTrigger);
-
-            yield return new WaitForSeconds(transition.GetCurrentAnimatorClipInfo(0)[0].clip.length);
-            
-            SceneManager.LoadScene(sceneName);
+            TransitionManager.Instance.LoadScene("LevelSelect");
         }
         
         /// <summary>
@@ -61,7 +46,7 @@ namespace Levels.Generic.MainMenu
         /// </summary>
         public void Settings()
         {
-            StartCoroutine(Transition("Settings"));
+            TransitionManager.Instance.LoadScene("Settings");
         }
         
         /// <summary>
@@ -74,3 +59,4 @@ namespace Levels.Generic.MainMenu
         }
     }
 }
+    

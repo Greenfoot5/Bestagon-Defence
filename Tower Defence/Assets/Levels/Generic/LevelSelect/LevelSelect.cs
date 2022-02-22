@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UI.Transitions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -12,10 +13,6 @@ namespace Levels.Generic.LevelSelect
     /// </summary>
     public class LevelSelect : MonoBehaviour
     {
-        [Tooltip("The animator for the transition")]
-        [SerializeField]
-        private Animator transition;
-        
         private string _selectedLevel;
         [Tooltip("The button to play the level")]
         [SerializeField]
@@ -72,7 +69,7 @@ namespace Levels.Generic.LevelSelect
         /// </summary>
         public void Play()
         {
-            StartCoroutine(Transition(_selectedLevel));
+            TransitionManager.Instance.LoadScene(_selectedLevel);
         }
         
         /// <summary>
@@ -101,9 +98,10 @@ namespace Levels.Generic.LevelSelect
                     return;
                 }
 
-                while (leaderboardContent.childCount > 0) {
-                    Destroy(leaderboardContent.GetChild(0).gameObject);
-                }
+                for (int c = leaderboardContent.childCount - 1; c >= 0; c--)
+                {
+                    Destroy(leaderboardContent.GetChild(c).gameObject);
+                }    
                 
                 // Display leaderboard
                 List<LeaderboardEntry> scores = await bridge.RequestEntries(10, leaderboardID);
@@ -132,20 +130,7 @@ namespace Levels.Generic.LevelSelect
         /// </summary>
         public void MainMenu()
         {
-            StartCoroutine(Transition("MainMenu"));
-        }
-        
-        /// <summary>
-        /// Transition to the next scene
-        /// </summary>
-        /// <param name="sceneName">The scene to transition to</param>
-        private IEnumerator Transition(string sceneName)
-        {
-            transition.SetTrigger(Start);
-
-            yield return new WaitForSeconds(transition.GetCurrentAnimatorClipInfo(0)[0].clip.length);
-            
-            SceneManager.LoadScene(sceneName);
+            TransitionManager.Instance.LoadScene("MainMenu");
         }
     }
 }
