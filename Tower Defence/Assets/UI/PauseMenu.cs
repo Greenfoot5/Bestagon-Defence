@@ -2,6 +2,7 @@
 using System.Collections;
 using Gameplay;
 using Levels.Generic.LevelSelect;
+using UI.Transitions;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -16,10 +17,6 @@ namespace UI
         [Tooltip("The UI panel to enable when paused")]
         [SerializeField]
         private GameObject ui;
-        
-        [Tooltip("The animator for the transition between scenes")]
-        [SerializeField]
-        private Animator transition;
     
         private bool _hasBeenToggled;
         
@@ -66,19 +63,6 @@ namespace UI
 
             Time.timeScale = ui.activeSelf ? 0f : 1f;
         }
-        
-        /// <summary>
-        /// Starts the transition when changing scenes
-        /// </summary>
-        /// <param name="sceneName">The scene to transition to</param>
-        private IEnumerator Transition(string sceneName)
-        {
-            transition.SetTrigger(AnimationTrigger);
-
-            yield return new WaitForSeconds(transition.GetCurrentAnimatorClipInfo(0)[0].clip.length);
-            
-            SceneManager.LoadScene(sceneName);
-        }
     
         /// <summary>
         /// Restarts the current level
@@ -86,7 +70,7 @@ namespace UI
         public void Retry()
         {
             Toggle(new InputAction.CallbackContext());
-            StartCoroutine(Transition(SceneManager.GetActiveScene().name));
+            TransitionManager.Instance.LoadScene(SceneManager.GetActiveScene().name);
         }
     
         /// <summary>
@@ -110,7 +94,7 @@ namespace UI
             
             // Transition to the main menu
             Toggle(new InputAction.CallbackContext());
-            StartCoroutine(Transition("MainMenu"));
+            TransitionManager.Instance.LoadScene("LevelSelect");
         }
     }
 }
