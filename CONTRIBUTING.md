@@ -19,14 +19,7 @@ Yes, there are occurrences of trailing spaces, extra newlines, empty indents, an
 
 ## Style Guidelines
 
-### Follow the formatting guidelines.
-[// TODO - Finish these/write some](https://chambray-comb-aa7.notion.site/Setup-the-project-properly-for-open-source-f090e030aab243deb331e0206e1c4d53)
-
-### Avoid bloated code and unnecessary getters/setters.
-This is situational, but in essence what it means is to avoid using any sort of getters and setters unless absolutely necessary. Public or protected fields should suffice for most things.
-
-### Do not create methods unless necessary.
-Unless a block of code is very large or used in more than 1-2 places, don't split it up into a separate method. Making unnecessary methods only creates confusion, and may slightly decrease performance.
+### [Follow the style guidelines.](STYLE_GUIDELINES.md)
 
 ## Other Notes
 [I need to add a contributors list somewhere](https://chambray-comb-aa7.notion.site/Setup-the-project-properly-for-open-source-f090e030aab243deb331e0206e1c4d53)
