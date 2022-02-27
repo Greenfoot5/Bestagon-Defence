@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2db0c3d1579341f8bd90af8aa9e324d, type: 3}
+  m_Name: BurnT1
+  m_EditorClassIdentifier: 
+  moduleTier: 1
+  accentColor: {r: 0.9764706, g: 0.3764706, b: 0.24313726, a: 1}
+  displayName: Burn I
+  tagline: Burn baby burn!
+  icon: {fileID: -7464220177990265132, guid: 16c979c866f439b4b988e7020b313794, type: 3}
+  effectText: Burns 2%dps of the enemy's max health for 3s
+  debuffs:
+  - {fileID: 11400000, guid: feaad6f55b8ef476d97d3f756ed81db8, type: 2}

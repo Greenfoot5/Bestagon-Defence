@@ -2,12 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Abstract;
-using Abstract.Managers;
+using _WIP.Abilities;
+using Abstract.Data;
+using Gameplay;
+using Gameplay.Waves;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using Upgrades.Abilities;
 
 namespace Enemies
 {
@@ -17,27 +18,39 @@ namespace Enemies
     public class Enemy : MonoBehaviour
     {
         [Header("Stats")]
-        public float startSpeed = 2f;
+        [Tooltip("The starting speed of the enemy")]
+        [SerializeField]
+        private float startSpeed = 2f;
+        [Tooltip("The starting maximum health of the enemy")]
         public float maxHealth = 20f;
-
+        
+        [Tooltip("The current speed of the enemy")]
+        public UpgradableStat speed;
         [ReadOnly]
-        public float speed;
-        [ReadOnly]
+        [Tooltip("The current health of the enemy")]
         public float health;
     
         [Header("Death Stats")]
+        [Tooltip("The amount of money to grant the player when the enemy is kill")]
         public int deathMoney = 10;
+        [Tooltip("The amount of lives lost if the enemy finishes the path")]
         public int deathLives = 1;
+        [Tooltip("The amount of money to grant the player if the enemy finishes the path")]
         public int endPathMoney = 10;
 
         [Header("Health Bar")]
+        [Tooltip("The left health bar")]
         public Image leftBar;
+        [Tooltip("The right health bar")]
         public Image rightBar;
-
+        
+        [Tooltip("The particle effect prefab to spawn when the enemy dies")]
         public GameObject deathEffect;
         
         [Header("Abilities")]
+        [Tooltip("Any abilities the enemy starts with")]
         public EnemyAbility[] startingAbilities;
+        [Tooltip("The parent object for any ability icons so they have the correct layout")]
         public GameObject iconLayout;
         
         // Abilities for each trigger
@@ -51,11 +64,11 @@ namespace Enemies
         /// </summary>
         private void Awake()
         {
-            speed = startSpeed;
+            speed = new UpgradableStat(startSpeed);
             health = maxHealth;
             
             // Add each starting ability to the correct list
-            foreach (var ability in startingAbilities)
+            foreach (EnemyAbility ability in startingAbilities)
             {
                 GrantAbility(ability);
             }
@@ -69,7 +82,7 @@ namespace Enemies
         {
             // TODO - Have better ability checking. Perhaps check if one is a higher tier than another,
             // TODO - or, for an extra challenge, reset the timer on the current one.
-            var existingIcon = iconLayout.transform.Find($"{ability.name} Icon");
+            Transform existingIcon = iconLayout.transform.Find($"{ability.name} Icon");
             if (existingIcon != null)
             {
                 return;
@@ -111,7 +124,7 @@ namespace Enemies
             // Fix the icon's size
             var iLayoutTransform = (RectTransform)iconLayout.transform;
             var iTransform = (RectTransform)icon.transform;
-            var ratio = ability.abilityIcon.rect.height / iLayoutTransform.rect.height;
+            float ratio = ability.abilityIcon.rect.height / iLayoutTransform.rect.height;
             iTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, ability.abilityIcon.rect.width / ratio);
         }
         
@@ -139,7 +152,7 @@ namespace Enemies
                 _finishAbilities.Remove(ability);
             }
 
-            var icon = iconLayout.transform.Find($"{ability.name} Icon");
+            Transform icon = iconLayout.transform.Find($"{ability.name} Icon");
             Destroy(icon.gameObject);
         }
 
@@ -158,7 +171,7 @@ namespace Enemies
         /// <returns></returns>
         private IEnumerator TimerAbility(EnemyAbility ability)
         {
-            var counter = ability.startCount;
+            float counter = ability.startCount;
             // Check the enemy still has the ability to use
             while (_timerAbilities.Contains(ability))
             {
@@ -186,13 +199,13 @@ namespace Enemies
         /// <param name="source">The GameObject that hurt the enemy</param>
         public void TakeDamage(float amount, GameObject source)
         {
-            var abilities = _hitAbilities.Select(item => item.ability).ToList();
+            List<EnemyAbility> abilities = _hitAbilities.Select(item => item.ability).ToList();
             ActivateAbilities(abilities, source);
 
-            foreach (var t in _hitAbilities)
+            foreach ((EnemyAbility ability, int count) t in _hitAbilities)
             {
                 // Decrease the counter
-                var (ability, count) = t;
+                (EnemyAbility ability, int count) = t;
                 count -= 1;
                 if (count != 0) continue;
                 
@@ -243,7 +256,8 @@ namespace Enemies
             ActivateAbilities(_deathAbilities, source);
 
             // Spawn death effect
-            var effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
+            GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
+            effect.name = "_" + effect.name;
             Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
         
             // Let the wave spawner know the enemy is dead
@@ -259,7 +273,7 @@ namespace Enemies
             ActivateAbilities(_finishAbilities, null);
             
             // Let our other systems know the enemy reached the end
-            GameStats.lives -= deathLives;
+            GameStats.Lives -= deathLives;
             WaveSpawner.enemiesAlive--;
             GameStats.money += endPathMoney;
         
@@ -268,10 +282,11 @@ namespace Enemies
         
         private void ActivateAbilities(IEnumerable<EnemyAbility> abilities, GameObject source)
         {
-            foreach (var ability in abilities)
+            foreach (EnemyAbility ability in abilities)
             {
                 // Spawn ability effect
-                var effect = Instantiate(ability.abilityEffect, transform.position, Quaternion.identity);
+                GameObject effect = Instantiate(ability.abilityEffect, transform.position, Quaternion.identity);
+                effect.name = "_" + effect.name;
                 Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
                 switch (ability.targetingType)
                 {
@@ -281,8 +296,8 @@ namespace Enemies
                         ability.Activate(gameObject);
                         break;
                     case AbilityTarget.Radius:
-                        var colliders = Physics2D.OverlapCircleAll(transform.position, ability.range);
-                        foreach (var coll in colliders)
+                        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, ability.range);
+                        foreach (Collider2D coll in colliders)
                         {
                             if (!coll.CompareTag("Enemy") && !coll.CompareTag("Turret")) continue;
                             
@@ -290,14 +305,14 @@ namespace Enemies
                         }
                         break;
                     case AbilityTarget.All:
-                        var turrets = GameObject.FindGameObjectsWithTag("Turret");
-                        foreach (var target in turrets)
+                        GameObject[] turrets = GameObject.FindGameObjectsWithTag("Turret");
+                        foreach (GameObject target in turrets)
                         {
                             ability.Activate(target);
                         }
                         
-                        var enemies = GameObject.FindGameObjectsWithTag("Enemy");
-                        foreach (var target in enemies)
+                        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+                        foreach (GameObject target in enemies)
                         {
                             ability.Activate(target);
                         }
@@ -311,7 +326,8 @@ namespace Enemies
         private void EndCounterAbility(EnemyAbility ability, GameObject source)
         {
             // Spawn ability effect
-            var effect = Instantiate(ability.abilityEffect, transform.position, Quaternion.identity);
+            GameObject effect = Instantiate(ability.abilityEffect, transform.position, Quaternion.identity);
+            effect.name = "_" + effect.name;
             Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
             switch (ability.targetingType)
             {
@@ -321,8 +337,8 @@ namespace Enemies
                     ability.OnCounterEnd(gameObject);
                     break;
                 case AbilityTarget.Radius:
-                    var colliders = Physics2D.OverlapCircleAll(transform.position, ability.range);
-                    foreach (var coll in colliders)
+                    Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, ability.range);
+                    foreach (Collider2D coll in colliders)
                     {
                         if (!coll.CompareTag("Enemy") && !coll.CompareTag("Turret")) continue;
                         
@@ -330,14 +346,14 @@ namespace Enemies
                     }
                     break;
                 case AbilityTarget.All:
-                    var turrets = GameObject.FindGameObjectsWithTag("Turret");
-                    foreach (var target in turrets)
+                    GameObject[] turrets = GameObject.FindGameObjectsWithTag("Turret");
+                    foreach (GameObject target in turrets)
                     {
                         ability.OnCounterEnd(target);
                     }
                     
-                    var enemies = GameObject.FindGameObjectsWithTag("Enemy");
-                    foreach (var target in enemies)
+                    GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+                    foreach (GameObject target in enemies)
                     {
                         ability.OnCounterEnd(target);
                     }

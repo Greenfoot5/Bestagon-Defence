@@ -1,8 +1,10 @@
-using Abstract.Data;
-using Shaders.Hexagons;
+using Abstract;
+using MaterialLibrary.Hexagons;
+using Modules;
 using TMPro;
 using Turrets;
-using Turrets.Blueprints;
+using UI.Glyphs;
+using UI.TurretStats;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,26 +18,52 @@ namespace UI.Shop
         private TurretBlueprint _turretBlueprint;
     
         // Content
-        public TextMeshProUGUI displayName;
-        public TextMeshProUGUI tagline;
-
-        public Image icon;
-        public Image glyph;
+        [Tooltip("The TMP text to display the turret's display name")]
+        [SerializeField]
+        private TextMeshProUGUI displayName;
+        [Tooltip("The TMP text to display the turret's tagline")]
+        [SerializeField]
+        private TextMeshProUGUI tagline;
+        
+        [Tooltip("The Image to place the turret's icon")]
+        [SerializeField]
+        private Image icon;
+        [Tooltip("The Image to place the turret's glyph")]
+        [SerializeField]
+        private Image glyph;
     
         [Header("Modules")]
-        public GameObject modulesSection;
-        public GameObject modulesLayout;
-        public GameObject moduleUI;
+        [Tooltip("The selection of modules to enable if the turret has any modules")]
+        [SerializeField]
+        private GameObject modulesSection;
+        [Tooltip("The parent of any module icons to display")]
+        [SerializeField]
+        private GameObject modulesLayout;
+        [Tooltip("The prefab of a generic module icon to instantiate under the modulesLayout")]
+        [SerializeField]
+        private GameObject moduleUI;
 
         [Header("Stats")]
-        public TurretStat damage;
-        public TurretStat rate;
-        public TurretStat range;
+        [Tooltip("The TurretStat used to display the damage")]
+        [SerializeField]
+        private TurretStat damage;
+        [Tooltip("The TurretStat used to display the fire rate")]
+        [SerializeField]
+        private TurretStat rate;
+        [Tooltip("The TurretStat used to display the range")]
+        [SerializeField]
+        private TurretStat range;
 
         [Header("Colors")]
-        public Hexagons bg;
-        public Image modulesBg;
-        public TextMeshProUGUI modulesTitle;
+        [Tooltip("The Hexagons shader background of the card")]
+        [SerializeField]
+        private Hexagons bg;
+        [Tooltip("The background Image of the modules section")]
+        [SerializeField]
+        private Image modulesBg;
+        [Tooltip("The title of the module section (so we can set the colour to match the turret)")]
+        [SerializeField]
+        private TextMeshProUGUI modulesTitle;
 
         /// <summary>
         /// Creates and setups the Selection UI.
@@ -43,7 +71,7 @@ namespace UI.Shop
         /// <param name="turret">The turret the option selects</param>
         /// <param name="shop">The Shop (allows the game to select the turret when the player clicks the panel)</param>
         /// <param name="lookup">The turret type to glyph lookup</param>
-        public void Init (TurretBlueprint turret, Levels.Shop shop, TypeSpriteLookup lookup)
+        public void Init (TurretBlueprint turret, Gameplay.Shop shop, TypeSpriteLookup lookup)
         {
             _turretBlueprint = turret;
             
@@ -53,7 +81,7 @@ namespace UI.Shop
             
             // Icon and Glyph
             icon.sprite = turret.shopIcon;
-            var glyphSo = lookup.GetForType(turret.prefab.GetComponent<Turret>().GetType());
+            TurretGlyphSo glyphSo = lookup.GetForType(turret.prefab.GetComponent<Turret>().GetType());
             glyph.sprite = glyphSo.glyph;
             glyph.color = glyphSo.body;
             
@@ -66,13 +94,14 @@ namespace UI.Shop
             // Turret's Modules
             if (turret.modules.Count == 0)
             {
-                modulesSection.SetActive(true);
+                modulesSection.SetActive(false);
             }
             else
             {
-                foreach (var module in turret.modules)
+                foreach (Module module in turret.modules)
                 {
-                    var mod = Instantiate(moduleUI, modulesLayout.transform);
+                    GameObject mod = Instantiate(moduleUI, modulesLayout.transform);
+                    mod.name = "_" + mod.name;
                     mod.GetComponentInChildren<TurretModulesIcon>().SetData(module);
                 }
             }
@@ -96,7 +125,7 @@ namespace UI.Shop
         /// selecting it and closing the shop
         /// </summary>
         /// <param name="shop"></param>
-        private void MakeSelection (Levels.Shop shop)
+        private void MakeSelection (Gameplay.Shop shop)
         {
             transform.parent.gameObject.SetActive (false);
             Time.timeScale = 1f;

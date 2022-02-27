@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Abstract.Data;
+using Modules;
 using UnityEngine;
-using Upgrades.Modules;
 
 namespace Turrets
 {
@@ -22,24 +22,32 @@ namespace Turrets
     /// </summary>
     public abstract class Turret : MonoBehaviour
     {
+        [Tooltip("How much damage the turret deals")]
         public UpgradableStat damage;
 
         // System
+        [Tooltip("What GameObject tag the turret targets")]
         public string enemyTag = "Enemy";
         
+        [Tooltip("The range of the turret")]
         public UpgradableStat range = new UpgradableStat(2.5f);
-        public GameObject rangeDisplay;
+        [Tooltip("The shader that display's the turret's range when clicked")]
+        [SerializeField]
+        private GameObject rangeDisplay;
 
         // Attack speed
-        [Tooltip("Time between each shot")]
+        [Tooltip("How many times per second the turret attacks")]
         public UpgradableStat fireRate = new UpgradableStat(1f);
+        /// <summary> How long left until the next attack </summary>
         protected float fireCountdown;
 
         // Modules
+        [Tooltip("Which modules the turret has applied")]
+        [SerializeField]
         public List<Module> modules = new List<Module>();
         
         /// <summary>
-        /// Disables the range dislaying
+        /// Stops the range displaying
         /// </summary>
         private void Awake()
         {
@@ -103,7 +111,7 @@ namespace Turrets
             modules.Add(module);
             
             // Update the range shader's size
-            var localScale = transform.localScale;
+            Vector3 localScale = transform.localScale;
             rangeDisplay.transform.localScale = new Vector3(
                 range.GetStat() / localScale.x * 2,
                 range.GetStat() / localScale.y * 2,
@@ -117,7 +125,7 @@ namespace Turrets
         public void Selected()
         {
             // Update the range shader's size
-            var localScale = transform.localScale;
+            Vector3 localScale = transform.localScale;
             rangeDisplay.transform.localScale = new Vector3(
                 range.GetStat() / localScale.x * 2,
                 range.GetStat() / localScale.y * 2,

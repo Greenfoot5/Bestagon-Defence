@@ -1,4 +1,4 @@
-﻿using Turrets;
+﻿using Turrets.Gunner;
 using UnityEditor;
 
 namespace Editor.Turrets
@@ -7,13 +7,11 @@ namespace Editor.Turrets
     public class GunnerEditor : DynamicTurretEditor
     {
         // PROPERTIES
-
         private SerializedProperty _bulletPrefab;
         
         private SerializedProperty _spinMultiplier;
         private SerializedProperty _maxFireRate;
         private SerializedProperty _spinCooldown;
-
 
         protected new void OnEnable()
         {

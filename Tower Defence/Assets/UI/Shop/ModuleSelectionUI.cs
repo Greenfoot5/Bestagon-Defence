@@ -1,10 +1,13 @@
-using Abstract.Data;
-using Shaders;
-using Shaders.Hexagons;
+using System;
+using Abstract;
+using MaterialLibrary;
+using MaterialLibrary.Hexagons;
+using Modules;
 using TMPro;
+using UI.Glyphs;
+using UI.Modules;
 using UnityEngine;
 using UnityEngine.UI;
-using Upgrades.Modules;
 
 namespace UI.Shop
 {
@@ -13,19 +16,35 @@ namespace UI.Shop
     /// </summary>
     public class ModuleSelectionUI : MonoBehaviour
     {
-        public Module module;
-
-        public Hexagons bg;
-
-        public TextMeshProUGUI displayName;
-        public TextMeshProUGUI tagline;
-
-        public ModuleIcon icon;
-
-        public TextMeshProUGUI effect;
-
-        public GameObject glyphPrefab;
-        public Transform applicableGlyphs;
+        [Tooltip("The module to display on the card")]
+        [SerializeField]
+        private Module module;
+        
+        [Tooltip("The hexagons background of the card (the card's background shader)")]
+        [SerializeField]
+        private Hexagons bg;
+        
+        [Tooltip("The TMP text display name of the module")]
+        [SerializeField]
+        private TextMeshProUGUI displayName;
+        [Tooltip("The TMP text tagline of the module")]
+        [SerializeField]
+        private TextMeshProUGUI tagline;
+        
+        [Tooltip("The ModuleIcon of the module")]
+        [SerializeField]
+        private ModuleIcon icon;
+        
+        [Tooltip("The TMP text to contain the effect/description of the module")]
+        [SerializeField]
+        private TextMeshProUGUI effect;
+        
+        [Tooltip("The generic glyph prefab to use to display the applicable turrets")]
+        [SerializeField]
+        private GameObject glyphPrefab;
+        [Tooltip("The Transform to set as the parent for the module's turret glyphs")]
+        [SerializeField]
+        private Transform applicableGlyphs;
 
         /// <summary>
         /// Creates the UI
@@ -33,7 +52,7 @@ namespace UI.Shop
         /// <param name="initModule">The module the card is for</param>
         /// <param name="shop">The shop script</param>
         /// <param name="lookup">The TypeSpriteLookup to get the glyph</param>
-        public void Init (Module initModule, Levels.Shop shop, TypeSpriteLookup lookup)
+        public void Init (Module initModule, Gameplay.Shop shop, TypeSpriteLookup lookup)
         {
             module = initModule;
         
@@ -51,8 +70,9 @@ namespace UI.Shop
             // Adds the any glyph
             if (initModule.GetValidTypes() == null)
             {
-                var glyphSo = lookup.GetForType(null);
-                var glyph = Instantiate(glyphPrefab, applicableGlyphs.transform).transform;
+                TurretGlyphSo glyphSo = lookup.GetForType(null);
+                Transform glyph = Instantiate(glyphPrefab, applicableGlyphs.transform).transform;
+                glyph.name = "_" + glyph.name;
                 glyph.Find("Body").GetComponent<HexagonSprite>().color = glyphSo.body;
                 glyph.Find("Shade").GetComponent<HexagonSprite>().color = glyphSo.shade;
                 glyph.Find("Glyph").GetComponent<Image>().sprite = glyphSo.glyph;
@@ -60,17 +80,18 @@ namespace UI.Shop
             // Adds the glyph for every turret the module supports
             else
             {
-                foreach (var turretType in initModule.GetValidTypes())
+                foreach (Type turretType in initModule.GetValidTypes())
                 {
-                    var glyphSo = lookup.GetForType(turretType);
-                    var glyph = Instantiate(glyphPrefab, applicableGlyphs).transform;
+                    TurretGlyphSo glyphSo = lookup.GetForType(turretType);
+                    Transform glyph = Instantiate(glyphPrefab, applicableGlyphs).transform;
+                    glyph.name = "_" + glyph.name;
                     glyph.Find("Body").GetComponent<HexagonSprite>().color = glyphSo.body;
                     glyph.Find("Shade").GetComponent<HexagonSprite>().color = glyphSo.shade;
                     glyph.Find("Glyph").GetComponent<Image>().sprite = glyphSo.glyph;
                 }
             }
             
-            // When the card is clicked, we pick the module
+            // When the card is clicked, the game picks the module
             bg.GetComponent<Button>().onClick.AddListener(delegate { MakeSelection(shop); });
         }
 
@@ -79,7 +100,7 @@ namespace UI.Shop
         /// Selects the module and closes the shop
         /// </summary>
         /// <param name="shop"></param>
-        private void MakeSelection (Levels.Shop shop)
+        private void MakeSelection (Gameplay.Shop shop)
         {
             transform.parent.gameObject.SetActive (false);
             Time.timeScale = 1f;

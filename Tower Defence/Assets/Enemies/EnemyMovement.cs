@@ -1,4 +1,4 @@
-﻿using Abstract.Data;
+﻿using Levels._Nodes;
 using UnityEngine;
 
 namespace Enemies
@@ -15,14 +15,15 @@ namespace Enemies
         private int _waypointIndex;
 
         private Enemy _enemy;
-    
-        // The distance from enemy to waypoint before it's considered reached
+        
         [SerializeField] 
+        [Tooltip("The distance from enemy to waypoint before it's considered reached")]
         private float distanceToWaypoint = 0.05f;
-
+        
+        [Tooltip("How many waypoints the enemy has passed, and the percentage to the next one")]
         public float mapProgress;
         private float _maxDistance;
-        
+
         /// <summary>
         /// Initialises relevant variables
         /// </summary>
@@ -40,15 +41,9 @@ namespace Enemies
         /// </summary>
         private void Update()
         {
-            // If the enemy aren't going to move forward, the enemy shouldn't move at all.
-            if (_enemy.speed < 0)
-            {
-                return;
-            }
-            
             // Get the direction and move in that direction
-            var dir = _target.position - transform.position;
-            transform.Translate(dir.normalized * (_enemy.speed * Time.deltaTime), Space.World);
+            Vector3 dir = _target.position - transform.position;
+            transform.Translate(dir.normalized * (_enemy.speed.GetStat() * Time.deltaTime), Space.World);
             mapProgress = _waypointIndex + 1 - (distanceToWaypoint / _maxDistance);
         
             // If the enemy is within the set distance, get the next waypoint

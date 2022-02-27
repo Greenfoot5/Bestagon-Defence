@@ -1,4 +1,4 @@
-﻿using Turrets;
+﻿using Turrets.Laser;
 using UnityEditor;
 
 namespace Editor.Turrets
@@ -7,10 +7,8 @@ namespace Editor.Turrets
     public class LaserEditor : DynamicTurretEditor
     {
         // PROPERTIES
-
         private SerializedProperty _lineRenderer;
         private SerializedProperty _impactEffect;
-
 
         protected new void OnEnable()
         {

@@ -1,4 +1,5 @@
 ﻿using Turrets;
+using Turrets.Smasher;
 using UnityEditor;
 
 namespace Editor.Turrets
@@ -7,9 +8,7 @@ namespace Editor.Turrets
     public class SmasherEditor : TurretEditor
     {
         // PROPERTIES
-
         private SerializedProperty _smashEffect;
-
 
         protected new void OnEnable()
         {

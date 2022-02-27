@@ -1,6 +1,7 @@
+using Modules;
 using TMPro;
+using UI.Modules;
 using UnityEngine;
-using Upgrades.Modules;
 
 namespace UI.Shop
 {
@@ -9,9 +10,11 @@ namespace UI.Shop
     /// </summary>
     public class TurretModulesIcon : MonoBehaviour
     {
+        [Tooltip("The ModuleIcon of the module")]
         [SerializeField]
         private ModuleIcon icon;
         [SerializeField]
+        [Tooltip("The TMP text to display the display name of the module")]
         private TextMeshProUGUI text;
         
         /// <summary>

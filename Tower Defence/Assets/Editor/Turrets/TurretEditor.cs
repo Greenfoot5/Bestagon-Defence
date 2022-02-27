@@ -7,7 +7,6 @@ namespace Editor.Turrets
     public class TurretEditor : UnityEditor.Editor
     {
         // PROPERTIES
-
         private SerializedProperty _enemyTag;
 
         private SerializedProperty _damage;
@@ -15,7 +14,6 @@ namespace Editor.Turrets
         private SerializedProperty _fireRate;
 
         private SerializedProperty _rangeDisplay;
-
 
         protected void OnEnable()
         {
