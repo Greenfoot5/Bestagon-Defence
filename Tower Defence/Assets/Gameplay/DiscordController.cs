@@ -46,6 +46,8 @@ namespace Gameplay
                 }
             };
 
+            _currentScene = SceneManager.GetActiveScene();
+
             // Assign all events for Rich Presence updates
             SceneManager.activeSceneChanged += OnSceneChange;
             GameStats.RoundProgress += UpdateActivity;
