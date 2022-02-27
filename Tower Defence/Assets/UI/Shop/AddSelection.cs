@@ -244,6 +244,7 @@ namespace UI.Shop
         {
             // Create the ui as a child
             GameObject moduleUI = Instantiate(moduleSelectionUI, transform);
+            moduleUI.name = "_" + moduleUI.name;
             moduleUI.GetComponent<ModuleSelectionUI>().Init(module, shop, glyphsLookup);
         }
     
@@ -254,6 +255,7 @@ namespace UI.Shop
         private void GenerateTurretUI(TurretBlueprint turret)
         {
             GameObject turretUI = Instantiate(turretSelectionUI, transform);
+            turretUI.name = "_" + turretUI.name;
             turretUI.GetComponent<TurretSelectionUI>().Init(turret, shop, glyphsLookup);
         }
 

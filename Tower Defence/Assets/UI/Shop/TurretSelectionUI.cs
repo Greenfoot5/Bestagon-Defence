@@ -101,6 +101,7 @@ namespace UI.Shop
                 foreach (Module module in turret.modules)
                 {
                     GameObject mod = Instantiate(moduleUI, modulesLayout.transform);
+                    mod.name = "_" + mod.name;
                     mod.GetComponentInChildren<TurretModulesIcon>().SetData(module);
                 }
             }

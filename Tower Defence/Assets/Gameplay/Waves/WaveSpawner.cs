@@ -126,6 +126,7 @@ namespace Gameplay.Waves
         {
             // Spawn Enemy
             GameObject spawnedEnemy = Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
+            spawnedEnemy.name = "_" + spawnedEnemy.name;
             spawnedEnemy.layer = LayerMask.NameToLayer("Enemies");
         
             // Apply scaling

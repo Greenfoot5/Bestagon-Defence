@@ -100,6 +100,7 @@ namespace Gameplay
         {
             // Add and display the new item
             GameObject turretButton = Instantiate(defaultTurretButton, turretInventory.transform);
+            turretButton.name = "_" + turretButton.name;
             turretButton.GetComponent<Image>().sprite = turret.shopIcon;
             turretButton.GetComponent<Button>().onClick.AddListener(delegate { SelectTurret(turret, turretButton); });
             
@@ -113,6 +114,7 @@ namespace Gameplay
         public void SpawnNewModule(Module module)
         {
             GameObject moduleButton = Instantiate(defaultModuleButton, moduleInventory.transform);
+            moduleButton.name = "_" + moduleButton.name;
             moduleButton.GetComponentInChildren<ModuleIcon>().SetData(module);
             moduleButton.GetComponentInChildren<Button>().onClick.AddListener(delegate { SelectModule(module, moduleButton); });
         }

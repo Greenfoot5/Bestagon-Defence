@@ -72,6 +72,7 @@ namespace UI.Shop
             {
                 TurretGlyphSo glyphSo = lookup.GetForType(null);
                 Transform glyph = Instantiate(glyphPrefab, applicableGlyphs.transform).transform;
+                glyph.name = "_" + glyph.name;
                 glyph.Find("Body").GetComponent<HexagonSprite>().color = glyphSo.body;
                 glyph.Find("Shade").GetComponent<HexagonSprite>().color = glyphSo.shade;
                 glyph.Find("Glyph").GetComponent<Image>().sprite = glyphSo.glyph;
@@ -83,6 +84,7 @@ namespace UI.Shop
                 {
                     TurretGlyphSo glyphSo = lookup.GetForType(turretType);
                     Transform glyph = Instantiate(glyphPrefab, applicableGlyphs).transform;
+                    glyph.name = "_" + glyph.name;
                     glyph.Find("Body").GetComponent<HexagonSprite>().color = glyphSo.body;
                     glyph.Find("Shade").GetComponent<HexagonSprite>().color = glyphSo.shade;
                     glyph.Find("Glyph").GetComponent<Image>().sprite = glyphSo.glyph;

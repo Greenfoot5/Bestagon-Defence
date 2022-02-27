@@ -77,6 +77,7 @@ namespace Turrets
             // Spawn hit effect
             Transform position = transform;
             GameObject effectIns = Instantiate(impactEffect, position.position, position.rotation);
+            effectIns.name = "_" + effectIns.name;
 
             Destroy(effectIns, 2f);
         

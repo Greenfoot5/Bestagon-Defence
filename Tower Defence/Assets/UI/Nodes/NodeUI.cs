@@ -77,6 +77,7 @@ namespace UI.Nodes
             foreach (Module module in _target.turret.GetComponent<Turret>().modules)
             {
                 GameObject moduleIcon = Instantiate(moduleIconPrefab, modules);
+                moduleIcon.name = "_" + moduleIcon.name;
                 moduleIcon.GetComponent<ModuleIcon>().SetData(module);
                 foreach (Image image in moduleIcon.GetComponentsInChildren<Image>())
                 {

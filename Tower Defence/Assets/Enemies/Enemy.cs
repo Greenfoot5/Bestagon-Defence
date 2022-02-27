@@ -257,6 +257,7 @@ namespace Enemies
 
             // Spawn death effect
             GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
+            effect.name = "_" + effect.name;
             Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
         
             // Let the wave spawner know the enemy is dead
@@ -285,6 +286,7 @@ namespace Enemies
             {
                 // Spawn ability effect
                 GameObject effect = Instantiate(ability.abilityEffect, transform.position, Quaternion.identity);
+                effect.name = "_" + effect.name;
                 Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
                 switch (ability.targetingType)
                 {
@@ -325,6 +327,7 @@ namespace Enemies
         {
             // Spawn ability effect
             GameObject effect = Instantiate(ability.abilityEffect, transform.position, Quaternion.identity);
+            effect.name = "_" + effect.name;
             Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
             switch (ability.targetingType)
             {

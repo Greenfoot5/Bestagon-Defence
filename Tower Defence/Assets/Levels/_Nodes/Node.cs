@@ -46,6 +46,7 @@ namespace Levels._Nodes
             // Spawn the turret and set the turret and blueprint
             Vector3 nodePosition = transform.position;
             GameObject newTurret = Instantiate(blueprint.prefab, nodePosition, Quaternion.identity);
+            newTurret.name = "_" + newTurret.name;
             turret = newTurret;
             var turretClass = turret.GetComponent<Turret>();
             turretBlueprint = blueprint;
@@ -57,6 +58,7 @@ namespace Levels._Nodes
         
             // Spawn the build effect and destroy after
             GameObject effect = Instantiate(_buildManager.buildEffect, nodePosition, Quaternion.identity);
+            effect.name = "_" + effect.name;
             Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
         }
     
@@ -73,6 +75,7 @@ namespace Levels._Nodes
 
             // Spawn the build effect
             GameObject effect = Instantiate(_buildManager.buildEffect, transform.position, Quaternion.identity);
+            effect.name = "_" + effect.name;
             Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
         
             // Deselect and reselect to avoid issues from upgrading
@@ -91,6 +94,7 @@ namespace Levels._Nodes
         
             // Spawn the sell effect
             GameObject effect = Instantiate(_buildManager.sellEffect, transform.position, Quaternion.identity);
+            effect.name = "_" + effect.name;
             Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
         
             // Destroy the turret and reset any of the node's selection variables

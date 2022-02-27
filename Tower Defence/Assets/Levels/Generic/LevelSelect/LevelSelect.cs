@@ -108,6 +108,7 @@ namespace Levels.Generic.LevelSelect
                 foreach (LeaderboardEntry entry in scores)
                 {
                     GameObject leaderboardItem = Instantiate(leaderboardEntry, leaderboardContent);
+                    leaderboardItem.name = "_" + leaderboardItem.name;
                     leaderboardItem.transform.Find("UsernameBackground").GetComponentInChildren<TMP_Text>().text = entry.name;
                     leaderboardItem.transform.Find("ScoreBackground").GetComponentInChildren<TMP_Text>().text = entry.GetValueAsString();
                 }
