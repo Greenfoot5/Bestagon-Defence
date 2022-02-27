@@ -272,7 +272,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 398217ed93c14444dad4f61ad052e371, type: 3}
+      m_Icon: {fileID: 2800000, guid: c6dc6c5d54f5a4fefb0e80f3c64ac486, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
@@ -565,7 +565,9 @@ PlayerSettings:
   switchPlayerConnectionEnabled: 1
   switchUseNewStyleFilepaths: 0
   switchUseMicroSleepForYield: 1
+  switchEnableRamDiskSupport: 0
   switchMicroSleepForYieldTime: 25
+  switchRamDiskSpaceSize: 12
   ps4NPAgeRating: 12
   ps4NPTitleSecret: 
   ps4NPTrophyPackPath: 
