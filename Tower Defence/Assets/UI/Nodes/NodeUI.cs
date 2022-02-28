@@ -69,9 +69,8 @@ namespace UI.Nodes
             transform.position = _target.transform.position;
             
             // Removes module icons created from the previously selected turret
-            while (modules.childCount > 0) {
-                Destroy(modules.GetChild(0).gameObject);
-            }
+            for (int i = 0; i < modules.childCount; i++)
+                Destroy(modules.GetChild(i).gameObject);
             
             // Add each Module as an icon
             foreach (Module module in _target.turret.GetComponent<Turret>().modules)
