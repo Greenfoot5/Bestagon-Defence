@@ -17,6 +17,11 @@ namespace UI.Transitions
         private HexagonSpread _spread;
 
         [SerializeField]
+        private RectTransform _ringInner;
+        [SerializeField]
+        private RectTransform _ringOuter;
+
+        [SerializeField]
         private Camera _camera;
 
         private string _loadingScene = string.Empty;
@@ -92,7 +97,13 @@ namespace UI.Transitions
         /// <param name="sceneName">The scene to load</param>
         public void LoadScene(string sceneName, Vector2? pointerLocation = null)
         {
-            _spread.SetOrigin(State.IN, _camera.ScreenToWorldPoint(Pointer.current.position.ReadValue()));
+            Vector2 pointer = _camera.ScreenToWorldPoint(Pointer.current.position.ReadValue());
+
+            _spread.SetOrigin(State.IN, pointer);
+
+            _ringInner.position = pointer;
+            _ringOuter.position = pointer;
+
             StartCoroutine(Animate(sceneName));
         }
     }
