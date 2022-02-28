@@ -10,7 +10,6 @@ public enum State
     OUT
 }
 
-[ExecuteInEditMode]
 public class HexagonSpread : MonoBehaviour
 {
     private const float magicNumber = 1.7320508f;

@@ -137,7 +137,7 @@ Shader "Custom/Hexagon/Spread"
                 }
                 #endif
 
-                p.z = 1 - o.distance * 0.0001;
+                p.z = .9 - o.distance * 0.0001;
 
                 float4x4 m = rotate( 1 - o.factor );
 
