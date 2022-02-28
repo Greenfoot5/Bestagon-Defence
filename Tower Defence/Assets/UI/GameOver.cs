@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using Gameplay;
 using TMPro;
+using UI.Transitions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,24 +16,6 @@ namespace UI
         [SerializeField]
         private TMP_Text roundsText;
         
-        [Tooltip("The animation to animate the transition back to the main menu")]
-        [SerializeField]
-        private Animator transition;
-        private static readonly int AnimationTrigger = Animator.StringToHash("Start");
-
-        /// <summary>
-        /// Begins the transition to the new level
-        /// </summary>
-        /// <param name="sceneName">The scene to transition to</param>
-        private IEnumerator Transition(string sceneName)
-        {
-            transition.SetTrigger(AnimationTrigger);
-
-            yield return new WaitForSeconds(transition.GetCurrentAnimatorClipInfo(0)[0].clip.length);
-            
-            SceneManager.LoadScene(sceneName);
-        }
-        
         /// <summary>
         /// Sets the player's score display when enabled
         /// </summary>
@@ -46,7 +29,7 @@ namespace UI
         /// </summary>
         public void Retry()
         {
-            StartCoroutine(Transition(SceneManager.GetActiveScene().name));
+            TransitionManager.Instance.LoadScene(SceneManager.GetActiveScene().name);
         }
         
         /// <summary>
@@ -54,7 +37,7 @@ namespace UI
         /// </summary>
         public void Menu()
         {
-            StartCoroutine(Transition("MainMenu"));
+            TransitionManager.Instance.LoadScene("MainMenu");
         }
     }
 }
