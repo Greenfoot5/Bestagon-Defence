@@ -3374,6 +3374,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84f5c17147e1542e289158835f7db2e2, type: 3}
+--- !u!20 &1275509813 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 5837894107962673298, guid: 84f5c17147e1542e289158835f7db2e2, type: 3}
+  m_PrefabInstance: {fileID: 1275509812}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1304318602
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3877,7 +3882,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1430919019}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: -6}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1943889919}
@@ -3919,41 +3924,6 @@ Material:
     - _Overlay: -0.2
     - _ScrollSpeed: 0.03
     - _ShiftSpeed: 1.5
-    m_Colors:
-    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
-  m_BuildTextureStacks: []
---- !u!21 &1527013232
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Custom/Hexagon/Background
-  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _GlowClamp: 5
-    - _GlowIntensity: 0
-    - _GlowOpacity: 1
-    - _HexScale: 8
-    - _Opacity: 1
-    - _Overlay: -0.05
-    - _ScrollSpeed: 0.03
-    - _ShiftSpeed: 0.75
     m_Colors:
     - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
@@ -4338,41 +4308,6 @@ Material:
     - _ShiftSpeed: 1.5
     m_Colors:
     - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
-  m_BuildTextureStacks: []
---- !u!21 &1754685890
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Custom/Hexagon/Background
-  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _GlowClamp: 5
-    - _GlowIntensity: 0
-    - _GlowOpacity: 1
-    - _HexScale: 8
-    - _Opacity: 1
-    - _Overlay: -0.05
-    - _ScrollSpeed: 0.03
-    - _ShiftSpeed: 0.75
-    m_Colors:
-    - _OffsetUV: {r: 1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!4 &1767477402 stripped
 Transform:
@@ -5197,6 +5132,10 @@ PrefabInstance:
       propertyPath: transition
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4077244561523284679, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 16.795502
+      objectReference: {fileID: 0}
     - target: {fileID: 4077244561648582632, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: moduleInventory
       value: 
@@ -5325,9 +5264,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4077244562271899437, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1275509813}
     - target: {fileID: 4077244562271899438, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_PresetInfoIsWorld
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4077244562642694232, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

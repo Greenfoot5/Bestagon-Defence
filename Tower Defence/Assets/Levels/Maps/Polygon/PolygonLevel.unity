@@ -455,41 +455,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8c5804ade5de404db89023d77cf7f43, type: 3}
---- !u!21 &110992353
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Custom/Hexagon/Background
-  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _GlowClamp: 5
-    - _GlowIntensity: 0
-    - _GlowOpacity: 1
-    - _HexScale: 8
-    - _Opacity: 1
-    - _Overlay: -0.05
-    - _ScrollSpeed: 0.03
-    - _ShiftSpeed: 0.75
-    m_Colors:
-    - _OffsetUV: {r: 1, g: 0, b: 0, a: 0}
-  m_BuildTextureStacks: []
 --- !u!1001 &123036507
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -937,7 +902,7 @@ PrefabInstance:
       objectReference: {fileID: 1850502398}
     - target: {fileID: 7935189852862486158, guid: 20ef5804d1a7b4d538d07d8c94025e14, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7935189852862486158, guid: 20ef5804d1a7b4d538d07d8c94025e14, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1124,41 +1089,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4559129809900468847, guid: f8c5804ade5de404db89023d77cf7f43, type: 3}
   m_PrefabInstance: {fileID: 2007790756}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &371596071
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Custom/Hexagon/Background
-  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _GlowClamp: 5
-    - _GlowIntensity: 0
-    - _GlowOpacity: 1
-    - _HexScale: 8
-    - _Opacity: 1
-    - _Overlay: -0.05
-    - _ScrollSpeed: 0.03
-    - _ShiftSpeed: 0.75
-    m_Colors:
-    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
-  m_BuildTextureStacks: []
 --- !u!114 &373903034 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5782079356602982492, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
@@ -1397,6 +1327,10 @@ PrefabInstance:
       propertyPath: transition
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4077244561523284679, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 16.795502
+      objectReference: {fileID: 0}
     - target: {fileID: 4077244561648582632, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: moduleInventory
       value: 
@@ -1451,7 +1385,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4077244562271899436, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4077244562271899436, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1525,9 +1459,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4077244562271899437, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1852733263}
     - target: {fileID: 4077244562271899438, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_PresetInfoIsWorld
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4077244562642694232, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1540,6 +1478,18 @@ PrefabInstance:
     - target: {fileID: 4077244562642694232, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: UI.PauseMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5814968456957061268, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 30.199997
+      objectReference: {fileID: 0}
+    - target: {fileID: 7631365789232451968, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 30.199997
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977044434111707428, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 30.199997
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
@@ -1704,9 +1654,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 467331038}
   - {fileID: 252784604}
   - {fileID: 1532760569}
-  - {fileID: 467331038}
   - {fileID: 1533497427}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -3408,6 +3358,41 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8c5804ade5de404db89023d77cf7f43, type: 3}
+--- !u!21 &1148022317
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Custom/Hexagon/Background
+  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _GlowClamp: 1
+    - _GlowIntensity: 0.5
+    - _GlowOpacity: 0.5
+    - _HexScale: 5
+    - _Opacity: 0.2
+    - _Overlay: 0.15
+    - _ScrollSpeed: 0.03
+    - _ShiftSpeed: 0.75
+    m_Colors:
+    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1001 &1149729632
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4168,7 +4153,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4021433442940519780, guid: e8ab671f35ca24d0abf7ce1eb6e45de4, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4021433442940519780, guid: e8ab671f35ca24d0abf7ce1eb6e45de4, type: 3}
       propertyPath: m_AnchorMax.x
@@ -4806,6 +4791,41 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6595278417362797558, guid: 137f8506d4db341d1a8874fe8ad95496, type: 3}
   m_PrefabInstance: {fileID: 856170872}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &1671798065
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Custom/Hexagon/Background
+  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _GlowClamp: 1
+    - _GlowIntensity: 0.5
+    - _GlowOpacity: 0.5
+    - _HexScale: 5
+    - _Opacity: 0.2
+    - _Overlay: 0.15
+    - _ScrollSpeed: 0.03
+    - _ShiftSpeed: 0.75
+    m_Colors:
+    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1001 &1689008547
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4863,41 +4883,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 137f8506d4db341d1a8874fe8ad95496, type: 3}
---- !u!21 &1689675381
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Custom/Hexagon/Background
-  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _GlowClamp: 1
-    - _GlowIntensity: 0.5
-    - _GlowOpacity: 0.5
-    - _HexScale: 5
-    - _Opacity: 0.2
-    - _Overlay: 0.15
-    - _ScrollSpeed: 0.03
-    - _ShiftSpeed: 0.75
-    m_Colors:
-    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
-  m_BuildTextureStacks: []
 --- !u!1001 &1692818395
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5228,12 +5213,21 @@ PrefabInstance:
       propertyPath: orthographic size
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5837894107962673298, guid: 84f5c17147e1542e289158835f7db2e2, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 119
+      objectReference: {fileID: 0}
     - target: {fileID: 5837894107962673299, guid: 84f5c17147e1542e289158835f7db2e2, type: 3}
       propertyPath: maxOrthSize
       value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84f5c17147e1542e289158835f7db2e2, type: 3}
+--- !u!20 &1852733263 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 5837894107962673298, guid: 84f5c17147e1542e289158835f7db2e2, type: 3}
+  m_PrefabInstance: {fileID: 1852733262}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1861807622 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6595278417362797558, guid: 137f8506d4db341d1a8874fe8ad95496, type: 3}
@@ -5296,12 +5290,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8c5804ade5de404db89023d77cf7f43, type: 3}
---- !u!4 &1886615816 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4559129809900468847, guid: f8c5804ade5de404db89023d77cf7f43, type: 3}
-  m_PrefabInstance: {fileID: 544722597}
-  m_PrefabAsset: {fileID: 0}
---- !u!21 &1890398648
+--- !u!21 &1886118089
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -5336,6 +5325,11 @@ Material:
     m_Colors:
     - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
+--- !u!4 &1886615816 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4559129809900468847, guid: f8c5804ade5de404db89023d77cf7f43, type: 3}
+  m_PrefabInstance: {fileID: 544722597}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1906452361
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5576,41 +5570,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89744f11922744baab6ff29557d16f75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!21 &1993694238
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Custom/Hexagon/Background
-  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _GlowClamp: 1
-    - _GlowIntensity: 0.5
-    - _GlowOpacity: 0.5
-    - _HexScale: 5
-    - _Opacity: 0.2
-    - _Overlay: 0.15
-    - _ScrollSpeed: 0.03
-    - _ShiftSpeed: 0.75
-    m_Colors:
-    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
-  m_BuildTextureStacks: []
 --- !u!1001 &1994458819
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5912,6 +5871,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7033422843349886311, guid: f9bbc79d08b642b4ea263b4f9aad5cce, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9008487199805690107, guid: f9bbc79d08b642b4ea263b4f9aad5cce, type: 3}
+      propertyPath: m_Depth
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

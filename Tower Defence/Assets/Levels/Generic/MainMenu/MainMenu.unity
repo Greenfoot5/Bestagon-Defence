@@ -461,8 +461,8 @@ Canvas:
   m_GameObject: {fileID: 474522199}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 519420031}
   m_PlaneDistance: 100
   m_PixelPerfect: 1
   m_ReceivesEvents: 1
@@ -3308,6 +3308,10 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 1906546023}
+    - target: {fileID: 2750506658736359288, guid: f9bbc79d08b642b4ea263b4f9aad5cce, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3410091059036156271, guid: f9bbc79d08b642b4ea263b4f9aad5cce, type: 3}
       propertyPath: m_Material
       value: 
