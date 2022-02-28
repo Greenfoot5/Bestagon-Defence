@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: M_Transition_Out
   m_Shader: {fileID: 4800000, guid: efdd8d6e733682541a447505bc99747c, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: _FACTORINVERT_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
@@ -63,7 +63,7 @@ Material:
     - _Displacement: -2
     - _DstBlend: 0
     - _Duration: 0.7
-    - _FactorInvert: 0
+    - _FactorInvert: 1
     - _ForwardDuration: 1.25
     - _ForwardFadeDuration: 0.2
     - _GlossMapScale: 1
@@ -72,10 +72,12 @@ Material:
     - _GlowRadius: 1
     - _GlowSize: 1
     - _HexagonSize: 80
+    - _Loop: 0
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _Preview: 0
     - _Rotation: 90
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1

@@ -63,7 +63,7 @@ Material:
     - _Displacement: 0.2
     - _DstBlend: 0
     - _Duration: 0.65
-    - _FactorInvert: 1
+    - _FactorInvert: 0
     - _ForwardDuration: 1.25
     - _ForwardFadeDuration: 0.2
     - _GlossMapScale: 1
@@ -72,10 +72,12 @@ Material:
     - _GlowRadius: 1
     - _GlowSize: 1
     - _HexagonSize: 80
+    - _Loop: 0
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _Preview: 0
     - _Rotation: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1

@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using Utilities;
 
 namespace UI.Transitions
 {
@@ -14,7 +16,10 @@ namespace UI.Transitions
         private Animator _animator;
 
         [SerializeField]
-        private HexagonSpread _spread;
+        private HexagonTransition _transition;
+
+        [SerializeField]
+        private TextMeshProUGUI _sceneName;
 
         [SerializeField]
         private RectTransform _ringInner;
@@ -74,9 +79,7 @@ namespace UI.Transitions
         {
             Close();
 
-            Debug.Log(_spread.GetDuration(State.IN));
-
-            yield return new WaitForSeconds(Mathf.Max(_spread.GetDuration(State.IN), TransitionDuration));
+            yield return new WaitForSeconds(Mathf.Max(_transition.GetDuration(State.IN), TransitionDuration));
 
             _loadingScene = sceneName;
             SceneManager.LoadScene(sceneName);
@@ -95,16 +98,24 @@ namespace UI.Transitions
         /// Loads a scene and handles transitions
         /// </summary>
         /// <param name="sceneName">The scene to load</param>
-        public void LoadScene(string sceneName, Vector2? pointerLocation = null)
+        public void LoadScene(string sceneName)
         {
             Vector2 pointer = _camera.ScreenToWorldPoint(Pointer.current.position.ReadValue());
 
-            _spread.SetOrigin(State.IN, pointer);
+            _transition.SetOrigin(State.IN, pointer);
 
             _ringInner.position = pointer;
             _ringOuter.position = pointer;
 
             StartCoroutine(Animate(sceneName));
+
+            _sceneName.text = sceneName switch
+            {
+                "MainMenu" => "Main Menu",
+                "LevelSelect" => "Level Select",
+                _ when sceneName.EndsWith("Level") => Utils.AddSpacesToSentence(sceneName.Substring(0, sceneName.Length - 5)),
+                _ => sceneName
+            };
         }
     }
 }
