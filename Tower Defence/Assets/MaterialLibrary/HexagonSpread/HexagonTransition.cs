@@ -7,12 +7,25 @@ using System;
 
 namespace UI.Transitions
 {
+    /// <summary>
+    /// The animation state
+    /// </summary>
     public enum State
     {
+        /// <summary>
+        /// The closing animation
+        /// </summary>
         IN,
+        /// <summary>
+        /// The opening animation
+        /// </summary>
         OUT
     }
 
+    /// <summary>
+    /// A data container for an RGB color.
+    /// Values are in the 0-1 range
+    /// </summary>
     public struct ColorRGB
     {
         public float r;
@@ -27,6 +40,9 @@ namespace UI.Transitions
         }
     }
 
+    /// <summary>
+    /// A data container for a color step in a gradient
+    /// </summary>
     public struct ColorStep
     {
         public float step;
@@ -39,6 +55,9 @@ namespace UI.Transitions
         }
     }
 
+    /// <summary>
+    /// A data container for an alpha step in a gradient
+    /// </summary>
     public struct AlphaStep
     {
         public float step;
@@ -51,11 +70,16 @@ namespace UI.Transitions
         }
     }
 
+    /// <summary>
+    /// The Hexagonal transition controller
+    /// </summary>
     public class HexagonTransition : MonoBehaviour
     {
+        // Magic hexagon numbers
         private const float magicNumber = 1.7320508f;
         private const float magicNumberHalf = 0.8660254f;
 
+        // Material properties
         private static readonly int _startID = Shader.PropertyToID("StartTime");
         private static readonly int _timeID = Shader.PropertyToID("UnscaledTime");
 
@@ -109,6 +133,7 @@ namespace UI.Transitions
         public bool newState = false;
         private bool _state = true;
 
+        // Data
         private float _viewHeight;
         private float _viewWidth;
 
@@ -116,10 +141,12 @@ namespace UI.Transitions
         private float _gridHexSize;
 
         private float _maxSize;
-        private int _vertexCount = 0;
+        private int _hexagonCount = 0;
 
+        // Anit-editor flag
         private bool _init;
 
+        // Buffers
         private ComputeBuffer _positionBuffer;
 
         private ComputeBuffer _colorBuffer;
@@ -127,6 +154,9 @@ namespace UI.Transitions
 
         private Material CurrentMaterial => newState ? _materialIn : _materialOut;
 
+        /// <summary>
+        /// Generates the grid, scaling and color gradient on load
+        /// </summary>
         private void Start()
         {
             UpdateGradient();
@@ -135,6 +165,9 @@ namespace UI.Transitions
             _init = true;
         }
 
+        /// <summary>
+        /// Clears all the buffers allocated
+        /// </summary>
         private void OnDestroy()
         {
             _positionBuffer?.Dispose();
@@ -143,6 +176,11 @@ namespace UI.Transitions
         }
 
 #if UNITY_EDITOR
+
+        /// <summary>
+        /// Generates the grid, scaling and color gradient on change in the editor.<br/>
+        /// Can cause memory issues, if changed values in Play mode frequently
+        /// </summary>
         private void OnValidate()
         {
             if (!_init) return;
@@ -153,18 +191,28 @@ namespace UI.Transitions
         }
 #endif
 
+        /// <summary>
+        /// Gets the bounding world size based on camera parameters
+        /// </summary>
         private (float, float) GetCameraWorldSize()
         {
             float h = _camera.orthographicSize * 2;
             return (h * _camera.pixelWidth / _camera.pixelHeight, h);
         }
 
+        /// <summary>
+        /// Reloads the size of hexagons and the spacing between them
+        /// </summary>
         private void ReloadHexagonSize()
         {
             _hexagonSize = CurrentMaterial.GetFloat(_hexSizeID) * .02f;
             _gridHexSize = _hexagonSize * _spacingMultiplier;
         }
 
+        /// <summary>
+        /// Checks if the resolution was changed.
+        /// (Useful in windowed mode)
+        /// </summary>
         private void RecheckChanges()
         {
             (float w, float h) = GetCameraWorldSize();
@@ -178,72 +226,103 @@ namespace UI.Transitions
             }
         }
 
+        /// <summary>
+        /// Generates the grid for the hexagons to spawn
+        /// </summary>
         private void RegenerateGrid()
         {
+            // Hexagon base number count on both axis
             float cx = _viewWidth / (_gridHexSize * magicNumber),
                   cy = _viewHeight / (_gridHexSize * 3);
 
-            int ix, iy;
+            // iy Rows of ix hexagons (half of the grid, centered)
+            int ix = Mathf.CeilToInt(cx) - 1,
+                iy = Mathf.CeilToInt(cy) - 1;
 
-            ix = Mathf.CeilToInt(cx) - 1;
-            iy = Mathf.CeilToInt(cy) - 1;
-
+            // Corrections
             if (_gridHexSize * 2 < _viewHeight - iy * _gridHexSize * 3)
                 iy++;
 
             if (.5f < cx - ix)
                 ix++;
 
-            int jx, jy;
+            // jy Rows of jx hexagons (other half of the grid, offset by half a hexagon on the X axis)
+            int jx = ix + (cx > ix ? 1 : 0),
+                jy = iy + (cy - iy > .25 ? 1 : 0);
 
-            jy = iy + (cy - iy > .25 ? 1 : 0);
-            jx = ix + (cx > ix ? 1 : 0);
-
-            _vertexCount = (iy * 2 + 1) * (ix * 2 + 1) + jy * 2 * jx * 2;
+            // The count of hexagons total needed for this grid
+            _hexagonCount = (iy * 2 + 1) * (ix * 2 + 1) + jy * 2 * jx * 2;
 
             List<Vector3> vectors = new List<Vector3>();
 
+            // Don't generate if the hexagon spacing is too small
             if (_gridHexSize < .01)
                 return;
 
+            // First half of the grid
             for (int y = -iy; y <= iy; y++)
                 for (int x = -ix; x <= ix; x++)
                     vectors.Add(new Vector3(x * _gridHexSize * magicNumberHalf, y * _gridHexSize * 1.5f) + transform.position);
 
+            // Second half of the grid (the offset ones)
             for (int y = -jy; y < jy; y++)
                 for (int x = -jx; x < jx; x++)
                     vectors.Add(new Vector3((x + .5f) * _gridHexSize * magicNumberHalf, (y + .5f) * _gridHexSize * 1.5f) + transform.position);
 
+            // Clear the old buffer and set a new one
             _positionBuffer?.Release();
             _positionBuffer = new ComputeBuffer(vectors.Count, sizeof(float) * 3);
             _positionBuffer.SetData(vectors.ToArray());
             GC.SuppressFinalize(_positionBuffer);
 
+            // Assing the buffer to the materials
             _materialIn.SetBuffer(_bufferID, _positionBuffer);
             _materialOut.SetBuffer(_bufferID, _positionBuffer);
 
+            // Find the distance of the farthest hexagon from the center
             float mx = (jx > ix ? jx + .5f : ix) * _gridHexSize * magicNumberHalf;
             float my = (jy > iy ? jy + .5f : iy) * _gridHexSize * 1.5f;
             _maxSize = new Vector2(mx, my).magnitude;
+
+            // Save the distance to materials
             _materialIn.SetFloat(_gridMaxID, _maxSize);
             _materialOut.SetFloat(_gridMaxID, _maxSize);
         }
 
+        /// <summary>
+        /// Updates the animation state and renders the animated hexagons
+        /// </summary>
         private void Update()
         {
+            // If the state changed, reset the starting time for the other material
             if (newState != _state)
             {
                 CurrentMaterial.SetFloat(_startID, Time.unscaledTime);
                 _state = newState;
             }
 
+            // Time update
             CurrentMaterial.SetFloat(_timeID, Time.unscaledTime);
 
+            // Check if the grid needs updating
             RecheckChanges();
 
-            Graphics.DrawProcedural(CurrentMaterial, new Bounds(transform.position, new Vector2(_viewWidth, _viewHeight)), MeshTopology.Points, 1, _vertexCount, _camera, layer: _layer);
+            // Queue for drawing this frame
+            Graphics.DrawProcedural(
+                CurrentMaterial,
+                new Bounds(transform.position, new Vector2(_viewWidth, _viewHeight)),
+                MeshTopology.Points,
+                vertexCount: 1,
+                _hexagonCount,
+                _camera,
+                layer: _layer);
         }
 
+        /// <summary>
+        /// Updates the origin for one of the materials
+        /// </summary>
+        /// <param name="state">The state's material to update</param>
+        /// <param name="origin">The new origin to animate from</param>
         public void SetOrigin(State state, Vector2 origin)
         {
             switch (state)
@@ -258,32 +337,44 @@ namespace UI.Transitions
             }
         }
 
+        /// <summary>
+        /// Returns the duration of the transition based on where the origin is
+        /// </summary>
+        /// <param name="state"></param>
         public float GetDuration(State state)
         {
             Material mat = state == State.IN ? _materialIn : _materialOut;
             return mat.GetFloat(_durID) * (1 + _materialIn.GetVector(_originID).magnitude / _maxSize) + mat.GetFloat(_appDurID);
         }
 
+        /// <summary>
+        /// Clears buffers and sets new ones containing gradient data for the shaders
+        /// </summary>
         public void UpdateGradient()
         {
+            // Clear buffers
             _colorBuffer?.Release();
             _alphaBuffer?.Release();
 
+            // Initialize buffers
             _colorBuffer = new ComputeBuffer(_gradient.colorKeys.Length, sizeof(float) * 4);
             _alphaBuffer = new ComputeBuffer(_gradient.alphaKeys.Length, sizeof(float) * 2);
 
+            // Write the color data
             List<ColorStep> colors = new List<ColorStep>();
             for (int i = 0; i < _gradient.colorKeys.Length; i++)
                 colors.Add(new ColorStep(_gradient.colorKeys[i]));
 
             _colorBuffer.SetData(colors.ToArray());
 
+            // Write the alpha data
             List<AlphaStep> alphas = new List<AlphaStep>();
             for (int i = 0; i < _gradient.alphaKeys.Length; i++)
                 alphas.Add(new AlphaStep(_gradient.alphaKeys[i]));
 
             _alphaBuffer.SetData(alphas.ToArray());
 
+            // Update both materials
             _materialIn.SetBuffer(_colorID, _colorBuffer);
             _materialOut.SetBuffer(_colorID, _colorBuffer);
 
@@ -296,6 +387,7 @@ namespace UI.Transitions
             _materialIn.SetInt(_alphaCountID, alphas.Count);
             _materialOut.SetInt(_alphaCountID, alphas.Count);
 
+            // Supress warnings (spams a lot in the editor if they get changed frequently)
             GC.SuppressFinalize(_colorBuffer);
             GC.SuppressFinalize(_alphaBuffer);
         }

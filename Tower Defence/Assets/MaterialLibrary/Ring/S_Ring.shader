@@ -1,4 +1,4 @@
-// Draws a circle that gradients out in the middle of the quad
+// Draws a ring of a certain radius
 
 Shader "Custom/Ring"
 {
@@ -6,10 +6,10 @@ Shader "Custom/Ring"
     {
         _RingColor ( "Ring Color", Color ) = (1, 1, 1, 1)
         
-        [Range(0, 1)] _RingRadius ( "Ring Radius", Float ) = .1
+        _RingRadius ( "Ring Radius", Range(0, 1) ) = .1
 
         // Unity complains if the shader has no texture input when it's used in an Image component
-        _MainTex ( "Texture", 2D ) = "white" {}
+        [NoScaleOffset] _MainTex ( "Texture", 2D ) = "white" {}
     }
     SubShader
     {
@@ -78,6 +78,7 @@ Shader "Custom/Ring"
 
                 const float d = distance(i.uv, 0);
                 
+                // radius based on distance in UV
                 if (d > 1 || d < (1 - _RingRadius))
                     color.a = 0;
                 

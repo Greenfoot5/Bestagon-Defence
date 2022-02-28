@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Utilities
 {
+    /// <summary>
+    /// Global generic utilities
+    /// </summary>
     public static class Utils
     {
         /// <summary>

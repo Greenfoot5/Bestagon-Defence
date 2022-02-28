@@ -323,8 +323,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transition: {fileID: 1456909156020574945}
   _sceneName: {fileID: 7872387338073466488}
-  _ringInner: {fileID: 7917227284233019639}
-  _ringOuter: {fileID: 12002878979726328}
+  _innerRing: {fileID: 7917227284233019639}
+  _outerRing: {fileID: 12002878979726328}
   _camera: {fileID: 985842982966307418}
 --- !u!95 &2662104101795918778
 Animator:
