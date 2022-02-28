@@ -1,6 +1,6 @@
 // Draws a circle that gradients out in the middle of the quad
 
-Shader "Unlit/Circle"
+Shader "Custom/Circle"
 {
     Properties
     {

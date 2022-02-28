@@ -7,7 +7,7 @@ namespace MaterialLibrary.Hexagons
     [ExecuteInEditMode]
     public class Hexagons : Graphic
     {
-        private const string MShaderName = "Unlit/Hex Background";
+        private const string MShaderName = "Custom/Hexagon/Background";
 
         // Sometimes material resets when 'Reverting'
         // This is to reload that
