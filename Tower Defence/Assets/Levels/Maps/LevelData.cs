@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Abstract.Data;
 using Modules;
 using Turrets;
@@ -29,13 +30,13 @@ namespace Levels.Maps
 
         [Header("Selection")]
         [Tooltip("What turrets can appear and their weighted chance of appearing on a turret selection card")]
-        public WeightedList<TurretBlueprint> turrets;
+        public WeightedCurveList<TurretBlueprint> turrets;
         [Tooltip("What type of duplicate check to perform, if any, against the rest of the selection")]
         public DuplicateTypes turretDuplicateCheck = DuplicateTypes.ByName;
         [Tooltip("The weighted chance of picking a turret card to appear in the selection")]
         public float turretOptionWeight = 1f;
         [Tooltip("What module can appear and their weighted chance of appearing on a module selection card")]
-        public WeightedList<Module> modules;
+        public WeightedCurveList<Module> modules;
         [Tooltip("What type of duplicate check to perform, if any, against the rest of the selection")]
         public DuplicateTypes moduleDuplicateCheck = DuplicateTypes.ByType;
         [Tooltip("The weighted chance of picking a module card to appear in the selection")]

@@ -7,16 +7,15 @@ namespace Abstract.Data
     /// </summary>
     /// <typeparam name="T">The type of item to store</typeparam>
     [System.Serializable]
-    public struct WeightedItem<T>
+    public struct WeightedCurve<T>
     {
         public T item;
-        [Min(0)]
-        public float weight;
+        public AnimationCurve weight;
 
-        public WeightedItem(T item, float weight)
+        public WeightedCurve(T item)
         {
             this.item = item;
-            this.weight = weight;
+            this.weight = new AnimationCurve();
         }
     }
 }

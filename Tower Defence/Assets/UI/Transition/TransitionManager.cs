@@ -1,10 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
+using Abstract;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using Utilities;
 
 namespace UI.Transitions
 {

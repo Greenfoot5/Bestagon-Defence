@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Text;
 using Abstract;
 using Discord;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Utilities;
 
 namespace Gameplay
 {

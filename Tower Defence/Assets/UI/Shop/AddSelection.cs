@@ -131,7 +131,7 @@ namespace UI.Shop
                 if (choice > _levelData.turretOptionWeight)
                 {
                     // Grants an Module option
-                    WeightedList<Module> modules = _levelData.modules;
+                    WeightedList<Module> modules = _levelData.modules.ToWeightedList(GameStats.Rounds);
                     Module selected = modules.GetRandomItem();
                     
                     // Check the player actually has a turret of the modules type
@@ -190,7 +190,7 @@ namespace UI.Shop
                 else
                 {
                     // Grants a turret option
-                    WeightedList<TurretBlueprint> turrets = _levelData.turrets;
+                    WeightedList<TurretBlueprint> turrets = _levelData.turrets.ToWeightedList(GameStats.Rounds);
                     TurretBlueprint selected = turrets.GetRandomItem();
                 
                     // Check the game didn't pick something it's already picked (depending on duplicate checking type)
