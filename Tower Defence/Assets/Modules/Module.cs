@@ -23,8 +23,8 @@ namespace Modules
         public string tagline;
         [Tooltip("The module's icon")]
         public Sprite icon;
+        [Multiline(3)]
         [Tooltip("The description of the module and what it does")]
-        [Multiline]
         public string effectText;
 
         protected abstract Type[] ValidTypes { get; }

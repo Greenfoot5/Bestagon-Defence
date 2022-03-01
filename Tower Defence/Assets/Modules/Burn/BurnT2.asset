@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c1449595d3cfc4927a8040f0d21d602b, type: 3}
-  m_Name: BurnT1
+  m_Name: BurnT2
   m_EditorClassIdentifier: 
   moduleTier: 1
   accentColor: {r: 0.9764706, g: 0.3764706, b: 0.24313726, a: 1}
   displayName: Burn I
   tagline: Burn baby burn!
   icon: {fileID: -7464220177990265132, guid: 16c979c866f439b4b988e7020b313794, type: 3}
-  effectText: Deals 2% health as damage every 1s for 3s
-  burnDamage: 0.02
-  tickCount: 3
-  tickDuration: 1
+  effectText: Deals 3% health as damage every 0.5s for 3s
+  burnDamage: 0.03
+  tickCount: 6
+  tickDuration: 0.5
   tickEffect: {fileID: 2228279973635050725, guid: b532316f87df641e0953ab42816c8d5e, type: 3}
