@@ -17,6 +17,6 @@ MonoBehaviour:
   displayName: Stun II
   tagline: Bzzzzzzzzt
   icon: {fileID: 1892315637792861288, guid: 16c979c866f439b4b988e7020b313794, type: 3}
-  effectText: 7% chance to stun the enemy in place for 0.25s
-  stunChance: 0.7
-  duration: 0.25
+  effectText: 15% chance to stun the enemy in place for 0.5s
+  stunChance: 0.15
+  duration: 0.5
