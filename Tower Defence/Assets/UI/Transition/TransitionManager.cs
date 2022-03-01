@@ -1,16 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using Utilities;
 
 namespace UI.Transitions
 {
+    /// <summary>
+    /// Automatically animates the transition and manages the loading of new scenes
+    /// </summary>
     public class TransitionManager : MonoBehaviour
     {
+        // Triggers
         private static readonly int ClosingTrigger = Animator.StringToHash("Close");
         private static readonly int OpeningTrigger = Animator.StringToHash("Open");
 
         private Animator _animator;
+
+        [Header("Visuals")]
+        [Tooltip("The hexagon transition that fills the screen")]
+        [SerializeField]
+        private HexagonTransition _transition;
+
+        [Tooltip("The text object that displays the scene name that's being loaded")]
+        [SerializeField]
+        private TextMeshProUGUI _sceneName;
+
+        [Header("Rings")]
+        [Tooltip("The inner ring that appears on the press location")]
+        [SerializeField]
+        private RectTransform _innerRing;
+        [Tooltip("The outer ring that appears on the press location")]
+        [SerializeField]
+        private RectTransform _outerRing;
+
+        [Header("System")]
+        [Tooltip("The camera used to calculate the press location")]
+        [SerializeField]
+        private Camera _camera;
+
+        private string _loadingScene = string.Empty;
 
         /// <summary>
         /// Singleton pattern and finds its own animator
@@ -26,6 +57,8 @@ namespace UI.Transitions
             Instance = this;
 
             _animator = GetComponentInChildren<Animator>();
+
+            SceneManager.sceneLoaded += SceneLoadEvent;
         }
 
         /// <summary>
@@ -36,7 +69,7 @@ namespace UI.Transitions
         /// <summary>
         /// The duration of the closing transition
         /// </summary>
-        public float TransitionDuration => _animator.GetCurrentAnimatorClipInfo(0)[0].clip.length;
+        public float TransitionDuration => Mathf.Max(_transition.GetDuration(State.IN), _animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
 
         /// <summary>
         /// Runs the closing animation
@@ -54,15 +87,31 @@ namespace UI.Transitions
             _animator.SetTrigger(OpeningTrigger);
         }
 
+        /// <summary>
+        /// Handles the scene switch by playing the animation and waiting for it to finish
+        /// </summary>
+        /// <param name="sceneName">The new scene to load</param>
         private IEnumerator Animate(string sceneName)
         {
             Close();
 
             yield return new WaitForSeconds(TransitionDuration);
 
+            _loadingScene = sceneName;
             SceneManager.LoadScene(sceneName);
+        }
 
-            Open();
+        /// <summary>
+        /// The event when the scene has finished loading.<br/>
+        /// Only runs the opening animation
+        /// </summary>
+        private void SceneLoadEvent(Scene scene, LoadSceneMode mode)
+        {
+            if (_loadingScene == scene.name)
+            {
+                Open();
+                _loadingScene = null;
+            }
         }
 
         /// <summary>
@@ -71,6 +120,24 @@ namespace UI.Transitions
         /// <param name="sceneName">The scene to load</param>
         public void LoadScene(string sceneName)
         {
+            // Get the location of the press that started the scene load
+            Vector2 pointer = _camera.ScreenToWorldPoint(Pointer.current.position.ReadValue());
+
+            // Update visuals to start at the click location
+            _transition.SetOrigin(State.IN, pointer);
+
+            _innerRing.position = pointer;
+            _outerRing.position = pointer;
+
+            // Update the bottom text of the transition to match the new scene name
+            _sceneName.text = sceneName switch
+            {
+                "MainMenu" => "Main Menu",
+                "LevelSelect" => "Level Select",
+                _ when sceneName.EndsWith("Level") => Utils.AddSpacesToSentence(sceneName.Substring(0, sceneName.Length - 5)),
+                _ => sceneName
+            };
+
             StartCoroutine(Animate(sceneName));
         }
     }

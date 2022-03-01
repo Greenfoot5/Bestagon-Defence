@@ -59,9 +59,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: Font_NikkyouSansSDF
   m_EditorClassIdentifier: 
-  hashCode: 871036762
+  hashCode: 965707542
   material: {fileID: 6686517540546246816}
-  materialHashCode: 480513594
+  materialHashCode: -251796234
   m_Version: 1.1.0
   m_SourceFontFileGUID: 9cb044b5d5d6bc847a45536506870d84
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 9cb044b5d5d6bc847a45536506870d84, type: 3}

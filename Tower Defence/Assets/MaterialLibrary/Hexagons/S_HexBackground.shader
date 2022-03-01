@@ -1,6 +1,6 @@
 // Draws a bunch of neon hexagons with a possible edge glow on the quad
 
-Shader "Unlit/Hex Background"
+Shader "Custom/Hexagon/Background"
 {
     Properties
     {
@@ -22,7 +22,7 @@ Shader "Unlit/Hex Background"
     }
     SubShader
     {
-        Tags {"Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent"}
+        Tags { "Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent" }
         ZWrite Off
         Blend SrcAlpha OneMinusSrcAlpha
         LOD 100

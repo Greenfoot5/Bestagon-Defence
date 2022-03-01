@@ -1,17 +1,15 @@
-// Draws a circle that gradients out in the middle of the quad
+// Draws a ring of a certain radius
 
-Shader "Custom/Circle"
+Shader "Custom/Ring"
 {
     Properties
     {
-        _CircleColor ( "Circle Color", Color ) = (1, 1, 1, 1)
+        _RingColor ( "Ring Color", Color ) = (1, 1, 1, 1)
         
-        _GlowColor ( "Glow Color", Color ) = (1, 1, 1, 1)
-        _GlowRadius ( "Glow Radius", Float ) = 1
-        _GlowSize ( "Glow Size", Float ) = 1
+        _RingRadius ( "Ring Radius", Range(0, 1) ) = .1
 
         // Unity complains if the shader has no texture input when it's used in an Image component
-        _MainTex ( "Texture", 2D ) = "white" {}
+        [NoScaleOffset] _MainTex ( "Texture", 2D ) = "white" {}
     }
     SubShader
     {
@@ -49,10 +47,8 @@ Shader "Custom/Circle"
             };
             
             // PROPERTIES
-            float4 _CircleColor;
-            float4 _GlowColor;
-            float _GlowRadius;
-            float _GlowSize;
+            float4 _RingColor;
+            float _RingRadius;
             
             /**
              * \brief Only passes data to the fragment shader
@@ -75,20 +71,16 @@ Shader "Custom/Circle"
              */
             fixed4 frag ( v2f i ) : SV_Target
             {
-                float4 color = 0;
+                float4 color = i.color * _RingColor;
             
                 // center uv (0, 1) -> (-1, 1)
                 i.uv = ( i.uv - .5 ) * 2;
+
+                const float d = distance(i.uv, 0);
                 
-                // circle
-                const float alpha = floor( 2. - length(i.uv) );
-                if (alpha <= 0) // optimisation (skip glow if outside circle)
-                    return 0;
-                color += fixed4( _CircleColor.rgb, _CircleColor.a * alpha );
-                
-                // glow
-                const float value = max( _GlowRadius - _GlowSize / length(i.uv), 0 );
-                color += fixed4( _GlowColor.rgb * value, _GlowColor.a * value );
+                // radius based on distance in UV
+                if (d > 1 || d < (1 - _RingRadius))
+                    color.a = 0;
                 
                 // final multiply
                 return color * i.color;

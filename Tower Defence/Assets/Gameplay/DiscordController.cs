@@ -4,6 +4,7 @@ using Abstract;
 using Discord;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Utilities;
 
 namespace Gameplay
 {
@@ -109,7 +110,7 @@ namespace Gameplay
 
             // A playable level
             string level = sceneName.Substring(0, sceneName.Length - 5);
-            string levelName = AddSpacesToSentence(level);
+            string levelName = Utils.AddSpacesToSentence(level);
 
             // Large image of the level
             _activity.Assets.LargeImage = level.ToLower();
@@ -120,26 +121,6 @@ namespace Gameplay
             _activity.State = GameStats.Lives > 0
                 ? $"𝗪𝗮𝘃𝗲 {GameStats.Rounds}｜𝗟𝗶𝘃𝗲𝘀 {GameStats.Lives}"
                 : "𝗚𝗮𝗺𝗲 Over";
-        }
-
-        /// <summary>
-        /// Adds spaces before capital letters to a string.
-        /// </summary>
-        /// <param name="text">String to space</param>
-        /// <returns>Spaced <see cref="string"/></returns>
-        private static string AddSpacesToSentence(string text)
-        {
-            if (string.IsNullOrWhiteSpace(text))
-                return "";
-            var newText = new StringBuilder(text.Length * 2);
-            newText.Append(text[0]);
-            for (var i = 1; i < text.Length; i++)
-            {
-                if (char.IsUpper(text[i]) && text[i - 1] != ' ')
-                    newText.Append(' ');
-                newText.Append(text[i]);
-            }
-            return newText.ToString();
         }
 
         /// <summary>
