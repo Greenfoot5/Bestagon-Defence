@@ -19,8 +19,7 @@ namespace Enemies
     {
         [Header("Stats")]
         [Tooltip("The starting speed of the enemy")]
-        [SerializeField]
-        private float startSpeed = 2f;
+        public float startSpeed = 2f;
         [Tooltip("The starting maximum health of the enemy")]
         public float maxHealth = 20f;
         

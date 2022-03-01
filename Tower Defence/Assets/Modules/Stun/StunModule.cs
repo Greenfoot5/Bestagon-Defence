@@ -63,7 +63,7 @@ namespace Modules.Stun
             // Check the target isn't already stunned and the turret hit the chance
             if (target.speed.GetBase() > 0 && Random.value < stunChance) yield break;
             
-            float originalSpeed = target.speed.GetBase();
+            float originalSpeed = target.startSpeed;
             target.speed.SetBase(0);
 
             yield return new WaitForSeconds(duration);
