@@ -67,9 +67,9 @@ namespace Modules.Burn
                 ticksLeft--;
                 
                 // Spawn ability effect
-                GameObject effect = Instantiate(tickEffect, target.transform.position, Quaternion.identity);
-                effect.name = "_" + effect.name;
-                Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
+                // GameObject effect = Instantiate(tickEffect, target.transform.position, Quaternion.identity);
+                // effect.name = "_" + effect.name;
+                // Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
             }
         }
     }
