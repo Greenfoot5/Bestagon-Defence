@@ -59,6 +59,12 @@ namespace Modules
         /// </summary>
         /// <param name="turret">The turret to modify</param>
         public virtual void RemoveModule(Turret turret) { }
+        
+        /// <summary>
+        /// Called when a turret makes an attack
+        /// </summary>
+        /// <param name="turret">The turret that attacked</param>
+        public virtual void OnAttack(Turret turret) { }
 
         /// <summary>
         /// Called when a turret that fires bullets shoots
