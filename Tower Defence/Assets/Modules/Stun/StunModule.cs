@@ -9,6 +9,7 @@ using Turrets.Gunner;
 using Turrets.Shooter;
 using Turrets.Smasher;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace Modules.Stun
@@ -22,12 +23,20 @@ namespace Modules.Stun
     {
         protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Smasher), typeof(Gunner) };
 
+        [FormerlySerializedAs("stunChance")]
         [SerializeField]
         [Tooltip("The percentage chance to stun an enemy")]
-        private float stunChance;
+        private float enemyStunChance;
+        [FormerlySerializedAs("duration")]
         [SerializeField]
         [Tooltip("How long to stun the enemy for")]
-        private float duration;
+        private float enemyDuration;
+        [SerializeField]
+        [Tooltip("percentage chance to stun the tower each attack")]
+        private float turretStunChance;
+        [SerializeField]
+        [Tooltip("How long to stun the tower for")]
+        private float turretDuration;
         
         /// <summary>
         /// Check if the module can be applied to the turret
@@ -60,15 +69,36 @@ namespace Modules.Stun
         /// <param name="target">The enemy to slow</param>
         private IEnumerator StunEnemy(Enemy target)
         {
+            float originalSpeed = target.speed.GetBase();
             // Check the target isn't already stunned and the turret hit the chance
-            if (target.speed.GetBase() > 0 && Random.value < stunChance) yield break;
+            if (originalSpeed <= 0 || Random.value > enemyStunChance) yield break;
             
-            float originalSpeed = target.startSpeed;
             target.speed.SetBase(0);
 
-            yield return new WaitForSeconds(duration);
+            yield return new WaitForSeconds(enemyDuration);
 
             target.speed.SetBase(originalSpeed);
+        }
+        
+        public override void OnAttack(Turret turret)
+        {
+            if (Random.value > turretStunChance) 
+                Runner.Run(StunTurret(turret));
+        }
+
+        private IEnumerator StunTurret(Turret turret)
+        {
+            float originalFireRate = turret.fireRate.GetBase();
+            
+            // Check the turret isn't already stunned
+            if (originalFireRate > 0)
+                yield break;
+            
+            turret.fireRate.SetBase(0);
+            
+            yield return new WaitForSeconds(turretDuration);
+            
+            turret.fireRate.SetBase(originalFireRate);
         }
     }
 }
