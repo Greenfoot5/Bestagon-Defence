@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c62fa3adf3d14b4982b34740095f952, type: 3}
-  m_Name: FasterShotsT1
+  m_Name: VelocityT1
   m_EditorClassIdentifier: 
   moduleTier: 1
   accentColor: {r: 0.39215687, g: 0.5019608, b: 0.9411765, a: 1}
@@ -26,3 +26,6 @@ MonoBehaviour:
   bulletSpeedChange: 0.5
   rangeChange: 0.07
   fireRateChange: 0.07
+  smasherDamageChange: 0.1
+  smasherRangeChange: 0.1
+  smasherFireRateChange: 0.1

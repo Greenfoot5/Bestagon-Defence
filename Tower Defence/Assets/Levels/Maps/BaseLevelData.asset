@@ -23,8 +23,10 @@ MonoBehaviour:
     - item: {fileID: 11400000, guid: 0f0a6da7d36a64a3a89ddcc104e995c0, type: 2}
       weight: 0
   initialDuplicateCheck: 0
+  turrets:
+    list: []
   turretDuplicateCheck: 1
-  turretOptionWeight: 0
+  turretOptionWeight: 4
   modules:
     list:
     - item: {fileID: 11400000, guid: 0da67581e745c4e708a1b6172cb3d6ef, type: 2}
