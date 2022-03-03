@@ -127,8 +127,9 @@ namespace UI.Shop
                 }
 
                 // Select if the game should get an Module or a turret
-                float choice = Random.Range(0f, _levelData.turretOptionWeight + _levelData.moduleOptionWeight);
-                if (choice > _levelData.turretOptionWeight)
+                float choice = Random.Range(0f, _levelData.turretOptionWeight.Evaluate(GameStats.Rounds)
+                                                + _levelData.moduleOptionWeight.Evaluate(GameStats.Rounds));
+                if (choice > _levelData.turretOptionWeight.Evaluate(GameStats.Rounds))
                 {
                     // Grants an Module option
                     WeightedList<Module> modules = _levelData.modules.ToWeightedList(GameStats.Rounds);
