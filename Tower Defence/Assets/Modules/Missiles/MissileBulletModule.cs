@@ -14,18 +14,26 @@ namespace Modules.Missiles
     {
         protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Gunner) };
         
+        [SerializeField]
         [Tooltip("What percentage to modify the explosion radius of the bullet by")]
-        [SerializeField]
         private float explosionRadiusChange;
+        [SerializeField]
         [Tooltip("The percentage to modify the damage of the turret by")]
-        [SerializeField]
         private float damagePercentageChange;
+        [SerializeField]
         [Tooltip("The percentage to modify the fire rate of the turret by")]
-        [SerializeField]
         private float fireRatePercentageChange;
-        [Tooltip("The percentage to modify the speed of the bullet by")]
         [SerializeField]
+        [Tooltip("The percentage to modify the speed of the bullet by")]
         private float speedPercentageChange;
+
+        [Header("Gunner")]
+        [SerializeField]
+        [Tooltip("The percentage to modify gunner's fire rate cap by")]
+        private float gunnerFireRateCapChange;
+        [SerializeField]
+        [Tooltip("The percentage to increase gunner's spin up speed by")]
+        private float gunnerSpinUpChange;
         
         /// <summary>
         /// Applies the stat changes to the turret
@@ -34,6 +42,12 @@ namespace Modules.Missiles
         public override void AddModule(Turret turret)
         {
             turret.fireRate.AddModifier(fireRatePercentageChange);
+
+            if (turret.GetType() != typeof(Gunner)) return;
+            
+            var gunner = (Gunner)turret;
+            gunner.spinMultiplier.AddModifier(gunnerSpinUpChange);
+            gunner.maxFireRate.AddModifier(gunnerFireRateCapChange);
         }
         
         /// <summary>
@@ -43,6 +57,12 @@ namespace Modules.Missiles
         public override void RemoveModule(Turret turret)
         {
             turret.fireRate.TakeModifier(fireRatePercentageChange);
+            
+            if (turret.GetType() != typeof(Gunner)) return;
+            
+            var gunner = (Gunner)turret;
+            gunner.spinMultiplier.TakeModifier(gunnerSpinUpChange);
+            gunner.maxFireRate.TakeModifier(gunnerFireRateCapChange);
         }
         
         /// <summary>
