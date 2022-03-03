@@ -29,7 +29,7 @@ MonoBehaviour:
   shooterBulletSpeedPercentageChange: 1
   laserRangePercentageChange: 0.5
   laserRotationSpeedPercentageChange: -0.5
-  laserDamagePercentageChange: 0
+  laserDamagePercentageChange: 0.5
   smasherRangePercentageChange: 1
   smasherDamagePercentageChange: 1.1
   smasherFireRatePercentageChange: -0.5
