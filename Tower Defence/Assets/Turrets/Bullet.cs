@@ -55,7 +55,7 @@ namespace Turrets
             // TODO - Make it based on target size
             const float targetSize = 0.25f;
             // Has the bullet "hit" the target?
-            if (dir.magnitude <= targetSize)
+            if (dir.sqrMagnitude <= targetSize * targetSize)
             {
                 HitTarget();
                 return;
