@@ -15,12 +15,17 @@ namespace Modules.Tracker
     {
         protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Laser), typeof(Gunner) };
 
+        [SerializeField]   
         [Tooltip("The percentage to modify the rotation speed of the turret by")]
-        [SerializeField]    
         private float rotationSpeedPercentageChange;
-        [Tooltip("The percentage to modify the damage of the turret by")]
         [SerializeField]
+        [Tooltip("The percentage to modify the damage of the turret by")]
         private float damagePercentageChange;
+
+        [Header("Gunner")]
+        [SerializeField]
+        [Tooltip("The percentage to modify the fire rate cap by")]
+        private float gunnerFireRateCapChange;
         
         /// <summary>
         /// Increases the rotation speed of a turret
@@ -30,6 +35,7 @@ namespace Modules.Tracker
         {
             ((DynamicTurret)turret).rotationSpeed.AddModifier(rotationSpeedPercentageChange);
             turret.damage.AddModifier(damagePercentageChange);
+            ((Gunner)turret).maxFireRate.AddModifier(gunnerFireRateCapChange);
         }
         
         /// <summary>
@@ -40,6 +46,7 @@ namespace Modules.Tracker
         {
             ((DynamicTurret)turret).rotationSpeed.TakeModifier(rotationSpeedPercentageChange);
             turret.damage.TakeModifier(damagePercentageChange);
+            ((Gunner)turret).maxFireRate.TakeModifier(gunnerFireRateCapChange);
         }
     }
 }
