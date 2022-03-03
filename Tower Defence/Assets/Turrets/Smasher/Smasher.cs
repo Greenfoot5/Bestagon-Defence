@@ -21,8 +21,10 @@ namespace Turrets.Smasher
         private void Update()
         {
             // Don't do anything if no enemy is in range
-            if (!Physics2D.OverlapCircleAll(transform.position, range.GetStat()).Any(x => 
-                x.CompareTag(enemyTag)))
+            var results = new Collider2D[128];
+            Physics2D.OverlapCircleNonAlloc(transform.position, range.GetStat(), results);
+            if (!results.Any(x => 
+                    x != null && x.CompareTag(enemyTag)))
             {
                 fireCountdown -= Time.deltaTime;
                 return;
@@ -46,15 +48,25 @@ namespace Turrets.Smasher
             smashEffect.Play();
             
             // Gets all the enemies in the AoE and calls Damage on them
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, range.GetStat());
+            // ReSharper disable once Unity.PreferNonAllocApi
+            Collider2D[] results = Physics2D.OverlapCircleAll(transform.position, range.GetStat());
+            
             var enemies = new List<Enemy>();
-            foreach (Collider2D collider2d in colliders)
+            foreach (Collider2D collider2d in results)
             {
                 if (!collider2d.CompareTag(enemyTag)) continue;
                 
                 var enemy = collider2d.GetComponent<Enemy>();
                 enemies.Add(enemy);
-                enemy.TakeDamage(damage.GetStat(), gameObject);
+                
+                // Take damage depending on how close the enemy is to the turret's centre
+                float damagePercentage = 1 - (transform.position - collider2d.transform.position).sqrMagnitude /
+                                         (range.GetTrueStat() * range.GetTrueStat());
+                // Only deal damage if it will actually damage the enemy
+                if (damagePercentage > 0)
+                {
+                    enemy.TakeDamage(damage.GetTrueStat() * damagePercentage, gameObject);
+                }
             }
             
             // Activates the turret's OnHit modules
