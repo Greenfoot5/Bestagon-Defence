@@ -41,9 +41,9 @@ namespace Modules.Slow
         private float smasherRangeChange;
         
         /// <summary>
-        /// Modifies the gunner turret when applied
+        /// Modifies the stats of the turret when applied
         /// </summary>
-        /// <param name="turret"></param>
+        /// <param name="turret">The turret to modify the stats for</param>
         public override void AddModule(Turret turret)
         {
             if (turret.GetType() == typeof(Gunner))
@@ -59,6 +59,10 @@ namespace Modules.Slow
             }
         }
         
+        /// <summary>
+        /// Removes stats modifications of the turret
+        /// </summary>
+        /// <param name="turret">The turrets to remove the modifications of</param>
         public override void RemoveModule(Turret turret)
         {
             if (turret.GetType() == typeof(Gunner))
