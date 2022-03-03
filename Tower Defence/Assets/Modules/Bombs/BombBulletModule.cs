@@ -14,6 +14,7 @@ namespace Modules.Bombs
     {
         protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Gunner)};
         
+        [Header("Shooter & Gunner")]
         [Tooltip("What percentage to modify the explosion radius of bullets by")]
         [SerializeField]
         private float explosionRadiusChange;
@@ -29,6 +30,14 @@ namespace Modules.Bombs
         [Tooltip("What percentage to modify the speed of the bullet by")]
         [SerializeField]
         private float speedPercentageChange;
+
+        [Header("Smasher")]
+        [SerializeField]
+        [Tooltip("The percentage to modify the damage of smasher by")]
+        private float smasherDamageChange;
+        [SerializeField]
+        [Tooltip("The percentage to modify the range of smasher by")]
+        private float smasherRangeChange;
         
         /// <summary>
         /// Changes the turret's stats when added
@@ -36,8 +45,17 @@ namespace Modules.Bombs
         /// <param name="turret">The turret to change stats for</param>
         public override void AddModule(Turret turret)
         {
-            turret.fireRate.AddModifier(fireRatePercentageChange);
-            turret.range.AddModifier(rangePercentageChange);
+            if (turret.GetType() == typeof(Gunner))
+            {
+                turret.damage.AddModifier(smasherDamageChange);
+                turret.range.AddModifier(smasherRangeChange);
+            }
+            else
+            {
+                turret.fireRate.AddModifier(fireRatePercentageChange);
+                turret.range.AddModifier(rangePercentageChange);
+            }
+            
         }
         
         /// <summary>
@@ -46,8 +64,16 @@ namespace Modules.Bombs
         /// <param name="turret">The turret to revert stat changes for</param>
         public override void RemoveModule(Turret turret)
         {
-            turret.fireRate.TakeModifier(fireRatePercentageChange);
-            turret.range.TakeModifier(rangePercentageChange);
+            if (turret.GetType() == typeof(Gunner))
+            {
+                turret.damage.TakeModifier(smasherDamageChange);
+                turret.range.TakeModifier(smasherRangeChange);
+            }
+            else
+            {
+                turret.fireRate.TakeModifier(fireRatePercentageChange);
+                turret.range.TakeModifier(rangePercentageChange);
+            }
         }
         
         /// <summary>
