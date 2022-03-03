@@ -1,4 +1,7 @@
-﻿using Modules;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Enemies;
+using Modules;
 using UnityEngine;
 
 namespace Turrets.Laser
@@ -53,12 +56,26 @@ namespace Turrets.Laser
         // TODO - Animate the laser slightly (make it pulse)
         protected override void Attack()
         {
-            // Deal damage
-            targetEnemy.TakeDamage(damage.GetStat() * Time.deltaTime, gameObject);
-
+            
+            Transform triangleCentre;
+            
+            // Get the end point of the line renderer
+            Vector3 endPosition = (firePoint.up * range.GetTrueStat() + (triangleCentre = transform).position);
+            
+            // Get all enemies the laser hits
+            var results = new List<RaycastHit2D>();
+            Physics2D.Linecast( triangleCentre.position, endPosition, new ContactFilter2D().NoFilter(), results);
+            var enemies = (List<Enemy>)results.Select(result => result.transform.GetComponent<Enemy>());
+            enemies.RemoveAll(x => x == null);
+            
+            // Deal damage to every enemy hit
+            foreach (Enemy enemy in enemies)
+            {
+                enemy.TakeDamage(damage.GetStat() * Time.deltaTime, gameObject);
+            }
             foreach (Module module in modules)
             {
-                module.OnHit(new [] {targetEnemy});
+                module.OnHit(enemies);
             }
 
             // Enable visuals
@@ -67,20 +84,19 @@ namespace Turrets.Laser
                 lineRenderer.enabled = true;
                 impactEffect.Play();
             }
-        
+            
             // Set Laser positions
-            Vector3 targetPosition = target.position;
-            Vector3 firePointPosition = firePoint.position;
+            Vector3 firePointPosition = transform.position;
             lineRenderer.SetPosition(0, firePointPosition);
-            lineRenderer.SetPosition(1, targetPosition);
-
+            lineRenderer.SetPosition(1, endPosition);
+            
             // Set impact effect rotation
             Transform impactEffectTransform = impactEffect.transform;
             var aimDir = (Vector3)((Vector2)firePointPosition - (Vector2)impactEffectTransform.position).normalized;
             impactEffectTransform.rotation = Quaternion.LookRotation(aimDir);
-
+            
             // Set impact effect position
-            impactEffectTransform.position = targetPosition + aimDir * 0.2f;
+            impactEffectTransform.position = endPosition + aimDir * 0.2f;
         }
     }
 }
