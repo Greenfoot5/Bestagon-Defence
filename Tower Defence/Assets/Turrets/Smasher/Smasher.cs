@@ -72,7 +72,7 @@ namespace Turrets.Smasher
             // Activates the turret's OnHit modules
             foreach (Module module in modules)
             {
-                module.OnHit(enemies.ToArray());
+                module.OnHit(enemies.ToArray(), this);
             }
         }
     }

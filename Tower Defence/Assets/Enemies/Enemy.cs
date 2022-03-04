@@ -51,6 +51,10 @@ namespace Enemies
         public EnemyAbility[] startingAbilities;
         [Tooltip("The parent object for any ability icons so they have the correct layout")]
         public GameObject iconLayout;
+
+        [Header("Bosses")]
+        [Tooltip("If the enemy is a boss")]
+        public bool isBoss = false;
         
         // Abilities for each trigger
         private readonly List<EnemyAbility> _timerAbilities = new List<EnemyAbility>();

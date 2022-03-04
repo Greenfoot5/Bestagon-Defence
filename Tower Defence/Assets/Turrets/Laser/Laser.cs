@@ -75,7 +75,7 @@ namespace Turrets.Laser
             }
             foreach (Module module in modules)
             {
-                module.OnHit(enemies);
+                module.OnHit(enemies, this);
             }
 
             // Enable visuals

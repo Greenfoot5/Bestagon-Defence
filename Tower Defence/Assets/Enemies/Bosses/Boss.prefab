@@ -412,7 +412,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startSpeed: 1
   maxHealth: 2000
-  speed: 0
+  speed:
+    stat: 0
+    modifier: 0
   health: 500
   deathMoney: 120
   deathLives: 5
@@ -423,6 +425,7 @@ MonoBehaviour:
   startingAbilities:
   - {fileID: 11400000, guid: 966da114d7727432380233ed8306b9c2, type: 2}
   iconLayout: {fileID: 755010576676188860}
+  isBoss: 1
 --- !u!114 &7336438465809873736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -489,7 +492,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startSpeed: 2
   maxHealth: 20
-  speed: 0
+  speed:
+    stat: 0
+    modifier: 0
   health: 0
   deathMoney: 10
   deathLives: 1
@@ -499,6 +504,7 @@ MonoBehaviour:
   deathEffect: {fileID: 0}
   startingAbilities: []
   iconLayout: {fileID: 0}
+  isBoss: 1
 --- !u!1 &3589229603728828608
 GameObject:
   m_ObjectHideFlags: 0

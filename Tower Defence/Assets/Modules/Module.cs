@@ -76,6 +76,8 @@ namespace Modules
         /// Called when a turret its an enemy
         /// </summary>
         /// <param name="targets">The enemy/ies to apply effect to</param>
-        public virtual void OnHit(IEnumerable<Enemy> targets) { }
+        /// <param name="turret">The turret that attacked the enemies</param>
+        /// <param name="bullet">The bullet that hit the enemies</param>
+        public virtual void OnHit(IEnumerable<Enemy> targets, Turret turret, Bullet bullet = null) { }
     }
 }

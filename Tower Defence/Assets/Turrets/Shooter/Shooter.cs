@@ -65,7 +65,7 @@ namespace Turrets.Shooter
                 bullet.AddModule(module);
             }
             
-            bullet.Seek(target);
+            bullet.Seek(target, this);
         }
     }
 }
