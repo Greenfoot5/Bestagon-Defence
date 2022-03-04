@@ -17,5 +17,5 @@ MonoBehaviour:
   displayName: Giantslayer I
   tagline: Wait 'till they come crashing down
   icon: {fileID: 21300000, guid: 7558f700791474075a7a2f9025007751, type: 3}
-  effectText: Deals an extra 50% damage to bosses
+  effectText: Deal bonus damage to bosses
   damagePercentage: 0.5

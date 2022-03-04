@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1449595d3cfc4927a8040f0d21d602b, type: 3}
   m_Name: BurnT2
   m_EditorClassIdentifier: 
-  moduleTier: 1
+  moduleTier: 2
   accentColor: {r: 0.9764706, g: 0.3764706, b: 0.24313726, a: 1}
-  displayName: Burn I
+  displayName: Burn II
   tagline: Burn baby burn!
   icon: {fileID: -7464220177990265132, guid: 16c979c866f439b4b988e7020b313794, type: 3}
   effectText: Deals 3% health as damage every 0.5s for 3s
