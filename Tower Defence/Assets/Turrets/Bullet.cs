@@ -53,7 +53,7 @@ namespace Turrets
         
             // Get the direction of the target, and the distance to move this frame
             Vector3 position = transform.position;
-            Vector2 dir = ((Vector2)_target.position - (Vector2)position);
+            Vector2 difference = _target.position - position;
             float distanceThisFrame = speed.GetStat() * Time.deltaTime;
         
             // TODO - Make it based on target size
@@ -64,12 +64,22 @@ namespace Turrets
                 HitTarget();
                 return;
             }
-        
+
+            // Calculate movement of the bullet
+            Vector2 movement = difference.normalized * distanceThisFrame;
+            Vector2 prediction = difference + movement;
+
+            // If within this frame the bullet will pass the enemy, it's a guarenteed hit
+            if (difference.x >= 0 != prediction.x >= 0 || difference.y >= 0 != prediction.y >= 0)
+            {
+                HitTarget();
+                return;
+            }
+
             // Move the bullet towards the target
-            transform.Translate(dir.normalized * distanceThisFrame, Space.World);
-            Vector3 toTarget = _target.position - position;
-            Vector3.Normalize(toTarget);
-            transform.up = toTarget;
+            transform.Translate(movement, Space.World);
+            // Rotate to target
+            transform.up = (_target.position - position).normalized;
 
         }
     
