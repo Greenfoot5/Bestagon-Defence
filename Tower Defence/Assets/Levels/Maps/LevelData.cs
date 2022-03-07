@@ -29,17 +29,17 @@ namespace Levels.Maps
 
         [Header("Selection")]
         [Tooltip("What turrets can appear and their weighted chance of appearing on a turret selection card")]
-        public WeightedList<TurretBlueprint> turrets;
+        public WeightedCurveList<TurretBlueprint> turrets;
         [Tooltip("What type of duplicate check to perform, if any, against the rest of the selection")]
         public DuplicateTypes turretDuplicateCheck = DuplicateTypes.ByName;
         [Tooltip("The weighted chance of picking a turret card to appear in the selection")]
-        public float turretOptionWeight = 1f;
+        public AnimationCurve turretOptionWeight;
         [Tooltip("What module can appear and their weighted chance of appearing on a module selection card")]
-        public WeightedList<Module> modules;
+        public WeightedCurveList<Module> modules;
         [Tooltip("What type of duplicate check to perform, if any, against the rest of the selection")]
         public DuplicateTypes moduleDuplicateCheck = DuplicateTypes.ByType;
         [Tooltip("The weighted chance of picking a module card to appear in the selection")]
-        public float moduleOptionWeight = 1f;
+        public AnimationCurve moduleOptionWeight;
         
         [Header("Costs")]
         [Tooltip("The initial cost to open the selection")]
@@ -49,8 +49,8 @@ namespace Levels.Maps
 
         [Header("Wave Scaling")]
         [Tooltip("What to multiply the enemy health by for every wave")]
-        public float health = 1f;
+        public AnimationCurve health;
         [Tooltip("What to multiply the enemy count by for every wave")]
-        public float enemyCount = 1f;
+        public AnimationCurve enemyCount;
     }
 }

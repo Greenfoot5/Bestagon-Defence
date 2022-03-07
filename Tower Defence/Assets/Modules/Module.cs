@@ -59,6 +59,12 @@ namespace Modules
         /// </summary>
         /// <param name="turret">The turret to modify</param>
         public virtual void RemoveModule(Turret turret) { }
+        
+        /// <summary>
+        /// Called when a turret makes an attack
+        /// </summary>
+        /// <param name="turret">The turret that attacked</param>
+        public virtual void OnAttack(Turret turret) { }
 
         /// <summary>
         /// Called when a turret that fires bullets shoots
@@ -70,6 +76,8 @@ namespace Modules
         /// Called when a turret its an enemy
         /// </summary>
         /// <param name="targets">The enemy/ies to apply effect to</param>
-        public virtual void OnHit(IEnumerable<Enemy> targets) { }
+        /// <param name="turret">The turret that attacked the enemies</param>
+        /// <param name="bullet">The bullet that hit the enemies</param>
+        public virtual void OnHit(IEnumerable<Enemy> targets, Turret turret, Bullet bullet = null) { }
     }
 }

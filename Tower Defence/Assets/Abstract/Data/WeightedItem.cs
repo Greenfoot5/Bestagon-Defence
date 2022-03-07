@@ -12,5 +12,11 @@ namespace Abstract.Data
         public T item;
         [Min(0)]
         public float weight;
+
+        public WeightedItem(T item, float weight)
+        {
+            this.item = item;
+            this.weight = weight;
+        }
     }
 }

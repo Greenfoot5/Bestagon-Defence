@@ -51,6 +51,10 @@ namespace Enemies
         public EnemyAbility[] startingAbilities;
         [Tooltip("The parent object for any ability icons so they have the correct layout")]
         public GameObject iconLayout;
+
+        [Header("Bosses")]
+        [Tooltip("If the enemy is a boss")]
+        public bool isBoss = false;
         
         // Abilities for each trigger
         private readonly List<EnemyAbility> _timerAbilities = new List<EnemyAbility>();
@@ -175,7 +179,11 @@ namespace Enemies
             while (_timerAbilities.Contains(ability))
             {
                 yield return new WaitForSeconds(ability.timer);
-
+                
+                // Check we aren't stunned
+                if (speed.GetStat() <= 0)
+                    continue;
+                
                 ActivateAbilities(new[] { ability}, null);
                 
                 // Decrease the counter
@@ -200,6 +208,10 @@ namespace Enemies
         {
             List<EnemyAbility> abilities = _hitAbilities.Select(item => item.ability).ToList();
             ActivateAbilities(abilities, source);
+            
+            // Check we aren't stunned
+            if (speed.GetStat() <= 0)
+                abilities.Clear();
 
             foreach ((EnemyAbility ability, int count) t in _hitAbilities)
             {
@@ -252,7 +264,9 @@ namespace Enemies
         /// <param name="source">What killed the enemy</param>
         private void Die(GameObject source)
         {
-            ActivateAbilities(_deathAbilities, source);
+            // Only do the abilities if the enemy is stunned
+            if (speed.GetStat() > 0)
+                ActivateAbilities(_deathAbilities, source);
 
             // Spawn death effect
             GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
@@ -267,6 +281,10 @@ namespace Enemies
             Destroy(gameObject);
         }
 
+        /// <summary>
+        /// Called when the enemy reaches the end of the map's path
+        /// Activates any finishPath abilities
+        /// </summary>
         public void FinishPath()
         {
             ActivateAbilities(_finishAbilities, null);
@@ -279,6 +297,12 @@ namespace Enemies
             Destroy(gameObject);
         }
         
+        /// <summary>
+        /// Activates an enumerable of abilities
+        /// </summary>
+        /// <param name="abilities">The enumerable of abilities to activate</param>
+        /// <param name="source">The GameObject that triggered the activation (if any)</param>
+        /// <exception cref="ArgumentOutOfRangeException">An ability has an invalid targeting type</exception>
         private void ActivateAbilities(IEnumerable<EnemyAbility> abilities, GameObject source)
         {
             foreach (EnemyAbility ability in abilities)
@@ -322,6 +346,12 @@ namespace Enemies
             }
         }
         
+        /// <summary>
+        /// Called when a counter ability has finished
+        /// </summary>
+        /// <param name="ability">The ability to end</param>
+        /// <param name="source">What caused the ability to end</param>
+        /// <exception cref="ArgumentOutOfRangeException">If the ability has an invalid target</exception>
         private void EndCounterAbility(EnemyAbility ability, GameObject source)
         {
             // Spawn ability effect

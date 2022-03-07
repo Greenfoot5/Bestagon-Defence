@@ -22,3 +22,5 @@ MonoBehaviour:
   damagePercentageChange: 0.3
   fireRatePercentageChange: -0.15
   speedPercentageChange: 0.5
+  gunnerFireRateCapChange: -0.1
+  gunnerSpinUpChange: 0.15

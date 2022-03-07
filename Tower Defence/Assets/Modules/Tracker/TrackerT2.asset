@@ -22,3 +22,4 @@ MonoBehaviour:
     Damage increased by 17%'
   rotationSpeedPercentageChange: 0.8
   damagePercentageChange: 0.17
+  gunnerFireRateCapChange: 0.2

@@ -11,6 +11,8 @@ namespace Turrets
     /// </summary>
     public class Bullet : MonoBehaviour
     {
+        private Turret _source;
+        
         private Transform _target;
         
         [Tooltip("The speed of the bullet")]
@@ -30,9 +32,11 @@ namespace Turrets
         /// Sets the new transform the bullet shoot go towards
         /// </summary>
         /// <param name="newTarget">The transform of the new target</param>
-        public void Seek(Transform newTarget)
+        /// <param name="turret">The turret telling the bullet to seek a target</param>
+        public void Seek(Transform newTarget, Turret turret)
         {
             _target = newTarget;
+            _source = turret;
         }
 
         /// <summary>
@@ -55,7 +59,7 @@ namespace Turrets
             // TODO - Make it based on target size
             const float targetSize = 0.25f;
             // Has the bullet "hit" the target?
-            if (difference.magnitude <= targetSize)
+            if (dir.sqrMagnitude <= targetSize * targetSize)
             {
                 HitTarget();
                 return;
@@ -116,7 +120,7 @@ namespace Turrets
             // Add module effects
             foreach (Module module in _modules)
             {
-                module.OnHit(new []{em});
+                module.OnHit(new []{em}, _source, this);
             }
 
             if (em != null)
@@ -138,7 +142,7 @@ namespace Turrets
                 
                 foreach (Module module in _modules)
                 {
-                    module.OnHit(new []{collider2d.GetComponent<Enemy>()});
+                    module.OnHit(new []{collider2d.GetComponent<Enemy>()}, _source, this);
                 }
                 Damage(collider2d.transform);
             }

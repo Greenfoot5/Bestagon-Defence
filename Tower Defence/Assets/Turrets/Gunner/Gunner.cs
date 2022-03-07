@@ -136,7 +136,7 @@ namespace Turrets.Gunner
                 bullet.AddModule(module);
             }
             
-            bullet.Seek(target);
+            bullet.Seek(target, this);
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Abstract;
 using Enemies;
+using Turrets;
 using Turrets.Gunner;
 using Turrets.Shooter;
 using Turrets.Smasher;
@@ -37,7 +38,9 @@ namespace Modules.Poison
         /// Adds the EnemyAbility to some target(s)
         /// </summary>
         /// <param name="targets">The target(s) to apply the ability to</param>
-        public override void OnHit(IEnumerable<Enemy> targets)
+        /// <param name="turret">The turret that attacked the enemies</param>
+        /// <param name="bullet">The bullet (if any) that hit the enemies</param>
+        public override void OnHit(IEnumerable<Enemy> targets, Turret turret, Bullet bullet = null)
         {
             foreach (Enemy target in targets)
             {

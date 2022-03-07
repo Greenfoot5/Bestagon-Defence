@@ -21,9 +21,9 @@ namespace Abstract.Data
         /// <param name="list">The list to create</param>
         public WeightedList(List<WeightedItem<T>> list)
         {
-            this.list = list;
+            this.list = list ?? new List<WeightedItem<T>>();
         }
-    
+
         /// <summary>
         /// Gets a random item from the list using the weights
         /// </summary>

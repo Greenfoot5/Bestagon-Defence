@@ -17,6 +17,8 @@ MonoBehaviour:
   displayName: Stun I
   tagline: Bzzzzzzzzt
   icon: {fileID: 1892315637792861288, guid: 16c979c866f439b4b988e7020b313794, type: 3}
-  effectText: 7% chance to stun the enemy in place for 0.25s
-  stunChance: 0.07
-  duration: 0.25
+  effectText: small chance for quick stun, for both enemy and turret
+  enemyStunChance: 0.07
+  enemyDuration: 0.25
+  turretStunChance: 0.02
+  turretDuration: 0.5
