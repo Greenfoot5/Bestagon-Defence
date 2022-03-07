@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Enemies;
 using Turrets;
+using Turrets.Smasher;
 using UnityEngine;
 
 namespace Modules.Giantslayer
@@ -30,8 +31,21 @@ namespace Modules.Giantslayer
             {
                 if (!target.isBoss) continue;
 
-                float baseDamage = bullet == null ? turret.damage.GetStat() : bullet.damage.GetStat();
-                target.TakeDamageWithoutAbilities(baseDamage * damagePercentage);
+                if (turret.GetType() != typeof(Smasher))
+                {
+                    float baseDamage = bullet == null ? turret.damage.GetStat() : bullet.damage.GetStat();
+                    target.TakeDamageWithoutAbilities(baseDamage * damagePercentage);
+                }
+                else
+                {
+                    float locationPercentage = 1 - (turret.transform.position - target.transform.position).sqrMagnitude /
+                        (turret.range.GetTrueStat() * turret.range.GetTrueStat());
+                    // Only deal damage if it will actually damage the enemy
+                    if (locationPercentage > 0)
+                    {
+                        target.TakeDamageWithoutAbilities(turret.damage.GetTrueStat() * locationPercentage * damagePercentage);
+                    }
+                }
             }
         }
     }
