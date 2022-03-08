@@ -54,13 +54,16 @@ namespace Enemies
 
         [Header("Bosses")]
         [Tooltip("If the enemy is a boss")]
-        public bool isBoss = false;
+        public bool isBoss;
         
         // Abilities for each trigger
         private readonly List<EnemyAbility> _timerAbilities = new List<EnemyAbility>();
         private readonly List<(EnemyAbility ability, int count)> _hitAbilities = new List<(EnemyAbility, int)>();
         private readonly List<EnemyAbility> _deathAbilities = new List<EnemyAbility>();
         private readonly List<EnemyAbility> _finishAbilities = new List<EnemyAbility>();
+        
+        // If the enemy has died
+        private bool _isDead;
         
         /// <summary>
         /// Grants abilities and sets current stats to max when spawning the enemy
@@ -264,6 +267,11 @@ namespace Enemies
         /// <param name="source">What killed the enemy</param>
         private void Die(GameObject source)
         {
+            // Make sure we're not already dead.
+            if (_isDead)
+                return;
+            _isDead = true;
+            
             // Only do the abilities if the enemy is stunned
             if (speed.GetStat() > 0)
                 ActivateAbilities(_deathAbilities, source);
