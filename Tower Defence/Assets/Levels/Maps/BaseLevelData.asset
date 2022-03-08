@@ -1646,7 +1646,7 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-  moduleDuplicateCheck: 0
+  moduleDuplicateCheck: 2
   moduleOptionWeight:
     serializedVersion: 2
     m_Curve:
