@@ -478,15 +478,15 @@ MonoBehaviour:
   m_Color: {r: 0.1254902, g: 0.8117647, b: 0.5372549, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  OffsetUV: {x: 0, y: 0}
-  HexagonScale: 6
-  ScrollSpeed: 0.03
-  LuminanceShiftSpeed: 1.5
-  OverlayStrength: -0.2
-  HexagonOpacity: 0.2
-  GlowIntensity: 0.3
-  GlowClamp: 0.5
-  GlowOpacity: 0.25
+  offsetUV: {x: 0, y: 0}
+  hexagonScale: 6
+  scrollSpeed: 0.03
+  luminanceShiftSpeed: 1.5
+  overlayStrength: -0.2
+  hexagonOpacity: 0.2
+  glowIntensity: 0.3
+  glowClamp: 0.5
+  glowOpacity: 0.25
 --- !u!1 &4062201817665011728
 GameObject:
   m_ObjectHideFlags: 0

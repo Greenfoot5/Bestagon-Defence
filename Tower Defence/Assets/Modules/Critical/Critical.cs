@@ -5,13 +5,13 @@ using Turrets;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Modules.CriticalStrike
+namespace Modules.Critical
 {
     /// <summary>
     /// Chance to deal double damage
     /// </summary>
-    [CreateAssetMenu(fileName = "CriticalStrikeT0", menuName = "Modules/Critical Strike")]
-    public class CriticalStrike : Module
+    [CreateAssetMenu(fileName = "CriticalT0", menuName = "Modules/Critical")]
+    public class Critical : Module
     {
         protected override Type[] ValidTypes => null;
         
