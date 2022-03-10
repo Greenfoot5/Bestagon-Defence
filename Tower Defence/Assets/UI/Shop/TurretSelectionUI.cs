@@ -127,7 +127,7 @@ namespace UI.Shop
         /// <param name="shop"></param>
         private void MakeSelection (Gameplay.Shop shop)
         {
-            transform.parent.gameObject.SetActive (false);
+            transform.parent.parent.gameObject.SetActive (false);
             Time.timeScale = 1f;
         
             shop.SpawnNewTurret(_turretBlueprint);
