@@ -52,5 +52,15 @@ namespace Levels.Maps
         public AnimationCurve health;
         [Tooltip("What to multiply the enemy count by for every wave")]
         public AnimationCurve enemyCount;
+
+        [Header("Refund Amounts")]
+        [Tooltip("How many lives to gain back when picking revitalise")]
+        public int revitaliseLives;
+        [Tooltip("What percentage of the shop cost to refund when picking refund")]
+        public float refundPercentage;
+        [Tooltip("Lives to reroll ration for the selection" +
+                 "\n\nUse an integer to take 1+ hearts per reroll" +
+                 "\nUse a decimal to grant extra free rerolls per purchase")]
+        public float rerollCost;
     }
 }

@@ -1802,3 +1802,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  revitaliseLives: 2
+  refundPercentage: 0.8
+  rerollCost: 0.5

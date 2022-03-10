@@ -20,18 +20,25 @@ namespace Gameplay
         private Module _selectedModule;
         private GameObject _selectedModuleButton;
         
+        [SerializeField]
         [Tooltip("The inventory to place turret buttons")]
-        public GameObject turretInventory; 
+        private GameObject turretInventory; 
+        [SerializeField]
         [Tooltip("The inventory to place module buttons under")]
-        public GameObject moduleInventory;
+        private GameObject moduleInventory;
+        [SerializeField]
         [Tooltip("The generic turret button prefab")]
-        public GameObject defaultTurretButton;
+        private GameObject defaultTurretButton;
         [Tooltip("The generic module button prefab")]
-        public GameObject defaultModuleButton;
+        [SerializeField]
+        private GameObject defaultModuleButton;
         
         [Tooltip("The UI to display when the player opens the shop")]
-        public GameObject selectionUI;
-        private int _selectionCost;
+        [SerializeField]
+        private GameObject selectionUI;
+        
+        public int selectionCost;
+        private bool _hasPlayerMadePurchase = true;
 
         private TextMeshProUGUI _turretInventoryButton;
         private TextMeshProUGUI _moduleInventoryButton;
@@ -43,12 +50,12 @@ namespace Gameplay
         {
             _buildManager = BuildManager.instance;
             _levelData = _buildManager.GetComponent<GameManager>().levelData;
-            _selectionCost = _levelData.initialSelectionCost;
+            selectionCost = _levelData.initialSelectionCost;
             // Update button text
             _turretInventoryButton = turretInventory.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
             _moduleInventoryButton = moduleInventory.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
-            _turretInventoryButton.text = "<sprite=\"UI-Gold\" name=\"gold\"> " + _selectionCost;
-            _moduleInventoryButton.text = "<sprite=\"UI-Gold\" name=\"gold\"> " + _selectionCost;
+            _turretInventoryButton.text = "<sprite=\"UI-Gold\" name=\"gold\"> " + selectionCost;
+            _moduleInventoryButton.text = "<sprite=\"UI-Gold\" name=\"gold\"> " + selectionCost;
         }
         
         /// <summary>
@@ -98,6 +105,10 @@ namespace Gameplay
         /// <param name="turret">The blueprint of the turret to add</param>
         public void SpawnNewTurret(TurretBlueprint turret)
         {
+            if (_hasPlayerMadePurchase)
+            {
+                _hasPlayerMadePurchase = false;
+            }
             // Add and display the new item
             GameObject turretButton = Instantiate(defaultTurretButton, turretInventory.transform);
             turretButton.name = "_" + turretButton.name;
@@ -128,12 +139,12 @@ namespace Gameplay
         }
         
         /// <summary>
-        /// Gets the cost of opening the shop and displaying the selection
+        /// Gets if the player has made a purchase yet
         /// </summary>
-        /// <returns>The cost to open the shop</returns>
-        public int GetSelectionCost()
+        /// <returns>If the player has made a purchase</returns>
+        public bool HasPlayerMadePurchase()
         {
-            return _selectionCost;
+            return _hasPlayerMadePurchase;
         }
         
         /// <summary>
@@ -141,11 +152,15 @@ namespace Gameplay
         /// </summary>
         public void IncrementSelectionCost()
         {
-            GameStats.money -= _selectionCost;
-            _selectionCost += _levelData.selectionCostIncrement;
-            // Update button text
-            _turretInventoryButton.text = "<sprite=\"UI-Gold\" name=\"gold\"> " + _selectionCost;
-            _moduleInventoryButton.text = "<sprite=\"UI-Gold\" name=\"gold\"> " + _selectionCost;
+            GameStats.money -= selectionCost;
+            selectionCost += _levelData.selectionCostIncrement;
+            UpdateCostText();
+        }
+
+        public void UpdateCostText()
+        {
+            _turretInventoryButton.text = "<sprite=\"UI-Gold\" name=\"gold\"> " + selectionCost;
+            _moduleInventoryButton.text = "<sprite=\"UI-Gold\" name=\"gold\"> " + selectionCost;
         }
         
         /// <summary>

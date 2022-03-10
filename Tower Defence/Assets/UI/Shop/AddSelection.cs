@@ -29,8 +29,6 @@ namespace UI.Shop
         [SerializeField]
         public TypeSpriteLookup glyphsLookup;
 
-        private bool _isFirstPurchase = true;
-
         private readonly List<Type> _turretTypes = new List<Type>();
     
         /// <summary>
@@ -42,10 +40,10 @@ namespace UI.Shop
             _levelData = BuildManager.instance.GetComponent<GameManager>().levelData;
 
             // Check the player can afford to open the shop
-            if (GameStats.money < shop.GetSelectionCost())
+            if (GameStats.money < shop.selectionCost)
             {
                 //Debug.Log("Not enough gold!");
-                gameObject.SetActive(false);
+                transform.parent.gameObject.SetActive(false);
                 return;
             }
 
@@ -62,12 +60,17 @@ namespace UI.Shop
         {
             Init();
         
+            GenerateSelection();
+        }
+
+        public void GenerateSelection()
+        {
             // Destroy the previous selection
             for (int i = transform.childCount - 1; i >= 0; i--)
             {
                 Destroy(transform.GetChild(i).gameObject);
             }
-        
+            
             // Tracks what the game has given the player, so the game don't give duplicates
             var selectedTypes = new Type[3];
             var selectedNames = new string[3];
@@ -79,7 +82,7 @@ namespace UI.Shop
             for (var i = 0; i < 3; i++)
             {
                 // If it's the first time opening the shop this level, the game should display a different selection
-                if (_isFirstPurchase)
+                if (shop.HasPlayerMadePurchase())
                 {
                     // Add a new turret to the selection
                     WeightedList<TurretBlueprint> turrets = _levelData.initialTurretSelection;
@@ -232,9 +235,6 @@ namespace UI.Shop
                     selectedNames[i] = selected.displayName;
                 }
             }
-        
-            // The player can only have a first purchase once
-            if (_isFirstPurchase) _isFirstPurchase = false;
         }
     
         /// <summary>

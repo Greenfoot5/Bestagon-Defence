@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Abstract.Data
@@ -87,13 +86,9 @@ namespace Abstract.Data
         public WeightedList<T> ToWeightedList(float time)
         {
             var weightedList = new WeightedList<T>(null);
-            Debug.Log(weightedList.list);
-            foreach (WeightedCurve<T> item in list)
+            foreach (WeightedCurve<T> item in list.Where(item => item.weight.Evaluate(time) > 0))
             {
-                if (!(item.weight.Evaluate(time) > 0)) continue;
-                
-                var weightedItem = new WeightedItem<T>(item.item, item.weight.Evaluate(time));
-                weightedList.list.Add(weightedItem);
+                weightedList.list.Add(new WeightedItem<T>(item.item, item.weight.Evaluate(time)));
             }
 
             return weightedList;
