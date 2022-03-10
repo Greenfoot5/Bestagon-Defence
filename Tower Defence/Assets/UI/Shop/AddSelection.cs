@@ -259,7 +259,13 @@ namespace UI.Shop
             turretUI.name = "_" + turretUI.name;
             turretUI.GetComponent<TurretSelectionUI>().Init(turret, shop, glyphsLookup);
         }
-
+        
+        /// <summary>
+        /// Adds a turret type to the selected type.
+        /// Makes sure we have a full list of turret the player has purchased
+        /// so we can display only ones they can use
+        /// </summary>
+        /// <param name="type">The type of the turret to add</param>
         public void AddTurretType(Type type)
         {
             if (!_turretTypes.Contains(type))

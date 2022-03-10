@@ -157,6 +157,9 @@ namespace Gameplay
             UpdateCostText();
         }
 
+        /// <summary>
+        /// Updates the text displaying the cost of the next shop opening
+        /// </summary>
         public void UpdateCostText()
         {
             _turretInventoryButton.text = "<sprite=\"UI-Gold\" name=\"gold\"> " + selectionCost;

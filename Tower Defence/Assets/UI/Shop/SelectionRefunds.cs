@@ -37,13 +37,19 @@ namespace UI.Shop
         private int _rerollsLeft;
 
         private LevelData _levelData;
-
+        
+        /// <summary>
+        /// Sets up private references
+        /// </summary>
         private void Awake()
         {
             _levelData = BuildManager.instance.GetComponent<GameManager>().levelData;
             _rerollDefaultColor = reroll.GetComponent<Hexagons>().color;
         }
-
+        
+        /// <summary>
+        /// Displays the correct values in text, and checks the reroll
+        /// </summary>
         private void OnEnable()
         {
             revitaliseText.text = "+" + _levelData.revitaliseLives + " <sprite=\"UI-Life\" name=\"life\">";
@@ -52,13 +58,20 @@ namespace UI.Shop
                               "<sprite=\"UI-Gold\" name=\"gold\">";
             CheckReroll();
         }
-
+        
+        /// <summary>
+        /// Grants a user heart(s) and closes the selection menu
+        /// </summary>
         public void Revitalise()
         {
             GameStats.Lives += _levelData.revitaliseLives;
             transform.parent.gameObject.SetActive(false);
         }
-
+        
+        /// <summary>
+        /// Refunds (part of) the cost of the selection opening and closes it.
+        /// Does not decrement the selection cost amount
+        /// </summary>
         public void Refund()
         {
             int refundAmount = shop.selectionCost - _levelData.selectionCostIncrement;
@@ -66,7 +79,10 @@ namespace UI.Shop
             shop.UpdateCostText();
             transform.parent.gameObject.SetActive(false);
         }
-
+        
+        /// <summary>
+        /// Rerolls the current selection at the cost of lives
+        /// </summary>
         public void Reroll()
         {
             // Calculate cost
@@ -89,7 +105,10 @@ namespace UI.Shop
             shop.OpenSelectionUI();
             CheckReroll();
         }
-
+        
+        /// <summary>
+        /// Check if the player can reroll the selection, and at what cost (if any)
+        /// </summary>
         private void CheckReroll()
         {
             // Check if the player can afford a reroll
@@ -109,7 +128,7 @@ namespace UI.Shop
             // Work out if it's a reroll
             if (_rerollsLeft > 0)
             {
-                rerollText.text = "Free for " + (int) _rerollsLeft + " rolls";
+                rerollText.text = "Free for " + _rerollsLeft + " rolls";
             }
             else if (_levelData.rerollCost < 1)
             {
