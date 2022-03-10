@@ -2,6 +2,7 @@ using System;
 using Turrets;
 using Turrets.Gunner;
 using Turrets.Shooter;
+using Turrets.Smasher;
 using UnityEngine;
 
 namespace Modules.Bombs
@@ -12,7 +13,7 @@ namespace Modules.Bombs
     [CreateAssetMenu(fileName = "BombBulletT0", menuName = "Modules/Bomb Bullet")]
     public class BombBulletModule : Module
     {
-        protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Gunner)};
+        protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Gunner), typeof(Smasher)};
         
         [Header("Shooter & Gunner")]
         [Tooltip("What percentage to modify the explosion radius of bullets by")]
