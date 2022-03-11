@@ -190,7 +190,7 @@ MonoBehaviour:
   isBoss: 0
   uniqueEffects:
   - Poison
-  - Poison
+  - Burn
 --- !u!114 &7336438465809873736
 MonoBehaviour:
   m_ObjectHideFlags: 0
