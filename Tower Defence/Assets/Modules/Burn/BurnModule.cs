@@ -54,6 +54,13 @@ namespace Modules.Burn
         /// <param name="target">The enemy to slow</param>
         private IEnumerator BurnEnemy(Enemy target)
         {
+            // Check the enemy isn't already burning/has immunity
+            if (target.uniqueEffects.Contains("Burn"))
+            {
+                yield break;
+            }
+            target.uniqueEffects.Add("Burn");
+            
             // Loop until we've gone through every tick
             int ticksLeft = tickCount;
             while (ticksLeft > 0)

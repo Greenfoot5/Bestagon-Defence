@@ -56,12 +56,20 @@ namespace Enemies
         [Tooltip("If the enemy is a boss")]
         public bool isBoss;
         
+        // Unique Effects/Immunities
+        // Effects that can only be applied once are added and removed at runtime
+        // as they are immune to getting the effect while they have it
+        [Header("Effect Immunities")]
+        [Tooltip("A list of effect names (internal names) that the enemy is immune to" +
+                 "\n\nDuring runtime, also contains any unique effects applied to the enemy as they are immune while they have it")]
+        public List<string> uniqueEffects;
+        
         // Abilities for each trigger
         private readonly List<EnemyAbility> _timerAbilities = new List<EnemyAbility>();
         private readonly List<(EnemyAbility ability, int count)> _hitAbilities = new List<(EnemyAbility, int)>();
         private readonly List<EnemyAbility> _deathAbilities = new List<EnemyAbility>();
         private readonly List<EnemyAbility> _finishAbilities = new List<EnemyAbility>();
-        
+
         // If the enemy has died
         private bool _isDead;
         

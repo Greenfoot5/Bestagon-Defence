@@ -71,8 +71,15 @@ namespace Modules.Stun
         /// <param name="target">The enemy to slow</param>
         private IEnumerator StunEnemy(Enemy target)
         {
+            // Check the enemy isn't already stunned/has immunity
+            if (target.uniqueEffects.Contains("Stun"))
+            {
+                yield break;
+            }
+            target.uniqueEffects.Add("Stun");
+            
             float originalSpeed = target.speed.GetBase();
-            // Check the target isn't already stunned and the turret hit the chance
+            // Check the target isn't already stunned (again) and the turret hit the chance
             if (originalSpeed <= 0 || Random.value > enemyStunChance) yield break;
             
             target.speed.SetBase(0);
