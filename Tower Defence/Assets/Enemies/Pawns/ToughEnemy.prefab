@@ -161,8 +161,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startSpeed: 1.75
-  maxHealth: 400
-  speed: 0
+  maxHealth: 500
+  speed:
+    stat: 0
+    modifier: 0
   health: 50
   deathMoney: 15
   deathLives: 2
@@ -172,6 +174,8 @@ MonoBehaviour:
   deathEffect: {fileID: 710779272522642178, guid: d286b443e8ade4d4cb1ec3e2a41a94f8, type: 3}
   startingAbilities: []
   iconLayout: {fileID: 423039527265324622}
+  isBoss: 0
+  uniqueEffects: []
 --- !u!114 &7336438465809873736
 MonoBehaviour:
   m_ObjectHideFlags: 0

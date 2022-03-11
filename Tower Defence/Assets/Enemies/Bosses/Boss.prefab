@@ -410,7 +410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startSpeed: 1
-  maxHealth: 2000
+  maxHealth: 2500
   speed:
     stat: 2
     modifier: 0
