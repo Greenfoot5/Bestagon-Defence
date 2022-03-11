@@ -60,7 +60,7 @@ namespace Modules.Surge
         }
         
         /// <summary>
-        /// Handles the poison effect
+        /// Handles the surge effect
         /// </summary>
         /// <param name="turret">The turret to increase the fire rate for</param>
         private IEnumerator Surge(Turret turret)
@@ -75,20 +75,19 @@ namespace Modules.Surge
                     yield break;
                 
                 // SURGE!
-                Debug.Log("Surge Begins!");
                 turret.fireRate.AddModifier(fireRateChange);
                 NodeUI.instance.UpdateStats();
-                GameObject effect = Instantiate(surgeEffect, turret.transform.position, Quaternion.identity);
+                Vector3 position = turret.transform.position;
+                GameObject effect = Instantiate(surgeEffect, position, Quaternion.identity);
                 effect.name = "_" + effect.name;
                 Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
                 
 
                 yield return new WaitForSeconds(duration);
                 
-                Debug.Log("Surge Ends...");
                 turret.fireRate.TakeModifier(fireRateChange);
                 NodeUI.instance.UpdateStats();
-                GameObject endEffect = Instantiate(surgeEndEffect, turret.transform.position, Quaternion.identity);
+                GameObject endEffect = Instantiate(surgeEndEffect, position, Quaternion.identity);
                 endEffect.name = "_" + endEffect.name;
                 Destroy(endEffect, endEffect.GetComponent<ParticleSystem>().main.duration);
             }
