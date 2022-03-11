@@ -44,16 +44,22 @@ namespace Modules.Poison
         {
             foreach (Enemy target in targets)
             {
-                Runner.Run(BurnEnemy(target));
+                Runner.Run(PoisonEnemy(target));
             }
         }
         
         /// <summary>
         /// Handles the poison effect
         /// </summary>
-        /// <param name="target">The enemy to slow</param>
-        private IEnumerator BurnEnemy(Enemy target)
+        /// <param name="target">The enemy to poison</param>
+        private IEnumerator PoisonEnemy(Enemy target)
         {
+            // Check the enemy is immune
+            if (target.uniqueEffects.Contains("Poison"))
+            {
+                yield break;
+            }
+            
             // Loop until we've gone through every tick
             int ticksLeft = tickCount;
             while (ticksLeft > 0)

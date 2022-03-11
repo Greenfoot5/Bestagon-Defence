@@ -98,6 +98,12 @@ namespace Modules.Slow
         /// <param name="target">The enemy to slow</param>
         private IEnumerator SlowEnemy(Enemy target)
         {
+            // Check the enemy is immune
+            if (target.uniqueEffects.Contains("Slow"))
+            {
+                yield break;
+            }
+            
             float slowValue = Mathf.Max(1f - slowPercentage, 0.2f);
             
             target.speed.MultiplyModifier(slowValue);
