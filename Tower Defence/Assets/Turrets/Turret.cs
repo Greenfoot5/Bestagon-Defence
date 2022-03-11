@@ -39,7 +39,7 @@ namespace Turrets
         [Tooltip("How many times per second the turret attacks")]
         public UpgradableStat fireRate = new UpgradableStat(1f);
         /// <summary> How long left until the next attack </summary>
-        protected float fireCountdown;
+        public float fireCountdown;
 
         // Modules
         [Tooltip("Which modules the turret has applied")]

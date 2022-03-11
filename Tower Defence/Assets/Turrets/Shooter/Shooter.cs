@@ -38,8 +38,8 @@ namespace Turrets.Shooter
             
             if (fireCountdown <= 0)
             {
-                Attack();
                 fireCountdown = 1 / fireRate.GetStat();
+                Attack();
             }
             
             fireCountdown -= Time.deltaTime;

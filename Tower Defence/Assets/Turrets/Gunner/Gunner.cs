@@ -66,12 +66,11 @@ namespace Turrets.Gunner
             
             if (fireCountdown <= 0)
             {
-                Attack();
-                
                 UpdateFireRate(true);
                 
                 fireCountdown = 1 / fireRate.GetStat();
                 
+                Attack();
             }
 
             fireCountdown -= Time.deltaTime;

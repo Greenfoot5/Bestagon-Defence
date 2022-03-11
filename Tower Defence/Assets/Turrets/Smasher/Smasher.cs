@@ -33,8 +33,8 @@ namespace Turrets.Smasher
             // If our attack is off cooldown
             if (fireCountdown <= 0)
             {
-                Attack();
                 fireCountdown = 1 / fireRate.GetStat();
+                Attack();
             }
             
             fireCountdown -= Time.deltaTime;
