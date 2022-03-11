@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 26a15bcabd8fe4c5c81bf93d40bcc783, type: 3}
   m_Name: ReloadT1
   m_EditorClassIdentifier: Assembly-CSharp:Modules.Reload:Reload
-  moduleTier: 0
-  accentColor: {r: 0, g: 0, b: 0, a: 0}
-  displayName: 
-  tagline: 
-  icon: {fileID: 0}
-  effectText: 
-  reloadChance: 0
+  moduleTier: 1
+  accentColor: {r: 0.54902077, g: 0.7176471, b: 0.2352941, a: 1}
+  displayName: Reload I
+  tagline: Again!
+  icon: {fileID: 21300000, guid: 6a74d6a2fc63047609663c6de6cd6812, type: 3}
+  effectText: Attacks after a 10th of the attack cooldown
+  reloadChance: 0.1
