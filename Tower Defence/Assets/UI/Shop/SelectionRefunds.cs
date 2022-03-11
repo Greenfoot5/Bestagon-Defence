@@ -66,6 +66,7 @@ namespace UI.Shop
         {
             GameStats.Lives += _levelData.revitaliseLives;
             transform.parent.gameObject.SetActive(false);
+            Time.timeScale = 1f;
         }
         
         /// <summary>
@@ -78,6 +79,7 @@ namespace UI.Shop
             GameStats.money += (int) (refundAmount * _levelData.refundPercentage);
             shop.UpdateCostText();
             transform.parent.gameObject.SetActive(false);
+            Time.timeScale = 1f;
         }
         
         /// <summary>
