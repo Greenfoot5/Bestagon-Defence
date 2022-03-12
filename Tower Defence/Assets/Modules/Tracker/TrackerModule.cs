@@ -35,7 +35,8 @@ namespace Modules.Tracker
         {
             ((DynamicTurret)turret).rotationSpeed.AddModifier(rotationSpeedPercentageChange);
             turret.damage.AddModifier(damagePercentageChange);
-            ((Gunner)turret).maxFireRate.AddModifier(gunnerFireRateCapChange);
+            if (turret.GetType() == typeof(Gunner))
+                ((Gunner)turret).maxFireRate.AddModifier(gunnerFireRateCapChange);
         }
         
         /// <summary>
@@ -46,7 +47,8 @@ namespace Modules.Tracker
         {
             ((DynamicTurret)turret).rotationSpeed.TakeModifier(rotationSpeedPercentageChange);
             turret.damage.TakeModifier(damagePercentageChange);
-            ((Gunner)turret).maxFireRate.TakeModifier(gunnerFireRateCapChange);
+            if (turret.GetType() == typeof(Gunner))
+                ((Gunner)turret).maxFireRate.TakeModifier(gunnerFireRateCapChange);
         }
     }
 }
