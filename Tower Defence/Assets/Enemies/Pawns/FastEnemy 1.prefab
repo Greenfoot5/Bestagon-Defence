@@ -239,9 +239,9 @@ MonoBehaviour:
     stat: 0
     modifier: 0
   health: 20
-  deathMoney: 6
+  deathMoney: 4
   deathLives: 1
-  endPathMoney: 8
+  endPathMoney: 6
   leftBar: {fileID: 6788293022279931816}
   rightBar: {fileID: 98331125827794481}
   deathEffect: {fileID: 710779272522642178, guid: d286b443e8ade4d4cb1ec3e2a41a94f8, type: 3}
