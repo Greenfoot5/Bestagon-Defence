@@ -57,15 +57,18 @@ namespace Turrets.Laser
         protected override void Attack()
         {
             
-            Transform triangleCentre;
+            Vector3 triangleCentre = transform.position;
             
             // Get the end point of the line renderer
-            Vector3 endPosition = (firePoint.up * range.GetTrueStat() + (triangleCentre = transform).position);
+            Vector3 direction = (firePoint.up * range.GetStat());
+            Vector3 endPosition = (direction + triangleCentre);
+            
             
             // Get all enemies the laser hits
-            var results = new List<RaycastHit2D>();
-            Physics2D.Linecast( triangleCentre.position, endPosition, new ContactFilter2D().NoFilter(), results);
-            var enemies = (List<Enemy>)results.Select(result => result.transform.GetComponent<Enemy>());
+            var results = new List<Collider2D>();
+            Physics2D.OverlapCapsule(direction/2 + triangleCentre, new Vector2(range.GetStat(), lineRenderer.endWidth), 
+                CapsuleDirection2D.Vertical, transform.rotation.y, new ContactFilter2D().NoFilter(), results);
+            List<Enemy> enemies = results.Select(result => result.transform.GetComponent<Enemy>()).ToList();
             enemies.RemoveAll(x => x == null);
             
             // Deal damage to every enemy hit
