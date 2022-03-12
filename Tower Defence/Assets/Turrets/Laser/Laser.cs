@@ -85,7 +85,7 @@ namespace Turrets.Laser
             if (!lineRenderer.enabled)
             {
                 lineRenderer.enabled = true;
-                impactEffect.Play();
+                //impactEffect.Play();
             }
             
             // Set Laser positions
