@@ -30,6 +30,6 @@ MonoBehaviour:
   laserRangePercentageChange: 0.5
   laserRotationSpeedPercentageChange: -0.5
   laserDamagePercentageChange: 0.5
-  smasherRangePercentageChange: 1
-  smasherDamagePercentageChange: 1.1
+  smasherRangePercentageChange: 0.7
+  smasherDamagePercentageChange: 1
   smasherFireRatePercentageChange: -0.5
