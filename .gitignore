@@ -77,3 +77,6 @@ crashlytics-build.properties
 
 # Ignore Environment Data
 *[Hh]idden*
+
+# RiderFlow
+[Aa]ssets/Plugins/Editor/JetBrains.RiderFlow
