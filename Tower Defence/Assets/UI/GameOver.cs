@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using Gameplay;
+﻿using Gameplay;
 using TMPro;
-using UI.Transitions;
+using UI.Transition;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

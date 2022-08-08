@@ -1,11 +1,13 @@
 using System.Collections;
 using Abstract;
 using TMPro;
+using UI.Transitions;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
-namespace UI.Transitions
+namespace UI.Transition
 {
     /// <summary>
     /// Automatically animates the transition and manages the loading of new scenes
@@ -18,6 +20,7 @@ namespace UI.Transitions
 
         private Animator _animator;
 
+        [FormerlySerializedAs("_transition")]
         [Header("Visuals")]
         [Tooltip("The hexagon transition that fills the screen")]
         [SerializeField]

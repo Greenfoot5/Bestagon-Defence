@@ -40,6 +40,9 @@ namespace UI.Nodes
         [Tooltip("The button that changes the targeting method of the turret")]
         [SerializeField]
         private GameObject cycleTargetingButton;
+        [Tooltip("The text on the button that sells the turret")]
+        [SerializeField]
+        private TMP_Text sellButtonText;
         
         /// <summary>
         /// Check there is only one NodeUI when loading in
@@ -69,7 +72,7 @@ namespace UI.Nodes
             transform.position = _target.transform.position;
             
             // Removes module icons created from the previously selected turret
-            for (int i = 0; i < modules.childCount; i++)
+            for (var i = 0; i < modules.childCount; i++)
                 Destroy(modules.GetChild(i).gameObject);
             
             // Add each Module as an icon
@@ -89,9 +92,6 @@ namespace UI.Nodes
             // Display the radius of the turret
             _target.turret.GetComponent<Turret>().Selected();
 
-            // Enable the UI
-            ui.SetActive(true);
-            
             // Enable/Disable Targeting types cycle button if it's (not) a dynamic turret.
             if (_target.turret.GetComponent<Turret>() is DynamicTurret)
             {
@@ -104,6 +104,10 @@ namespace UI.Nodes
                 cycleTargetingButton.SetActive(false);
             }
             
+            sellButtonText.text = "<b>Sell:</b>\n" + shop.GetSellAmount() + " <sprite=\"UI-Gold\" name=\"gold\">";
+            
+            // Enable the UI
+            ui.SetActive(true);
 
             // Rebuild the Modules and add the stats
             LayoutRebuilder.MarkLayoutForRebuild((RectTransform) modules);
@@ -168,6 +172,11 @@ namespace UI.Nodes
         public GameObject GetTurret()
         {
             return _target != null ? _target.turret : null;
+        }
+        
+        public void SellTurret()
+        {
+            _target.SellTurret(shop.GetSellAmount());
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Gameplay;
 using Modules;
 using Turrets;
+using UI.Nodes;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
@@ -87,10 +88,10 @@ namespace Levels._Nodes
         /// <summary>
         /// Called when the turret is sold
         /// </summary>
-        public void SellTurret()
+        public void SellTurret(int sellAmount)
         {
             // // Grant the money
-            // GameStats.money += turretBlueprint.GetSellAmount();
+            GameStats.money += sellAmount;
         
             // Spawn the sell effect
             GameObject effect = Instantiate(_buildManager.sellEffect, transform.position, Quaternion.identity);

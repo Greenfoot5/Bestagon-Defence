@@ -1,5 +1,6 @@
 using System.Collections;
 using TMPro;
+using UI.Transition;
 using UI.Transitions;
 using UnityEngine;
 using UnityEngine.SceneManagement;

@@ -42,6 +42,10 @@ namespace Gameplay
 
         private TextMeshProUGUI _turretInventoryButton;
         private TextMeshProUGUI _moduleInventoryButton;
+
+        [Tooltip("The percentage of the selection cost to sell turrets for")]
+        [SerializeField]
+        private double sellPercentage = 0.85;
         
         /// <summary>
         /// Initialises values and set's starting prices
@@ -212,6 +216,11 @@ namespace Gameplay
             var button = turretInventory.transform.GetChild(1).GetComponent<Button>();
             button.onClick.Invoke();
             button.Select();
+        }
+
+        public int GetSellAmount()
+        {
+            return (int) (sellPercentage * selectionCost);
         }
     }
 }

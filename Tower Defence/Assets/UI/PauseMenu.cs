@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections;
 using Gameplay;
 using Levels.Generic.LevelSelect;
-using UI.Transitions;
+using UI.Transition;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -23,7 +22,6 @@ namespace UI
         [Tooltip("The leaderboard bridge to save the player's score")]
         [SerializeField]
         private LeaderboardServerBridge bridge;
-        private static readonly int AnimationTrigger = Animator.StringToHash("Start");
 
         /// <summary>
         /// Allows the class to listen to the pause button press
