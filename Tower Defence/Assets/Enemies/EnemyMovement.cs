@@ -79,5 +79,15 @@ namespace Enemies
         {
             _enemy.FinishPath();
         }
+
+        public void TakeKnockback(int amount, Vector3 turretLocation)
+        {
+            Vector3 v = _target.position - transform.position;
+            Vector3 w = turretLocation - transform.position;
+            float multiplier = Vector3.Dot(v, w);
+            
+            // Actually deal knockback
+            float knockback = amount * _enemy.knockbackModifier * multiplier;
+        }
     }
 }

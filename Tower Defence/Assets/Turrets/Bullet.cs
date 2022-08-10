@@ -12,8 +12,8 @@ namespace Turrets
     public class Bullet : MonoBehaviour
     {
         private Turret _source;
-        
         private Transform _target;
+        private Vector3 _targetLocation;
         
         [Tooltip("The speed of the bullet")]
         public UpgradableStat speed = new UpgradableStat(30f);
@@ -37,6 +37,18 @@ namespace Turrets
         {
             _target = newTarget;
             _source = turret;
+            _targetLocation = Vector3.negativeInfinity;
+        }
+        
+        /// <summary>
+        /// Sets the location the bullet goes towards
+        /// </summary>
+        /// <param name="location">The location the bullet goes towards</param>
+        /// <param name="turret">The turret telling the bullet to seek the location</param>
+        public void Seek(Vector3 location, Turret turret)
+        {
+            _targetLocation = location;
+            _source = turret;
         }
 
         /// <summary>
@@ -45,15 +57,25 @@ namespace Turrets
         private void Update()
         {
             // Check the bullet still have a target to move towards
-            if (_target == null)
+            if (_target == null && _targetLocation == Vector3.negativeInfinity)
             {
                 Destroy(gameObject);
-                return;
             }
-        
+            else if (_targetLocation == Vector3.negativeInfinity)
+            {
+                SeekTarget(_target.position, true);
+            }
+            else
+            {
+                SeekTarget(_targetLocation, false);
+            }
+        }
+
+        private void SeekTarget(Vector3 location, bool isEnemy)
+        {
             // Get the direction of the target, and the distance to move this frame
             Vector3 position = transform.position;
-            Vector2 difference = _target.position - position;
+            Vector2 difference = location - position;
             float distanceThisFrame = speed.GetStat() * Time.deltaTime;
         
             // TODO - Make it based on target size
@@ -61,32 +83,31 @@ namespace Turrets
             // Has the bullet "hit" the target?
             if (difference.sqrMagnitude <= targetSize * targetSize)
             {
-                HitTarget();
-                return;
+                HitTarget(isEnemy);
+return;
             }
 
             // Calculate movement of the bullet
             Vector2 movement = difference.normalized * distanceThisFrame;
             Vector2 prediction = difference + movement;
 
-            // If within this frame the bullet will pass the enemy, it's a guarenteed hit
+            // If within this frame the bullet will pass the enemy, it's a guaranteed hit
             if (difference.x >= 0 != prediction.x >= 0 || difference.y >= 0 != prediction.y >= 0)
             {
-                HitTarget();
+                HitTarget(isEnemy);
                 return;
             }
 
             // Move the bullet towards the target
             transform.Translate(movement, Space.World);
             // Rotate to target
-            transform.up = (_target.position - position).normalized;
-
+            transform.up = (location - position).normalized;
         }
-    
+
         /// <summary>
         /// Called when the bullet hits the target
         /// </summary>
-        private void HitTarget()
+        private void HitTarget(bool isEnemy)
         {
             // Spawn hit effect
             Transform position = transform;
@@ -94,15 +115,18 @@ namespace Turrets
             effectIns.name = "_" + effectIns.name;
 
             Destroy(effectIns, 2f);
-        
-            // If the bullet has AoE damage or not
-            if (explosionRadius.GetStat() > 0f)
+
+            if (isEnemy)
             {
-                Explode();
-            }
-            else
-            {
-                Damage(_target);
+                // If the bullet has AoE damage or not
+                if (explosionRadius.GetStat() > 0f)
+                {
+                    Explode();
+                }
+                else
+                {
+                    Damage(_target);
+                }
             }
 
             // Destroy so the bullet only hits the target once

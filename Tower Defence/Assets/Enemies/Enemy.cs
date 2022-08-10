@@ -22,6 +22,8 @@ namespace Enemies
         public float startSpeed = 2f;
         [Tooltip("The starting maximum health of the enemy")]
         public float maxHealth = 20f;
+        [Tooltip("A percentage modifier to any knockback taken")]
+        public float knockbackModifier = 1f;
         
         [Tooltip("The current speed of the enemy")]
         public UpgradableStat speed;

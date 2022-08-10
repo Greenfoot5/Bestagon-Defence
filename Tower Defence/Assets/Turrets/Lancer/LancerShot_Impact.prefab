@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2834155742553635263}
   - component: {fileID: 6958917250808237180}
   m_Layer: 0
-  m_Name: GunnerPellet_Impact
+  m_Name: LancerShot_Impact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -115,7 +115,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -284,8 +284,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.1
-      minScalar: 0.05
+      scalar: 0.3
+      minScalar: 0.1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1538,7 +1538,7 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 21300000, guid: 7dbc930052f3c4eddacb9697242010ea, type: 3}
+    - sprite: {fileID: 21300000, guid: 98cfa0a2f553a433183dbd66f6892f09, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
