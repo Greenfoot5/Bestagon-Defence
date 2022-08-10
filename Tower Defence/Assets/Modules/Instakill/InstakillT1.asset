@@ -17,5 +17,5 @@ MonoBehaviour:
   displayName: Instakill
   tagline: Lucky Shot
   icon: {fileID: 21300000, guid: 0f12e0e56894f4095bf4f3942750b547, type: 3}
-  effectText: 0.1% chance to instakill non-boss enemies
-  instakillChance: 0.001
+  effectText: 0.5% chance to instakill non-boss enemies
+  instakillChance: 0.005
