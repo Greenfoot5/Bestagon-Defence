@@ -34,7 +34,7 @@ namespace Modules.Instakill
         {
             foreach (Enemy target in targets)
             {
-                if (Random.value < instakillChance && target.health > 0 && !target.isBoss) 
+                if (Random.value < (instakillChance / turret.fireRate.GetStat()) && target.health > 0 && !target.isBoss) 
                     target.TakeDamage(target.maxHealth, null);
             }
         }

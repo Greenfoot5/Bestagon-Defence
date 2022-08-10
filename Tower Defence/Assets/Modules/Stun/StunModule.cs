@@ -61,15 +61,16 @@ namespace Modules.Stun
         {
             foreach (Enemy target in targets)
             {
-                Runner.Run(StunEnemy(target));
+                Runner.Run(StunEnemy(target, turret));
             }
         }
         
         /// <summary>
         /// Applies the slow effect for a set duration
         /// </summary>
-        /// <param name="target">The enemy to slow</param>
-        private IEnumerator StunEnemy(Enemy target)
+        /// <param name="target">The enemy to stun</param>
+        /// <param name="turret">The turret attempting to stun</param>
+        private IEnumerator StunEnemy(Enemy target, Turret turret)
         {
             // Check the enemy isn't already stunned/has immunity
             if (target.uniqueEffects.Contains("Stun"))
@@ -80,7 +81,7 @@ namespace Modules.Stun
             
             float originalSpeed = target.speed.GetBase();
             // Check the target isn't already stunned (again) and the turret hit the chance
-            if (originalSpeed <= 0 || Random.value > enemyStunChance) yield break;
+            if (originalSpeed <= 0 || Random.value > (enemyStunChance / turret.fireRate.GetStat())) yield break;
             
             target.speed.SetBase(0);
 

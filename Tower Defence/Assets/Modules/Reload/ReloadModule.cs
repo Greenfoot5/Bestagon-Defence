@@ -27,7 +27,7 @@ namespace Modules.Reload
         /// <param name="bullet">The bullet (if any) that hit the enemies</param>
         public override void OnHit(IEnumerable<Enemy> targets, Turret turret, Bullet bullet = null)
         {
-            if (Random.value < reloadChance)
+            if (Random.value < (reloadChance / turret.fireRate.GetStat()))
             {
                 // We don't want to instantly fire again, we want a slight delay to make it clear the turret has attacked again
                 turret.fireCountdown *= 0.1f;

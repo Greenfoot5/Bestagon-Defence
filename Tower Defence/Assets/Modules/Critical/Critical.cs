@@ -29,7 +29,7 @@ namespace Modules.Critical
         {
             foreach (Enemy target in targets)
             {
-                if (!(Random.value < criticalChance)) continue;
+                if (!(Random.value < criticalChance / turret.fireRate.GetStat())) continue;
 
                 target.TakeDamageWithoutAbilities(bullet == null ? turret.damage.GetStat() : bullet.damage.GetStat());
             }
