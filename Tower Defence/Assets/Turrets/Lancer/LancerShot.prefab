@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 5187220641970732764}
   - component: {fileID: 1652037065478328955}
   - component: {fileID: 5234186456420885656}
-  m_Layer: 0
+  - component: {fileID: 7073124783216694538}
+  - component: {fileID: 1028926661138193115}
+  m_Layer: 6
   m_Name: LancerShot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,13 +97,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04bf2ba7db56e47a0b4f37a944e23a48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEtheral: 1
   speed:
     stat: 5
     modifier: 1
   explosionRadius:
-    stat: 1
-    modifier: 0
+    stat: 0
+    modifier: 1
+  knockbackAmount:
+    stat: -1
+    modifier: 1
   damage:
     stat: 50
     modifier: 0
   impactEffect: {fileID: 5606335261930595536, guid: 79704d342ebc848e4811ae6127d42c40, type: 3}
+--- !u!50 &7073124783216694538
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8554329261332597528}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!58 &1028926661138193115
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8554329261332597528}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.575

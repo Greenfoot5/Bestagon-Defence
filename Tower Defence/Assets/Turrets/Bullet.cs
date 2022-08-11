@@ -14,12 +14,20 @@ namespace Turrets
         private Turret _source;
         private Transform _target;
         private Vector3 _targetLocation;
+
+        [Header("Types")]
+        [Tooltip("Hits all enemies on path, but does not destroy itself")]
+        [SerializeField]
+        private bool isEtheral;
         
+        [Header("Stats")]
         [Tooltip("The speed of the bullet")]
         public UpgradableStat speed = new UpgradableStat(30f);
         [Tooltip("The radius to deal damage in. If <= 0, will just damage the target it hits")]
         public UpgradableStat explosionRadius;
-        [Tooltip("The amount of damage the bullet deals (set bu turret)")]
+        [Tooltip("The knockback the bullet deals to a target (set by turret)")]
+        public UpgradableStat knockbackAmount;
+        [Tooltip("The amount of damage the bullet deals (set by turret)")]
         [HideInInspector]
         public UpgradableStat damage = new UpgradableStat(50f);
     
@@ -147,10 +155,14 @@ return;
                 module.OnHit(new []{em}, _source, this);
             }
 
-            if (em != null)
+            if (em == null) return;
+
+            if (knockbackAmount.GetStat() != 0)
             {
-                em.TakeDamage(damage.GetStat(), gameObject);
+                em.GetComponent<EnemyMovement>().TakeKnockback(knockbackAmount.GetStat(), _source.transform.position);
             }
+
+            em.TakeDamage(damage.GetStat(), gameObject);
         }
     
         /// <summary>
@@ -189,6 +201,14 @@ return;
         {
             Gizmos.color = Color.cyan;
             Gizmos.DrawWireSphere(transform.position, explosionRadius.GetStat());
+        }
+
+        private void OnTriggerEnter2D(Collider2D col)
+        {
+            if (!isEtheral) return;
+            
+            if (col.transform.CompareTag("Enemy"))
+                Damage(col.gameObject.GetComponent<Enemy>());
         }
     }
 }

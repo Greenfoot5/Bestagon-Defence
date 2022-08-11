@@ -241,15 +241,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage:
-    stat: 250
-    modifier: 0
+    stat: 50
+    modifier: 1
   enemyTag: Enemy
   range:
     stat: 2.5
     modifier: 1
   rangeDisplay: {fileID: 3222738067758489047}
   fireRate:
-    stat: 0.5
+    stat: 1.5
     modifier: 1
   fireCountdown: 0
   modules: []

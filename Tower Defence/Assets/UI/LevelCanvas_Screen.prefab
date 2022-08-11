@@ -1106,6 +1106,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: fa447f2b0617b42ff9f08e910fa3e554, type: 2}
     - {fileID: 11400000, guid: bed22f2549eb24cf59e80fef4cf4c712, type: 2}
     - {fileID: 11400000, guid: f0c726913c1531b4c9df8908f0a880fd, type: 2}
+    - {fileID: 11400000, guid: 601c522ea0e4147ea86812ab1a1ece7d, type: 2}
 --- !u!1 &4077244561414875947
 GameObject:
   m_ObjectHideFlags: 0
@@ -1720,6 +1721,7 @@ MonoBehaviour:
   defaultModuleButton: {fileID: 4985354737434308386, guid: ac85ed0e8185d4caab087c3c4d95c178, type: 3}
   selectionUI: {fileID: 3030562544499506770}
   selectionCost: 0
+  sellPercentage: 0.85
 --- !u!1 &4077244561675534175
 GameObject:
   m_ObjectHideFlags: 0

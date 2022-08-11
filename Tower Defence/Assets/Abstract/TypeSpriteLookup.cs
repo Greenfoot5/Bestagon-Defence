@@ -1,12 +1,11 @@
 using System;
 using System.Collections.Generic;
-using Turrets;
 using Turrets.Gunner;
+using Turrets.Lancer;
 using Turrets.Laser;
 using Turrets.Shooter;
 using Turrets.Smasher;
 using UI.Glyphs;
-using UI.Shop;
 using UnityEngine;
 
 namespace Abstract
@@ -23,7 +22,8 @@ namespace Abstract
             typeof(Shooter),
             typeof(Laser),
             typeof(Smasher),
-            typeof(Gunner)
+            typeof(Gunner),
+            typeof(Lancer)
         };
         
         [Tooltip("The list of TurretGlyphs to use")]

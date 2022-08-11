@@ -1,4 +1,5 @@
-﻿using Levels._Nodes;
+﻿using System.Collections;
+using Levels._Nodes;
 using UnityEngine;
 
 namespace Enemies
@@ -80,7 +81,7 @@ namespace Enemies
             _enemy.FinishPath();
         }
 
-        public void TakeKnockback(int amount, Vector3 turretLocation)
+        public void TakeKnockback(float amount, Vector3 turretLocation)
         {
             Vector3 v = _target.position - transform.position;
             Vector3 w = turretLocation - transform.position;
@@ -88,6 +89,16 @@ namespace Enemies
             
             // Actually deal knockback
             float knockback = amount * _enemy.knockbackModifier * multiplier;
+
+            StartCoroutine(DealKnockback(knockback));
+        }
+
+        private IEnumerator DealKnockback(float speedMultiplier)
+        {
+            Debug.Log("Added Knockback");
+            _enemy.speed.MultiplyModifier(speedMultiplier);
+            yield return new WaitForSeconds(1f);
+            _enemy.speed.DivideModifier(speedMultiplier);
         }
     }
 }
