@@ -323,7 +323,8 @@ GameObject:
   - component: {fileID: 1592554615898150805}
   - component: {fileID: 1803439561954220234}
   - component: {fileID: 7336438465809873736}
-  - component: {fileID: 4532340251281591674}
+  - component: {fileID: -3244531046772879823}
+  - component: {fileID: 6356489563311992867}
   m_Layer: 6
   m_Name: Boss
   m_TagString: Enemy
@@ -411,6 +412,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startSpeed: 1
   maxHealth: 2500
+  knockbackModifier: 1
   speed:
     stat: 2
     modifier: 0
@@ -441,8 +443,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceToWaypoint: 0.05
   mapProgress: 0
---- !u!60 &4532340251281591674
-PolygonCollider2D:
+--- !u!50 &-3244531046772879823
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 895393602812883857}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &6356489563311992867
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -464,21 +487,9 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.205, y: 0.175}
-      - {x: 0.11, y: 0.25}
-      - {x: -0.12, y: 0.25}
-      - {x: -0.24, y: 0.14}
-      - {x: -0.25, y: 0.099999994}
-      - {x: -0.25, y: -0.085}
-      - {x: -0.21, y: -0.175}
-      - {x: -0.13499999, y: -0.22999999}
-      - {x: -0.089999996, y: -0.25}
-      - {x: 0.11, y: -0.25}
-      - {x: 0.21, y: -0.17999999}
-      - {x: 0.25, y: -0.099999994}
-      - {x: 0.25, y: 0.105}
+  serializedVersion: 2
+  m_Size: {x: 0.6666667, y: 0.6666667}
+  m_EdgeRadius: 0
 --- !u!1 &3589229603728828608
 GameObject:
   m_ObjectHideFlags: 0

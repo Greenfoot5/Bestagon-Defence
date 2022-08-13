@@ -147,7 +147,8 @@ GameObject:
   - component: {fileID: 1592554615898150805}
   - component: {fileID: 5381081555771366574}
   - component: {fileID: 7336438465809873736}
-  - component: {fileID: 4532340251281591674}
+  - component: {fileID: -6803694265742944117}
+  - component: {fileID: 768858065416596564}
   m_Layer: 6
   m_Name: FastEnemy 1
   m_TagString: Enemy
@@ -235,6 +236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startSpeed: 4
   maxHealth: 100
+  knockbackModifier: 1
   speed:
     stat: 0
     modifier: 0
@@ -265,8 +267,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceToWaypoint: 0.05
   mapProgress: 0
---- !u!60 &4532340251281591674
-PolygonCollider2D:
+--- !u!58 &-6803694265742944117
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -279,30 +281,29 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.4, y: 0.4}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.205, y: 0.175}
-      - {x: 0.11, y: 0.25}
-      - {x: -0.12, y: 0.25}
-      - {x: -0.24, y: 0.14}
-      - {x: -0.25, y: 0.099999994}
-      - {x: -0.25, y: -0.085}
-      - {x: -0.21, y: -0.175}
-      - {x: -0.13499999, y: -0.22999999}
-      - {x: -0.089999996, y: -0.25}
-      - {x: 0.11, y: -0.25}
-      - {x: 0.21, y: -0.17999999}
-      - {x: 0.25, y: -0.099999994}
-      - {x: 0.25, y: 0.105}
+  serializedVersion: 2
+  m_Radius: 0.25
+--- !u!50 &768858065416596564
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 895393602812883857}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &3397964327350211382
 GameObject:
   m_ObjectHideFlags: 0

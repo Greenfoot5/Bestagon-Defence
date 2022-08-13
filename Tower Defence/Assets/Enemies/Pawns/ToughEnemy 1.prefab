@@ -85,8 +85,9 @@ GameObject:
   - component: {fileID: 1592554615898150805}
   - component: {fileID: 1128971760552915232}
   - component: {fileID: 7336438465809873736}
-  - component: {fileID: 4532340251281591674}
   - component: {fileID: 6401496769337086624}
+  - component: {fileID: -215411037865577175}
+  - component: {fileID: -32090543215727474}
   m_Layer: 6
   m_Name: ToughEnemy 1
   m_TagString: Enemy
@@ -174,6 +175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startSpeed: 1.5
   maxHealth: 850
+  knockbackModifier: 1
   speed:
     stat: 0
     modifier: 0
@@ -202,8 +204,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceToWaypoint: 0.05
   mapProgress: 0
---- !u!60 &4532340251281591674
-PolygonCollider2D:
+--- !u!114 &6401496769337086624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 895393602812883857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7135088833f09435eb5f708ff7aa7fec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startSpeed: 2
+  maxHealth: 20
+  knockbackModifier: 1
+  speed:
+    stat: 0
+    modifier: 0
+  health: 0
+  deathMoney: 10
+  deathLives: 1
+  endPathMoney: 10
+  leftBar: {fileID: 0}
+  rightBar: {fileID: 0}
+  deathEffect: {fileID: 0}
+  startingAbilities: []
+  iconLayout: {fileID: 0}
+  isBoss: 0
+  uniqueEffects: []
+--- !u!61 &-215411037865577175
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -225,49 +256,30 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.205, y: 0.175}
-      - {x: 0.11, y: 0.25}
-      - {x: -0.12, y: 0.25}
-      - {x: -0.24, y: 0.14}
-      - {x: -0.25, y: 0.099999994}
-      - {x: -0.25, y: -0.085}
-      - {x: -0.21, y: -0.175}
-      - {x: -0.13499999, y: -0.22999999}
-      - {x: -0.089999996, y: -0.25}
-      - {x: 0.11, y: -0.25}
-      - {x: 0.21, y: -0.17999999}
-      - {x: 0.25, y: -0.099999994}
-      - {x: 0.25, y: 0.105}
---- !u!114 &6401496769337086624
-MonoBehaviour:
+  serializedVersion: 2
+  m_Size: {x: 0.5714286, y: 0.5714286}
+  m_EdgeRadius: 0
+--- !u!50 &-32090543215727474
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 895393602812883857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7135088833f09435eb5f708ff7aa7fec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startSpeed: 2
-  maxHealth: 20
-  speed:
-    stat: 0
-    modifier: 0
-  health: 0
-  deathMoney: 10
-  deathLives: 1
-  endPathMoney: 10
-  leftBar: {fileID: 0}
-  rightBar: {fileID: 0}
-  deathEffect: {fileID: 0}
-  startingAbilities: []
-  iconLayout: {fileID: 0}
-  isBoss: 0
-  uniqueEffects: []
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &2118124170181763553
 GameObject:
   m_ObjectHideFlags: 0

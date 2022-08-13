@@ -115,7 +115,7 @@ namespace Enemies
         {
             Vector3 v = _target.position - transform.position;
             Vector3 w = turretLocation - transform.position;
-            float multiplier = Vector3.Dot(v, w);
+            float multiplier = Vector3.Dot(v.normalized, w.normalized);
             
             // Actually deal knockback
             float knockback = amount * _enemy.knockbackModifier * multiplier;

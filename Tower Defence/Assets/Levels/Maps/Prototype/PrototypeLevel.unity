@@ -185,6 +185,41 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4077244563226403898, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
   m_PrefabInstance: {fileID: 4077244562611154295}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &262481532
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Custom/Hexagon/Background
+  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _GlowClamp: 0.5
+    - _GlowIntensity: 0.3
+    - _GlowOpacity: 0.25
+    - _HexScale: 6
+    - _Opacity: 0.2
+    - _Overlay: -0.2
+    - _ScrollSpeed: 0.03
+    - _ShiftSpeed: 1.5
+    m_Colors:
+    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!21 &379286939
 Material:
   serializedVersion: 6
@@ -357,41 +392,6 @@ Transform:
   m_Father: {fileID: 2057348010}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &830704192
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Custom/Hexagon/Background
-  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _GlowClamp: 1
-    - _GlowIntensity: 0.5
-    - _GlowOpacity: 0.5
-    - _HexScale: 5
-    - _Opacity: 0.2
-    - _Overlay: 0.15
-    - _ScrollSpeed: 0.03
-    - _ShiftSpeed: 0.75
-    m_Colors:
-    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
-  m_BuildTextureStacks: []
 --- !u!1001 &855740747
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -514,6 +514,76 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7935189852862486158, guid: 20ef5804d1a7b4d538d07d8c94025e14, type: 3}
   m_PrefabInstance: {fileID: 855740747}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &857408542
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Custom/Hexagon/Background
+  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _GlowClamp: 0.5
+    - _GlowIntensity: 0.3
+    - _GlowOpacity: 0.25
+    - _HexScale: 6
+    - _Opacity: 0.2
+    - _Overlay: -0.2
+    - _ScrollSpeed: 0.03
+    - _ShiftSpeed: 1.5
+    m_Colors:
+    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
+--- !u!21 &1165379136
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Custom/Hexagon/Background
+  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _GlowClamp: 0.5
+    - _GlowIntensity: 0.3
+    - _GlowOpacity: 0.25
+    - _HexScale: 1.2
+    - _Opacity: 0.2
+    - _Overlay: -0.2
+    - _ScrollSpeed: 0.15
+    - _ShiftSpeed: 1.5
+    m_Colors:
+    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!114 &1201689247 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4077244561648582632, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
@@ -525,7 +595,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c22f09b80f574907baaea15ddfb2633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!21 &1208675572
+--- !u!1 &1230128732 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4077244561414875947, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
+  m_PrefabInstance: {fileID: 4077244562611154295}
+  m_PrefabAsset: {fileID: 0}
+--- !u!21 &1243980092
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -549,22 +624,17 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _GlowClamp: 1
-    - _GlowIntensity: 0.5
-    - _GlowOpacity: 0.5
-    - _HexScale: 5
+    - _GlowClamp: 0.5
+    - _GlowIntensity: 0.3
+    - _GlowOpacity: 0.25
+    - _HexScale: 1.2
     - _Opacity: 0.2
-    - _Overlay: 0.15
-    - _ScrollSpeed: 0.03
-    - _ShiftSpeed: 0.75
+    - _Overlay: -0.2
+    - _ScrollSpeed: 0.15
+    - _ShiftSpeed: 1.5
     m_Colors:
     - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!1 &1230128732 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4077244561414875947, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
-  m_PrefabInstance: {fileID: 4077244562611154295}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1262650577 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5782079356602982492, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
@@ -576,41 +646,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9fa1751a724547bdb8d3daa1af713bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!21 &1405556943
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Custom/Hexagon/Background
-  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _GlowClamp: 1
-    - _GlowIntensity: 0.5
-    - _GlowOpacity: 0.5
-    - _HexScale: 5
-    - _Opacity: 0.2
-    - _Overlay: 0.15
-    - _ScrollSpeed: 0.03
-    - _ShiftSpeed: 0.75
-    m_Colors:
-    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
-  m_BuildTextureStacks: []
 --- !u!114 &1523963598 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7935189852862486145, guid: 20ef5804d1a7b4d538d07d8c94025e14, type: 3}
@@ -622,7 +657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89744f11922744baab6ff29557d16f75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!21 &1544876772
+--- !u!21 &1739074195
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -646,49 +681,14 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _GlowClamp: 1
-    - _GlowIntensity: 0.5
-    - _GlowOpacity: 0.5
-    - _HexScale: 5
+    - _GlowClamp: 0.5
+    - _GlowIntensity: 0.3
+    - _GlowOpacity: 0.25
+    - _HexScale: 1.2
     - _Opacity: 0.2
-    - _Overlay: 0.15
-    - _ScrollSpeed: 0.03
-    - _ShiftSpeed: 0.75
-    m_Colors:
-    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
-  m_BuildTextureStacks: []
---- !u!21 &1865164829
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Custom/Hexagon/Background
-  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _GlowClamp: 1
-    - _GlowIntensity: 0.5
-    - _GlowOpacity: 0.5
-    - _HexScale: 5
-    - _Opacity: 0.2
-    - _Overlay: 0.15
-    - _ScrollSpeed: 0.03
-    - _ShiftSpeed: 0.75
+    - _Overlay: -0.2
+    - _ScrollSpeed: 0.15
+    - _ShiftSpeed: 1.5
     m_Colors:
     - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
@@ -737,41 +737,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!21 &2050895057
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Custom/Hexagon/Background
-  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _GlowClamp: 1
-    - _GlowIntensity: 0.5
-    - _GlowOpacity: 0.5
-    - _HexScale: 5
-    - _Opacity: 0.2
-    - _Overlay: 0.15
-    - _ScrollSpeed: 0.03
-    - _ShiftSpeed: 0.75
-    m_Colors:
-    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
-  m_BuildTextureStacks: []
 --- !u!1 &2057348009
 GameObject:
   m_ObjectHideFlags: 0
@@ -809,6 +774,41 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4077244561858672952, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
   m_PrefabInstance: {fileID: 4077244562611154295}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &2079268626
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Custom/Hexagon/Background
+  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _GlowClamp: 0.5
+    - _GlowIntensity: 0.3
+    - _GlowOpacity: 0.25
+    - _HexScale: 6
+    - _Opacity: 0.2
+    - _Overlay: -0.2
+    - _ScrollSpeed: 0.03
+    - _ShiftSpeed: 1.5
+    m_Colors:
+    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1001 &4021433441546424637
 PrefabInstance:
   m_ObjectHideFlags: 0
