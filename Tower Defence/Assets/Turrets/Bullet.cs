@@ -157,9 +157,9 @@ return;
 
             if (em == null) return;
 
-            if (knockbackAmount.GetStat() != 0)
+            if (knockbackAmount.GetTrueStat() != 0)
             {
-                em.GetComponent<EnemyMovement>().TakeKnockback(knockbackAmount.GetStat(), _source.transform.position);
+                em.GetComponent<EnemyMovement>().TakeKnockback(knockbackAmount.GetTrueStat(), _source.transform.position);
             }
 
             em.TakeDamage(damage.GetStat(), gameObject);
@@ -207,6 +207,7 @@ return;
         {
             if (!isEtheral) return;
             
+            Debug.Log("Hitting enemy!");
             if (col.transform.CompareTag("Enemy"))
                 Damage(col.gameObject.GetComponent<Enemy>());
         }

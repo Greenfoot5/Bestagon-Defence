@@ -42,6 +42,13 @@ namespace Enemies
         /// </summary>
         private void Update()
         {
+            // If the enemy is moving backwards
+            if (_enemy.speed.GetTrueStat() < 0)
+            {
+                MoveBackwards();
+                return;
+            }
+            
             // Get the direction and move in that direction
             Vector3 dir = _target.position - transform.position;
             transform.Translate(dir.normalized * (_enemy.speed.GetStat() * Time.deltaTime), Space.World);
@@ -72,6 +79,29 @@ namespace Enemies
             mapProgress = _waypointIndex;
             _maxDistance = Vector3.Distance(transform.position, _target.position);
         }
+
+        private void MoveBackwards()
+        {
+            // Get the direction and move in that direction
+            Vector3 dir = Waypoints.points[_waypointIndex - 1].position - transform.position;
+            transform.Translate(dir.normalized * (Mathf.Abs(_enemy.speed.GetTrueStat()) * Time.deltaTime), Space.World);
+            mapProgress = _waypointIndex - (distanceToWaypoint / _maxDistance);
+        
+            // If the enemy hasn't reached the previous waypoint, there's no point knocking it back further
+            if (!(Vector3.Distance(transform.position, Waypoints.points[_waypointIndex - 1].position) <= distanceToWaypoint)) return;
+            
+            // If the enemy has reached the end, destroy
+            if (_waypointIndex - 1 < 0)
+            {
+                return;
+            }
+
+            // Get the next waypoint
+            _waypointIndex--;
+            _target = Waypoints.points[_waypointIndex];
+            mapProgress = _waypointIndex;
+            _maxDistance = Vector3.Distance(Waypoints.points[_waypointIndex + 1].position, _target.position);
+        }
     
         /// <summary>
         /// Called when the enemy reach the final waypoint
@@ -95,9 +125,9 @@ namespace Enemies
 
         private IEnumerator DealKnockback(float speedMultiplier)
         {
-            Debug.Log("Added Knockback");
+            Debug.Log("Added Knockback: " + speedMultiplier);
             _enemy.speed.MultiplyModifier(speedMultiplier);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.2f);
             _enemy.speed.DivideModifier(speedMultiplier);
         }
     }

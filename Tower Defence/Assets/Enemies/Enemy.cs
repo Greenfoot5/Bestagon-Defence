@@ -282,7 +282,7 @@ namespace Enemies
                 return;
             _isDead = true;
             
-            // Only do the abilities if the enemy is stunned
+            // Only do the abilities if the enemy isn't stunned
             if (speed.GetStat() > 0)
                 ActivateAbilities(_deathAbilities, source);
 
