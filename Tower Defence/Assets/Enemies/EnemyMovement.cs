@@ -20,6 +20,9 @@ namespace Enemies
         [SerializeField] 
         [Tooltip("The distance from enemy to waypoint before it's considered reached")]
         private float distanceToWaypoint = 0.05f;
+        [SerializeField]
+        [Tooltip("The duration of knockback")]
+        private float knockbackDuration = 0.2f;
         
         [Tooltip("How many waypoints the enemy has passed, and the percentage to the next one")]
         public float mapProgress;
@@ -79,7 +82,10 @@ namespace Enemies
             mapProgress = _waypointIndex;
             _maxDistance = Vector3.Distance(transform.position, _target.position);
         }
-
+        
+        /// <summary>
+        /// Moves the enemy backwards along the path.
+        /// </summary>
         private void MoveBackwards()
         {
             // Get the direction and move in that direction
@@ -110,7 +116,12 @@ namespace Enemies
         {
             _enemy.FinishPath();
         }
-
+        
+        /// <summary>
+        /// Called when a turret wants to deal knockback to an enemy
+        /// </summary>
+        /// <param name="amount">The amount of knockback to deal</param>
+        /// <param name="turretLocation">The location of the turret</param>
         public void TakeKnockback(float amount, Vector3 turretLocation)
         {
             Vector3 v = _target.position - transform.position;
@@ -118,16 +129,22 @@ namespace Enemies
             float multiplier = Vector3.Dot(v.normalized, w.normalized);
             
             // Actually deal knockback
-            float knockback = amount * _enemy.knockbackModifier * multiplier;
+            // Multiply by -1 to knock backwards
+            float knockback = amount * _enemy.knockbackModifier * multiplier * -1;
 
             StartCoroutine(DealKnockback(knockback));
         }
-
+        
+        /// <summary>
+        /// Applies a temporary knockback effect to the enemy
+        /// </summary>
+        /// <param name="speedMultiplier">The temporary multiplier applied to speed to simulate knockback</param>
+        /// <returns></returns>
         private IEnumerator DealKnockback(float speedMultiplier)
         {
             Debug.Log("Added Knockback: " + speedMultiplier);
             _enemy.speed.MultiplyModifier(speedMultiplier);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(knockbackDuration);
             _enemy.speed.DivideModifier(speedMultiplier);
         }
     }

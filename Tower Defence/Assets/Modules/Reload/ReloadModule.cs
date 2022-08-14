@@ -2,6 +2,10 @@ using System;
 using System.Collections.Generic;
 using Enemies;
 using Turrets;
+using Turrets.Gunner;
+using Turrets.Lancer;
+using Turrets.Shooter;
+using Turrets.Smasher;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -13,7 +17,7 @@ namespace Modules.Reload
     [CreateAssetMenu(fileName = "ReloadT0", menuName = "Modules/Reload")]
     public class ReloadModule : Module
     {
-        protected override Type[] ValidTypes => null;
+        protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Smasher), typeof(Gunner), typeof(Lancer) };
         
         [Tooltip("Percentage chance to deal attack again")]
         [SerializeField]

@@ -5,6 +5,8 @@ using System.Linq;
 using Enemies;
 using Turrets;
 using Turrets.Gunner;
+using Turrets.Lancer;
+using Turrets.Laser;
 using Turrets.Shooter;
 using UnityEngine;
 
@@ -16,7 +18,7 @@ namespace Modules.Execute
     [CreateAssetMenu(fileName = "ExecuteT0", menuName = "Modules/Execute")]
     public class ExecuteModule : Module
     {
-        protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Gunner) };
+        protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Gunner), typeof(Lancer) };
         
         [Tooltip("The maximum percentage of health the enemy can have before they get executed")]
         [SerializeField]

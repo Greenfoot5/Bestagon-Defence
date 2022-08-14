@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Abstract.Data;
 using Enemies;
 using Modules;
 using UnityEngine;
@@ -23,6 +24,9 @@ namespace Turrets.Lancer
         private Transform _target;
         [Tooltip("The Enemy script of the current target")]
         private Enemy _targetEnemy;
+
+        [Tooltip("How far the bullet will travel")]
+        public UpgradableStat bulletRange;
         
         // Reference
         [Tooltip("The transform at which attack from (e.g. instantiate bullets)")]
@@ -55,14 +59,11 @@ namespace Turrets.Lancer
         }
         
         /// <summary>
-        /// Check the turret is currently looking at our target.
-        /// Used to see if the turret can shoot or needs to rotate more
+        /// Check if there is an enemy in range
         /// </summary>
         /// <returns>If the turret is currently looking at the target</returns>
         private bool HasATarget()
         {
-            //if (_targetEnemy == null) return false;
-
             // Setup the raycast
             var results = new List<RaycastHit2D>();
             var contactFilter = new ContactFilter2D()
@@ -123,7 +124,7 @@ namespace Turrets.Lancer
             }
             
             // Get the end point of the line renderer
-            Vector3 direction = (firePoint.up * range.GetStat());
+            Vector3 direction = (firePoint.up * bulletRange.GetStat());
             Vector3 endPosition = (direction + transform.position);
             
             bullet.Seek(endPosition, this);

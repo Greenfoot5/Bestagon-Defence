@@ -254,5 +254,8 @@ MonoBehaviour:
   fireCountdown: 0
   modules: []
   bulletPrefab: {fileID: 8554329261332597528, guid: c304e75bdf8b948d8937d7b591b1edc5, type: 3}
+  bulletRange:
+    stat: 2
+    modifier: 1
   firePoint: {fileID: 5009289029243488887}
   partToRotate: {fileID: 367774791884787270}

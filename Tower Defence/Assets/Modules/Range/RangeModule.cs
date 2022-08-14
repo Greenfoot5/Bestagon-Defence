@@ -1,5 +1,6 @@
 using System;
 using Turrets;
+using Turrets.Lancer;
 using UnityEngine;
 
 namespace Modules.Range
@@ -23,6 +24,10 @@ namespace Modules.Range
         public override void AddModule(Turret turret)
         {
             turret.range.AddModifier(percentageChange);
+            if (turret.GetType() == typeof(Lancer))
+            {
+                ((Lancer) turret).bulletRange.AddModifier(percentageChange);
+            }
         }
         
         /// <summary>

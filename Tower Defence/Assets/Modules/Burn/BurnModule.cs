@@ -6,6 +6,8 @@ using Abstract;
 using Enemies;
 using Turrets;
 using Turrets.Gunner;
+using Turrets.Lancer;
+using Turrets.Laser;
 using Turrets.Shooter;
 using Turrets.Smasher;
 using UnityEngine;
@@ -19,7 +21,7 @@ namespace Modules.Burn
     [CreateAssetMenu(fileName = "BurnT0", menuName = "Modules/Burn")]
     public class BurnModule : Module
     {
-        protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Smasher), typeof(Gunner) };
+        protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Smasher), typeof(Gunner), typeof(Lancer) };
 
         [SerializeField]
         [Tooltip("The percentage damage to deal to an enemy every tick")]

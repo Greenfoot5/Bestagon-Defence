@@ -3,6 +3,7 @@ using Abstract.Data;
 using Enemies;
 using Modules;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Turrets
 {
@@ -15,10 +16,10 @@ namespace Turrets
         private Transform _target;
         private Vector3 _targetLocation;
 
+        [FormerlySerializedAs("isEtheral")]
         [Header("Types")]
         [Tooltip("Hits all enemies on path, but does not destroy itself")]
-        [SerializeField]
-        private bool isEtheral;
+        public bool isEthereal;
         
         [Header("Stats")]
         [Tooltip("The speed of the bullet")]
@@ -205,9 +206,12 @@ return;
 
         private void OnTriggerEnter2D(Collider2D col)
         {
-            if (!isEtheral) return;
-            
-            Debug.Log("Hitting enemy!");
+            if (!isEthereal) return;
+
+            // We don't want to hit the target twice
+            if (_target != null && _target == col.transform) return;
+
+                Debug.Log("Hitting enemy!");
             if (col.transform.CompareTag("Enemy"))
                 Damage(col.gameObject.GetComponent<Enemy>());
         }

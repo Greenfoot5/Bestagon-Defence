@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Enemies;
 using Turrets;
 using Turrets.Gunner;
+using Turrets.Lancer;
 using Turrets.Shooter;
 using Turrets.Smasher;
 using UnityEngine;
@@ -17,7 +18,7 @@ namespace Modules.Instakill
     [CreateAssetMenu(fileName = "InstakillT0", menuName = "Modules/Instakill")]
     public class InstakillModule : Module
     {
-        protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Smasher), typeof(Gunner) };
+        protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Smasher), typeof(Gunner), typeof(Lancer) };
         
         [FormerlySerializedAs("percentageChange")]
         [Tooltip("The percentage chance to kill the enemy")]

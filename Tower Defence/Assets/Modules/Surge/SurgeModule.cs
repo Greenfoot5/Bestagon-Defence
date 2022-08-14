@@ -4,6 +4,7 @@ using System.Linq;
 using Abstract;
 using Turrets;
 using Turrets.Gunner;
+using Turrets.Lancer;
 using Turrets.Shooter;
 using Turrets.Smasher;
 using UI.Nodes;
@@ -12,13 +13,12 @@ using UnityEngine;
 namespace Modules.Surge
 {
     /// <summary>
-    /// Extends the Module class to create a DebuffEnemy upgrade,
-    /// Used to add effects to enemies
+    /// Grants a temporary fire rate increase to a turret
     /// </summary>
     [CreateAssetMenu(fileName = "SurgeT0", menuName = "Modules/Surge")]
     public class SurgeModule : Module
     {
-        protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Smasher), typeof(Gunner) };
+        protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Smasher), typeof(Gunner), typeof(Lancer) };
         
         [SerializeField]
         [Tooltip("The damage to deal to an enemy every tick")]

@@ -5,6 +5,7 @@ using Abstract;
 using Enemies;
 using Turrets;
 using Turrets.Gunner;
+using Turrets.Lancer;
 using Turrets.Shooter;
 using Turrets.Smasher;
 using UnityEngine;
@@ -18,7 +19,7 @@ namespace Modules.Poison
     [CreateAssetMenu(fileName = "PoisonT0", menuName = "Modules/Poison")]
     public class PoisonModule : Module
     {
-        protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Smasher), typeof(Gunner) };
+        protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Smasher), typeof(Gunner), typeof(Lancer) };
         
         [SerializeField]
         [Tooltip("The damage to deal to an enemy every tick")]

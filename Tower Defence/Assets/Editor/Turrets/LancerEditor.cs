@@ -13,6 +13,8 @@ namespace Editor.Turrets
         
         private SerializedProperty _bulletPrefab;
         
+        private SerializedProperty _bulletRange;
+        
         protected new void OnEnable()
         {
             base.OnEnable();
@@ -20,6 +22,7 @@ namespace Editor.Turrets
             _partToRotate = serializedObject.FindProperty("partToRotate");
             _firePoint = serializedObject.FindProperty("firePoint");
             _bulletPrefab = serializedObject.FindProperty("bulletPrefab");
+            _bulletRange = serializedObject.FindProperty("bulletRange");
         }
 
         public override void OnInspectorGUI()
@@ -42,6 +45,10 @@ namespace Editor.Turrets
             EditorGUILayout.LabelField("Lancer", EditorStyles.boldLabel);
 
             EditorGUILayout.PropertyField(_bulletPrefab);
+            
+            EditorGUILayout.Space();
+
+            EditorGUILayout.PropertyField(_bulletRange);
 
             serializedObject.ApplyModifiedProperties();
         }
