@@ -236,7 +236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startSpeed: 4
   maxHealth: 100
-  knockbackModifier: 1
+  knockbackModifier: 1.25
   speed:
     stat: 0
     modifier: 0
@@ -266,6 +266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceToWaypoint: 0.05
+  knockbackDuration: 0.2
   mapProgress: 0
 --- !u!58 &-6803694265742944117
 CircleCollider2D:

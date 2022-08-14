@@ -175,7 +175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startSpeed: 1.5
   maxHealth: 850
-  knockbackModifier: 1
+  knockbackModifier: 0.6
   speed:
     stat: 0
     modifier: 0
@@ -203,6 +203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceToWaypoint: 0.05
+  knockbackDuration: 0.2
   mapProgress: 0
 --- !u!114 &6401496769337086624
 MonoBehaviour:

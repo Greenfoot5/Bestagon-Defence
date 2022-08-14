@@ -412,7 +412,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startSpeed: 1
   maxHealth: 2500
-  knockbackModifier: 1
+  knockbackModifier: 0.4
   speed:
     stat: 2
     modifier: 0
@@ -442,6 +442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceToWaypoint: 0.05
+  knockbackDuration: 0.2
   mapProgress: 0
 --- !u!50 &-3244531046772879823
 Rigidbody2D:
