@@ -23,9 +23,10 @@ MonoBehaviour:
     by 7%
 
     Fire rate increased by 7%'
-  bulletSpeedChange: 0.3
   rangeChange: 0.07
   fireRateChange: 0.07
+  bulletSpeedChange: 0.3
   smasherDamageChange: 0.1
   smasherRangeChange: 0.1
   smasherFireRateChange: 0.1
+  lancerBulletRangeChange: 0.1
