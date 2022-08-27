@@ -1,9 +1,7 @@
-using System.Collections;
+using Abstract;
 using TMPro;
 using UI.Transition;
-using UI.Transitions;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Levels.Generic.MainMenu
 {

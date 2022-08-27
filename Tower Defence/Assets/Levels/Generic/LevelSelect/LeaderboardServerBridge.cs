@@ -6,6 +6,7 @@ using System.Runtime.Serialization.Json;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Abstract;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -97,7 +98,7 @@ namespace Levels.Generic.LevelSelect
         /// <returns></returns>
         public Task<bool> SendPlayerValue(string username, int value, string leaderboardID, string leaderboardSecret)
         {
-            return SendPlayerValue(username, (IConvertible)value, leaderboardID, leaderboardSecret);
+            return !RemoteConfig.IsValidVersion() ? null : SendPlayerValue(username, (IConvertible)value, leaderboardID, leaderboardSecret);
         }
     
         /// <summary>
@@ -110,7 +111,7 @@ namespace Levels.Generic.LevelSelect
         /// <returns></returns>
         public Task<bool> SendPlayerValue(string username, float value, string leaderboardID, string leaderboardSecret)
         {
-            return SendPlayerValue(username, (IConvertible)value, leaderboardID, leaderboardSecret);
+            return !RemoteConfig.IsValidVersion() ? null : SendPlayerValue(username, (IConvertible)value, leaderboardID, leaderboardSecret);
         }
 
         /// <summary>
@@ -123,7 +124,7 @@ namespace Levels.Generic.LevelSelect
         /// <returns></returns>
         public Task<bool> SendPlayerValue(string username, double value, string leaderboardID, string leaderboardSecret)
         {
-            return SendPlayerValue(username, (IConvertible)value, leaderboardID, leaderboardSecret);
+            return !RemoteConfig.IsValidVersion() ? null : SendPlayerValue(username, (IConvertible)value, leaderboardID, leaderboardSecret);
         }
 
         /// <summary>

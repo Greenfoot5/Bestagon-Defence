@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 469c24fdb3bd6431b92cc1465bd9166b, type: 3}
+  m_Name: RemoteConfigDataStoreAsset
+  m_EditorClassIdentifier: 
+  _rsKeyList: "[\n  {\n    \"metadata\": {\n      \"entityId\": \"471fe49a-6688-4e79-9853-fcf83f33cb32\"\n   
+    },\n    \"rs\": {\n      \"key\": \"ForcedVersion\",\n      \"type\": \"json\",\n     
+    \"schemaId\": null,\n      \"value\": {\n        \"major\": 2,\n        \"minor\":
+    1,\n        \"patch\": 12\n      }\n    }\n  },\n  {\n    \"metadata\": {\n     
+    \"entityId\": \"c7857f30-e98c-455d-9315-60b504879111\"\n    },\n    \"rs\": {\n     
+    \"key\": \"test\",\n      \"type\": \"int\",\n      \"value\": 5\n    }\n  }\n]"
+  _rsLastCachedKeyList: "[\n  {\n    \"metadata\": {\n      \"entityId\": \"471fe49a-6688-4e79-9853-fcf83f33cb32\"\n   
+    },\n    \"rs\": {\n      \"key\": \"ForcedVersion\",\n      \"type\": \"json\",\n     
+    \"schemaId\": null,\n      \"value\": {\n        \"major\": 2,\n        \"minor\":
+    1,\n        \"patch\": 12\n      }\n    }\n  },\n  {\n    \"metadata\": {\n     
+    \"entityId\": \"c7857f30-e98c-455d-9315-60b504879111\"\n    },\n    \"rs\": {\n     
+    \"key\": \"test\",\n      \"type\": \"int\",\n      \"value\": 5\n    }\n  }\n]"
+  _environments: "[\n  {\n    \"projectId\": \"77e9ee4b-9a44-4688-be6c-34db1fb00724\",\n   
+    \"name\": \"alpha\",\n    \"id\": \"9991561f-c455-4f3c-8da1-830509d49ad0\",\n   
+    \"isDefault\": false,\n    \"createdAt\": \"2022-08-25T19:29:33Z\",\n    \"updatedAt\":
+    \"2022-08-25T19:29:33Z\"\n  },\n  {\n    \"projectId\": \"77e9ee4b-9a44-4688-be6c-34db1fb00724\",\n   
+    \"name\": \"production\",\n    \"id\": \"8e1cb9b6-0872-4cae-8e26-72e9a0caf772\",\n   
+    \"isDefault\": true,\n    \"createdAt\": \"2022-08-25T19:10:17Z\",\n    \"updatedAt\":
+    \"2022-08-25T19:10:17Z\"\n  }\n]"

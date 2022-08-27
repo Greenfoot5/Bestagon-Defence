@@ -38,12 +38,9 @@ namespace Levels.Generic.MainMenu
         /// <summary>
         /// Checks if the player has a username saved, and if not, forces them to input one
         /// </summary>
-        private void Start()
+        public static bool HasUsername()
         {
-            if (PlayerPrefs.GetString("Username") != "")
-            {
-                gameObject.SetActive(false);
-            }
+            return PlayerPrefs.GetString("Username") != "";
         }
     }
 }

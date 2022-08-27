@@ -10,11 +10,11 @@ namespace UI
     public class VersionText : MonoBehaviour
     {
         private static bool _exists;
-        
+
         /// <summary>
         /// Generates the VersionText and displays it for the player
         /// </summary>
-        private void Start()
+        private void Awake()
         {
             if (_exists)
                 Destroy(gameObject);
