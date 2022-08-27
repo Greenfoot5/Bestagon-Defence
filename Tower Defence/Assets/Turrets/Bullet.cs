@@ -15,6 +15,7 @@ namespace Turrets
         private Turret _source;
         private Transform _target;
         private Vector3 _targetLocation;
+        private bool _useLocation;
 
         [FormerlySerializedAs("isEtheral")]
         [Header("Types")]
@@ -46,7 +47,7 @@ namespace Turrets
         {
             _target = newTarget;
             _source = turret;
-            _targetLocation = Vector3.negativeInfinity;
+            _useLocation = false;
         }
         
         /// <summary>
@@ -58,6 +59,7 @@ namespace Turrets
         {
             _targetLocation = location;
             _source = turret;
+            _useLocation = true;
         }
 
         /// <summary>
@@ -66,17 +68,17 @@ namespace Turrets
         private void Update()
         {
             // Check the bullet still have a target to move towards
-            if (_target == null && _targetLocation == Vector3.negativeInfinity)
+            if (_target == null && !_useLocation)
             {
                 Destroy(gameObject);
             }
-            else if (_targetLocation == Vector3.negativeInfinity)
+            else if (_useLocation)
             {
-                SeekTarget(_target.position, true);
+                SeekTarget(_targetLocation, false);
             }
             else
             {
-                SeekTarget(_targetLocation, false);
+                SeekTarget(_target.position, true);
             }
         }
 
@@ -92,8 +94,8 @@ namespace Turrets
             // Has the bullet "hit" the target?
             if (difference.sqrMagnitude <= targetSize * targetSize)
             {
-                HitTarget(isEnemy);
-return;
+                HitTarget(isEnemy); 
+                return;
             }
 
             // Calculate movement of the bullet

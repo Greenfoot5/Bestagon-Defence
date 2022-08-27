@@ -197,15 +197,15 @@ namespace Enemies
                 if (speed.GetStat() <= 0)
                     continue;
                 
-                ActivateAbilities(new[] { ability}, null);
+                ActivateAbilities(new[] {ability}, null);
                 
                 // Decrease the counter
                 counter -= 1;
                 if (counter != 0) continue;
                 
+                EndCounterAbility(ability, null);
                 // Remove the ability
                 RevokeAbility(ability);
-                EndCounterAbility(ability, null);
                 yield break;
                 
             }
@@ -375,7 +375,6 @@ namespace Enemies
             // Spawn ability effect
             GameObject effect = Instantiate(ability.abilityEffect, transform.position, Quaternion.identity);
             effect.name = "_" + effect.name;
-            Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
             switch (ability.targetingType)
             {
                 case AbilityTarget.Single:
@@ -408,6 +407,8 @@ namespace Enemies
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+
+            Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
         }
     }
 }

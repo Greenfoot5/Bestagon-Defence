@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7569071462628360905}
   - component: {fileID: -8617616388173602919}
   - component: {fileID: 1837585327}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Node_Buildable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,15 +97,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverColour: {r: 0.7, g: 0.7, b: 0.7, a: 1}
-  cantAffordColour: {r: 0.83137256, g: 0.11764706, b: 0.23529412, a: 1}
+  invalidColour: {r: 0.83137256, g: 0.11764706, b: 0.23529412, a: 1}
   turret: {fileID: 0}
-  turretBlueprint:
-    prefab: {fileID: 0}
-    cost: 0
-    ModuledPrefab: {fileID: 0}
-    ModuleCost: 0
-    sellReduction: 0.5
-  isModuled: 0
+  turretBlueprint: {fileID: 0}
 --- !u!60 &1837585327
 PolygonCollider2D:
   m_ObjectHideFlags: 0
