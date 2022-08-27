@@ -110,8 +110,8 @@ namespace Levels.Generic.LevelSelect
                 {
                     GameObject leaderboardItem = Instantiate(leaderboardEntry, leaderboardContent);
                     leaderboardItem.name = "_" + leaderboardItem.name;
-                    leaderboardItem.transform.Find("UsernameBackground").GetComponentInChildren<TMP_Text>().text = entry.name;
-                    leaderboardItem.transform.Find("ScoreBackground").GetComponentInChildren<TMP_Text>().text = entry.GetValueAsString();
+                    leaderboardItem.transform.GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = entry.name;
+                    leaderboardItem.transform.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = entry.GetValueAsString();
                 }
                 
                 // Display the player's high score
