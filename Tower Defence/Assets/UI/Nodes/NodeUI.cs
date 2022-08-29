@@ -3,6 +3,7 @@ using Levels._Nodes;
 using Modules;
 using TMPro;
 using Turrets;
+using Turrets.Lancer;
 using UI.Modules;
 using UnityEngine;
 using UnityEngine.UI;
@@ -37,12 +38,16 @@ namespace UI.Nodes
         [SerializeField]
         private TMP_Text stats;
         
+        [Header("Buttons")]
         [Tooltip("The button that changes the targeting method of the turret")]
         [SerializeField]
         private GameObject cycleTargetingButton;
         [Tooltip("The text on the button that sells the turret")]
         [SerializeField]
         private TMP_Text sellButtonText;
+        [Tooltip("The button that rotates the Lancer turret")]
+        [SerializeField]
+        private GameObject lancerRotateButton;
         
         /// <summary>
         /// Check there is only one NodeUI when loading in
@@ -102,6 +107,9 @@ namespace UI.Nodes
             else
             {
                 cycleTargetingButton.SetActive(false);
+                
+                // Enable/Disable the lancer rotate button
+                lancerRotateButton.SetActive(_target.turret.GetComponent<Turret>() is Lancer);
             }
             
             sellButtonText.text = "<b>Sell:</b>\n" + shop.GetSellAmount() + " <sprite=\"UI-Gold\" name=\"gold\">";
@@ -177,6 +185,13 @@ namespace UI.Nodes
         public void SellTurret()
         {
             _target.SellTurret(shop.GetSellAmount());
+        }
+
+        public void Rotate60()
+        {
+            Debug.Log("Rotating");
+            Vector3 rotation = _target.turret.transform.rotation.eulerAngles;
+            _target.turret.transform.Rotate(rotation.x, rotation.y, rotation.z - 60);
         }
     }
 }
