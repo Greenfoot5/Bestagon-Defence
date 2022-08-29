@@ -16,6 +16,10 @@ namespace Gameplay
         
         [Tooltip("The UI to display when the player loses")]
         public GameObject gameOverUI;
+
+        [Tooltip("The UI that displays the shop")]
+        [SerializeField]
+        private GameObject shop;
         
         [Tooltip("The levelData to use for the current level")]
         public LevelData levelData;
@@ -61,6 +65,7 @@ namespace Gameplay
             isGameOver = true;
         
             gameOverUI.SetActive(true);
+            shop.SetActive(false);
         
             // Tell our leaderboard API to add the player
             string leaderboardData =

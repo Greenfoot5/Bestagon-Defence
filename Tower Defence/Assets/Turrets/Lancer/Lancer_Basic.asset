@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d437c567020b4f2599bfd79f544c3bc, type: 3}
   m_Name: Lancer_Basic
   m_EditorClassIdentifier: 
-  shopIcon: {fileID: 21300000, guid: 05330e515f4984a51b06b5b7629637bc, type: 3}
+  shopIcon: {fileID: 21300000, guid: 1107d216d6dc84ddda3609fcbbadc09f, type: 3}
   displayName: Lancer
   tagline: Shoo!
   accent: {r: 0.28235295, g: 0.34901962, b: 0.8941177, a: 1}
