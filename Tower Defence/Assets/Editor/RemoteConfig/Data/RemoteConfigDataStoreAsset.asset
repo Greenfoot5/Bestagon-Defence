@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469c24fdb3bd6431b92cc1465bd9166b, type: 3}
   m_Name: RemoteConfigDataStoreAsset
   m_EditorClassIdentifier: 
-  _rsKeyList: "[\n  {\n    \"metadata\": {\n      \"entityId\": \"990dc822-e95a-4423-a21d-623a742d1056\"\n   
+  _rsKeyList: "[\n  {\n    \"metadata\": {\n      \"entityId\": \"b09f041d-12d6-43e8-b538-31f30c31c3d0\"\n   
     },\n    \"rs\": {\n      \"key\": \"ForcedVersion\",\n      \"type\": \"json\",\n     
-    \"schemaId\": null,\n      \"value\": {\n        \"major\": 2,\n        \"minor\":
-    1,\n        \"patch\": 12\n      }\n    }\n  },\n  {\n    \"metadata\": {\n     
-    \"entityId\": \"11128a71-5460-4f8d-8e86-9282c1fd4a61\"\n    },\n    \"rs\": {\n     
+    \"schemaId\": null,\n      \"value\": {\n        \"major\": 1,\n        \"minor\":
+    1,\n        \"patch\": 9\n      }\n    }\n  },\n  {\n    \"metadata\": {\n     
+    \"entityId\": \"3249e786-0c2d-48a7-bf00-2942a1a9d3db\"\n    },\n    \"rs\": {\n     
     \"key\": \"test\",\n      \"type\": \"int\",\n      \"value\": 5\n    }\n  }\n]"
-  _rsLastCachedKeyList: "[\n  {\n    \"metadata\": {\n      \"entityId\": \"990dc822-e95a-4423-a21d-623a742d1056\"\n   
+  _rsLastCachedKeyList: "[\n  {\n    \"metadata\": {\n      \"entityId\": \"b09f041d-12d6-43e8-b538-31f30c31c3d0\"\n   
     },\n    \"rs\": {\n      \"key\": \"ForcedVersion\",\n      \"type\": \"json\",\n     
-    \"schemaId\": null,\n      \"value\": {\n        \"major\": 2,\n        \"minor\":
-    1,\n        \"patch\": 12\n      }\n    }\n  },\n  {\n    \"metadata\": {\n     
-    \"entityId\": \"11128a71-5460-4f8d-8e86-9282c1fd4a61\"\n    },\n    \"rs\": {\n     
+    \"schemaId\": null,\n      \"value\": {\n        \"major\": 1,\n        \"minor\":
+    1,\n        \"patch\": 9\n      }\n    }\n  },\n  {\n    \"metadata\": {\n     
+    \"entityId\": \"3249e786-0c2d-48a7-bf00-2942a1a9d3db\"\n    },\n    \"rs\": {\n     
     \"key\": \"test\",\n      \"type\": \"int\",\n      \"value\": 5\n    }\n  }\n]"
   _environments: "[\n  {\n    \"projectId\": \"77e9ee4b-9a44-4688-be6c-34db1fb00724\",\n   
     \"name\": \"alpha\",\n    \"id\": \"9991561f-c455-4f3c-8da1-830509d49ad0\",\n   

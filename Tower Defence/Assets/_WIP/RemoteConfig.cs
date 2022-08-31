@@ -9,15 +9,11 @@ using Unity.Services.Core;
 using Unity.Services.RemoteConfig;
 using UnityEngine;
 
-namespace Abstract
+namespace _WIP
 {
     public class RemoteConfig : MonoBehaviour
     {
-        private static readonly BestagonVersion Version = new BestagonVersion(1, 1, 11);
-
-        public RemoteConfig()
-        {
-        }
+        private static readonly BestagonVersion Version = new BestagonVersion(1, 1, 10);
 
         private static async Task InitializeRemoteConfigAsync()
         {
@@ -101,9 +97,7 @@ namespace Abstract
         {
             RemoteConfigService.Instance.FetchConfigs(new UserAttributes(), new AppAttributes());
             string forcedVersion = RemoteConfigService.Instance.appConfig.GetJson("ForcedVersion");
-            Debug.Log(forcedVersion);
             var version = DeserializeJson<BestagonVersion>(forcedVersion);
-            Debug.Log(version.patch);
             return version;
         }
 
@@ -144,12 +138,18 @@ namespace Abstract
             this.major = major;
             this.minor = minor;
             this.patch = patch;
-            Debug.Log(major + "." + minor + "." + patch);
         }
 
         public bool IsValidVersion(BestagonVersion comparison)
         {
-            return major >= comparison.major && minor >= comparison.minor && patch >= comparison.patch;
+            Debug.Log("comp = " + comparison);
+            Debug.Log(ToString());
+            return !(major > comparison.major || minor > comparison.minor || patch > comparison.patch);
+        }
+
+        public override string ToString()
+        {
+            return major + "." + minor + "." + patch;
         }
     }
 }

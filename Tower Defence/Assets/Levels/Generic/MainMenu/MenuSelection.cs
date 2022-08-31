@@ -1,4 +1,4 @@
-using Abstract;
+using _WIP;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -6,28 +6,55 @@ namespace Levels.Generic.MainMenu
 {
     public class MenuSelection : MonoBehaviour
     {
-        [FormerlySerializedAs("UI")]
-        [Tooltip("@UI, or the UI that controls scaling and position")]
+        [Tooltip("The camera for the main menu")]
         [SerializeField]
-        private RectTransform ui;
+        private GameObject menuCanvas;
+        [Tooltip("The camera for the login menu")]
+        [SerializeField]
+        private GameObject loginCanvas;
+        [Tooltip("The camera for the update menu")]
+        [SerializeField]
+        private GameObject updateCanvas;
 
         // Start is called before the first frame update
         private void Start()
         {
             if (!RemoteConfig.IsValidVersion())
             {
-                transform.position = new Vector3(0, ui.rect.height * ui.localScale.y, 0);
+                menuCanvas.SetActive(false);
+                loginCanvas.SetActive(false);
+                updateCanvas.SetActive(true);
+                Debug.Log("Outdated");
             }
             else if (!SetUsername.HasUsername())
             {
-                transform.position = new Vector3(ui.rect.width * ui.localScale.x, 0, 0);
+                menuCanvas.SetActive(false);
+                loginCanvas.SetActive(true);
+                updateCanvas.SetActive(false);
+                Debug.Log("No Username!r");
+            }
+            else
+            {
+                menuCanvas.SetActive(true);
+                loginCanvas.SetActive(false);
+                updateCanvas.SetActive(false);
             }
         }
 
         public void ContinueWithoutUpdating()
         {
-            transform.position = !SetUsername.HasUsername() ? new Vector3(ui.rect.width * ui.localScale.x, 0, 0) : Vector3.zero;
-            RemoteConfig.IsValidVersion();
+            if (!SetUsername.HasUsername())
+            {
+                menuCanvas.SetActive(false);
+                loginCanvas.SetActive(true);
+                updateCanvas.SetActive(false);
+            }
+            else
+            {
+                menuCanvas.SetActive(true);
+                loginCanvas.SetActive(false);
+                updateCanvas.SetActive(false);
+            }
         }
         
         public void GetUpdate()

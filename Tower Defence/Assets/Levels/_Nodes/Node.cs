@@ -16,11 +16,11 @@ namespace Levels._Nodes
         [Tooltip("The colour to set the node when it's being hovered over and the player is trying to build something")]
         public Color hoverColour;
         [Tooltip("The colour to set the node if the placement is invalid")]
-        [FormerlySerializedAs("cantAffordColour")] public Color invalidColour;
+        public Color invalidColour;
         private Color _defaultColour;
         
         // Turret info
-        [HideInInspector]
+        //[HideInInspector]
         public GameObject turret;
         [HideInInspector]
         public TurretBlueprint turretBlueprint;
