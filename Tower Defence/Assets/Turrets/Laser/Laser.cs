@@ -56,7 +56,6 @@ namespace Turrets.Laser
         // TODO - Animate the laser slightly (make it pulse)
         protected override void Attack()
         {
-            
             Vector3 triangleCentre = transform.position;
             
             // Get the end point of the line renderer

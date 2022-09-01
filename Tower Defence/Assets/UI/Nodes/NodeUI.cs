@@ -107,10 +107,10 @@ namespace UI.Nodes
             else
             {
                 cycleTargetingButton.SetActive(false);
-                
-                // Enable/Disable the lancer rotate button
-                lancerRotateButton.SetActive(_target.turret.GetComponent<Turret>() is Lancer);
             }
+            
+            // Enable/Disable the lancer rotate button
+            lancerRotateButton.SetActive(_target.turret.GetComponent<Turret>() is Lancer);
             
             sellButtonText.text = "<b>Sell:</b>\n" + shop.GetSellAmount() + " <sprite=\"UI-Gold\" name=\"gold\">";
             
@@ -191,7 +191,7 @@ namespace UI.Nodes
         {
             Debug.Log("Rotating");
             Vector3 rotation = _target.turret.transform.rotation.eulerAngles;
-            _target.turret.transform.Rotate(rotation.x, rotation.y, rotation.z - 60);
+            _target.turret.transform.Rotate(0, 0, 60);
         }
     }
 }
