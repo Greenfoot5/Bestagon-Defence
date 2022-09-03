@@ -425,6 +425,8 @@ MonoBehaviour:
   deathEffect: {fileID: 710779272522642178, guid: d286b443e8ade4d4cb1ec3e2a41a94f8, type: 3}
   startingAbilities:
   - {fileID: 11400000, guid: 7abfb9b9f415147ccafd4ebefb61f8f2, type: 2}
+  - {fileID: 11400000, guid: eab12303331974bfdbade13fb31851b0, type: 2}
+  - {fileID: 11400000, guid: 966da114d7727432380233ed8306b9c2, type: 2}
   iconLayout: {fileID: 755010576676188860}
   isBoss: 1
   uniqueEffects:

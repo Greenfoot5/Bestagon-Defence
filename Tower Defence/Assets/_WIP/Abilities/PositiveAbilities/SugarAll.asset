@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8dd783b8f3b3429da42429a8cacc68e, type: 3}
+  m_Name: SugarAll
+  m_EditorClassIdentifier: 
+  targetingType: 0
+  triggers: 0200000001000000
+  abilityIcon: {fileID: 1595557568634733894, guid: 2cede4385411542b29f7b2c61a9e1053, type: 3}
+  abilityEffect: {fileID: 2228279973635050725, guid: 5f8c3e2695cf14a3cad64dff7a67dee7, type: 3}
+  range: 3
+  timer: 6
+  startCount: -1
+  speedMultiplier: 1.5
+  duration: 2

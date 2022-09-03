@@ -1,3 +1,5 @@
+using System.Collections;
+using Abstract;
 using Enemies;
 using UnityEngine;
 
@@ -13,6 +15,9 @@ namespace _WIP.Abilities.PositiveAbilities
         [Tooltip("The multiplier to the speed")]
         [SerializeField]
         private float speedMultiplier = 1.5f;
+        [Tooltip("How long the effect lasts")]
+        [SerializeField]
+        private float duration = 1f;
 
         /// <summary>
         /// Heals an enemy
@@ -31,29 +36,20 @@ namespace _WIP.Abilities.PositiveAbilities
             {
                 return;
             }
-            
-            Debug.Log("Speeding up");
-            enemyComponent.speed.MultiplyModifier(speedMultiplier);
+
+            Runner.Run(EatSugar(enemyComponent));
+
         }
+
+        public override void OnCounterEnd(GameObject target) { }
 
         /// <summary>
         /// There's nothing to clear up after the counter finishes
         /// </summary>
-        public override void OnCounterEnd(GameObject target)
+        private IEnumerator EatSugar(Enemy enemyComponent)
         {
-            if (target == null)
-            {
-                return;
-            }
-            
-            // Check the target is an enemy
-            var enemyComponent = target.GetComponent<Enemy>();
-            if (enemyComponent == null)
-            {
-                return;
-            }
-            
-            Debug.Log("Slowing Down");
+            enemyComponent.speed.MultiplyModifier(speedMultiplier);
+            yield return new WaitForSeconds(duration);
             enemyComponent.speed.DivideModifier(speedMultiplier);
         }
     }
