@@ -137,7 +137,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.02}
+  m_AnchoredPosition: {x: 0, y: -0.06}
   m_SizeDelta: {x: 0, y: 0.04}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1727611473
@@ -282,7 +282,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.06554999}
+  m_AnchoredPosition: {x: 0, y: -0.14555001}
   m_SizeDelta: {x: 0, y: 0.13109998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &116182290530466321
@@ -326,7 +326,7 @@ GameObject:
   - component: {fileID: -3244531046772879823}
   - component: {fileID: 6356489563311992867}
   m_Layer: 6
-  m_Name: Boss
+  m_Name: Splitter_Small
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -341,7 +341,7 @@ Transform:
   m_GameObject: {fileID: 895393602812883857}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children:
   - {fileID: 850736033}
   m_Father: {fileID: 0}
@@ -387,7 +387,7 @@ SpriteRenderer:
   m_SortingLayerID: 1179752323
   m_SortingLayer: 3
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 7558f700791474075a7a2f9025007751, type: 3}
+  m_Sprite: {fileID: 21300000, guid: be914665a01d343a0928cefc1bcd64f9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -410,21 +410,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7135088833f09435eb5f708ff7aa7fec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startSpeed: 1
-  maxHealth: 2500
-  knockbackModifier: 0.4
+  startSpeed: 4
+  maxHealth: 500
+  knockbackModifier: 2
   speed:
     stat: 2
     modifier: 0
   health: 500
-  deathMoney: 120
+  deathMoney: 10
   deathLives: 5
   endPathMoney: 100
   leftBar: {fileID: 2116079699}
   rightBar: {fileID: 9058776261530500049}
   deathEffect: {fileID: 710779272522642178, guid: d286b443e8ade4d4cb1ec3e2a41a94f8, type: 3}
-  startingAbilities:
-  - {fileID: 11400000, guid: 966da114d7727432380233ed8306b9c2, type: 2}
+  startingAbilities: []
   iconLayout: {fileID: 755010576676188860}
   isBoss: 1
   uniqueEffects:
@@ -441,6 +440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e7f1006f148f4b13ab06fd9dd1b4324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waypointIndex: 0
   distanceToWaypoint: 0.05
   knockbackDuration: 0.2
   mapProgress: 0
@@ -482,7 +482,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.6666667, y: 0.6666667}
+    oldSize: {x: 0.91066664, y: 0.91066664}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

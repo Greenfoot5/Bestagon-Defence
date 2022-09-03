@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using Levels._Nodes;
+using Unity.Collections;
 using UnityEngine;
 
 namespace Enemies
@@ -13,7 +14,8 @@ namespace Enemies
     {
         // Waypoint indexes
         private Transform _target;
-        private int _waypointIndex;
+        [HideInInspector]
+        public int waypointIndex;
 
         private Enemy _enemy;
         
@@ -24,6 +26,7 @@ namespace Enemies
         [Tooltip("The duration of knockback")]
         private float knockbackDuration = 0.2f;
         
+        [ReadOnly]
         [Tooltip("How many waypoints the enemy has passed, and the percentage to the next one")]
         public float mapProgress;
         private float _maxDistance;
@@ -35,7 +38,7 @@ namespace Enemies
         {
             // Set the next target to the first waypoint.
             // _waypointIndex will always be 0 at the start
-            _target = Waypoints.points[_waypointIndex];
+            _target = Waypoints.points[waypointIndex];
 
             _enemy = GetComponent<Enemy>();
         }
@@ -55,7 +58,7 @@ namespace Enemies
             // Get the direction and move in that direction
             Vector3 dir = _target.position - transform.position;
             transform.Translate(dir.normalized * (_enemy.speed.GetStat() * Time.deltaTime), Space.World);
-            mapProgress = _waypointIndex + 1 - (distanceToWaypoint / _maxDistance);
+            mapProgress = waypointIndex + 1 - (distanceToWaypoint / _maxDistance);
         
             // If the enemy is within the set distance, get the next waypoint
             if (Vector3.Distance(transform.position, _target.position) <= distanceToWaypoint)
@@ -70,16 +73,16 @@ namespace Enemies
         private void GetNextWaypoint()
         {
             // If the enemy has reached the end, destroy
-            if (_waypointIndex >= Waypoints.points.Length - 1)
+            if (waypointIndex >= Waypoints.points.Length - 1)
             {
                 EndPath();
                 return;
             }
         
             // Get the next waypoint
-            _waypointIndex++;
-            _target = Waypoints.points[_waypointIndex];
-            mapProgress = _waypointIndex;
+            waypointIndex++;
+            _target = Waypoints.points[waypointIndex];
+            mapProgress = waypointIndex;
             _maxDistance = Vector3.Distance(transform.position, _target.position);
         }
         
@@ -89,24 +92,24 @@ namespace Enemies
         private void MoveBackwards()
         {
             // Get the direction and move in that direction
-            Vector3 dir = Waypoints.points[_waypointIndex - 1].position - transform.position;
+            Vector3 dir = Waypoints.points[waypointIndex - 1].position - transform.position;
             transform.Translate(dir.normalized * (Mathf.Abs(_enemy.speed.GetTrueStat()) * Time.deltaTime), Space.World);
-            mapProgress = _waypointIndex - (distanceToWaypoint / _maxDistance);
+            mapProgress = waypointIndex - (distanceToWaypoint / _maxDistance);
         
             // If the enemy hasn't reached the previous waypoint, there's no point knocking it back further
-            if (!(Vector3.Distance(transform.position, Waypoints.points[_waypointIndex - 1].position) <= distanceToWaypoint)) return;
+            if (!(Vector3.Distance(transform.position, Waypoints.points[waypointIndex - 1].position) <= distanceToWaypoint)) return;
             
             // If the enemy has reached the end, destroy
-            if (_waypointIndex - 1 < 0)
+            if (waypointIndex - 1 < 0)
             {
                 return;
             }
 
             // Get the next waypoint
-            _waypointIndex--;
-            _target = Waypoints.points[_waypointIndex];
-            mapProgress = _waypointIndex;
-            _maxDistance = Vector3.Distance(Waypoints.points[_waypointIndex + 1].position, _target.position);
+            waypointIndex--;
+            _target = Waypoints.points[waypointIndex];
+            mapProgress = waypointIndex;
+            _maxDistance = Vector3.Distance(Waypoints.points[waypointIndex + 1].position, _target.position);
         }
     
         /// <summary>
@@ -124,6 +127,11 @@ namespace Enemies
         /// <param name="turretLocation">The location of the turret</param>
         public void TakeKnockback(float amount, Vector3 turretLocation)
         {
+            if (_enemy.knockbackModifier == 0)
+            {
+                return;
+            }
+            
             Vector3 v = _target.position - transform.position;
             Vector3 w = turretLocation - transform.position;
             float multiplier = Vector3.Dot(v.normalized, w.normalized);

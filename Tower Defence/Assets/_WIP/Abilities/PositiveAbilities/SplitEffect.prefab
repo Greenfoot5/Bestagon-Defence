@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8391672041794048394}
   - component: {fileID: 3725267155894117449}
   m_Layer: 0
-  m_Name: SugarSelfEffect
+  m_Name: SplitEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -975,8 +975,8 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 3
-        scalar: 10
-        minScalar: 5
+        scalar: 30
+        minScalar: 20
         maxCurve:
           serializedVersion: 2
           m_Curve:
@@ -1538,7 +1538,7 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: -1917284554946048861, guid: 435f07eb7d0264110b189a3aec478a00, type: 3}
+    - sprite: {fileID: 21300000, guid: be914665a01d343a0928cefc1bcd64f9, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:

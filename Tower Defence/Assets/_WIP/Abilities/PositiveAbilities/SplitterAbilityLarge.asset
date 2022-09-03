@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7603e3ea871634f17a92e1436aafe33b, type: 3}
+  m_Name: SplitterAbilityLarge
+  m_EditorClassIdentifier: 
+  targetingType: 2
+  triggers: 01000000
+  abilityIcon: {fileID: 21300000, guid: be914665a01d343a0928cefc1bcd64f9, type: 3}
+  abilityEffect: {fileID: 895393602812883857, guid: a6747e4f8c99f453c9753dedd64599be, type: 3}
+  range: 3
+  timer: 5
+  startCount: -1
+  spawn: {fileID: 895393602812883857, guid: 2a25f7b9a58c143b6893c854f50e0627, type: 3}
+  count: 2
+  spawnTimer: 0.2
+  doSpawnFromStart: 0

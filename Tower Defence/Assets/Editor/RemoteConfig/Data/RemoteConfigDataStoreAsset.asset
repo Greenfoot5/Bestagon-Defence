@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469c24fdb3bd6431b92cc1465bd9166b, type: 3}
   m_Name: RemoteConfigDataStoreAsset
   m_EditorClassIdentifier: 
-  _rsKeyList: "[\n  {\n    \"metadata\": {\n      \"entityId\": \"ea0d1b37-7978-4544-b3e9-9bd18b711c60\"\n   
+  _rsKeyList: "[\n  {\n    \"metadata\": {\n      \"entityId\": \"b2cfde9c-92b1-4329-a03d-f8749385af53\"\n   
     },\n    \"rs\": {\n      \"key\": \"ForcedVersion\",\n      \"type\": \"json\",\n     
     \"schemaId\": null,\n      \"value\": {\n        \"major\": 1,\n        \"minor\":
     1,\n        \"patch\": 9\n      }\n    }\n  },\n  {\n    \"metadata\": {\n     
-    \"entityId\": \"b4728af3-3969-41ae-be7f-7360641fcd1a\"\n    },\n    \"rs\": {\n     
+    \"entityId\": \"094b5d9e-0a6d-4de9-80ee-3d42741f282d\"\n    },\n    \"rs\": {\n     
     \"key\": \"test\",\n      \"type\": \"int\",\n      \"value\": 5\n    }\n  }\n]"
-  _rsLastCachedKeyList: "[\n  {\n    \"metadata\": {\n      \"entityId\": \"ea0d1b37-7978-4544-b3e9-9bd18b711c60\"\n   
+  _rsLastCachedKeyList: "[\n  {\n    \"metadata\": {\n      \"entityId\": \"b2cfde9c-92b1-4329-a03d-f8749385af53\"\n   
     },\n    \"rs\": {\n      \"key\": \"ForcedVersion\",\n      \"type\": \"json\",\n     
     \"schemaId\": null,\n      \"value\": {\n        \"major\": 1,\n        \"minor\":
     1,\n        \"patch\": 9\n      }\n    }\n  },\n  {\n    \"metadata\": {\n     
-    \"entityId\": \"b4728af3-3969-41ae-be7f-7360641fcd1a\"\n    },\n    \"rs\": {\n     
+    \"entityId\": \"094b5d9e-0a6d-4de9-80ee-3d42741f282d\"\n    },\n    \"rs\": {\n     
     \"key\": \"test\",\n      \"type\": \"int\",\n      \"value\": 5\n    }\n  }\n]"
   _environments: "[\n  {\n    \"projectId\": \"77e9ee4b-9a44-4688-be6c-34db1fb00724\",\n   
     \"name\": \"alpha\",\n    \"id\": \"9991561f-c455-4f3c-8da1-830509d49ad0\",\n   

@@ -25,9 +25,10 @@ namespace Enemies
         [Tooltip("A percentage modifier to any knockback taken")]
         public float knockbackModifier = 1f;
         
+        [HideInInspector]
         [Tooltip("The current speed of the enemy")]
         public UpgradableStat speed;
-        [ReadOnly]
+        [HideInInspector]
         [Tooltip("The current health of the enemy")]
         public float health;
     
