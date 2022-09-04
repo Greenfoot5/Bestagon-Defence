@@ -40,6 +40,14 @@ namespace Levels.Maps
         public DuplicateTypes moduleDuplicateCheck = DuplicateTypes.ByType;
         [Tooltip("The weighted chance of picking a module card to appear in the selection")]
         public AnimationCurve moduleOptionWeight;
+
+        [Header("Selection Counts")]
+        [Tooltip("Is there an initial selection?")]
+        public bool hasInitialSelection = true;
+        [Tooltip("How many options to display in the first selection")]
+        public int initialSelectionCount;
+        [Tooltip("How many options to display in selections after the first")]
+        public int selectionCount;
         
         [Header("Costs")]
         [Tooltip("The initial cost to open the selection")]

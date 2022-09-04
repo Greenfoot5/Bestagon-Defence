@@ -28,7 +28,8 @@ namespace UI.Shop
         [Tooltip("The GlyphsLookup index in the scene")]
         [SerializeField]
         public TypeSpriteLookup glyphsLookup;
-
+        
+        [Tooltip("The turrets already purchased")]
         private readonly List<Type> _turretTypes = new List<Type>();
     
         /// <summary>
@@ -49,6 +50,7 @@ namespace UI.Shop
 
             Time.timeScale = 0f;
             shop.IncrementSelectionCost();
+            
         }
     
         /// <summary>
@@ -77,12 +79,13 @@ namespace UI.Shop
             // So the game doesn't keep retying to select a non-duplicate option forever
             var lagCounter = 0;
             const int lagCap = 5000;
-
-            // TODO - Perhaps modify amount of choices
-            for (var i = 0; i < 3; i++)
+            
+            int selectionCount = shop.HasPlayerMadePurchase() ? _levelData.initialSelectionCount : _levelData.selectionCount;
+            
+            for (var i = 0; i < selectionCount; i++)
             {
                 // If it's the first time opening the shop this level, the game should display a different selection
-                if (shop.HasPlayerMadePurchase())
+                if (!shop.HasPlayerMadePurchase())
                 {
                     // Add a new turret to the selection
                     WeightedList<TurretBlueprint> turrets = _levelData.initialTurretSelection;
@@ -270,6 +273,11 @@ namespace UI.Shop
         {
             if (!_turretTypes.Contains(type))
                 _turretTypes.Add(type);
+        }
+
+        public void AddTurret(Turret turret)
+        {
+            AddTurretType(turret.GetType());
         }
     }
 }

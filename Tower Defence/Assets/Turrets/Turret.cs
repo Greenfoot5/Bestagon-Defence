@@ -2,6 +2,7 @@
 using Abstract.Data;
 using Modules;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Turrets
 {
@@ -46,12 +47,17 @@ namespace Turrets
         [SerializeField]
         public List<Module> modules = new List<Module>();
         
+        [Tooltip("What events to run when starting")]
+        [SerializeField]
+        private UnityEvent awakeEvents;
+        
         /// <summary>
         /// Stops the range displaying
         /// </summary>
         private void Awake()
         {
             rangeDisplay.SetActive(false);
+            awakeEvents.Invoke();
         }
         
         /// <summary>

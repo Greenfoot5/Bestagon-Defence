@@ -1,5 +1,6 @@
 ﻿using System;
 using Abstract.Data;
+using Gameplay;
 using Modules;
 using UI.Nodes;
 using UnityEngine;
@@ -26,7 +27,6 @@ namespace Turrets.Gunner
         public UpgradableStat spinCooldown = new UpgradableStat(1.08f);
         [Tooltip("The maximum fire rate increase the gunner can reach without modules")]
         public UpgradableStat maxFireRate = new UpgradableStat(6.5f);
-
 
         /// <summary>
         /// Rotates towards the target if the turret have one.

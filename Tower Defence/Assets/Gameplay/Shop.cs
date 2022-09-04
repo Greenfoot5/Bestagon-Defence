@@ -148,7 +148,7 @@ namespace Gameplay
         /// <returns>If the player has made a purchase</returns>
         public bool HasPlayerMadePurchase()
         {
-            return _hasPlayerMadePurchase;
+            return _hasPlayerMadePurchase || (!_levelData.hasInitialSelection);
         }
         
         /// <summary>
