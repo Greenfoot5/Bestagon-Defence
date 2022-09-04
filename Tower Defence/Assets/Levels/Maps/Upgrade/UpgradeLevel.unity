@@ -123,6 +123,41 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!21 &1206193
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Custom/Hexagon/Background
+  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _GlowClamp: 0.5
+    - _GlowIntensity: 0.3
+    - _GlowOpacity: 0.25
+    - _HexScale: 1.2
+    - _Opacity: 0.2
+    - _Overlay: -0.2
+    - _ScrollSpeed: 0.15
+    - _ShiftSpeed: 1.5
+    m_Colors:
+    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1001 &21633969
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -394,41 +429,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4077244563226403898, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
   m_PrefabInstance: {fileID: 4077244562611154295}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &130996305
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Custom/Hexagon/Background
-  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _GlowClamp: 0.5
-    - _GlowIntensity: 0.3
-    - _GlowOpacity: 0.25
-    - _HexScale: 6
-    - _Opacity: 0.2
-    - _Overlay: -0.2
-    - _ScrollSpeed: 0.03
-    - _ShiftSpeed: 1.5
-    m_Colors:
-    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
-  m_BuildTextureStacks: []
 --- !u!1001 &137341836
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -740,6 +740,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6835315489516308997, guid: f76383e69d04d405ea64aa69d096467f, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6835315489516308997, guid: f76383e69d04d405ea64aa69d096467f, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6835315489516308997, guid: f76383e69d04d405ea64aa69d096467f, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1661952919}
+    - target: {fileID: 6835315489516308997, guid: f76383e69d04d405ea64aa69d096467f, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6835315489516308997, guid: f76383e69d04d405ea64aa69d096467f, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AddTurret
+      objectReference: {fileID: 0}
+    - target: {fileID: 6835315489516308997, guid: f76383e69d04d405ea64aa69d096467f, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UI.Shop.AddSelection, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6835315489516308997, guid: f76383e69d04d405ea64aa69d096467f, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 249961443}
+    - target: {fileID: 6835315489516308997, guid: f76383e69d04d405ea64aa69d096467f, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Turrets.Turret, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 8263255388866025106, guid: f76383e69d04d405ea64aa69d096467f, type: 3}
       propertyPath: m_Name
       value: LaserBeamer
@@ -751,6 +783,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8263255388866025106, guid: f76383e69d04d405ea64aa69d096467f, type: 3}
   m_PrefabInstance: {fileID: 249961439}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &249961443 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6835315489516308997, guid: f76383e69d04d405ea64aa69d096467f, type: 3}
+  m_PrefabInstance: {fileID: 249961439}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249961440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65a035bfb1ad34e0d8b3465c8ade3762, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &253370165
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -948,6 +991,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1900793741}
     m_Modifications:
+    - target: {fileID: 3670444958482676905, guid: fdc806ee9dc6448968fc3865f99c7584, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3670444958482676905, guid: fdc806ee9dc6448968fc3865f99c7584, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3670444958482676905, guid: fdc806ee9dc6448968fc3865f99c7584, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1661952919}
+    - target: {fileID: 3670444958482676905, guid: fdc806ee9dc6448968fc3865f99c7584, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3670444958482676905, guid: fdc806ee9dc6448968fc3865f99c7584, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AddTurret
+      objectReference: {fileID: 0}
+    - target: {fileID: 3670444958482676905, guid: fdc806ee9dc6448968fc3865f99c7584, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UI.Shop.AddSelection, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3670444958482676905, guid: fdc806ee9dc6448968fc3865f99c7584, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 278111985}
+    - target: {fileID: 3670444958482676905, guid: fdc806ee9dc6448968fc3865f99c7584, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Turrets.Turret, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 3974544501041316794, guid: fdc806ee9dc6448968fc3865f99c7584, type: 3}
       propertyPath: m_Name
       value: Gunner_Turret
@@ -1003,6 +1078,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3974544501041316794, guid: fdc806ee9dc6448968fc3865f99c7584, type: 3}
   m_PrefabInstance: {fileID: 278111982}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &278111985 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3670444958482676905, guid: fdc806ee9dc6448968fc3865f99c7584, type: 3}
+  m_PrefabInstance: {fileID: 278111982}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278111983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1475e78d6ed94f74a33aeda4f00343e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &279297465
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1131,6 +1217,76 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6595278417362797558, guid: 137f8506d4db341d1a8874fe8ad95496, type: 3}
   m_PrefabInstance: {fileID: 299979404}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &320912354
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Custom/Hexagon/Background
+  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _GlowClamp: 0.5
+    - _GlowIntensity: 0.3
+    - _GlowOpacity: 0.25
+    - _HexScale: 1.2
+    - _Opacity: 0.2
+    - _Overlay: -0.2
+    - _ScrollSpeed: 0.15
+    - _ShiftSpeed: 1.5
+    m_Colors:
+    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
+--- !u!21 &329613039
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Custom/Hexagon/Background
+  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _GlowClamp: 0
+    - _GlowIntensity: 0
+    - _GlowOpacity: 0
+    - _HexScale: 10
+    - _Opacity: 0.4
+    - _Overlay: -0.3
+    - _ScrollSpeed: 0.01
+    - _ShiftSpeed: 0.75
+    m_Colors:
+    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1001 &339434695
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1350,6 +1506,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!21 &401552025
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Custom/Hexagon/Background
+  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _GlowClamp: 0
+    - _GlowIntensity: 0
+    - _GlowOpacity: 0
+    - _HexScale: 7
+    - _Opacity: 0.2
+    - _Overlay: 0.3
+    - _ScrollSpeed: 0
+    - _ShiftSpeed: 0.75
+    m_Colors:
+    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1001 &459385992
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1529,6 +1720,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5125998200603622947, guid: f962ed2b909e2496cb09aa444d473eda, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5125998200603622947, guid: f962ed2b909e2496cb09aa444d473eda, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5125998200603622947, guid: f962ed2b909e2496cb09aa444d473eda, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1661952919}
+    - target: {fileID: 5125998200603622947, guid: f962ed2b909e2496cb09aa444d473eda, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5125998200603622947, guid: f962ed2b909e2496cb09aa444d473eda, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AddTurret
+      objectReference: {fileID: 0}
+    - target: {fileID: 5125998200603622947, guid: f962ed2b909e2496cb09aa444d473eda, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UI.Shop.AddSelection, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5125998200603622947, guid: f962ed2b909e2496cb09aa444d473eda, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 479005228}
+    - target: {fileID: 5125998200603622947, guid: f962ed2b909e2496cb09aa444d473eda, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Turrets.Turret, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f962ed2b909e2496cb09aa444d473eda, type: 3}
 --- !u!1 &479005226 stripped
@@ -1536,6 +1759,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3974544501041316794, guid: f962ed2b909e2496cb09aa444d473eda, type: 3}
   m_PrefabInstance: {fileID: 479005225}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &479005228 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5125998200603622947, guid: f962ed2b909e2496cb09aa444d473eda, type: 3}
+  m_PrefabInstance: {fileID: 479005225}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479005226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd1d9560ab06442d0b2ff06b393b45d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &487031561 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6595278417362797558, guid: 137f8506d4db341d1a8874fe8ad95496, type: 3}
@@ -1717,41 +1951,6 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 5837894107962673298, guid: 84f5c17147e1542e289158835f7db2e2, type: 3}
   m_PrefabInstance: {fileID: 5837894107527360749}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &534890588
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Custom/Hexagon/Background
-  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _GlowClamp: 0.5
-    - _GlowIntensity: 0.3
-    - _GlowOpacity: 0.25
-    - _HexScale: 6
-    - _Opacity: 0.2
-    - _Overlay: -0.2
-    - _ScrollSpeed: 0.03
-    - _ShiftSpeed: 1.5
-    m_Colors:
-    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
-  m_BuildTextureStacks: []
 --- !u!1001 &552660279
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2193,6 +2392,41 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 137f8506d4db341d1a8874fe8ad95496, type: 3}
+--- !u!21 &691821512
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Custom/Hexagon/Background
+  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _GlowClamp: 0.5
+    - _GlowIntensity: 0.3
+    - _GlowOpacity: 0.25
+    - _HexScale: 6
+    - _Opacity: 0.2
+    - _Overlay: -0.2
+    - _ScrollSpeed: 0.03
+    - _ShiftSpeed: 1.5
+    m_Colors:
+    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1001 &701412496
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2244,6 +2478,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6835315489516308997, guid: f76383e69d04d405ea64aa69d096467f, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6835315489516308997, guid: f76383e69d04d405ea64aa69d096467f, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6835315489516308997, guid: f76383e69d04d405ea64aa69d096467f, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1661952919}
+    - target: {fileID: 6835315489516308997, guid: f76383e69d04d405ea64aa69d096467f, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6835315489516308997, guid: f76383e69d04d405ea64aa69d096467f, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AddTurret
+      objectReference: {fileID: 0}
+    - target: {fileID: 6835315489516308997, guid: f76383e69d04d405ea64aa69d096467f, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UI.Shop.AddSelection, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6835315489516308997, guid: f76383e69d04d405ea64aa69d096467f, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 701412500}
+    - target: {fileID: 6835315489516308997, guid: f76383e69d04d405ea64aa69d096467f, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Turrets.Turret, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 8263255388866025106, guid: f76383e69d04d405ea64aa69d096467f, type: 3}
       propertyPath: m_Name
       value: LaserBeamer
@@ -2255,6 +2521,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8263255388866025106, guid: f76383e69d04d405ea64aa69d096467f, type: 3}
   m_PrefabInstance: {fileID: 701412496}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &701412500 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6835315489516308997, guid: f76383e69d04d405ea64aa69d096467f, type: 3}
+  m_PrefabInstance: {fileID: 701412496}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701412497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65a035bfb1ad34e0d8b3465c8ade3762, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &705508002
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2837,6 +3114,41 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6595278417362797558, guid: 137f8506d4db341d1a8874fe8ad95496, type: 3}
   m_PrefabInstance: {fileID: 802446700}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &819108382
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Custom/Hexagon/Background
+  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _GlowClamp: 0.5
+    - _GlowIntensity: 0.3
+    - _GlowOpacity: 0.25
+    - _HexScale: 1.2
+    - _Opacity: 0.2
+    - _Overlay: -0.2
+    - _ScrollSpeed: 0.15
+    - _ShiftSpeed: 1.5
+    m_Colors:
+    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1001 &829373032
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3347,41 +3659,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8057529164544141856, guid: d264f5fad176c4d0f8cfae025bd61e99, type: 3}
   m_PrefabInstance: {fileID: 881637611}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &885028486
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Custom/Hexagon/Background
-  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _GlowClamp: 0
-    - _GlowIntensity: 0
-    - _GlowOpacity: 0
-    - _HexScale: 10
-    - _Opacity: 0.4
-    - _Overlay: -0.3
-    - _ScrollSpeed: 0.01
-    - _ShiftSpeed: 0.75
-    m_Colors:
-    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
-  m_BuildTextureStacks: []
 --- !u!1001 &912278075
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3762,41 +4039,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6595278417362797558, guid: 137f8506d4db341d1a8874fe8ad95496, type: 3}
   m_PrefabInstance: {fileID: 964903191}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &979791670
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Custom/Hexagon/Background
-  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _GlowClamp: 0.5
-    - _GlowIntensity: 0.3
-    - _GlowOpacity: 0.25
-    - _HexScale: 6
-    - _Opacity: 0.2
-    - _Overlay: -0.2
-    - _ScrollSpeed: 0.03
-    - _ShiftSpeed: 1.5
-    m_Colors:
-    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
-  m_BuildTextureStacks: []
 --- !u!1001 &992961412
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3925,41 +4167,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8057529164544141856, guid: d264f5fad176c4d0f8cfae025bd61e99, type: 3}
   m_PrefabInstance: {fileID: 1005811951}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &1015360249
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Custom/Hexagon/Background
-  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _GlowClamp: 0
-    - _GlowIntensity: 0
-    - _GlowOpacity: 0
-    - _HexScale: 7
-    - _Opacity: 0.2
-    - _Overlay: 0.3
-    - _ScrollSpeed: 0
-    - _ShiftSpeed: 0.75
-    m_Colors:
-    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
-  m_BuildTextureStacks: []
 --- !u!1001 &1046409169
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4278,41 +4485,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3653254528133085916, guid: c3195f6f68cf1418f9b21f5c5ae4f196, type: 3}
   m_PrefabInstance: {fileID: 1097442402}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &1101792782
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Custom/Hexagon/Background
-  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _GlowClamp: 0.5
-    - _GlowIntensity: 0.3
-    - _GlowOpacity: 0.25
-    - _HexScale: 1.2
-    - _Opacity: 0.2
-    - _Overlay: -0.2
-    - _ScrollSpeed: 0.15
-    - _ShiftSpeed: 1.5
-    m_Colors:
-    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
-  m_BuildTextureStacks: []
 --- !u!1001 &1111100964
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4716,6 +4888,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1971419285}
     m_Modifications:
+    - target: {fileID: 3670444958482676905, guid: fdc806ee9dc6448968fc3865f99c7584, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3670444958482676905, guid: fdc806ee9dc6448968fc3865f99c7584, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3670444958482676905, guid: fdc806ee9dc6448968fc3865f99c7584, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1661952919}
+    - target: {fileID: 3670444958482676905, guid: fdc806ee9dc6448968fc3865f99c7584, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3670444958482676905, guid: fdc806ee9dc6448968fc3865f99c7584, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AddTurret
+      objectReference: {fileID: 0}
+    - target: {fileID: 3670444958482676905, guid: fdc806ee9dc6448968fc3865f99c7584, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UI.Shop.AddSelection, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3670444958482676905, guid: fdc806ee9dc6448968fc3865f99c7584, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1233941143}
+    - target: {fileID: 3670444958482676905, guid: fdc806ee9dc6448968fc3865f99c7584, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Turrets.Turret, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 3974544501041316794, guid: fdc806ee9dc6448968fc3865f99c7584, type: 3}
       propertyPath: m_Name
       value: Gunner_Turret
@@ -4771,6 +4975,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3974544501041316794, guid: fdc806ee9dc6448968fc3865f99c7584, type: 3}
   m_PrefabInstance: {fileID: 1233941140}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1233941143 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3670444958482676905, guid: fdc806ee9dc6448968fc3865f99c7584, type: 3}
+  m_PrefabInstance: {fileID: 1233941140}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1233941141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1475e78d6ed94f74a33aeda4f00343e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1262650577 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5782079356602982492, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
@@ -4969,6 +5184,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5125998200603622947, guid: f962ed2b909e2496cb09aa444d473eda, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5125998200603622947, guid: f962ed2b909e2496cb09aa444d473eda, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5125998200603622947, guid: f962ed2b909e2496cb09aa444d473eda, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1661952919}
+    - target: {fileID: 5125998200603622947, guid: f962ed2b909e2496cb09aa444d473eda, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5125998200603622947, guid: f962ed2b909e2496cb09aa444d473eda, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AddTurret
+      objectReference: {fileID: 0}
+    - target: {fileID: 5125998200603622947, guid: f962ed2b909e2496cb09aa444d473eda, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UI.Shop.AddSelection, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5125998200603622947, guid: f962ed2b909e2496cb09aa444d473eda, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1314294886}
+    - target: {fileID: 5125998200603622947, guid: f962ed2b909e2496cb09aa444d473eda, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Turrets.Turret, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f962ed2b909e2496cb09aa444d473eda, type: 3}
 --- !u!1 &1314294884 stripped
@@ -4976,6 +5223,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3974544501041316794, guid: f962ed2b909e2496cb09aa444d473eda, type: 3}
   m_PrefabInstance: {fileID: 1314294883}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1314294886 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5125998200603622947, guid: f962ed2b909e2496cb09aa444d473eda, type: 3}
+  m_PrefabInstance: {fileID: 1314294883}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1314294884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd1d9560ab06442d0b2ff06b393b45d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1314558262
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5931,6 +6189,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6835315489516308997, guid: f76383e69d04d405ea64aa69d096467f, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6835315489516308997, guid: f76383e69d04d405ea64aa69d096467f, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6835315489516308997, guid: f76383e69d04d405ea64aa69d096467f, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1661952919}
+    - target: {fileID: 6835315489516308997, guid: f76383e69d04d405ea64aa69d096467f, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6835315489516308997, guid: f76383e69d04d405ea64aa69d096467f, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AddTurret
+      objectReference: {fileID: 0}
+    - target: {fileID: 6835315489516308997, guid: f76383e69d04d405ea64aa69d096467f, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UI.Shop.AddSelection, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6835315489516308997, guid: f76383e69d04d405ea64aa69d096467f, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1522394409}
+    - target: {fileID: 6835315489516308997, guid: f76383e69d04d405ea64aa69d096467f, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Turrets.Turret, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 8263255388866025106, guid: f76383e69d04d405ea64aa69d096467f, type: 3}
       propertyPath: m_Name
       value: LaserBeamer
@@ -5942,6 +6232,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8263255388866025106, guid: f76383e69d04d405ea64aa69d096467f, type: 3}
   m_PrefabInstance: {fileID: 1522394405}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1522394409 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6835315489516308997, guid: f76383e69d04d405ea64aa69d096467f, type: 3}
+  m_PrefabInstance: {fileID: 1522394405}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522394406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65a035bfb1ad34e0d8b3465c8ade3762, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1523963598 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7935189852862486145, guid: 20ef5804d1a7b4d538d07d8c94025e14, type: 3}
@@ -6008,6 +6309,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5125998200603622947, guid: f962ed2b909e2496cb09aa444d473eda, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5125998200603622947, guid: f962ed2b909e2496cb09aa444d473eda, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5125998200603622947, guid: f962ed2b909e2496cb09aa444d473eda, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1661952919}
+    - target: {fileID: 5125998200603622947, guid: f962ed2b909e2496cb09aa444d473eda, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5125998200603622947, guid: f962ed2b909e2496cb09aa444d473eda, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AddTurret
+      objectReference: {fileID: 0}
+    - target: {fileID: 5125998200603622947, guid: f962ed2b909e2496cb09aa444d473eda, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UI.Shop.AddSelection, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5125998200603622947, guid: f962ed2b909e2496cb09aa444d473eda, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1528236275}
+    - target: {fileID: 5125998200603622947, guid: f962ed2b909e2496cb09aa444d473eda, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Turrets.Turret, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f962ed2b909e2496cb09aa444d473eda, type: 3}
 --- !u!1 &1528236273 stripped
@@ -6015,6 +6348,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3974544501041316794, guid: f962ed2b909e2496cb09aa444d473eda, type: 3}
   m_PrefabInstance: {fileID: 1528236272}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1528236275 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5125998200603622947, guid: f962ed2b909e2496cb09aa444d473eda, type: 3}
+  m_PrefabInstance: {fileID: 1528236272}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1528236273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd1d9560ab06442d0b2ff06b393b45d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1553322540
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6331,6 +6675,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lancer
       objectReference: {fileID: 0}
+    - target: {fileID: 8820683068345099209, guid: 97462d19c76b149579cf6bd12edf3f45, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8820683068345099209, guid: 97462d19c76b149579cf6bd12edf3f45, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8820683068345099209, guid: 97462d19c76b149579cf6bd12edf3f45, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1661952919}
+    - target: {fileID: 8820683068345099209, guid: 97462d19c76b149579cf6bd12edf3f45, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8820683068345099209, guid: 97462d19c76b149579cf6bd12edf3f45, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AddTurret
+      objectReference: {fileID: 0}
+    - target: {fileID: 8820683068345099209, guid: 97462d19c76b149579cf6bd12edf3f45, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UI.Shop.AddSelection, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8820683068345099209, guid: 97462d19c76b149579cf6bd12edf3f45, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1583772546}
+    - target: {fileID: 8820683068345099209, guid: 97462d19c76b149579cf6bd12edf3f45, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Turrets.Turret, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97462d19c76b149579cf6bd12edf3f45, type: 3}
 --- !u!1 &1583772544 stripped
@@ -6338,6 +6714,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8263255388866025106, guid: 97462d19c76b149579cf6bd12edf3f45, type: 3}
   m_PrefabInstance: {fileID: 1583772543}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1583772546 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8820683068345099209, guid: 97462d19c76b149579cf6bd12edf3f45, type: 3}
+  m_PrefabInstance: {fileID: 1583772543}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1583772544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b53ac12a766014e4689fae04bbf12a07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1617864979
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6524,6 +6911,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8057529164544141856, guid: d264f5fad176c4d0f8cfae025bd61e99, type: 3}
   m_PrefabInstance: {fileID: 1645263077}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &1656937299
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Custom/Hexagon/Background
+  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _GlowClamp: 0.5
+    - _GlowIntensity: 0.3
+    - _GlowOpacity: 0.25
+    - _HexScale: 6
+    - _Opacity: 0.2
+    - _Overlay: -0.2
+    - _ScrollSpeed: 0.03
+    - _ShiftSpeed: 1.5
+    m_Colors:
+    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
+--- !u!114 &1661952919 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4077244561405541609, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
+  m_PrefabInstance: {fileID: 4077244562611154295}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fb46f45b03064219aeca437adbd3a76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1669718532
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7028,41 +7461,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4559129809900468847, guid: f8c5804ade5de404db89023d77cf7f43, type: 3}
   m_PrefabInstance: {fileID: 1793735535}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &1817853426
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Custom/Hexagon/Background
-  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _GlowClamp: 0.5
-    - _GlowIntensity: 0.3
-    - _GlowOpacity: 0.25
-    - _HexScale: 1.2
-    - _Opacity: 0.2
-    - _Overlay: -0.2
-    - _ScrollSpeed: 0.15
-    - _ShiftSpeed: 1.5
-    m_Colors:
-    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
-  m_BuildTextureStacks: []
 --- !u!1001 &1819339724
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7389,41 +7787,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6595278417362797558, guid: 137f8506d4db341d1a8874fe8ad95496, type: 3}
   m_PrefabInstance: {fileID: 1865800700}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &1866107769
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Custom/Hexagon/Background
-  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _GlowClamp: 0.5
-    - _GlowIntensity: 0.3
-    - _GlowOpacity: 0.25
-    - _HexScale: 1.2
-    - _Opacity: 0.2
-    - _Overlay: -0.2
-    - _ScrollSpeed: 0.15
-    - _ShiftSpeed: 1.5
-    m_Colors:
-    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
-  m_BuildTextureStacks: []
 --- !u!1001 &1875694039
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8021,6 +8384,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lancer
       objectReference: {fileID: 0}
+    - target: {fileID: 8820683068345099209, guid: 97462d19c76b149579cf6bd12edf3f45, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8820683068345099209, guid: 97462d19c76b149579cf6bd12edf3f45, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8820683068345099209, guid: 97462d19c76b149579cf6bd12edf3f45, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1661952919}
+    - target: {fileID: 8820683068345099209, guid: 97462d19c76b149579cf6bd12edf3f45, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8820683068345099209, guid: 97462d19c76b149579cf6bd12edf3f45, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AddTurret
+      objectReference: {fileID: 0}
+    - target: {fileID: 8820683068345099209, guid: 97462d19c76b149579cf6bd12edf3f45, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UI.Shop.AddSelection, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8820683068345099209, guid: 97462d19c76b149579cf6bd12edf3f45, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1925408779}
+    - target: {fileID: 8820683068345099209, guid: 97462d19c76b149579cf6bd12edf3f45, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Turrets.Turret, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97462d19c76b149579cf6bd12edf3f45, type: 3}
 --- !u!1 &1925408777 stripped
@@ -8028,6 +8423,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8263255388866025106, guid: 97462d19c76b149579cf6bd12edf3f45, type: 3}
   m_PrefabInstance: {fileID: 1925408776}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1925408779 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8820683068345099209, guid: 97462d19c76b149579cf6bd12edf3f45, type: 3}
+  m_PrefabInstance: {fileID: 1925408776}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925408777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b53ac12a766014e4689fae04bbf12a07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1943869916
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8222,6 +8628,41 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4559129809900468847, guid: f8c5804ade5de404db89023d77cf7f43, type: 3}
   m_PrefabInstance: {fileID: 1966585512}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &1966995791
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Custom/Hexagon/Background
+  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _GlowClamp: 0.5
+    - _GlowIntensity: 0.3
+    - _GlowOpacity: 0.25
+    - _HexScale: 6
+    - _Opacity: 0.2
+    - _Overlay: -0.2
+    - _ScrollSpeed: 0.03
+    - _ShiftSpeed: 1.5
+    m_Colors:
+    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1001 &1968411952
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8540,6 +8981,58 @@ PrefabInstance:
     - target: {fileID: 4711107948385963260, guid: fdd375ca6f6204cc5bbfe7da05610de0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203603832670551793, guid: fdd375ca6f6204cc5bbfe7da05610de0, type: 3}
+      propertyPath: awakeEvents.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203603832670551793, guid: fdd375ca6f6204cc5bbfe7da05610de0, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203603832670551793, guid: fdd375ca6f6204cc5bbfe7da05610de0, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203603832670551793, guid: fdd375ca6f6204cc5bbfe7da05610de0, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1661952919}
+    - target: {fileID: 5203603832670551793, guid: fdd375ca6f6204cc5bbfe7da05610de0, type: 3}
+      propertyPath: awakeEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203603832670551793, guid: fdd375ca6f6204cc5bbfe7da05610de0, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203603832670551793, guid: fdd375ca6f6204cc5bbfe7da05610de0, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AddTurret
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203603832670551793, guid: fdd375ca6f6204cc5bbfe7da05610de0, type: 3}
+      propertyPath: awakeEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203603832670551793, guid: fdd375ca6f6204cc5bbfe7da05610de0, type: 3}
+      propertyPath: awakeEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203603832670551793, guid: fdd375ca6f6204cc5bbfe7da05610de0, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UI.Shop.AddSelection, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203603832670551793, guid: fdd375ca6f6204cc5bbfe7da05610de0, type: 3}
+      propertyPath: awakeEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203603832670551793, guid: fdd375ca6f6204cc5bbfe7da05610de0, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 2116853974}
+    - target: {fileID: 5203603832670551793, guid: fdd375ca6f6204cc5bbfe7da05610de0, type: 3}
+      propertyPath: awakeEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Turrets.Turret, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fdd375ca6f6204cc5bbfe7da05610de0, type: 3}
@@ -8976,6 +9469,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3974544501041316794, guid: fdd375ca6f6204cc5bbfe7da05610de0, type: 3}
   m_PrefabInstance: {fileID: 1991367439}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2116853974 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5203603832670551793, guid: fdd375ca6f6204cc5bbfe7da05610de0, type: 3}
+  m_PrefabInstance: {fileID: 1991367439}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116853972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd846ae0434a94d0190005ad2d853fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2138939922
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9646,9 +10150,237 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2037083919}
     - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[4].enemySets.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[4].setDelays.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[9].enemySets.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[9].setDelays.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[14].enemySets.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[14].setDelays.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[4].setDelays.Array.data[0]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[4].setDelays.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[9].setDelays.Array.data[0]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[9].setDelays.Array.data[1]
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[14].setDelays.Array.data[0]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[14].setDelays.Array.data[1]
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[14].setDelays.Array.data[3]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[4].enemySets.Array.data[0].rate
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[4].enemySets.Array.data[1].rate
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[4].enemySets.Array.data[2].rate
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[9].enemySets.Array.data[0].rate
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[9].enemySets.Array.data[2].rate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[0].enemySets.Array.data[0].enemy
+      value: 
+      objectReference: {fileID: 895393602812883857, guid: f3b905df6ab284e478d20d18c5d9e33c, type: 3}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[14].enemySets.Array.data[0].rate
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[14].enemySets.Array.data[1].rate
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[14].enemySets.Array.data[2].rate
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[14].enemySets.Array.data[3].rate
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[14].enemySets.Array.data[4].rate
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[1].enemySets.Array.data[0].enemy
+      value: 
+      objectReference: {fileID: 895393602812883857, guid: f3b905df6ab284e478d20d18c5d9e33c, type: 3}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[2].enemySets.Array.data[0].enemy
+      value: 
+      objectReference: {fileID: 895393602812883857, guid: f3b905df6ab284e478d20d18c5d9e33c, type: 3}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[3].enemySets.Array.data[0].enemy
+      value: 
+      objectReference: {fileID: 895393602812883857, guid: 22ab1e0fa4cca4734967d023c1bec9ac, type: 3}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[4].enemySets.Array.data[0].count
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[4].enemySets.Array.data[0].enemy
+      value: 
+      objectReference: {fileID: 895393602812883857, guid: b088ddab919544302bda7e10f9cd16a9, type: 3}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[4].enemySets.Array.data[1].count
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[4].enemySets.Array.data[1].enemy
+      value: 
+      objectReference: {fileID: 895393602812883857, guid: f3b905df6ab284e478d20d18c5d9e33c, type: 3}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[4].enemySets.Array.data[2].count
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[4].enemySets.Array.data[2].enemy
+      value: 
+      objectReference: {fileID: 895393602812883857, guid: 22ab1e0fa4cca4734967d023c1bec9ac, type: 3}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[5].enemySets.Array.data[1].enemy
+      value: 
+      objectReference: {fileID: 895393602812883857, guid: 22ab1e0fa4cca4734967d023c1bec9ac, type: 3}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[6].enemySets.Array.data[1].enemy
+      value: 
+      objectReference: {fileID: 895393602812883857, guid: 22ab1e0fa4cca4734967d023c1bec9ac, type: 3}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[6].enemySets.Array.data[3].enemy
+      value: 
+      objectReference: {fileID: 895393602812883857, guid: f4060fe5c4ca441109eb978e9195116e, type: 3}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[7].enemySets.Array.data[0].enemy
+      value: 
+      objectReference: {fileID: 895393602812883857, guid: f3b905df6ab284e478d20d18c5d9e33c, type: 3}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[7].enemySets.Array.data[1].enemy
+      value: 
+      objectReference: {fileID: 895393602812883857, guid: f4060fe5c4ca441109eb978e9195116e, type: 3}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[8].enemySets.Array.data[0].enemy
+      value: 
+      objectReference: {fileID: 895393602812883857, guid: f4060fe5c4ca441109eb978e9195116e, type: 3}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[9].enemySets.Array.data[0].count
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[9].enemySets.Array.data[0].enemy
+      value: 
+      objectReference: {fileID: 895393602812883857, guid: b088ddab919544302bda7e10f9cd16a9, type: 3}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[9].enemySets.Array.data[1].enemy
+      value: 
+      objectReference: {fileID: 895393602812883857, guid: f4060fe5c4ca441109eb978e9195116e, type: 3}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[9].enemySets.Array.data[2].count
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[9].enemySets.Array.data[2].enemy
+      value: 
+      objectReference: {fileID: 895393602812883857, guid: f4060fe5c4ca441109eb978e9195116e, type: 3}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[11].enemySets.Array.data[0].enemy
+      value: 
+      objectReference: {fileID: 895393602812883857, guid: f4060fe5c4ca441109eb978e9195116e, type: 3}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[11].enemySets.Array.data[1].enemy
+      value: 
+      objectReference: {fileID: 895393602812883857, guid: f3b905df6ab284e478d20d18c5d9e33c, type: 3}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[11].enemySets.Array.data[2].enemy
+      value: 
+      objectReference: {fileID: 895393602812883857, guid: 22ab1e0fa4cca4734967d023c1bec9ac, type: 3}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[12].enemySets.Array.data[0].enemy
+      value: 
+      objectReference: {fileID: 895393602812883857, guid: f4060fe5c4ca441109eb978e9195116e, type: 3}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[14].enemySets.Array.data[0].count
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[14].enemySets.Array.data[0].enemy
+      value: 
+      objectReference: {fileID: 895393602812883857, guid: b088ddab919544302bda7e10f9cd16a9, type: 3}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[14].enemySets.Array.data[1].count
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
       propertyPath: waves.Array.data[14].enemySets.Array.data[1].enemy
       value: 
-      objectReference: {fileID: 895393602812883857, guid: a6747e4f8c99f453c9753dedd64599be, type: 3}
+      objectReference: {fileID: 895393602812883857, guid: f4060fe5c4ca441109eb978e9195116e, type: 3}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[14].enemySets.Array.data[2].count
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[14].enemySets.Array.data[2].enemy
+      value: 
+      objectReference: {fileID: 895393602812883857, guid: f161d41c4d2aa41e697afd6af9ffb78f, type: 3}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[14].enemySets.Array.data[3].count
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[14].enemySets.Array.data[3].enemy
+      value: 
+      objectReference: {fileID: 895393602812883857, guid: f3b905df6ab284e478d20d18c5d9e33c, type: 3}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[14].enemySets.Array.data[4].count
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782079356602982465, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: waves.Array.data[14].enemySets.Array.data[4].enemy
+      value: 
+      objectReference: {fileID: 895393602812883857, guid: 22ab1e0fa4cca4734967d023c1bec9ac, type: 3}
     - target: {fileID: 5782079356602982466, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
       propertyPath: startLives
       value: 50

@@ -5,7 +5,6 @@ using UI.Transitions;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 namespace UI.Transition
 {
@@ -19,8 +18,7 @@ namespace UI.Transition
         private static readonly int OpeningTrigger = Animator.StringToHash("Open");
 
         private Animator _animator;
-
-        [FormerlySerializedAs("_transition")]
+        
         [Header("Visuals")]
         [Tooltip("The hexagon transition that fills the screen")]
         [SerializeField]

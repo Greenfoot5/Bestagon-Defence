@@ -249,10 +249,13 @@ MonoBehaviour:
     modifier: 1
   rangeDisplay: {fileID: 3222738067758489047}
   fireRate:
-    stat: 1.5
+    stat: 1.25
     modifier: 1
   fireCountdown: 0
   modules: []
+  awakeEvents:
+    m_PersistentCalls:
+      m_Calls: []
   bulletPrefab: {fileID: 8554329261332597528, guid: c304e75bdf8b948d8937d7b591b1edc5, type: 3}
   bulletRange:
     stat: 2.5

@@ -189,7 +189,6 @@ namespace UI.Nodes
 
         public void Rotate60()
         {
-            Debug.Log("Rotating");
             Vector3 rotation = _target.turret.transform.rotation.eulerAngles;
             _target.turret.transform.Rotate(0, 0, 60);
         }

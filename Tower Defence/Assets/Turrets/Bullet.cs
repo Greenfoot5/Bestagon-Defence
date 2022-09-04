@@ -213,7 +213,6 @@ namespace Turrets
             // We don't want to hit the target twice
             if (_target != null && _target == col.transform) return;
 
-                Debug.Log("Hitting enemy!");
             if (col.transform.CompareTag("Enemy"))
                 Damage(col.gameObject.GetComponent<Enemy>());
         }

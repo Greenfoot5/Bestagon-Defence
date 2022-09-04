@@ -45,9 +45,9 @@ namespace Levels.Maps
         [Tooltip("Is there an initial selection?")]
         public bool hasInitialSelection = true;
         [Tooltip("How many options to display in the first selection")]
-        public int initialSelectionCount;
+        public int initialSelectionCount = 3;
         [Tooltip("How many options to display in selections after the first")]
-        public int selectionCount;
+        public int selectionCount = 3;
         
         [Header("Costs")]
         [Tooltip("The initial cost to open the selection")]

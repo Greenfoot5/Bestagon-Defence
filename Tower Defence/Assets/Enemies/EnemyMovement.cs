@@ -150,7 +150,6 @@ namespace Enemies
         /// <returns></returns>
         private IEnumerator DealKnockback(float speedMultiplier)
         {
-            Debug.Log("Added Knockback: " + speedMultiplier);
             _enemy.speed.MultiplyModifier(speedMultiplier);
             yield return new WaitForSeconds(knockbackDuration);
             _enemy.speed.DivideModifier(speedMultiplier);

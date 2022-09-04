@@ -38,7 +38,7 @@ namespace Gameplay
         private GameObject selectionUI;
         
         public int selectionCost;
-        private bool _hasPlayerMadePurchase = true;
+        private bool _hasPlayerMadePurchase = false;
 
         private TextMeshProUGUI _turretInventoryButton;
         private TextMeshProUGUI _moduleInventoryButton;
@@ -109,10 +109,7 @@ namespace Gameplay
         /// <param name="turret">The blueprint of the turret to add</param>
         public void SpawnNewTurret(TurretBlueprint turret)
         {
-            if (_hasPlayerMadePurchase)
-            {
-                _hasPlayerMadePurchase = false;
-            }
+            _hasPlayerMadePurchase = true;
             // Add and display the new item
             GameObject turretButton = Instantiate(defaultTurretButton, turretInventory.transform);
             turretButton.name = "_" + turretButton.name;
@@ -148,6 +145,7 @@ namespace Gameplay
         /// <returns>If the player has made a purchase</returns>
         public bool HasPlayerMadePurchase()
         {
+            Debug.Log(_hasPlayerMadePurchase || (!_levelData.hasInitialSelection));
             return _hasPlayerMadePurchase || (!_levelData.hasInitialSelection);
         }
         

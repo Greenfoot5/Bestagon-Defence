@@ -24,7 +24,7 @@ MonoBehaviour:
       weight: 0
     - item: {fileID: 11400000, guid: 957e7ef90aad744a4bf2718c30338651, type: 2}
       weight: 0
-  initialDuplicateCheck: 2
+  initialDuplicateCheck: 1
   turrets:
     list:
     - item: {fileID: 11400000, guid: 0f0a6da7d36a64a3a89ddcc104e995c0, type: 2}
@@ -1541,6 +1541,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  hasInitialSelection: 0
+  initialSelectionCount: 2
+  selectionCount: 2
   initialSelectionCost: 100
   selectionCostIncrement: 5
   health:
@@ -1754,5 +1757,5 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   revitaliseLives: 5
-  refundPercentage: 100
+  refundPercentage: 1
   rerollCost: 1
