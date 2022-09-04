@@ -37,6 +37,7 @@ namespace Turrets
         public GameObject impactEffect;
 
         private readonly List<Module> _modules = new List<Module>();
+        private readonly List<int> _hitEnemies = new List<int>();
         
         /// <summary>
         /// Sets the new transform the bullet shoot go towards
@@ -210,7 +211,10 @@ namespace Turrets
         {
             if (!isEthereal) return;
 
-            // We don't want to hit the target twice
+            if (_hitEnemies.Contains(col.gameObject.GetInstanceID())) return;
+            _hitEnemies.Add(col.gameObject.GetInstanceID());
+
+                // We don't want to hit the target twice
             if (_target != null && _target == col.transform) return;
 
             if (col.transform.CompareTag("Enemy"))

@@ -41,6 +41,10 @@ namespace UI.Transition
         [SerializeField]
         private Camera _camera;
 
+        [Header("Children")]
+        [Tooltip("The background to disable on OSX builds")] [SerializeField]
+        private GameObject _background;
+
         private string _loadingScene = string.Empty;
 
         /// <summary>
@@ -59,6 +63,10 @@ namespace UI.Transition
             _animator = GetComponentInChildren<Animator>();
 
             SceneManager.sceneLoaded += SceneLoadEvent;
+            
+#if UNITY_STANDALONE_OSX || UNITY_EDITOR_OSX
+                _background.SetActive(false);
+#endif
         }
 
         /// <summary>
@@ -69,12 +77,12 @@ namespace UI.Transition
         /// <summary>
         /// The duration of the closing transition
         /// </summary>
-        public float TransitionDuration => Mathf.Max(_transition.GetDuration(State.IN), _animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
+        private float TransitionDuration => Mathf.Max(_transition.GetDuration(State.IN), _animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
 
         /// <summary>
         /// Runs the closing animation
         /// </summary>
-        public void Close()
+        private void Close()
         {
             _animator.SetTrigger(ClosingTrigger);
         }
@@ -82,7 +90,7 @@ namespace UI.Transition
         /// <summary>
         /// Runs the opening animation
         /// </summary>
-        public void Open()
+        private void Open()
         {
             _animator.SetTrigger(OpeningTrigger);
         }
@@ -107,11 +115,10 @@ namespace UI.Transition
         /// </summary>
         private void SceneLoadEvent(Scene scene, LoadSceneMode mode)
         {
-            if (_loadingScene == scene.name)
-            {
-                Open();
-                _loadingScene = null;
-            }
+            if (_loadingScene != scene.name) return;
+            
+            Open();
+            _loadingScene = null;
         }
 
         /// <summary>

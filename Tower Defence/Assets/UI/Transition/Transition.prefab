@@ -326,6 +326,7 @@ MonoBehaviour:
   _innerRing: {fileID: 7917227284233019639}
   _outerRing: {fileID: 12002878979726328}
   _camera: {fileID: 985842982966307418}
+  _background: {fileID: 8098763435691577812}
 --- !u!95 &2662104101795918778
 Animator:
   serializedVersion: 3

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d437c567020b4f2599bfd79f544c3bc, type: 3}
-  m_Name: Lancer_Advanced 1
+  m_Name: Lancer_Advanced
   m_EditorClassIdentifier: 
   shopIcon: {fileID: 21300000, guid: 1107d216d6dc84ddda3609fcbbadc09f, type: 3}
   displayName: Advanced

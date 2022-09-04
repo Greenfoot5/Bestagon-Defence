@@ -249,7 +249,7 @@ MonoBehaviour:
     modifier: 1
   rangeDisplay: {fileID: 3222738067758489047}
   fireRate:
-    stat: 1.25
+    stat: 0.4
     modifier: 1
   fireCountdown: 0
   modules: []
@@ -258,7 +258,7 @@ MonoBehaviour:
       m_Calls: []
   bulletPrefab: {fileID: 8554329261332597528, guid: c304e75bdf8b948d8937d7b591b1edc5, type: 3}
   bulletRange:
-    stat: 2.5
+    stat: 3
     modifier: 1
   firePoint: {fileID: 5009289029243488887}
   partToRotate: {fileID: 367774791884787270}
