@@ -32,7 +32,7 @@ MonoBehaviour:
       weight: 0
     - item: {fileID: 11400000, guid: 3de012d76a1a4459eb31ed0bceb428d6, type: 2}
       weight: 0
-  initialDuplicateCheck: 0
+  initialDuplicateCheck: 1
   turrets:
     list:
     - item: {fileID: 11400000, guid: d2db62c1bef594027b45aec4631e1e6a, type: 2}
