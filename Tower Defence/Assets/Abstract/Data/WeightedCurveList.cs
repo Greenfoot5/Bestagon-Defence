@@ -13,13 +13,13 @@ namespace Abstract.Data
     [Serializable]
     public struct WeightedCurveList<T>
     {
-        public List<WeightedCurve<T>> list;
+        public List<CurvedReference<T>> list;
     
         /// <summary>
         /// Basic constructor for the list
         /// </summary>
         /// <param name="list">The list to create</param>
-        public WeightedCurveList(List<WeightedCurve<T>> list)
+        public WeightedCurveList(List<CurvedReference<T>> list)
         {
             this.list = list;
         }
@@ -34,7 +34,7 @@ namespace Abstract.Data
         {
             if (list.Count == 0) throw new NullReferenceException("WeightedList is empty");
 
-            float total = list.Sum(t => t.weight.Evaluate(time));
+            float total = list.Sum(t => t.Value.Evaluate(time));
             total = Random.Range(0f, total);
 
             if (total == 0) return list[Random.Range(0, list.Count)].item;
@@ -42,7 +42,7 @@ namespace Abstract.Data
             var i = 0;
             while (total >= 0 && i < list.Count)
             {
-                float iWeight = list[i].weight.Evaluate(time);
+                float iWeight = list[i].Value.Evaluate(time);
                 if (total < iWeight && iWeight != 0) return list[i].item;
 
                 total -= iWeight;
@@ -65,7 +65,7 @@ namespace Abstract.Data
         {
             if (list.Count == 0) throw new NullReferenceException("WeightedList is empty");
         
-            float total = list.Sum(t => t.weight.Evaluate(time));
+            float total = list.Sum(t => t.Value.Evaluate(time));
 
             return total;
         }
@@ -75,7 +75,7 @@ namespace Abstract.Data
         /// </summary>
         public void Clear()
         {
-            list = new List<WeightedCurve<T>>();
+            list = new List<CurvedReference<T>>();
         }
         
         /// <summary>
@@ -86,9 +86,9 @@ namespace Abstract.Data
         public WeightedList<T> ToWeightedList(float time)
         {
             var weightedList = new WeightedList<T>(null);
-            foreach (WeightedCurve<T> item in list.Where(item => item.weight.Evaluate(time) > 0))
+            foreach (CurvedReference<T> item in list.Where(item => item.Value.Evaluate(time) > 0))
             {
-                weightedList.list.Add(new WeightedItem<T>(item.item, item.weight.Evaluate(time)));
+                weightedList.list.Add(new WeightedItem<T>(item.item, item.Value.Evaluate(time)));
             }
 
             return weightedList;

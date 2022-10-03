@@ -15,7 +15,7 @@ namespace Abstract.Data
         public WeightedCurve(T item)
         {
             this.item = item;
-            this.weight = new AnimationCurve();
+            weight = new AnimationCurve();
         }
     }
 }
