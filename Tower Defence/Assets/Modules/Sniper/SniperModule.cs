@@ -13,7 +13,7 @@ namespace Modules.Sniper
     [CreateAssetMenu(fileName = "SniperT0", menuName = "Modules/Sniper")]
     public class SniperModule : Module
     {
-        protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Laser), typeof(Smasher) };  // any
+        protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Laser), typeof(Smasher) };
 
         [Header("Shooter Turret")]
         [Tooltip("The percentage to modify the range of the Shooter by")]

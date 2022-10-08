@@ -561,7 +561,7 @@ MonoBehaviour:
     variable: {fileID: 0}
   modules:
     list:
-    - useConstant: 1
+    - useConstant: 0
       item: {fileID: 11400000, guid: 0da67581e745c4e708a1b6172cb3d6ef, type: 2}
       constantValue:
         serializedVersion: 2
@@ -596,7 +596,7 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-      variable: {fileID: 0}
+      variable: {fileID: 11400000, guid: 2e9690ad895cb4a14a99cc8ea8c67634, type: 2}
     - useConstant: 1
       item: {fileID: 11400000, guid: 7c7e505c5536a4df684108f83d159ad6, type: 2}
       constantValue:
@@ -622,7 +622,7 @@ MonoBehaviour:
           outWeight: 0.33333334
         - serializedVersion: 3
           time: 15
-          value: 10
+          value: 9.988609
           inSlope: 0
           outSlope: 0
           tangentMode: 136
@@ -632,8 +632,8 @@ MonoBehaviour:
         - serializedVersion: 3
           time: 30
           value: 4
-          inSlope: -0.2857143
-          outSlope: -0.2857143
+          inSlope: -0.28538883
+          outSlope: -0.28538883
           tangentMode: 136
           weightedMode: 0
           inWeight: 0.33333334
@@ -966,7 +966,7 @@ MonoBehaviour:
         m_PostInfinity: 0
         m_RotationOrder: 4
       variable: {fileID: 0}
-    - useConstant: 1
+    - useConstant: 0
       item: {fileID: 11400000, guid: 103873ced36d04d7288e4b0b48a679ab, type: 2}
       constantValue:
         serializedVersion: 2
@@ -1001,7 +1001,7 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-      variable: {fileID: 0}
+      variable: {fileID: 11400000, guid: 2e9690ad895cb4a14a99cc8ea8c67634, type: 2}
     - useConstant: 1
       item: {fileID: 11400000, guid: f488ec51e287048928b2b94b48e4abef, type: 2}
       constantValue:
@@ -1110,7 +1110,7 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
       variable: {fileID: 0}
-    - useConstant: 1
+    - useConstant: 0
       item: {fileID: 11400000, guid: c11c38afc44bb4ac58ff35de9520efba, type: 2}
       constantValue:
         serializedVersion: 2
@@ -1151,11 +1151,11 @@ MonoBehaviour:
           weightedMode: 0
           inWeight: 0.33333334
           outWeight: 0.33333334
-        m_PreInfinity: 2
+        m_PreInfinity: 1
         m_PostInfinity: 1
         m_RotationOrder: 4
-      variable: {fileID: 0}
-    - useConstant: 1
+      variable: {fileID: 11400000, guid: 2f69410ea843f47808962026867bd11a, type: 2}
+    - useConstant: 0
       item: {fileID: 11400000, guid: 4c3610e22808b45c199e63b5a278c5e6, type: 2}
       constantValue:
         serializedVersion: 2
@@ -1199,7 +1199,7 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 1
         m_RotationOrder: 4
-      variable: {fileID: 0}
+      variable: {fileID: 11400000, guid: 9d78d703d1b6a4f00b3ed8188041437b, type: 2}
     - useConstant: 1
       item: {fileID: 11400000, guid: 421c9b3f2985e4d26b00addf27ebff40, type: 2}
       constantValue:
@@ -1488,7 +1488,7 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
       variable: {fileID: 0}
-    - useConstant: 1
+    - useConstant: 0
       item: {fileID: 11400000, guid: a0c38167287c8451a8852957968ab515, type: 2}
       constantValue:
         serializedVersion: 2
@@ -1523,7 +1523,7 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-      variable: {fileID: 0}
+      variable: {fileID: 11400000, guid: 2e9690ad895cb4a14a99cc8ea8c67634, type: 2}
     - useConstant: 1
       item: {fileID: 11400000, guid: b0d0ae1af2298453c9cbeba82f4ab064, type: 2}
       constantValue:
@@ -2089,7 +2089,7 @@ MonoBehaviour:
   initialSelectionCost: 100
   selectionCostIncrement: 10
   health:
-    useConstant: 1
+    useConstant: 0
     constantValue:
       serializedVersion: 2
       m_Curve:
@@ -2195,7 +2195,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    variable: {fileID: 0}
+    variable: {fileID: 11400000, guid: a0f1fc63759c44731ac6546487486137, type: 2}
   enemyCount:
     useConstant: 0
     constantValue:
@@ -2213,7 +2213,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    variable: {fileID: 0}
+    variable: {fileID: 11400000, guid: a0f1fc63759c44731ac6546487486137, type: 2}
   revitaliseLives: 2
   refundPercentage: 0.8
   rerollCost: 0.5
