@@ -135,7 +135,7 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 0
       variable: {fileID: 11400000, guid: 5ee02f394364f4e95b1f8e8aafb22939, type: 2}
-    - useConstant: 1
+    - useConstant: 0
       item: {fileID: 11400000, guid: defe6f09e3fbf44f49bd14d47ebcb305, type: 2}
       constantValue:
         serializedVersion: 2
@@ -170,8 +170,8 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 0
-      variable: {fileID: 0}
-    - useConstant: 1
+      variable: {fileID: 11400000, guid: 15a1067d712f749eb8bc499f11603108, type: 2}
+    - useConstant: 0
       item: {fileID: 11400000, guid: 4aedceea9b860486d9797fb4dfb62a16, type: 2}
       constantValue:
         serializedVersion: 2
@@ -206,8 +206,8 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 0
-      variable: {fileID: 0}
-    - useConstant: 1
+      variable: {fileID: 11400000, guid: 15a1067d712f749eb8bc499f11603108, type: 2}
+    - useConstant: 0
       item: {fileID: 11400000, guid: d34ca52000d774b7b8ca6a25dbf8b6b0, type: 2}
       constantValue:
         serializedVersion: 2
@@ -242,8 +242,8 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 0
-      variable: {fileID: 0}
-    - useConstant: 1
+      variable: {fileID: 11400000, guid: 15a1067d712f749eb8bc499f11603108, type: 2}
+    - useConstant: 0
       item: {fileID: 11400000, guid: 0e6d2889320bf4e3eaff513a492ccf6d, type: 2}
       constantValue:
         serializedVersion: 2
@@ -278,8 +278,8 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 0
-      variable: {fileID: 0}
-    - useConstant: 1
+      variable: {fileID: 11400000, guid: 15a1067d712f749eb8bc499f11603108, type: 2}
+    - useConstant: 0
       item: {fileID: 11400000, guid: 0d5f1a13a72504c058f85636be33284b, type: 2}
       constantValue:
         serializedVersion: 2
@@ -314,8 +314,8 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 0
-      variable: {fileID: 0}
-    - useConstant: 1
+      variable: {fileID: 11400000, guid: f6ced134a99e34fa88d2d6bd03a8f669, type: 2}
+    - useConstant: 0
       item: {fileID: 11400000, guid: 564156d9aff4b4edd9bad5078427e665, type: 2}
       constantValue:
         serializedVersion: 2
@@ -350,8 +350,8 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 0
-      variable: {fileID: 0}
-    - useConstant: 1
+      variable: {fileID: 11400000, guid: f6ced134a99e34fa88d2d6bd03a8f669, type: 2}
+    - useConstant: 0
       item: {fileID: 11400000, guid: 5958a675ba690410eb9254a851560e75, type: 2}
       constantValue:
         serializedVersion: 2
@@ -386,8 +386,8 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 0
-      variable: {fileID: 0}
-    - useConstant: 1
+      variable: {fileID: 11400000, guid: f6ced134a99e34fa88d2d6bd03a8f669, type: 2}
+    - useConstant: 0
       item: {fileID: 11400000, guid: e54b84b1744cd4b429fb1ed80a4f7314, type: 2}
       constantValue:
         serializedVersion: 2
@@ -422,8 +422,8 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 0
-      variable: {fileID: 0}
-    - useConstant: 1
+      variable: {fileID: 11400000, guid: f6ced134a99e34fa88d2d6bd03a8f669, type: 2}
+    - useConstant: 0
       item: {fileID: 11400000, guid: 263ef519110164b4a93f4335a6c4966c, type: 2}
       constantValue:
         serializedVersion: 2
@@ -458,8 +458,8 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 0
-      variable: {fileID: 0}
-    - useConstant: 1
+      variable: {fileID: 11400000, guid: f6ced134a99e34fa88d2d6bd03a8f669, type: 2}
+    - useConstant: 0
       item: {fileID: 11400000, guid: ac091f4cd04e6400f8fa5eb75b85934b, type: 2}
       constantValue:
         serializedVersion: 2
@@ -494,8 +494,8 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 0
-      variable: {fileID: 0}
-    - useConstant: 1
+      variable: {fileID: 11400000, guid: f6ced134a99e34fa88d2d6bd03a8f669, type: 2}
+    - useConstant: 0
       item: {fileID: 11400000, guid: 200d032e925f4427581197dacf1c0089, type: 2}
       constantValue:
         serializedVersion: 2
@@ -530,7 +530,7 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 0
-      variable: {fileID: 0}
+      variable: {fileID: 11400000, guid: f6ced134a99e34fa88d2d6bd03a8f669, type: 2}
   turretDuplicateCheck: 1
   turretOptionWeight:
     useConstant: 1
@@ -2197,7 +2197,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     variable: {fileID: 0}
   enemyCount:
-    useConstant: 1
+    useConstant: 0
     constantValue:
       serializedVersion: 2
       m_Curve:
