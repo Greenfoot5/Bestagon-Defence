@@ -13,13 +13,13 @@ namespace Abstract.Data
     [Serializable]
     public struct WeightedCurveList<T>
     {
-        public List<CurvedReference<T>> list;
+        public List<WeightedCurvedReference<T>> list;
     
         /// <summary>
         /// Basic constructor for the list
         /// </summary>
         /// <param name="list">The list to create</param>
-        public WeightedCurveList(List<CurvedReference<T>> list)
+        public WeightedCurveList(List<WeightedCurvedReference<T>> list)
         {
             this.list = list;
         }
@@ -75,7 +75,7 @@ namespace Abstract.Data
         /// </summary>
         public void Clear()
         {
-            list = new List<CurvedReference<T>>();
+            list = new List<WeightedCurvedReference<T>>();
         }
         
         /// <summary>
@@ -86,7 +86,7 @@ namespace Abstract.Data
         public WeightedList<T> ToWeightedList(float time)
         {
             var weightedList = new WeightedList<T>(null);
-            foreach (CurvedReference<T> item in list.Where(item => item.Value.Evaluate(time) > 0))
+            foreach (WeightedCurvedReference<T> item in list.Where(item => item.Value.Evaluate(time) > 0))
             {
                 weightedList.list.Add(new WeightedItem<T>(item.item, item.Value.Evaluate(time)));
             }

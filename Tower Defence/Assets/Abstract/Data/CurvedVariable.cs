@@ -1,9 +1,8 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Abstract.Data
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(order = 1)]
     public class CurvedVariable : ScriptableObject
     {
         public AnimationCurve value;

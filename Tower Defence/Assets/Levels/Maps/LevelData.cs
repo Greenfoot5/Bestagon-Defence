@@ -18,7 +18,7 @@ namespace Levels.Maps
     /// <summary>
     /// Allows us to save data to allow levels to be different
     /// </summary>
-    [CreateAssetMenu(fileName = "LevelName", menuName = "Level Data", order = 2)]
+    [CreateAssetMenu(fileName = "LevelName", menuName = "Level Data", order = 1)]
     public class LevelData : ScriptableObject
     {
         [Header("InitialSelection")]
@@ -33,13 +33,13 @@ namespace Levels.Maps
         [Tooltip("What type of duplicate check to perform, if any, against the rest of the selection")]
         public DuplicateTypes turretDuplicateCheck = DuplicateTypes.ByName;
         [Tooltip("The weighted chance of picking a turret card to appear in the selection")]
-        public AnimationCurve turretOptionWeight;
+        public CurvedReference turretOptionWeight;
         [Tooltip("What module can appear and their weighted chance of appearing on a module selection card")]
         public WeightedCurveList<Module> modules;
         [Tooltip("What type of duplicate check to perform, if any, against the rest of the selection")]
         public DuplicateTypes moduleDuplicateCheck = DuplicateTypes.ByType;
         [Tooltip("The weighted chance of picking a module card to appear in the selection")]
-        public AnimationCurve moduleOptionWeight;
+        public CurvedReference moduleOptionWeight;
 
         [Header("Selection Counts")]
         [Tooltip("Is there an initial selection?")]
@@ -57,9 +57,9 @@ namespace Levels.Maps
 
         [Header("Wave Scaling")]
         [Tooltip("What to multiply the enemy health by for every wave")]
-        public AnimationCurve health;
+        public CurvedReference health;
         [Tooltip("What to multiply the enemy count by for every wave")]
-        public AnimationCurve enemyCount;
+        public CurvedReference enemyCount;
 
         [Header("Refund Amounts")]
         [Tooltip("How many lives to gain back when picking revitalise")]

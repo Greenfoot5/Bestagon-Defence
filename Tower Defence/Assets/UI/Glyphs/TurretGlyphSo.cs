@@ -5,7 +5,7 @@ namespace UI.Glyphs
     /// <summary>
     /// Stores the settings for a glyph
     /// </summary>
-    [CreateAssetMenu(fileName = "NewTurretGlyph", menuName = "TurretGlyph", order=1)]
+    [CreateAssetMenu(fileName = "NewTurretGlyph", menuName = "TurretGlyph", order=5)]
     public class TurretGlyphSo : ScriptableObject
     {
         [Tooltip("The sprite of the glyph")]
