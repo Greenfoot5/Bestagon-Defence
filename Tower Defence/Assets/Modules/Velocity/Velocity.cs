@@ -16,18 +16,25 @@ namespace Modules.Velocity
     public class Velocity : Module
     {
         protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Gunner), typeof(Smasher), typeof(Lancer) };
-        
-        [Tooltip("The percentage to modify the range of the bullet by")]
+
+        [Header("Gunner & Shooter & Lancer")]
+        [Tooltip("The percentage to modify the speed of the bullet by")]
         [SerializeField]
-        private float rangeChange;
+        private float bulletSpeedChange;
         [Tooltip("The percentage to modify the fire rate of the turret by")]
         [SerializeField]
         private float fireRateChange;
         
         [Header("Gunner & Shooter")]
-        [Tooltip("The percentage to modify the speed of the bullet by")]
+        [Tooltip("The percentage to modify the range of the bullet by")]
         [SerializeField]
-        private float bulletSpeedChange;
+        private float rangeChange;
+        
+        
+        [Header("Lancer")]
+        [SerializeField]
+        [Tooltip("The percentage to modify the range of the Lancer's bullet")]
+        private float lancerBulletRangeChange;
 
         [Header("Smasher")]
         [SerializeField]
@@ -40,11 +47,6 @@ namespace Modules.Velocity
         [Tooltip("The percentage to modify the fire rate of the smasher by")]
         private float smasherFireRateChange;
 
-        [Header("Lancer")]
-        [SerializeField]
-        [Tooltip("The percentage to modify the range of the Lancer's bullet")]
-        private float lancerBulletRangeChange;
-        
         /// <summary>
         /// Increases the bullet speed of a turret
         /// </summary>
