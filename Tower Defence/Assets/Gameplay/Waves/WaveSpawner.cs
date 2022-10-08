@@ -94,7 +94,7 @@ namespace Gameplay.Waves
             
                 // For all the enemies the enemySet will spawn,
                 // spawn one, then wait timeBetweenEnemies seconds
-                int setCount = Mathf.FloorToInt(set.count * _levelData.enemyCount.Evaluate(_waveIndex + 1));
+                int setCount = Mathf.FloorToInt(set.count * _levelData.enemyCount.Value.Evaluate(_waveIndex + 1));
                 for (var j = 0; j < setCount; j++)
                 {
                     SpawnEnemy(set.enemy);
@@ -130,7 +130,7 @@ namespace Gameplay.Waves
             spawnedEnemy.layer = LayerMask.NameToLayer("Enemies");
         
             // Apply scaling
-            spawnedEnemy.GetComponent<Enemy>().maxHealth *= _levelData.health.Evaluate(_waveIndex + 1);
+            spawnedEnemy.GetComponent<Enemy>().maxHealth *= _levelData.health.Value.Evaluate(_waveIndex + 1);
             spawnedEnemy.GetComponent<Enemy>().health = spawnedEnemy.GetComponent<Enemy>().maxHealth;
         
             enemiesAlive++;
