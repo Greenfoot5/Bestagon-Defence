@@ -1961,7 +1961,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    variable: {fileID: 11400000, guid: a0f1fc63759c44731ac6546487486137, type: 2}
+    variable: {fileID: 11400000, guid: 16d1660dfe4ff46e2aa8f6bdb57dd644, type: 2}
   revitaliseLives: 3
   refundPercentage: 0.95
   rerollCost: 0.5
