@@ -418,7 +418,7 @@ MonoBehaviour:
     modifier: 0
   health: 500
   deathMoney: 100
-  deathLives: 3
+  deathLives: 7
   endPathMoney: 0
   leftBar: {fileID: 2116079699}
   rightBar: {fileID: 9058776261530500049}
