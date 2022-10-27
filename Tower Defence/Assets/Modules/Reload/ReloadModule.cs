@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using Enemies;
 using Turrets;
 using Turrets.Gunner;
 using Turrets.Lancer;
@@ -12,7 +10,7 @@ using Random = UnityEngine.Random;
 namespace Modules.Reload
 {
     /// <summary>
-    /// Chance to deal double damage
+    /// Chance to attack again
     /// </summary>
     [CreateAssetMenu(fileName = "ReloadT0", menuName = "Modules/Reload")]
     public class ReloadModule : Module
@@ -24,12 +22,10 @@ namespace Modules.Reload
         private float reloadChance;
 
         /// <summary>
-        /// Attempts to deal double damage on all enemies hit
+        /// When attacking, checks to see if the turret should attack again
         /// </summary>
-        /// <param name="targets">The targets to attempt to critically strike</param>
-        /// <param name="turret">The turret that attacked the enemies</param>
-        /// <param name="bullet">The bullet (if any) that hit the enemies</param>
-        public override void OnHit(IEnumerable<Enemy> targets, Turret turret, Bullet bullet = null)
+        /// <param name="turret">The turret that attacked</param>
+        public override void OnAttack(Turret turret)
         {
             if (Random.value < (reloadChance / turret.fireRate.GetStat()))
             {
