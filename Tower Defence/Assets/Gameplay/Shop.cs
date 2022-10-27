@@ -145,7 +145,6 @@ namespace Gameplay
         /// <returns>If the player has made a purchase</returns>
         public bool HasPlayerMadePurchase()
         {
-            Debug.Log(_hasPlayerMadePurchase || (!_levelData.hasInitialSelection));
             return _hasPlayerMadePurchase || (!_levelData.hasInitialSelection);
         }
         

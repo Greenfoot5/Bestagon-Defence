@@ -65,15 +65,11 @@ namespace Modules.Surge
         /// <param name="turret">The turret to increase the fire rate for</param>
         private IEnumerator Surge(Turret turret)
         {
-            while (turret.modules.All(module => module.GetType() == typeof(SurgeModule)))
+            // Wait the cooldown
+            yield return new WaitForSeconds(cooldown);
+            
+            while (turret.modules.Any(module => module.GetType() == typeof(SurgeModule)))
             {
-                // Wait the cooldown
-                yield return new WaitForSeconds(cooldown);
-                
-                // Check we still have the module
-                if (turret.modules.Any(module => module.GetType() != typeof(SurgeModule)))
-                    yield break;
-                
                 // SURGE!
                 turret.fireRate.AddModifier(fireRateChange);
                 NodeUI.instance.UpdateStats();
@@ -90,6 +86,9 @@ namespace Modules.Surge
                 GameObject endEffect = Instantiate(surgeEndEffect, position, Quaternion.identity);
                 endEffect.name = "_" + endEffect.name;
                 Destroy(endEffect, endEffect.GetComponent<ParticleSystem>().main.duration);
+                
+                // Wait the cooldown
+                yield return new WaitForSeconds(cooldown);
             }
         }
     }
