@@ -20,5 +20,5 @@ MonoBehaviour:
   effectText: 15% chance to stun the enemy in place for 0.5s
   enemyStunChance: 0.15
   enemyDuration: 0.5
-  turretStunChance: 0.03
-  turretDuration: 0.75
+  turretStunChance: 0.07
+  turretDuration: 1.25
