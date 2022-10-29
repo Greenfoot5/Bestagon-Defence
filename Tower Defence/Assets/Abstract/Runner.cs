@@ -16,8 +16,6 @@ namespace Abstract
         private static void CreateInstance()
         {
             _runner = new GameObject ("Runner").AddComponent<Runner>();
-            
-            DontDestroyOnLoad (_runner);
         }
 
         /// <summary>

@@ -112,10 +112,10 @@ namespace Turrets
             //     oldModule.RemoveModule(this);
             //     Modules.Remove(oldModule);
             // }
-
-            module.AddModule(this);
-            modules.Add(module);
             
+            modules.Add(module);
+            module.AddModule(this);
+
             // Update the range shader's size
             Vector3 localScale = transform.localScale;
             rangeDisplay.transform.localScale = new Vector3(
