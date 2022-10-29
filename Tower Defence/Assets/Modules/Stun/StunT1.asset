@@ -20,5 +20,5 @@ MonoBehaviour:
   effectText: small chance for quick stun, for both enemy and turret
   enemyStunChance: 0.07
   enemyDuration: 0.25
-  turretStunChance: 0.02
-  turretDuration: 0.5
+  turretStunChance: 0.04
+  turretDuration: 0.75

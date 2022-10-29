@@ -20,6 +20,6 @@ MonoBehaviour:
   effectText: Slows enemies per hit by 10% for 3s
   slowPercentage: 0.1
   duration: 3
-  gunnerSpinUpChange: -0.1
-  gunnerSpinDownChange: 0.075
-  smasherRangeChange: -0.15
+  gunnerSpinUpChange: -0.2
+  gunnerSpinDownChange: 0.15
+  smasherRangeChange: -0.225
