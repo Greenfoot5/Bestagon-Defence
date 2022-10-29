@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aaf8aac191abc4e068a145ceac7f20ac, type: 3}
-  m_Name: LD_GiantslayerT1_Base
+  m_Name: LDV_GiantslayerT1_Base
   m_EditorClassIdentifier: 
   value:
     serializedVersion: 2
