@@ -68,7 +68,7 @@ namespace Modules.Surge
             // Wait the cooldown
             yield return new WaitForSeconds(cooldown);
             
-            while (turret.modules.Any(module => module.GetType() == typeof(SurgeModule)))
+            while (turret != null && turret.modules.Any(module => module.GetType() == typeof(SurgeModule)))
             {
                 // SURGE!
                 turret.fireRate.AddModifier(fireRateChange);
