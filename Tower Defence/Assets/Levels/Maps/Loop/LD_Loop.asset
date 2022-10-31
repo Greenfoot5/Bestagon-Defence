@@ -1081,7 +1081,7 @@ MonoBehaviour:
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 15
+          time: 19
           value: 15
           inSlope: 0
           outSlope: 0
@@ -1090,13 +1090,13 @@ MonoBehaviour:
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 16
+          time: 21
           value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 136
+          inSlope: -20.61486
+          outSlope: -20.61486
+          tangentMode: 0
           weightedMode: 0
-          inWeight: 0.33333334
+          inWeight: 0.041568756
           outWeight: 0.33333334
         m_PreInfinity: 1
         m_PostInfinity: 1
@@ -1523,7 +1523,7 @@ MonoBehaviour:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 22.5
+        time: 15
         value: 4
         inSlope: 0.0420681
         outSlope: 0.0420681
@@ -1556,7 +1556,7 @@ MonoBehaviour:
   hasInitialSelection: 1
   initialSelectionCount: 3
   selectionCount: 3
-  initialSelectionCost: 50
+  initialSelectionCost: 10
   selectionCostIncrement: 15
   health:
     useConstant: 1
