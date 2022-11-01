@@ -91,6 +91,12 @@ namespace Enemies
         /// </summary>
         private void MoveBackwards()
         {
+            // If the enemy has reached the start, we can't go backwards further
+            if (waypointIndex - 1 < 0)
+            {
+                return;
+            }
+                
             // Get the direction and move in that direction
             Vector3 dir = Waypoints.points[waypointIndex - 1].position - transform.position;
             transform.Translate(dir.normalized * (Mathf.Abs(_enemy.speed.GetTrueStat()) * Time.deltaTime), Space.World);
@@ -98,12 +104,6 @@ namespace Enemies
         
             // If the enemy hasn't reached the previous waypoint, there's no point knocking it back further
             if (!(Vector3.Distance(transform.position, Waypoints.points[waypointIndex - 1].position) <= distanceToWaypoint)) return;
-            
-            // If the enemy has reached the end, destroy
-            if (waypointIndex - 1 < 0)
-            {
-                return;
-            }
 
             // Get the next waypoint
             waypointIndex--;
