@@ -32,7 +32,7 @@ namespace _WIP.Abilities.PositiveAbilities
         /// <summary>
         /// Spawns the enemy
         /// </summary>
-        /// <param name="target">The enemy to heal</param>
+        /// <param name="target">The enemy to spawn</param>
         public override void Activate(GameObject target)
         {
             if (target == null)

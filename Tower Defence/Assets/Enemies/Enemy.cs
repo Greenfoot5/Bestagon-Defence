@@ -6,7 +6,6 @@ using _WIP.Abilities;
 using Abstract.Data;
 using Gameplay;
 using Gameplay.Waves;
-using Unity.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -326,10 +325,10 @@ namespace Enemies
         {
             foreach (EnemyAbility ability in abilities)
             {
+                // TODO - Replace with an actual duration
                 // Spawn ability effect
-                GameObject effect = Instantiate(ability.abilityEffect, transform.position, Quaternion.identity);
-                effect.name = "_" + effect.name;
-                Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
+                //GameObject effect = Instantiate(ability.abilityEffect, transform.position, Quaternion.identity);
+                //effect.name = "_" + effect.name;
                 switch (ability.targetingType)
                 {
                     case AbilityTarget.Single:
@@ -362,6 +361,8 @@ namespace Enemies
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
+                
+                //Destroy(effect, 0.6f);
             }
         }
         
