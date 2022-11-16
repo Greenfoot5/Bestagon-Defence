@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: CriticalT1
   m_EditorClassIdentifier: 
   moduleTier: 1
-  accentColor: {r: 0.8490566, g: 0.4012755, b: 0.20425417, a: 1}
+  accentColor: {r: 0.56078434, g: 0.3254902, b: 0.98039216, a: 1}
   displayName: Critical I
   tagline: Hit the weak points
-  icon: {fileID: 21300000, guid: 3a8c48efe02e240a5baa4fec7b82fb67, type: 3}
+  icon: {fileID: 1960215765652580131, guid: 16c979c866f439b4b988e7020b313794, type: 3}
   effectText: 5% chance to deal double damage
   criticalChance: 0.05

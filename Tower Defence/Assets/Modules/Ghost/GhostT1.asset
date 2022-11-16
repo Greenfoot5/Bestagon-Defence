@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: GhostT1
   m_EditorClassIdentifier: 
   moduleTier: 1
-  accentColor: {r: 0.19357423, g: 0.42582348, b: 0.5471698, a: 1}
+  accentColor: {r: 0.7294118, g: 0.20784314, b: 0.8980392, a: 1}
   displayName: Ghost
   tagline: Etheral Properties
-  icon: {fileID: 21300000, guid: 98cfa0a2f553a433183dbd66f6892f09, type: 3}
+  icon: {fileID: 8756708870751878701, guid: 16c979c866f439b4b988e7020b313794, type: 3}
   effectText: Any enemy the bullet passes through gets hit

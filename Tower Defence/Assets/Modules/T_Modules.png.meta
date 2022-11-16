@@ -41,8 +41,26 @@ TextureImporter:
   - first:
       213: 2903838018198858911
     second: T_Module_Execute
+  - first:
+      213: 8756708870751878701
+    second: T_Module_Ghost
+  - first:
+      213: -7979691553943755389
+    second: T_Module_Giantslayer
+  - first:
+      213: -4575831703307692121
+    second: T_Module_Instakill
+  - first:
+      213: -4293644608448389267
+    second: T_Module_Reload
+  - first:
+      213: -3358934479966026082
+    second: T_Module_Surge
+  - first:
+      213: 1960215765652580131
+    second: T_Module_Critical
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -101,6 +119,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -410,6 +429,132 @@ TextureImporter:
       bones: []
       spriteID: f9c6408da418c4820800000000000000
       internalID: 2903838018198858911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_Module_Ghost
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 2
+        width: 124
+        height: 124
+      alignment: 9
+      pivot: {x: 0.46288928, y: 0.5000005}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2e7daaa254168970800000000000000
+      internalID: 8756708870751878701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_Module_Giantslayer
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 2
+        width: 124
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3856ff55fc0724190800000000000000
+      internalID: -7979691553943755389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_Module_Instakill
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 2
+        width: 124
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a7df544f416f70c0800000000000000
+      internalID: -4575831703307692121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_Module_Reload
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 386
+        width: 124
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6f99a13af8e964c0800000000000000
+      internalID: -4293644608448389267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_Module_Surge
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 258
+        width: 124
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9640d903eaa261d0800000000000000
+      internalID: -3358934479966026082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T_Module_Critical
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 130
+        width: 124
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 327a7da6ad5143b10800000000000000
+      internalID: 1960215765652580131
       vertices: []
       indices: 
       edges: []
