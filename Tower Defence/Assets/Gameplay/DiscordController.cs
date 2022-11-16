@@ -73,7 +73,15 @@ namespace Gameplay
         private void UpdateActivity()
         {
             GetState(_currentScene.name);
-            _discord.GetActivityManager().UpdateActivity(_activity, (res) => { });
+            try
+            {
+                _discord.GetActivityManager().UpdateActivity(_activity, (res) => { });
+            }
+            catch (ResultException)
+            {
+                _discord?.Dispose();
+                _discord = null;
+            }
         }
 
         /// <summary>
