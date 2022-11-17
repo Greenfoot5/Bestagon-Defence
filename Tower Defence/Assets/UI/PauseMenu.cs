@@ -81,12 +81,15 @@ namespace UI
                 // Tell our leaderboard API to add the player
                 string leaderboardData =
                     Environment.GetEnvironmentVariable(SceneManager.GetActiveScene().name + "Leaderboard");
-                if (leaderboardData == null) return;
-                string[] splitData = leaderboardData.Split(';');
-                bridge.SendPlayerValue(PlayerPrefs.GetString("Username"), GameStats.Rounds, splitData[0], splitData[1]);
+                if (leaderboardData != null)
+                {
+                    string[] splitData = leaderboardData.Split(';');
+                    bridge.SendPlayerValue(PlayerPrefs.GetString("Username"), GameStats.Rounds, splitData[0], splitData[1]);                    
+                }
             }
             catch (Exception)
             {
+                Debug.LogWarning("Failed to save to leaderboard");
                 // TODO - Now ignore the error
             }
             
