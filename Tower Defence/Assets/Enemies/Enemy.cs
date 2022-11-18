@@ -333,8 +333,7 @@ namespace Enemies
                 {
                     case AbilityTarget.Single:
                         // The target may be the damage source or the enemy itself
-                        ability.Activate(source);
-                        ability.Activate(gameObject);
+                        ability.Activate(source != null ? source : gameObject);
                         break;
                     case AbilityTarget.Radius:
                         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, ability.range);
