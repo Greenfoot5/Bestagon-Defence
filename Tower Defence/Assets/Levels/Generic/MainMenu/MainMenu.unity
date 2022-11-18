@@ -1547,6 +1547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 503d6b9aba1374e72a7fafc9f0a3e7ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMenuCanvas: {fileID: 474522199}
   mainMenu: {fileID: 1690735450}
   input: {fileID: 1203248001}
   result: {fileID: 245732717}

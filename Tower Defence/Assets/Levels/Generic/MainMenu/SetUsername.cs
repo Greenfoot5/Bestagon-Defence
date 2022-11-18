@@ -8,6 +8,7 @@ namespace Levels.Generic.MainMenu
     /// </summary>
     public class SetUsername : MonoBehaviour
     {
+        public GameObject mainMenuCanvas;
         public MainMenu mainMenu;
         public TMP_Text input;
         public TMP_Text result;
@@ -31,6 +32,7 @@ namespace Levels.Generic.MainMenu
                 // The game needs to remove some weird input character Unity adds
                 PlayerPrefs.SetString("Username", input.text.Replace("​", ""));
                 mainMenu.DisplayUsername();
+                mainMenuCanvas.SetActive(true);
                 gameObject.SetActive(false);
             }
         }
