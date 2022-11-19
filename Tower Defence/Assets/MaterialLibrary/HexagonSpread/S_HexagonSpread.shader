@@ -28,33 +28,21 @@ Shader "Custom/Hexagon/Spread"
             CGPROGRAM
 
             #pragma vertex vert
-            #pragma geometry geom
             #pragma fragment frag
 
             #pragma exclude_renderers gles
 
             #include "UnityCG.cginc"
 
-            // hexagon magic number (√3)
-            #define M 0.866
             // hexagon magic number halved (√3/2)
-            #define H 0.433
-
+            #define M 0.86602540378
+            // hexagon magic number quartered (√3/4)
+            #define H 0.43301270189
+            
             /**
-             * \brief Vertex to Geometry
+             * \brief Vertex to Fragment
              */
-            struct v2g
-            {
-                float4 pos : TEXCOORD0;
-                float4 vertex : SV_POSITION;
-                float distance : TEXCOORD1;
-                float factor : TEXCOORD2;
-            };
-
-            /**
-             * \brief Geometry to Fragment
-             */
-            struct g2f
+            struct v2f
             {
                 float4 vertex : SV_POSITION;
                 float distance : TEXCOORD0;
@@ -143,19 +131,19 @@ Shader "Custom/Hexagon/Spread"
 
             /**
              * \brief VERTEX SHADER
-             * \param vertex_id The vertex ID (doesn't change as it's only one vertex per particle)
-             * \param hexagon_id The hexagon ID (the instance ID)
+             * \param vertex The vertex coordinate (a vertex of the hexagon relative to its centre)
+             * \param hexagon_id The hexagon ID (the instance ID), used to get the absolute position of the hexagon from the Position buffer
              * \return v2g Data for the Geometry shader
              */
-            v2g vert( const in uint vertex_id: SV_VertexID, const in uint hexagon_id: SV_InstanceID )
+            v2f vert( const in float4 vertex: POSITION, const in uint hexagon_id: SV_InstanceID )
             {
-                v2g o;
+                v2f o;
 
                 // Get the particle
-                o.pos = float4(Positions[hexagon_id], 0);
+                float4 pos = float4(Positions[hexagon_id], 0);
 
                 // Calculate the distance from the origin
-                float d = distance( o.pos.xy, Origin.xy ) / GridMax;
+                float d = distance( pos.xy, Origin.xy ) / GridMax;
 
                 // Calculate the time
                 float time;
@@ -177,10 +165,16 @@ Shader "Custom/Hexagon/Spread"
 
                 // Do not displace if the preview flag is set
                 if (!_Preview)
-                    o.pos += displace( o.pos, 1 - f );
+                    pos += displace( pos, 1 - f );
+
+                // Rotate based off time + scale based off of time
+                pos += mul( rotate( 1 - o.factor ), vertex * o.factor );
 
                 // Set the position in clip space
-                o.vertex = UnityObjectToClipPos(o.pos);
+                o.vertex = UnityObjectToClipPos( pos );
+
+                // Render always on top
+                o.vertex.z = .9 - o.distance * 0.0001;
 
                 // If the preview flag is set, overwrite the factor and distance data with the gradient of the X position
                 if (_Preview)
@@ -193,82 +187,16 @@ Shader "Custom/Hexagon/Spread"
             }
 
             /**
-             * \brief GEOMETRY SHADER
-             * \param input The particle input containing all info relevant to it
-             * \param triStream The mesh generator
-             */
-            [maxvertexcount(12)]
-            void geom( const in point v2g input[1] : SV_POSITION, inout TriangleStream<g2f> triStream )
-            {
-                g2f o = (g2f)0;
-
-                // 0 factor is the same as the hexagon not visible at all, so skip rendering it
-                if (input[0].factor == 0)
-                    return;
-
-                // Give data new names
-                float4 p = input[0].vertex;
-                    
-                o.distance = input[0].distance;
-                o.factor = input[0].factor;
-
-                // Calculate the Hexagon's scale
-                float s = _HexagonSize * .01 * unity_CameraProjection[0].x * o.factor;
-
-                // Side vertices
-                float x = M * s;
-                float y = 0.5 * s;
-
-                // Invert on some displays to make it match
-                #if UNITY_UV_STARTS_AT_TOP
-                if (_ProjectionParams.x < 0.0)
-                {
-                    y = -y;
-                    s = -s;
-                }
-                #endif
-
-                // Render always on top
-                p.z = .9 - o.distance * 0.0001;
-
-                // The rotation matrix
-                const float4x4 m = rotate( 1 - o.factor );
-
-                // All vertices of the hexagon
-                const float4 a = mul( m, float4(0, s, 0, 0) );
-                const float4 v1 = mul( m, float4(-x, y, 0, 0) );
-                const float4 v2 = mul( m, float4(x, y, 0, 0) );
-                const float4 v3 = mul( m, float4(x, -y, 0, 0) );
-                const float4 v4 = mul( m, float4(-x, -y, 0, 0) );
-
-                // Vertices put in an array suitable for tris
-                const float4 verts[12] = {
-                    v1, a, v2,
-                    v1, v2, v3,
-                    v1, v3, v4,
-                    v4, v3, -a
-                };
-
-                // Create every tri
-                for( uint t = 0; t < 4; t++ )
-                {
-                    for( uint v = 0; v < 3; v++ )
-                    {
-                        // Correct the aspect ration and the vertex position to the particle position
-                        o.vertex = p + verts[t * 3 + v] * float4( 1, _ScreenParams.x / _ScreenParams.y, 1, 1 );
-                        triStream.Append(o);
-                    }
-                    triStream.RestartStrip();
-                }
-            }
-
-            /**
              * \brief FRAGMENT SHADER
              * \param i The hexagon pixel
              * \return fixed4 The color of the pixel
              */
-            fixed4 frag( const in g2f i ) : SV_TARGET
+            fixed4 frag( const in v2f i ) : SV_TARGET
             {
+                // Discard if the hexagon has no factor
+                if ( i.factor == 0 )
+                    discard;
+
                 float4 o = float4(0, 0, 0, 0);
                 
                 // Color gradient
