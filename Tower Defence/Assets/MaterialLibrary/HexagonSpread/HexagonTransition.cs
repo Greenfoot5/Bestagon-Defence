@@ -76,8 +76,9 @@ namespace UI.Transitions
     public class HexagonTransition : MonoBehaviour
     {
         // Magic hexagon numbers
-        private const float magicNumber = 1.7320508f;
-        private const float magicNumberHalf = 0.8660254f;
+        private static readonly float magicNumber = Mathf.Sqrt(3);
+        private static readonly float magicNumberHalf = magicNumber * 0.5f;
+        private static readonly float magicNumberQuart = magicNumber * 0.25f;
 
         // Material properties
         private static readonly int _startID = Shader.PropertyToID("StartTime");
@@ -154,6 +155,9 @@ namespace UI.Transitions
 
         private Material CurrentMaterial => newState ? _materialIn : _materialOut;
 
+        // Generated hexagon geometry
+        private Mesh _hexagonMesh;
+
         /// <summary>
         /// Generates the grid, scaling and color gradient on load
         /// </summary>
@@ -161,6 +165,7 @@ namespace UI.Transitions
         {
             UpdateGradient();
             ReloadHexagonSize();
+            RegenerateMesh();
             RegenerateGrid();
             _init = true;
         }
@@ -190,6 +195,52 @@ namespace UI.Transitions
             Debug.LogWarning("Editing buffers is extremely costly and causes more and more memory to be allocated. Please don't edit this component too much!");
         }
 #endif
+
+        /// <summary>
+        /// Procedurally generates the hexagon mesh/geometry
+        /// <para>
+        /// The hexagon:
+        /// <list type="bullet">
+        /// <item>Is oriented so that 2 vertices are directly on the Y axis and are pointing up/down</item>
+        /// <item>Has a height of 1, or the distance between the 2 vertices is 1</item>
+        /// <item>Has a centre of (0,0)</item>
+        /// </list>
+        /// </para>
+        /// </summary>
+        public void RegenerateMesh()
+        {
+            // Create new mesh
+            _hexagonMesh = new Mesh();
+
+            // Create all vertices of a hexagon
+            Vector3 
+                top = new Vector2(0, 0.5f) * _gridHexSize,
+                bottom = new Vector2(0, -0.5f) * _gridHexSize,
+                tleft = new Vector2(-magicNumberQuart, 0.25f) * _gridHexSize,
+                tright = new Vector2(magicNumberQuart, 0.25f) * _gridHexSize,
+                bleft = new Vector2(-magicNumberQuart, -0.25f) * _gridHexSize,
+                bright = new Vector2(magicNumberQuart, -0.25f) * _gridHexSize;
+
+            // Append vertices to the mesh
+            // Index numbers to help make the triangle array
+            _hexagonMesh.vertices = new Vector3[] {
+                top,  // 0
+                tleft, tright,  // 1, 2
+                bleft, bright,  // 3, 4
+                bottom  // 5
+            };
+
+            // Append triangles (groups of 3 vertex indices)
+            // Note: triangles' vertices MUST be ordered in a Clockwise order
+            // Counterclockwise would result in the geometry being flipped (aka facing away from the camera <-> invisible)
+            // Read more about this on https://docs.unity3d.com/Manual/Example-CreatingaBillboardPlane.html
+            _hexagonMesh.triangles = new int[] {
+                1, 0, 2,
+                1, 2, 4,
+                3, 1, 4,
+                5, 3, 4
+            };
+        }
 
         /// <summary>
         /// Gets the bounding world size based on camera parameters
@@ -308,14 +359,15 @@ namespace UI.Transitions
             RecheckChanges();
 
             // Queue for drawing this frame
-            Graphics.DrawProcedural(
+            Graphics.DrawMeshInstancedProcedural(
+                _hexagonMesh,
+                submeshIndex: 0,
                 CurrentMaterial,
                 new Bounds(transform.position, new Vector2(_viewWidth, _viewHeight)),
-                MeshTopology.Points,
-                vertexCount: 1,
-                _hexagonCount,
-                _camera,
-                layer: _layer);
+                count: _hexagonCount,
+                camera: _camera,
+                layer: _layer
+                );
         }
 
         /// <summary>
