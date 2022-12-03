@@ -63,10 +63,6 @@ namespace UI.Transition
             _animator = GetComponentInChildren<Animator>();
 
             SceneManager.sceneLoaded += SceneLoadEvent;
-            
-#if UNITY_STANDALONE_OSX || UNITY_EDITOR_OSX
-                _background.SetActive(false);
-#endif
         }
 
         /// <summary>
