@@ -10,7 +10,7 @@ namespace Modules.Giantslayer
     /// <summary>
     /// Deals extra damage to bosses
     /// </summary>
-    [CreateAssetMenu(fileName = "GiantslayerT0", menuName = "Modules/Giantslayer")]
+    [CreateAssetMenu(fileName = "GiantslayerT0", menuName = "ModuleTiers/Giantslayer")]
     public class GiantslayerModule : Module
     {
         protected override Type[] ValidTypes => null;

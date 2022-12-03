@@ -10,7 +10,7 @@ namespace Modules.Sniper
     /// <summary>
     /// Extends the Module class to create a Sniper upgrade
     /// </summary>
-    [CreateAssetMenu(fileName = "SniperT0", menuName = "Modules/Sniper")]
+    [CreateAssetMenu(fileName = "SniperT0", menuName = "ModuleTiers/Sniper")]
     public class SniperModule : Module
     {
         protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Laser), typeof(Smasher) };

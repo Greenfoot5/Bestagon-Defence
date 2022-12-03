@@ -76,23 +76,7 @@ namespace UI.Nodes
             // Move the UI to be above the node
             transform.position = _target.transform.position;
             
-            // Removes module icons created from the previously selected turret
-            for (var i = 0; i < modules.childCount; i++)
-                Destroy(modules.GetChild(i).gameObject);
-            
-            // Add each Module as an icon
-            foreach (Module module in _target.turret.GetComponent<Turret>().modules)
-            {
-                GameObject moduleIcon = Instantiate(moduleIconPrefab, modules);
-                moduleIcon.name = "_" + moduleIcon.name;
-                moduleIcon.GetComponent<ModuleIcon>().SetData(module);
-                foreach (Image image in moduleIcon.GetComponentsInChildren<Image>())
-                {
-                    image.raycastTarget = false;
-                }
-
-                moduleIcon.GetComponentsInChildren<Image>();
-            }
+            UpdateModules();
             
             // Display the radius of the turret
             _target.turret.GetComponent<Turret>().Selected();
@@ -171,6 +155,9 @@ namespace UI.Nodes
             stats.text = $"<sprite=\"Stats\" name=\"damage\" color=#{color}> {turret.damage}\n" +
                          $"<sprite=\"Stats\" name=\"range\" color=#{color}> {turret.range}\n" +
                          $" <sprite=\"Stats\" name=\"rate\" color=#{color}> {turret.fireRate.ToString()}";
+            
+            // Display the radius of the turret
+            _target.turret.GetComponent<Turret>().Selected();
         }
         
         /// <summary>
@@ -191,6 +178,30 @@ namespace UI.Nodes
         {
             Vector3 rotation = _target.turret.transform.rotation.eulerAngles;
             _target.turret.transform.Rotate(0, 0, 60);
+        }
+
+        public void UpdateModules()
+        {
+            // Removes module icons created from the previously selected turret
+            for (var i = 0; i < modules.childCount; i++)
+                Destroy(modules.GetChild(i).gameObject);
+            
+            // Add each Module as an icon
+            foreach (Module module in _target.turret.GetComponent<Turret>().modules)
+            {
+                GameObject moduleIcon = Instantiate(moduleIconPrefab, modules);
+                moduleIcon.name = "_" + moduleIcon.name;
+                moduleIcon.GetComponent<ModuleIcon>().SetData(module);
+                foreach (Image image in moduleIcon.GetComponentsInChildren<Image>())
+                {
+                    image.raycastTarget = false;
+                }
+
+                moduleIcon.GetComponentsInChildren<Image>();
+            }
+            
+            // Display the radius of the turret
+            _target.turret.GetComponent<Turret>().Selected();
         }
     }
 }

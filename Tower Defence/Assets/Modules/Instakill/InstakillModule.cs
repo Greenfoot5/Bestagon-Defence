@@ -15,7 +15,7 @@ namespace Modules.Instakill
     /// <summary>
     /// Chance to instakill an enemy
     /// </summary>
-    [CreateAssetMenu(fileName = "InstakillT0", menuName = "Modules/Instakill")]
+    [CreateAssetMenu(fileName = "InstakillT0", menuName = "ModuleTiers/Instakill")]
     public class InstakillModule : Module
     {
         protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Smasher), typeof(Gunner), typeof(Lancer) };

@@ -14,6 +14,8 @@ namespace Modules
     {
         [Tooltip("The tier number of the module")]
         public int moduleTier;
+        [Tooltip("If the module can be obtained through upgrades")]
+        public bool upgradable = true;
         
         [Tooltip("The main colour of the module, is displayed in various ways")]
         public Color accentColor;

@@ -15,7 +15,7 @@ namespace Modules.Surge
     /// <summary>
     /// Grants a temporary fire rate increase to a turret
     /// </summary>
-    [CreateAssetMenu(fileName = "SurgeT0", menuName = "Modules/Surge")]
+    [CreateAssetMenu(fileName = "SurgeT0", menuName = "ModuleTiers/Surge")]
     public class SurgeModule : Module
     {
         protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Smasher), typeof(Gunner), typeof(Lancer) };

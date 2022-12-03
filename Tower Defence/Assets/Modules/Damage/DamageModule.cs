@@ -7,7 +7,7 @@ namespace Modules.Damage
     /// <summary>
     /// Extends the Module class to create a Damage upgrade
     /// </summary>
-    [CreateAssetMenu(fileName = "DamageT0", menuName = "Modules/Damage")]
+    [CreateAssetMenu(fileName = "DamageT0", menuName = "ModuleTiers/Damage")]
     public class DamageModule : Module
     {
         protected override Type[] ValidTypes => null;  // any

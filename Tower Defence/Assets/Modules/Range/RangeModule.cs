@@ -8,7 +8,7 @@ namespace Modules.Range
     /// <summary>
     /// Increases the range of a turret
     /// </summary>
-    [CreateAssetMenu(fileName = "RangeModule", menuName = "Modules/Range")]
+    [CreateAssetMenu(fileName = "RangeModule", menuName = "ModuleTiers/Range")]
     public class RangeModule : Module
     {
         protected override Type[] ValidTypes => null;  // any

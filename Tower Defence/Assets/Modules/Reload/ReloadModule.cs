@@ -12,7 +12,7 @@ namespace Modules.Reload
     /// <summary>
     /// Chance to attack again
     /// </summary>
-    [CreateAssetMenu(fileName = "ReloadT0", menuName = "Modules/Reload")]
+    [CreateAssetMenu(fileName = "ReloadT0", menuName = "ModuleTiers/Reload")]
     public class ReloadModule : Module
     {
         protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Smasher), typeof(Gunner), typeof(Lancer) };

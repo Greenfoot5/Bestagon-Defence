@@ -13,7 +13,7 @@ namespace Modules.Ghost
     /// <summary>
     /// Grants bullets ethereal properties
     /// </summary>
-    [CreateAssetMenu(fileName = "GhostT0", menuName = "Modules/Ghost")]
+    [CreateAssetMenu(fileName = "GhostT0", menuName = "ModuleTiers/Ghost")]
     public class Ghost : Module
     {
         protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Gunner) };

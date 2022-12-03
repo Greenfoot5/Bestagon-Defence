@@ -15,7 +15,7 @@ namespace Modules.Execute
     /// <summary>
     /// Extends the module class to create the execute module
     /// </summary>
-    [CreateAssetMenu(fileName = "ExecuteT0", menuName = "Modules/Execute")]
+    [CreateAssetMenu(fileName = "ExecuteT0", menuName = "ModuleTiers/Execute")]
     public class ExecuteModule : Module
     {
         protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Gunner), typeof(Lancer) };

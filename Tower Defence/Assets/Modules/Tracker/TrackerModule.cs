@@ -10,7 +10,7 @@ namespace Modules.Tracker
     /// <summary>
     /// Increases the rotation speed of a dynamic turret
     /// </summary>
-    [CreateAssetMenu(fileName = "TrackerModuleT0", menuName = "Modules/Tracker")]
+    [CreateAssetMenu(fileName = "TrackerModuleT0", menuName = "ModuleTiers/Tracker")]
     public class TrackerModule : Module
     {
         protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Laser), typeof(Gunner) };
