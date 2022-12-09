@@ -13,7 +13,7 @@ namespace Modules.Velocity
     /// Increases the speed of bullets
     /// </summary>
     [CreateAssetMenu(fileName = "VelocityT0", menuName = "ModuleTiers/Velocity")]
-    public class Velocity : Module
+    public class VelocityModule : Module
     {
         protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Gunner), typeof(Smasher), typeof(Lancer) };
 

@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8062262321bc543138867258ea3b19a7, type: 3}
-  m_Name: BombBulletT2
+  m_Name: BombsT1
   m_EditorClassIdentifier: 
-  moduleTier: 2
+  moduleTier: 1
   accentColor: {r: 0.85490197, g: 0.14509805, b: 0.27058825, a: 1}
-  displayName: Bombs II
+  displayName: Bombs I
   tagline: Quite explosive
   icon: {fileID: 8811115329238573457, guid: 16c979c866f439b4b988e7020b313794, type: 3}
   effectText: Bullets explode, with increased damage but are shot slower, with a
     lower range
-  explosionRadiusChange: 0.6
-  damagePercentageChange: 0.5
-  fireRatePercentageChange: -0.15
-  rangePercentageChange: -0.2
-  speedPercentageChange: -0.15
-  smasherDamageChange: 0.15
-  smasherRangeChange: 0.15
+  explosionRadiusChange: 0.3
+  damagePercentageChange: 0.35
+  fireRatePercentageChange: -0.05
+  rangePercentageChange: -0.1
+  speedPercentageChange: -0.05
+  smasherDamageChange: 0.1
+  smasherRangeChange: 0.1

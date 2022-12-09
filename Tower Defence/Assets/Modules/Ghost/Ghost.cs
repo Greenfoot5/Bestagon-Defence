@@ -28,8 +28,8 @@ namespace Modules.Ghost
         public override bool ValidModule(Turret turret)
         {
             return turret.moduleHandlers.All(module => (module.GetType() != typeof(Ghost) 
-                                                 && module.GetType() != typeof(BombBulletModule)
-                                                 && module.GetType() != typeof(MissileBulletModule)))
+                                                 && module.GetType() != typeof(BombsModule)
+                                                 && module.GetType() != typeof(MissilesModule)))
                    && ((IList)ValidTypes).Contains(turret.GetType());
         }
 

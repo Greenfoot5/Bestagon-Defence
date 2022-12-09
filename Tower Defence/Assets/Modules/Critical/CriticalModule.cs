@@ -11,7 +11,7 @@ namespace Modules.Critical
     /// Chance to deal double damage
     /// </summary>
     [CreateAssetMenu(fileName = "CriticalT0", menuName = "ModuleTiers/Critical")]
-    public class Critical : Module
+    public class CriticalModule : Module
     {
         protected override Type[] ValidTypes => null;
         
