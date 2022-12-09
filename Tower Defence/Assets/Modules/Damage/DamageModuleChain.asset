@@ -12,9 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3f37618fc1d4d7e9ef82c3f3f505d0e, type: 3}
   m_Name: DamageModuleChain
   m_EditorClassIdentifier: 
-  moduleTiers: []
-  accentColor: {r: 0, g: 0, b: 0, a: 0}
-  displayName: 
-  tagline: 
-  icon: {fileID: 0}
-  effectText: 
+  moduleTiers:
+  - {fileID: 11400000, guid: 0da67581e745c4e708a1b6172cb3d6ef, type: 2}
+  - {fileID: 11400000, guid: 7c7e505c5536a4df684108f83d159ad6, type: 2}
+  - {fileID: 11400000, guid: b07b4ca124a454693aad3534ab3ec8fd, type: 2}
+  - {fileID: 11400000, guid: c7977fdb0b53b4e11b841f02b6d65ea1, type: 2}
+  - {fileID: 11400000, guid: cf0ccc7dc5fc74622ab2b80603412b7b, type: 2}
+  - {fileID: 11400000, guid: ad753ebca35564bcb818e289d087a48e, type: 2}
+  - {fileID: 11400000, guid: 9ec50b3a07e734fe184a572dde371313, type: 2}
+  accentColor: {r: 0.9647059, g: 0.7882353, b: 0.0627451, a: 1}
+  displayName: Damage
+  tagline: Death Wonder
+  icon: {fileID: -4062769898107646306, guid: 16c979c866f439b4b988e7020b313794, type: 3}
+  effectText: Increases Damage

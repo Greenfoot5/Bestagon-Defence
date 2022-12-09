@@ -8,15 +8,6 @@ namespace Modules
     [CreateAssetMenu(fileName = "ModuleChain", menuName = "Module Chain")]
     public class ModuleChain : ScriptableObject
     {
-        // The display levels of the modules
-        private static readonly string[] Levels =
-        {
-            "-", "I", "II", "III", "IV", "V",
-            "VI", "VII", "VIII", "IX", "X",
-            "XI", "XII", "XIII", "XIV", "XV",
-            "XVI", "XVII", "XVIII", "XIX", "XX"
-        };
-        
         [Tooltip("The tier number of the module")]
         public Module[] moduleTiers;
         
@@ -34,8 +25,9 @@ namespace Modules
 
         public bool PerformUpgrade(int tier)
         {
-            if (tier == moduleTiers.Length)
+            if (tier >= moduleTiers.Length)
             {
+                Debug.Log("Hit Tier Cap!");
                 return false;
             }
 
@@ -46,9 +38,9 @@ namespace Modules
                    && nextTier.upgradable;
         }
 
-        public string GetTierDisplay(int tier)
+        public Module GetTier(int tier)
         {
-            return Levels[tier + 1];
+            return moduleTiers[tier];
         }
     }
 }

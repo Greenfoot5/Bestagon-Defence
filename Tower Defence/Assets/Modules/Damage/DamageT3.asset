@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: DamageT3
   m_EditorClassIdentifier: 
   moduleTier: 3
+  upgradable: 1
   accentColor: {r: 0.9647059, g: 0.7882353, b: 0.0627451, a: 1}
   displayName: Damage III
   tagline: Death wonder

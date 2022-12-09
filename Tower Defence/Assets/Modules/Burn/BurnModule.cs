@@ -46,7 +46,7 @@ namespace Modules.Burn
         /// <returns>If the module can be applied</returns>
         public override bool ValidModule(Turret turret)
         {
-            return turret.modules.All(module => module.GetType() != typeof(BurnModule))
+            return turret.moduleHandlers.All(module => module.GetType() != typeof(BurnModule))
                    && ((IList)ValidTypes).Contains(turret.GetType());
         }
 

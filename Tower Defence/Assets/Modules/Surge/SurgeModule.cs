@@ -46,7 +46,7 @@ namespace Modules.Surge
         /// <returns>If the module can be applied</returns>
         public override bool ValidModule(Turret turret)
         {
-            return turret.modules.All(module => module.GetType() != typeof(SurgeModule))
+            return turret.moduleHandlers.All(module => module.GetType() != typeof(SurgeModule))
                    && ((IList)ValidTypes).Contains(turret.GetType());
         }
 
@@ -68,7 +68,7 @@ namespace Modules.Surge
             // Wait the cooldown
             yield return new WaitForSeconds(cooldown);
             
-            while (turret != null && turret.modules.Any(module => module.GetType() == typeof(SurgeModule)))
+            while (turret != null && turret.moduleHandlers.Any(module => module.GetType() == typeof(SurgeModule)))
             {
                 // SURGE!
                 turret.fireRate.AddModifier(fireRateChange);

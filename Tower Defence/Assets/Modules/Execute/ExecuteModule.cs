@@ -33,7 +33,7 @@ namespace Modules.Execute
         /// <returns>If the module can be applied</returns>
         public override bool ValidModule(Turret turret)
         {
-            return turret.modules.All(module => module.GetType() != typeof(ExecuteModule))
+            return turret.moduleHandlers.All(module => module.GetType() != typeof(ExecuteModule))
                    && ((IList)ValidTypes).Contains(turret.GetType());
         }
         
