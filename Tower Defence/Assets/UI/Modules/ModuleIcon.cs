@@ -1,3 +1,4 @@
+using Abstract.Data;
 using Modules;
 using TMPro;
 using UnityEngine;
@@ -48,6 +49,17 @@ namespace UI.Modules
             _module = newModule;
             SetSprite(newModule.icon);
             SetLevel(newModule.moduleTier);
+        }
+        
+        /// <summary>
+        /// Sets all values for the module icon
+        /// </summary>
+        /// <param name="handler">The module chain handler to display the icon for</param>
+        public void SetData(ModuleChainHandler handler)
+        {
+            _module = handler.GetModule();
+            SetSprite(handler.GetChain().icon);
+            text.text = handler.GetTierDisplay();
         }
         
         /// <summary>

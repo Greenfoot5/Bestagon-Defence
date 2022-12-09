@@ -1,6 +1,6 @@
 using Abstract;
+using Abstract.Data;
 using MaterialLibrary.Hexagons;
-using Modules;
 using TMPro;
 using Turrets;
 using UI.Glyphs;
@@ -92,17 +92,17 @@ namespace UI.Shop
             range.SetData(turretPrefab.range);
             
             // Turret's Modules
-            if (turret.modules.Count == 0)
+            if (turret.moduleHandlers.Count == 0)
             {
                 modulesSection.SetActive(false);
             }
             else
             {
-                foreach (Module module in turret.modules)
+                foreach (ModuleChainHandler handler in turret.moduleHandlers)
                 {
                     GameObject mod = Instantiate(moduleUI, modulesLayout.transform);
                     mod.name = "_" + mod.name;
-                    mod.GetComponentInChildren<TurretModulesIcon>().SetData(module);
+                    mod.GetComponentInChildren<TurretModulesIcon>().SetData(handler.GetModule());
                 }
             }
 

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using Abstract.Data;
-using Modules;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace Turrets
 {
@@ -43,9 +43,10 @@ namespace Turrets
         public float fireCountdown;
 
         // Modules
+        [FormerlySerializedAs("modules")]
         [Tooltip("Which modules the turret has applied")]
         [SerializeField]
-        public List<Module> modules = new List<Module>();
+        public List<ModuleChainHandler> moduleHandlers = new List<ModuleChainHandler>();
         
         [Tooltip("What events to run when starting")]
         [SerializeField]
@@ -77,44 +78,20 @@ namespace Turrets
         /// <summary>
         /// Adds Modules to our turret after checking they're valid.
         /// </summary>
-        /// <param name="module">The Module to apply to the turret</param>
+        /// <param name="handler">The ModuleChainHandler to apply to the turret</param>
         /// <returns>true If the Module was applied successfully</returns>
-        public bool AddModule(Module module)
+        public bool AddModule(ModuleChainHandler handler)
         {
-            if (!module.ValidModule(this))
+            if (!handler.GetModule().ValidModule(this))
             {
                 //Debug.Log("Invalid Module Applied");
                 return false;
             }
+
+            handler = CalculateUpgrades(handler);
             
-            // TODO - Add as difficulty modifier
-            // Module oldModule = null;
-            // // Check if the turret already have an Module of the same type
-            // foreach (var turretModule in Modules.Where(turretModule => turretModule.GETModuleType() == Module.GETModuleType()))
-            // {
-            //     // If it's of a higher level, remove the current level
-            //     if (turretModule.ModuleTier < Module.ModuleTier)
-            //     {
-            //         Debug.Log("Removing lower level Module");
-            //         oldModule = turretModule;
-            //     }
-            //     // If it's of a lower level, the module can't be added
-            //     else
-            //     {
-            //         Debug.Log("This turret already has an Module of the same type at" +
-            //                   " the same level or better!");
-            //         return false;
-            //     }
-            // }
-            //
-            // if (oldModule != null)
-            // {
-            //     oldModule.RemoveModule(this);
-            //     Modules.Remove(oldModule);
-            // }
-            
-            modules.Add(module);
-            module.AddModule(this);
+            moduleHandlers.Add(handler);
+            handler.GetModule().AddModule(this);
 
             // Update the range shader's size
             Vector3 localScale = transform.localScale;
@@ -123,6 +100,47 @@ namespace Turrets
                 range.GetStat() / localScale.y * 2,
                 1);
             return true;
+        }
+        
+        /// <summary>
+        /// Performs any module upgrades that are possible with the addition of a new handler
+        /// </summary>
+        /// <param name="handler">The handler to check for upgrades against</param>
+        private ModuleChainHandler CalculateUpgrades(ModuleChainHandler handler)
+        {
+            var i = 0;
+            while (i < moduleHandlers.Count)
+            {
+                bool canUpgrade = handler.Upgrade(moduleHandlers[i].GetTier());
+                if (canUpgrade)
+                {
+                    Debug.Log("Upgrading!");
+                    RemoveModule(moduleHandlers[i]);
+                    handler = CalculateUpgrades(handler);
+                    break;
+                }
+
+                i++;
+            }
+
+            return handler;
+        }
+        
+        /// <summary>
+        /// Removes a module from the turret
+        /// </summary>
+        /// <param name="handler">The handler of the module to remove</param>
+        public void RemoveModule(ModuleChainHandler handler)
+        {
+            moduleHandlers.Remove(handler);
+            handler.GetModule().RemoveModule(this);
+            Debug.Log("Removing: " + handler.GetModule().displayName);
+            // Update the range shader's size
+            Vector3 localScale = transform.localScale;
+            rangeDisplay.transform.localScale = new Vector3(
+                range.GetStat() / localScale.x * 2,
+                range.GetStat() / localScale.y * 2,
+                1);
         }
         
         /// <summary>

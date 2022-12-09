@@ -5,7 +5,6 @@ using Abstract;
 using Abstract.Data;
 using Gameplay;
 using Levels.Maps;
-using Modules;
 using Turrets;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -138,15 +137,15 @@ namespace UI.Shop
                 if (choice > _levelData.turretOptionWeight.Value.Evaluate(GameStats.Rounds))
                 {
                     // Grants an Module option
-                    WeightedList<Module> modules = _levelData.modules.ToWeightedList(GameStats.Rounds);
-                    Module selected = modules.GetRandomItem();
+                    WeightedList<ModuleChainHandler> modules = _levelData.moduleHandlers.ToWeightedList(GameStats.Rounds);
+                    ModuleChainHandler selected = modules.GetRandomItem();
                     
                     // Check the player actually has a turret of the modules type
                     // But only if they have actually bought some turrets
                     if (_turretTypes.Any())
                     {
-                        while (!(selected.GetValidTypes() == null ||
-                                 _turretTypes.Any(x => selected.GetValidTypes().Contains(x))))
+                        while (!(selected.GetModule().GetValidTypes() == null ||
+                                 _turretTypes.Any(x => selected.GetModule().GetValidTypes().Contains(x))))
                         {
                             selected = modules.GetRandomItem();
                             lagCounter++;
@@ -162,7 +161,7 @@ namespace UI.Shop
                             break;
 
                         case DuplicateTypes.ByName:
-                            while (selectedNames.Contains(selected.displayName))
+                            while (selectedNames.Contains(selected.GetChain().displayName))
                             {
                                 selected = modules.GetRandomItem();
                                 lagCounter++;
@@ -173,7 +172,7 @@ namespace UI.Shop
                             break;
 
                         case DuplicateTypes.ByType:
-                            while (selectedTypes.Contains(selected.GetType()))
+                            while (selectedTypes.Contains(selected.GetModule().GetType()))
                             {
                                 selected = modules.GetRandomItem();
                                 lagCounter++;
@@ -191,8 +190,8 @@ namespace UI.Shop
                     GenerateModuleUI(selected);
 
                     // Add it to our "history" to avoid duplicates on our next selection
-                    selectedTypes[i] = selected.GetType();
-                    selectedNames[i] = selected.displayName;
+                    selectedTypes[i] = selected.GetModule().GetType();
+                    selectedNames[i] = selected.GetChain().displayName;
                 }
                 else
                 {
@@ -243,13 +242,13 @@ namespace UI.Shop
         /// <summary>
         /// Adds a new Module UI option to the player's choice
         /// </summary>
-        /// <param name="module">The Module the player can pick</param>
-        private void GenerateModuleUI(Module module)
+        /// <param name="handler">The Module the player can pick</param>
+        private void GenerateModuleUI(ModuleChainHandler handler)
         {
             // Create the ui as a child
             GameObject moduleUI = Instantiate(moduleSelectionUI, transform);
             moduleUI.name = "_" + moduleUI.name;
-            moduleUI.GetComponent<ModuleSelectionUI>().Init(module, shop, glyphsLookup);
+            moduleUI.GetComponent<ModuleSelectionUI>().Init(handler, shop, glyphsLookup);
         }
     
         /// <summary>

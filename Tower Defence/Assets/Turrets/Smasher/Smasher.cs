@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Abstract.Data;
 using Enemies;
 using Modules;
 using UnityEngine;
@@ -70,9 +71,9 @@ namespace Turrets.Smasher
             }
             
             // Activates the turret's OnHit modules
-            foreach (Module module in modules)
+            foreach (ModuleChainHandler handler in moduleHandlers)
             {
-                module.OnHit(enemies.ToArray(), this);
+                handler.GetModule().OnHit(enemies.ToArray(), this);
             }
         }
     }

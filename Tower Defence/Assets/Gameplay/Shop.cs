@@ -1,6 +1,6 @@
 ﻿using System;
+using Abstract.Data;
 using Levels.Maps;
-using Modules;
 using TMPro;
 using Turrets;
 using UI.Modules;
@@ -17,7 +17,7 @@ namespace Gameplay
     {
         private BuildManager _buildManager;
         private LevelData _levelData;
-        private Module _selectedModule;
+        private ModuleChainHandler _selectedModule;
         private GameObject _selectedModuleButton;
         
         [SerializeField]
@@ -38,7 +38,7 @@ namespace Gameplay
         private GameObject selectionUI;
         
         public int selectionCost;
-        private bool _hasPlayerMadePurchase = false;
+        private bool _hasPlayerMadePurchase;
 
         private TextMeshProUGUI _turretInventoryButton;
         private TextMeshProUGUI _moduleInventoryButton;
@@ -77,7 +77,7 @@ namespace Gameplay
         /// </summary>
         /// <param name="module">The selected module</param>
         /// <param name="button">The button that selected the module</param>
-        private void SelectModule(Module module, GameObject button)
+        private void SelectModule(ModuleChainHandler module, GameObject button)
         {
             if (_selectedModuleButton != null) _selectedModuleButton.transform.GetChild(0).gameObject.SetActive(false);
             _selectedModuleButton = button;
@@ -89,7 +89,7 @@ namespace Gameplay
         /// Returns the currently selected module
         /// </summary>
         /// <returns>The currently selected Module</returns>
-        public Module GetModule()
+        public ModuleChainHandler GetModule()
         {
             return _selectedModule;
         }
@@ -100,7 +100,6 @@ namespace Gameplay
         public void RemoveModule()
         {
             Destroy(_selectedModuleButton);
-            _selectedModule = null;
         }
         
         /// <summary>
@@ -123,7 +122,7 @@ namespace Gameplay
         /// Adds a new module button to the module inventory
         /// </summary>
         /// <param name="module">The module to add</param>
-        public void SpawnNewModule(Module module)
+        public void SpawnNewModule(ModuleChainHandler module)
         {
             GameObject moduleButton = Instantiate(defaultModuleButton, moduleInventory.transform);
             moduleButton.name = "_" + moduleButton.name;

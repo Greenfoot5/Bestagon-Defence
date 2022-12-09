@@ -1,4 +1,5 @@
-﻿using Gameplay;
+﻿using Abstract.Data;
+using Gameplay;
 using Modules;
 using Turrets;
 using UnityEngine;
@@ -50,9 +51,10 @@ namespace Levels._Nodes
             var turretClass = turret.GetComponent<Turret>();
             turretBlueprint = blueprint;
         
-            foreach (Module turretModule in blueprint.modules)
+            foreach (ModuleChainHandler turretModule in blueprint.moduleHandlers)
             {
-                turretClass.AddModule(turretModule);
+                // TODO - Convert to a mock handler
+                //turretClass.AddModule(turretModule);
             }
         
             // Spawn the build effect and destroy after
@@ -64,12 +66,12 @@ namespace Levels._Nodes
         /// <summary>
         /// Called when upgrading a turret
         /// </summary>
-        /// <param name="module">The Module to add to the turret</param>
+        /// <param name="handler">The Module to add to the turret</param>
         /// <returns>If the Module was applied</returns>
-        public bool ModuleTurret(Module module)
+        public bool ApplyModuleToTurret(ModuleChainHandler handler)
         {
             // Apply the Module
-            bool appliedModule = turret.GetComponent<Turret>().AddModule(module);
+            bool appliedModule = turret.GetComponent<Turret>().AddModule(handler);
             if (!appliedModule) return false;
 
             // Spawn the build effect

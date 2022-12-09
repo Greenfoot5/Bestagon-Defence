@@ -1,6 +1,6 @@
 ﻿using System;
+using Abstract.Data;
 using Levels._Nodes;
-using Modules;
 using TMPro;
 using Turrets;
 using Turrets.Lancer;
@@ -121,10 +121,9 @@ namespace UI.Nodes
         /// </summary>
         public void ModuleNode()
         {
-            Module module = shop.GetModule();
-            if (module == null) return;
-            
-            bool applied = _target.ModuleTurret(module);
+            ModuleChainHandler handler = shop.GetModule();
+
+            bool applied = _target.ApplyModuleToTurret(handler);
             if (!applied) return;
             
             shop.RemoveModule();
@@ -187,11 +186,11 @@ namespace UI.Nodes
                 Destroy(modules.GetChild(i).gameObject);
             
             // Add each Module as an icon
-            foreach (Module module in _target.turret.GetComponent<Turret>().modules)
+            foreach (ModuleChainHandler handle in _target.turret.GetComponent<Turret>().moduleHandlers)
             {
                 GameObject moduleIcon = Instantiate(moduleIconPrefab, modules);
                 moduleIcon.name = "_" + moduleIcon.name;
-                moduleIcon.GetComponent<ModuleIcon>().SetData(module);
+                moduleIcon.GetComponent<ModuleIcon>().SetData(handle.GetModule());
                 foreach (Image image in moduleIcon.GetComponentsInChildren<Image>())
                 {
                     image.raycastTarget = false;

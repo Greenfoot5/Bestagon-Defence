@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Abstract.Data;
 using Enemies;
-using Modules;
 using UnityEngine;
 
 namespace Turrets.Lancer
@@ -118,9 +117,9 @@ namespace Turrets.Lancer
             if (bullet == null) return;
             
             // Adds the modules to the bullet
-            foreach (Module module in modules)
+            foreach (ModuleChainHandler handler in moduleHandlers)
             {
-                bullet.AddModule(module);
+                bullet.AddModule(handler.GetModule());
             }
             
             // Get the end point of the line renderer

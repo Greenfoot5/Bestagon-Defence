@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Modules;
+using Abstract.Data;
 using Turrets;
 using UnityEngine;
 
@@ -15,7 +15,7 @@ namespace _WIP.Abilities.PositiveAbilities
         [Header("Ability Stats")]
         [Tooltip("The list of debuffs to apply to the turret")]
         [SerializeField]
-        private List<Module> debuffs;
+        private List<ModuleChainHandler> debuffs;
         
         
         /// <summary>
@@ -32,9 +32,9 @@ namespace _WIP.Abilities.PositiveAbilities
             }
             
             // Add the debuffs
-            foreach (var module in debuffs)
+            foreach (ModuleChainHandler handler in debuffs)
             {
-                turretComponent.AddModule(module);
+                turretComponent.AddModule(handler);
             }
         }
         

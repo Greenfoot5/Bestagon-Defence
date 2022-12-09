@@ -1,4 +1,4 @@
-﻿using Modules;
+﻿using Abstract.Data;
 using UnityEngine;
 
 namespace Turrets.Shooter
@@ -60,9 +60,9 @@ namespace Turrets.Shooter
             if (bullet == null) return;
             
             // Adds the modules to the bullet
-            foreach (Module module in modules)
+            foreach (ModuleChainHandler handler in moduleHandlers)
             {
-                bullet.AddModule(module);
+                bullet.AddModule(handler.GetModule());
             }
             
             bullet.Seek(target, this);
