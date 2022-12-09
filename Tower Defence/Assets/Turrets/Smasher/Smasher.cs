@@ -2,7 +2,6 @@
 using System.Linq;
 using Abstract.Data;
 using Enemies;
-using Modules;
 using UnityEngine;
 
 namespace Turrets.Smasher

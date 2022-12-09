@@ -1,10 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UI.Transition;
-using UI.Transitions;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Levels.Generic.LevelSelect
@@ -42,7 +39,6 @@ namespace Levels.Generic.LevelSelect
         [Tooltip("The high score text")]
         [SerializeField]
         private TMP_Text highScore;
-        private static readonly int Start = Animator.StringToHash("Start");
 
         /// <summary>
         /// Disables play and info buttons

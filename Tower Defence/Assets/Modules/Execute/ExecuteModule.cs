@@ -6,7 +6,6 @@ using Enemies;
 using Turrets;
 using Turrets.Gunner;
 using Turrets.Lancer;
-using Turrets.Laser;
 using Turrets.Shooter;
 using UnityEngine;
 

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Abstract.Data;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Turrets
 {
@@ -25,7 +24,7 @@ namespace Turrets
         [Header("Turret Info")]
         [Tooltip("The prefab to use when the turret is built.")]
         public GameObject prefab;
-        [FormerlySerializedAs("modules")] [Tooltip("Any modules that come pre-applied when the player places the turret")]
+        [Tooltip("Any modules that come pre-applied when the player places the turret")]
         public List<ModuleChainHandler> moduleHandlers = new List<ModuleChainHandler>();
     }
 }

@@ -52,7 +52,7 @@ namespace UI.Shop
         /// <summary>
         /// Creates the UI
         /// </summary>
-        /// <param name="initHandler">The module the card is for</param>
+        /// <param name="initHandler">The ModuleChainHandler the card is for</param>
         /// <param name="shop">The shop script</param>
         /// <param name="lookup">The TypeSpriteLookup to get the glyph</param>
         public void Init (ModuleChainHandler initHandler, Gameplay.Shop shop, TypeSpriteLookup lookup)
@@ -64,7 +64,7 @@ namespace UI.Shop
 
             bg.color = chain.accentColor;
 
-            displayName.text = chain.displayName;
+            displayName.text = initHandler.GetDisplayName();
             tagline.text = chain.tagline;
             tagline.color = chain.accentColor;
 
@@ -103,7 +103,7 @@ namespace UI.Shop
 
         /// <summary>
         /// Called when the player clicks on the card.
-        /// Selects the module and closes the shop
+        /// Selects the ModuleChainHandler and closes the shop
         /// </summary>
         /// <param name="shop"></param>
         private void MakeSelection (Gameplay.Shop shop)

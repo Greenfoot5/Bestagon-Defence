@@ -1,10 +1,14 @@
 using System;
 using Modules;
-using UI.Nodes;
 using UnityEngine;
 
 namespace Abstract.Data
 {
+    /// <summary>
+    /// A handle between a ModuleChain (SO) and a GameObject
+    /// As an SO cannot be instantiated, it cannot store the tier variable
+    /// Also handles a few other useful things
+    /// </summary>
     [Serializable]
     public struct ModuleChainHandler
     {
@@ -29,39 +33,57 @@ namespace Abstract.Data
         /// <returns></returns>
         public bool Upgrade(int siblingTier)
         {
-            if (siblingTier == tier)
-            {
-                if (!chain.PerformUpgrade(tier)) return false;
+            // If the upgrade is of a different tier, 
+            if (siblingTier != tier || !chain.CanUpgrade(tier - 1)) return false;
                 
-                Debug.Log("Increasing Tier");
-                tier += 1;
-                return true;
-            }
-
-            Debug.LogError("Cannot upgrade modules of different tiers! " +
-                           "Current tier: " + tier + "; Sibling tier: " + siblingTier + "; Module: " + chain.displayName, chain);
-            return false;
+            tier += 1;
+            return true;
         }
-
+        
+        /// <summary>
+        /// Gets the module in the chain of the current tier
+        /// </summary>
+        /// <returns>The current module that's being handled</returns>
         public Module GetModule()
         {
-            return chain.GetTier(tier);
+            return chain.GetModule(tier);
         }
-
+        
+        /// <summary>
+        /// Gets the chain the handler is handling
+        /// </summary>
+        /// <returns>The ModuleChain of the handler</returns>
         public ModuleChain GetChain()
         {
             return chain;
         }
-
+        
+        /// <summary>
+        /// Gets the current tier of the handler
+        /// </summary>
+        /// <returns>The current tier</returns>
         public int GetTier()
         {
             return tier;
         }
         
+        /// <summary>
+        /// Gets the current tier in roman numerals
+        /// </summary>
+        /// <returns>Roman numerals for the tier</returns>
         public string GetTierDisplay()
         {
             // The tier supplied is the array index, it might not be the actual tier.
-            return Levels[chain.GetTier(tier).moduleTier];
+            return Levels[chain.GetModule(tier).moduleTier];
+        }
+        
+        /// <summary>
+        /// Gets the name of the current module and it's tier
+        /// </summary>
+        /// <returns>Name & tier in roman numerals</returns>
+        public string GetDisplayName()
+        {
+            return chain.displayName + " " + GetTierDisplay();
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using Turrets;
-using Turrets.Smasher;
+﻿using Turrets.Smasher;
 using UnityEditor;
 
 namespace Editor.Turrets

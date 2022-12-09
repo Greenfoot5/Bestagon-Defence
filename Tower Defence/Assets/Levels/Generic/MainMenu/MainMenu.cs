@@ -1,4 +1,3 @@
-using Abstract;
 using TMPro;
 using UI.Transition;
 using UnityEngine;
@@ -13,8 +12,6 @@ namespace Levels.Generic.MainMenu
         [Tooltip("The text that displays the username of the player")]
         [SerializeField]
         private TMP_Text loggedInAs;
-        
-        private static readonly int AnimationTrigger = Animator.StringToHash("Start");
 
         /// <summary>
         /// Sets the username text

@@ -1,6 +1,5 @@
 ﻿using Abstract.Data;
 using Gameplay;
-using Modules;
 using Turrets;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -53,8 +52,7 @@ namespace Levels._Nodes
         
             foreach (ModuleChainHandler turretModule in blueprint.moduleHandlers)
             {
-                // TODO - Convert to a mock handler
-                //turretClass.AddModule(turretModule);
+                turretClass.AddModule(turretModule);
             }
         
             // Spawn the build effect and destroy after

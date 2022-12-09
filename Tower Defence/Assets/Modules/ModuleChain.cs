@@ -22,8 +22,13 @@ namespace Modules
         [Multiline(3)]
         [Tooltip("The description of the module and what it does")]
         public string effectText;
-
-        public bool PerformUpgrade(int tier)
+        
+        /// <summary>
+        /// Checks if the module can be upgraded
+        /// </summary>
+        /// <param name="tier">The tier to check against</param>
+        /// <returns>If the module can be upgraded</returns>
+        public bool CanUpgrade(int tier)
         {
             if (tier >= moduleTiers.Length)
             {
@@ -37,10 +42,15 @@ namespace Modules
             return currentTier.moduleTier + 1 == nextTier.moduleTier
                    && nextTier.upgradable;
         }
-
-        public Module GetTier(int tier)
+        
+        /// <summary>
+        /// Returns the current module given a provided tier
+        /// </summary>
+        /// <param name="tier">The tier of the module to return</param>
+        /// <returns>The module of the provided tier</returns>
+        public Module GetModule(int tier)
         {
-            return moduleTiers[tier];
+            return moduleTiers[tier - 1];
         }
     }
 }

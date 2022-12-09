@@ -2,7 +2,6 @@
 using Abstract.Data;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 
 namespace Turrets
 {
@@ -43,7 +42,6 @@ namespace Turrets
         public float fireCountdown;
 
         // Modules
-        [FormerlySerializedAs("modules")]
         [Tooltip("Which modules the turret has applied")]
         [SerializeField]
         public List<ModuleChainHandler> moduleHandlers = new List<ModuleChainHandler>();

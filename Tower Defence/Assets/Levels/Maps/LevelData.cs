@@ -1,7 +1,6 @@
 using Abstract.Data;
 using Turrets;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Levels.Maps
 {
@@ -34,7 +33,7 @@ namespace Levels.Maps
         public DuplicateTypes turretDuplicateCheck = DuplicateTypes.ByName;
         [Tooltip("The weighted chance of picking a turret card to appear in the selection")]
         public CurvedReference turretOptionWeight;
-        [FormerlySerializedAs("modules")] [Tooltip("What module can appear and their weighted chance of appearing on a module selection card")]
+        [Tooltip("What module can appear and their weighted chance of appearing on a module selection card")]
         public WeightedCurveList<ModuleChainHandler> moduleHandlers;
         [Tooltip("What type of duplicate check to perform, if any, against the rest of the selection")]
         public DuplicateTypes moduleDuplicateCheck = DuplicateTypes.ByType;

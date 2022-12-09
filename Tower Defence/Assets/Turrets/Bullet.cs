@@ -3,7 +3,6 @@ using Abstract.Data;
 using Enemies;
 using Modules;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Turrets
 {
@@ -17,7 +16,6 @@ namespace Turrets
         private Vector3 _targetLocation;
         private bool _useLocation;
 
-        [FormerlySerializedAs("isEtheral")]
         [Header("Types")]
         [Tooltip("Hits all enemies on path, but does not destroy itself")]
         public bool isEthereal;
