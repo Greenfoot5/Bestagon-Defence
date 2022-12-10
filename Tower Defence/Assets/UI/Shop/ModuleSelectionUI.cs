@@ -8,7 +8,6 @@ using TMPro;
 using UI.Glyphs;
 using UI.Modules;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace UI.Shop
@@ -18,7 +17,6 @@ namespace UI.Shop
     /// </summary>
     public class ModuleSelectionUI : MonoBehaviour
     {
-        [FormerlySerializedAs("module")]
         [Tooltip("The module to display on the card")]
         [SerializeField]
         private ModuleChainHandler handler;
