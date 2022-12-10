@@ -17,7 +17,7 @@ A tower defence with roguelike elements so it never gets boring. Themed around [
 ## Links
 
 [![Website link](https://img.shields.io/badge/Website-Bestagon.Alchemix.dev-blueviolet)](https://bestagon.alchemix.dev/)
-[![Support on Ko-Fi](https://img.shields.io/static/v1?logo=ko-fi&label=Ko-Fi&message=Support&color=blue?logoColor=#13C3FF)](https://ko-fi.com/bestagondefence)
+[![Support on Ko-Fi](https://img.shields.io/static/v1?logo=ko-fi&label=Ko-Fi&message=Support&color=blue&logoColor=13C3FF)](https://ko-fi.com/bestagondefence)
 [![Notion.so link for documentation](https://img.shields.io/static/v1?logo=notion&label=Notion.so&message=Documentation&color=blue)](https://chambray-comb-aa7.notion.site/Bestagon-Defence-3af38b2be320481580979110f3c373ef)
 [![itch.io link for downloading](https://img.shields.io/static/v1?logo=itchdotio&label=itch.io&message=Download&color=success)](https://greenfoot5.itch.io/bestagon-defence)
 [![Discord link for support](https://img.shields.io/discord/694196573181050880.svg?logo=discord&logoColor=white&logoWidth=20&labelColor=7289DA&label=Discord&color=17cf48)](https://discord.gg/zeDey9v)
