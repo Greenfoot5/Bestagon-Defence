@@ -81,6 +81,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -147,6 +148,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -569,6 +582,26 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      T_Module_Reload: -4293644608448389267
+      T_Module_Stun: 1892315637792861288
+      T_Module_Execute: 2903838018198858911
+      T_Module_Critical: 1960215765652580131
+      T_Module_Range: -1435114285472068323
+      T_Module_Damage: -4062769898107646306
+      T_Module_Giantslayer: -7979691553943755389
+      T_Module_Instakill: -4575831703307692121
+      T_Module_Poison: -3015200091239744399
+      T_Module_Velocity: -2198499569358823354
+      T_Module_Tracker: -4242299120216371416
+      T_Module_Bombs: 8811115329238573457
+      T_Module_FireRate: 8075296294540816629
+      T_Module_Slow: -3843445929337379658
+      T_Module_Ghost: 8756708870751878701
+      T_Module_Missiles: -4264398553240656916
+      T_Module_Sniper: 2691302287683433475
+      T_Module_Surge: -3358934479966026082
+      T_Module_Burn: -7464220177990265132
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
