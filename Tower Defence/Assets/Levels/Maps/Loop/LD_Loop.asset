@@ -713,10 +713,12 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     variable: {fileID: 0}
-  modules:
+  moduleHandlers:
     list:
     - useConstant: 0
-      item: {fileID: 11400000, guid: 0da67581e745c4e708a1b6172cb3d6ef, type: 2}
+      item: 
+        chain: {fileID: 11400000, guid: 5c9594279dd7a47909087f486ebd2e17, type: 2}
+        tier: 1
       constantValue:
         serializedVersion: 2
         m_Curve:

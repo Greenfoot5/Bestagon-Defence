@@ -613,7 +613,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     variable: {fileID: 0}
-  modules:
+  moduleHandlers:
     list:
     - useConstant: 0
       item: {fileID: 11400000, guid: 0da67581e745c4e708a1b6172cb3d6ef, type: 2}
