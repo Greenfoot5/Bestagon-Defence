@@ -17,6 +17,8 @@ MonoBehaviour:
   tagline: The empowered
   accent: {r: 0.1254902, g: 0.8117647, b: 0.5372549, a: 1}
   prefab: {fileID: 3974544501041316794, guid: f962ed2b909e2496cb09aa444d473eda, type: 3}
-  modules:
-  - {fileID: 11400000, guid: b27a173d3675244dd8aa830dafac9f53, type: 2}
-  - {fileID: 11400000, guid: 7c7e505c5536a4df684108f83d159ad6, type: 2}
+  moduleHandlers:
+  - chain: {fileID: 11400000, guid: 7452851d1c2b745bcbfffd73ec35d11f, type: 2}
+    tier: 2
+  - chain: {fileID: 11400000, guid: d312f79296a2146e3976d8622d6b1b8c, type: 2}
+    tier: 2

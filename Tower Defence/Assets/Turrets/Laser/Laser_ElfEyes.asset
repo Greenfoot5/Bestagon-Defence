@@ -17,5 +17,6 @@ MonoBehaviour:
   tagline: See far, shoot far
   accent: {r: 0.12941177, g: 0.75686276, b: 0.84313726, a: 1}
   prefab: {fileID: 8263255388866025106, guid: f76383e69d04d405ea64aa69d096467f, type: 3}
-  modules:
-  - {fileID: 11400000, guid: 2843a599f232045cd84bddb4bfdc34b5, type: 2}
+  moduleHandlers:
+  - chain: {fileID: 11400000, guid: d40d23008188f4636ba917575d70acdc, type: 2}
+    tier: 4

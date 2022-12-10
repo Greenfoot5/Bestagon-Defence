@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 392646548d607415eae9890069c98df4, type: 3}
-  m_Name: FireRateT2
+  m_Name: FireRateT4
   m_EditorClassIdentifier: 
-  moduleTier: 2
+  moduleTier: 4
   isUpgradableTo: 1
-  percentageChange: 0.55
+  percentageChange: 0.3

@@ -17,6 +17,8 @@ MonoBehaviour:
   tagline: The death bringer
   accent: {r: 0.1254902, g: 0.8117647, b: 0.5372549, a: 1}
   prefab: {fileID: 3974544501041316794, guid: f962ed2b909e2496cb09aa444d473eda, type: 3}
-  modules:
-  - {fileID: 11400000, guid: f51f0f08791ee4076be40b4d01554f3c, type: 2}
-  - {fileID: 11400000, guid: cf0ccc7dc5fc74622ab2b80603412b7b, type: 2}
+  moduleHandlers:
+  - chain: {fileID: 11400000, guid: d312f79296a2146e3976d8622d6b1b8c, type: 2}
+    tier: 5
+  - chain: {fileID: 11400000, guid: 1f607adabd390408e85118b1cffe1d8b, type: 2}
+    tier: 3

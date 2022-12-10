@@ -9,9 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 392646548d607415eae9890069c98df4, type: 3}
-  m_Name: FireRateT2
+  m_Script: {fileID: 11500000, guid: 8c62fa3adf3d14b4982b34740095f952, type: 3}
+  m_Name: VelocityT3
   m_EditorClassIdentifier: 
   moduleTier: 2
   isUpgradableTo: 1
-  percentageChange: 0.55
+  bulletSpeedChange: 0.8
+  fireRateChange: 0.22
+  rangeChange: 0.2
+  lancerBulletRangeChange: 0.35
+  smasherDamageChange: 0.25
+  smasherFireRateChange: 0.2
+  smasherRangeChange: 0.5

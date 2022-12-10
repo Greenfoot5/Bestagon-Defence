@@ -41,11 +41,11 @@ namespace Modules.Velocity
         [Tooltip("The percentage to modify the damage of the smasher by")]
         private float smasherDamageChange;
         [SerializeField]
-        [Tooltip("The percentage to modify the range of the smasher by")]
-        private float smasherRangeChange;
-        [SerializeField]
         [Tooltip("The percentage to modify the fire rate of the smasher by")]
         private float smasherFireRateChange;
+        [SerializeField]
+        [Tooltip("The percentage to modify the range of the smasher by")]
+        private float smasherRangeChange;
 
         /// <summary>
         /// Increases the bullet speed of a turret
