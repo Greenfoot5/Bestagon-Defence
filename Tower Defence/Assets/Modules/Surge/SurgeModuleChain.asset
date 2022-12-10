@@ -15,6 +15,7 @@ MonoBehaviour:
   moduleTiers:
   - {fileID: 11400000, guid: 5627ac192b80b4c56b2489ad57e3354c, type: 2}
   - {fileID: 11400000, guid: 50f6adb9501c44c969768598437e7c40, type: 2}
+  - {fileID: 11400000, guid: 9a0127184d8a84a9eab7a7c8faeb78cb, type: 2}
   unique: 1
   accentColor: {r: 0.38431373, g: 0.6745098, b: 0.7921569, a: 1}
   displayName: Surge

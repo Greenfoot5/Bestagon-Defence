@@ -12,12 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a83eb3adebbd748f383d5cbbc0254646, type: 3}
   m_Name: SurgeT3
   m_EditorClassIdentifier: 
-  moduleTier: 2
-  accentColor: {r: 0.38431373, g: 0.6745098, b: 0.7921569, a: 1}
-  displayName: Surge II
-  tagline: Electrifying
-  icon: {fileID: -3358934479966026082, guid: 16c979c866f439b4b988e7020b313794, type: 3}
-  effectText: Temporarily boost fire rate
+  moduleTier: 3
+  isUpgradableTo: 1
   fireRateChange: 2.5
   duration: 4
   cooldown: 8

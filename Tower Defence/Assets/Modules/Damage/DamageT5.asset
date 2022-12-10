@@ -13,10 +13,5 @@ MonoBehaviour:
   m_Name: DamageT5
   m_EditorClassIdentifier: 
   moduleTier: 5
-  upgradable: 1
-  accentColor: {r: 0.9647059, g: 0.7882353, b: 0.0627451, a: 1}
-  displayName: Damage V
-  tagline: Death wonder
-  icon: {fileID: -4062769898107646306, guid: 16c979c866f439b4b988e7020b313794, type: 3}
-  effectText: Increase Damage by 120%
-  percentageChange: 1.2
+  isUpgradableTo: 1
+  percentageChange: 1.7

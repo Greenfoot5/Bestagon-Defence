@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moduleTier: 1
   isUpgradableTo: 1
-  shooterRangePercentageChange: 1.75
-  shooterDamagePercentageChange: 2
-  shooterFireRatePercentageChange: -0.75
-  shooterRotationSpeedPercentageChange: -0.4
-  shooterBulletSpeedPercentageChange: 1.5
-  laserRangePercentageChange: 0.65
-  laserRotationSpeedPercentageChange: -0.65
-  laserDamagePercentageChange: 0.7
-  smasherRangePercentageChange: 0.9
-  smasherDamagePercentageChange: 1.8
-  smasherFireRatePercentageChange: -0.75
+  shooterRangePercentageChange: 2.4
+  shooterDamagePercentageChange: 3.75
+  shooterFireRatePercentageChange: -0.9
+  shooterRotationSpeedPercentageChange: -0.55
+  shooterBulletSpeedPercentageChange: 2.3
+  laserRangePercentageChange: 1
+  laserDamagePercentageChange: 1.2
+  laserRotationSpeedPercentageChange: -0.8
+  smasherRangePercentageChange: 2
+  smasherDamagePercentageChange: 2.2
+  smasherFireRatePercentageChange: -0.87
