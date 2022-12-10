@@ -81,7 +81,7 @@ TextureImporter:
       213: -3254210907558692184
     second: blueSheet_25
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -102,6 +102,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -140,6 +141,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -167,6 +169,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -736,6 +750,33 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      blueSheet_15: 5832965895799894225
+      blueSheet_9: 3645098805243102126
+      blueSheet_23: 8954585228004921456
+      blueSheet_24: 4018367105640525561
+      blueSheet_14: 4986504693557900613
+      blueSheet_5: -4625308558423457888
+      blueSheet_16: -7982965647325369283
+      blueSheet_20: 1280204975422002521
+      blueSheet_25: -3254210907558692184
+      blueSheet_22: 4103863101146549826
+      blueSheet_13: 1683079710008167113
+      blueSheet_12: -164904735139846597
+      blueSheet_11: 4969377357137552665
+      blueSheet_17: -1512993826653879698
+      blueSheet_2: -3752399328423980779
+      blueSheet_8: 509814122973735226
+      blueSheet_18: 6987985247385777121
+      blueSheet_0: -4530426593466845105
+      blueSheet_3: 6954334571014588244
+      blueSheet_10: -1790834775248912654
+      blueSheet_21: -6316364884698669668
+      blueSheet_4: 5137063763429501089
+      blueSheet_1: 2929053664434463476
+      blueSheet_6: 2823701806461888933
+      blueSheet_7: -4590711269936730322
+      blueSheet_19: 1595557568634733894
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

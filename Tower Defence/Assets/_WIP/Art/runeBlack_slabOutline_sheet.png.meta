@@ -111,7 +111,7 @@ TextureImporter:
       213: 4683701204736042347
     second: runeBlack_slabOutline_sheet_35
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -132,6 +132,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -170,6 +171,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -197,6 +199,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -976,6 +990,43 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      runeBlack_slabOutline_sheet_32: -8989286888908879805
+      runeBlack_slabOutline_sheet_3: -7582391161149254124
+      runeBlack_slabOutline_sheet_14: 3184231821010303082
+      runeBlack_slabOutline_sheet_17: 7189761448395306983
+      runeBlack_slabOutline_sheet_22: -8750912047708872846
+      runeBlack_slabOutline_sheet_1: 2884436743196285635
+      runeBlack_slabOutline_sheet_9: 3101873194827062049
+      runeBlack_slabOutline_sheet_26: 1076457949570925174
+      runeBlack_slabOutline_sheet_8: -8689744538804825388
+      runeBlack_slabOutline_sheet_27: -8597688893311774946
+      runeBlack_slabOutline_sheet_23: -9007765475648583199
+      runeBlack_slabOutline_sheet_15: -6384868493912083287
+      runeBlack_slabOutline_sheet_30: -2959423553038625434
+      runeBlack_slabOutline_sheet_24: -2874093354564495009
+      runeBlack_slabOutline_sheet_6: 4701580655542394799
+      runeBlack_slabOutline_sheet_0: -5817845718087999316
+      runeBlack_slabOutline_sheet_31: -8860808850873227312
+      runeBlack_slabOutline_sheet_13: 7038897156119406477
+      runeBlack_slabOutline_sheet_2: -1817252645493157457
+      runeBlack_slabOutline_sheet_11: -5712006693007291809
+      runeBlack_slabOutline_sheet_20: -3482914747675211759
+      runeBlack_slabOutline_sheet_34: 3680938037102790694
+      runeBlack_slabOutline_sheet_33: 473611870684672449
+      runeBlack_slabOutline_sheet_10: -3981694738385191324
+      runeBlack_slabOutline_sheet_35: 4683701204736042347
+      runeBlack_slabOutline_sheet_16: -4947501320640456084
+      runeBlack_slabOutline_sheet_25: -3940356132031002839
+      runeBlack_slabOutline_sheet_29: -2790017721357931438
+      runeBlack_slabOutline_sheet_18: 5957294158013255432
+      runeBlack_slabOutline_sheet_21: 7241189434515892502
+      runeBlack_slabOutline_sheet_12: 3775940305343238879
+      runeBlack_slabOutline_sheet_19: -808609596807375234
+      runeBlack_slabOutline_sheet_5: -7373905166463173090
+      runeBlack_slabOutline_sheet_4: 2646693924555054083
+      runeBlack_slabOutline_sheet_28: 4938677487402674161
+      runeBlack_slabOutline_sheet_7: 1822490610995675819
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
