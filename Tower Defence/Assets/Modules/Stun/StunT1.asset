@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: StunT1
   m_EditorClassIdentifier: 
   moduleTier: 1
+  upgradable: 1
   accentColor: {r: 0.10980392, g: 0.83137256, b: 0.5882353, a: 1}
   displayName: Stun I
   tagline: Bzzzzzzzzt

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3f37618fc1d4d7e9ef82c3f3f505d0e, type: 3}
+  m_Name: ReloadModuleChain
+  m_EditorClassIdentifier: 
+  moduleTiers:
+  - {fileID: 11400000, guid: 860e38cd88f88405e855069168511325, type: 2}
+  - {fileID: 11400000, guid: de6a89c9c04fb45c79560f650ee4de8d, type: 2}
+  accentColor: {r: 0.42745098, g: 0.7372549, b: 0.37254903, a: 1}
+  displayName: Reload
+  tagline: Again!
+  icon: {fileID: -4293644608448389267, guid: 16c979c866f439b4b988e7020b313794, type: 3}
+  effectText: Attacks again shortly after firing

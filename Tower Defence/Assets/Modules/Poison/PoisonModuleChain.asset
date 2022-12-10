@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3f37618fc1d4d7e9ef82c3f3f505d0e, type: 3}
+  m_Name: PoisonModuleChain
+  m_EditorClassIdentifier: 
+  moduleTiers:
+  - {fileID: 11400000, guid: 6d9349c8324364290a9f24204cb1b012, type: 2}
+  - {fileID: 11400000, guid: c9453b07fa9974984b828aa9339febfb, type: 2}
+  - {fileID: 11400000, guid: 203859b98401b4d2e94824e479e5e750, type: 2}
+  - {fileID: 11400000, guid: 43204ffe535344691b7b1f88f4046f6b, type: 2}
+  - {fileID: 11400000, guid: 33635ba5a274b4aa0bea569b912a438e, type: 2}
+  accentColor: {r: 0.3372549, g: 0.5176471, b: 0.22352941, a: 1}
+  displayName: Poison
+  tagline: Infect the bloodstream
+  icon: {fileID: -3015200091239744399, guid: 16c979c866f439b4b988e7020b313794, type: 3}
+  effectText: Deals damage over time too hit enemies

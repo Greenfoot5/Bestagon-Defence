@@ -708,7 +708,7 @@ MonoBehaviour:
     - useConstant: 0
       item:
         chain: {fileID: 11400000, guid: d312f79296a2146e3976d8622d6b1b8c, type: 2}
-        tier: 1
+        tier: 0
       constantValue:
         serializedVersion: 2
         m_Curve:
@@ -746,7 +746,7 @@ MonoBehaviour:
     - useConstant: 0
       item:
         chain: {fileID: 11400000, guid: d312f79296a2146e3976d8622d6b1b8c, type: 2}
-        tier: 2
+        tier: 1
       constantValue:
         serializedVersion: 2
         m_Curve:
@@ -811,7 +811,7 @@ MonoBehaviour:
     - useConstant: 0
       item:
         chain: {fileID: 11400000, guid: d312f79296a2146e3976d8622d6b1b8c, type: 2}
-        tier: 3
+        tier: 2
       constantValue:
         serializedVersion: 2
         m_Curve:

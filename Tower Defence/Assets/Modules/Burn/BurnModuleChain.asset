@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3f37618fc1d4d7e9ef82c3f3f505d0e, type: 3}
+  m_Name: BurnModuleChain
+  m_EditorClassIdentifier: 
+  moduleTiers:
+  - {fileID: 11400000, guid: 6f25706fa097f43dbb5ed61fec7de884, type: 2}
+  - {fileID: 11400000, guid: 7c02953b190c74607b62bc8860bd265b, type: 2}
+  accentColor: {r: 0.9764706, g: 0.3764706, b: 0.24313726, a: 1}
+  displayName: Burn
+  tagline: Burn baby burn!
+  icon: {fileID: -7464220177990265132, guid: 16c979c866f439b4b988e7020b313794, type: 3}
+  effectText: Deals damage over time based on max health

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3f37618fc1d4d7e9ef82c3f3f505d0e, type: 3}
+  m_Name: GiantslayerModuleChain
+  m_EditorClassIdentifier: 
+  moduleTiers:
+  - {fileID: 11400000, guid: c11c38afc44bb4ac58ff35de9520efba, type: 2}
+  - {fileID: 11400000, guid: 4c3610e22808b45c199e63b5a278c5e6, type: 2}
+  - {fileID: 11400000, guid: 95fd0fa09b03945dcb06a4e36ec77042, type: 2}
+  accentColor: {r: 0.91764706, g: 0.6431373, b: 0.1254902, a: 1}
+  displayName: Giantslayer
+  tagline: Wait 'till they come crashing down
+  icon: {fileID: -7979691553943755389, guid: 16c979c866f439b4b988e7020b313794, type: 3}
+  effectText: Deal extra damage to bosses

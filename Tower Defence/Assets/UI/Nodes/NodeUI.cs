@@ -178,7 +178,7 @@ namespace UI.Nodes
             _target.turret.transform.Rotate(0, 0, 60);
         }
 
-        public void UpdateModules()
+        private void UpdateModules()
         {
             // Removes module icons created from the previously selected turret
             for (var i = 0; i < modules.childCount; i++)
@@ -189,7 +189,7 @@ namespace UI.Nodes
             {
                 GameObject moduleIcon = Instantiate(moduleIconPrefab, modules);
                 moduleIcon.name = "_" + moduleIcon.name;
-                moduleIcon.GetComponent<ModuleIcon>().SetData(handle.GetModule());
+                moduleIcon.GetComponent<ModuleIcon>().SetData(handle);
                 foreach (Image image in moduleIcon.GetComponentsInChildren<Image>())
                 {
                     image.raycastTarget = false;

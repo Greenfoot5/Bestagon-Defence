@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3f37618fc1d4d7e9ef82c3f3f505d0e, type: 3}
+  m_Name: CriticalModuleChain
+  m_EditorClassIdentifier: 
+  moduleTiers:
+  - {fileID: 11400000, guid: e61ec28ebb3ca4d7f8e6435eeba594f6, type: 2}
+  accentColor: {r: 0.56078434, g: 0.3254902, b: 0.98039216, a: 1}
+  displayName: Critical
+  tagline: Hit the weak points
+  icon: {fileID: 1960215765652580131, guid: 16c979c866f439b4b988e7020b313794, type: 3}
+  effectText: Has a % chance to deal double damage

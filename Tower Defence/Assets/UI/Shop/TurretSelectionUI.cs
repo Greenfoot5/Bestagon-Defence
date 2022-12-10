@@ -102,7 +102,7 @@ namespace UI.Shop
                 {
                     GameObject mod = Instantiate(moduleUI, modulesLayout.transform);
                     mod.name = "_" + mod.name;
-                    mod.GetComponentInChildren<TurretModulesIcon>().SetData(handler.GetModule());
+                    mod.GetComponentInChildren<TurretModulesIcon>().SetData(handler);
                 }
             }
 

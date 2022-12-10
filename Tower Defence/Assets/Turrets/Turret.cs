@@ -132,7 +132,6 @@ namespace Turrets
         {
             moduleHandlers.Remove(handler);
             handler.GetModule().RemoveModule(this);
-            Debug.Log("Removing: " + handler.GetModule().displayName);
             // Update the range shader's size
             Vector3 localScale = transform.localScale;
             rangeDisplay.transform.localScale = new Vector3(

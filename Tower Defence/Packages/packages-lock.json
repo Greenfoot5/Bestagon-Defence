@@ -1,11 +1,11 @@
 {
   "dependencies": {
     "com.unity.2d.animation": {
-      "version": "5.2.3",
+      "version": "5.2.6",
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.unity.2d.common": "4.2.0",
+        "com.unity.2d.common": "4.2.1",
         "com.unity.mathematics": "1.1.0",
         "com.unity.2d.sprite": "1.0.0",
         "com.unity.modules.animation": "1.0.0",
@@ -14,7 +14,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.2d.common": {
-      "version": "4.2.0",
+      "version": "4.2.1",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -69,7 +69,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.rider": {
-      "version": "3.0.16",
+      "version": "3.0.17",
       "depth": 0,
       "source": "registry",
       "dependencies": {
