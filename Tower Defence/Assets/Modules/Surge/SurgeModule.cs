@@ -36,19 +36,6 @@ namespace Modules.Surge
         [SerializeField]
         [Tooltip("The VFX to spawn when the ends it's turret surge")]
         private GameObject surgeEndEffect;
-        
-        /// <summary>
-        /// Check if the module can be applied to the turret
-        /// The turret must be a valid type
-        /// The turret cannot already have the surge module applied
-        /// </summary>
-        /// <param name="turret">The turret the module might be applied to</param>
-        /// <returns>If the module can be applied</returns>
-        public override bool ValidModule(Turret turret)
-        {
-            return turret.moduleHandlers.All(module => module.GetType() != typeof(SurgeModule))
-                   && ((IList)ValidTypes).Contains(turret.GetType());
-        }
 
         /// <summary>
         /// Begins the surge effect on the turret
@@ -56,19 +43,22 @@ namespace Modules.Surge
         /// <param name="turret">The turret to start the surge loop on</param>
         public override void AddModule(Turret turret)
         {
-            Runner.Run(Surge(turret));
+            // LINQ to get the turret tier
+            int tier = turret.moduleHandlers.Where(handler => handler.GetModule().GetType() == typeof(SurgeModule)).Select(handler => handler.GetTier()).FirstOrDefault();
+            Runner.Run(Surge(turret, tier));
         }
-        
+
         /// <summary>
         /// Handles the surge effect
         /// </summary>
         /// <param name="turret">The turret to increase the fire rate for</param>
-        private IEnumerator Surge(Turret turret)
+        /// <param name="tier">The tier of the module</param>
+        private IEnumerator Surge(Turret turret, int tier)
         {
             // Wait the cooldown
             yield return new WaitForSeconds(cooldown);
             
-            while (turret != null && turret.moduleHandlers.Any(module => module.GetType() == typeof(SurgeModule)))
+            while (turret != null && turret.moduleHandlers.Any(module => module.GetModule().GetType() == typeof(SurgeModule) && module.GetTier() == tier))
             {
                 // SURGE!
                 turret.fireRate.AddModifier(fireRateChange);

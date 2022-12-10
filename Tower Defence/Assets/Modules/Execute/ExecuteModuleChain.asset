@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3f37618fc1d4d7e9ef82c3f3f505d0e, type: 3}
   m_Name: ExecuteModuleChain
   m_EditorClassIdentifier: 
-  moduleTiers: []
+  moduleTiers:
+  - {fileID: 11400000, guid: 41511553a2ec047d9bb11d891330f653, type: 2}
+  - {fileID: 11400000, guid: be778c25c911a43ed858b7fcfd57bd9e, type: 2}
+  - {fileID: 11400000, guid: 5994f79121a6f44838a41e92a8dd41eb, type: 2}
+  unique: 1
   accentColor: {r: 0.5019608, g: 0.24705882, b: 0.7882353, a: 1}
   displayName: Execute
   tagline: Cull the weak

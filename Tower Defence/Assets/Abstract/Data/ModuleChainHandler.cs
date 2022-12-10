@@ -27,14 +27,14 @@ namespace Abstract.Data
         private int tier;
 
         /// <summary>
-        /// Upgrade if we can,
+        /// Upgrade if we can.
         /// </summary>
-        /// <param name="siblingTier"></param>
-        /// <returns></returns>
+        /// <param name="siblingTier">The tier we're trying to upgrade to</param>
+        /// <returns>True if the module was upgraded</returns>
         public bool Upgrade(int siblingTier)
         {
             // If the upgrade is of a different tier, 
-            if (siblingTier != tier || !chain.CanUpgrade(tier - 1)) return false;
+            if (siblingTier != tier || !chain.CanUpgrade(tier)) return false;
                 
             tier += 1;
             return true;

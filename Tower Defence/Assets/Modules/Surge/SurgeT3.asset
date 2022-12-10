@@ -9,15 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3f37618fc1d4d7e9ef82c3f3f505d0e, type: 3}
-  m_Name: SurgeModuleChain
+  m_Script: {fileID: 11500000, guid: a83eb3adebbd748f383d5cbbc0254646, type: 3}
+  m_Name: SurgeT3
   m_EditorClassIdentifier: 
-  moduleTiers:
-  - {fileID: 11400000, guid: 5627ac192b80b4c56b2489ad57e3354c, type: 2}
-  - {fileID: 11400000, guid: 50f6adb9501c44c969768598437e7c40, type: 2}
-  unique: 1
+  moduleTier: 2
   accentColor: {r: 0.38431373, g: 0.6745098, b: 0.7921569, a: 1}
-  displayName: Surge
+  displayName: Surge II
   tagline: Electrifying
   icon: {fileID: -3358934479966026082, guid: 16c979c866f439b4b988e7020b313794, type: 3}
-  effectText: Temporarily boosts fire rate
+  effectText: Temporarily boost fire rate
+  fireRateChange: 2.5
+  duration: 4
+  cooldown: 8
+  surgeEffect: {fileID: 2228279973635050725, guid: 30d6b563f37e744848a3350895d0ad01, type: 3}
+  surgeEndEffect: {fileID: 2228279973635050725, guid: 071f1055de87b468a8810cddd8fb0e1d, type: 3}

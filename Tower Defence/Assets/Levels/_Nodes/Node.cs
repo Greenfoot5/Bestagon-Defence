@@ -27,7 +27,7 @@ namespace Levels._Nodes
         private BuildManager _buildManager;
 
         // Pointer handling
-        private bool _pressOnRelease;
+        private bool _isHolding;
 
         private void Start()
         {
@@ -69,8 +69,8 @@ namespace Levels._Nodes
         public bool ApplyModuleToTurret(ModuleChainHandler handler)
         {
             // Apply the Module
-            bool appliedModule = turret.GetComponent<Turret>().AddModule(handler);
-            if (!appliedModule) return false;
+            bool hasAppliedModule = turret.GetComponent<Turret>().AddModule(handler);
+            if (!hasAppliedModule) return false;
 
             // Spawn the build effect
             GameObject effect = Instantiate(_buildManager.buildEffect, transform.position, Quaternion.identity);
@@ -117,7 +117,7 @@ namespace Levels._Nodes
             // Makes it possible to cancel the input if the touch was meant to drag the camera
             if (Application.platform == RuntimePlatform.Android)
             {
-                _pressOnRelease = true;
+                _isHolding = true;
                 return;
             }
 
@@ -131,7 +131,7 @@ namespace Levels._Nodes
         /// </summary>
         public void OnDrag(PointerEventData eventData)
         {
-            _pressOnRelease = false;
+            _isHolding = false;
         }
 
         /// <summary>
@@ -140,7 +140,7 @@ namespace Levels._Nodes
         /// </summary>
         public void OnPointerUp(PointerEventData eventData)
         {
-            if (_pressOnRelease)
+            if (_isHolding)
                 HandlePointerInteract();
         }
 

@@ -15,6 +15,7 @@ MonoBehaviour:
   moduleTiers:
   - {fileID: 11400000, guid: 3b5ab756cc7454648aeea88e3265aaa4, type: 2}
   - {fileID: 11400000, guid: 22133bf1defbe4aef9dcb1071509ae13, type: 2}
+  unique: 1
   accentColor: {r: 0.10980392, g: 0.83137256, b: 0.5882353, a: 1}
   displayName: Stun
   tagline: Bzzzzzzzzt

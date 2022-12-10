@@ -123,8 +123,8 @@ namespace UI.Nodes
         {
             ModuleChainHandler handler = shop.GetModule();
 
-            bool applied = _target.ApplyModuleToTurret(handler);
-            if (!applied) return;
+            bool isApplied = _target.ApplyModuleToTurret(handler);
+            if (!isApplied) return;
             
             shop.RemoveModule();
         }
@@ -156,7 +156,7 @@ namespace UI.Nodes
                          $" <sprite=\"Stats\" name=\"rate\" color=#{color}> {turret.fireRate.ToString()}";
             
             // Display the radius of the turret
-            _target.turret.GetComponent<Turret>().Selected();
+            _target.turret.GetComponent<Turret>().UpdateRange();
         }
         
         /// <summary>
@@ -199,7 +199,7 @@ namespace UI.Nodes
             }
             
             // Display the radius of the turret
-            _target.turret.GetComponent<Turret>().Selected();
+            _target.turret.GetComponent<Turret>().UpdateRange();
         }
     }
 }

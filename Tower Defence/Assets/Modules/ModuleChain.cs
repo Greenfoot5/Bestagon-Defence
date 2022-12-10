@@ -10,7 +10,11 @@ namespace Modules
     {
         [Tooltip("The tier number of the module")]
         public Module[] moduleTiers;
+
+        [Tooltip("If different tiers of the module can be added to the same turret")]
+        public bool unique;
         
+        // Display
         [Tooltip("The main colour of the module, is displayed in various ways")]
         public Color accentColor = new Color(0, 0, 0, 1);
         [Tooltip("The name to display for the module, should not include the tier in Roman numerals")]
@@ -32,15 +36,14 @@ namespace Modules
         {
             if (tier >= moduleTiers.Length)
             {
-                Debug.Log("Hit Tier Cap!");
                 return false;
             }
 
-            Module currentTier = moduleTiers[tier];
-            Module nextTier = moduleTiers[tier + 1];
+            Module currentTier = moduleTiers[tier - 1];
+            Module nextTier = moduleTiers[tier];
             // Check the next tier isn't skipped and can be upgraded to
             return currentTier.moduleTier + 1 == nextTier.moduleTier
-                   && nextTier.upgradable;
+                   && nextTier.isUpgradableTo;
         }
         
         /// <summary>

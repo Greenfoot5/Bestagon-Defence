@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Abstract.Data;
 using UnityEngine;
 using UnityEngine.Events;
@@ -82,8 +83,19 @@ namespace Turrets
         {
             if (!handler.GetModule().ValidModule(this))
             {
-                //Debug.Log("Invalid Module Applied");
                 return false;
+            }
+            
+            // Checks if the module is unique
+            // Then if there is a module of the same type but different tier,
+            // it cannot be upgraded
+            if (handler.GetChain().unique && 
+                moduleHandlers.Any(x => x.GetModule().GetType() == handler.GetModule().GetType()))
+            {
+                if (moduleHandlers.Any(x => !handler.GetChain().CanUpgrade(x.GetTier())))
+                {
+                    return false;
+                }
             }
 
             handler = CalculateUpgrades(handler);
@@ -112,7 +124,6 @@ namespace Turrets
                 bool canUpgrade = handler.Upgrade(moduleHandlers[i].GetTier());
                 if (canUpgrade)
                 {
-                    Debug.Log("Upgrading!");
                     RemoveModule(moduleHandlers[i]);
                     handler = CalculateUpgrades(handler);
                     break;
@@ -128,10 +139,11 @@ namespace Turrets
         /// Removes a module from the turret
         /// </summary>
         /// <param name="handler">The handler of the module to remove</param>
-        public void RemoveModule(ModuleChainHandler handler)
+        private void RemoveModule(ModuleChainHandler handler)
         {
             moduleHandlers.Remove(handler);
             handler.GetModule().RemoveModule(this);
+            
             // Update the range shader's size
             Vector3 localScale = transform.localScale;
             rangeDisplay.transform.localScale = new Vector3(
@@ -152,6 +164,19 @@ namespace Turrets
                 range.GetStat() / localScale.y * 2,
                 1);
             rangeDisplay.SetActive(true);
+        }
+
+        /// <summary>
+        /// Update the range shader's size
+        /// </summary>
+        public void UpdateRange()
+        {
+            // Update the range shader's size
+            Vector3 localScale = transform.localScale;
+            rangeDisplay.transform.localScale = new Vector3(
+                range.GetStat() / localScale.x * 2,
+                range.GetStat() / localScale.y * 2,
+                1);
         }
         
         /// <summary>
