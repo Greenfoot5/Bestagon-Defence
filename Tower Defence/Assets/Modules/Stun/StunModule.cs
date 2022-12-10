@@ -102,7 +102,7 @@ namespace Modules.Stun
             float originalFireRate = turret.fireRate.GetBase();
             
             // Check the turret isn't already stunned
-            if (originalFireRate > 0)
+            if (originalFireRate <= 0)
                 yield break;
             
             turret.fireRate.SetBase(0);
