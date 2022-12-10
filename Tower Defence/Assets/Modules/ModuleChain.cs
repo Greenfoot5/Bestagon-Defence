@@ -12,7 +12,7 @@ namespace Modules
         public Module[] moduleTiers;
         
         [Tooltip("The main colour of the module, is displayed in various ways")]
-        public Color accentColor;
+        public Color accentColor = new Color(0, 0, 0, 1);
         [Tooltip("The name to display for the module, should not include the tier in Roman numerals")]
         public string displayName;
         [Tooltip("The tagline of the module. It's not a description, just a witty little remark")]
