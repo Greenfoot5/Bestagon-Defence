@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 392646548d607415eae9890069c98df4, type: 3}
   m_Name: FireRateT5
   m_EditorClassIdentifier: 
-  moduleTier: 3
+  moduleTier: 5
   isUpgradableTo: 1
   percentageChange: 1

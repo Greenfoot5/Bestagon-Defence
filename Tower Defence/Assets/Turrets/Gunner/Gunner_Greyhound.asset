@@ -17,6 +17,8 @@ MonoBehaviour:
   tagline: Speed BOOST
   accent: {r: 0.5882353, g: 0.21960784, b: 0.9490196, a: 1}
   prefab: {fileID: 3974544501041316794, guid: fdc806ee9dc6448968fc3865f99c7584, type: 3}
-  modules:
-  - {fileID: 11400000, guid: 50f6adb9501c44c969768598437e7c40, type: 2}
-  - {fileID: 11400000, guid: f51f0f08791ee4076be40b4d01554f3c, type: 2}
+  moduleHandlers:
+  - chain: {fileID: 11400000, guid: 5c9594279dd7a47909087f486ebd2e17, type: 2}
+    tier: 2
+  - chain: {fileID: 11400000, guid: 1f607adabd390408e85118b1cffe1d8b, type: 2}
+    tier: 3

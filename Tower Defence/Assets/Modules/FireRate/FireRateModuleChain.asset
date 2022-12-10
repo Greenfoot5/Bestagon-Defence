@@ -16,6 +16,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 103873ced36d04d7288e4b0b48a679ab, type: 2}
   - {fileID: 11400000, guid: f488ec51e287048928b2b94b48e4abef, type: 2}
   - {fileID: 11400000, guid: f51f0f08791ee4076be40b4d01554f3c, type: 2}
+  - {fileID: 11400000, guid: f91eee4f29d884afea1e75cd4643552a, type: 2}
+  - {fileID: 11400000, guid: 6b46d1dd168b44ce6b234a967de55326, type: 2}
+  unique: 0
   accentColor: {r: 0.4627451, g: 0.22745098, b: 0.9411765, a: 1}
   displayName: Fire Rate
   tagline: Quickload

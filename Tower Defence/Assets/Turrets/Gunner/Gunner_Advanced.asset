@@ -17,5 +17,6 @@ MonoBehaviour:
   tagline: Accelerating Volley
   accent: {r: 0.5882353, g: 0.21960784, b: 0.9490196, a: 1}
   prefab: {fileID: 3974544501041316794, guid: fdc806ee9dc6448968fc3865f99c7584, type: 3}
-  modules:
-  - {fileID: 11400000, guid: b27a173d3675244dd8aa830dafac9f53, type: 2}
+  moduleHandlers:
+  - chain: {fileID: 11400000, guid: 2bdc773f9c2ea4f8292ef859b337f751, type: 2}
+    tier: 2
