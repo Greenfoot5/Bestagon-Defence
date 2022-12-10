@@ -105,7 +105,12 @@ namespace Modules.Slow
                 yield break;
             }
             
-            float slowValue = Mathf.Max(1f - slowPercentage, 0.2f);
+            float slowValue = 1f - slowPercentage;
+
+            if (target.speed.GetModifier() * slowValue <= 0.2f)
+            {
+                yield break;
+            }
             
             target.speed.MultiplyModifier(slowValue);
 
