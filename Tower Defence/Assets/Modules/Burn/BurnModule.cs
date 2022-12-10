@@ -17,7 +17,7 @@ namespace Modules.Burn
     /// Extends the Module class to create a DebuffEnemy upgrade,
     /// Used to add effects to enemies
     /// </summary>
-    [CreateAssetMenu(fileName = "BurnT0", menuName = "ModuleTiers/Burn")]
+    [CreateAssetMenu(fileName = "BurnT0", menuName = "Modules/Burn")]
     public class BurnModule : Module
     {
         protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Smasher), typeof(Gunner), typeof(Lancer) };

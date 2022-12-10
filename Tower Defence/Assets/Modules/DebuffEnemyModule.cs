@@ -14,7 +14,7 @@ namespace Modules
     /// Extends the Module class to create a DebuffEnemy upgrade,
     /// Used to add effects to enemies
     /// </summary>
-    [CreateAssetMenu(fileName = "DebuffEnemy", menuName = "ModuleTiers/Debuff Enemy")]
+    [CreateAssetMenu(fileName = "DebuffEnemy", menuName = "Modules/Debuff Enemy")]
     public class DebuffEnemyModule : Module
     {
         protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Laser), typeof(Gunner) };

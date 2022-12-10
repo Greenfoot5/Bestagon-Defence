@@ -16,7 +16,7 @@ namespace Modules.Slow
     /// Extends the Module class to create a DebuffEnemy upgrade,
     /// Used to add effects to enemies
     /// </summary>
-    [CreateAssetMenu(fileName = "SlowT0", menuName = "ModuleTiers/Slow")]
+    [CreateAssetMenu(fileName = "SlowT0", menuName = "Modules/Slow")]
     public class SlowModule : Module
     {
         protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Smasher), typeof(Gunner), typeof(Lancer) };

@@ -10,7 +10,7 @@ namespace Modules.Bombs
     /// <summary>
     /// Extends the Module class to create a BombBullet upgrade
     /// </summary>
-    [CreateAssetMenu(fileName = "BombsT0", menuName = "ModuleTiers/Bombs")]
+    [CreateAssetMenu(fileName = "BombsT0", menuName = "Modules/Bombs")]
     public class BombsModule : Module
     {
         protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Gunner), typeof(Smasher)};

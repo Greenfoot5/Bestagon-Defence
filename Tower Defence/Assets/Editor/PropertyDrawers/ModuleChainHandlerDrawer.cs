@@ -8,7 +8,7 @@ namespace Editor.PropertyDrawers
     public class ModuleChainHandlerDrawer : PropertyDrawer
     {
         /// <summary>
-        /// Called for rendering and handling the GUI events for WeightedPrefab
+        /// Called for rendering and handling the GUI events for ModuleChainHandler
         /// </summary>
         /// <param name="position">The position in the Inspector</param>
         /// <param name="property">The property we're displaying</param>
@@ -19,22 +19,22 @@ namespace Editor.PropertyDrawers
             label = EditorGUI.BeginProperty(position, label, property);
             position = EditorGUI.PrefixLabel(position, label);
 
-            // The properties of WeightedPrefab
+            // The properties of ModuleChainHandler
             SerializedProperty chainProp = property.FindPropertyRelative("chain");
             SerializedProperty tierProp = property.FindPropertyRelative("tier");
 
-            // Get the value of the float (we don't need the value of the prefab)
+            // Get the value of the tier (we don't need the value of the chain)
             int tierValue = tierProp.intValue;
 
-            // Set the percentage of the width the prefab input will take
+            // Set the percentage of the width the chain input will take
             const float prefabFieldPercent = 0.75f;
             // The buffer between the two input boxes
             const float bufferValue = 3;
 
-            // Set the size of the input box for the prefab
+            // Set the size of the input box for the chain
             var chainPropInput = new Rect(position) { width = prefabFieldPercent * position.width };
 
-            // Set the size of the input box for the weight
+            // Set the size of the input box for the tier
             position.xMin += prefabFieldPercent * position.width;
             var tierInputRect = new Rect(position);
             tierInputRect.xMin += bufferValue;

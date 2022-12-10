@@ -121,7 +121,7 @@ namespace UI.Nodes
         /// </summary>
         public void ModuleNode()
         {
-            ModuleChainHandler handler = shop.GetModule();
+            ModuleChainHandler handler = shop.GetModuleChainHandler();
 
             bool isApplied = _target.ApplyModuleToTurret(handler);
             if (!isApplied) return;

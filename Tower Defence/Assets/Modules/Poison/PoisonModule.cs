@@ -16,7 +16,7 @@ namespace Modules.Poison
     /// Extends the Module class to create a DebuffEnemy upgrade,
     /// Used to add effects to enemies
     /// </summary>
-    [CreateAssetMenu(fileName = "PoisonT0", menuName = "ModuleTiers/Poison")]
+    [CreateAssetMenu(fileName = "PoisonT0", menuName = "Modules/Poison")]
     public class PoisonModule : Module
     {
         protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Smasher), typeof(Gunner), typeof(Lancer) };

@@ -50,9 +50,9 @@ namespace Levels._Nodes
             var turretClass = turret.GetComponent<Turret>();
             turretBlueprint = blueprint;
         
-            foreach (ModuleChainHandler turretModule in blueprint.moduleHandlers)
+            foreach (ModuleChainHandler handler in blueprint.moduleHandlers)
             {
-                turretClass.AddModule(turretModule);
+                turretClass.AddModule(handler);
             }
         
             // Spawn the build effect and destroy after

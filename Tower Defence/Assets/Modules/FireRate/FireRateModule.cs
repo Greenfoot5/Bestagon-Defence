@@ -11,7 +11,7 @@ namespace Modules.FireRate
     /// <summary>
     /// Increases the fire rate of a turret
     /// </summary>
-    [CreateAssetMenu(fileName = "FireRateT0", menuName = "ModuleTiers/Fire Rate")]
+    [CreateAssetMenu(fileName = "FireRateT0", menuName = "Modules/Fire Rate")]
     public class FireRateModule : Module
     {
         protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Smasher), typeof(Gunner), typeof(Lancer) };

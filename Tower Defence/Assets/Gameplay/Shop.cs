@@ -17,8 +17,8 @@ namespace Gameplay
     {
         private BuildManager _buildManager;
         private LevelData _levelData;
-        private ModuleChainHandler _selectedModule;
-        private GameObject _selectedModuleButton;
+        private ModuleChainHandler _selectedHandler;
+        private GameObject _selectedHandlerButton;
         
         [SerializeField]
         [Tooltip("The inventory to place turret buttons")]
@@ -79,19 +79,19 @@ namespace Gameplay
         /// <param name="button">The button that selected the module</param>
         private void SelectModule(ModuleChainHandler module, GameObject button)
         {
-            if (_selectedModuleButton != null) _selectedModuleButton.transform.GetChild(0).gameObject.SetActive(false);
-            _selectedModuleButton = button;
+            if (_selectedHandlerButton != null) _selectedHandlerButton.transform.GetChild(0).gameObject.SetActive(false);
+            _selectedHandlerButton = button;
             button.transform.GetChild(0).gameObject.SetActive(true);
-            _selectedModule = module;
+            _selectedHandler = module;
         }
         
         /// <summary>
         /// Returns the currently selected module
         /// </summary>
-        /// <returns>The currently selected Module</returns>
-        public ModuleChainHandler GetModule()
+        /// <returns>The currently selected ModuleChainHandler</returns>
+        public ModuleChainHandler GetModuleChainHandler()
         {
-            return _selectedModule;
+            return _selectedHandler;
         }
         
         /// <summary>
@@ -99,7 +99,7 @@ namespace Gameplay
         /// </summary>
         public void RemoveModule()
         {
-            Destroy(_selectedModuleButton);
+            Destroy(_selectedHandlerButton);
         }
         
         /// <summary>
