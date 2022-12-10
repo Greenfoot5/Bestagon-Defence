@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Modules
 {
     /// <summary>
-    /// A base abstract class to create a turret module from.
+    /// A chain of modules, allowing traversal up or down the chain
     /// </summary>
     [CreateAssetMenu(fileName = "ModuleChain", menuName = "Module Chain")]
     public class ModuleChain : ScriptableObject
@@ -28,7 +28,7 @@ namespace Modules
         public string effectText;
         
         /// <summary>
-        /// Checks if the module can be upgraded
+        /// Checks if a module at a tier can be upgraded
         /// </summary>
         /// <param name="tier">The tier to check against</param>
         /// <returns>If the module can be upgraded</returns>
@@ -47,7 +47,7 @@ namespace Modules
         }
         
         /// <summary>
-        /// Returns the current module given a provided tier
+        /// Returns a module given a provided tier
         /// </summary>
         /// <param name="tier">The tier of the module to return</param>
         /// <returns>The module of the provided tier</returns>
