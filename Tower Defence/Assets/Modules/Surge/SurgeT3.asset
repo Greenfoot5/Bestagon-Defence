@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a83eb3adebbd748f383d5cbbc0254646, type: 3}
+  m_Name: SurgeT3
+  m_EditorClassIdentifier: 
+  moduleTier: 3
+  isUpgradableTo: 1
+  fireRateChange: 3.5
+  duration: 2
+  cooldown: 3
+  surgeEffect: {fileID: 2228279973635050725, guid: 30d6b563f37e744848a3350895d0ad01, type: 3}
+  surgeEndEffect: {fileID: 2228279973635050725, guid: 071f1055de87b468a8810cddd8fb0e1d, type: 3}

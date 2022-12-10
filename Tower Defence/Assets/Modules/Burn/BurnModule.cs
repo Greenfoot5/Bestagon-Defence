@@ -7,7 +7,6 @@ using Enemies;
 using Turrets;
 using Turrets.Gunner;
 using Turrets.Lancer;
-using Turrets.Laser;
 using Turrets.Shooter;
 using Turrets.Smasher;
 using UnityEngine;
@@ -36,19 +35,6 @@ namespace Modules.Burn
         [SerializeField]
         [Tooltip("The VFX to spawn each time a tick passes")]
         private GameObject tickEffect;
-        
-        /// <summary>
-        /// Check if the module can be applied to the turret
-        /// The turret must be a valid type
-        /// The turret cannot already have the burn module applied
-        /// </summary>
-        /// <param name="turret">The turret the module might be applied to</param>
-        /// <returns>If the module can be applied</returns>
-        public override bool ValidModule(Turret turret)
-        {
-            return turret.modules.All(module => module.GetType() != typeof(BurnModule))
-                   && ((IList)ValidTypes).Contains(turret.GetType());
-        }
 
         /// <summary>
         /// Adds the EnemyAbility to some target(s)

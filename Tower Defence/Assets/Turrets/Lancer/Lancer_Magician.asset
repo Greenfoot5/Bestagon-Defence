@@ -17,8 +17,12 @@ MonoBehaviour:
   tagline: All the effects
   accent: {r: 0.28235295, g: 0.34901962, b: 0.8941177, a: 1}
   prefab: {fileID: 8263255388866025106, guid: 97462d19c76b149579cf6bd12edf3f45, type: 3}
-  modules:
-  - {fileID: 11400000, guid: 6f25706fa097f43dbb5ed61fec7de884, type: 2}
-  - {fileID: 11400000, guid: 6d9349c8324364290a9f24204cb1b012, type: 2}
-  - {fileID: 11400000, guid: fd238766202484223ad41e159363d2d9, type: 2}
-  - {fileID: 11400000, guid: 3b5ab756cc7454648aeea88e3265aaa4, type: 2}
+  moduleHandlers:
+  - chain: {fileID: 11400000, guid: 808825b7d51f74137b9b191403ea8738, type: 2}
+    tier: 1
+  - chain: {fileID: 11400000, guid: 6fa3e5be34be24c6a90b873a20b19d2d, type: 2}
+    tier: 1
+  - chain: {fileID: 11400000, guid: 854f51527d5254adda062c0c23aec5cb, type: 2}
+    tier: 1
+  - chain: {fileID: 11400000, guid: ec0e71ee44a994768b842d9558b74c00, type: 2}
+    tier: 1

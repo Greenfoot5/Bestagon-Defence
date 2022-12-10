@@ -14,18 +14,8 @@ namespace Modules
     {
         [Tooltip("The tier number of the module")]
         public int moduleTier;
-        
-        [Tooltip("The main colour of the module, is displayed in various ways")]
-        public Color accentColor;
-        [Tooltip("The name to display for the module, should include the tier in Roman numerals")]
-        public string displayName;
-        [Tooltip("The tagline of the module. It's not a description, just a witty little remark")]
-        public string tagline;
-        [Tooltip("The module's icon")]
-        public Sprite icon;
-        [Multiline(3)]
-        [Tooltip("The description of the module and what it does")]
-        public string effectText;
+        [Tooltip("If the module can be obtained through upgrades")]
+        public bool isUpgradableTo = true;
 
         protected abstract Type[] ValidTypes { get; }
 

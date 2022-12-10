@@ -1,5 +1,6 @@
 using System;
 using Abstract;
+using Abstract.Data;
 using MaterialLibrary;
 using MaterialLibrary.Hexagons;
 using Modules;
@@ -18,7 +19,7 @@ namespace UI.Shop
     {
         [Tooltip("The module to display on the card")]
         [SerializeField]
-        private Module module;
+        private ModuleChainHandler handler;
         
         [Tooltip("The hexagons background of the card (the card's background shader)")]
         [SerializeField]
@@ -49,26 +50,29 @@ namespace UI.Shop
         /// <summary>
         /// Creates the UI
         /// </summary>
-        /// <param name="initModule">The module the card is for</param>
+        /// <param name="initHandler">The ModuleChainHandler the card is for</param>
         /// <param name="shop">The shop script</param>
         /// <param name="lookup">The TypeSpriteLookup to get the glyph</param>
-        public void Init (Module initModule, Gameplay.Shop shop, TypeSpriteLookup lookup)
+        public void Init (ModuleChainHandler initHandler, Gameplay.Shop shop, TypeSpriteLookup lookup)
         {
-            module = initModule;
-        
-            bg.color = initModule.accentColor;
+            handler = initHandler;
 
-            displayName.text = initModule.displayName;
-            tagline.text = initModule.tagline;
-            tagline.color = initModule.accentColor;
+            ModuleChain chain = initHandler.GetChain();
+            Module module = initHandler.GetModule();
 
-            icon.SetData(initModule);
+            bg.color = chain.accentColor;
+
+            displayName.text = initHandler.GetDisplayName();
+            tagline.text = chain.tagline;
+            tagline.color = chain.accentColor;
+
+            icon.SetData(initHandler);
         
-            effect.text = initModule.effectText;
-            effect.color = initModule.accentColor;
+            effect.text = chain.effectText;
+            effect.color = chain.accentColor;
             
             // Adds the any glyph
-            if (initModule.GetValidTypes() == null)
+            if (module.GetValidTypes() == null)
             {
                 TurretGlyphSo glyphSo = lookup.GetForType(null);
                 Transform glyph = Instantiate(glyphPrefab, applicableGlyphs.transform).transform;
@@ -80,7 +84,7 @@ namespace UI.Shop
             // Adds the glyph for every turret the module supports
             else
             {
-                foreach (Type turretType in initModule.GetValidTypes())
+                foreach (Type turretType in module.GetValidTypes())
                 {
                     TurretGlyphSo glyphSo = lookup.GetForType(turretType);
                     Transform glyph = Instantiate(glyphPrefab, applicableGlyphs).transform;
@@ -97,7 +101,7 @@ namespace UI.Shop
 
         /// <summary>
         /// Called when the player clicks on the card.
-        /// Selects the module and closes the shop
+        /// Selects the ModuleChainHandler and closes the shop
         /// </summary>
         /// <param name="shop"></param>
         private void MakeSelection (Gameplay.Shop shop)
@@ -105,7 +109,7 @@ namespace UI.Shop
             transform.parent.parent.gameObject.SetActive (false);
             Time.timeScale = 1f;
         
-            shop.SpawnNewModule(module);
+            shop.SpawnNewModule(handler);
         }
     }
 }

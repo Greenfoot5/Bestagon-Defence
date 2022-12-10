@@ -17,7 +17,12 @@ MonoBehaviour:
   tagline: Bullet Rain
   accent: {r: 0.5882353, g: 0.21960784, b: 0.9490196, a: 1}
   prefab: {fileID: 3974544501041316794, guid: fdc806ee9dc6448968fc3865f99c7584, type: 3}
-  modules:
-  - {fileID: 11400000, guid: 7c7e505c5536a4df684108f83d159ad6, type: 2}
-  - {fileID: 11400000, guid: f488ec51e287048928b2b94b48e4abef, type: 2}
-  - {fileID: 11400000, guid: d9320e9e3e54b472a9062ee565f85110, type: 2}
+  moduleHandlers:
+  - chain: {fileID: 11400000, guid: d312f79296a2146e3976d8622d6b1b8c, type: 2}
+    tier: 2
+  - chain: {fileID: 11400000, guid: 1f607adabd390408e85118b1cffe1d8b, type: 2}
+    tier: 2
+  - chain: {fileID: 11400000, guid: 2bdc773f9c2ea4f8292ef859b337f751, type: 2}
+    tier: 1
+  - chain: {fileID: 11400000, guid: 7452851d1c2b745bcbfffd73ec35d11f, type: 2}
+    tier: 1

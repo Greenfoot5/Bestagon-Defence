@@ -30,7 +30,7 @@ namespace _WIP.Abilities.PositiveAbilities
         private bool doSpawnFromStart;
 
         /// <summary>
-        /// Spawns the enemy
+        /// Activates the ability
         /// </summary>
         /// <param name="target">The enemy to spawn</param>
         public override void Activate(GameObject target)
@@ -55,7 +55,12 @@ namespace _WIP.Abilities.PositiveAbilities
 
             Runner.Run(SpawnEnemies(target.transform.position, targetMovement));
         }
-
+        
+        /// <summary>
+        /// Handles the instantiation in a timely manner
+        /// </summary>
+        /// <param name="position">The position to spawn the enemies</param>
+        /// <param name="targetMovement">The EnemyMovement to assign (for waypoints)</param>
         private IEnumerator SpawnEnemies(Vector3 position, EnemyMovement targetMovement)
         {
             for (var i = 0; i < count; i++)

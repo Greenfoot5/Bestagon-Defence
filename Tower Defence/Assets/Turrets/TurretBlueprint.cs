@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Modules;
+using Abstract.Data;
 using UnityEngine;
 
 namespace Turrets
@@ -25,6 +25,6 @@ namespace Turrets
         [Tooltip("The prefab to use when the turret is built.")]
         public GameObject prefab;
         [Tooltip("Any modules that come pre-applied when the player places the turret")]
-        public List<Module> modules = new List<Module>();
+        public List<ModuleChainHandler> moduleHandlers = new List<ModuleChainHandler>();
     }
 }

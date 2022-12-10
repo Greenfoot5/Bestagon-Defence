@@ -1,5 +1,5 @@
-﻿using Gameplay;
-using Modules;
+﻿using Abstract.Data;
+using Gameplay;
 using Turrets;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -27,7 +27,7 @@ namespace Levels._Nodes
         private BuildManager _buildManager;
 
         // Pointer handling
-        private bool _pressOnRelease;
+        private bool _isHolding;
 
         private void Start()
         {
@@ -50,9 +50,9 @@ namespace Levels._Nodes
             var turretClass = turret.GetComponent<Turret>();
             turretBlueprint = blueprint;
         
-            foreach (Module turretModule in blueprint.modules)
+            foreach (ModuleChainHandler handler in blueprint.moduleHandlers)
             {
-                turretClass.AddModule(turretModule);
+                turretClass.AddModule(handler);
             }
         
             // Spawn the build effect and destroy after
@@ -64,13 +64,13 @@ namespace Levels._Nodes
         /// <summary>
         /// Called when upgrading a turret
         /// </summary>
-        /// <param name="module">The Module to add to the turret</param>
+        /// <param name="handler">The Module to add to the turret</param>
         /// <returns>If the Module was applied</returns>
-        public bool ModuleTurret(Module module)
+        public bool ApplyModuleToTurret(ModuleChainHandler handler)
         {
             // Apply the Module
-            bool appliedModule = turret.GetComponent<Turret>().AddModule(module);
-            if (!appliedModule) return false;
+            bool hasAppliedModule = turret.GetComponent<Turret>().AddModule(handler);
+            if (!hasAppliedModule) return false;
 
             // Spawn the build effect
             GameObject effect = Instantiate(_buildManager.buildEffect, transform.position, Quaternion.identity);
@@ -117,7 +117,7 @@ namespace Levels._Nodes
             // Makes it possible to cancel the input if the touch was meant to drag the camera
             if (Application.platform == RuntimePlatform.Android)
             {
-                _pressOnRelease = true;
+                _isHolding = true;
                 return;
             }
 
@@ -131,7 +131,7 @@ namespace Levels._Nodes
         /// </summary>
         public void OnDrag(PointerEventData eventData)
         {
-            _pressOnRelease = false;
+            _isHolding = false;
         }
 
         /// <summary>
@@ -140,7 +140,7 @@ namespace Levels._Nodes
         /// </summary>
         public void OnPointerUp(PointerEventData eventData)
         {
-            if (_pressOnRelease)
+            if (_isHolding)
                 HandlePointerInteract();
         }
 

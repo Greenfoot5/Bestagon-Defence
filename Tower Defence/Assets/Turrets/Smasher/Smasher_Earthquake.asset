@@ -17,6 +17,8 @@ MonoBehaviour:
   tagline: Valley Maker
   accent: {r: 0.88235295, g: 0.11764706, b: 0.36862746, a: 1}
   prefab: {fileID: 3974544501041316794, guid: fdd375ca6f6204cc5bbfe7da05610de0, type: 3}
-  modules:
-  - {fileID: 11400000, guid: b07b4ca124a454693aad3534ab3ec8fd, type: 2}
-  - {fileID: 11400000, guid: 9595822f285bf468f8c04c3d49a93ccf, type: 2}
+  moduleHandlers:
+  - chain: {fileID: 11400000, guid: c7dc926b36da34c37bce5dbc826c7c6f, type: 2}
+    tier: 2
+  - chain: {fileID: 11400000, guid: 1f607adabd390408e85118b1cffe1d8b, type: 2}
+    tier: 2

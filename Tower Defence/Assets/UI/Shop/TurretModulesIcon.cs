@@ -1,4 +1,4 @@
-using Modules;
+using Abstract.Data;
 using TMPro;
 using UI.Modules;
 using UnityEngine;
@@ -20,11 +20,11 @@ namespace UI.Shop
         /// <summary>
         /// Sets the data
         /// </summary>
-        /// <param name="module">The module the icon is for</param>
-        public void SetData(Module module)
+        /// <param name="handler">The module chain handler the icon is for</param>
+        public void SetData(ModuleChainHandler handler)
         {
-            icon.SetData(module);
-            text.text = module.displayName;
+            icon.SetData(handler);
+            text.text = handler.GetDisplayName();
         }
     }
 }

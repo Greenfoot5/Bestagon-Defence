@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Abstract.Data;
 using Enemies;
-using Modules;
 using UnityEngine;
 
 namespace Turrets.Lancer
@@ -32,10 +31,6 @@ namespace Turrets.Lancer
         [Tooltip("The transform at which attack from (e.g. instantiate bullets)")]
         [SerializeField]
         private Transform firePoint;
-
-        [Tooltip("The Transform to perform any rotations on")]
-        [SerializeField]
-        private Transform partToRotate;
 
         /// <summary>
         /// Begins the target searching
@@ -118,9 +113,9 @@ namespace Turrets.Lancer
             if (bullet == null) return;
             
             // Adds the modules to the bullet
-            foreach (Module module in modules)
+            foreach (ModuleChainHandler handler in moduleHandlers)
             {
-                bullet.AddModule(module);
+                bullet.AddModule(handler.GetModule());
             }
             
             // Get the end point of the line renderer

@@ -1,3 +1,4 @@
+using Abstract.Data;
 using Modules;
 using TMPro;
 using UnityEngine;
@@ -18,8 +19,6 @@ namespace UI.Modules
         private TextMeshProUGUI text;
 
         private Module _module;
-
-        private static readonly string[] Levels = { "-", "I", "II", "III", "IV", "V" };
         
         /// <summary>
         /// Sets the sprite for the module icon
@@ -29,25 +28,16 @@ namespace UI.Modules
         {
             icon.sprite = sprite;
         }
-        
-        /// <summary>
-        /// Sets the level text of the module icon
-        /// </summary>
-        /// <param name="level">The module tier</param>
-        private void SetLevel(int level)
-        {
-            text.text = Levels[level];
-        }
-        
+
         /// <summary>
         /// Sets all values for the module icon
         /// </summary>
-        /// <param name="newModule">The module to display the icon for</param>
-        public void SetData(Module newModule)
+        /// <param name="handler">The module chain handler to display the icon for</param>
+        public void SetData(ModuleChainHandler handler)
         {
-            _module = newModule;
-            SetSprite(newModule.icon);
-            SetLevel(newModule.moduleTier);
+            _module = handler.GetModule();
+            SetSprite(handler.GetChain().icon);
+            text.text = handler.GetTierDisplay();
         }
         
         /// <summary>

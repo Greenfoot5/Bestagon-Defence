@@ -1,7 +1,7 @@
 using System.Collections;
 using Abstract;
+using MaterialLibrary.HexagonSpread;
 using TMPro;
-using UI.Transitions;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -63,10 +63,6 @@ namespace UI.Transition
             _animator = GetComponentInChildren<Animator>();
 
             SceneManager.sceneLoaded += SceneLoadEvent;
-            
-#if UNITY_STANDALONE_OSX || UNITY_EDITOR_OSX
-                _background.SetActive(false);
-#endif
         }
 
         /// <summary>

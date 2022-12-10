@@ -27,9 +27,8 @@ namespace Modules.Ghost
         /// <returns>If the module can be applied</returns>
         public override bool ValidModule(Turret turret)
         {
-            return turret.modules.All(module => (module.GetType() != typeof(Ghost) 
-                                                 && module.GetType() != typeof(BombBulletModule)
-                                                 && module.GetType() != typeof(MissileBulletModule)))
+            return turret.moduleHandlers.All(module => (module.GetType() != typeof(BombsModule)
+                                                 && module.GetType() != typeof(MissilesModule)))
                    && ((IList)ValidTypes).Contains(turret.GetType());
         }
 

@@ -17,6 +17,6 @@ MonoBehaviour:
   tagline: Bye!
   accent: {r: 0.28235295, g: 0.34901962, b: 0.8941177, a: 1}
   prefab: {fileID: 8263255388866025106, guid: 97462d19c76b149579cf6bd12edf3f45, type: 3}
-  modules:
-  - {fileID: 11400000, guid: b27a173d3675244dd8aa830dafac9f53, type: 2}
-  - {fileID: 11400000, guid: b27a173d3675244dd8aa830dafac9f53, type: 2}
+  moduleHandlers:
+  - chain: {fileID: 11400000, guid: 7452851d1c2b745bcbfffd73ec35d11f, type: 2}
+    tier: 3

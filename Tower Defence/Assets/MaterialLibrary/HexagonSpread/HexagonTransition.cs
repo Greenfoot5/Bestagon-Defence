@@ -1,11 +1,8 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using System.Linq;
-using System;
 
-namespace UI.Transitions
+namespace MaterialLibrary.HexagonSpread
 {
     /// <summary>
     /// The animation state

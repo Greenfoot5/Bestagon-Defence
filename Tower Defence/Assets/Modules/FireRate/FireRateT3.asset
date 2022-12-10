@@ -13,9 +13,5 @@ MonoBehaviour:
   m_Name: FireRateT3
   m_EditorClassIdentifier: 
   moduleTier: 3
-  accentColor: {r: 0.4627451, g: 0.22745098, b: 0.9411765, a: 1}
-  displayName: Fire Rate III
-  tagline: Quickload
-  icon: {fileID: 8075296294540816629, guid: 16c979c866f439b4b988e7020b313794, type: 3}
-  effectText: Increases Fire Rate by 25%
-  percentageChange: 0.25
+  isUpgradableTo: 1
+  percentageChange: 0.3

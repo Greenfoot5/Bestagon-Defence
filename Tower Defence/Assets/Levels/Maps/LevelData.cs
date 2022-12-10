@@ -1,5 +1,4 @@
 using Abstract.Data;
-using Modules;
 using Turrets;
 using UnityEngine;
 
@@ -35,7 +34,7 @@ namespace Levels.Maps
         [Tooltip("The weighted chance of picking a turret card to appear in the selection")]
         public CurvedReference turretOptionWeight;
         [Tooltip("What module can appear and their weighted chance of appearing on a module selection card")]
-        public WeightedCurveList<Module> modules;
+        public WeightedCurveList<ModuleChainHandler> moduleHandlers;
         [Tooltip("What type of duplicate check to perform, if any, against the rest of the selection")]
         public DuplicateTypes moduleDuplicateCheck = DuplicateTypes.ByType;
         [Tooltip("The weighted chance of picking a module card to appear in the selection")]

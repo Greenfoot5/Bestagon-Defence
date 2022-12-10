@@ -613,10 +613,12 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     variable: {fileID: 0}
-  modules:
+  moduleHandlers:
     list:
     - useConstant: 0
-      item: {fileID: 11400000, guid: 0da67581e745c4e708a1b6172cb3d6ef, type: 2}
+      item:
+        chain: {fileID: 11400000, guid: d312f79296a2146e3976d8622d6b1b8c, type: 2}
+        tier: 1
       constantValue:
         serializedVersion: 2
         m_Curve:
@@ -652,7 +654,9 @@ MonoBehaviour:
         m_RotationOrder: 4
       variable: {fileID: 11400000, guid: b54cb3d9e6f25430dbcb163e806032f4, type: 2}
     - useConstant: 0
-      item: {fileID: 11400000, guid: 7c7e505c5536a4df684108f83d159ad6, type: 2}
+      item:
+        chain: {fileID: 11400000, guid: d312f79296a2146e3976d8622d6b1b8c, type: 2}
+        tier: 2
       constantValue:
         serializedVersion: 2
         m_Curve:
@@ -715,7 +719,9 @@ MonoBehaviour:
         m_RotationOrder: 4
       variable: {fileID: 11400000, guid: 5442343be762a4ee3bd3903d1fd51016, type: 2}
     - useConstant: 0
-      item: {fileID: 11400000, guid: b07b4ca124a454693aad3534ab3ec8fd, type: 2}
+      item:
+        chain: {fileID: 11400000, guid: d312f79296a2146e3976d8622d6b1b8c, type: 2}
+        tier: 3
       constantValue:
         serializedVersion: 2
         m_Curve:
@@ -760,7 +766,9 @@ MonoBehaviour:
         m_RotationOrder: 4
       variable: {fileID: 11400000, guid: d144972066b7f4a828906f4615a2a818, type: 2}
     - useConstant: 1
-      item: {fileID: 11400000, guid: ed82589302c26471c93da2205759f4d3, type: 2}
+      item:
+        chain: {fileID: 11400000, guid: a22c6ee3e44dc4c6c822466f441d40cb, type: 2}
+        tier: 1
       constantValue:
         serializedVersion: 2
         m_Curve:
@@ -805,7 +813,9 @@ MonoBehaviour:
         m_RotationOrder: 4
       variable: {fileID: 0}
     - useConstant: 1
-      item: {fileID: 11400000, guid: 217bfad42a1e84cc9822aab6c7631ddb, type: 2}
+      item:
+        chain: {fileID: 11400000, guid: a22c6ee3e44dc4c6c822466f441d40cb, type: 2}
+        tier: 2
       constantValue:
         serializedVersion: 2
         m_Curve:
@@ -850,7 +860,9 @@ MonoBehaviour:
         m_RotationOrder: 4
       variable: {fileID: 0}
     - useConstant: 1
-      item: {fileID: 11400000, guid: e51d8f8c8fdf2433197f9df264a59986, type: 2}
+      item:
+        chain: {fileID: 11400000, guid: a22c6ee3e44dc4c6c822466f441d40cb, type: 2}
+        tier: 3
       constantValue:
         serializedVersion: 2
         m_Curve:
@@ -877,7 +889,9 @@ MonoBehaviour:
         m_RotationOrder: 4
       variable: {fileID: 0}
     - useConstant: 1
-      item: {fileID: 11400000, guid: e61ec28ebb3ca4d7f8e6435eeba594f6, type: 2}
+      item:
+        chain: {fileID: 11400000, guid: 4fefd36538e92402a8d072de671e05ff, type: 2}
+        tier: 1
       constantValue:
         serializedVersion: 2
         m_Curve:
@@ -904,7 +918,9 @@ MonoBehaviour:
         m_RotationOrder: 4
       variable: {fileID: 0}
     - useConstant: 1
-      item: {fileID: 11400000, guid: 41511553a2ec047d9bb11d891330f653, type: 2}
+      item:
+        chain: {fileID: 11400000, guid: 4790f2db3ddc94e49a962eea7c8566e0, type: 2}
+        tier: 1
       constantValue:
         serializedVersion: 2
         m_Curve:
@@ -940,7 +956,9 @@ MonoBehaviour:
         m_RotationOrder: 4
       variable: {fileID: 0}
     - useConstant: 1
-      item: {fileID: 11400000, guid: be778c25c911a43ed858b7fcfd57bd9e, type: 2}
+      item:
+        chain: {fileID: 11400000, guid: 4790f2db3ddc94e49a962eea7c8566e0, type: 2}
+        tier: 2
       constantValue:
         serializedVersion: 2
         m_Curve:
@@ -976,7 +994,9 @@ MonoBehaviour:
         m_RotationOrder: 4
       variable: {fileID: 0}
     - useConstant: 0
-      item: {fileID: 11400000, guid: 103873ced36d04d7288e4b0b48a679ab, type: 2}
+      item:
+        chain: {fileID: 11400000, guid: 1f607adabd390408e85118b1cffe1d8b, type: 2}
+        tier: 1
       constantValue:
         serializedVersion: 2
         m_Curve:
@@ -1012,7 +1032,9 @@ MonoBehaviour:
         m_RotationOrder: 4
       variable: {fileID: 11400000, guid: b54cb3d9e6f25430dbcb163e806032f4, type: 2}
     - useConstant: 0
-      item: {fileID: 11400000, guid: f488ec51e287048928b2b94b48e4abef, type: 2}
+      item:
+        chain: {fileID: 11400000, guid: 1f607adabd390408e85118b1cffe1d8b, type: 2}
+        tier: 2
       constantValue:
         serializedVersion: 2
         m_Curve:
@@ -1075,7 +1097,9 @@ MonoBehaviour:
         m_RotationOrder: 4
       variable: {fileID: 11400000, guid: 5442343be762a4ee3bd3903d1fd51016, type: 2}
     - useConstant: 0
-      item: {fileID: 11400000, guid: f51f0f08791ee4076be40b4d01554f3c, type: 2}
+      item:
+        chain: {fileID: 11400000, guid: 1f607adabd390408e85118b1cffe1d8b, type: 2}
+        tier: 3
       constantValue:
         serializedVersion: 2
         m_Curve:
@@ -1120,7 +1144,9 @@ MonoBehaviour:
         m_RotationOrder: 4
       variable: {fileID: 11400000, guid: d144972066b7f4a828906f4615a2a818, type: 2}
     - useConstant: 0
-      item: {fileID: 11400000, guid: c11c38afc44bb4ac58ff35de9520efba, type: 2}
+      item:
+        chain: {fileID: 11400000, guid: 1a0e0c16f9a8a42a2a79588435a6e190, type: 2}
+        tier: 1
       constantValue:
         serializedVersion: 2
         m_Curve:
@@ -1165,7 +1191,9 @@ MonoBehaviour:
         m_RotationOrder: 4
       variable: {fileID: 11400000, guid: 2f69410ea843f47808962026867bd11a, type: 2}
     - useConstant: 0
-      item: {fileID: 11400000, guid: 4c3610e22808b45c199e63b5a278c5e6, type: 2}
+      item:
+        chain: {fileID: 11400000, guid: 1a0e0c16f9a8a42a2a79588435a6e190, type: 2}
+        tier: 2
       constantValue:
         serializedVersion: 2
         m_Curve:
@@ -1210,7 +1238,9 @@ MonoBehaviour:
         m_RotationOrder: 4
       variable: {fileID: 11400000, guid: 9d78d703d1b6a4f00b3ed8188041437b, type: 2}
     - useConstant: 1
-      item: {fileID: 11400000, guid: 421c9b3f2985e4d26b00addf27ebff40, type: 2}
+      item:
+        chain: {fileID: 11400000, guid: c342d1012d5f14de98af3e55c958dd5a, type: 2}
+        tier: 1
       constantValue:
         serializedVersion: 2
         m_Curve:
@@ -1246,7 +1276,9 @@ MonoBehaviour:
         m_RotationOrder: 4
       variable: {fileID: 0}
     - useConstant: 1
-      item: {fileID: 11400000, guid: 2ab08b2aea51241ffa61f0713e187ca0, type: 2}
+      item:
+        chain: {fileID: 11400000, guid: c1657d3bd6dea458f9e2d8050eafc7e3, type: 2}
+        tier: 1
       constantValue:
         serializedVersion: 2
         m_Curve:
@@ -1282,7 +1314,9 @@ MonoBehaviour:
         m_RotationOrder: 4
       variable: {fileID: 0}
     - useConstant: 1
-      item: {fileID: 11400000, guid: f0fdb6c55f8f54c21b6a9f08480bd0b7, type: 2}
+      item:
+        chain: {fileID: 11400000, guid: c1657d3bd6dea458f9e2d8050eafc7e3, type: 2}
+        tier: 2
       constantValue:
         serializedVersion: 2
         m_Curve:
@@ -1336,7 +1370,9 @@ MonoBehaviour:
         m_RotationOrder: 4
       variable: {fileID: 0}
     - useConstant: 1
-      item: {fileID: 11400000, guid: 8d4a998c7bcd04f18bb6d486e4f6fe4a, type: 2}
+      item:
+        chain: {fileID: 11400000, guid: c1657d3bd6dea458f9e2d8050eafc7e3, type: 2}
+        tier: 3
       constantValue:
         serializedVersion: 2
         m_Curve:
@@ -1363,7 +1399,9 @@ MonoBehaviour:
         m_RotationOrder: 4
       variable: {fileID: 0}
     - useConstant: 1
-      item: {fileID: 11400000, guid: 6d9349c8324364290a9f24204cb1b012, type: 2}
+      item:
+        chain: {fileID: 11400000, guid: 6fa3e5be34be24c6a90b873a20b19d2d, type: 2}
+        tier: 1
       constantValue:
         serializedVersion: 2
         m_Curve:
@@ -1399,7 +1437,9 @@ MonoBehaviour:
         m_RotationOrder: 4
       variable: {fileID: 0}
     - useConstant: 1
-      item: {fileID: 11400000, guid: c9453b07fa9974984b828aa9339febfb, type: 2}
+      item:
+        chain: {fileID: 11400000, guid: 6fa3e5be34be24c6a90b873a20b19d2d, type: 2}
+        tier: 2
       constantValue:
         serializedVersion: 2
         m_Curve:
@@ -1435,7 +1475,9 @@ MonoBehaviour:
         m_RotationOrder: 4
       variable: {fileID: 0}
     - useConstant: 1
-      item: {fileID: 11400000, guid: 6f25706fa097f43dbb5ed61fec7de884, type: 2}
+      item:
+        chain: {fileID: 11400000, guid: 808825b7d51f74137b9b191403ea8738, type: 2}
+        tier: 1
       constantValue:
         serializedVersion: 2
         m_Curve:
@@ -1471,7 +1513,9 @@ MonoBehaviour:
         m_RotationOrder: 4
       variable: {fileID: 0}
     - useConstant: 1
-      item: {fileID: 11400000, guid: 7c02953b190c74607b62bc8860bd265b, type: 2}
+      item:
+        chain: {fileID: 11400000, guid: 808825b7d51f74137b9b191403ea8738, type: 2}
+        tier: 2
       constantValue:
         serializedVersion: 2
         m_Curve:
@@ -1507,7 +1551,9 @@ MonoBehaviour:
         m_RotationOrder: 4
       variable: {fileID: 0}
     - useConstant: 0
-      item: {fileID: 11400000, guid: a0c38167287c8451a8852957968ab515, type: 2}
+      item:
+        chain: {fileID: 11400000, guid: d40d23008188f4636ba917575d70acdc, type: 2}
+        tier: 1
       constantValue:
         serializedVersion: 2
         m_Curve:
@@ -1543,7 +1589,9 @@ MonoBehaviour:
         m_RotationOrder: 4
       variable: {fileID: 11400000, guid: b54cb3d9e6f25430dbcb163e806032f4, type: 2}
     - useConstant: 0
-      item: {fileID: 11400000, guid: b0d0ae1af2298453c9cbeba82f4ab064, type: 2}
+      item:
+        chain: {fileID: 11400000, guid: d40d23008188f4636ba917575d70acdc, type: 2}
+        tier: 2
       constantValue:
         serializedVersion: 2
         m_Curve:
@@ -1606,7 +1654,9 @@ MonoBehaviour:
         m_RotationOrder: 4
       variable: {fileID: 11400000, guid: 5442343be762a4ee3bd3903d1fd51016, type: 2}
     - useConstant: 0
-      item: {fileID: 11400000, guid: 2843a599f232045cd84bddb4bfdc34b5, type: 2}
+      item:
+        chain: {fileID: 11400000, guid: d40d23008188f4636ba917575d70acdc, type: 2}
+        tier: 3
       constantValue:
         serializedVersion: 2
         m_Curve:
@@ -1651,7 +1701,9 @@ MonoBehaviour:
         m_RotationOrder: 4
       variable: {fileID: 11400000, guid: d144972066b7f4a828906f4615a2a818, type: 2}
     - useConstant: 1
-      item: {fileID: 11400000, guid: fd238766202484223ad41e159363d2d9, type: 2}
+      item:
+        chain: {fileID: 11400000, guid: ec0e71ee44a994768b842d9558b74c00, type: 2}
+        tier: 1
       constantValue:
         serializedVersion: 2
         m_Curve:
@@ -1687,7 +1739,9 @@ MonoBehaviour:
         m_RotationOrder: 4
       variable: {fileID: 0}
     - useConstant: 1
-      item: {fileID: 11400000, guid: c90507ecd7ed843958d400aaaeaf6e18, type: 2}
+      item:
+        chain: {fileID: 11400000, guid: ec0e71ee44a994768b842d9558b74c00, type: 2}
+        tier: 2
       constantValue:
         serializedVersion: 2
         m_Curve:
@@ -1723,7 +1777,9 @@ MonoBehaviour:
         m_RotationOrder: 4
       variable: {fileID: 0}
     - useConstant: 1
-      item: {fileID: 11400000, guid: a36951a90c6c44391a71cbd17ff8c4c9, type: 2}
+      item:
+        chain: {fileID: 11400000, guid: c7dc926b36da34c37bce5dbc826c7c6f, type: 2}
+        tier: 1
       constantValue:
         serializedVersion: 2
         m_Curve:
@@ -1750,7 +1806,9 @@ MonoBehaviour:
         m_RotationOrder: 4
       variable: {fileID: 0}
     - useConstant: 1
-      item: {fileID: 11400000, guid: 3b5ab756cc7454648aeea88e3265aaa4, type: 2}
+      item:
+        chain: {fileID: 11400000, guid: 854f51527d5254adda062c0c23aec5cb, type: 2}
+        tier: 1
       constantValue:
         serializedVersion: 2
         m_Curve:
@@ -1786,7 +1844,9 @@ MonoBehaviour:
         m_RotationOrder: 4
       variable: {fileID: 0}
     - useConstant: 1
-      item: {fileID: 11400000, guid: 22133bf1defbe4aef9dcb1071509ae13, type: 2}
+      item:
+        chain: {fileID: 11400000, guid: 854f51527d5254adda062c0c23aec5cb, type: 2}
+        tier: 2
       constantValue:
         serializedVersion: 2
         m_Curve:
@@ -1813,7 +1873,9 @@ MonoBehaviour:
         m_RotationOrder: 4
       variable: {fileID: 0}
     - useConstant: 0
-      item: {fileID: 11400000, guid: 2a42e155c209b403eb3e9155f49abcfa, type: 2}
+      item:
+        chain: {fileID: 11400000, guid: 2bdc773f9c2ea4f8292ef859b337f751, type: 2}
+        tier: 1
       constantValue:
         serializedVersion: 2
         m_Curve:
@@ -1840,7 +1902,9 @@ MonoBehaviour:
         m_RotationOrder: 4
       variable: {fileID: 11400000, guid: 1e78b414587224c32af2b3a380a910e9, type: 2}
     - useConstant: 0
-      item: {fileID: 11400000, guid: d9320e9e3e54b472a9062ee565f85110, type: 2}
+      item:
+        chain: {fileID: 11400000, guid: 2bdc773f9c2ea4f8292ef859b337f751, type: 2}
+        tier: 2
       constantValue:
         serializedVersion: 2
         m_Curve:
@@ -1876,7 +1940,9 @@ MonoBehaviour:
         m_RotationOrder: 4
       variable: {fileID: 11400000, guid: 0ab0d0b11415c493ea5be394a09985f7, type: 2}
     - useConstant: 0
-      item: {fileID: 11400000, guid: 93c709e1323f24997afed2605b01ff51, type: 2}
+      item:
+        chain: {fileID: 11400000, guid: 7452851d1c2b745bcbfffd73ec35d11f, type: 2}
+        tier: 1
       constantValue:
         serializedVersion: 2
         m_Curve:
@@ -1903,7 +1969,9 @@ MonoBehaviour:
         m_RotationOrder: 4
       variable: {fileID: 11400000, guid: 1e78b414587224c32af2b3a380a910e9, type: 2}
     - useConstant: 0
-      item: {fileID: 11400000, guid: b27a173d3675244dd8aa830dafac9f53, type: 2}
+      item:
+        chain: {fileID: 11400000, guid: 7452851d1c2b745bcbfffd73ec35d11f, type: 2}
+        tier: 2
       constantValue:
         serializedVersion: 2
         m_Curve:
@@ -1939,7 +2007,9 @@ MonoBehaviour:
         m_RotationOrder: 4
       variable: {fileID: 11400000, guid: 0ab0d0b11415c493ea5be394a09985f7, type: 2}
     - useConstant: 1
-      item: {fileID: 11400000, guid: 860e38cd88f88405e855069168511325, type: 2}
+      item:
+        chain: {fileID: 11400000, guid: cfad924ba92fe4240a072d0b6a68b289, type: 2}
+        tier: 1
       constantValue:
         serializedVersion: 2
         m_Curve:
@@ -1966,7 +2036,9 @@ MonoBehaviour:
         m_RotationOrder: 4
       variable: {fileID: 0}
     - useConstant: 1
-      item: {fileID: 11400000, guid: 5627ac192b80b4c56b2489ad57e3354c, type: 2}
+      item:
+        chain: {fileID: 11400000, guid: 5c9594279dd7a47909087f486ebd2e17, type: 2}
+        tier: 1
       constantValue:
         serializedVersion: 2
         m_Curve:
@@ -2002,7 +2074,9 @@ MonoBehaviour:
         m_RotationOrder: 4
       variable: {fileID: 11400000, guid: 3facea9a97d834b5cac004bade1417cb, type: 2}
     - useConstant: 1
-      item: {fileID: 11400000, guid: 50f6adb9501c44c969768598437e7c40, type: 2}
+      item:
+        chain: {fileID: 11400000, guid: 5c9594279dd7a47909087f486ebd2e17, type: 2}
+        tier: 2
       constantValue:
         serializedVersion: 2
         m_Curve:
@@ -2029,7 +2103,9 @@ MonoBehaviour:
         m_RotationOrder: 4
       variable: {fileID: 0}
     - useConstant: 1
-      item: {fileID: 11400000, guid: f40299d5079e04054b6205697798a99c, type: 2}
+      item:
+        chain: {fileID: 11400000, guid: 36ac9ef8bf4aa4ff1ac6256ba13812bf, type: 2}
+        tier: 1
       constantValue:
         serializedVersion: 2
         m_Curve:

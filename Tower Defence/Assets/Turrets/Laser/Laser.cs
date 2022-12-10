@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Abstract.Data;
 using Enemies;
-using Modules;
 using UnityEngine;
 
 namespace Turrets.Laser
@@ -75,9 +75,9 @@ namespace Turrets.Laser
             {
                 enemy.TakeDamage(damage.GetStat() * Time.deltaTime, gameObject);
             }
-            foreach (Module module in modules)
+            foreach (ModuleChainHandler handler in moduleHandlers)
             {
-                module.OnHit(enemies, this);
+                handler.GetModule().OnHit(enemies, this);
             }
 
             // Enable visuals
