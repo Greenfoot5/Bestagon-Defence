@@ -36,12 +36,12 @@ namespace Modules.Sniper
         [Tooltip("The percentage to modify the range of the Laser by")]
         [SerializeField]
         private float laserRangePercentageChange;
-        [Tooltip("The percentage to modify the rotation speed of the Laser by")]
-        [SerializeField]
-        private float laserRotationSpeedPercentageChange;
         [Tooltip("The percentage to modify the damage of the Laser by")]
         [SerializeField]
         private float laserDamagePercentageChange;
+        [Tooltip("The percentage to modify the rotation speed of the Laser by")]
+        [SerializeField]
+        private float laserRotationSpeedPercentageChange;
 
         [Header("Smasher Turret")]
         [Tooltip("The percentage to modify the range of the Smasher by")]
