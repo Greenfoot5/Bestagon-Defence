@@ -21,8 +21,10 @@ namespace Abstract.Data
             "XVI", "XVII", "XVIII", "XIX", "XX"
         };
         
+        [Tooltip("The module chain to handle")]
         [SerializeField]
         private ModuleChain chain;
+        [Tooltip("The tier of module handled from the chain")]
         [SerializeField]
         private int tier;
 
