@@ -1812,6 +1812,6 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     variable: {fileID: 11400000, guid: 16d1660dfe4ff46e2aa8f6bdb57dd644, type: 2}
-  revitaliseLives: 2
+  revitaliseLives: 3
   refundPercentage: 1
   rerollCost: 0.33
