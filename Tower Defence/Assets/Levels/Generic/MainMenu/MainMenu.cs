@@ -38,13 +38,13 @@ namespace Levels.Generic.MainMenu
         }
         
         /// <summary>
-        /// Transition the user to the settings scene
+        /// Transition the user to the tutorial scene
         /// </summary>
-        public void Settings()
+        public void Tutorial()
         {
-            TransitionManager.Instance.LoadScene("Settings");
+            TransitionManager.Instance.LoadScene("Tutorial");
         }
-        
+
         /// <summary>
         /// Quits the application
         /// </summary>
