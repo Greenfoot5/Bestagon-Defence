@@ -53,6 +53,11 @@ namespace Levels.Generic.MainMenu
             Debug.Log("Exiting...");
             Application.Quit();
         }
+
+        public void OpenUrl(string url)
+        {
+            Application.OpenURL(url);
+        }
     }
 }
     
