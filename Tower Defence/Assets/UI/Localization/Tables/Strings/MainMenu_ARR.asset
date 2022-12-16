@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: MainMenu_ARR
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: ARR
+  m_SharedData: {fileID: 11400000, guid: 8e2f78ef9583e4be18ba8f1d9427e930, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 7619633508454236246
+  m_TableData:
+  - m_Id: 6686352859136
+    m_Localized: Rough and Tumble
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7353318498304
+    m_Localized: Learn the ropes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14306786664448
+    m_Localized: Map of the seas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14352043204608
+    m_Localized: Walk the plank
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14568272158720
+    m_Localized: 'Boarded as:
+
+      {MainMenu.username}'
+    m_Metadata:
+      m_Items:
+      - rid: 7619633508454236246
+  references:
+    version: 2
+    RefIds:
+    - rid: 7619633508454236246
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00e0aff03f0d0000

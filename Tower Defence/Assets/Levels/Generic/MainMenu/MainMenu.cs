@@ -13,6 +13,8 @@ namespace Levels.Generic.MainMenu
         [SerializeField]
         private TMP_Text loggedInAs;
 
+        public string username = PlayerPrefs.GetString("Username");
+
         /// <summary>
         /// Sets the username text
         /// </summary>
@@ -26,7 +28,8 @@ namespace Levels.Generic.MainMenu
         /// </summary>
         public void DisplayUsername()
         {
-            loggedInAs.text = "Logged in as \n" + PlayerPrefs.GetString("Username");
+            username = PlayerPrefs.GetString("Username");
+            loggedInAs.text = "Logged in as \n" + username;
         }
         
         /// <summary>
@@ -57,6 +60,11 @@ namespace Levels.Generic.MainMenu
         public void OpenUrl(string url)
         {
             Application.OpenURL(url);
+        }
+
+        public string GetUsername()
+        {
+            return PlayerPrefs.GetString("Username");
         }
     }
 }
