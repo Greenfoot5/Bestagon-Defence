@@ -1,6 +1,7 @@
 using TMPro;
 using UI.Transition;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Levels.Generic.MainMenu
 {
@@ -9,11 +10,27 @@ namespace Levels.Generic.MainMenu
     /// </summary>
     public class MainMenu : MonoBehaviour
     {
+        [Header("Wordmark")]
+        [Tooltip("The wordmark/logo on the main screen to colour based on version")]
+        public Image wordmark;
+
+        [Tooltip("The colour to make the wordmark if it's a nightly build")]
+        public Color nightlyColor;
+        [Tooltip("The colour to make the wordmark if it's a alpha build")]
+        public Color alphaColor;
+        [Tooltip("The colour to make the wordmark if it's a beta build")]
+        public Color betaColor;
+        [Tooltip("The colour to make the wordmark if it's a release build")]
+        public Color releaseColor;
+        
+        [Header("Username")]
         [Tooltip("The text that displays the username of the player")]
         [SerializeField]
         private TMP_Text loggedInAs;
 
-        public string username = PlayerPrefs.GetString("Username");
+        [Tooltip("The saved username")]
+        [HideInInspector]
+        public string username;
 
         /// <summary>
         /// Sets the username text
@@ -21,6 +38,7 @@ namespace Levels.Generic.MainMenu
         private void Start()
         {
             DisplayUsername();
+            ColourWordmark();
         }
         
         /// <summary>
@@ -62,9 +80,24 @@ namespace Levels.Generic.MainMenu
             Application.OpenURL(url);
         }
 
-        public string GetUsername()
+        private void ColourWordmark()
         {
-            return PlayerPrefs.GetString("Username");
+            if (Application.version.Contains("nightly"))
+            {
+                wordmark.color = nightlyColor;
+            }
+            else if (Application.version.Contains("alpha"))
+            {
+                wordmark.color = alphaColor;
+            }
+            else if (Application.version.Contains("beta"))
+            {
+                wordmark.color = betaColor;
+            }
+            else
+            {
+                wordmark.color = releaseColor;
+            }
         }
     }
 }
