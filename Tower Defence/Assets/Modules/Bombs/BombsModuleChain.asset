@@ -16,8 +16,36 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ed82589302c26471c93da2205759f4d3, type: 2}
   - {fileID: 11400000, guid: 217bfad42a1e84cc9822aab6c7631ddb, type: 2}
   - {fileID: 11400000, guid: e51d8f8c8fdf2433197f9df264a59986, type: 2}
+  unique: 0
   accentColor: {r: 0.85490197, g: 0.14509805, b: 0.27058825, a: 1}
-  displayName: Bombs
-  tagline: Quite Explosive
   icon: {fileID: 8811115329238573457, guid: 16c979c866f439b4b988e7020b313794, type: 3}
-  effectText: Slower, projectiles but they explode!
+  displayName:
+    m_TableReference:
+      m_TableCollectionName: GUID:a4bbea44c52ee4ec1ada344d809c9849
+    m_TableEntryReference:
+      m_KeyId: 130051727360
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  tagline:
+    m_TableReference:
+      m_TableCollectionName: GUID:a4bbea44c52ee4ec1ada344d809c9849
+    m_TableEntryReference:
+      m_KeyId: 265670352896
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  description:
+    m_TableReference:
+      m_TableCollectionName: GUID:a4bbea44c52ee4ec1ada344d809c9849
+    m_TableEntryReference:
+      m_KeyId: 677400010752
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []

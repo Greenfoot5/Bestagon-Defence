@@ -35,6 +35,10 @@ MonoBehaviour:
     m_Key: MainMenu/@UI/MenuCanvas/Menu/LoggedInAs
     m_Metadata:
       m_Items: []
+  - m_Id: 1458407037984768
+    m_Key: Reload/Tagline
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

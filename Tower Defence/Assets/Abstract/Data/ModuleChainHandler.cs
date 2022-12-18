@@ -85,7 +85,7 @@ namespace Abstract.Data
         /// <returns>Name & tier in roman numerals</returns>
         public string GetDisplayName()
         {
-            return chain.displayName + " " + GetTierDisplay();
+            return chain.displayName.GetLocalizedString() + " " + GetTierDisplay();
         }
     }
 }

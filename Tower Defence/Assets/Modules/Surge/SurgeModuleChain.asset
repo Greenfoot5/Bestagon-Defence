@@ -18,7 +18,34 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9a0127184d8a84a9eab7a7c8faeb78cb, type: 2}
   unique: 1
   accentColor: {r: 0.38431373, g: 0.6745098, b: 0.7921569, a: 1}
-  displayName: Surge
-  tagline: Electrifying
   icon: {fileID: -3358934479966026082, guid: 16c979c866f439b4b988e7020b313794, type: 3}
-  effectText: Temporarily boosts fire rate
+  displayName:
+    m_TableReference:
+      m_TableCollectionName: GUID:a4bbea44c52ee4ec1ada344d809c9849
+    m_TableEntryReference:
+      m_KeyId: 701234532048896
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  tagline:
+    m_TableReference:
+      m_TableCollectionName: GUID:a4bbea44c52ee4ec1ada344d809c9849
+    m_TableEntryReference:
+      m_KeyId: 701334960463872
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  description:
+    m_TableReference:
+      m_TableCollectionName: GUID:a4bbea44c52ee4ec1ada344d809c9849
+    m_TableEntryReference:
+      m_KeyId: 701440027779072
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []

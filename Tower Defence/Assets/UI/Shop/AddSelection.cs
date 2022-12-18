@@ -161,7 +161,7 @@ namespace UI.Shop
                             break;
 
                         case DuplicateTypes.ByName:
-                            while (selectedNames.Contains(selected.GetChain().displayName))
+                            while (selectedNames.Contains(selected.GetChain().displayName.GetLocalizedString()))
                             {
                                 selected = modules.GetRandomItem();
                                 lagCounter++;
@@ -191,7 +191,7 @@ namespace UI.Shop
 
                     // Add it to our "history" to avoid duplicates on our next selection
                     selectedTypes[i] = selected.GetModule().GetType();
-                    selectedNames[i] = selected.GetChain().displayName;
+                    selectedNames[i] = selected.GetChain().displayName.GetLocalizedString();
                 }
                 else
                 {

@@ -1003,7 +1003,7 @@ MonoBehaviour:
           value: 62.15
         - localeIdentifier:
             m_Code: ARR
-          value: 50.65
+          value: 52.25
 --- !u!1 &316404684
 GameObject:
   m_ObjectHideFlags: 0
@@ -3909,7 +3909,7 @@ GameObject:
   - component: {fileID: 1351113010}
   - component: {fileID: 1351113009}
   m_Layer: 5
-  m_Name: WikiButton
+  m_Name: SettingsButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

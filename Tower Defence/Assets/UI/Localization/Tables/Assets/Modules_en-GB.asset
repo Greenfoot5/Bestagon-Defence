@@ -1,0 +1,249 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Modules_en-GB
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en-GB
+  m_SharedData: {fileID: 11400000, guid: a4bbea44c52ee4ec1ada344d809c9849, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 130051727360
+    m_Localized: Bombs
+    m_Metadata:
+      m_Items: []
+  - m_Id: 265670352896
+    m_Localized: quite explosive
+    m_Metadata:
+      m_Items: []
+  - m_Id: 677400010752
+    m_Localized: Slower projectiles, but they explode!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 944631701504
+    m_Localized: Burn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1148978192384
+    m_Localized: burn baby burn!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1412825079808
+    m_Localized: Deals damage over time based on max health
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1671487807488
+    m_Localized: Critical
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1803964899328
+    m_Localized: Hit the weak points
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1939734519808
+    m_Localized: Has a percentage chance to deal double damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2356979687424
+    m_Localized: Damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2449824800768
+    m_Localized: feath wonder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2700287664128
+    m_Localized: Increases Damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3202001920000
+    m_Localized: Execute
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3349582700544
+    m_Localized: cull the weak
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3902220001280
+    m_Localized: Kills an enemy if they are weak enough
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4163470614528
+    m_Localized: 'Fire Rate
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4543776546816
+    m_Localized: Increases Fire Rate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4721334018048
+    m_Localized: quickload
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691326222852096
+    m_Localized: Ghost
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691476622204928
+    m_Localized: etheral properties
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694815602761728
+    m_Localized: Giantslayer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694873349939200
+    m_Localized: Instakill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 696061810171904
+    m_Localized: Missiles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 696150591004672
+    m_Localized: Poison
+    m_Metadata:
+      m_Items: []
+  - m_Id: 696217410461696
+    m_Localized: Range
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697535218835456
+    m_Localized: Reload
+    m_Metadata:
+      m_Items: []
+  - m_Id: 698316831580160
+    m_Localized: visionary
+    m_Metadata:
+      m_Items: []
+  - m_Id: 698352248283136
+    m_Localized: Increases Range
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697749992366080
+    m_Localized: wait 'till they come crashing down
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697810847522816
+    m_Localized: Deal extra damage to bosses
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697662436270080
+    m_Localized: Slow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 699351922892800
+    m_Localized: subzero
+    m_Metadata:
+      m_Items: []
+  - m_Id: 699383313063936
+    m_Localized: Slows enemies with each hit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697907182297088
+    m_Localized: lucky shot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697951327346688
+    m_Localized: Has a chance to instantly kill any non-boss enemy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 702527489171456
+    m_Localized: Velocity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 702601417973760
+    m_Localized: aerodynamics
+    m_Metadata:
+      m_Items: []
+  - m_Id: 702640789905408
+    m_Localized: Projectiles Travel Faster
+    m_Metadata:
+      m_Items: []
+  - m_Id: 701493974917120
+    m_Localized: Tracker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 701564279840768
+    m_Localized: high gear
+    m_Metadata:
+      m_Items: []
+  - m_Id: 701619099394048
+    m_Localized: turrets rotate faster
+    m_Metadata:
+      m_Items: []
+  - m_Id: 701234532048896
+    m_Localized: Surge
+    m_Metadata:
+      m_Items: []
+  - m_Id: 701334960463872
+    m_Localized: electrifying
+    m_Metadata:
+      m_Items: []
+  - m_Id: 701440027779072
+    m_Localized: Temporarily boosts fire rate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 699466750353408
+    m_Localized: Sniper
+    m_Metadata:
+      m_Items: []
+  - m_Id: 699499218460672
+    m_Localized: expert ranger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 699533368483840
+    m_Localized: Behaves like a sniper
+    m_Metadata:
+      m_Items: []
+  - m_Id: 698226591129600
+    m_Localized: infect the bloodstream
+    m_Metadata:
+      m_Items: []
+  - m_Id: 698264910290944
+    m_Localized: Deals damage over time too hit enemies
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691559048667136
+    m_Localized: Projectiles passing through enemies deal damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697997502439424
+    m_Localized: rocket science
+    m_Metadata:
+      m_Items: []
+  - m_Id: 698034219376640
+    m_Localized: A lower fire rate, but projectiles explode!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 698421399773184
+    m_Localized: Attacks again shortly after firing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 701015455162368
+    m_Localized: Stun
+    m_Metadata:
+      m_Items: []
+  - m_Id: 701051983355904
+    m_Localized: bzzzzzzzzt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 701102625382400
+    m_Localized: Briefly stuns both enemies and the attacking tower
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

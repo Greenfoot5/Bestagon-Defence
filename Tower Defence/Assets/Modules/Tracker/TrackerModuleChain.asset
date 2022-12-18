@@ -15,8 +15,36 @@ MonoBehaviour:
   moduleTiers:
   - {fileID: 11400000, guid: 2a42e155c209b403eb3e9155f49abcfa, type: 2}
   - {fileID: 11400000, guid: d9320e9e3e54b472a9062ee565f85110, type: 2}
+  unique: 0
   accentColor: {r: 0.7882353, g: 0.26666668, b: 0.98039216, a: 1}
-  displayName: Tracker
-  tagline: High Gear
   icon: {fileID: -4242299120216371416, guid: 16c979c866f439b4b988e7020b313794, type: 3}
-  effectText: Turrets rotate faster
+  displayName:
+    m_TableReference:
+      m_TableCollectionName: GUID:a4bbea44c52ee4ec1ada344d809c9849
+    m_TableEntryReference:
+      m_KeyId: 701493974917120
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  tagline:
+    m_TableReference:
+      m_TableCollectionName: GUID:a4bbea44c52ee4ec1ada344d809c9849
+    m_TableEntryReference:
+      m_KeyId: 701564279840768
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  description:
+    m_TableReference:
+      m_TableCollectionName: GUID:a4bbea44c52ee4ec1ada344d809c9849
+    m_TableEntryReference:
+      m_KeyId: 701619099394048
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []

@@ -75,7 +75,7 @@ namespace Gameplay
             GetState(_currentScene.name);
             try
             {
-                _discord.GetActivityManager().UpdateActivity(_activity, (res) => { });
+                _discord.GetActivityManager().UpdateActivity(_activity, (_) => { });
             }
             catch (ResultException)
             {
@@ -144,7 +144,7 @@ namespace Gameplay
         {
             if (_discord == null)
                 return;
-            _discord.GetActivityManager().ClearActivity((res) => { });
+            _discord.GetActivityManager().ClearActivity((_) => { });
             _discord.RunCallbacks();
             _discord.Dispose();
         }

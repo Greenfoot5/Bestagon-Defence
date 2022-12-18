@@ -18,7 +18,34 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5994f79121a6f44838a41e92a8dd41eb, type: 2}
   unique: 1
   accentColor: {r: 0.5019608, g: 0.24705882, b: 0.7882353, a: 1}
-  displayName: Execute
-  tagline: Cull the weak
   icon: {fileID: 2903838018198858911, guid: 16c979c866f439b4b988e7020b313794, type: 3}
-  effectText: Kills an enemy if they have less than a % of their max health
+  displayName:
+    m_TableReference:
+      m_TableCollectionName: GUID:a4bbea44c52ee4ec1ada344d809c9849
+    m_TableEntryReference:
+      m_KeyId: 3202001920000
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  tagline:
+    m_TableReference:
+      m_TableCollectionName: GUID:a4bbea44c52ee4ec1ada344d809c9849
+    m_TableEntryReference:
+      m_KeyId: 3349582700544
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  description:
+    m_TableReference:
+      m_TableCollectionName: GUID:a4bbea44c52ee4ec1ada344d809c9849
+    m_TableEntryReference:
+      m_KeyId: 3902220001280
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []

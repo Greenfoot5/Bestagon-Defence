@@ -18,7 +18,34 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 768815852295a4853b4605dff6604804, type: 2}
   unique: 0
   accentColor: {r: 0.8117647, g: 0.23529412, b: 0.14901961, a: 1}
-  displayName: Sniper
-  tagline: Expert Ranger
   icon: {fileID: 2691302287683433475, guid: 16c979c866f439b4b988e7020b313794, type: 3}
-  effectText: Behaves like a sniper
+  displayName:
+    m_TableReference:
+      m_TableCollectionName: GUID:a4bbea44c52ee4ec1ada344d809c9849
+    m_TableEntryReference:
+      m_KeyId: 699466750353408
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  tagline:
+    m_TableReference:
+      m_TableCollectionName: GUID:a4bbea44c52ee4ec1ada344d809c9849
+    m_TableEntryReference:
+      m_KeyId: 699499218460672
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  description:
+    m_TableReference:
+      m_TableCollectionName: GUID:a4bbea44c52ee4ec1ada344d809c9849
+    m_TableEntryReference:
+      m_KeyId: 699533368483840
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []

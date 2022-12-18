@@ -28,7 +28,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 14306786664448
-    m_Localized: Wiki
+    m_Localized: Settings
     m_Metadata:
       m_Items: []
   - m_Id: 14352043204608
@@ -42,6 +42,10 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 7619633508454236250
+  - m_Id: 1458407037984768
+    m_Localized: Again!
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

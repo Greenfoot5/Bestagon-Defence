@@ -14,8 +14,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moduleTiers:
   - {fileID: 11400000, guid: e61ec28ebb3ca4d7f8e6435eeba594f6, type: 2}
+  unique: 0
   accentColor: {r: 0.56078434, g: 0.3254902, b: 0.98039216, a: 1}
-  displayName: Critical
-  tagline: Hit the weak points
   icon: {fileID: 1960215765652580131, guid: 16c979c866f439b4b988e7020b313794, type: 3}
-  effectText: Has a % chance to deal double damage
+  displayName:
+    m_TableReference:
+      m_TableCollectionName: GUID:a4bbea44c52ee4ec1ada344d809c9849
+    m_TableEntryReference:
+      m_KeyId: 1671487807488
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  tagline:
+    m_TableReference:
+      m_TableCollectionName: GUID:a4bbea44c52ee4ec1ada344d809c9849
+    m_TableEntryReference:
+      m_KeyId: 1803964899328
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  description:
+    m_TableReference:
+      m_TableCollectionName: GUID:a4bbea44c52ee4ec1ada344d809c9849
+    m_TableEntryReference:
+      m_KeyId: 1939734519808
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []

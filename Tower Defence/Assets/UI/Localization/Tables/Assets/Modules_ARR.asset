@@ -1,0 +1,190 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Modules_ARR
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: ARR
+  m_SharedData: {fileID: 11400000, guid: a4bbea44c52ee4ec1ada344d809c9849, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 130051727360
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 265670352896
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 677400010752
+    m_Localized: These cannonballs blast upon impact!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 944631701504
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1148978192384
+    m_Localized: set your enemies ablaze
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1671487807488
+    m_Localized: Chain Shot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1803964899328
+    m_Localized: destroy the sails
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1939734519808
+    m_Localized: Make any Bilge Rats you find feel yer wrath
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2356979687424
+    m_Localized: Destruction
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2449824800768
+    m_Localized: wreak havoc!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2700287664128
+    m_Localized: Greater Destruction
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3202001920000
+    m_Localized: The Cutlass
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3349582700544
+    m_Localized: feed the fish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 696217410461696
+    m_Localized: Reach
+    m_Metadata:
+      m_Items: []
+  - m_Id: 698316831580160
+    m_Localized: scout the seas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 698352248283136
+    m_Localized: Make yer cannon scuttle from afar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694815602761728
+    m_Localized: Kraken's Blow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697749992366080
+    m_Localized: the galleon sinks
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697810847522816
+    m_Localized: Befall any brave enough to dare get past ye
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697662436270080
+    m_Localized: Avast
+    m_Metadata:
+      m_Items: []
+  - m_Id: 699351922892800
+    m_Localized: overhaul the sea
+    m_Metadata:
+      m_Items: []
+  - m_Id: 699383313063936
+    m_Localized: Are ye having problems with clippers? Belay them!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694873349939200
+    m_Localized: Man-O-War
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697907182297088
+    m_Localized: dead men tell no tales
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697951327346688
+    m_Localized: Have a chance to send folk ye hit straight to Davy Jones' Locker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 702527489171456
+    m_Localized: Chase
+    m_Metadata:
+      m_Items: []
+  - m_Id: 702601417973760
+    m_Localized: more gunpowder!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 702640789905408
+    m_Localized: Let them landlubbers have no chance of out-sailing yer fire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3902220001280
+    m_Localized: Take any pirate too weak and cleave them to the brisket!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 701493974917120
+    m_Localized: Chase Gun
+    m_Metadata:
+      m_Items: []
+  - m_Id: 701564279840768
+    m_Localized: follow the scallywag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 701619099394048
+    m_Localized: Bring a spring upon 'er and run a shot across the bow!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 701234532048896
+    m_Localized: Storm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 701334960463872
+    m_Localized: do ye have sea legs?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 701440027779072
+    m_Localized: Sink me! It's time to batten down the hatches, hearties! We're about
+      to maroon some buccaneers!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 699466750353408
+    m_Localized: Black Spot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 699499218460672
+    m_Localized: scourge of the 7 seas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 699533368483840
+    m_Localized: Climb on yer crow's nest, find a pirate on yer spyglass and blow
+      the man down!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 696150591004672
+    m_Localized: Yellow Jack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 698226591129600
+    m_Localized: go take a caulk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 698264910290944
+    m_Localized: Beware of the yellow flag. For it will spread a sickness amongst
+      yer crew!
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

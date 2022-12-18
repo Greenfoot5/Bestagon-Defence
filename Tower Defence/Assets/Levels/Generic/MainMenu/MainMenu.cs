@@ -1,3 +1,4 @@
+using Modules;
 using TMPro;
 using UI.Transition;
 using UnityEngine;
@@ -32,6 +33,8 @@ namespace Levels.Generic.MainMenu
         [HideInInspector]
         public string username;
 
+        public ModuleChain testChain;
+
         /// <summary>
         /// Sets the username text
         /// </summary>
@@ -39,6 +42,7 @@ namespace Levels.Generic.MainMenu
         {
             DisplayUsername();
             ColourWordmark();
+            Debug.Log(testChain.displayName.ToString());
         }
         
         /// <summary>
@@ -64,6 +68,11 @@ namespace Levels.Generic.MainMenu
         public void Tutorial()
         {
             TransitionManager.Instance.LoadScene("Tutorial");
+        }
+
+        public void Settings()
+        {
+            TransitionManager.Instance.LoadScene("Settings");
         }
 
         /// <summary>
