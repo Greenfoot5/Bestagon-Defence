@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Abstract.Data;
 using UnityEngine;
+using UnityEngine.Localization;
 
 namespace Turrets
 {
@@ -15,8 +16,12 @@ namespace Turrets
         public Sprite shopIcon;
         [Tooltip("The turret name that appears on the selection card")]
         public string displayName;
+        [Tooltip("The turret name that appears on the selection card")]
+        public LocalizedString locDisplayName;
         [Tooltip("The tagline of the turret. It's not a description, just a witty little remark")]
         public string tagline;
+        [Tooltip("The tagline of the turret. It's not a description, just a witty little remark")]
+        public LocalizedString locTagline;
         
         [Tooltip("The main colour of the turret. Is used in various ways for display")]
         public Color accent;
@@ -25,6 +30,6 @@ namespace Turrets
         [Tooltip("The prefab to use when the turret is built.")]
         public GameObject prefab;
         [Tooltip("Any modules that come pre-applied when the player places the turret")]
-        public List<ModuleChainHandler> moduleHandlers = new List<ModuleChainHandler>();
+        public List<ModuleChainHandler> moduleHandlers = new();
     }
 }

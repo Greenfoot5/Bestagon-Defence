@@ -14,9 +14,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shopIcon: {fileID: 21300000, guid: 1107d216d6dc84ddda3609fcbbadc09f, type: 3}
   displayName: Advanced
+  locDisplayName:
+    m_TableReference:
+      m_TableCollectionName: GUID:7c2fd8aac1d4a4e3e9098ede69f277bd
+    m_TableEntryReference:
+      m_KeyId: 729435006296064
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   tagline: Bye!
+  locTagline:
+    m_TableReference:
+      m_TableCollectionName: GUID:7c2fd8aac1d4a4e3e9098ede69f277bd
+    m_TableEntryReference:
+      m_KeyId: 729535787032576
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   accent: {r: 0.28235295, g: 0.34901962, b: 0.8941177, a: 1}
   prefab: {fileID: 8263255388866025106, guid: 97462d19c76b149579cf6bd12edf3f45, type: 3}
   moduleHandlers:
   - chain: {fileID: 11400000, guid: 7452851d1c2b745bcbfffd73ec35d11f, type: 2}
     tier: 3
+  references:
+    version: 2
+    RefIds: []
