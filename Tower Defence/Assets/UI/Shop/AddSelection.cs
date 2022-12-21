@@ -97,7 +97,7 @@ namespace UI.Shop
                             break;
 
                         case DuplicateTypes.ByName:
-                            while (selectedNames.Contains(selected.displayName))
+                            while (selectedNames.Contains(selected.displayName.GetLocalizedString()))
                             {
                                 selected = turrets.GetRandomItem();
                                 lagCounter++;
@@ -127,7 +127,7 @@ namespace UI.Shop
 
                     // Add the selection to our selected arrays to avoid duplicates
                     selectedTypes[i] = selected.GetType();
-                    selectedNames[i] = selected.displayName;
+                    selectedNames[i] = selected.displayName.GetLocalizedString();
                     continue;
                 }
 
@@ -206,7 +206,7 @@ namespace UI.Shop
                             break;
                     
                         case DuplicateTypes.ByName:
-                            while (selectedNames.Contains(selected.displayName))
+                            while (selectedNames.Contains(selected.displayName.GetLocalizedString()))
                             {
                                 selected = turrets.GetRandomItem();
                                 lagCounter++;
@@ -234,7 +234,7 @@ namespace UI.Shop
                 
                     // Add the turret to our history so the game don't pick it again
                     selectedTypes[i] = selected.GetType();
-                    selectedNames[i] = selected.displayName;
+                    selectedNames[i] = selected.displayName.GetLocalizedString();
                 }
             }
         }

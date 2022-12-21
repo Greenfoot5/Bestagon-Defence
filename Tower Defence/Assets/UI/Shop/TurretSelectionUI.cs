@@ -76,8 +76,8 @@ namespace UI.Shop
             _turretBlueprint = turret;
             
             // Turret text
-            displayName.text = turret.displayName;
-            tagline.text = turret.tagline;
+            displayName.text = turret.displayName.GetLocalizedString();
+            tagline.text = turret.tagline.GetLocalizedString();
             
             // Icon and Glyph
             icon.sprite = turret.shopIcon;
