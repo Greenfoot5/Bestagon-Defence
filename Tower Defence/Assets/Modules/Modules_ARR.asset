@@ -19,19 +19,19 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 130051727360
-    m_Localized: 
+    m_Localized: Bombs
     m_Metadata:
       m_Items: []
   - m_Id: 265670352896
-    m_Localized: 
+    m_Localized: blow 'em away
     m_Metadata:
       m_Items: []
   - m_Id: 677400010752
-    m_Localized: These cannonballs blast upon impact!
+    m_Localized: These cannonballs be explodin' upon impact!
     m_Metadata:
       m_Items: []
   - m_Id: 944631701504
-    m_Localized: 
+    m_Localized: Ignite
     m_Metadata:
       m_Items: []
   - m_Id: 1148978192384
@@ -183,6 +183,22 @@ MonoBehaviour:
   - m_Id: 698264910290944
     m_Localized: Beware of the yellow flag. For it will spread a sickness amongst
       yer crew!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1412825079808
+    m_Localized: Set yer enemies aflame with a splash o' firewater!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4721334018048
+    m_Localized: fire at will
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4163470614528
+    m_Localized: Rapidfire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4543776546816
+    m_Localized: Yer cannons be reloadin' and shootin' faster than ever before!
     m_Metadata:
       m_Items: []
   references:

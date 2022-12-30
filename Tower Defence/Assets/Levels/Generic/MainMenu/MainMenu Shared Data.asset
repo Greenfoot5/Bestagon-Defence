@@ -39,6 +39,26 @@ MonoBehaviour:
     m_Key: Reload/Tagline
     m_Metadata:
       m_Items: []
+  - m_Id: 2548866623725568
+    m_Key: MainMenu/@UI/LoginCanvas/Login/PickUsernameText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5763922673000448
+    m_Key: MainMenu/@UI/LoginCanvas/Login/UsernameInfoText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5763984530595840
+    m_Key: MainMenu/@UI/LoginCanvas/Login/UsernameTextBox/Text Area/Placeholder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5764051601711104
+    m_Key: MainMenu/@UI/LoginCanvas/Login/CantChangeWarningText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5764181025349632
+    m_Key: MainMenu/@UI/LoginCanvas/Login/SubmitButton/Text (TMP)
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

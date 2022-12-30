@@ -46,6 +46,28 @@ MonoBehaviour:
     m_Localized: Again!
     m_Metadata:
       m_Items: []
+  - m_Id: 2548866623725568
+    m_Localized: 'Input your username:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5763922673000448
+    m_Localized: it will be used on the leaderboards for each level
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5763984530595840
+    m_Localized: Enter Username...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5764051601711104
+    m_Localized: Choose carefully! You can't change your username afterwards
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5764181025349632
+    m_Localized: 'Submit
+
+'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

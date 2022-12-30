@@ -24,7 +24,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 677400010752
-    m_Key: Bombs/Effect Text
+    m_Key: Bombs/Description
     m_Metadata:
       m_Items: []
   - m_Id: 944631701504
@@ -36,7 +36,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1412825079808
-    m_Key: Burn/Effect Text
+    m_Key: Burn/Description
     m_Metadata:
       m_Items: []
   - m_Id: 1671487807488
@@ -48,7 +48,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1939734519808
-    m_Key: Critical/Effect Text
+    m_Key: Critical/Description
     m_Metadata:
       m_Items: []
   - m_Id: 2356979687424
@@ -60,7 +60,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2700287664128
-    m_Key: Damage/Effect Text
+    m_Key: Damage/Description
     m_Metadata:
       m_Items: []
   - m_Id: 3202001920000
@@ -72,7 +72,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 3902220001280
-    m_Key: Execute/Effect Text
+    m_Key: Execute/Description
     m_Metadata:
       m_Items: []
   - m_Id: 4163470614528
@@ -80,7 +80,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 4543776546816
-    m_Key: Fire Rate/Effect Text
+    m_Key: Fire Rate/Description
     m_Metadata:
       m_Items: []
   - m_Id: 4721334018048
@@ -96,7 +96,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 691559048667136
-    m_Key: Ghost/Effect Text
+    m_Key: Ghost/Description
     m_Metadata:
       m_Items: []
   - m_Id: 694815602761728
@@ -132,7 +132,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 697810847522816
-    m_Key: Giantslayer/Effect Text
+    m_Key: Giantslayer/Description
     m_Metadata:
       m_Items: []
   - m_Id: 697907182297088
@@ -140,7 +140,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 697951327346688
-    m_Key: Instakill/Effect Text
+    m_Key: Instakill/Description
     m_Metadata:
       m_Items: []
   - m_Id: 697997502439424
@@ -148,7 +148,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 698034219376640
-    m_Key: Missiles/Effect Text
+    m_Key: Missiles/Description
     m_Metadata:
       m_Items: []
   - m_Id: 698226591129600
@@ -156,7 +156,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 698264910290944
-    m_Key: Poison/Effect Text
+    m_Key: Poison/Description
     m_Metadata:
       m_Items: []
   - m_Id: 698316831580160
@@ -164,11 +164,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 698352248283136
-    m_Key: Range/Effect Text
+    m_Key: Range/Description
     m_Metadata:
       m_Items: []
   - m_Id: 698421399773184
-    m_Key: Reload/Effect Text
+    m_Key: Reload/Description
     m_Metadata:
       m_Items: []
   - m_Id: 699351922892800
@@ -176,7 +176,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 699383313063936
-    m_Key: Slow/Effect Text
+    m_Key: Slow/Description
     m_Metadata:
       m_Items: []
   - m_Id: 699466750353408
@@ -188,7 +188,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 699533368483840
-    m_Key: Sniper/Effect Text
+    m_Key: Sniper/Description
     m_Metadata:
       m_Items: []
   - m_Id: 701015455162368
@@ -200,7 +200,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 701102625382400
-    m_Key: Stun/Effect Text
+    m_Key: Stun/Description
     m_Metadata:
       m_Items: []
   - m_Id: 701234532048896
@@ -212,7 +212,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 701440027779072
-    m_Key: Surge/Effect Text
+    m_Key: Surge/Description
     m_Metadata:
       m_Items: []
   - m_Id: 701493974917120
@@ -224,7 +224,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 701619099394048
-    m_Key: Tracker/Effect Text
+    m_Key: Tracker/Description
     m_Metadata:
       m_Items: []
   - m_Id: 702527489171456
@@ -236,7 +236,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 702640789905408
-    m_Key: Velocity/Effect Text
+    m_Key: Velocity/Description
     m_Metadata:
       m_Items: []
   m_Metadata:
