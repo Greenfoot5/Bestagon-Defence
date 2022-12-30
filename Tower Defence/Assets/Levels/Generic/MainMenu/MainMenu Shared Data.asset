@@ -59,6 +59,26 @@ MonoBehaviour:
     m_Key: MainMenu/@UI/LoginCanvas/Login/SubmitButton/Text (TMP)
     m_Metadata:
       m_Items: []
+  - m_Id: 5766025327927296
+    m_Key: MainMenu/@UI/NotUpdatedCanvas/NotUpdated/UpdateText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5766048283353088
+    m_Key: MainMenu/@UI/NotUpdatedCanvas/NotUpdated/UpdateInfoText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5766068134993920
+    m_Key: MainMenu/@UI/NotUpdatedCanvas/NotUpdated/UpdateButton/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5766084056571904
+    m_Key: MainMenu/@UI/NotUpdatedCanvas/NotUpdated/ScoresWontSaveWarningText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5766103807549440
+    m_Key: MainMenu/@UI/NotUpdatedCanvas/NotUpdated/ContinueButton/Text (TMP)
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -64,6 +64,26 @@ MonoBehaviour:
 '
     m_Metadata:
       m_Items: []
+  - m_Id: 5766025327927296
+    m_Localized: Update Avaliable!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5766048283353088
+    m_Localized: You are not on the latest version
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5766068134993920
+    m_Localized: Update
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5766084056571904
+    m_Localized: Your high scores will not be recorded!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5766103807549440
+    m_Localized: Continue Anyway
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
