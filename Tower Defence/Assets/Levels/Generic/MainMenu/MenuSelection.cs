@@ -5,13 +5,13 @@ namespace Levels.Generic.MainMenu
 {
     public class MenuSelection : MonoBehaviour
     {
-        [Tooltip("The camera for the main menu")]
+        [Tooltip("The canvas for the main menu")]
         [SerializeField]
         private GameObject menuCanvas;
-        [Tooltip("The camera for the login menu")]
+        [Tooltip("The canvas for the login menu")]
         [SerializeField]
         private GameObject loginCanvas;
-        [Tooltip("The camera for the update menu")]
+        [Tooltip("The canvas for the update menu")]
         [SerializeField]
         private GameObject updateCanvas;
 

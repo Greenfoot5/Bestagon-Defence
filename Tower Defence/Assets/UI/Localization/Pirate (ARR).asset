@@ -17,6 +17,7 @@ MonoBehaviour:
   m_Metadata:
     m_Items:
     - rid: 7619633508454236211
+    - rid: 7619633646490091564
   m_LocaleName: Pirate (ARR)
   m_CustomFormatCultureCode: 
   m_UseCustomFormatter: 0
@@ -28,3 +29,7 @@ MonoBehaviour:
       type: {class: FallbackLocale, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
         m_Locale: {fileID: 11400000, guid: 9e086f40610a74fa585d0d3eb26e6a42, type: 2}
+    - rid: 7619633646490091564
+      type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_CommentText: 30% complete

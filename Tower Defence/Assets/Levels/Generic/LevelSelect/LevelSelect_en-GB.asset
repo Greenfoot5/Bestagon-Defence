@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: LevelSelect_en-GB
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en-GB
+  m_SharedData: {fileID: 11400000, guid: 01db83deda24d4c42a2c290e89405b6a, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 2657589649408
+    m_Localized: Play
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2923705655296
+    m_Localized: Leaderboard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3130187046912
+    m_Localized: Levels
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3193646866432
+    m_Localized: ' Scores'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3802471063552
+    m_Localized: Leaderboard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3853251502080
+    m_Localized: Main Menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3954535555072
+    m_Localized: Level Select
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4606997291008
+    m_Localized: Prototyp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4700886786048
+    m_Localized: 'Polygon
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4751239405568
+    m_Localized: 'Hexagon
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4817140310016
+    m_Localized: 'Loop
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4863122464768
+    m_Localized: Upgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6173490143232
+    m_Localized: 'High Score:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6225822474240
+    m_Localized: Could not display leaderboard
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

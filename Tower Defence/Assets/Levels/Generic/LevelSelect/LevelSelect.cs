@@ -2,6 +2,9 @@ using System.Collections.Generic;
 using TMPro;
 using UI.Transition;
 using UnityEngine;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
+using UnityEngine.Localization.Tables;
 using UnityEngine.UI;
 
 namespace Levels.Generic.LevelSelect
@@ -39,6 +42,17 @@ namespace Levels.Generic.LevelSelect
         [Tooltip("The high score text")]
         [SerializeField]
         private TMP_Text highScore;
+        
+        [Header("Localization Strings")]
+        [Tooltip("The text for translating to for leaderboards")]
+        [SerializeField]
+        private LocalizedString leaderboardButtonText;
+        [Tooltip("The text for translating to for level select")]
+        [SerializeField]
+        private LocalizedString levelSelectButtonText;
+        [Tooltip("To display after the level name above the scoreboard")]
+        [SerializeField]
+        private LocalizedString scoresText;
 
         /// <summary>
         /// Disables play and info buttons
@@ -79,10 +93,13 @@ namespace Levels.Generic.LevelSelect
                 // Display the leaderboard
                 levelInfo.SetActive(true);
                 levelSelect.SetActive(false);
-                infoButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Levels";
+                infoButton.transform.GetChild(0).GetComponent<TMP_Text>().text = levelSelectButtonText.GetLocalizedString();
                 
                 // Display the level info
-                levelName.text = _selectedLevel.Substring(0, _selectedLevel.Length - 5) + " Scores";
+                string levelNameLocalized = 
+                    new LocalizedStringDatabase().GetLocalizedString(TransitionManager.Instance.tableReference,
+                        (TableEntryReference)_selectedLevel, LocalizationSettings.SelectedLocale);
+                levelName.text = levelNameLocalized + scoresText.GetLocalizedString();
                 
                 // Setup to display scores
                 var bridge = levelInfo.GetComponent<LeaderboardServerBridge>();
@@ -112,14 +129,14 @@ namespace Levels.Generic.LevelSelect
                 
                 // Display the player's high score
                 LeaderboardEntry playerScore = await bridge.RequestPlayerEntry(PlayerPrefs.GetString("Username"), leaderboardID);
-                highScore.text = playerScore != null ? playerScore.GetValueAsString() : "N/A";
+                highScore.text = playerScore != null ? playerScore.GetValueAsString() : "0";
             }
             else
             {
                 // Display the level selection menu
                 levelInfo.SetActive(false);
                 levelSelect.SetActive(true);
-                infoButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Leaderboard";
+                infoButton.transform.GetChild(0).GetComponent<TMP_Text>().text = leaderboardButtonText.GetLocalizedString();
             }
         }
         

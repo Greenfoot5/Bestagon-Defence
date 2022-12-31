@@ -35,10 +35,6 @@ MonoBehaviour:
     m_Key: MainMenu/@UI/MenuCanvas/Menu/LoggedInAs
     m_Metadata:
       m_Items: []
-  - m_Id: 1458407037984768
-    m_Key: Reload/Tagline
-    m_Metadata:
-      m_Items: []
   - m_Id: 2548866623725568
     m_Key: MainMenu/@UI/LoginCanvas/Login/PickUsernameText
     m_Metadata:

@@ -42,10 +42,6 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 7619633508454236250
-  - m_Id: 1458407037984768
-    m_Localized: Again!
-    m_Metadata:
-      m_Items: []
   - m_Id: 2548866623725568
     m_Localized: 'Input your username:'
     m_Metadata:

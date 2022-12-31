@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6316183153120340424}
   m_RootOrder: 2
@@ -105,6 +106,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7917227284233019639}
   - {fileID: 12002878979726328}
@@ -227,6 +229,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8287739211574968993}
   m_RootOrder: 0
@@ -302,6 +305,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8287739211574968993}
   - {fileID: 2859355435848293579}
@@ -321,15 +325,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c50a040eae68074aa2763c11ffa162a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transition: {fileID: 1456909156020574945}
-  _sceneName: {fileID: 7872387338073466488}
-  _innerRing: {fileID: 7917227284233019639}
-  _outerRing: {fileID: 12002878979726328}
+  transition: {fileID: 1456909156020574945}
+  sceneName: {fileID: 7872387338073466488}
+  tableReference:
+    m_TableCollectionName: Transition
+  innerRing: {fileID: 7917227284233019639}
+  outerRing: {fileID: 12002878979726328}
   _camera: {fileID: 985842982966307418}
-  _background: {fileID: 8098763435691577812}
 --- !u!95 &2662104101795918778
 Animator:
-  serializedVersion: 3
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -342,10 +347,11 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &7048840480631454268
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,6 +380,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10.000002}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8287739211574968993}
   m_RootOrder: 3
@@ -508,6 +515,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8287739211574968993}
   m_RootOrder: 1
@@ -583,6 +591,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6316183153120340424}
   m_RootOrder: 1
@@ -653,6 +662,7 @@ GameObject:
   - component: {fileID: 3789153295944635663}
   - component: {fileID: 6487750516145020019}
   - component: {fileID: 1159651515993598024}
+  - component: {fileID: 5485052432658476430}
   m_Layer: 10
   m_Name: LoadingText
   m_TagString: Untagged
@@ -670,6 +680,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8287739211574968993}
   m_RootOrder: 2
@@ -778,3 +789,41 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &5485052432658476430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9173026177881869988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69beb381e244f92449b8c4cf954630e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TrackedObjects:
+  - rid: 7619633889402683400
+  references:
+    version: 2
+    RefIds:
+    - rid: 7619633889402683400
+      type: {class: TrackedUGuiGraphic, ns: UnityEngine.Localization.PropertyVariants.TrackedObjects, asm: Unity.Localization}
+      data:
+        m_Target: {fileID: 1159651515993598024}
+        m_TrackedProperties:
+          items:
+          - rid: 7619633889402683401
+        m_UpdateType: 0
+    - rid: 7619633889402683401
+      type: {class: LocalizedStringProperty, ns: UnityEngine.Localization.PropertyVariants.TrackedProperties, asm: Unity.Localization}
+      data:
+        m_Localized:
+          m_TableReference:
+            m_TableCollectionName: GUID:8d753a620fec74fffb30bd1439f06f78
+          m_TableEntryReference:
+            m_KeyId: 20594459402240
+            m_Key: 
+          m_FallbackState: 0
+          m_WaitForCompletion: 0
+          m_LocalVariables: []
+        m_PropertyPath: m_text

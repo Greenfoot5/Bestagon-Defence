@@ -29,6 +29,24 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-ARR
     - Preload
+  - m_GUID: 8f4ee820c8ca84cc58629f8e55a729d7
+    m_Address: Transition_ARR
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ARR
+    - Preload
+  - m_GUID: 64a240bdd2001456d8d972e882810c4d
+    m_Address: Tutorial_ARR
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ARR
+    - Preload
+  - m_GUID: 197d34ce078fe45619f09c3a449dcdd9
+    m_Address: LevelSelect_ARR
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ARR
+    - Preload
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 6e9e55f6df8a74e608f92b8e3a1f0b77, type: 2}
   m_SchemaSet:

@@ -42,7 +42,6 @@ namespace Levels.Generic.MainMenu
         {
             DisplayUsername();
             ColourWordmark();
-            Debug.Log(testChain.displayName.ToString());
         }
         
         /// <summary>

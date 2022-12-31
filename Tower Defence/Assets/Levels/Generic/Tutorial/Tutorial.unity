@@ -2032,7 +2032,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1285392542}
-  - component: {fileID: 1285392541}
   m_Layer: 0
   m_Name: '@UI'
   m_TagString: Untagged
@@ -2040,21 +2039,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1285392541
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1285392540}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b0e39b4380274bac8cfd238b0b5e599, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menuCanvas: {fileID: 474522199}
-  loginCanvas: {fileID: 0}
-  updateCanvas: {fileID: 0}
 --- !u!4 &1285392542
 Transform:
   m_ObjectHideFlags: 0
@@ -2414,18 +2398,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Bestagon Defence is a tower defence game! This means you've got to place
-    turrets to avoid them reaching the end goal.\n\n<size=+25>The Goal<size=100%>\nYou
-    begin with each level with a certain amount of <sprite=\"UI-Life\" name=\"life\">,
-    and each time an enemy reaches they end, you lose at least one. You can gain
-    more through the shop. If you lose them all, it's game over. The aim is therefore
-    to make is as far as possible before you lose, aiming to top the leaderboards!\n\n<size=+25>The
-    Shop<size=100%>\nThe shop is here to help! You can usethe hard earned <sprite=\"UI-Gold\"
-    name=\"gold>  you gain from killing enemies by opening the shop. The price increases
-    each time however.\nEach time you open the shop you'll get some choices. The
-    main three are either turrets or modules (turret upgrades). You can only pick
-    one thing before the shop closes. These three are randomised each time the shop
-    opens. The bottom three options are:\n<sprite=\"UI-Life\" name=\"life\"> <color=#D41E3C>Revitalise</color>
-    - Gives you some lives back\n<sprite=\"UI-Gold\" name=\"gold\"> <color=#fce544>Refund</color>
+    turrets to stop enemies reaching the end goal for as long as possible.\n\n<size=+25>The
+    Goal<size=100%>\nYou begin with each level with a certain amount of <sprite=\"UI-Life\"
+    name=\"life\">, and each time an enemy reaches they end, you lose at least one.
+    You can gain more through the shop. If you lose them all, it's game over. The
+    aim is therefore to make is as far as possible before you lose, aiming to top
+    the leaderboards!\n\n<size=+25>The Shop<size=100%>\nThe shop is here to help!
+    You can usethe hard earned <sprite=\"UI-Gold\" name=\"gold>  you gain from killing
+    enemies by opening the shop. The price increases each time however.\nEach time
+    you open the shop you'll get some choices. The main three are either turrets
+    or modules (turret upgrades). You can only pick one thing before the shop closes.
+    These three are randomised each time the shop opens. The bottom three options
+    are:\n<sprite=\"UI-Life\" name=\"life\"> <color=#D41E3C>Revitalise</color> -
+    Gives you some lives back\n<sprite=\"UI-Gold\" name=\"gold\"> <color=#fce544>Refund</color>
     - Gives you back some of the gold you spent opening the shop, but the price still
     increases.\n\u2022 <color=#f8663a>Reroll</color> - Spend <sprite=\"UI-Life\"
     name=\"life\">  to reroll you turret & module selection. It can cost multiple
@@ -2837,6 +2822,27 @@ MonoBehaviour:
   tutorialMenu: {fileID: 437479057}
   controlsMenu: {fileID: 1992719581}
   toggleButtonText: {fileID: 1372401883}
+  tutorialText:
+    m_TableReference:
+      m_TableCollectionName: GUID:d8dba3f1b6d9b49129d3bfaa66176bdb
+    m_TableEntryReference:
+      m_KeyId: 77421600768
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  controlsText:
+    m_TableReference:
+      m_TableCollectionName: GUID:d8dba3f1b6d9b49129d3bfaa66176bdb
+    m_TableEntryReference:
+      m_KeyId: 431454412800
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!114 &1690735451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3070,10 +3076,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2239040084064163265, guid: f9bbc79d08b642b4ea263b4f9aad5cce, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -54
-      objectReference: {fileID: 0}
     - target: {fileID: 7033422843349886297, guid: f9bbc79d08b642b4ea263b4f9aad5cce, type: 3}
       propertyPath: m_Name
       value: '@System'

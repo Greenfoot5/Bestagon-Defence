@@ -86,7 +86,7 @@ namespace _WIP
                     Debug.Log("No settings loaded this session; using cached values from a previous session.");
                     break;
                 case ConfigOrigin.Remote:
-                    Debug.Log("New settings loaded this session; update values accordingly.");
+                    //Debug.Log("New settings loaded this session; update values accordingly.");
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

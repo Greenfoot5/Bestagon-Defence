@@ -25,6 +25,18 @@ MonoBehaviour:
     m_Address: Assets/UI/Localization/Tables/Assets/Modules Shared Data.asset
     m_ReadOnly: 1
     m_SerializedLabels: []
+  - m_GUID: 8d753a620fec74fffb30bd1439f06f78
+    m_Address: Assets/Levels/LevelNames Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+  - m_GUID: d8dba3f1b6d9b49129d3bfaa66176bdb
+    m_Address: Assets/Levels/Generic/Tutorial/Tutorial Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+  - m_GUID: 01db83deda24d4c42a2c290e89405b6a
+    m_Address: Assets/Levels/Generic/LevelSelect/LevelSelect Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 6e9e55f6df8a74e608f92b8e3a1f0b77, type: 2}
   m_SchemaSet:
