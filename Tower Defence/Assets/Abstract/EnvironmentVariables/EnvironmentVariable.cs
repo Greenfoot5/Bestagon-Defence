@@ -13,7 +13,11 @@ namespace Abstract.EnvironmentVariables
         [SerializeField]
         private string stable;
         [SerializeField]
-        private string devBuild;
+        private string betaBuild;
+        [SerializeField]
+        private string alphaBuild;
+        [SerializeField]
+        private string nightlyBuild;
         [SerializeField]
         private string editor;
         
@@ -26,7 +30,9 @@ namespace Abstract.EnvironmentVariables
 #if UNITY_EDITOR
             return editor;
 #elif DEVELOPMENT_BUILD
-            return devBuild;
+            if (Application.version.Contains("alpha")) 
+                return alphaBuild;
+            return Application.version.Contains("beta") ? betaBuild : nightlyBuild;
 #else
             return stable;
 #endif
@@ -37,13 +43,7 @@ namespace Abstract.EnvironmentVariables
         /// </summary>
         public void SetData()
         {
-#if UNITY_EDITOR
-            System.Environment.SetEnvironmentVariable(name, editor);
-#elif DEVELOPMENT_BUILD
-            System.Environment.SetEnvironmentVariable(name, devBuild);
-#else
-            System.Environment.SetEnvironmentVariable(name, stable);
-#endif
+            System.Environment.SetEnvironmentVariable(name, GetData());
         }
     }
 }
