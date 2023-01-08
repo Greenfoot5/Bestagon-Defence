@@ -38,5 +38,10 @@ namespace Levels.Generic.Tutorial
                 toggleButtonText.text = tutorialText.GetLocalizedString();
             }
         }
+
+        public void Wiki()
+        {
+            Application.OpenURL("https://greenfoot5.notion.site/Wiki-ba485298423447b89f491091ec1687a7");
+        }
     }
 }

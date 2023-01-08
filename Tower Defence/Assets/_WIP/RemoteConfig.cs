@@ -72,6 +72,7 @@ namespace _WIP
             // All examples from above will also work asynchronously, returning Task<RuntimeConfig>
             //await RemoteConfigService.Instance.FetchConfigsAsync(new userAttributes(), new appAttributes());
             //await RemoteConfigService.Instance.FetchConfigsAsync(configType, new userAttributes(), new appAttributes());
+            
         }
 
         private static void ApplyRemoteSettings(ConfigResponse configResponse)

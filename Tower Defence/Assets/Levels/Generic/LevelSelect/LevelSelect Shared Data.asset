@@ -75,6 +75,51 @@ MonoBehaviour:
     m_Key: Tutorial/@UI/TutorialCanvas/Menu/Tutorial/Viewport/Content/VerticalFitter/Genesis
     m_Metadata:
       m_Items: []
+  - m_Id: 2866914312314880
+    m_Key: Tutorial/@UI/TutorialCanvas/Menu/Tutorial/Viewport/Content/VerticalFitter/Genesis
+      1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2867062367051776
+    m_Key: Tutorial/@UI/TutorialCanvas/Menu/Tutorial/Viewport/Content/VerticalFitter/TheGoal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2867444791107584
+    m_Key: Tutorial/@UI/TutorialCanvas/Menu/Tutorial/Viewport/Content/VerticalFitter/TheShop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2868810301300736
+    m_Key: Tutorial/@UI/TutorialCanvas/Menu/Tutorial/Viewport/Content/VerticalFitter/Turrets&Modules
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2878410438205440
+    m_Key: Tutorial/@UI/TutorialCanvas/Menu/Tutorial/Viewport/Content/VerticalFitter/Genesis
+      2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2878640319619072
+    m_Key: Tutorial/@UI/TutorialCanvas/Menu/Tutorial/Viewport/Content/VerticalFitter/TheGoal
+      1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2879106977882112
+    m_Key: Tutorial/@UI/TutorialCanvas/Menu/Tutorial/Viewport/Content/VerticalFitter/TheShop
+      1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2879978701053952
+    m_Key: Tutorial/@UI/TutorialCanvas/Menu/Tutorial/Viewport/Content/VerticalFitter/Turrets&Modules
+      1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2884873571262464
+    m_Key: Tutorial/@UI/TutorialCanvas/Menu/Controls/Viewport/Content/VerticalFitter/Keyboard&Mouse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2885090882347008
+    m_Key: Tutorial/@UI/TutorialCanvas/Menu/Controls/Viewport/Content/VerticalFitter/Mobile
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
