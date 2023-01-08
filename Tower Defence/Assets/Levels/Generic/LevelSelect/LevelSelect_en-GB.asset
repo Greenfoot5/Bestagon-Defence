@@ -80,6 +80,29 @@ MonoBehaviour:
     m_Localized: Could not display leaderboard
     m_Metadata:
       m_Items: []
+  - m_Id: 2211885406478336
+    m_Localized: "Bestagon Defence is a tower defence game! This means you've got
+      to place turrets to stop enemies reaching the end goal for as long as possible.\n\n<size=+25>The
+      Goal<size=100%>\nYou begin with each level with a certain amount of <sprite=\"UI-Life\"
+      name=\"life\">, and each time an enemy reaches they end, you lose at least
+      one. You can gain more through the shop. If you lose them all, it's game over.
+      The aim is therefore to make is as far as possible before you lose, aiming
+      to top the leaderboards!\n\n<size=+25>The Shop<size=100%>\nThe shop is here
+      to help! You can usethe hard earned <sprite=\"UI-Gold\" name=\"gold>  you gain
+      from killing enemies by opening the shop. The price increases each time however.\nEach
+      time you open the shop you'll get some choices. The main three are either turrets
+      or modules (turret upgrades). You can only pick one thing before the shop closes.
+      These three are randomised each time the shop opens. The bottom three options
+      are:\n<sprite=\"UI-Life\" name=\"life\"> <color=#D41E3C>Revitalise</color>
+      - Gives you some lives back\n<sprite=\"UI-Gold\" name=\"gold\"> <color=#fce544>Refund</color>
+      - Gives you back some of the gold you spent opening the shop, but the price
+      still increases.\n\u2022 <color=#f8663a>Reroll</color> - Spend <sprite=\"UI-Life\"
+      name=\"life\">  to reroll you turret & module selection. It can cost multiple
+      <sprite=\"UI-Life\" name=\"life\">  for one reroll, or one <sprite=\"UI-Life\"
+      name=\"life\">  for many rerolls. They carry over between shop opens.\n\n<size=+25>Turrets
+      & Modules<size=100%>"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

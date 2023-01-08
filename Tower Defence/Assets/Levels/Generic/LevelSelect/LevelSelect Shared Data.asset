@@ -71,6 +71,10 @@ MonoBehaviour:
     m_Key: LevelSelect/@UI/LevelInfo/Leaderboard/Viewport/Content/Nope
     m_Metadata:
       m_Items: []
+  - m_Id: 2211885406478336
+    m_Key: Tutorial/@UI/TutorialCanvas/Menu/Tutorial/Viewport/Content/VerticalFitter/Genesis
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
