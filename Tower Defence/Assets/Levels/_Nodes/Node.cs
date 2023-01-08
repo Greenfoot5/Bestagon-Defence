@@ -68,6 +68,12 @@ namespace Levels._Nodes
         /// <returns>If the Module was applied</returns>
         public bool ApplyModuleToTurret(ModuleChainHandler handler)
         {
+            // Check handler has a module and tier
+            if (handler.GetModule() != null)
+            {
+                return false;
+            }
+            
             // Apply the Module
             bool hasAppliedModule = turret.GetComponent<Turret>().AddModule(handler);
             if (!hasAppliedModule) return false;

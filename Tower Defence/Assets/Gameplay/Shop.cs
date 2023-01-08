@@ -100,6 +100,7 @@ namespace Gameplay
         public void RemoveModule()
         {
             Destroy(_selectedHandlerButton);
+            _selectedHandler = new ModuleChainHandler();
         }
         
         /// <summary>

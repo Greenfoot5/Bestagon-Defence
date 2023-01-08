@@ -50,6 +50,10 @@ namespace Abstract.Data
         /// <returns>The current module that's being handled</returns>
         public Module GetModule()
         {
+            if (chain == null || tier == 0)
+            {
+                return null;
+            }
             return chain.GetModule(tier);
         }
         
