@@ -31,12 +31,14 @@ namespace Abstract.Data
         /// <summary>
         /// Upgrade if we can.
         /// </summary>
-        /// <param name="siblingTier">The tier we're trying to upgrade to</param>
+        /// <param name="sibling">The Chain Handler we're trying to upgrade to</param>
         /// <returns>True if the module was upgraded</returns>
-        public bool Upgrade(int siblingTier)
+        public bool Upgrade(ModuleChainHandler sibling)
         {
+            // If the upgrade is of a different type,
+            if (sibling.GetModule().GetType() != GetModule().GetType()) return false;
             // If the upgrade is of a different tier, 
-            if (siblingTier != tier || !chain.CanUpgrade(tier)) return false;
+            if (sibling.tier != tier || !chain.CanUpgrade(tier)) return false;
                 
             tier += 1;
             return true;

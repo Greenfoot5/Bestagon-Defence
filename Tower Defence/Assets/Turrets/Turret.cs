@@ -121,7 +121,7 @@ namespace Turrets
             var i = 0;
             while (i < moduleHandlers.Count)
             {
-                bool canUpgrade = handler.Upgrade(moduleHandlers[i].GetTier());
+                bool canUpgrade = handler.Upgrade(moduleHandlers[i]);
                 if (canUpgrade)
                 {
                     RemoveModule(moduleHandlers[i]);
