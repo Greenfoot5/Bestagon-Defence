@@ -24,7 +24,7 @@ namespace Gameplay
                 _lives = value;
                 if (value == 0)
                 {
-                    GameOver?.Invoke();
+                    OnGameOver?.Invoke();
                 }
             }
         }
@@ -36,15 +36,15 @@ namespace Gameplay
             set
             {
                 _rounds = value;
-                RoundProgress?.Invoke();
+                OnRoundProgress?.Invoke();
             }
         }
 
         public static GameControls controls;
 
         // Events
-        public static event RoundProgressEvent RoundProgress;
-        public static event GameOverEvent GameOver;
+        public static event RoundProgressEvent OnRoundProgress;
+        public static event GameOverEvent OnGameOver;
         
         /// <summary>
         /// Resets all stats and enables the game's controls at the start of the game

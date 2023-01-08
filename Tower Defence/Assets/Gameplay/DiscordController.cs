@@ -49,8 +49,8 @@ namespace Gameplay
 
             // Assign all events for Rich Presence updates
             SceneManager.activeSceneChanged += OnSceneChange;
-            GameStats.RoundProgress += UpdateActivity;
-            GameStats.GameOver += UpdateActivity;
+            GameStats.OnRoundProgress += UpdateActivity;
+            GameStats.OnGameOver += UpdateActivity;
         }
 
         /// <summary>
