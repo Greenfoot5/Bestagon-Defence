@@ -23,116 +23,156 @@ MonoBehaviour:
   initialDuplicateCheck: 0
   turrets:
     list:
-    - item: {fileID: 11400000, guid: ac091f4cd04e6400f8fa5eb75b85934b, type: 2}
-      weight:
+    - useConstant: 1
+      item: {fileID: 11400000, guid: ac091f4cd04e6400f8fa5eb75b85934b, type: 2}
+      constantValue:
         serializedVersion: 2
-        m_Curve: []
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 136
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    - item: {fileID: 11400000, guid: ac091f4cd04e6400f8fa5eb75b85934b, type: 2}
-      weight:
+      variable: {fileID: 0}
+    - useConstant: 1
+      item: {fileID: 11400000, guid: ac091f4cd04e6400f8fa5eb75b85934b, type: 2}
+      constantValue:
         serializedVersion: 2
-        m_Curve: []
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 136
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    - item: {fileID: 11400000, guid: ac091f4cd04e6400f8fa5eb75b85934b, type: 2}
-      weight:
+      variable: {fileID: 0}
+    - useConstant: 1
+      item: {fileID: 11400000, guid: ac091f4cd04e6400f8fa5eb75b85934b, type: 2}
+      constantValue:
         serializedVersion: 2
-        m_Curve: []
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 136
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
+      variable: {fileID: 0}
   turretDuplicateCheck: 0
   turretOptionWeight:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  modules:
+    useConstant: 1
+    constantValue:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    variable: {fileID: 0}
+  moduleHandlers:
     list:
-    - item: {fileID: 11400000, guid: c9453b07fa9974984b828aa9339febfb, type: 2}
-      weight:
+    - useConstant: 0
+      item:
+        chain: {fileID: 11400000, guid: d312f79296a2146e3976d8622d6b1b8c, type: 2}
+        tier: 1
+      constantValue:
         serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0.03502304
-          value: 0.6155778
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 136
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-    - item: {fileID: 11400000, guid: c90507ecd7ed843958d400aaaeaf6e18, type: 2}
-      weight:
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+      variable: {fileID: 11400000, guid: b54cb3d9e6f25430dbcb163e806032f4, type: 2}
+    - useConstant: 0
+      item:
+        chain: {fileID: 11400000, guid: 4fefd36538e92402a8d072de671e05ff, type: 2}
+        tier: 1
+      constantValue:
         serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0.03502304
-          value: 0.6155778
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 136
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+      variable: {fileID: 11400000, guid: b54cb3d9e6f25430dbcb163e806032f4, type: 2}
+    - useConstant: 0
+      item:
+        chain: {fileID: 11400000, guid: a22c6ee3e44dc4c6c822466f441d40cb, type: 2}
+        tier: 1
+      constantValue:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+      variable: {fileID: 11400000, guid: b54cb3d9e6f25430dbcb163e806032f4, type: 2}
   moduleDuplicateCheck: 0
   moduleOptionWeight:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+    useConstant: 1
+    constantValue:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    variable: {fileID: 0}
+  hasInitialSelection: 1
+  initialSelectionCount: 3
+  selectionCount: 3
   initialSelectionCost: 100
   selectionCostIncrement: 10
   health:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+    useConstant: 1
+    constantValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    variable: {fileID: 0}
   enemyCount:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+    useConstant: 1
+    constantValue:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    variable: {fileID: 0}
   revitaliseLives: 1
   refundPercentage: 1
   rerollCost: 1

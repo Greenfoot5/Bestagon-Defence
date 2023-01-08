@@ -20,8 +20,36 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cf0ccc7dc5fc74622ab2b80603412b7b, type: 2}
   - {fileID: 11400000, guid: ad753ebca35564bcb818e289d087a48e, type: 2}
   - {fileID: 11400000, guid: 9ec50b3a07e734fe184a572dde371313, type: 2}
+  unique: 0
   accentColor: {r: 0.9647059, g: 0.7882353, b: 0.0627451, a: 1}
-  displayName: Damage
-  tagline: Death Wonder
   icon: {fileID: -4062769898107646306, guid: 16c979c866f439b4b988e7020b313794, type: 3}
-  effectText: Increases Damage
+  displayName:
+    m_TableReference:
+      m_TableCollectionName: GUID:a4bbea44c52ee4ec1ada344d809c9849
+    m_TableEntryReference:
+      m_KeyId: 2356979687424
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  tagline:
+    m_TableReference:
+      m_TableCollectionName: GUID:a4bbea44c52ee4ec1ada344d809c9849
+    m_TableEntryReference:
+      m_KeyId: 2449824800768
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  description:
+    m_TableReference:
+      m_TableCollectionName: GUID:a4bbea44c52ee4ec1ada344d809c9849
+    m_TableEntryReference:
+      m_KeyId: 2700287664128
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []

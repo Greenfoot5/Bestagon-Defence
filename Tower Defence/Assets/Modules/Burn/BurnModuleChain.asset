@@ -17,7 +17,34 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7c02953b190c74607b62bc8860bd265b, type: 2}
   unique: 1
   accentColor: {r: 0.9764706, g: 0.3764706, b: 0.24313726, a: 1}
-  displayName: Burn
-  tagline: Burn baby burn!
   icon: {fileID: -7464220177990265132, guid: 16c979c866f439b4b988e7020b313794, type: 3}
-  effectText: Deals damage over time based on max health
+  displayName:
+    m_TableReference:
+      m_TableCollectionName: GUID:a4bbea44c52ee4ec1ada344d809c9849
+    m_TableEntryReference:
+      m_KeyId: 944631701504
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  tagline:
+    m_TableReference:
+      m_TableCollectionName: GUID:a4bbea44c52ee4ec1ada344d809c9849
+    m_TableEntryReference:
+      m_KeyId: 1148978192384
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  description:
+    m_TableReference:
+      m_TableCollectionName: GUID:a4bbea44c52ee4ec1ada344d809c9849
+    m_TableEntryReference:
+      m_KeyId: 1412825079808
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []

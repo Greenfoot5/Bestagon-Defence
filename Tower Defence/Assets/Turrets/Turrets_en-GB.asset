@@ -1,0 +1,183 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Turrets_en-GB
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en-GB
+  m_SharedData: {fileID: 11400000, guid: 7c2fd8aac1d4a4e3e9098ede69f277bd, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 727851325186048
+    m_Localized: Advanced
+    m_Metadata:
+      m_Items: []
+  - m_Id: 728237838688256
+    m_Localized: accelerating volley
+    m_Metadata:
+      m_Items: []
+  - m_Id: 728442235510784
+    m_Localized: Gunner
+    m_Metadata:
+      m_Items: []
+  - m_Id: 728629280497664
+    m_Localized: fast, faster, fastest
+    m_Metadata:
+      m_Items: []
+  - m_Id: 728734318452736
+    m_Localized: Greyhound
+    m_Metadata:
+      m_Items: []
+  - m_Id: 728818611380224
+    m_Localized: squirrel!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 729061532884992
+    m_Localized: Mega
+    m_Metadata:
+      m_Items: []
+  - m_Id: 729129698713600
+    m_Localized: bullet rain
+    m_Metadata:
+      m_Items: []
+  - m_Id: 729435006296064
+    m_Localized: Advanced
+    m_Metadata:
+      m_Items: []
+  - m_Id: 729535787032576
+    m_Localized: bye!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 729618813280256
+    m_Localized: Lancer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 729871633342464
+    m_Localized: shoo!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 729968303661056
+    m_Localized: Magician
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730047932522496
+    m_Localized: all the effects
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730112642244608
+    m_Localized: Wall
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730234260283392
+    m_Localized: nothing gets past
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730120640782336
+    m_Localized: Advanced
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730604566994944
+    m_Localized: arctic beacon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730677770182656
+    m_Localized: Laser
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730867415638016
+    m_Localized: light focuser
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730942862778368
+    m_Localized: Elf Eyes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 731010630148096
+    m_Localized: see far, shoot far
+    m_Metadata:
+      m_Items: []
+  - m_Id: 731080872157184
+    m_Localized: Melter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 731141567930368
+    m_Localized: it burns
+    m_Metadata:
+      m_Items: []
+  - m_Id: 731270437920768
+    m_Localized: Advanced
+    m_Metadata:
+      m_Items: []
+  - m_Id: 731361408180224
+    m_Localized: the empowered
+    m_Metadata:
+      m_Items: []
+  - m_Id: 731439002804224
+    m_Localized: Shooter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 731641776431104
+    m_Localized: the original
+    m_Metadata:
+      m_Items: []
+  - m_Id: 731714753126400
+    m_Localized: Explosive
+    m_Metadata:
+      m_Items: []
+  - m_Id: 731976985206784
+    m_Localized: kaboom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 732100348076032
+    m_Localized: Killer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 732182128615424
+    m_Localized: the death bringer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 732267210072064
+    m_Localized: Sharpshot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 732504070807552
+    m_Localized: bang, you're dead
+    m_Metadata:
+      m_Items: []
+  - m_Id: 732635952308224
+    m_Localized: Advanced
+    m_Metadata:
+      m_Items: []
+  - m_Id: 732715883159552
+    m_Localized: ground quaker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 732842425311232
+    m_Localized: Smasher
+    m_Metadata:
+      m_Items: []
+  - m_Id: 732904656199680
+    m_Localized: ground breaker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 733006682644480
+    m_Localized: Earthquake
+    m_Metadata:
+      m_Items: []
+  - m_Id: 733078312968192
+    m_Localized: valley maker
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

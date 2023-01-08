@@ -1,9 +1,10 @@
 using System.Collections;
-using Abstract;
 using MaterialLibrary.HexagonSpread;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Localization.Settings;
+using UnityEngine.Localization.Tables;
 using UnityEngine.SceneManagement;
 
 namespace UI.Transition
@@ -22,28 +23,26 @@ namespace UI.Transition
         [Header("Visuals")]
         [Tooltip("The hexagon transition that fills the screen")]
         [SerializeField]
-        private HexagonTransition _transition;
+        private HexagonTransition transition;
 
         [Tooltip("The text object that displays the scene name that's being loaded")]
         [SerializeField]
-        private TextMeshProUGUI _sceneName;
+        private TextMeshProUGUI sceneName;
+        [Tooltip("The Localisation TableReference to find scene name localisations in.")]
+        public TableReference tableReference;
 
         [Header("Rings")]
         [Tooltip("The inner ring that appears on the press location")]
         [SerializeField]
-        private RectTransform _innerRing;
+        private RectTransform innerRing;
         [Tooltip("The outer ring that appears on the press location")]
         [SerializeField]
-        private RectTransform _outerRing;
+        private RectTransform outerRing;
 
         [Header("System")]
         [Tooltip("The camera used to calculate the press location")]
         [SerializeField]
         private Camera _camera;
-
-        [Header("Children")]
-        [Tooltip("The background to disable on OSX builds")] [SerializeField]
-        private GameObject _background;
 
         private string _loadingScene = string.Empty;
 
@@ -73,7 +72,7 @@ namespace UI.Transition
         /// <summary>
         /// The duration of the closing transition
         /// </summary>
-        private float TransitionDuration => Mathf.Max(_transition.GetDuration(State.IN), _animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
+        private float TransitionDuration => Mathf.Max(transition.GetDuration(State.IN), _animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
 
         /// <summary>
         /// Runs the closing animation
@@ -94,15 +93,15 @@ namespace UI.Transition
         /// <summary>
         /// Handles the scene switch by playing the animation and waiting for it to finish
         /// </summary>
-        /// <param name="sceneName">The new scene to load</param>
-        private IEnumerator Animate(string sceneName)
+        /// <param name="newSceneName">The new scene to load</param>
+        private IEnumerator Animate(string newSceneName)
         {
             Close();
 
             yield return new WaitForSeconds(TransitionDuration);
 
-            _loadingScene = sceneName;
-            SceneManager.LoadScene(sceneName);
+            _loadingScene = newSceneName;
+            SceneManager.LoadScene(newSceneName);
         }
 
         /// <summary>
@@ -120,28 +119,24 @@ namespace UI.Transition
         /// <summary>
         /// Loads a scene and handles transitions
         /// </summary>
-        /// <param name="sceneName">The scene to load</param>
-        public void LoadScene(string sceneName)
+        /// <param name="newSceneName">The scene to load</param>
+        public void LoadScene(string newSceneName)
         {
             // Get the location of the press that started the scene load
             Vector2 pointer = _camera.ScreenToWorldPoint(Pointer.current.position.ReadValue());
 
             // Update visuals to start at the click location
-            _transition.SetOrigin(State.IN, pointer);
+            transition.SetOrigin(State.IN, pointer);
 
-            _innerRing.position = pointer;
-            _outerRing.position = pointer;
+            innerRing.position = pointer;
+            outerRing.position = pointer;
 
             // Update the bottom text of the transition to match the new scene name
-            _sceneName.text = sceneName switch
-            {
-                "MainMenu" => "Main Menu",
-                "LevelSelect" => "Level Select",
-                _ when sceneName.EndsWith("Level") => Utils.AddSpacesToSentence(sceneName.Substring(0, sceneName.Length - 5)),
-                _ => sceneName
-            };
-
-            StartCoroutine(Animate(sceneName));
+            var entryReference = (TableEntryReference)newSceneName;
+            sceneName.text =
+                new LocalizedStringDatabase().GetLocalizedString(tableReference, entryReference, LocalizationSettings.SelectedLocale);
+            
+            StartCoroutine(Animate(newSceneName));
         }
     }
 }

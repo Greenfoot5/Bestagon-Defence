@@ -17,7 +17,34 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 22133bf1defbe4aef9dcb1071509ae13, type: 2}
   unique: 1
   accentColor: {r: 0.10980392, g: 0.83137256, b: 0.5882353, a: 1}
-  displayName: Stun
-  tagline: Bzzzzzzzzt
   icon: {fileID: 1892315637792861288, guid: 16c979c866f439b4b988e7020b313794, type: 3}
-  effectText: Briefly stuns both enemies and the attacking tower
+  displayName:
+    m_TableReference:
+      m_TableCollectionName: GUID:a4bbea44c52ee4ec1ada344d809c9849
+    m_TableEntryReference:
+      m_KeyId: 701015455162368
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  tagline:
+    m_TableReference:
+      m_TableCollectionName: GUID:a4bbea44c52ee4ec1ada344d809c9849
+    m_TableEntryReference:
+      m_KeyId: 701051983355904
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  description:
+    m_TableReference:
+      m_TableCollectionName: GUID:a4bbea44c52ee4ec1ada344d809c9849
+    m_TableEntryReference:
+      m_KeyId: 701102625382400
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []

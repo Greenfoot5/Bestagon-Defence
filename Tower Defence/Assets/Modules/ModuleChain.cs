@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.Localization;
+using UnityEngine.Serialization;
 
 namespace Modules
 {
@@ -17,15 +19,16 @@ namespace Modules
         // Display
         [Tooltip("The main colour of the module, is displayed in various ways")]
         public Color accentColor = new(0, 0, 0, 1);
-        [Tooltip("The name to display for the module, should not include the tier in Roman numerals")]
-        public string displayName;
-        [Tooltip("The tagline of the module. It's not a description, just a witty little remark")]
-        public string tagline;
         [Tooltip("The module's icon")]
         public Sprite icon;
-        [Multiline(3)]
-        [Tooltip("The description of the module and what it does")]
-        public string effectText;
+        
+        [Header("Text")]
+        [Tooltip("The name to display for the module, should not include the tier in Roman numerals")]
+        public LocalizedString displayName;
+        [Tooltip("The tagline of the module. It's not a description, just a witty little remark")]
+        public LocalizedString tagline;
+        [FormerlySerializedAs("effectText")] [Tooltip("The description of the module and what it does")]
+        public LocalizedString description;
         
         /// <summary>
         /// Checks if a module at a tier can be upgraded

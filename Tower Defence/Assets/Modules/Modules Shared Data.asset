@@ -1,0 +1,252 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Modules Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Modules
+  m_TableCollectionNameGuidString: a4bbea44c52ee4ec1ada344d809c9849
+  m_Entries:
+  - m_Id: 130051727360
+    m_Key: Bombs/Display Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 265670352896
+    m_Key: Bombs/Tagline
+    m_Metadata:
+      m_Items: []
+  - m_Id: 677400010752
+    m_Key: Bombs/Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 944631701504
+    m_Key: Burn/Disply Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1148978192384
+    m_Key: Burn/Tagline
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1412825079808
+    m_Key: Burn/Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1671487807488
+    m_Key: Critical/Display Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1803964899328
+    m_Key: Critical/Tagline
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1939734519808
+    m_Key: Critical/Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2356979687424
+    m_Key: Damage/Display Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2449824800768
+    m_Key: Damage/Tagline
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2700287664128
+    m_Key: Damage/Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3202001920000
+    m_Key: Execute/Display Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3349582700544
+    m_Key: Execute/Tagline
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3902220001280
+    m_Key: Execute/Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4163470614528
+    m_Key: Fire Rate/Display Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4543776546816
+    m_Key: Fire Rate/Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4721334018048
+    m_Key: Fire Rate/Tagline
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691326222852096
+    m_Key: Ghost/Display Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691476622204928
+    m_Key: Ghost/Tagline
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691559048667136
+    m_Key: Ghost/Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694815602761728
+    m_Key: Giantslayer/Display Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694873349939200
+    m_Key: Instakill/Display Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 696061810171904
+    m_Key: Missiles/Display Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 696150591004672
+    m_Key: Poison/Display Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 696217410461696
+    m_Key: Range/Display Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697535218835456
+    m_Key: Reload/Display Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697662436270080
+    m_Key: Slow/Display Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697749992366080
+    m_Key: Giantslayer/Tagline
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697810847522816
+    m_Key: Giantslayer/Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697907182297088
+    m_Key: Instakill/Tagline
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697951327346688
+    m_Key: Instakill/Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697997502439424
+    m_Key: Missiles/Tagline
+    m_Metadata:
+      m_Items: []
+  - m_Id: 698034219376640
+    m_Key: Missiles/Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 698226591129600
+    m_Key: Poison/Tagline
+    m_Metadata:
+      m_Items: []
+  - m_Id: 698264910290944
+    m_Key: Poison/Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 698316831580160
+    m_Key: Range/Tagline
+    m_Metadata:
+      m_Items: []
+  - m_Id: 698352248283136
+    m_Key: Range/Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 698421399773184
+    m_Key: Reload/Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 699351922892800
+    m_Key: Slow/Tagline
+    m_Metadata:
+      m_Items: []
+  - m_Id: 699383313063936
+    m_Key: Slow/Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 699466750353408
+    m_Key: Sniper/Display Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 699499218460672
+    m_Key: Sniper/Tagline
+    m_Metadata:
+      m_Items: []
+  - m_Id: 699533368483840
+    m_Key: Sniper/Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 701015455162368
+    m_Key: Stun/Display Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 701051983355904
+    m_Key: Stun/Tagline
+    m_Metadata:
+      m_Items: []
+  - m_Id: 701102625382400
+    m_Key: Stun/Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 701234532048896
+    m_Key: Surge/Display Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 701334960463872
+    m_Key: Surge/Tagline
+    m_Metadata:
+      m_Items: []
+  - m_Id: 701440027779072
+    m_Key: Surge/Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 701493974917120
+    m_Key: Tracker/Display Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 701564279840768
+    m_Key: Tracker/Tagline
+    m_Metadata:
+      m_Items: []
+  - m_Id: 701619099394048
+    m_Key: Tracker/Description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 702527489171456
+    m_Key: Velocity/Display Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 702601417973760
+    m_Key: Velocity/Tagline
+    m_Metadata:
+      m_Items: []
+  - m_Id: 702640789905408
+    m_Key: Velocity/Description
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 7619633556272709632
+  references:
+    version: 2
+    RefIds:
+    - rid: 7619633556272709632
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1671229714847

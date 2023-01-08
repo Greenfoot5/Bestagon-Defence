@@ -72,6 +72,7 @@ namespace _WIP
             // All examples from above will also work asynchronously, returning Task<RuntimeConfig>
             //await RemoteConfigService.Instance.FetchConfigsAsync(new userAttributes(), new appAttributes());
             //await RemoteConfigService.Instance.FetchConfigsAsync(configType, new userAttributes(), new appAttributes());
+            
         }
 
         private static void ApplyRemoteSettings(ConfigResponse configResponse)
@@ -86,7 +87,7 @@ namespace _WIP
                     Debug.Log("No settings loaded this session; using cached values from a previous session.");
                     break;
                 case ConfigOrigin.Remote:
-                    Debug.Log("New settings loaded this session; update values accordingly.");
+                    //Debug.Log("New settings loaded this session; update values accordingly.");
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

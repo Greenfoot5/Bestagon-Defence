@@ -20,7 +20,34 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6b46d1dd168b44ce6b234a967de55326, type: 2}
   unique: 0
   accentColor: {r: 0.4627451, g: 0.22745098, b: 0.9411765, a: 1}
-  displayName: Fire Rate
-  tagline: Quickload
   icon: {fileID: 8075296294540816629, guid: 16c979c866f439b4b988e7020b313794, type: 3}
-  effectText: Increases fire rate
+  displayName:
+    m_TableReference:
+      m_TableCollectionName: GUID:a4bbea44c52ee4ec1ada344d809c9849
+    m_TableEntryReference:
+      m_KeyId: 4163470614528
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  tagline:
+    m_TableReference:
+      m_TableCollectionName: GUID:a4bbea44c52ee4ec1ada344d809c9849
+    m_TableEntryReference:
+      m_KeyId: 4543776546816
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  description:
+    m_TableReference:
+      m_TableCollectionName: GUID:a4bbea44c52ee4ec1ada344d809c9849
+    m_TableEntryReference:
+      m_KeyId: 4721334018048
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []

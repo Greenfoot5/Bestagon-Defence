@@ -63,12 +63,12 @@ namespace UI.Shop
             bg.color = chain.accentColor;
 
             displayName.text = initHandler.GetDisplayName();
-            tagline.text = chain.tagline;
+            tagline.text = chain.tagline.GetLocalizedString();
             tagline.color = chain.accentColor;
 
             icon.SetData(initHandler);
         
-            effect.text = chain.effectText;
+            effect.text = chain.description.GetLocalizedString();
             effect.color = chain.accentColor;
             
             // Adds the any glyph

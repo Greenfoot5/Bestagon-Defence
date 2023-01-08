@@ -15,8 +15,36 @@ MonoBehaviour:
   moduleTiers:
   - {fileID: 11400000, guid: 860e38cd88f88405e855069168511325, type: 2}
   - {fileID: 11400000, guid: de6a89c9c04fb45c79560f650ee4de8d, type: 2}
+  unique: 0
   accentColor: {r: 0.42745098, g: 0.7372549, b: 0.37254903, a: 1}
-  displayName: Reload
-  tagline: Again!
   icon: {fileID: -4293644608448389267, guid: 16c979c866f439b4b988e7020b313794, type: 3}
-  effectText: Attacks again shortly after firing
+  displayName:
+    m_TableReference:
+      m_TableCollectionName: GUID:a4bbea44c52ee4ec1ada344d809c9849
+    m_TableEntryReference:
+      m_KeyId: 697535218835456
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  tagline:
+    m_TableReference:
+      m_TableCollectionName: GUID:8e2f78ef9583e4be18ba8f1d9427e930
+    m_TableEntryReference:
+      m_KeyId: 1458407037984768
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  description:
+    m_TableReference:
+      m_TableCollectionName: GUID:a4bbea44c52ee4ec1ada344d809c9849
+    m_TableEntryReference:
+      m_KeyId: 698421399773184
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []

@@ -18,8 +18,36 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 203859b98401b4d2e94824e479e5e750, type: 2}
   - {fileID: 11400000, guid: 43204ffe535344691b7b1f88f4046f6b, type: 2}
   - {fileID: 11400000, guid: 33635ba5a274b4aa0bea569b912a438e, type: 2}
+  unique: 0
   accentColor: {r: 0.3372549, g: 0.5176471, b: 0.22352941, a: 1}
-  displayName: Poison
-  tagline: Infect the bloodstream
   icon: {fileID: -3015200091239744399, guid: 16c979c866f439b4b988e7020b313794, type: 3}
-  effectText: Deals damage over time too hit enemies
+  displayName:
+    m_TableReference:
+      m_TableCollectionName: GUID:a4bbea44c52ee4ec1ada344d809c9849
+    m_TableEntryReference:
+      m_KeyId: 696150591004672
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  tagline:
+    m_TableReference:
+      m_TableCollectionName: GUID:a4bbea44c52ee4ec1ada344d809c9849
+    m_TableEntryReference:
+      m_KeyId: 698226591129600
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  description:
+    m_TableReference:
+      m_TableCollectionName: GUID:a4bbea44c52ee4ec1ada344d809c9849
+    m_TableEntryReference:
+      m_KeyId: 698264910290944
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []

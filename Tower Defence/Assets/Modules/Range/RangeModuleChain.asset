@@ -18,8 +18,36 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2843a599f232045cd84bddb4bfdc34b5, type: 2}
   - {fileID: 11400000, guid: cd68b15f29a5949f3a89f73b19be2627, type: 2}
   - {fileID: 11400000, guid: 9595822f285bf468f8c04c3d49a93ccf, type: 2}
+  unique: 0
   accentColor: {r: 0.5176471, g: 0.85882354, b: 0.10980392, a: 1}
-  displayName: Range
-  tagline: Visionary
   icon: {fileID: -1435114285472068323, guid: 16c979c866f439b4b988e7020b313794, type: 3}
-  effectText: Increases Range
+  displayName:
+    m_TableReference:
+      m_TableCollectionName: GUID:a4bbea44c52ee4ec1ada344d809c9849
+    m_TableEntryReference:
+      m_KeyId: 696217410461696
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  tagline:
+    m_TableReference:
+      m_TableCollectionName: GUID:a4bbea44c52ee4ec1ada344d809c9849
+    m_TableEntryReference:
+      m_KeyId: 698316831580160
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  description:
+    m_TableReference:
+      m_TableCollectionName: GUID:a4bbea44c52ee4ec1ada344d809c9849
+    m_TableEntryReference:
+      m_KeyId: 698352248283136
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []
