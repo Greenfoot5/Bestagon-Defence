@@ -69,7 +69,7 @@ namespace Levels._Nodes
         public bool ApplyModuleToTurret(ModuleChainHandler handler)
         {
             // Check handler has a module and tier
-            if (handler.GetModule() != null)
+            if (handler.GetModule() == null)
             {
                 return false;
             }
