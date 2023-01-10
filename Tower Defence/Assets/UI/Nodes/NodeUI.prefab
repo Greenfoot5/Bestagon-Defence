@@ -1070,7 +1070,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7935189852862486145}
         m_TargetAssemblyTypeName: UI.NodeUI, Assembly-CSharp
-        m_MethodName: ModuleNode
+        m_MethodName: ApplyModule
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

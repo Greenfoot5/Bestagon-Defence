@@ -38,10 +38,15 @@ namespace Levels.Generic.Tutorial
                 toggleButtonText.text = tutorialText.GetLocalizedString();
             }
         }
-
+        
+        /// <summary>
+        /// Sends the player to the nightly wiki if it's the nightly game
+        /// </summary>
         public void Wiki()
         {
-            Application.OpenURL("https://greenfoot5.notion.site/Wiki-ba485298423447b89f491091ec1687a7");
+            Application.OpenURL(Application.version.Contains("nightly")
+                ? "https://greenfoot5.notion.site/Nightly-Wiki-90094b3bcf284ae9834a828d4a4bfede"
+                : "https://greenfoot5.notion.site/Wiki-ba485298423447b89f491091ec1687a7");
         }
     }
 }

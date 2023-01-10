@@ -155,6 +155,7 @@ QualitySettings:
     Lumin: 3
     Nintendo Switch: 3
     PS4: 3
+    Server: 0
     Stadia: 3
     Standalone: 3
     WebGL: 2

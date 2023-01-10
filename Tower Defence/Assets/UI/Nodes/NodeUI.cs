@@ -119,7 +119,7 @@ namespace UI.Nodes
         /// <summary>
         /// Applies a module to the currently selected turret
         /// </summary>
-        public void ModuleNode()
+        public void ApplyModule()
         {
             ModuleChainHandler handler = shop.GetModuleChainHandler();
 

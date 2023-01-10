@@ -92,7 +92,7 @@ namespace Turrets
             if (handler.GetChain().unique && 
                 moduleHandlers.Any(x => x.GetModule().GetType() == handler.GetModule().GetType()))
             {
-                if (moduleHandlers.Any(x => !handler.GetChain().CanUpgrade(x.GetTier())))
+                if (!moduleHandlers.Any(x => handler.GetChain().CanUpgrade(x.GetTier())))
                 {
                     return false;
                 }
