@@ -55,15 +55,22 @@ namespace Enemies
                 return;
             }
             
-            // Get the direction and move in that direction
-            Vector3 dir = _target.position - transform.position;
-            transform.Translate(dir.normalized * (_enemy.speed.GetStat() * Time.deltaTime), Space.World);
-            mapProgress = waypointIndex + 1 - (distanceToWaypoint / _maxDistance);
-        
-            // If the enemy is within the set distance, get the next waypoint
-            if (Vector3.Distance(transform.position, _target.position) <= distanceToWaypoint)
+            // Get the direction of the target, and the distance to move this frame
+            Vector3 position = transform.position;
+            float distanceThisFrame = _enemy.speed.GetStat() * Time.deltaTime;
+
+            transform.position = Vector2.MoveTowards(position, _target.position, distanceThisFrame);
+            
+            Vector2 difference = _target.position - position; // Distance & direction to next target
+
+            // If within this frame the enemy will pass the waypoint, it's a guaranteed hit
+            if (difference.sqrMagnitude <= distanceToWaypoint * distanceToWaypoint)
             {
                 GetNextWaypoint();
+            }
+            else
+            {
+                mapProgress = waypointIndex + 1 - (distanceToWaypoint / _maxDistance);
             }
         }
     
