@@ -57,11 +57,12 @@ namespace Enemies
             
             // Get the direction of the target, and the distance to move this frame
             Vector3 position = transform.position;
+            Vector3 location = _target.position;
             float distanceThisFrame = _enemy.speed.GetStat() * Time.deltaTime;
 
-            transform.position = Vector2.MoveTowards(position, _target.position, distanceThisFrame);
+            transform.position = Vector2.MoveTowards(position, location, distanceThisFrame);
             
-            Vector2 difference = _target.position - position; // Distance & direction to next target
+            Vector2 difference = location - position; // Distance & direction to next target
 
             // If within this frame the enemy will pass the waypoint, it's a guaranteed hit
             if (difference.sqrMagnitude <= distanceToWaypoint * distanceToWaypoint)
@@ -72,6 +73,9 @@ namespace Enemies
             {
                 mapProgress = waypointIndex + 1 - (distanceToWaypoint / _maxDistance);
             }
+            
+            // Attempt at rotation
+            transform.up = (location - position).normalized;
         }
     
         /// <summary>
