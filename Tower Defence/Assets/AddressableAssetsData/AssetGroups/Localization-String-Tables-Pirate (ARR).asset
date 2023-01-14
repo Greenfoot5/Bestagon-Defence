@@ -52,6 +52,12 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-ARR
+  - m_GUID: 9f178041c184c42de83b3541d4c75b4d
+    m_Address: Settings_ARR
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ARR
+    - Preload
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 6e9e55f6df8a74e608f92b8e3a1f0b77, type: 2}
   m_SchemaSet:
