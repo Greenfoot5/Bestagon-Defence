@@ -18,22 +18,22 @@ namespace Levels.Generic.MainMenu
         /// </summary>
         public void SaveUsername()
         {
-            if (input.text.Length < 2)
+            switch (input.text.Length)
             {
-                result.text = "Please enter a name";
-            }
-            else if (input.text.Length > 20)
-            {
-                result.text = "Please enter a name less than 20 characters";
-            }
-            else
-            {
-                // The username is valid and the game can save it
-                // The game needs to remove some weird input character Unity adds
-                PlayerPrefs.SetString("Username", input.text.Replace("​", ""));
-                mainMenu.DisplayUsername();
-                mainMenuCanvas.SetActive(true);
-                gameObject.SetActive(false);
+                case < 2:
+                    result.text = "Please enter a name";
+                    break;
+                case > 20:
+                    result.text = "Please enter a name less than 20 characters";
+                    break;
+                default:
+                    // The username is valid and the game can save it
+                    // The game needs to remove some weird input character Unity adds
+                    PlayerPrefs.SetString("Username", input.text.Replace("​", ""));
+                    mainMenu.DisplayUsername();
+                    mainMenuCanvas.SetActive(true);
+                    gameObject.SetActive(false);
+                    break;
             }
         }
         

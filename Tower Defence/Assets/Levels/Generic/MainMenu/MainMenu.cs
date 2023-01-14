@@ -1,7 +1,10 @@
-using Modules;
+using Abstract.Saving;
 using TMPro;
 using UI.Transition;
 using UnityEngine;
+using UnityEngine.Localization.Components;
+using UnityEngine.Localization.PropertyVariants;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Levels.Generic.MainMenu
@@ -33,15 +36,22 @@ namespace Levels.Generic.MainMenu
         [HideInInspector]
         public string username;
 
-        public ModuleChain testChain;
+        [Header("Strings to update")]
+        [Tooltip("All the strings that need updating when the locale loads")]
+        [SerializeField]
+        private LocalizeStringEvent[] events;
+
+        [SerializeField]
+        private GameObjectLocalizer[] localizers;
 
         /// <summary>
-        /// Sets the username text
+        /// Does the bits and bobs needed when the game starts
         /// </summary>
-        private void Start()
+        private void Awake()
         {
             DisplayUsername();
             ColourWordmark();
+            SaveManager.InitialLoad();
         }
         
         /// <summary>

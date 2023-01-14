@@ -1108,7 +1108,7 @@ MonoBehaviour:
           items:
           - rid: 7619633508454236240
           - rid: 7619633508454236241
-        m_UpdateType: 0
+        m_UpdateType: 1
     - rid: 7619633508454236240
       type: {class: LocalizedStringProperty, ns: UnityEngine.Localization.PropertyVariants.TrackedProperties, asm: Unity.Localization}
       data:
@@ -1294,7 +1294,7 @@ MonoBehaviour:
           items:
           - rid: 7619633508454236213
           - rid: 7619633508454236214
-        m_UpdateType: 0
+        m_UpdateType: 1
     - rid: 7619633508454236213
       type: {class: LocalizedStringProperty, ns: UnityEngine.Localization.PropertyVariants.TrackedProperties, asm: Unity.Localization}
       data:
@@ -2425,7 +2425,7 @@ MonoBehaviour:
           items:
           - rid: 7619633508454236232
           - rid: 7619633508454236233
-        m_UpdateType: 0
+        m_UpdateType: 1
     - rid: 7619633508454236232
       type: {class: LocalizedStringProperty, ns: UnityEngine.Localization.PropertyVariants.TrackedProperties, asm: Unity.Localization}
       data:
@@ -3109,7 +3109,7 @@ MonoBehaviour:
           items:
           - rid: 7619633508454236243
           - rid: 7619633508454236244
-        m_UpdateType: 0
+        m_UpdateType: 1
     - rid: 7619633508454236243
       type: {class: LocalizedStringProperty, ns: UnityEngine.Localization.PropertyVariants.TrackedProperties, asm: Unity.Localization}
       data:
@@ -5264,7 +5264,9 @@ MonoBehaviour:
   releaseColor: {r: 1, g: 1, b: 1, a: 1}
   loggedInAs: {fileID: 788470761}
   username: 
-  testChain: {fileID: 0}
+  events:
+  - {fileID: 788470765}
+  localizers: []
 --- !u!1 &1704482575
 GameObject:
   m_ObjectHideFlags: 0
