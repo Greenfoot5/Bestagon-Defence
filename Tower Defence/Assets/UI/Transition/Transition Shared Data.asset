@@ -51,8 +51,8 @@ MonoBehaviour:
     m_Key: LoadingText
     m_Metadata:
       m_Items: []
-  - m_Id: 30350376951808
-    m_Key: Tutorial/@UI/TutorialCanvas/Menu
+  - m_Id: 5070231461421056
+    m_Key: Settings
     m_Metadata:
       m_Items: []
   m_Metadata:
