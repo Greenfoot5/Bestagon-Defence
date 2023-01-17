@@ -33,6 +33,7 @@ namespace Modules.Burn
 
         [SerializeField]
         [Tooltip("The VFX to spawn each time a tick passes")]
+        // ReSharper disable once NotAccessedField.Local
         private GameObject tickEffect;
 
         /// <summary>

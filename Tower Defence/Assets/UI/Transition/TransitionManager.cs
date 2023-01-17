@@ -42,6 +42,7 @@ namespace UI.Transition
         [Header("System")]
         [Tooltip("The camera used to calculate the press location")]
         [SerializeField]
+        // ReSharper disable once InconsistentNaming
         private Camera _camera;
 
         private string _loadingScene = string.Empty;

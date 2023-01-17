@@ -12,6 +12,7 @@ namespace Abstract.Saving
         /// </summary>
         public static IEnumerator InitialLoad()
         {
+            // A "delay" to make sure files are loaded correctly
             yield return LocalizationSettings.InitializationOperation;
             
             // Load Locale
@@ -19,8 +20,6 @@ namespace Abstract.Saving
             {
                 var sd = new SaveSettings();
                 sd.LoadFromJson(json);
-                LocalizationSettings.SelectedLocale = sd.locale;
-
                 LocalizationSettings.SelectedLocale = sd.locale;
             }
         }

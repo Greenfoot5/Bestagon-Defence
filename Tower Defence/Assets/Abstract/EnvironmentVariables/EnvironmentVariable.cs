@@ -32,9 +32,9 @@ namespace Abstract.EnvironmentVariables
 #elif DEVELOPMENT_BUILD
             if (Application.version.Contains("alpha")) 
                 return alphaBuild;
-            return Application.version.Contains("beta") ? betaBuild : nightlyBuild;
+            return nightlyBuild;
 #else
-            return stable;
+            return Application.version.Contains("beta") ? betaBuild : stable;
 #endif
         }
         
