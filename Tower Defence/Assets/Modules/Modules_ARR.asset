@@ -201,6 +201,50 @@ MonoBehaviour:
     m_Localized: Yer cannons be reloadin' and shootin' faster than ever before!
     m_Metadata:
       m_Items: []
+  - m_Id: 691326222852096
+    m_Localized: Ghost
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691476622204928
+    m_Localized: etheral properties
+    m_Metadata:
+      m_Items: []
+  - m_Id: 691559048667136
+    m_Localized: Projectiles passing through enemies deal damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 696061810171904
+    m_Localized: Missiles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697535218835456
+    m_Localized: Reload
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697997502439424
+    m_Localized: rocket science
+    m_Metadata:
+      m_Items: []
+  - m_Id: 698034219376640
+    m_Localized: A lower fire rate, but projectiles explode!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 698421399773184
+    m_Localized: Attacks again shortly after firing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 701015455162368
+    m_Localized: Stun
+    m_Metadata:
+      m_Items: []
+  - m_Id: 701051983355904
+    m_Localized: bzzzzzzzzt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 701102625382400
+    m_Localized: Can briefly stuns both enemies and the attacking tower
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

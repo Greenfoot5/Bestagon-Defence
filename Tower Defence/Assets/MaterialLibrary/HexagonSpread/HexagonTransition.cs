@@ -383,6 +383,8 @@ namespace MaterialLibrary.HexagonSpread
                 case State.OUT:
                     _materialOut.SetVector(_originID, origin);
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(state), state, null);
             }
         }
 

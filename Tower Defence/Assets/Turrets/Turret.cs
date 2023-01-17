@@ -38,14 +38,14 @@ namespace Turrets
 
         // Attack speed
         [Tooltip("How many times per second the turret attacks")]
-        public UpgradableStat fireRate = new UpgradableStat(1f);
+        public UpgradableStat fireRate = new(1f);
         /// <summary> How long left until the next attack </summary>
         public float fireCountdown;
 
         // Modules
         [Tooltip("Which modules the turret has applied")]
         [SerializeField]
-        public List<ModuleChainHandler> moduleHandlers = new List<ModuleChainHandler>();
+        public List<ModuleChainHandler> moduleHandlers = new();
         
         [Tooltip("What events to run when starting")]
         [SerializeField]

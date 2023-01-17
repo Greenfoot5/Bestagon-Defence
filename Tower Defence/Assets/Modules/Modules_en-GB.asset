@@ -241,7 +241,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 701102625382400
-    m_Localized: Briefly stuns both enemies and the attacking tower
+    m_Localized: Can briefly stuns both enemies and the attacking tower
     m_Metadata:
       m_Items: []
   references:

@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace Levels.Generic.MainMenu
 {
+    /// <summary>
+    /// Displays the correct menu when the main menu loads
+    /// </summary>
     public class MenuSelection : MonoBehaviour
     {
         [Tooltip("The canvas for the main menu")]
@@ -15,7 +18,9 @@ namespace Levels.Generic.MainMenu
         [SerializeField]
         private GameObject updateCanvas;
 
-        // Start is called before the first frame update
+        /// <summary>
+        /// Check to see which menu we should display
+        /// </summary>
         private void Start()
         {
             if (!RemoteConfig.IsValidVersion())
@@ -39,7 +44,10 @@ namespace Levels.Generic.MainMenu
                 updateCanvas.SetActive(false);
             }
         }
-
+        
+        /// <summary>
+        /// Closes the update menu
+        /// </summary>
         public void ContinueWithoutUpdating()
         {
             if (!SetUsername.HasUsername())
@@ -56,6 +64,9 @@ namespace Levels.Generic.MainMenu
             }
         }
         
+        /// <summary>
+        /// Sends the player off to download the update
+        /// </summary>
         public void GetUpdate()
         {
             Application.OpenURL("https://greenfoot5.itch.io/bestagon-defence");

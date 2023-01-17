@@ -3,11 +3,17 @@ using UnityEngine;
 
 namespace UI
 {
+    /// <summary>
+    /// Allows a piece of text to have a random hue when loading the scene
+    /// </summary>
     public class RandomHueOnLoad : MonoBehaviour
     {
         [SerializeField]
         private TMP_Text[] texts;
-
+        
+        /// <summary>
+        /// Generates a random hue for the text
+        /// </summary>
         private void Start()
         {
             float hue = Random.value;

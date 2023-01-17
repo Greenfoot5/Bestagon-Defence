@@ -15,10 +15,12 @@ namespace _WIP.Abilities
     /// </summary>
     public enum AbilityTrigger
     {
+        // ReSharper disable InconsistentNaming
         OnEnd,
         OnDeath,
         OnTimer,
         OnDamage,
         OnGrant
+        // ReSharper restore InconsistentNaming
     }
 }

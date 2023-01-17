@@ -5,11 +5,20 @@ using UnityEngine.Localization;
 
 namespace Levels.Generic.Tutorial
 {
+    /// <summary>
+    /// Allows players ot navigate the tutorial scene
+    /// </summary>
     public class Tutorial : MonoBehaviour
     {
-        public GameObject tutorialMenu;
-        public GameObject controlsMenu;
-        public TMP_Text toggleButtonText;
+        [Tooltip("The tutorial viewport")]
+        [SerializeField]
+        private GameObject tutorialMenu;
+        [Tooltip("The controls viewport")]
+        [SerializeField]
+        private GameObject controlsMenu;
+        [Tooltip("The button to cycle between the different viewports")]
+        [SerializeField]
+        private TMP_Text toggleButtonText;
         
         [SerializeField]
         [Tooltip("The button string to display to select the tutorial")]

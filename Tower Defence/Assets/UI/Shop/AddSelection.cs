@@ -63,7 +63,11 @@ namespace UI.Shop
         
             GenerateSelection();
         }
-
+        
+        /// <summary>
+        /// Generates the selection of the shop
+        /// </summary>
+        // TODO - Break down into smaller methods
         public void GenerateSelection()
         {
             // Destroy the previous selection
@@ -273,7 +277,11 @@ namespace UI.Shop
             if (!_turretTypes.Contains(type))
                 _turretTypes.Add(type);
         }
-
+        
+        /// <summary>
+        /// Adds the turret to the selected types list
+        /// </summary>
+        /// <param name="turret">The turret the user picked</param>
         public void AddTurret(Turret turret)
         {
             AddTurretType(turret.GetType());

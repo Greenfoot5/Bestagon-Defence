@@ -1,4 +1,5 @@
-using Modules;
+using Abstract;
+using Abstract.Saving;
 using TMPro;
 using UI.Transition;
 using UnityEngine;
@@ -33,15 +34,15 @@ namespace Levels.Generic.MainMenu
         [HideInInspector]
         public string username;
 
-        public ModuleChain testChain;
-
         /// <summary>
-        /// Sets the username text
+        /// Does the bits and bobs needed when the game starts
         /// </summary>
-        private void Start()
+        private void Awake()
         {
             DisplayUsername();
             ColourWordmark();
+            
+            Runner.Run(SaveManager.InitialLoad());
         }
         
         /// <summary>
@@ -82,12 +83,19 @@ namespace Levels.Generic.MainMenu
             Debug.Log("Exiting...");
             Application.Quit();
         }
-
+        
+        /// <summary>
+        /// Opens a web browser of the url
+        /// </summary>
+        /// <param name="url">The url to send the player to</param>
         public void OpenUrl(string url)
         {
             Application.OpenURL(url);
         }
-
+        
+        /// <summary>
+        /// Changes the colour of the wordmark based on the version type
+        /// </summary>
         private void ColourWordmark()
         {
             if (Application.version.Contains("nightly"))
