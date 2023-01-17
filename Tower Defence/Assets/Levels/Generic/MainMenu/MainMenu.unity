@@ -5260,13 +5260,10 @@ MonoBehaviour:
   wordmark: {fileID: 2002427546}
   nightlyColor: {r: 0.6117647, g: 0.21176471, b: 0.972549, a: 1}
   alphaColor: {r: 0.972549, g: 0.39607844, b: 0.22745098, a: 1}
-  betaColor: {r: 0.12941177, g: 0.7490196, b: 0.84705883, a: 1}
+  betaColor: {r: 0.972549, g: 0.67058825, b: 0.14117648, a: 1}
   releaseColor: {r: 1, g: 1, b: 1, a: 1}
   loggedInAs: {fileID: 788470761}
   username: 
-  events:
-  - {fileID: 788470765}
-  localizers: []
 --- !u!1 &1704482575
 GameObject:
   m_ObjectHideFlags: 0
