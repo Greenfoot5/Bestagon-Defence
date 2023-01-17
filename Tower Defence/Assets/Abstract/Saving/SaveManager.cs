@@ -57,5 +57,36 @@ namespace Abstract.Saving
 
             Debug.Log("Loading settings complete");
         }
+        
+        /// <summary>
+        /// Saves a level's current progress
+        /// </summary>
+        /// <param name="saveable">The level data to save to file</param>
+        public static void SaveLevel(ISaveableLevel saveable)
+        {
+            var sd = new SaveLevel();
+            saveable.PopulateSaveData(sd);
+            
+            if (FileManager.WriteToFile("LevelSave.dat", sd.ToJson()))
+            {
+                Debug.Log("Saving Level successful");
+            }
+        }
+        
+        /// <summary>
+        /// Loads a level save
+        /// </summary>
+        /// <param name="saveable">The level save to load</param>
+        public static void LoadLevel(ISaveableLevel saveable)
+        {
+            if (!FileManager.LoadFromFile("LevelSave.dat", out string json)) return;
+        
+            var sd = new SaveLevel();
+            sd.LoadFromJson(json);
+            
+            saveable.LoadFromSaveData(sd);
+
+            Debug.Log("Loading level complete");
+        }
     }
 }

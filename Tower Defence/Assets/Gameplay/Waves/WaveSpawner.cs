@@ -46,6 +46,7 @@ namespace Gameplay.Waves
             enemiesAlive = 0;
             _levelData = gameObject.GetComponent<GameManager>().levelData;
             _countdown = preparationTime;
+            _waveIndex = GameStats.Rounds;
         }
         
         /// <summary>

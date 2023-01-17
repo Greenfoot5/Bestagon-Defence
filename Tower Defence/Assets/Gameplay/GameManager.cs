@@ -1,4 +1,6 @@
-﻿using Levels.Generic.LevelSelect;
+﻿using Abstract.Saving;
+using Levels._Nodes;
+using Levels.Generic.LevelSelect;
 using Levels.Maps;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,7 +10,7 @@ namespace Gameplay
     /// <summary>
     /// Manages the current game's state
     /// </summary>
-    public class GameManager : MonoBehaviour
+    public class GameManager : MonoBehaviour, ISaveableLevel
     {
         // If the game has actually finished yet
         public static bool isGameOver;
@@ -25,6 +27,9 @@ namespace Gameplay
         
         [Tooltip("The leaderboard bridge")]
         public LeaderboardServerBridge bridge;
+
+        [Tooltip("The parent of all the nodes")]
+        public GameObject nodeParent;
         
         /// <summary>
         /// Makes sure the level has some data to run with
@@ -72,6 +77,24 @@ namespace Gameplay
             if (leaderboardData == null) return;
             string[] splitData = leaderboardData.Split(';');
             bridge.SendPlayerValue(PlayerPrefs.GetString("Username"), GameStats.Rounds, splitData[0], splitData[1]);
+        }
+
+        public void PopulateSaveData(SaveLevel saveData)
+        {
+            saveData.lives = GameStats.Lives;
+            saveData.money = GameStats.money;
+            saveData.waveIndex = GameStats.Rounds - 1;
+            saveData.nodes = nodeParent.GetComponentsInChildren<Node>();
+            saveData.random = Random.state;
+        }
+
+        public void LoadFromSaveData(SaveLevel saveData)
+        {
+            GameStats.Lives = saveData.lives;
+            GameStats.money = saveData.money;
+            GameStats.Rounds = saveData.waveIndex;
+            // TODO - Deal with UUIDs to restore Node data
+            Random.state = saveData.random;
         }
     }
 }
