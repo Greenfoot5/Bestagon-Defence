@@ -174,8 +174,10 @@ namespace Levels._Nodes
             BuildTurret(_buildManager.GetTurretToBuild());
             _buildManager.BuiltTurret();
         }
-
-        // Called when the mouse hovers over the node
+        
+        /// <summary>
+        /// Called when the mouse hovers over the node
+        /// </summary>
         public void OnPointerEnter(PointerEventData eventData)
         {
             // Make sure the player is trying to build

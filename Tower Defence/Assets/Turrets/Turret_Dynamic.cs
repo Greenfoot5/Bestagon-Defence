@@ -13,7 +13,7 @@ namespace Turrets
     /// </summary>
     public abstract class DynamicTurret : Turret
     {
-        /// <summary>How long between each target update</summary>
+        // How long between each target update
         private const float UpdateTargetTimer = 0.5f;
         
         // Targeting
@@ -27,7 +27,7 @@ namespace Turrets
         [Tooltip("The current target")]
         protected Transform target;
         [Tooltip("The Enemy script of the current target")]
-        protected Enemy targetEnemy;
+        private Enemy _targetEnemy;
 
         // Reference
         [Tooltip("The transform at which attack from (e.g. instantiate bullets)")]
@@ -36,7 +36,7 @@ namespace Turrets
 
         // Rotation
         [Tooltip("How fast the turret rotates towards it's target")]
-        public UpgradableStat rotationSpeed = new UpgradableStat(3f);
+        public UpgradableStat rotationSpeed = new(3f);
         [Tooltip("The Transform to perform any rotations on")]
         [SerializeField]
         protected Transform partToRotate;
@@ -159,7 +159,7 @@ namespace Turrets
             if (mostValuableEnemy != null)
             {
                 target = mostValuableEnemy.transform;
-                targetEnemy = target.GetComponent<Enemy>();
+                _targetEnemy = target.GetComponent<Enemy>();
             }
             // Set our target to null if there is none
             else
@@ -187,7 +187,7 @@ namespace Turrets
         /// <returns>If the turret is currently looking at the target</returns>
         protected bool IsLookingAtTarget()
         {
-            if (targetEnemy == null) return false;
+            if (_targetEnemy == null) return false;
 
             // Setup the raycast
             var results = new List<RaycastHit2D>();
@@ -199,7 +199,7 @@ namespace Turrets
 
             // Loop through the hits to see if the turret can hit the target
             var foundEnemy = false;
-            foreach (RaycastHit2D unused in results.Where(hit => hit.transform == targetEnemy.transform))
+            foreach (RaycastHit2D unused in results.Where(hit => hit.transform == _targetEnemy.transform))
             {
                 foundEnemy = true;
             }

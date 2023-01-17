@@ -22,20 +22,20 @@ namespace Turrets
         
         [Header("Stats")]
         [Tooltip("The speed of the bullet")]
-        public UpgradableStat speed = new UpgradableStat(30f);
+        public UpgradableStat speed = new(30f);
         [Tooltip("The radius to deal damage in. If <= 0, will just damage the target it hits")]
         public UpgradableStat explosionRadius;
         [Tooltip("The knockback the bullet deals to a target (set by turret)")]
         public UpgradableStat knockbackAmount;
         [Tooltip("The amount of damage the bullet deals (set by turret)")]
         [HideInInspector]
-        public UpgradableStat damage = new UpgradableStat(50f);
+        public UpgradableStat damage = new(50f);
     
         [Tooltip("The effect spawned when the bullet hit's a target")]
         public GameObject impactEffect;
 
-        private readonly List<Module> _modules = new List<Module>();
-        private readonly List<int> _hitEnemies = new List<int>();
+        private readonly List<Module> _modules = new();
+        private readonly List<int> _hitEnemies = new();
         
         /// <summary>
         /// Sets the new transform the bullet shoot go towards
@@ -80,7 +80,12 @@ namespace Turrets
                 SeekTarget(_target.position, true);
             }
         }
-
+        
+        /// <summary>
+        /// Moves the bullet towards a target location
+        /// </summary>
+        /// <param name="location">The location to move towards</param>
+        /// <param name="isEnemy">If the location is an enemy</param>
         private void SeekTarget(Vector3 location, bool isEnemy)
         {
             // Get the direction of the target, and the distance to move this frame
@@ -195,7 +200,12 @@ namespace Turrets
             Gizmos.color = Color.cyan;
             Gizmos.DrawWireSphere(transform.position, explosionRadius.GetStat());
         }
-
+        
+        /// <summary>
+        /// Called when the bullet touches an enemy
+        /// It may not result in a hit
+        /// </summary>
+        /// <param name="col">The collider that was touched</param>
         private void OnTriggerEnter2D(Collider2D col)
         {
             if (!isEthereal) return;

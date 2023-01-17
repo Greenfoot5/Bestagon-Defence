@@ -9,12 +9,19 @@ using UnityEngine.Localization.Settings;
 
 namespace Levels.Generic.Settings
 {
+    /// <summary>
+    /// Handles the saving/loading/changing of settings
+    /// </summary>
     public class Settings : MonoBehaviour, ISaveableSettings
     {
         [SerializeField]
         [Tooltip("The dropdown to select language/locale ")]
         private TMP_Dropdown dropdown;
-
+        
+        /// <summary>
+        /// Loads all the UI & settings the player can change
+        /// </summary>
+        /// <returns></returns>
         private IEnumerator Start()
         {
             // Wait for the localization system to initialize
@@ -38,7 +45,11 @@ namespace Levels.Generic.Settings
             dropdown.value = selected;
             dropdown.onValueChanged.AddListener(LocaleSelected);
         }
-
+        
+        /// <summary>
+        /// Updates the locale
+        /// </summary>
+        /// <param name="index"></param>
         private void LocaleSelected(int index)
         {
             LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[index];
@@ -46,13 +57,16 @@ namespace Levels.Generic.Settings
         }
 
         /// <summary>
-        /// Sends the player to the level select scene
+        /// Sends the player to the main menu scene
         /// </summary>
         public void MainMenu()
         {
             TransitionManager.Instance.LoadScene("MainMenu");
         }
-
+        
+        /// <summary>
+        /// Saves the settings to json data
+        /// </summary>
         private static void SaveJsonData(ISaveableSettings settings)
         {
             var saveData = new SaveSettings();
@@ -60,17 +74,28 @@ namespace Levels.Generic.Settings
             
             SaveManager.SaveSettings(settings);
         }
-
+        
+        /// <summary>
+        /// Writes the settings to a SaveSettings data
+        /// </summary>
+        /// <param name="saveData">The SaveSettings to load</param>
         public void PopulateSaveData(SaveSettings saveData)
         {
             saveData.locale = LocalizationSettings.SelectedLocale;
         }
         
+        /// <summary>
+        /// Loads the data from json
+        /// </summary>
         private static void LoadJsonData(ISaveableSettings settings)
         {
             SaveManager.LoadSettings(settings);
         }
 
+        /// <summary>
+        /// Loads data from a SaveSettings into the Settings
+        /// </summary>
+        /// <param name="saveData">The SaveSettings to load</param>
         public void LoadFromSaveData(SaveSettings saveData)
         {
             LocalizationSettings.SelectedLocale = saveData.locale;

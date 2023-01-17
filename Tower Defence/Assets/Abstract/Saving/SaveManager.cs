@@ -4,11 +4,14 @@ using UnityEngine.Localization.Settings;
 
 namespace Abstract.Saving
 {
+    /// <summary>
+    /// Handles saving and loading of persistent data,
+    /// including which file it's kept in
+    /// </summary>
     public static class SaveManager
     {
         /// <summary>
-        /// Used to load any data that needs to be loaded at the start of the game,
-        /// but can't otherwise for whatever reason
+        /// Used to load any persistent data that needs to be loaded at the start of the game,
         /// </summary>
         public static IEnumerator InitialLoad()
         {
@@ -24,6 +27,10 @@ namespace Abstract.Saving
             }
         }
         
+        /// <summary>
+        /// Saves the settings
+        /// </summary>
+        /// <param name="saveable">The settings to save to the file</param>
         public static void SaveSettings(ISaveableSettings saveable)
         {
             var sd = new SaveSettings();
@@ -34,7 +41,11 @@ namespace Abstract.Saving
                 Debug.Log("Saving Settings successful");
             }
         }
-    
+        
+        /// <summary>
+        /// Loads the settings
+        /// </summary>
+        /// <param name="saveable">The settings to load</param>
         public static void LoadSettings(ISaveableSettings saveable)
         {
             if (!FileManager.LoadFromFile("Settings.dat", out string json)) return;

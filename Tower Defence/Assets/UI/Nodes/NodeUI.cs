@@ -168,16 +168,25 @@ namespace UI.Nodes
             return _target != null ? _target.turret : null;
         }
         
+        /// <summary>
+        /// Sells the turret
+        /// </summary>
         public void SellTurret()
         {
             _target.SellTurret(shop.GetSellAmount());
         }
-
+        
+        /// <summary>
+        /// Rotates the turret by 60°
+        /// </summary>
         public void Rotate60()
         {
             _target.turret.transform.Rotate(0, 0, 60);
         }
-
+        
+        /// <summary>
+        /// Updates the render of the modules for a turret
+        /// </summary>
         private void UpdateModules()
         {
             // Removes module icons created from the previously selected turret
