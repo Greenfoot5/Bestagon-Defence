@@ -1,10 +1,10 @@
+using Abstract;
 using Abstract.Saving;
 using TMPro;
 using UI.Transition;
 using UnityEngine;
 using UnityEngine.Localization.Components;
 using UnityEngine.Localization.PropertyVariants;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Levels.Generic.MainMenu
@@ -35,14 +35,14 @@ namespace Levels.Generic.MainMenu
         [Tooltip("The saved username")]
         [HideInInspector]
         public string username;
-
-        [Header("Strings to update")]
-        [Tooltip("All the strings that need updating when the locale loads")]
-        [SerializeField]
-        private LocalizeStringEvent[] events;
-
-        [SerializeField]
-        private GameObjectLocalizer[] localizers;
+        
+        // [Header("Strings to update")]
+        // [Tooltip("All the strings that need updating when the locale loads")]
+        // [SerializeField]
+        // private LocalizeStringEvent[] events;
+        //
+        // [SerializeField]
+        // private GameObjectLocalizer[] localizers;
 
         /// <summary>
         /// Does the bits and bobs needed when the game starts
@@ -51,7 +51,8 @@ namespace Levels.Generic.MainMenu
         {
             DisplayUsername();
             ColourWordmark();
-            SaveManager.InitialLoad();
+            
+            Runner.Run(SaveManager.InitialLoad());
         }
         
         /// <summary>

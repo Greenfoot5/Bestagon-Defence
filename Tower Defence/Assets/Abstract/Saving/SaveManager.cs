@@ -1,6 +1,6 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
-using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace Abstract.Saving
 {
@@ -10,8 +10,10 @@ namespace Abstract.Saving
         /// Used to load any data that needs to be loaded at the start of the game,
         /// but can't otherwise for whatever reason
         /// </summary>
-        public static void InitialLoad()
+        public static IEnumerator InitialLoad()
         {
+            yield return LocalizationSettings.InitializationOperation;
+            
             // Load Locale
             if (FileManager.LoadFromFile("Settings.dat", out string json))
             {
@@ -19,8 +21,7 @@ namespace Abstract.Saving
                 sd.LoadFromJson(json);
                 LocalizationSettings.SelectedLocale = sd.locale;
 
-                AsyncOperationHandle<LocalizationSettings> localInit = LocalizationSettings.InitializationOperation;
-                localInit.Completed += _ => LocalizationSettings.SelectedLocale = sd.locale;
+                LocalizationSettings.SelectedLocale = sd.locale;
             }
         }
         
