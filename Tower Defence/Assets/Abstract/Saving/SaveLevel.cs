@@ -1,4 +1,6 @@
-using Levels._Nodes;
+using System.Collections.Generic;
+using Abstract.Data;
+using Turrets;
 using UnityEngine;
 
 namespace Abstract.Saving
@@ -7,12 +9,26 @@ namespace Abstract.Saving
     /// Represents a level's save data
     /// </summary>
     public class SaveLevel
-    { 
-        public Node[] nodes;
+    {
+        [System.Serializable]
+        public struct NodeData
+        {
+            public string uuid;
+            public TurretBlueprint turretBlueprint;
+            public List<ModuleChainHandler> moduleChainHandlers;
+            public Quaternion turretRotation;
+        }
+        public List<NodeData> nodes;
+        
+        
         public int money;
         public int lives;
         public int waveIndex;
         public Random.State random;
+        public int shopCost;
+
+        public List<TurretBlueprint> turretInventory;
+        public List<ModuleChainHandler> moduleInventory;
         
         /// <summary>
         /// Translates the class into json format

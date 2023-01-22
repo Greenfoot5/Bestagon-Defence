@@ -36,12 +36,14 @@ namespace Gameplay
         [Tooltip("The UI to display when the player opens the shop")]
         [SerializeField]
         private GameObject selectionUI;
-        
+        [Range(0, Mathf.Infinity)]
         public int selectionCost;
         private bool _hasPlayerMadePurchase;
-
-        private TextMeshProUGUI _turretInventoryButton;
-        private TextMeshProUGUI _moduleInventoryButton;
+        
+        [SerializeField]
+        private TextMeshProUGUI turretInventoryButton;
+        [SerializeField]
+        private TextMeshProUGUI moduleInventoryButton;
 
         [Tooltip("The percentage of the selection cost to sell turrets for")]
         [SerializeField]
@@ -54,12 +56,19 @@ namespace Gameplay
         {
             _buildManager = BuildManager.instance;
             _levelData = _buildManager.GetComponent<GameManager>().levelData;
-            selectionCost = _levelData.initialSelectionCost;
+            // It should only be greater than 0 if we've loaded a save
+            if (selectionCost == 0)
+            {
+                selectionCost = _levelData.initialSelectionCost;
+            }
+            else
+            {
+                _hasPlayerMadePurchase = true;
+            }
+
             // Update button text
-            _turretInventoryButton = turretInventory.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
-            _moduleInventoryButton = moduleInventory.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
-            _turretInventoryButton.text = "<sprite=\"UI-Gold\" name=\"gold\"> " + selectionCost;
-            _moduleInventoryButton.text = "<sprite=\"UI-Gold\" name=\"gold\"> " + selectionCost;
+            turretInventoryButton.text = "<sprite=\"UI-Gold\" name=\"gold\"> " + selectionCost;
+            moduleInventoryButton.text = "<sprite=\"UI-Gold\" name=\"gold\"> " + selectionCost;
         }
         
         /// <summary>
@@ -100,6 +109,7 @@ namespace Gameplay
         public void RemoveModule()
         {
             Destroy(_selectedHandlerButton);
+            GameManager.ModuleInventory.Remove(_selectedHandler);
             _selectedHandler = new ModuleChainHandler();
         }
         
@@ -117,6 +127,7 @@ namespace Gameplay
             turretButton.GetComponent<Button>().onClick.AddListener(delegate { SelectTurret(turret, turretButton); });
             
             selectionUI.GetComponentInChildren<AddSelection>().AddTurretType(turret.prefab.GetComponent<Turret>().GetType());
+            GameManager.TurretInventory.Add(turret);
         }
         
         /// <summary>
@@ -129,6 +140,8 @@ namespace Gameplay
             moduleButton.name = "_" + moduleButton.name;
             moduleButton.GetComponentInChildren<ModuleIcon>().SetData(module);
             moduleButton.GetComponentInChildren<Button>().onClick.AddListener(delegate { SelectModule(module, moduleButton); });
+            
+            GameManager.ModuleInventory.Add(module);
         }
         
         /// <summary>
@@ -163,8 +176,8 @@ namespace Gameplay
         /// </summary>
         public void UpdateCostText()
         {
-            _turretInventoryButton.text = "<sprite=\"UI-Gold\" name=\"gold\"> " + selectionCost;
-            _moduleInventoryButton.text = "<sprite=\"UI-Gold\" name=\"gold\"> " + selectionCost;
+            turretInventoryButton.text = "<sprite=\"UI-Gold\" name=\"gold\"> " + selectionCost;
+            moduleInventoryButton.text = "<sprite=\"UI-Gold\" name=\"gold\"> " + selectionCost;
         }
         
         /// <summary>

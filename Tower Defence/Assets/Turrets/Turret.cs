@@ -31,7 +31,7 @@ namespace Turrets
         public string enemyTag = "Enemy";
         
         [Tooltip("The range of the turret")]
-        public UpgradableStat range = new UpgradableStat(2.5f);
+        public UpgradableStat range = new(2.5f);
         [Tooltip("The shader that display's the turret's range when clicked")]
         [SerializeField]
         private GameObject rangeDisplay;

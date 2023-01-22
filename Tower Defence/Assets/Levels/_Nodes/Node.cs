@@ -35,6 +35,36 @@ namespace Levels._Nodes
             _defaultColour = _rend.material.color;
             _buildManager = BuildManager.instance;
         }
+        
+        /// <summary>
+        /// We load a turret into the node without any fancy build effects or adding modules (those are added separately).
+        /// </summary>
+        /// <param name="blueprint">The blueprint of the turret to build</param>
+        public void LoadTurret(TurretBlueprint blueprint)
+        {
+            Vector3 nodePosition = transform.position;
+            GameObject newTurret = Instantiate(blueprint.prefab, nodePosition, Quaternion.identity);
+            newTurret.name = "_" + newTurret.name;
+            turret = newTurret;
+            turretBlueprint = blueprint;
+        }
+        
+        /// <summary>
+        /// Loads a module without any fancy effects
+        /// </summary>
+        /// <param name="handler">The module handler to load</param>
+        public bool LoadModule(ModuleChainHandler handler)
+        {
+            // Check handler has a module and tier
+            if (handler.GetModule() == null)
+            {
+                return false;
+            }
+            
+            // Apply the Module
+            bool hasAppliedModule = turret.GetComponent<Turret>().AddModule(handler);
+            return hasAppliedModule;
+        }
 
         /// <summary>
         /// Places the turret on the node
@@ -172,7 +202,7 @@ namespace Levels._Nodes
 
             // Construct a turret
             BuildTurret(_buildManager.GetTurretToBuild());
-            _buildManager.BuiltTurret();
+            _buildManager.BuildTurret();
         }
         
         /// <summary>

@@ -93,7 +93,7 @@ namespace Turrets
             float distanceThisFrame = speed.GetStat() * Time.deltaTime;
             
             // Move bullet towards target
-            transform.position = Vector2.MoveTowards(position, _target.position, distanceThisFrame);
+            transform.position = Vector2.MoveTowards(position, location, distanceThisFrame);
 
             Vector2 difference = location - position;
             // TODO - Make it based on target size

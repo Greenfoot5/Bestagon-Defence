@@ -60,9 +60,10 @@ namespace Gameplay
         /// <summary>
         /// Builds the turret on the node and removes the inventory button
         /// </summary>
-        public void BuiltTurret()
+        public void BuildTurret()
         {
             Destroy(_buildingButton);
+            GameManager.TurretInventory.Remove(_turretToBuild);
             Deselect();
         }
     

@@ -15,7 +15,7 @@ namespace Gameplay
 
         private static int _lives;
         [Tooltip("How many lives the player starts the level with")]
-        public int startLives = 20;
+        public int startLives;
         public static int Lives
         {
             get => _lives;
@@ -51,10 +51,12 @@ namespace Gameplay
         /// </summary>
         private void Awake()
         {
-            money = startMoney;
-            _lives = startLives;
-            _rounds = 0;
-        
+            if (_lives == 0)
+            {
+                money = startMoney;
+                _lives = startLives;
+            }
+
             // Controls
             controls = new GameControls();
             controls.Enable();

@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Abstract.Saving;
 using Enemies;
 using Levels.Maps;
 using TMPro;
@@ -22,7 +23,6 @@ namespace Gameplay.Waves
         public float timeBetweenWaves = 5f;
         [Tooltip("The time at the beginning before the start of the game")]
         public float preparationTime = 8f;
-
         private float _countdown = 5f;
         
         [Tooltip("The text to update with the countdown")]
@@ -61,9 +61,17 @@ namespace Gameplay.Waves
                 return;
             }
 
+            if (Mathf.Abs(_countdown - timeBetweenWaves) < 0.00000001f)
+            {
+                // Save the level
+                SaveJsonData(gameObject.GetComponent<GameManager>());
+            }
+
             // If the countdown has finished, call the next wave
             if (_countdown <= 0f)
             {
+                // Save the level
+                SaveJsonData(gameObject.GetComponent<GameManager>());
                 // Start spawning in the enemies
                 StartCoroutine(SpawnWave());
                 // Reset the timer
@@ -135,6 +143,17 @@ namespace Gameplay.Waves
             spawnedEnemy.GetComponent<Enemy>().health = spawnedEnemy.GetComponent<Enemy>().maxHealth;
         
             enemiesAlive++;
+        }
+        
+        /// <summary>
+        /// Saves the settings to json data
+        /// </summary>
+        private static void SaveJsonData(ISaveableLevel level)
+        {
+            var saveData = new SaveLevel();
+            level.PopulateSaveData(saveData);
+            
+            SaveManager.SaveLevel(level);
         }
     }
 }

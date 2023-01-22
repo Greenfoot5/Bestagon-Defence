@@ -1,4 +1,3 @@
-using System;
 using Modules;
 using UnityEngine;
 
@@ -9,7 +8,7 @@ namespace Abstract.Data
     /// As an SO cannot be instantiated, it cannot store the tier variable
     /// Also handles a few other useful things
     /// </summary>
-    [Serializable]
+    [System.Serializable]
     public struct ModuleChainHandler
     {
         // The display levels of the modules

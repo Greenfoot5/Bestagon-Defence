@@ -1,7 +1,10 @@
-﻿using Abstract.Saving;
+﻿using System.Collections.Generic;
+using Abstract.Data;
+using Abstract.Saving;
 using Levels._Nodes;
 using Levels.Generic.LevelSelect;
 using Levels.Maps;
+using Turrets;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -30,7 +33,16 @@ namespace Gameplay
 
         [Tooltip("The parent of all the nodes")]
         public GameObject nodeParent;
-        
+
+        public static readonly List<TurretBlueprint> TurretInventory = new();
+        public static readonly List<ModuleChainHandler> ModuleInventory = new();
+
+        private void Awake()
+        {
+            // TODO - Only load if we're loading a save
+            LoadJsonData(this);
+        }
+
         /// <summary>
         /// Makes sure the level has some data to run with
         /// Makes sure that the game isn't over.
@@ -84,8 +96,49 @@ namespace Gameplay
             saveData.lives = GameStats.Lives;
             saveData.money = GameStats.money;
             saveData.waveIndex = GameStats.Rounds - 1;
-            saveData.nodes = nodeParent.GetComponentsInChildren<Node>();
             saveData.random = Random.state;
+            saveData.shopCost = shop.GetComponent<Shop>().selectionCost;
+            saveData.nodes = new List<SaveLevel.NodeData>();
+            saveData.turretInventory = new List<TurretBlueprint>();
+            saveData.moduleInventory = new List<ModuleChainHandler>();
+
+            // Node Data
+            foreach (Node node in nodeParent.GetComponentsInChildren<Node>())
+            {
+                if (node.turret == null)
+                {
+                    continue;
+                }
+                
+                var nodeData = new SaveLevel.NodeData
+                {
+                    uuid = node.name,
+                    turretBlueprint = node.turretBlueprint,
+                    turretRotation = node.turret.transform.rotation,
+                    moduleChainHandlers = node.turret.GetComponent<Turret>().moduleHandlers
+                };
+                saveData.nodes.Add(nodeData);
+            }
+            
+            // Inventory
+            // Turrets
+            foreach (TurretBlueprint turret in TurretInventory)
+            {
+                saveData.turretInventory.Add(turret);
+            }
+            // Modules
+            foreach (ModuleChainHandler module in ModuleInventory)
+            {
+                saveData.moduleInventory.Add(module);
+            }
+        }
+        
+        /// <summary>
+        /// Loads the data from json
+        /// </summary>
+        private static void LoadJsonData(ISaveableLevel level)
+        {
+            SaveManager.LoadLevel(level);
         }
 
         public void LoadFromSaveData(SaveLevel saveData)
@@ -93,8 +146,33 @@ namespace Gameplay
             GameStats.Lives = saveData.lives;
             GameStats.money = saveData.money;
             GameStats.Rounds = saveData.waveIndex;
-            // TODO - Deal with UUIDs to restore Node data
             Random.state = saveData.random;
+            var shopComponent = shop.GetComponent<Shop>();
+            shopComponent.selectionCost = saveData.shopCost;
+
+            foreach (SaveLevel.NodeData nodeData in saveData.nodes)
+            {
+                foreach (Node node in nodeParent.GetComponentsInChildren<Node>())
+                {
+                    if (node.name != nodeData.uuid) continue;
+                    
+                    node.LoadTurret(nodeData.turretBlueprint);
+                    node.turret.transform.rotation = nodeData.turretRotation;
+                    foreach (ModuleChainHandler moduleHandler in nodeData.moduleChainHandlers)
+                    {
+                        node.LoadModule(moduleHandler);
+                    }
+                }
+            }
+
+            foreach (TurretBlueprint turret in saveData.turretInventory)
+            {
+                shopComponent.SpawnNewTurret(turret);
+            }
+            foreach (ModuleChainHandler module in saveData.moduleInventory)
+            {
+                shopComponent.SpawnNewModule(module);
+            }
         }
     }
 }
