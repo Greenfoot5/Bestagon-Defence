@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Abstract.Saving;
 using TMPro;
 using UI.Transition;
 using UnityEngine;
@@ -28,6 +29,10 @@ namespace Levels.Generic.LevelSelect
         [Tooltip("The button that toggles between the info/leaderboard and the level select panels")]
         [SerializeField]
         private GameObject infoButton;
+
+        [Tooltip("The continue button to enable/disable if there's a save")]
+        [SerializeField]
+        private GameObject continueButton;
 
         [Header("Level Info")]
         [Tooltip("The level name title")]
@@ -73,16 +78,22 @@ namespace Levels.Generic.LevelSelect
             _selectedLevel = sceneName;
             playButton.interactable = true;
             infoButton.GetComponent<Button>().interactable = true;
+
+            bool saveExists = SaveManager.SaveExists(sceneName);
+            continueButton.SetActive(saveExists);
+            
         }
         
         /// <summary>
         /// Starts the selected level
         /// </summary>
-        public void Play()
+        /// <param name="loadingLevel">0 if the level is not being loaded from the save</param>
+        public void Play(int loadingLevel)
         {
+            PlayerPrefs.SetInt("LoadingLevel", loadingLevel);
             TransitionManager.Instance.LoadScene(_selectedLevel);
         }
-        
+
         /// <summary>
         /// Toggles the leaderboard display for the selected level
         /// </summary>

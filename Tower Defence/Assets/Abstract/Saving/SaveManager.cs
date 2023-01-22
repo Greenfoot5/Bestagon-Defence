@@ -59,36 +59,43 @@ namespace Abstract.Saving
 
             Debug.Log("Loading settings complete");
         }
-        
+
         /// <summary>
         /// Saves a level's current progress
         /// </summary>
         /// <param name="saveable">The level data to save to file</param>
-        public static void SaveLevel(ISaveableLevel saveable)
+        /// <param name="sceneName">The name of the scene</param>
+        public static void SaveLevel(ISaveableLevel saveable, string sceneName)
         {
             var sd = new SaveLevel();
             saveable.PopulateSaveData(sd);
             
-            if (FileManager.WriteToFile("LevelSave.dat", sd.ToJson()))
+            if (FileManager.WriteToFile(sceneName + "Save.dat", sd.ToJson()))
             {
-                Debug.Log("Saving Level successful");
+                Debug.Log("Saving " + sceneName + " successful");
             }
         }
-        
+
         /// <summary>
         /// Loads a level save
         /// </summary>
         /// <param name="saveable">The level save to load</param>
-        public static void LoadLevel(ISaveableLevel saveable)
+        /// <param name="sceneName">The name of the level to load</param>
+        public static void LoadLevel(ISaveableLevel saveable, string sceneName)
         {
-            if (!FileManager.LoadFromFile("LevelSave.dat", out string json)) return;
+            if (!FileManager.LoadFromFile(sceneName + "Save.dat", out string json)) return;
         
             var sd = new SaveLevel();
             sd.LoadFromJson(json);
             
             saveable.LoadFromSaveData(sd);
 
-            Debug.Log("Loading level complete");
+            Debug.Log("Loading " + sceneName + " complete");
+        }
+
+        public static bool SaveExists(string sceneName)
+        {
+            return FileManager.FileExists(sceneName + "Save.dat");
         }
     }
 }

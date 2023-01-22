@@ -53,5 +53,17 @@ namespace Abstract.Saving
                 return false;
             }
         }
+        
+        /// <summary>
+        /// Checks if a file exists
+        /// </summary>
+        /// <param name="fileName">The name of the file to find</param>
+        /// <returns>If the file exists</returns>
+        public static bool FileExists(string fileName)
+        {
+            string fullPath = Path.Combine(Application.persistentDataPath, fileName);
+            Debug.Log(fullPath);
+            return File.Exists(fullPath);
+        }
     }
 }

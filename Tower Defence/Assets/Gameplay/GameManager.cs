@@ -39,6 +39,7 @@ namespace Gameplay
 
         private void Awake()
         {
+            if (PlayerPrefs.GetInt("LoadingLevel") == 0) return;
             // TODO - Only load if we're loading a save
             LoadJsonData(this);
         }
@@ -138,7 +139,7 @@ namespace Gameplay
         /// </summary>
         private static void LoadJsonData(ISaveableLevel level)
         {
-            SaveManager.LoadLevel(level);
+            SaveManager.LoadLevel(level, SceneManager.GetActiveScene().name);
         }
 
         public void LoadFromSaveData(SaveLevel saveData)

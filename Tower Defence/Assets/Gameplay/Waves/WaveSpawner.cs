@@ -4,6 +4,7 @@ using Enemies;
 using Levels.Maps;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Gameplay.Waves
 {
@@ -153,7 +154,7 @@ namespace Gameplay.Waves
             var saveData = new SaveLevel();
             level.PopulateSaveData(saveData);
             
-            SaveManager.SaveLevel(level);
+            SaveManager.SaveLevel(level, SceneManager.GetActiveScene().name);
         }
     }
 }
