@@ -58,11 +58,9 @@ namespace _WIP
             
             // Sets the environment to alpha, comment out to use production
             RemoteConfigService.Instance.SetEnvironmentID("9991561f-c455-4f3c-8da1-830509d49ad0");
-            Debug.Log(RemoteConfigService.Instance.appConfig.configType);
 
             Debug.Log("Fetching Configs from " + RemoteConfigService.Instance.appConfig.environmentId);
             RemoteConfigService.Instance.FetchConfigs(new UserAttributes(), new AppAttributes());
-            Debug.Log("Test: " + RemoteConfigService.Instance.appConfig.GetInt("test"));
 
             // Example on how to fetch configuration settings if you have dedicated configType:
             //const string configType = "specialConfigType";

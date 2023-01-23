@@ -53,6 +53,22 @@ namespace Abstract.Saving
                 return false;
             }
         }
+
+        public static bool DeleteFile(string fileName)
+        {
+            string fullPath = Path.Combine(Application.persistentDataPath, fileName);
+
+            try
+            {
+                File.Delete(fullPath);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"Failed to delete from {fullPath} with exception {e}");
+                return false;
+            }
+        }
         
         /// <summary>
         /// Checks if a file exists
@@ -62,7 +78,6 @@ namespace Abstract.Saving
         public static bool FileExists(string fileName)
         {
             string fullPath = Path.Combine(Application.persistentDataPath, fileName);
-            Debug.Log(fullPath);
             return File.Exists(fullPath);
         }
     }

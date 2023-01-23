@@ -99,7 +99,7 @@ namespace UI.Transition
         {
             Close();
 
-            yield return new WaitForSeconds(TransitionDuration);
+            yield return new WaitForSecondsRealtime(TransitionDuration);
 
             _loadingScene = newSceneName;
             SceneManager.LoadScene(newSceneName);

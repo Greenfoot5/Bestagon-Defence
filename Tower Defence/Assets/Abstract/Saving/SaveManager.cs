@@ -25,8 +25,6 @@ namespace Abstract.Saving
                 sd.LoadFromJson(json);
                 LocalizationSettings.SelectedLocale = sd.locale;
             }
-            
-            // TODO - Check for a level save
         }
         
         /// <summary>
@@ -96,6 +94,13 @@ namespace Abstract.Saving
         public static bool SaveExists(string sceneName)
         {
             return FileManager.FileExists(sceneName + "Save.dat");
+        }
+
+        public static void ClearSave(string sceneName)
+        {
+            FileManager.DeleteFile(sceneName + "Save.dat");
+            
+            Debug.Log("Deleting save of " + sceneName + " complete");
         }
     }
 }

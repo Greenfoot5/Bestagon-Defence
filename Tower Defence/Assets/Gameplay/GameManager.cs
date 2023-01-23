@@ -39,7 +39,7 @@ namespace Gameplay
 
         private void Awake()
         {
-            if (PlayerPrefs.GetInt("LoadingLevel") == 0) return;
+            if (PlayerPrefs.GetInt("LoadingLevel", 0) == 0) return;
             // TODO - Only load if we're loading a save
             LoadJsonData(this);
         }
@@ -83,6 +83,9 @@ namespace Gameplay
         
             gameOverUI.SetActive(true);
             shop.SetActive(false);
+
+            Time.timeScale = 0;
+            SaveManager.ClearSave(SceneManager.GetActiveScene().name);
         
             // Tell our leaderboard API to add the player
             string leaderboardData =
