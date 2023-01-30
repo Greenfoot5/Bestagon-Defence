@@ -13,10 +13,5 @@ MonoBehaviour:
   m_Name: InstakillT2
   m_EditorClassIdentifier: 
   moduleTier: 2
-  upgradable: 1
-  accentColor: {r: 0.5254902, g: 0.12156863, b: 0.21176471, a: 1}
-  displayName: Instakill II
-  tagline: Lucky Shot
-  icon: {fileID: -4575831703307692121, guid: 16c979c866f439b4b988e7020b313794, type: 3}
-  effectText: 0.75% chance to instakill non-boss enemies
-  instakillChance: 0.0075
+  isUpgradableTo: 1
+  instakillChance: 0.01

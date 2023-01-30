@@ -18,6 +18,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f51f0f08791ee4076be40b4d01554f3c, type: 2}
   - {fileID: 11400000, guid: f91eee4f29d884afea1e75cd4643552a, type: 2}
   - {fileID: 11400000, guid: 6b46d1dd168b44ce6b234a967de55326, type: 2}
+  - {fileID: 11400000, guid: 6d1d9d24326cb4642b5a56e9c0fa43c7, type: 2}
+  - {fileID: 11400000, guid: def0a3c8e0ab245f296cecd3e85f7f45, type: 2}
   unique: 0
   accentColor: {r: 0.4627451, g: 0.22745098, b: 0.9411765, a: 1}
   icon: {fileID: 8075296294540816629, guid: 16c979c866f439b4b988e7020b313794, type: 3}

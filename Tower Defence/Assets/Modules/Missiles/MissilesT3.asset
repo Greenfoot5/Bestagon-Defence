@@ -13,15 +13,10 @@ MonoBehaviour:
   m_Name: MissilesT3
   m_EditorClassIdentifier: 
   moduleTier: 3
-  upgradable: 1
-  accentColor: {r: 0.88235295, g: 0.35686275, b: 0.06666667, a: 1}
-  displayName: Missiles III
-  tagline: Rocket science
-  icon: {fileID: -4264398553240656916, guid: 16c979c866f439b4b988e7020b313794, type: 3}
-  effectText: Bullets explode in a radius of 0.75 units on contact
-  explosionRadiusChange: 0.75
-  damagePercentageChange: 1
+  isUpgradableTo: 1
+  explosionRadiusChange: 0.6
+  damagePercentageChange: 1.75
   fireRatePercentageChange: -0.4
-  speedPercentageChange: 0.65
-  gunnerFireRateCapChange: -0.15
+  speedPercentageChange: 0.75
+  gunnerFireRateCapChange: -0.25
   gunnerSpinUpChange: 0.3
