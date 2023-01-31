@@ -9,6 +9,8 @@ namespace Gameplay
     /// </summary>
     public class GameStats : MonoBehaviour
     {
+        private static bool active = false;
+
         public static int money;
         [Tooltip("How much money the player starts the level with")]
         public int startMoney = 200;
@@ -51,7 +53,7 @@ namespace Gameplay
         /// </summary>
         private void Awake()
         {
-            if (_lives == 0)
+            if (!active)
             {
                 money = startMoney;
                 _lives = startLives;
@@ -61,6 +63,14 @@ namespace Gameplay
             controls = new GameControls();
             controls.Enable();
             EnhancedTouchSupport.Enable();
+        }
+
+        /// <summary>
+        /// Clears the stats for the next level
+        /// </summary>
+        public static void ClearStats()
+        {
+            active = false;
         }
     }
 

@@ -92,6 +92,8 @@ namespace UI
                 Debug.LogWarning("Failed to save to leaderboard");
                 // TODO - Now ignore the error
             }
+
+            GameStats.ClearStats();
             
             // Transition to the main menu
             Toggle(new InputAction.CallbackContext());
