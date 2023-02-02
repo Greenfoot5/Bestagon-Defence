@@ -13,7 +13,7 @@ A tower defence with roguelike elements so it never gets boring. Themed around [
 2. Open the project in the same Unity version, and load and be playable
 3. The game currently utilises exploit avoid's leaderboards, so you'll need to either comment out leaderboard related code, or enter your secrets into an EnvironmentVariables scriptable object, with the format `<leaderboardID>;<leaderboardSecret>`. You can access exploit avoid here: [https://exploitavoid.com/leaderboards/v1/](https://exploitavoid.com/leaderboards/v1/) - You will need an [itch.io](https://itch.io) login.
 
-If it doesn't work, join the support server and ask!
+If it doesn't work, join the support server and ask or open an issue!
 
 ## Links
 
