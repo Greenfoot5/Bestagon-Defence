@@ -108,7 +108,7 @@ namespace Enemies
             }
                 
             // Get the direction and move in that direction
-            transform.Translate(GetBackwardsLocation(), Space.World);
+            transform.position = GetBackwardsLocation();
             mapProgress = waypointIndex - (distanceToWaypoint / _maxDistance);
         
             // If the enemy hasn't reached the previous waypoint, there's no point knocking it back further
