@@ -12,7 +12,8 @@ namespace Turrets
     public class Bullet : MonoBehaviour
     {
         private Turret _source;
-        private Transform _target;
+        private EnemyMovement _target;
+        private Transform _targetTransform;
         private Vector3 _targetLocation;
         private bool _useLocation;
 
@@ -42,9 +43,10 @@ namespace Turrets
         /// </summary>
         /// <param name="newTarget">The transform of the new target</param>
         /// <param name="turret">The turret telling the bullet to seek a target</param>
-        public void Seek(Transform newTarget, Turret turret)
+        public void Seek(EnemyMovement newTarget, Turret turret)
         {
             _target = newTarget;
+            _targetTransform = newTarget.transform;
             _source = turret;
             _useLocation = false;
         }
@@ -77,7 +79,7 @@ namespace Turrets
             }
             else
             {
-                SeekTarget(_target.position, true);
+                SeekTarget(_target.GetNextLocation(), true);
             }
         }
         
@@ -214,7 +216,7 @@ namespace Turrets
             _hitEnemies.Add(col.gameObject.GetInstanceID());
 
                 // We don't want to hit the target twice
-            if (_target != null && _target == col.transform) return;
+            if (_target != null && _targetTransform == col.transform) return;
 
             if (col.transform.CompareTag("Enemy"))
                 Damage(col.gameObject.GetComponent<Enemy>());

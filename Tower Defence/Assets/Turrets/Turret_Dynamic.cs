@@ -28,6 +28,8 @@ namespace Turrets
         protected Transform target;
         [Tooltip("The Enemy script of the current target")]
         private Enemy _targetEnemy;
+        [Tooltip("The movement of the enemy")]
+        protected EnemyMovement targetMovement;
 
         // Reference
         [Tooltip("The transform at which attack from (e.g. instantiate bullets)")]
@@ -71,7 +73,7 @@ namespace Turrets
             // If the turret is not aggressively retargeting, check if the target is still in range
             if (!aggressiveRetargeting && target != null)
             {
-                float distanceToEnemy = Vector3.Distance(transform.position, target.position);
+                float distanceToEnemy = Vector3.Distance(transform.position, targetMovement.GetNextLocation());
                 if (distanceToEnemy <= range.GetStat()) return;
             }
 
@@ -83,7 +85,7 @@ namespace Turrets
             // Set the current value to be too high or too low.
             // Value is based on targeting method
             float currentValue = Mathf.Infinity;
-            if (targetingMethod == TargetingMethod.Strongest || targetingMethod == TargetingMethod.First)
+            if (targetingMethod is TargetingMethod.Strongest or TargetingMethod.First)
             {
                 currentValue = Mathf.NegativeInfinity;
             }
@@ -160,6 +162,7 @@ namespace Turrets
             {
                 target = mostValuableEnemy.transform;
                 _targetEnemy = target.GetComponent<Enemy>();
+                targetMovement = target.GetComponent<EnemyMovement>();
             }
             // Set our target to null if there is none
             else
@@ -174,7 +177,7 @@ namespace Turrets
         protected void LookAtTarget()
         {
             // Gets the rotation the turret need to end up at, and lerp each frame towards that
-            Vector2 aimDir = ((Vector2)target.position - (Vector2)transform.position).normalized;
+            Vector2 aimDir = ((Vector2)targetMovement.GetNextLocation() - (Vector2)transform.position).normalized;
             Vector3 up = partToRotate.up;
             Vector3 lookDir = Vector3.Lerp(up, aimDir, Time.deltaTime * rotationSpeed.GetStat());
             transform.rotation *= Quaternion.FromToRotation(up, lookDir);

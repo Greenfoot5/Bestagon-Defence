@@ -20,11 +20,11 @@ namespace Turrets.Gunner
         private float _oldIncrease = 1f;
         
         [Tooltip("That amount to increase the fireRate by each attack")]
-        public UpgradableStat spinMultiplier = new UpgradableStat(1.1f);
+        public UpgradableStat spinMultiplier = new(1.1f);
         [Tooltip("How much to divide the fire rate when not attacking")]
-        public UpgradableStat spinCooldown = new UpgradableStat(1.08f);
+        public UpgradableStat spinCooldown = new(1.08f);
         [Tooltip("The maximum fire rate increase the gunner can reach without modules")]
-        public UpgradableStat maxFireRate = new UpgradableStat(6.5f);
+        public UpgradableStat maxFireRate = new(6.5f);
 
         /// <summary>
         /// Rotates towards the target if the turret have one.
@@ -133,7 +133,7 @@ namespace Turrets.Gunner
                 bullet.AddModule(handler.GetModule());
             }
             
-            bullet.Seek(target, this);
+            bullet.Seek(targetMovement, this);
         }
     }
 }

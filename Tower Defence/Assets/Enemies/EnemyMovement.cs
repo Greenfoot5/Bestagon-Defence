@@ -55,14 +55,13 @@ namespace Enemies
                 return;
             }
             
-            // Get the direction of the target, and the distance to move this frame
+            // Repeated access of variables is inefficient
             Vector3 position = transform.position;
             Vector3 location = _target.position;
-            float distanceThisFrame = _enemy.speed.GetStat() * Time.deltaTime;
 
-            transform.position = Vector2.MoveTowards(position, location, distanceThisFrame);
+            transform.position = GetNextLocation();
             
-            Vector2 difference = location - position; // Distance & direction to next target
+            Vector2 difference = location - position; // Move the enemy
 
             // If within this frame the enemy will pass the waypoint, it's a guaranteed hit
             if (difference.sqrMagnitude <= distanceToWaypoint * distanceToWaypoint)
@@ -109,8 +108,7 @@ namespace Enemies
             }
                 
             // Get the direction and move in that direction
-            Vector3 dir = Waypoints.points[waypointIndex - 1].position - transform.position;
-            transform.Translate(dir.normalized * (Mathf.Abs(_enemy.speed.GetTrueStat()) * Time.deltaTime), Space.World);
+            transform.Translate(GetBackwardsLocation(), Space.World);
             mapProgress = waypointIndex - (distanceToWaypoint / _maxDistance);
         
             // If the enemy hasn't reached the previous waypoint, there's no point knocking it back further
@@ -142,9 +140,11 @@ namespace Enemies
             {
                 return;
             }
+
+            Vector3 position = transform.position;
             
-            Vector3 v = _target.position - transform.position;
-            Vector3 w = turretLocation - transform.position;
+            Vector3 v = _target.position - position;
+            Vector3 w = turretLocation - position;
             float multiplier = Vector3.Dot(v.normalized, w.normalized);
             
             // Actually deal knockback
@@ -164,6 +164,46 @@ namespace Enemies
             _enemy.speed.MultiplyModifier(speedMultiplier);
             yield return new WaitForSeconds(knockbackDuration);
             _enemy.speed.DivideModifier(speedMultiplier);
+        }
+        
+        /// <summary>
+        /// Gets the location of the enemy next frame
+        /// Useful to predict and target not where the enemy was, but where it is
+        /// </summary>
+        /// <returns>The location of the enemy next frame</returns>
+        public Vector3 GetNextLocation()
+        {
+            // If the enemy is moving backwards
+            if (_enemy.speed.GetTrueStat() < 0)
+            {
+                return GetBackwardsLocation();
+            }
+            
+            // Get the direction of the target, and the distance to move this frame
+            Vector3 position = transform.position;
+            Vector3 target = _target.position;
+            float distanceThisFrame = _enemy.speed.GetStat() * Time.deltaTime;
+
+            return Vector2.MoveTowards(position, target, distanceThisFrame);
+        }
+
+        private Vector3 GetBackwardsLocation()
+        {
+            // If the enemy has reached the start, we can't go backwards further
+            if (waypointIndex - 1 < 0)
+            {
+                return transform.position;
+            }
+
+            Vector3 currentPosition = transform.position;
+                
+            // Get the direction and move in that direction
+            Vector3 dir = Waypoints.points[waypointIndex - 1].position - currentPosition;
+            Vector3 translationAmount = dir.normalized * (Mathf.Abs(_enemy.speed.GetTrueStat()) * Time.deltaTime);
+            Vector3 nextPosition = currentPosition + translationAmount;
+        
+            // Return the value
+            return nextPosition;
         }
     }
 }
