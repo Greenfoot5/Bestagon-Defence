@@ -180,6 +180,7 @@ namespace Turrets
             Vector2 aimDir = ((Vector2)targetMovement.GetNextLocation() - (Vector2)transform.position).normalized;
             Vector3 up = partToRotate.up;
             Vector3 lookDir = Vector3.Lerp(up, aimDir, Time.deltaTime * rotationSpeed.GetStat());
+            lookDir = Vector2.MoveTowards(up, aimDir, Time.deltaTime * rotationSpeed.GetStat());
             transform.rotation *= Quaternion.FromToRotation(up, lookDir);
         }
 
