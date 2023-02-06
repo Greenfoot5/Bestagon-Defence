@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc10d9db80e244b291978caa6ba6ec7, type: 3}
   m_Name: SniperT3
   m_EditorClassIdentifier: 
-  moduleTier: 1
+  moduleTier: 3
   isUpgradableTo: 1
-  shooterRangePercentageChange: 2.4
+  shooterRangePercentageChange: 4.5
   shooterDamagePercentageChange: 3.75
-  shooterFireRatePercentageChange: -0.9
-  shooterRotationSpeedPercentageChange: -0.55
-  shooterBulletSpeedPercentageChange: 2.3
-  laserRangePercentageChange: 1
-  laserDamagePercentageChange: 1.2
-  laserRotationSpeedPercentageChange: -0.8
-  smasherRangePercentageChange: 2
-  smasherDamagePercentageChange: 2.2
+  shooterFireRatePercentageChange: -1.2
+  shooterRotationSpeedPercentageChange: -0.7
+  shooterBulletSpeedPercentageChange: 2.75
+  laserRangePercentageChange: 1.4
+  laserDamagePercentageChange: 1.8
+  laserRotationSpeedPercentageChange: -0.85
+  smasherRangePercentageChange: 2.6
+  smasherDamagePercentageChange: 3.5
   smasherFireRatePercentageChange: -0.87

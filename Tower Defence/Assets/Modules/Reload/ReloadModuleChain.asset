@@ -15,6 +15,7 @@ MonoBehaviour:
   moduleTiers:
   - {fileID: 11400000, guid: 860e38cd88f88405e855069168511325, type: 2}
   - {fileID: 11400000, guid: de6a89c9c04fb45c79560f650ee4de8d, type: 2}
+  - {fileID: 11400000, guid: 25970b02da5f346ee8fdbdbd84c86c4e, type: 2}
   unique: 0
   accentColor: {r: 0.42745098, g: 0.7372549, b: 0.37254903, a: 1}
   icon: {fileID: -4293644608448389267, guid: 16c979c866f439b4b988e7020b313794, type: 3}

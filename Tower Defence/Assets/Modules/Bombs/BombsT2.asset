@@ -13,16 +13,11 @@ MonoBehaviour:
   m_Name: BombsT2
   m_EditorClassIdentifier: 
   moduleTier: 2
-  accentColor: {r: 0.85490197, g: 0.14509805, b: 0.27058825, a: 1}
-  displayName: Bombs II
-  tagline: Quite explosive
-  icon: {fileID: 8811115329238573457, guid: 16c979c866f439b4b988e7020b313794, type: 3}
-  effectText: Bullets explode, with increased damage but are shot slower, with a
-    lower range
+  isUpgradableTo: 1
   explosionRadiusChange: 0.6
-  damagePercentageChange: 0.5
+  damagePercentageChange: 0.75
   fireRatePercentageChange: -0.15
   rangePercentageChange: -0.2
   speedPercentageChange: -0.15
-  smasherDamageChange: 0.15
-  smasherRangeChange: 0.15
+  smasherDamageChange: 0.2
+  smasherRangeChange: 0.2
