@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
@@ -8,6 +9,7 @@ using Unity.Services.Authentication;
 using Unity.Services.Core;
 using Unity.Services.RemoteConfig;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace _WIP
 {
@@ -43,15 +45,16 @@ namespace _WIP
 
         // RemoteConfigService.Instance.FetchConfigs() must be called with the attributes structs (empty or with custom attributes) to initiate the WebRequest.
 
-        private async void Awake()
+        private void Awake()
         {
             // initialize Unity's authentication and core services, however check for internet connection
             // in order to fail gracefully without throwing exception if connection does not exist
-            if (Utilities.CheckForInternetConnection()) 
-            {
-                Debug.Log("Setting up connection");
-                await InitializeRemoteConfigAsync(); 
-            } 
+            StartCoroutine(CheckInternetConnection((isConnected) => {
+                if (isConnected)
+                {
+                    SetupConnection();
+                }
+            } ));
             
             // Add a listener to apply settings when successfully retrieved:
             RemoteConfigService.Instance.FetchCompleted += ApplyRemoteSettings;
@@ -71,6 +74,18 @@ namespace _WIP
             //await RemoteConfigService.Instance.FetchConfigsAsync(new userAttributes(), new appAttributes());
             //await RemoteConfigService.Instance.FetchConfigsAsync(configType, new userAttributes(), new appAttributes());
             
+        }
+
+        private static IEnumerator CheckInternetConnection(Action<bool> action){
+            var www = new UnityWebRequest("https://exploitavoid.com");
+            yield return www;
+            action(www.error == null);
+        }
+
+        private static async void SetupConnection()
+        {
+            Debug.Log("Setting up connection");
+            await InitializeRemoteConfigAsync(); 
         }
 
         private static void ApplyRemoteSettings(ConfigResponse configResponse)
