@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Levels/Maps/Prototype/PrototypeLevel.unity
     guid: bcae845140dd848c9b9a5aa381e851c4
   - enabled: 0
-    path: Assets/Levels/Maps/Hexagon/HexagonLevel.unity
+    path: Assets/Levels/Maps/OutOfRotation/Hexagon/HexagonLevel.unity
     guid: 98f493f3b2159447eb37c3a6dadc667d
   - enabled: 1
     path: Assets/Levels/Maps/Polygon/PolygonLevel.unity

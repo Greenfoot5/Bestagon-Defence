@@ -18,6 +18,7 @@ namespace Enemies
         public int waypointIndex;
 
         private Enemy _enemy;
+        private GameObject _spriteRenderer;
         
         [SerializeField] 
         [Tooltip("The distance from enemy to waypoint before it's considered reached")]
@@ -41,6 +42,7 @@ namespace Enemies
             _target = Waypoints.points[waypointIndex];
 
             _enemy = GetComponent<Enemy>();
+            _spriteRenderer = _enemy.GetComponentInChildren<SpriteRenderer>().gameObject;
         }
 
         /// <summary>
@@ -75,7 +77,7 @@ namespace Enemies
             }
             
             // Attempt at rotation
-            transform.up = (location - position).normalized;
+            _spriteRenderer.transform.up = (location - position).normalized;
         }
     
         /// <summary>
