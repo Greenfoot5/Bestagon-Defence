@@ -68,12 +68,12 @@ namespace Modules.Sniper
                     turret.damage.AddModifier(shooterDamagePercentageChange);
                     turret.range.AddModifier(shooterRangePercentageChange);
                     turret.fireRate.AddModifier(shooterFireRatePercentageChange);
-                    shooter.rotationSpeed.AddModifier(shooterRotationSpeedPercentageChange);
+                    shooter.rotationFrequency.AddModifier(shooterRotationSpeedPercentageChange);
                     break;
                 // Modify the Laser's stats
                 case Laser laser:
                     turret.range.AddModifier(laserRangePercentageChange);
-                    laser.rotationSpeed.AddModifier(laserRotationSpeedPercentageChange);
+                    laser.rotationFrequency.AddModifier(laserRotationSpeedPercentageChange);
                     turret.damage.AddModifier(laserDamagePercentageChange);
                     break;
                 // Modify the Smasher's stats
@@ -101,12 +101,12 @@ namespace Modules.Sniper
                     turret.damage.TakeModifier(shooterDamagePercentageChange);
                     turret.range.TakeModifier(shooterRangePercentageChange);
                     turret.fireRate.TakeModifier(shooterFireRatePercentageChange);
-                    shooter.rotationSpeed.TakeModifier(shooterRotationSpeedPercentageChange);
+                    shooter.rotationFrequency.TakeModifier(shooterRotationSpeedPercentageChange);
                     break;
                 // Modify the Laser's stats
                 case Laser laser:
                     turret.range.TakeModifier(laserRangePercentageChange);
-                    laser.rotationSpeed.TakeModifier(laserRotationSpeedPercentageChange);
+                    laser.rotationFrequency.TakeModifier(laserRotationSpeedPercentageChange);
                     turret.damage.TakeModifier(laserDamagePercentageChange);
                     break;
                 // Modify the Smasher's stats

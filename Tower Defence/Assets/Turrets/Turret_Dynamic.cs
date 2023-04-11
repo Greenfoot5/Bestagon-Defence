@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Abstract.Data;
+using Abstract.InterpolatedMovement;
 using Enemies;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Turrets
 {
@@ -37,11 +39,20 @@ namespace Turrets
         protected Transform firePoint;
 
         // Rotation
+        [FormerlySerializedAs("rotationSpeed")]
         [Tooltip("How fast the turret rotates towards it's target")]
-        public UpgradableStat rotationSpeed = new(3f);
+        public UpgradableStat rotationFrequency = new(3f);
+        [Tooltip("Damping Coefficient - Modify how quickly the turret stops \"wobbling\"")]
+        [SerializeField]
+        private UpgradableStat rotationZeta;
+        [Tooltip("How fast the turret responds to rotation change")]
+        [SerializeField]
+        private UpgradableStat rotationInitialResponse;
         [Tooltip("The Transform to perform any rotations on")]
         [SerializeField]
         protected Transform partToRotate;
+
+        private SecondOrderDynamics rotationDynamics;
 
 
         /// <summary>
@@ -49,6 +60,8 @@ namespace Turrets
         /// </summary>
         private void Start()
         {
+            rotationDynamics = new SecondOrderDynamics(rotationFrequency.GetStat(), rotationZeta.GetStat(),
+                rotationInitialResponse.GetStat(), partToRotate.up);
             // Start finding targets
             StartCoroutine(TargetCoroutine());
         }
@@ -179,8 +192,8 @@ namespace Turrets
             // Gets the rotation the turret need to end up at, and lerp each frame towards that
             Vector2 aimDir = ((Vector2)targetMovement.GetNextLocation() - (Vector2)transform.position).normalized;
             Vector3 up = partToRotate.up;
-            Vector3 lookDir = Vector3.Lerp(up, aimDir, Time.deltaTime * rotationSpeed.GetStat());
-            lookDir = Vector2.MoveTowards(up, aimDir, Time.deltaTime * rotationSpeed.GetStat());
+            Vector3 lookDir = Vector3.Lerp(up, aimDir, Time.deltaTime * rotationFrequency.GetStat());
+            lookDir = rotationDynamics.Update(Time.deltaTime, aimDir, up);
             transform.rotation *= Quaternion.FromToRotation(up, lookDir);
         }
 

@@ -10,7 +10,9 @@ namespace Editor.Turrets
         private SerializedProperty _targetingMethod;
         private SerializedProperty _aggressiveRetargeting;
 
-        private SerializedProperty _rotationSpeed;
+        private SerializedProperty _rotationFrequency;
+        private SerializedProperty _rotationZeta;
+        private SerializedProperty _rotationInitialResponse;
         private SerializedProperty _partToRotate;
 
         private SerializedProperty _firePoint;
@@ -22,7 +24,9 @@ namespace Editor.Turrets
             _targetingMethod = serializedObject.FindProperty("targetingMethod");
             _aggressiveRetargeting = serializedObject.FindProperty("aggressiveRetargeting");
 
-            _rotationSpeed = serializedObject.FindProperty("rotationSpeed");
+            _rotationFrequency = serializedObject.FindProperty("rotationFrequency");
+            _rotationZeta = serializedObject.FindProperty("rotationZeta");
+            _rotationInitialResponse = serializedObject.FindProperty("rotationInitialResponse");
             _partToRotate = serializedObject.FindProperty("partToRotate");
 
             _firePoint = serializedObject.FindProperty("firePoint");
@@ -42,9 +46,12 @@ namespace Editor.Turrets
 
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("Rotation", EditorStyles.boldLabel);
-
-            EditorGUILayout.PropertyField(_rotationSpeed);
+            
             EditorGUILayout.PropertyField(_partToRotate);
+            
+            EditorGUILayout.PropertyField(_rotationFrequency);
+            EditorGUILayout.PropertyField(_rotationZeta);
+            EditorGUILayout.PropertyField(_rotationInitialResponse);
 
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("Reference", EditorStyles.boldLabel);

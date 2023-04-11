@@ -33,7 +33,7 @@ namespace Modules.Tracker
         /// <param name="turret">The turret to affect</param>
         public override void AddModule(Turret turret)
         {
-            ((DynamicTurret)turret).rotationSpeed.AddModifier(rotationSpeedPercentageChange);
+            ((DynamicTurret)turret).rotationFrequency.AddModifier(rotationSpeedPercentageChange);
             turret.damage.AddModifier(damagePercentageChange);
             if (turret.GetType() == typeof(Gunner))
                 ((Gunner)turret).maxFireRate.AddModifier(gunnerFireRateCapChange);
@@ -45,7 +45,7 @@ namespace Modules.Tracker
         /// <param name="turret">The turret to affect</param>
         public override void RemoveModule(Turret turret)
         {
-            ((DynamicTurret)turret).rotationSpeed.TakeModifier(rotationSpeedPercentageChange);
+            ((DynamicTurret)turret).rotationFrequency.TakeModifier(rotationSpeedPercentageChange);
             turret.damage.TakeModifier(damagePercentageChange);
             if (turret.GetType() == typeof(Gunner))
                 ((Gunner)turret).maxFireRate.TakeModifier(gunnerFireRateCapChange);
