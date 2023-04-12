@@ -36,8 +36,8 @@ MonoBehaviour:
   moduleHandlers:
   - chain: {fileID: 11400000, guid: a22c6ee3e44dc4c6c822466f441d40cb, type: 2}
     tier: 3
-  - chain: {fileID: 11400000, guid: d40d23008188f4636ba917575d70acdc, type: 2}
-    tier: 5
+  - chain: {fileID: 11400000, guid: 808825b7d51f74137b9b191403ea8738, type: 2}
+    tier: 2
   references:
     version: 2
     RefIds: []
