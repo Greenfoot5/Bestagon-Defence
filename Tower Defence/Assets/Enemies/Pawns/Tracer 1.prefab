@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: -6803694265742944117}
   - component: {fileID: 768858065416596564}
   m_Layer: 6
-  m_Name: FastEnemy 1
+  m_Name: Tracer 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -198,6 +198,7 @@ MonoBehaviour:
   endPathMoney: 6
   leftBar: {fileID: 6788293022279931816}
   rightBar: {fileID: 98331125827794481}
+  rotationRoot: {fileID: 5812853462412729337}
   deathEffect: {fileID: 710779272522642178, guid: d286b443e8ade4d4cb1ec3e2a41a94f8, type: 3}
   startingAbilities: []
   iconLayout: {fileID: 799333487214257594}
