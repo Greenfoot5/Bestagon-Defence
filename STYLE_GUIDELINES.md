@@ -2,6 +2,9 @@
 
 Guidelines to generate consistency with project layout, naming and coding style.
 
+You can view the most up to date version here: https://greenfoot5.notion.site/Style-Guide-6c0d5813c8684ee49339614d467bcd91.
+If you notice any inconsistencies with this version and the one linked, please contact us.
+
 ## 1. Project Structure
 
 The directory structure style of a project should be considered law. Asset naming conventions and content directory structure go hand in hand, and a violation of either causes unneeded chaos.
@@ -536,15 +539,17 @@ Prop Examples
 
 When naming an asset use these tables to determine the prefix and suffix to use with an asset’s [Base Asset Name](about:blank#base-asset-name).
 
-| Asset Type           | Prefix | Suffix | Notes |
-|----------------------|--------|--------|-------|
-| Texture              | T_     |        |       |
-| Shader               | S_     |        |       |
-| Material             | M_     |        |       |
-| Font                 | Font_  |        |       |
-| Animation Clip       | A_     |        |       |
-| Animation Controller | AC_    |        |       |
-| Particle System      | PS_    |        |       |
+| Asset Type                           | Prefix | Suffix        | Notes |
+|--------------------------------------|--------|---------------|-------|
+| Texture                              | T_     |               |       |
+| Shader                               | S_     |               |       |
+| Material                             | M_     |               |       |
+| Font                                 | Font_  |               |       |
+| Animation Clip                       | A_     |               |       |
+| Animation Controller                 | AC_    |               |       |
+| Particle System                      | PS_    |               |       |
+| Level Data                           | LD_    |               |       |
+| Curved Variable (used in level data) | LDV_   | _\<levelname> |       |
 
 ## 4. Asset Workflows
 
