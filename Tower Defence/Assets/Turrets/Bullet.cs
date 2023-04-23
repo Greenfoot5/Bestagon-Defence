@@ -3,7 +3,6 @@ using Abstract.Data;
 using Enemies;
 using Modules;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Turrets
 {

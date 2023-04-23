@@ -5,7 +5,6 @@ using Turrets.Lancer;
 using Turrets.Shooter;
 using Turrets.Smasher;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Modules.Bombs
 {
