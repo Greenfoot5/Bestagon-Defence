@@ -19,13 +19,11 @@ namespace UI
             foreach (TMP_Text t in textObjects)
             {
                 float fontSize = t.fontSize;
-                Debug.Log(fontSize);
                 if (fontSize < minSize && fontSize > t.minWidth)
                 {
                     minSize = fontSize;
                 }
             }
-            Debug.Log(minSize);
 
             // Iterate over all other text objects to set the point size
             foreach (TMP_Text t in textObjects)
