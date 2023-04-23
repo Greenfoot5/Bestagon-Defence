@@ -3079,9 +3079,9 @@ MonoBehaviour:
       data:
         m_Localized:
           m_TableReference:
-            m_TableCollectionName: GUID:8d753a620fec74fffb30bd1439f06f78
+            m_TableCollectionName: GUID:01db83deda24d4c42a2c290e89405b6a
           m_TableEntryReference:
-            m_KeyId: 5993328009216
+            m_KeyId: 4863122464768
             m_Key: 
           m_FallbackState: 0
           m_WaitForCompletion: 0
@@ -4193,6 +4193,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
