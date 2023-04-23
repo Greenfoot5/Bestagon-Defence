@@ -1798,6 +1798,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -2556,6 +2557,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -2651,7 +2653,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 69.5
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4863,6 +4865,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -5454,6 +5457,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -5499,9 +5503,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2239040084064163265, guid: f9bbc79d08b642b4ea263b4f9aad5cce, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -54
+    - target: {fileID: 2453284202025039313, guid: f9bbc79d08b642b4ea263b4f9aad5cce, type: 3}
+      propertyPath: _gradient.atime2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2453284202025039313, guid: f9bbc79d08b642b4ea263b4f9aad5cce, type: 3}
+      propertyPath: _gradient.ctime3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2453284202025039313, guid: f9bbc79d08b642b4ea263b4f9aad5cce, type: 3}
+      propertyPath: _gradient.key2.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2453284202025039313, guid: f9bbc79d08b642b4ea263b4f9aad5cce, type: 3}
+      propertyPath: _gradient.key3.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2453284202025039313, guid: f9bbc79d08b642b4ea263b4f9aad5cce, type: 3}
+      propertyPath: _gradient.key3.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2453284202025039313, guid: f9bbc79d08b642b4ea263b4f9aad5cce, type: 3}
+      propertyPath: _gradient.key3.r
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7033422843349886297, guid: f9bbc79d08b642b4ea263b4f9aad5cce, type: 3}
       propertyPath: m_Name

@@ -100,7 +100,7 @@ namespace UI.Transition
             Close();
 
             yield return new WaitForSecondsRealtime(TransitionDuration);
-
+            
             _loadingScene = newSceneName;
             SceneManager.LoadScene(newSceneName);
         }
@@ -123,6 +123,9 @@ namespace UI.Transition
         /// <param name="newSceneName">The scene to load</param>
         public void LoadScene(string newSceneName)
         {
+            // Make sure time is back to normal
+            Time.timeScale = 1f;
+            
             // Get the location of the press that started the scene load
             Vector2 pointer = _camera.ScreenToWorldPoint(Pointer.current.position.ReadValue());
 
@@ -131,7 +134,7 @@ namespace UI.Transition
 
             innerRing.position = pointer;
             outerRing.position = pointer;
-
+            
             // Update the bottom text of the transition to match the new scene name
             var entryReference = (TableEntryReference)newSceneName;
             sceneName.text =
