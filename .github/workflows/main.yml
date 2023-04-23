@@ -46,8 +46,8 @@ jobs:
 
       - uses: actions/upload-artifact@v2
         with:
-          name: Build-${{ matrix.targetPlatform }}
-          path: 'Tower Defence/build/${{ matrix.targetPlatform }}'
+          name: ${{ matrix.targetPlatform }}
+          path: 'build'
 
       # Return License
 #      - uses: game-ci/unity-return-license@v1
