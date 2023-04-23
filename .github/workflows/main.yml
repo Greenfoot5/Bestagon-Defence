@@ -50,8 +50,8 @@ jobs:
           path: 'Tower Defence/build/${{ matrix.targetPlatform }}'
 
       # Return License
-      - uses: game-ci/unity-return-license@v1
-        if: always()
+#      - uses: game-ci/unity-return-license@v1
+#        if: always()
 
       - uses: paulhatch/semantic-version@v4.0.2
         with:
