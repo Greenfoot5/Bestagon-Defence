@@ -25,6 +25,10 @@ namespace Abstract.Saving
                 sd.LoadFromJson(json);
                 LocalizationSettings.SelectedLocale = sd.locale;
             }
+            else
+            {
+                FileManager.WriteToFile("Settings.dat", new SaveSettings().ToJson());
+            }
         }
         
         /// <summary>
