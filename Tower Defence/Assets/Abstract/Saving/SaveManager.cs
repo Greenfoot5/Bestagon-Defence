@@ -91,8 +91,6 @@ namespace Abstract.Saving
             sd.LoadFromJson(json);
             
             saveable.LoadFromSaveData(sd);
-
-            Debug.Log("Loading " + sceneName + " complete");
         }
 
         public static bool SaveExists(string sceneName)
