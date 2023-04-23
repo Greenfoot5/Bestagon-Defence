@@ -74,11 +74,12 @@ jobs:
           # If this is set to true, *every* commit will be treated as a new version.
           bump_each_commit: false
       
-      - name: Discord Webhook Action
-        uses: tsickert/discord-webhook@v5.3.0
-        with:
-          webhook-url: ${{ secrets.NIGHTLY_WEBHOOK_URL }}
-          content: "Test"
-          embed-title: "New Nightly Build!"
-          embed-description: "https://github.com/Greenfoot5/Bestagon-Defence/actions/runs/$GITHUB_RUN_ID"
+  SendNotification:
+    steps:
+      uses: tsickert/discord-webhook@v5.3.0
+      with:
+        webhook-url: ${{ secrets.NIGHTLY_WEBHOOK_URL }}
+        content: "Test"
+        embed-title: "New Nightly Build!"
+        embed-description: "https://github.com/Greenfoot5/Bestagon-Defence/actions/runs/${{ github.run_id }}"
           
