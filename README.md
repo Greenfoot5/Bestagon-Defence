@@ -1,6 +1,6 @@
 ![License: Attribution 4.0 International](https://img.shields.io/badge/license-Attribution%204.0%20International-lightgrey)
 ![Support Platforms: Android | MacOS/OS X | Windows](https://img.shields.io/badge/platform-Android_|_MacOS/OSX_|_Windows-lightgrey)
-![Unity Version: 2022.2.14f1](https://img.shields.io/static/v1?logo=unity&label=Unity%20Version&message=2022.2.14f1&color=blue)
+![Unity Version: 2022.2.16f1](https://img.shields.io/static/v1?logo=unity&label=Unity%20Version&message=2022.2.16f1&color=blue)
 
 ![Bestagon Defence](Tower%20Defence/Assets/UI/Branding/Bestagon_Wordmark.png)
 
