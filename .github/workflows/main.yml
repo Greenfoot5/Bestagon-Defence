@@ -85,22 +85,30 @@ jobs:
 #          bump_each_commit: false
       - id: outputResult
         run: echo "${{ matrix.targetPlatform }}=${{ job.status }}" >> $GITHUB_OUTPUT
-      
-  sendNotification:
+  
+  sendSuccessNotification:
     runs-on: ubuntu-latest
-    needs: 
-    - needs.buildForAllSupportedPlatforms
-    - needs.buildForAllSupportedPlatforms.result
+    needs:
+      - buildForAllSupportedPlatforms
+      - buildForAllSupportedPlatforms.result
+    if: ${{ success() }}
     steps:
       - uses: tsickert/discord-webhook@v5.3.0
         with:
           webhook-url: ${{ secrets.NIGHTLY_WEBHOOK_URL }}
           content: "Build Success"
-          embed-title: "New Nightly Build Available!" 
+          embed-title: "New Nightly Build Available!"
           embed-description: "[You can get the new builds here](https://github.com/Greenfoot5/Bestagon-Defence/actions/runs/${{ github.run_id }})
           \n\n*You may need to scroll down to the bottom"
           embed-color: 1546855
-        if: ${{ success() }}
+      
+  sendFailureNotification:
+    runs-on: ubuntu-latest
+    needs: 
+    - buildForAllSupportedPlatforms
+    - buildForAllSupportedPlatforms.result
+    if: ${{ failure() }}
+    steps:
       - uses: tsickert/discord-webhook@v5.3.0
         with:
           webhook-url: ${{ secrets.NIGHTLY_WEBHOOK_URL }}
@@ -109,5 +117,4 @@ jobs:
           embed-description: "[You can find the results here](https://github.com/Greenfoot5/Bestagon-Defence/actions/runs/${{ github.run_id }})
           \n\n*You may need to scroll down to the bottom"
           embed-color: 10949957
-        if: ${{ failure() }}
       
