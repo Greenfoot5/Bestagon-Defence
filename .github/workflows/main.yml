@@ -102,7 +102,7 @@ jobs:
           content: "Build Success"
           embed-title: "New Nightly Build Available!"
           embed-description: "[You can get the new builds here](https://github.com/Greenfoot5/Bestagon-Defence/actions/runs/${{ github.run_id }})
-          \n\n*You may need to scroll down to the bottom"
+          \n\n*You may need to scroll down to the bottom*"
           embed-color: 1546855
       
   sendFailureNotification:
@@ -116,7 +116,6 @@ jobs:
           webhook-url: ${{ secrets.NIGHTLY_WEBHOOK_URL }}
           content: "Build Failure"
           embed-title: "New Nightly Build Failed!"
-          embed-description: "[You can find the results here](https://github.com/Greenfoot5/Bestagon-Defence/actions/runs/${{ github.run_id }})
-          \n\n*You may need to scroll down to the bottom"
+          embed-description: "[You can find the results here](https://github.com/Greenfoot5/Bestagon-Defence/actions/runs/${{ github.run_id }})"
           embed-color: 10949957
       
