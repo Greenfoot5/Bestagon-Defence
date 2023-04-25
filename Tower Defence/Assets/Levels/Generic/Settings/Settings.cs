@@ -100,5 +100,10 @@ namespace Levels.Generic.Settings
         {
             LocalizationSettings.SelectedLocale = saveData.locale;
         }
+
+        public void PrivacyPolicy()
+        {
+            Application.OpenURL("https://bestagon.alchemix.dev/legal/privacy.html");
+        }
     }
 }
