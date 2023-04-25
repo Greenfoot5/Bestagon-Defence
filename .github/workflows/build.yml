@@ -16,20 +16,20 @@ jobs:
       max-parallel: 3
       matrix:
         targetPlatform:
-          - StandaloneOSX # Build a macOS standalone (Intel 64-bit).
+          #- StandaloneOSX # Build a macOS standalone (Intel 64-bit).
           - StandaloneWindows # Build a Windows standalone.
           - StandaloneWindows64 # Build a Windows 64-bit standalone.
           - StandaloneLinux64 # Build a Linux 64-bit standalone.
           #- iOS # Build an iOS player.
-          - Android # Build an Android .apk standalone app.
+          #- Android # Build an Android .apk standalone app.
           #- WebGL # WebGL.
     outputs:
-      StandaloneOSX: ${{ steps.outputResult.outputs.StandaloneOSX }}
+      #StandaloneOSX: ${{ steps.outputResult.outputs.StandaloneOSX }}
       StandaloneWindows: ${{ steps.outputResult.outputs.StandaloneWindows }}
       StandaloneWindows64: ${{ steps.outputResult.outputs.StandaloneWindows64 }}
       StandaloneLinux64: ${{ steps.outputResult.outputs.StandaloneLinux64 }}
       #iOS: ${{ steps.outputResult.outputs.iOS }}
-      Android: ${{ steps.outputResult.outputs.Android }}
+      #Android: ${{ steps.outputResult.outputs.Android }}
       #WebGL: ${{ steps.outputResult.outputs.WebGL }}
 
     steps:
