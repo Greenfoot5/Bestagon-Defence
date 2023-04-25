@@ -44,7 +44,10 @@ namespace Enemies
         public Image leftBar;
         [Tooltip("The right health bar")]
         public Image rightBar;
-        
+
+        [Space(20f)]
+        [Tooltip("The root game object to rotate to change the enemy's looking direction")]
+        public GameObject rotationRoot;
         [Tooltip("The particle effect prefab to spawn when the enemy dies")]
         public GameObject deathEffect;
         
@@ -57,7 +60,7 @@ namespace Enemies
         [Header("Bosses")]
         [Tooltip("If the enemy is a boss")]
         public bool isBoss;
-        
+
         // Unique Effects/Immunities
         // Effects that can only be applied once are added and removed at runtime
         // as they are immune to getting the effect while they have it

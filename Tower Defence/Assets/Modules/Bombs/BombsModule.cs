@@ -1,6 +1,7 @@
 using System;
 using Turrets;
 using Turrets.Gunner;
+using Turrets.Lancer;
 using Turrets.Shooter;
 using Turrets.Smasher;
 using UnityEngine;
@@ -13,9 +14,9 @@ namespace Modules.Bombs
     [CreateAssetMenu(fileName = "BombsT0", menuName = "Modules/Bombs")]
     public class BombsModule : Module
     {
-        protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Gunner), typeof(Smasher)};
+        protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Gunner), typeof(Smasher), typeof(Lancer)};
         
-        [Header("Shooter & Gunner")]
+        [Header("Shooter, Gunner & Lancer")]
         [Tooltip("What percentage to modify the explosion radius of bullets by")]
         [SerializeField]
         private float explosionRadiusChange;
@@ -31,6 +32,11 @@ namespace Modules.Bombs
         [Tooltip("What percentage to modify the speed of the bullet by")]
         [SerializeField]
         private float speedPercentageChange;
+        
+        [Header("Lancer Only")]
+        [Tooltip("The percentage to modify the knockback of the bullet")]
+        [SerializeField]
+        private float knockbackPercentageChange;
 
         [Header("Smasher")]
         [SerializeField]
@@ -46,7 +52,7 @@ namespace Modules.Bombs
         /// <param name="turret">The turret to change stats for</param>
         public override void AddModule(Turret turret)
         {
-            if (turret.GetType() == typeof(Gunner))
+            if (turret.GetType() == typeof(Smasher))
             {
                 turret.damage.AddModifier(smasherDamageChange);
                 turret.range.AddModifier(smasherRangeChange);
@@ -65,7 +71,7 @@ namespace Modules.Bombs
         /// <param name="turret">The turret to revert stat changes for</param>
         public override void RemoveModule(Turret turret)
         {
-            if (turret.GetType() == typeof(Gunner))
+            if (turret.GetType() == typeof(Smasher))
             {
                 turret.damage.TakeModifier(smasherDamageChange);
                 turret.range.TakeModifier(smasherRangeChange);
@@ -86,6 +92,11 @@ namespace Modules.Bombs
             bullet.explosionRadius.AddModifier(explosionRadiusChange);
             bullet.damage.AddModifier(damagePercentageChange);
             bullet.speed.AddModifier(speedPercentageChange);
+            bullet.knockbackAmount.AddModifier(knockbackPercentageChange);
+            if (bullet.useLocation) return;
+            
+            bullet.useLocation = true;
+            bullet.targetLocation = bullet.target.position;
         }
     }
 }

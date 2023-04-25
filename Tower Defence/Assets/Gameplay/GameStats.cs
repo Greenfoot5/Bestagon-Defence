@@ -9,7 +9,7 @@ namespace Gameplay
     /// </summary>
     public class GameStats : MonoBehaviour
     {
-        private static bool active = false;
+        private static bool _active;
 
         public static int money;
         [Tooltip("How much money the player starts the level with")]
@@ -53,7 +53,7 @@ namespace Gameplay
         /// </summary>
         private void Awake()
         {
-            if (!active)
+            if (!_active)
             {
                 money = startMoney;
                 _lives = startLives;
@@ -70,7 +70,7 @@ namespace Gameplay
         /// </summary>
         public static void ClearStats()
         {
-            active = false;
+            _active = false;
         }
     }
 

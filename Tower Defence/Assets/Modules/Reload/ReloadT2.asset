@@ -13,10 +13,5 @@ MonoBehaviour:
   m_Name: ReloadT2
   m_EditorClassIdentifier: Assembly-CSharp:Modules.Reload:Reload
   moduleTier: 2
-  upgradable: 1
-  accentColor: {r: 0.42745098, g: 0.7372549, b: 0.37254903, a: 1}
-  displayName: Reload II
-  tagline: Again!
-  icon: {fileID: -4293644608448389267, guid: 16c979c866f439b4b988e7020b313794, type: 3}
-  effectText: Attacks after a 10th of the attack cooldown
-  reloadChance: 0.15
+  isUpgradableTo: 1
+  reloadChance: 0.19

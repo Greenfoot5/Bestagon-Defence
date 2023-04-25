@@ -41,10 +41,15 @@ namespace Abstract.Saving
         {
             string fullPath = Path.Combine(Application.persistentDataPath, fileName);
 
-            try
-            {
+            try {
                 result = File.ReadAllText(fullPath);
                 return true;
+            }
+            catch (FileNotFoundException)
+            {
+                Debug.LogWarning($"Could not find file at {fullPath}");
+                result = "";
+                return false;
             }
             catch (Exception e)
             {

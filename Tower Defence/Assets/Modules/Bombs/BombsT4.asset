@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8062262321bc543138867258ea3b19a7, type: 3}
+  m_Name: BombsT4
+  m_EditorClassIdentifier: 
+  moduleTier: 4
+  isUpgradableTo: 1
+  explosionRadiusChange: 2.4
+  damagePercentageChange: 3.75
+  fireRatePercentageChange: -0.6
+  rangePercentageChange: -0.45
+  speedPercentageChange: -0.5
+  knockbackPercentageChange: -0.5
+  smasherDamageChange: 0.85
+  smasherRangeChange: 0.85

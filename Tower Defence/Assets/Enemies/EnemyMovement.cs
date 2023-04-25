@@ -75,7 +75,7 @@ namespace Enemies
             }
             
             // Attempt at rotation
-            transform.up = (location - position).normalized;
+            _enemy.rotationRoot.transform.up = (location - position).normalized;
         }
     
         /// <summary>

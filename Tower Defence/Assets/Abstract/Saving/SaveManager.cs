@@ -25,6 +25,10 @@ namespace Abstract.Saving
                 sd.LoadFromJson(json);
                 LocalizationSettings.SelectedLocale = sd.locale;
             }
+            else
+            {
+                FileManager.WriteToFile("Settings.dat", new SaveSettings().ToJson());
+            }
         }
         
         /// <summary>
@@ -87,8 +91,6 @@ namespace Abstract.Saving
             sd.LoadFromJson(json);
             
             saveable.LoadFromSaveData(sd);
-
-            Debug.Log("Loading " + sceneName + " complete");
         }
 
         public static bool SaveExists(string sceneName)

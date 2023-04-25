@@ -23,41 +23,48 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-en-GB
     - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6dfeb8d5a453b4cd9bd33b00ec262319
     m_Address: Modules_en-GB
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en-GB
     - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 75e86f0189cce46fc8d947fd6595076b
     m_Address: Transition_en-GB
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en-GB
     - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d8c982dee487644f9ab5c3e516287f72
     m_Address: Tutorial_en-GB
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en-GB
     - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 69ac90c680dde4db686a529636110b77
     m_Address: LevelSelect_en-GB
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en-GB
     - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e5de750e69e374891b56c01bb6bd3ce4
     m_Address: Turrets_en-GB
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en-GB
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0dfd305ecbb3344ad9bfd240ced7d43b
     m_Address: Settings_en-GB
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en-GB
     - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 6e9e55f6df8a74e608f92b8e3a1f0b77, type: 2}
   m_SchemaSet:

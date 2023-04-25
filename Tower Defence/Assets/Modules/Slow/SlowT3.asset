@@ -13,14 +13,9 @@ MonoBehaviour:
   m_Name: SlowT3
   m_EditorClassIdentifier: 
   moduleTier: 3
-  upgradable: 1
-  accentColor: {r: 0.18039216, g: 0.78431374, b: 0.8980392, a: 1}
-  displayName: Slow III
-  tagline: Subzero
-  icon: {fileID: -3843445929337379658, guid: 16c979c866f439b4b988e7020b313794, type: 3}
-  effectText: Slows enemies per hit by 15% for 3.5s
+  isUpgradableTo: 1
   slowPercentage: 0.15
   duration: 3.5
-  gunnerSpinUpChange: -0.25
-  gunnerSpinDownChange: 0.17
+  gunnerSpinUpChange: -0.3
+  gunnerSpinDownChange: 0.25
   smasherRangeChange: -0.3

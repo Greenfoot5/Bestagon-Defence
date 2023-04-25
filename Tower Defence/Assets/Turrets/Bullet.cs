@@ -12,9 +12,12 @@ namespace Turrets
     public class Bullet : MonoBehaviour
     {
         private Turret _source;
-        private Transform _target;
-        private Vector3 _targetLocation;
-        private bool _useLocation;
+        [HideInInspector]
+        public Transform target;
+        [HideInInspector]
+        public Vector3 targetLocation;
+        [HideInInspector]
+        public bool useLocation;
 
         [Header("Types")]
         [Tooltip("Hits all enemies on path, but does not destroy itself")]
@@ -44,9 +47,9 @@ namespace Turrets
         /// <param name="turret">The turret telling the bullet to seek a target</param>
         public void Seek(Transform newTarget, Turret turret)
         {
-            _target = newTarget;
+            target = newTarget;
             _source = turret;
-            _useLocation = false;
+            useLocation = false;
         }
         
         /// <summary>
@@ -56,9 +59,9 @@ namespace Turrets
         /// <param name="turret">The turret telling the bullet to seek the location</param>
         public void Seek(Vector3 location, Turret turret)
         {
-            _targetLocation = location;
+            targetLocation = location;
             _source = turret;
-            _useLocation = true;
+            useLocation = true;
         }
 
         /// <summary>
@@ -67,17 +70,17 @@ namespace Turrets
         private void Update()
         {
             // Check the bullet still have a target to move towards
-            if (_target == null && !_useLocation)
+            if (target == null && !useLocation)
             {
                 Destroy(gameObject);
             }
-            else if (_useLocation)
+            else if (useLocation)
             {
-                SeekTarget(_targetLocation, false);
+                SeekTarget(targetLocation, false);
             }
             else
             {
-                SeekTarget(_target.position, true);
+                SeekTarget(target.position, true);
             }
         }
         
@@ -131,7 +134,7 @@ namespace Turrets
                 }
                 else
                 {
-                    Damage(_target);
+                    Damage(target);
                 }
             }
 
@@ -214,7 +217,7 @@ namespace Turrets
             _hitEnemies.Add(col.gameObject.GetInstanceID());
 
                 // We don't want to hit the target twice
-            if (_target != null && _target == col.transform) return;
+            if (target != null && target == col.transform) return;
 
             if (col.transform.CompareTag("Enemy"))
                 Damage(col.gameObject.GetComponent<Enemy>());

@@ -13,15 +13,11 @@ MonoBehaviour:
   m_Name: VelocityT2
   m_EditorClassIdentifier: 
   moduleTier: 2
-  accentColor: {r: 0.39215687, g: 0.5019608, b: 0.9411765, a: 1}
-  displayName: Velocity II
-  tagline: Aerodynamics
-  icon: {fileID: -2198499569358823354, guid: 16c979c866f439b4b988e7020b313794, type: 3}
-  effectText: Attacks move faster
-  rangeChange: 0.12
-  fireRateChange: 0.12
-  bulletSpeedChange: 0.6
-  smasherDamageChange: 0.15
-  smasherRangeChange: 0.15
-  smasherFireRateChange: 0.15
+  isUpgradableTo: 1
+  bulletSpeedChange: 0.55
+  fireRateChange: 0.15
+  rangeChange: 0.15
   lancerBulletRangeChange: 0.2
+  smasherDamageChange: 0.2
+  smasherFireRateChange: 0.2
+  smasherRangeChange: 0.2
