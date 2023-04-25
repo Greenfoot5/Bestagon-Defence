@@ -23,8 +23,8 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Levels/Maps/OutOfRotation/Hexagon/HexagonLevel.unity
     guid: 98f493f3b2159447eb37c3a6dadc667d
-  - enabled: 1
-    path: Assets/Levels/Maps/Polygon/PolygonLevel.unity
+  - enabled: 0
+    path: Assets/Levels/Maps/OutOfRotation/Polygon/PolygonLevel.unity
     guid: 9eb7a85ac13264cdba210105834fbd89
   - enabled: 1
     path: Assets/Levels/Maps/Loop/LoopLevel.unity
