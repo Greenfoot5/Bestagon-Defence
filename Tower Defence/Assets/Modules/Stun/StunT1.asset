@@ -13,13 +13,10 @@ MonoBehaviour:
   m_Name: StunT1
   m_EditorClassIdentifier: 
   moduleTier: 1
-  upgradable: 1
-  accentColor: {r: 0.10980392, g: 0.83137256, b: 0.5882353, a: 1}
-  displayName: Stun I
-  tagline: Bzzzzzzzzt
-  icon: {fileID: 1892315637792861288, guid: 16c979c866f439b4b988e7020b313794, type: 3}
-  effectText: small chance for quick stun, for both enemy and turret
+  isUpgradableTo: 1
   enemyStunChance: 0.07
   enemyDuration: 0.25
   turretStunChance: 0.04
   turretDuration: 0.75
+  stunEffect: {fileID: 2228279973635050725, guid: 17e02d21b8d304dbeba24896a568f844, type: 3}
+  stunEndEffect: {fileID: 2228279973635050725, guid: c449cd9ba6b2e4fbcbffbb913577c635, type: 3}

@@ -20,11 +20,11 @@ namespace Turrets.Gunner
         private float _oldIncrease = 1f;
         
         [Tooltip("That amount to increase the fireRate by each attack")]
-        public UpgradableStat spinMultiplier = new UpgradableStat(1.1f);
+        public UpgradableStat spinMultiplier = new(1.1f);
         [Tooltip("How much to divide the fire rate when not attacking")]
-        public UpgradableStat spinCooldown = new UpgradableStat(1.08f);
+        public UpgradableStat spinCooldown = new(1.08f);
         [Tooltip("The maximum fire rate increase the gunner can reach without modules")]
-        public UpgradableStat maxFireRate = new UpgradableStat(6.5f);
+        public UpgradableStat maxFireRate = new(6.5f);
 
         /// <summary>
         /// Rotates towards the target if the turret have one.
@@ -32,6 +32,14 @@ namespace Turrets.Gunner
         /// </summary>
         private void Update()
         {
+            // If there's no fire rate, the turret shouldn't do anything
+            // However, it should rapidly cool down
+            if (fireRate.GetStat() == 0)
+            {
+                UpdateFireRate(false);
+                return;
+            }
+            
             // Don't do anything if the turret doesn't have a target
             if (target == null)
             {
@@ -123,13 +131,11 @@ namespace Turrets.Gunner
             bulletGo.name = "_" + bulletGo.name;
             var bullet = bulletGo.GetComponent<Bullet>();
             bullet.damage = damage;
-            
-            // If for some reason the bullet no longer has a Bullet component
-            if (bullet == null) return;
-            
+
             // Adds the modules to the bullet
             foreach (ModuleChainHandler handler in moduleHandlers)
             {
+                handler.GetModule().OnAttack(this);
                 bullet.AddModule(handler.GetModule());
             }
             

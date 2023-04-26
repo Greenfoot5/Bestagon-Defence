@@ -26,7 +26,8 @@ namespace Turrets.Laser
         private void Update()
         {
             // Don't do anything if the turret doesn't have a target
-            if (target == null)
+            // or fire rate is <= 0
+            if (target == null || fireRate.GetStat() == 0)
             {
                 if (!lineRenderer.enabled) return;
                 
@@ -74,6 +75,11 @@ namespace Turrets.Laser
             foreach (Enemy enemy in enemies)
             {
                 enemy.TakeDamage(damage.GetStat() * Time.deltaTime, gameObject);
+            }
+
+            foreach (ModuleChainHandler handler in moduleHandlers)
+            {
+                handler.GetModule().OnAttack(this);
             }
             foreach (ModuleChainHandler handler in moduleHandlers)
             {

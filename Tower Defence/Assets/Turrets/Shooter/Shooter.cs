@@ -19,6 +19,12 @@ namespace Turrets.Shooter
         /// </summary>
         private void Update()
         {
+            // If there's no fire rate, the turret shouldn't do anything
+            if (fireRate.GetStat() == 0)
+            {
+                return;
+            }
+            
             // Don't do anything if the turret doesn't have a target
             if (target == null)
             {
@@ -55,13 +61,11 @@ namespace Turrets.Shooter
             bulletGo.name = "_" + bulletGo.name;
             var bullet = bulletGo.GetComponent<Bullet>();
             bullet.damage = damage;
-            
-            // If for some reason the bullet no longer has a Bullet component
-            if (bullet == null) return;
-            
+
             // Adds the modules to the bullet
             foreach (ModuleChainHandler handler in moduleHandlers)
             {
+                handler.GetModule().OnAttack(this);
                 bullet.AddModule(handler.GetModule());
             }
             

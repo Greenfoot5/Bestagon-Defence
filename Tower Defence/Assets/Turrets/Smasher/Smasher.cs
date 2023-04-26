@@ -20,6 +20,12 @@ namespace Turrets.Smasher
         /// </summary>
         private void Update()
         {
+            // If there's no fire rate, the turret shouldn't do anything
+            if (fireRate.GetStat() == 0)
+            {
+                return;
+            }
+            
             // Don't do anything if no enemy is in range
             var results = new Collider2D[128];
             Physics2D.OverlapCircleNonAlloc(transform.position, range.GetStat(), results);
@@ -31,7 +37,7 @@ namespace Turrets.Smasher
             }
             
             // If our attack is off cooldown
-            if (fireCountdown <= 0)
+            if (fireCountdown <= 0 && fireRate.GetStat() != 0)
             {
                 fireCountdown = 1 / fireRate.GetStat();
                 Attack();
@@ -68,7 +74,11 @@ namespace Turrets.Smasher
                     enemy.TakeDamage(damage.GetTrueStat() * damagePercentage, gameObject);
                 }
             }
-            
+
+            foreach (ModuleChainHandler handler in moduleHandlers)
+            {
+                handler.GetModule().OnAttack(this);
+            }
             // Activates the turret's OnHit modules
             foreach (ModuleChainHandler handler in moduleHandlers)
             {

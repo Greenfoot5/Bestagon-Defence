@@ -13,12 +13,10 @@ MonoBehaviour:
   m_Name: StunT2
   m_EditorClassIdentifier: 
   moduleTier: 2
-  accentColor: {r: 0.10980392, g: 0.83137256, b: 0.5882353, a: 1}
-  displayName: Stun II
-  tagline: Bzzzzzzzzt
-  icon: {fileID: 1892315637792861288, guid: 16c979c866f439b4b988e7020b313794, type: 3}
-  effectText: 15% chance to stun the enemy in place for 0.5s
+  isUpgradableTo: 1
   enemyStunChance: 0.15
   enemyDuration: 0.5
   turretStunChance: 0.07
   turretDuration: 1.25
+  stunEffect: {fileID: 2228279973635050725, guid: 17e02d21b8d304dbeba24896a568f844, type: 3}
+  stunEndEffect: {fileID: 2228279973635050725, guid: c449cd9ba6b2e4fbcbffbb913577c635, type: 3}

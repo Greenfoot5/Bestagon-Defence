@@ -122,7 +122,7 @@ MonoBehaviour:
       variable: {fileID: 11400000, guid: b54cb3d9e6f25430dbcb163e806032f4, type: 2}
     - useConstant: 0
       item:
-        chain: {fileID: 11400000, guid: a22c6ee3e44dc4c6c822466f441d40cb, type: 2}
+        chain: {fileID: 11400000, guid: 854f51527d5254adda062c0c23aec5cb, type: 2}
         tier: 1
       constantValue:
         serializedVersion: 2
@@ -159,7 +159,16 @@ MonoBehaviour:
     useConstant: 1
     constantValue:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.22211982
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -168,7 +177,16 @@ MonoBehaviour:
     useConstant: 1
     constantValue:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.40276498
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4

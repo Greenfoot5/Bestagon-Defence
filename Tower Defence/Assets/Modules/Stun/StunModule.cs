@@ -8,6 +8,7 @@ using Turrets.Gunner;
 using Turrets.Lancer;
 using Turrets.Shooter;
 using Turrets.Smasher;
+using UI.Nodes;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
@@ -37,6 +38,12 @@ namespace Modules.Stun
         [SerializeField]
         [Tooltip("How long to stun the tower for")]
         private float turretDuration;
+        [SerializeField]
+        [Tooltip("The VFX to spawn when the turret is stunned")]
+        private GameObject stunEffect;
+        [SerializeField]
+        [Tooltip("The VFX to spawn when the ends it's turret stun")]
+        private GameObject stunEndEffect;
 
         /// <summary>
         /// Adds the EnemyAbility to some target(s)
@@ -86,16 +93,34 @@ namespace Modules.Stun
         private IEnumerator StunTurret(Turret turret)
         {
             float originalFireRate = turret.fireRate.GetBase();
-            
+            float originalRotSpeed = ((DynamicTurret)turret).rotationSpeed.GetBase();
+
             // Check the turret isn't already stunned
             if (originalFireRate <= 0)
                 yield break;
             
+            // Summons the stun particle effect
+            Vector3 position = turret.transform.position;
+            GameObject effect = Instantiate(stunEffect, position, Quaternion.identity);
+            effect.name = "_" + effect.name;
+            Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
+            
+            // Updates the fire rate and rotation speed
             turret.fireRate.SetBase(0);
+            ((DynamicTurret) turret).rotationSpeed.SetBase(0);
+            NodeUI.instance.UpdateStats();
             
             yield return new WaitForSeconds(turretDuration);
             
+            // Summons the end stun particle effect
+            GameObject endEffect = Instantiate(stunEndEffect, position, Quaternion.identity);
+            endEffect.name = "_" + endEffect.name;
+            Destroy(endEffect, endEffect.GetComponent<ParticleSystem>().main.duration);
+            
+            // Resets fire rate and rotation speed
             turret.fireRate.SetBase(originalFireRate);
+            ((DynamicTurret) turret).rotationSpeed.SetBase(originalRotSpeed);
+            NodeUI.instance.UpdateStats();
         }
     }
 }
