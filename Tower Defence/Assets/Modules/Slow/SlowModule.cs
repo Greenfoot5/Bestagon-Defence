@@ -107,7 +107,7 @@ namespace Modules.Slow
             
             float slowValue = 1f - slowPercentage;
 
-            if (target.speed.GetModifier() * slowValue <= 0.2f)
+            if (target.speed.GetModifier() * slowValue <= 0.4f)
             {
                 yield break;
             }
