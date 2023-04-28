@@ -1,6 +1,10 @@
+using System;
 using System.Collections;
+using Gameplay;
+using Levels.Generic.LevelSelect;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
+using UnityEngine.SceneManagement;
 
 namespace Abstract.Saving
 {
@@ -10,6 +14,8 @@ namespace Abstract.Saving
     /// </summary>
     public static class SaveManager
     {
+        private static LeaderboardServerBridge _bridge;
+        
         /// <summary>
         /// Used to load any persistent data that needs to be loaded at the start of the game,
         /// </summary>
@@ -29,6 +35,8 @@ namespace Abstract.Saving
             {
                 FileManager.WriteToFile("Settings.dat", new SaveSettings().ToJson());
             }
+
+            _bridge = new LeaderboardServerBridge();
         }
         
         /// <summary>
@@ -63,12 +71,29 @@ namespace Abstract.Saving
         }
 
         /// <summary>
-        /// Saves a level's current progress
+        /// Saves a level's current progress, and to the leaderboard
         /// </summary>
         /// <param name="saveable">The level data to save to file</param>
         /// <param name="sceneName">The name of the scene</param>
         public static void SaveLevel(ISaveableLevel saveable, string sceneName)
         {
+            try
+            {
+                // Tell our leaderboard API to add the player
+                string leaderboardData =
+                    Environment.GetEnvironmentVariable(SceneManager.GetActiveScene().name + "Leaderboard");
+                if (leaderboardData != null)
+                {
+                    string[] splitData = leaderboardData.Split(';');
+                    _bridge.SendPlayerValue(PlayerPrefs.GetString("Username"), GameStats.Rounds, splitData[0],
+                        splitData[1]);
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("Failed to save: " + e);
+            }
+
             var sd = new SaveLevel();
             saveable.PopulateSaveData(sd);
             
@@ -112,7 +137,8 @@ namespace Abstract.Saving
         public static void ClearSave(string sceneName)
         {
             FileManager.DeleteFile(sceneName + "Save.dat");
-            
+            GameStats.Rounds = 0;
+
             Debug.Log("Deleting save of " + sceneName + " complete");
         }
     }

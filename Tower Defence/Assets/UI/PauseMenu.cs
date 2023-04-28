@@ -1,6 +1,5 @@
-﻿using System;
+﻿using Abstract.Saving;
 using Gameplay;
-using Levels.Generic.LevelSelect;
 using UI.Transition;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -18,10 +17,6 @@ namespace UI
         private GameObject ui;
     
         private bool _hasBeenToggled;
-        
-        [Tooltip("The leaderboard bridge to save the player's score")]
-        [SerializeField]
-        private LeaderboardServerBridge bridge;
 
         /// <summary>
         /// Allows the class to listen to the pause button press
@@ -68,6 +63,7 @@ namespace UI
         public void Retry()
         {
             Toggle(new InputAction.CallbackContext());
+            SaveManager.ClearSave(SceneManager.GetActiveScene().name);
             TransitionManager.Instance.LoadScene(SceneManager.GetActiveScene().name);
         }
     
@@ -76,23 +72,6 @@ namespace UI
         /// </summary>
         public void Menu()
         {
-            try
-            {
-                // Tell our leaderboard API to add the player
-                string leaderboardData =
-                    Environment.GetEnvironmentVariable(SceneManager.GetActiveScene().name + "Leaderboard");
-                if (leaderboardData != null)
-                {
-                    string[] splitData = leaderboardData.Split(';');
-                    bridge.SendPlayerValue(PlayerPrefs.GetString("Username"), GameStats.Rounds, splitData[0], splitData[1]);                    
-                }
-            }
-            catch (Exception)
-            {
-                Debug.LogWarning("Failed to save to leaderboard");
-                // TODO - Now ignore the error
-            }
-
             GameStats.ClearStats();
             
             // Transition to the main menu

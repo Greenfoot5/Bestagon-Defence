@@ -28,6 +28,7 @@ namespace UI
         /// </summary>
         public void Retry()
         {
+            PlayerPrefs.SetInt("LoadingLevel", 0);
             TransitionManager.Instance.LoadScene(SceneManager.GetActiveScene().name);
         }
         

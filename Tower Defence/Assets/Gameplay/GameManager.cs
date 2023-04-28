@@ -2,7 +2,6 @@
 using Abstract.Data;
 using Abstract.Saving;
 using Levels._Nodes;
-using Levels.Generic.LevelSelect;
 using Levels.Maps;
 using Turrets;
 using UnityEngine;
@@ -27,9 +26,6 @@ namespace Gameplay
         
         [Tooltip("The levelData to use for the current level")]
         public LevelData levelData;
-        
-        [Tooltip("The leaderboard bridge")]
-        public LeaderboardServerBridge bridge;
 
         [Tooltip("The parent of all the nodes")]
         public GameObject nodeParent;
@@ -40,7 +36,6 @@ namespace Gameplay
         private void Awake()
         {
             if (PlayerPrefs.GetInt("LoadingLevel", 0) == 0) return;
-            // TODO - Only load if we're loading a save
             LoadJsonData(this);
         }
 
@@ -85,14 +80,8 @@ namespace Gameplay
             shop.SetActive(false);
 
             Time.timeScale = 0;
+            
             SaveManager.ClearSave(SceneManager.GetActiveScene().name);
-        
-            // Tell our leaderboard API to add the player
-            string leaderboardData =
-                System.Environment.GetEnvironmentVariable(SceneManager.GetActiveScene().name + "Leaderboard");
-            if (leaderboardData == null) return;
-            string[] splitData = leaderboardData.Split(';');
-            bridge.SendPlayerValue(PlayerPrefs.GetString("Username"), GameStats.Rounds, splitData[0], splitData[1]);
         }
 
         public void PopulateSaveData(SaveLevel saveData)

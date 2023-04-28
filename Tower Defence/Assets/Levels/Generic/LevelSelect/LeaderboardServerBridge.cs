@@ -15,7 +15,7 @@ namespace Levels.Generic.LevelSelect
     /// <summary>
     /// The bridge that allows for easy communication between the leaderboard API and the game
     /// </summary>
-    public class LeaderboardServerBridge : MonoBehaviour
+    public class LeaderboardServerBridge
     {
         private const string ServerEndpoint = "https://exploitavoid.com/leaderboards/v1/api";
 

@@ -16,24 +16,28 @@ namespace Gameplay.Waves
         [Tooltip("How many enemies are still alive in the level")]
         public static int enemiesAlive;
         
+        [SerializeField]
         [Tooltip("The waves the level will loop through")]
-        public Wave[] waves;
+        private Wave[] waves;
         
-        
+        [SerializeField]
         [Tooltip("How long to wait in between waves")]
-        public float timeBetweenWaves = 5f;
+        private float timeBetweenWaves = 5f;
+        [SerializeField]
         [Tooltip("The time at the beginning before the start of the game")]
-        public float preparationTime = 8f;
+        private float preparationTime = 8f;
         private float _countdown = 5f;
         
+        [SerializeField]
         [Tooltip("The text to update with the countdown")]
-        public TMP_Text waveCountdownText;
+        private TMP_Text waveCountdownText;
     
         // The current wave the player is on -1 (as it's indexed from 0)
         private int _waveIndex;
         
+        [SerializeField]
         [Tooltip("The location to spawn the enemies. Should be the first waypoint")]
-        public Transform spawnPoint;
+        private Transform spawnPoint;
 
         private bool _isSpawning;
 
@@ -85,9 +89,6 @@ namespace Gameplay.Waves
             _countdown = Mathf.Clamp(_countdown, 0f, Mathf.Infinity);
         
             waveCountdownText.text = $"<sprite=\"UI-Icons\" name=\"Clock\">{_countdown:0.00}";
-        
-            if (GameStats.Lives > 0)
-                GameStats.Rounds = _waveIndex + 1;
         }
     
         /// <summary>
@@ -97,6 +98,7 @@ namespace Gameplay.Waves
         {
             _isSpawning = true;
             Wave wave = waves[_waveIndex % waves.Length];
+            GameStats.Rounds = _waveIndex + 1;
 
             for (var i = 0; i < wave.enemySets.Length; i++)
             {

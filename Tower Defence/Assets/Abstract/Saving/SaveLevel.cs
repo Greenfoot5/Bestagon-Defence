@@ -30,7 +30,7 @@ namespace Abstract.Saving
         public List<TurretBlueprint> turretInventory;
         public List<ModuleChainHandler> moduleInventory;
 
-        public string version = Application.version;
+        public readonly string version = Application.version;
         
         /// <summary>
         /// Translates the class into json format

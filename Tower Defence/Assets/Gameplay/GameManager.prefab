@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 5782079356602982493}
   - component: {fileID: 5782079356602982492}
   - component: {fileID: 5782079356602982495}
-  - component: {fileID: 5782079356602982494}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -33,6 +32,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -263,8 +263,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverUI: {fileID: 0}
+  shop: {fileID: 0}
   levelData: {fileID: 11400000, guid: 6f49670e531a1439c8d13bde5464212f, type: 2}
-  bridge: {fileID: 5782079356602982494}
+  nodeParent: {fileID: 0}
 --- !u!114 &5782079356602982492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,8 +279,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ui: {fileID: 0}
-  transition: {fileID: 0}
-  bridge: {fileID: 5782079356602982494}
 --- !u!114 &5782079356602982495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,16 +291,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a426f1eef228184b8291fe251437393, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5782079356602982494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5782079356602982470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d66f31317f16436abfa87b5ecac8ce4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serverEndpoint: https://exploitavoid.com/leaderboards/v1/api
