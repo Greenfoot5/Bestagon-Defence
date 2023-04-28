@@ -139,7 +139,7 @@ namespace Levels.Generic.LevelSelect
                 }
                 
                 // Display the player's high score
-                LeaderboardEntry playerScore = await bridge.RequestPlayerEntry(PlayerPrefs.GetString("Username"), leaderboardID);
+                LeaderboardEntry playerScore = await LeaderboardServerBridge.RequestPlayerEntry(PlayerPrefs.GetString("Username"), leaderboardID);
                 highScore.text = playerScore != null ? playerScore.GetValueAsString() : "0";
             }
             else

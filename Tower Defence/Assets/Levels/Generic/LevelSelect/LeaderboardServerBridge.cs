@@ -59,7 +59,7 @@ namespace Levels.Generic.LevelSelect
         /// <param name="leaderboardID"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
-        public async Task<LeaderboardEntry> RequestPlayerEntry(string username, string leaderboardID)
+        public static async Task<LeaderboardEntry> RequestPlayerEntry(string username, string leaderboardID)
         {
             string url = ServerEndpoint + $"/get_entries?leaderboard_id={leaderboardID}&start=1&count=1&search={username}";
             using UnityWebRequest unityWebRequest = UnityWebRequest.Get(url);
@@ -74,11 +74,7 @@ namespace Levels.Generic.LevelSelect
                     break;
                 case UnityWebRequest.Result.Success:
                     var scores = DeserializeJson<List<LeaderboardEntry>>(unityWebRequest.downloadHandler.text);
-                    if (scores != null && scores.Count > 0)
-                    {
-                        return scores[0];
-                    }
-                    return null;
+                    return scores is { Count: > 0 } ? scores[0] : null;
                 case UnityWebRequest.Result.InProgress:
                     break;
                 default:
