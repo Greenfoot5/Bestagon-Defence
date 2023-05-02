@@ -18,7 +18,7 @@ MonoBehaviour:
   damagePercentageChange: 3.75
   fireRatePercentageChange: -0.6
   rangePercentageChange: -0.45
-  speedPercentageChange: -0.5
-  knockbackPercentageChange: -0.5
+  speedPercentageChange: -0.3
+  knockbackPercentageChange: -0.4
   smasherDamageChange: 0.85
   smasherRangeChange: 0.85
