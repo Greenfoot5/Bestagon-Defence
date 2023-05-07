@@ -26,18 +26,18 @@ jobs:
             jobOS: ubuntu-latest
 #          - targetPlatform: iOS # Build an iOS player.
 #            jobOS: ubuntu-latest
-#          - targetPlatform: Android # Build an Android .apk standalone app.
-#            jobOS: ubuntu-latest
+          - targetPlatform: Android # Build an Android .apk standalone app.
+            jobOS: ubuntu-latest
 #          - targetPlatform: WebGL # WebGL.
 #            jobOS: ubuntu-latest
         
     outputs:
-      #StandaloneOSX: ${{ steps.outputResult.outputs.StandaloneOSX }}
+      StandaloneOSX: ${{ steps.outputResult.outputs.StandaloneOSX }}
       StandaloneWindows: ${{ steps.outputResult.outputs.StandaloneWindows }}
       StandaloneWindows64: ${{ steps.outputResult.outputs.StandaloneWindows64 }}
       StandaloneLinux64: ${{ steps.outputResult.outputs.StandaloneLinux64 }}
       #iOS: ${{ steps.outputResult.outputs.iOS }}
-      #Android: ${{ steps.outputResult.outputs.Android }}
+      Android: ${{ steps.outputResult.outputs.Android }}
       #WebGL: ${{ steps.outputResult.outputs.WebGL }}
 
     steps:
@@ -73,8 +73,8 @@ jobs:
           
       # ERROR - Causes errors for some reason.
       # Return License
-      - uses: game-ci/unity-return-license@v2.0.0
-        if: always()
+#      - uses: game-ci/unity-return-license@v2.0.0
+#        if: always()
       
       # NOT NEEDED - We don't currently make use of this, instead opting for manual builds for new versions
 #      - uses: paulhatch/semantic-version@v4.0.2
@@ -97,6 +97,7 @@ jobs:
 #          short_tags: false
 #          # If this is set to true, *every* commit will be treated as a new version.
 #          bump_each_commit: false
+      
       - id: outputResult
         run: echo "${{ matrix.targetPlatform }}=${{ job.status }}" >> $GITHUB_OUTPUT
   
