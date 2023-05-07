@@ -91,7 +91,7 @@ namespace Turrets
             // it cannot be upgraded
             if (handler.GetChain().unique && 
                 (moduleHandlers.Any(x => x.GetModule().GetType() == handler.GetModule().GetType() &&
-                                        !handler.GetChain().CanUpgrade(x.GetTier()))))
+                                        !handler.CanUpgrade(x.GetTier()))))
             {
                 return false;
             }
