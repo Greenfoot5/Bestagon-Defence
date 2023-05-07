@@ -31,6 +31,9 @@ namespace Turrets.Lancer
         [Tooltip("The transform at which attack from (e.g. instantiate bullets)")]
         [SerializeField]
         private Transform firePoint;
+        [Tooltip("The part to rotate")]
+        [SerializeField]
+        public Transform partToRotate;
 
         /// <summary>
         /// Begins the target searching

@@ -39,7 +39,7 @@ namespace Turrets
         public UpgradableStat rotationSpeed = new(3f);
         [Tooltip("The Transform to perform any rotations on")]
         [SerializeField]
-        public Transform partToRotate;
+        protected Transform partToRotate;
 
 
         /// <summary>

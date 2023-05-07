@@ -177,11 +177,11 @@ namespace UI.Nodes
         }
         
         /// <summary>
-        /// Rotates the turret by 60°
+        /// Rotates Lancer by 60°
         /// </summary>
-        public void Rotate60()
+        public void RotateLancer60()
         {
-            _target.turret.GetComponent<DynamicTurret>().partToRotate.Rotate(0, 0, -60);
+            _target.turret.GetComponent<Lancer>().partToRotate.Rotate(0, 0, -60);
         }
         
         /// <summary>
