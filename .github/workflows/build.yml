@@ -73,8 +73,8 @@ jobs:
           
       # ERROR - Causes errors for some reason.
       # Return License
-#      - uses: game-ci/unity-return-license@v1
-#        if: always()
+      - uses: game-ci/unity-return-license@v2.0.0
+        if: always()
       
       # NOT NEEDED - We don't currently make use of this, instead opting for manual builds for new versions
 #      - uses: paulhatch/semantic-version@v4.0.2
