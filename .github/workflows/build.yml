@@ -13,7 +13,7 @@ jobs:
     runs-on: ${{ matrix.jobOS }}
     strategy:
       fail-fast: false
-      max-parallel: 3
+      max-parallel: 2
       matrix:
         include:
           - targetPlatform: StandaloneOSX # Build a macOS standalone (Intel 64-bit).
