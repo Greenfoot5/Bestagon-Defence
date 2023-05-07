@@ -133,7 +133,7 @@ PlayerSettings:
   vulkanEnableLateAcquireNextImage: 0
   vulkanEnableCommandBufferRecycling: 1
   loadStoreDebugModeEnabled: 0
-  bundleVersion: 1.1-alpha.11
+  bundleVersion: 1.1-nightly.12a
   preloadedAssets:
   - {fileID: 0}
   - {fileID: 11400000, guid: 9353b53275cef4a3aa77c972a8451f7c, type: 2}
@@ -712,7 +712,7 @@ PlayerSettings:
   suppressCommonWarnings: 1
   allowUnsafeCode: 0
   useDeterministicCompilation: 1
-  selectedPlatform: 0
+  selectedPlatform: 2
   additionalIl2CppArgs: 
   scriptingRuntimeVersion: 1
   gcIncremental: 1
