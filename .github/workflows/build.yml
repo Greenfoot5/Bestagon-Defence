@@ -10,19 +10,27 @@ on:
 jobs:
   buildForAllSupportedPlatforms:
     name: Build for ${{ matrix.targetPlatform }}
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.jobOS }}
     strategy:
       fail-fast: false
       max-parallel: 3
       matrix:
-        targetPlatform:
-          #- StandaloneOSX # Build a macOS standalone (Intel 64-bit).
-          - StandaloneWindows # Build a Windows standalone.
-          - StandaloneWindows64 # Build a Windows 64-bit standalone.
-          - StandaloneLinux64 # Build a Linux 64-bit standalone.
-          #- iOS # Build an iOS player.
-          #- Android # Build an Android .apk standalone app.
-          #- WebGL # WebGL.
+        include:
+          - targetPlatform: StandaloneOSX # Build a macOS standalone (Intel 64-bit).
+            jobOS: macos-latest
+          - targetPlatform: StandaloneWindows # Build a Windows standalone.
+            jobOS: ubuntu-latest
+          - targetPlatform: StandaloneWindows64 # Build a Windows 64-bit standalone.
+            jobOS: ubuntu-latest
+          - targetPlatform: StandaloneLinux64 # Build a Linux 64-bit standalone.
+            jobOS: ubuntu-latest
+#          - targetPlatform: iOS # Build an iOS player.
+#            jobOS: ubuntu-latest
+#          - targetPlatform: Android # Build an Android .apk standalone app.
+#            jobOS: ubuntu-latest
+#          - targetPlatform: WebGL # WebGL.
+#            jobOS: ubuntu-latest
+        
     outputs:
       #StandaloneOSX: ${{ steps.outputResult.outputs.StandaloneOSX }}
       StandaloneWindows: ${{ steps.outputResult.outputs.StandaloneWindows }}
