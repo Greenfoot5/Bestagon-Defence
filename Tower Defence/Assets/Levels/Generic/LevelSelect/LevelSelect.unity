@@ -1013,7 +1013,6 @@ GameObject:
   - component: {fileID: 564576374}
   - component: {fileID: 564576373}
   - component: {fileID: 564576372}
-  - component: {fileID: 564576371}
   m_Layer: 5
   m_Name: LevelInfo
   m_TagString: Untagged
@@ -1021,18 +1020,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &564576371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 564576370}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d66f31317f16436abfa87b5ecac8ce4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &564576372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5624,6 +5611,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: '@System'
       objectReference: {fileID: 0}
+    - target: {fileID: 7033422843349886308, guid: f9bbc79d08b642b4ea263b4f9aad5cce, type: 3}
+      propertyPath: variables
+      value: 
+      objectReference: {fileID: 11400000, guid: a97bc1dfdb8f24a54b824b176de63718, type: 2}
     - target: {fileID: 7033422843349886311, guid: f9bbc79d08b642b4ea263b4f9aad5cce, type: 3}
       propertyPath: m_RootOrder
       value: 0
