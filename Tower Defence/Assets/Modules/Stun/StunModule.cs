@@ -93,7 +93,9 @@ namespace Modules.Stun
         private IEnumerator StunTurret(Turret turret)
         {
             float originalFireRate = turret.fireRate.GetBase();
-            float originalRotSpeed = ((DynamicTurret)turret).rotationSpeed.GetBase();
+            float originalRotSpeed = 1;
+            if (turret is DynamicTurret dynamicTurret)
+                originalRotSpeed = dynamicTurret.rotationSpeed.GetBase();
 
             // Check the turret isn't already stunned
             if (originalFireRate <= 0)
@@ -107,7 +109,8 @@ namespace Modules.Stun
             
             // Updates the fire rate and rotation speed
             turret.fireRate.SetBase(0);
-            ((DynamicTurret) turret).rotationSpeed.SetBase(0);
+            if (turret is DynamicTurret dynamicTurret1)
+                dynamicTurret1.rotationSpeed.SetBase(0);
             NodeUI.instance.UpdateStats();
             
             yield return new WaitForSeconds(turretDuration);
@@ -119,7 +122,8 @@ namespace Modules.Stun
             
             // Resets fire rate and rotation speed
             turret.fireRate.SetBase(originalFireRate);
-            ((DynamicTurret) turret).rotationSpeed.SetBase(originalRotSpeed);
+            if (turret is DynamicTurret dynamicTurret2)
+                dynamicTurret2.rotationSpeed.SetBase(originalRotSpeed);
             NodeUI.instance.UpdateStats();
         }
     }
