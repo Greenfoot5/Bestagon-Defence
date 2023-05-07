@@ -65,6 +65,7 @@ jobs:
         with:
           projectPath: 'Tower Defence'
           targetPlatform: ${{ matrix.targetPlatform }}
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: actions/upload-artifact@v2
         with:
