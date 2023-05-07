@@ -131,6 +131,7 @@ namespace Turrets.Gunner
             bulletGo.name = "_" + bulletGo.name;
             var bullet = bulletGo.GetComponent<Bullet>();
             bullet.damage = damage;
+            bullet.Seek(target, this);
 
             // Adds the modules to the bullet
             foreach (ModuleChainHandler handler in moduleHandlers)
@@ -138,8 +139,6 @@ namespace Turrets.Gunner
                 handler.GetModule().OnAttack(this);
                 bullet.AddModule(handler.GetModule());
             }
-            
-            bullet.Seek(target, this);
         }
     }
 }
