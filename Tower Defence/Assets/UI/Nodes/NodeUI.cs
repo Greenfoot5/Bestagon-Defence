@@ -181,7 +181,7 @@ namespace UI.Nodes
         /// </summary>
         public void Rotate60()
         {
-            _target.turret.transform.Rotate(0, 0, -60);
+            _target.turret.GetComponent<DynamicTurret>().partToRotate.Rotate(0, 0, -60);
         }
         
         /// <summary>
