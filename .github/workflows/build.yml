@@ -71,32 +71,9 @@ jobs:
           name: ${{ matrix.targetPlatform }}
           path: 'build'
           
-      # ERROR - Causes errors for some reason.
       # Return License
 #      - uses: game-ci/unity-return-license@v2.0.0
 #        if: always()
-      
-      # NOT NEEDED - We don't currently make use of this, instead opting for manual builds for new versions
-#      - uses: paulhatch/semantic-version@v4.0.2
-#        with:
-#          tag_prefix: "v"
-#          # A string which, if present in a git commit, indicates that a change represents a
-#          # major (breaking) change, supports regular expressions wrapped with '/'
-#          major_pattern: "(MAJOR)"
-#          # Same as above except indicating a minor change, supports regular expressions wrapped with '/'
-#          minor_pattern: "(MINOR)"
-#          # A string to determine the format of the version output
-#          format: "${major}.${minor}.${patch}"
-#          # Optional path to check for changes. If any changes are detected in the path the
-#          # 'changed' output will true. Enter multiple paths separated by spaces.
-#          change_path: "Tower Defence"
-#          # Named version, will be used as suffix for name version tag
-#          namespace: Bestagone-Defence
-#          # Indicate whether short tags like 'v1' should be supported. If false only full
-#          # tags like 'v1.0.0' will be recognized.
-#          short_tags: false
-#          # If this is set to true, *every* commit will be treated as a new version.
-#          bump_each_commit: false
       
       - id: outputResult
         run: echo "${{ matrix.targetPlatform }}=${{ job.status }}" >> $GITHUB_OUTPUT
