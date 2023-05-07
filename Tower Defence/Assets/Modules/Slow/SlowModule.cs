@@ -45,7 +45,6 @@ namespace Modules.Slow
         [SerializeField]
         [Tooltip("The percentage the slow the enemy's movement speed")]
         private float smasherSlowPercentage;
-        [Header("Gunner & Shooter")]
         [DisplayName("Duration")]
         [Tooltip("The percentage of the attack speed cooldown the slow will last")]
         [SerializeField]
