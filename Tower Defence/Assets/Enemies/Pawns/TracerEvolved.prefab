@@ -221,6 +221,7 @@ MonoBehaviour:
   waypointIndex: 0
   distanceToWaypoint: 0.05
   knockbackDuration: 0.2
+  doesRotation: 1
   mapProgress: 0
 --- !u!50 &768858065416596564
 Rigidbody2D:

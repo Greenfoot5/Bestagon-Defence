@@ -25,7 +25,7 @@ namespace Enemies
         [SerializeField]
         [Tooltip("The duration of knockback")]
         private float knockbackDuration = 0.2f;
-        
+
         [ReadOnly]
         [Tooltip("How many waypoints the enemy has passed, and the percentage to the next one")]
         public float mapProgress;
@@ -74,8 +74,9 @@ namespace Enemies
                 mapProgress = waypointIndex + 1 - (distanceToWaypoint / _maxDistance);
             }
             
-            // Attempt at rotation
-            _enemy.rotationRoot.transform.up = (location - position).normalized;
+            if (_enemy.doesRotation)
+                // Attempt at rotation
+                _enemy.rotationRoot.transform.up = (location - position).normalized;
         }
     
         /// <summary>

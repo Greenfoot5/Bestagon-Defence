@@ -48,6 +48,9 @@ namespace Enemies
         [Space(20f)]
         [Tooltip("The root game object to rotate to change the enemy's looking direction")]
         public GameObject rotationRoot;
+        [SerializeField]
+        [Tooltip("If the enemy rotates towards the next waypoint")]
+        public bool doesRotation = true;
         [Tooltip("The particle effect prefab to spawn when the enemy dies")]
         public GameObject deathEffect;
         
