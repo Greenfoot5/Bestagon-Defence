@@ -2782,7 +2782,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2213584706060056490, guid: 1caea2b01bf3d498292dcf0e7efaed42, type: 3}
       propertyPath: m_fontSize
-      value: 76.85
+      value: 46.1
       objectReference: {fileID: 0}
     - target: {fileID: 4103013052825113286, guid: 1caea2b01bf3d498292dcf0e7efaed42, type: 3}
       propertyPath: m_Color.b
@@ -2892,7 +2892,9 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PrivacyPolicy
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6660389672119238448, guid: 1caea2b01bf3d498292dcf0e7efaed42, type: 3}
+    - {fileID: 1178096292849302558, guid: 1caea2b01bf3d498292dcf0e7efaed42, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
