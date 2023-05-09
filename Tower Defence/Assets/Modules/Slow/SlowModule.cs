@@ -54,23 +54,6 @@ namespace Modules.Slow
         private float smasherRangeChange;
 
         /// <summary>
-        /// Checks if the module can be applied to the turret
-        /// </summary>
-        /// <param name="turret">The turret to check for</param>
-        /// <returns>If the module can be applied</returns>
-        public override bool ValidModule(Turret turret)
-        {
-            // The module is unique on Smasher
-            if (turret.moduleHandlers.Any(x => x.GetModule().GetType() == typeof(SlowModule))
-                && turret.GetType() == typeof(Smasher))
-            {
-                return false;
-            }
-
-            return ValidTypes.Contains(turret.GetType());
-        }
-
-        /// <summary>
         /// Modifies the stats of the turret when applied
         /// </summary>
         /// <param name="turret">The turret to modify the stats for</param>
