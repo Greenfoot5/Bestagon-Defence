@@ -17,7 +17,7 @@ jobs:
       matrix:
         include:
           - targetPlatform: StandaloneOSX # Build a macOS standalone (Intel 64-bit).
-            jobOS: macos-latest
+            jobOS: ubuntu-latest
           - targetPlatform: StandaloneWindows # Build a Windows standalone.
             jobOS: ubuntu-latest
           - targetPlatform: StandaloneWindows64 # Build a Windows 64-bit standalone.
