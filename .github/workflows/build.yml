@@ -65,7 +65,7 @@ jobs:
           projectPath: 'Tower Defence'
           targetPlatform: ${{ matrix.targetPlatform }}
         if:
-          targetPlatform: ${{ matrix.targetPlatform != Android }}
+          targetPlatform: ${{ matrix.targetPlatform != 'Android' }}
           
       - uses: game-ci/unity-builder@v2
         env:
@@ -87,7 +87,7 @@ jobs:
           androidKeyaliasPass: ${{ secrets.ANDROID_KEYALIAS_PASS }}
           androidTargetSdkVersion: AndroidApiLevel31
         if:
-          targetPlatform: ${{ matrix.targetPlatform == Android }}
+          targetPlatform: ${{ matrix.targetPlatform == 'Android' }}
 
       - uses: actions/upload-artifact@v2
         with:
