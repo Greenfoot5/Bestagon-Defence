@@ -38,8 +38,8 @@ MonoBehaviour:
     tier: 3
   - chain: {fileID: 11400000, guid: 7452851d1c2b745bcbfffd73ec35d11f, type: 2}
     tier: 2
-  - chain: {fileID: 11400000, guid: 808825b7d51f74137b9b191403ea8738, type: 2}
-    tier: 1
+  - chain: {fileID: 11400000, guid: 4790f2db3ddc94e49a962eea7c8566e0, type: 2}
+    tier: 2
   references:
     version: 2
     RefIds: []
