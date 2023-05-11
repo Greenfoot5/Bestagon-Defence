@@ -41,12 +41,12 @@ jobs:
       #WebGL: ${{ steps.outputResult.outputs.WebGL }}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
           lfs: true
 
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         with:
           path: Library
           key: Library-${{ matrix.targetPlatform }}
@@ -87,7 +87,7 @@ jobs:
           androidTargetSdkVersion: AndroidApiLevel31
         if: ${{ matrix.targetPlatform == 'Android' }}
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.targetPlatform }}
           path: |
