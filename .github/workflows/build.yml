@@ -9,7 +9,6 @@ on:
 
 jobs:
   buildForAllSupportedPlatforms:
-    id: buildForAllSupportedPlatforms
     name: Build for ${{ matrix.targetPlatform }}
     runs-on: ${{ matrix.jobOS }}
     strategy:
