@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetingType: 2
   triggers: 01000000
-  abilityIcon: {fileID: 21300000, guid: be914665a01d343a0928cefc1bcd64f9, type: 3}
-  abilityEffect: {fileID: 895393602812883857, guid: a6747e4f8c99f453c9753dedd64599be, type: 3}
+  abilityIcon: {fileID: 21300000, guid: 96fa3de238ae94ee7a0250c6ce378023, type: 3}
+  abilityEffect: {fileID: 2228279973635050725, guid: 5195c5e9c4b5144629a6da1edc537dd8, type: 3}
   range: 3
   timer: 5
   startCount: -1
