@@ -248,7 +248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage:
-    stat: 45
+    stat: 60
     modifier: 1
   enemyTag: Enemy
   range:
@@ -272,13 +272,13 @@ MonoBehaviour:
   partToRotate: {fileID: 4656168879664339822}
   bulletPrefab: {fileID: 8554329261332597528, guid: 7918a479628b945539b9ed050eacb045, type: 3}
   spinMultiplier:
-    stat: 1.1
-    modifier: 1
-  spinCooldown:
     stat: 1.08
     modifier: 1
+  spinCooldown:
+    stat: 1.05
+    modifier: 1
   maxFireRate:
-    stat: 6.5
+    stat: 8.5
     modifier: 1
 --- !u!1 &5846929854125325151
 GameObject:
