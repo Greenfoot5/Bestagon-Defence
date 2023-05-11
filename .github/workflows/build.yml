@@ -92,7 +92,7 @@ jobs:
           name: ${{ matrix.targetPlatform }}
           path: |
             build/
-            !*DoNotShip*
+            !*DoNotShip/
           
       # Return License
 #      - uses: game-ci/unity-return-license@v2.0.0
