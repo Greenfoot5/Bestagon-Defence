@@ -17,19 +17,19 @@ jobs:
       matrix:
         include:
           - targetPlatform: StandaloneOSX # Build a macOS standalone (Intel 64-bit).
-            jobOS: ubuntu-latest
+            jobOS: macos-latest
           - targetPlatform: StandaloneWindows # Build a Windows standalone.
-            jobOS: ubuntu-latest
+            jobOS: macos-latest
           - targetPlatform: StandaloneWindows64 # Build a Windows 64-bit standalone.
-            jobOS: ubuntu-latest
+            jobOS: macos-latest
           - targetPlatform: StandaloneLinux64 # Build a Linux 64-bit standalone.
-            jobOS: ubuntu-latest
+            jobOS: macos-latest
 #          - targetPlatform: iOS # Build an iOS player.
-#            jobOS: ubuntu-latest
+#            jobOS: macos-latest
           - targetPlatform: Android # Build an Android .apk standalone app.
-            jobOS: ubuntu-latest
+            jobOS: macos-latest
 #          - targetPlatform: WebGL # WebGL.
-#            jobOS: ubuntu-latest
+#            jobOS: macos-latest
         
     outputs:
       StandaloneOSX: ${{ steps.outputResult.outputs.StandaloneOSX }}
