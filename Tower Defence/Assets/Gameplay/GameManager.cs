@@ -3,6 +3,8 @@ using Abstract.Data;
 using Abstract.Saving;
 using Levels._Nodes;
 using Levels.Maps;
+using MaterialLibrary.Trapezium;
+using TMPro;
 using Turrets;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -23,6 +25,15 @@ namespace Gameplay
         [Tooltip("The UI that displays the shop")]
         [SerializeField]
         private GameObject shop;
+
+        [Tooltip("The Text for the lives amount")]
+        [SerializeField]
+        private TMP_Text livesText;
+        [Tooltip("The Progress Graphic for the lives bar")]
+        [SerializeField]
+        private Progress livesBar;
+        // TODO - Accurately get start lives
+        private int _startLives;
         
         [Tooltip("The levelData to use for the current level")]
         public LevelData levelData;
@@ -50,6 +61,9 @@ namespace Gameplay
             {
                 Debug.LogError("No level data set!", this);
             }
+            
+            GameStats.OnLoseLife += UpdateLives;
+            _startLives = GameStats.Lives;
         }
     
         /// <summary>
@@ -166,6 +180,12 @@ namespace Gameplay
             {
                 shopComponent.SpawnNewModule(module);
             }
+        }
+
+        private void UpdateLives()
+        {
+            livesBar.percentage = GameStats.Lives / (float)_startLives;
+            livesText.text = $"{GameStats.Lives}";
         }
     }
 }

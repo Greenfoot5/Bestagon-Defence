@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-namespace _WIP.Shaders {
+namespace MaterialLibrary.Trapezium {
     [ExecuteInEditMode]
     public class Progress : Graphic {
         private const string MShaderName = "Custom/ProgressBar";

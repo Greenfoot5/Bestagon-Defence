@@ -67,8 +67,8 @@ namespace Gameplay
             }
 
             // Update button text
-            turretInventoryButton.text = "<sprite=\"UI-Gold\" name=\"gold\"> " + selectionCost;
-            moduleInventoryButton.text = "<sprite=\"UI-Gold\" name=\"gold\"> " + selectionCost;
+            turretInventoryButton.text = "<sprite=\"UI-Powercell\" name=\"full\"> " + selectionCost;
+            moduleInventoryButton.text = "<sprite=\"UI-Powercell\" name=\"full\"> " + selectionCost;
         }
         
         /// <summary>
@@ -176,8 +176,8 @@ namespace Gameplay
         /// </summary>
         public void UpdateCostText()
         {
-            turretInventoryButton.text = "<sprite=\"UI-Gold\" name=\"gold\"> " + selectionCost;
-            moduleInventoryButton.text = "<sprite=\"UI-Gold\" name=\"gold\"> " + selectionCost;
+            turretInventoryButton.text = "<sprite=\"UI-Powercell\" name=\"full\"> " + selectionCost;
+            moduleInventoryButton.text = "<sprite=\"UI-Powercell\" name=\"full\"> " + selectionCost;
         }
         
         /// <summary>

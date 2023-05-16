@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Gameplay.Waves;
+using UnityEngine;
 using UnityEngine.InputSystem.EnhancedTouch;
 
 namespace Gameplay
@@ -24,6 +25,7 @@ namespace Gameplay
             set
             {
                 _lives = value;
+                OnLoseLife.Invoke();
                 if (value == 0)
                 {
                     OnGameOver?.Invoke();
@@ -47,6 +49,7 @@ namespace Gameplay
         // Events
         public static event RoundProgressEvent OnRoundProgress;
         public static event GameOverEvent OnGameOver;
+        public static event LoseLife OnLoseLife;
         
         /// <summary>
         /// Resets all stats and enables the game's controls at the start of the game
@@ -76,4 +79,6 @@ namespace Gameplay
 
     public delegate void RoundProgressEvent();
     public delegate void GameOverEvent();
+
+    public delegate void LoseLife();
 }
