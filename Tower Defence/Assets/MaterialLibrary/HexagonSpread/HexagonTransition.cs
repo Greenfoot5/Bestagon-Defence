@@ -9,13 +9,9 @@ namespace MaterialLibrary.HexagonSpread
     /// </summary>
     public enum State
     {
-        /// <summary>
-        /// The closing animation
-        /// </summary>
+        // The closing animation
         IN,
-        /// <summary>
-        /// The opening animation
-        /// </summary>
+        // The opening animation
         OUT
     }
 
