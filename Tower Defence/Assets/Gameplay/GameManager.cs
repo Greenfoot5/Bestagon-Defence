@@ -32,7 +32,6 @@ namespace Gameplay
         [Tooltip("The Progress Graphic for the lives bar")]
         [SerializeField]
         private Progress livesBar;
-        // TODO - Accurately get start lives
         private int _startLives;
         
         [Tooltip("The levelData to use for the current level")]
