@@ -85,15 +85,15 @@ MonoBehaviour:
     m_Unicode: 65534
     m_GlyphIndex: 0
     m_Scale: 1
-    m_Name: T_Energy_Bit
-    m_HashCode: 679740553
+    m_Name: bit
+    m_HashCode: 108127
   m_SpriteGlyphTable:
   - m_Index: 0
     m_Metrics:
       m_Width: 221
       m_Height: 221
-      m_HorizontalBearingX: -110.5
-      m_HorizontalBearingY: 110.5
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 180
       m_HorizontalAdvance: 221
     m_GlyphRect:
       m_X: 0

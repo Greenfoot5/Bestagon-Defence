@@ -2045,7 +2045,11 @@ MonoBehaviour:
   selectionUI: {fileID: 3030562544499506770}
   nextCost: 0
   powercellsText: {fileID: 4077244561523284678}
-  energyProgress: {fileID: 0}
+  energyProgress: {fileID: 6923508768487608851}
+  defaultButtonTop: {r: 0.6745098, g: 0.6745098, b: 0.7647059, a: 1}
+  defaultButtonBottom: {r: 0.37254903, g: 0.37254903, b: 0.48235294, a: 1}
+  expensiveButtonTop: {r: 0.7921569, g: 0.011764706, b: 0.27058825, a: 1}
+  expensiveButtonBottom: {r: 0.50980395, g: 0.03529412, b: 0.1882353, a: 1}
   sellPercentage: 0.85
 --- !u!1 &4077244561675534175
 GameObject:

@@ -47,7 +47,22 @@ namespace Gameplay
         private TextMeshProUGUI powercellsText;
         [SerializeField]
         private Progress energyProgress;
+        
+        [Header("Shop Button Colours")]
+        [Tooltip("Shop Button Colours Top when can afford")]
+        [SerializeField]
+        private Color defaultButtonTop;
+        [Tooltip("Shop Button Colours Bottom when can afford")]
+        [SerializeField]
+        private Color defaultButtonBottom;
+        [Tooltip("Shop Button Colours Top when can't afford")]
+        [SerializeField]
+        private Color expensiveButtonTop;
+        [Tooltip("Shop Button Colours Bottom when can afford")]
+        [SerializeField]
+        private Color expensiveButtonBottom;
 
+        // TODO - Move to level data
         [Tooltip("The percentage of the selection cost to sell turrets for")]
         [SerializeField]
         private double sellPercentage = 0.85;
@@ -232,9 +247,18 @@ namespace Gameplay
 
         private void UpdateEnergyButton()
         {
+            energyProgress.outColorA = expensiveButtonTop;
+            energyProgress.outColorB = expensiveButtonBottom;
+            powercellsText.color = expensiveButtonTop;
             powercellsText.text = "<sprite=\"UI-Powercell\" name=\"empty\"> " + 0;
             if (GameStats.Powercells > 0)
+            {
+                energyProgress.outColorA = defaultButtonTop;
+                energyProgress.outColorB = defaultButtonBottom;
+                powercellsText.color = new Color(1,1,1);
                 powercellsText.text = "<sprite=\"UI-Powercell\" name=\"full\"> " + GameStats.Powercells;
+            }
+
             energyProgress.percentage = GameStats.Money / (float)nextCost;
         }
     }
