@@ -69,5 +69,8 @@ namespace Levels.Maps
                  "\n\nUse an integer to take 1+ hearts per reroll" +
                  "\nUse a decimal to grant extra free rerolls per purchase")]
         public float rerollCost;
+        
+        [Tooltip("What percentage of the shop cost to refund when selling")]
+        public float sellPercentage;
     }
 }

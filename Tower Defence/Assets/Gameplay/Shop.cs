@@ -62,11 +62,6 @@ namespace Gameplay
         [SerializeField]
         private Color expensiveButtonBottom;
 
-        // TODO - Move to level data
-        [Tooltip("The percentage of the selection cost to sell turrets for")]
-        [SerializeField]
-        private double sellPercentage = 0.85;
-        
         /// <summary>
         /// Initialises values and set's starting prices
         /// </summary>
@@ -231,7 +226,7 @@ namespace Gameplay
 
         public int GetSellAmount()
         {
-            return (int) (sellPercentage * nextCost);
+            return (int) (_levelData.sellPercentage * nextCost);
         }
 
         private void CalculateEnergy()
