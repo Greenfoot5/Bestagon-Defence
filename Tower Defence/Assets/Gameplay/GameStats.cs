@@ -63,6 +63,16 @@ namespace Gameplay
             }
         }
 
+        public static void PopulateRounds(int rounds)
+        {
+            _rounds = rounds;
+        }
+        public static void PopulateLives(int lives)
+        {
+            Debug.Log("Populating Lives " + lives);
+            _lives = lives;
+        }
+
         public static GameControls controls;
 
         // Events
@@ -81,6 +91,7 @@ namespace Gameplay
             {
                 Money = startMoney;
                 _lives = startLives;
+                _rounds = 0;
             }
 
             // Controls

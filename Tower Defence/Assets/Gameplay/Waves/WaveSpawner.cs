@@ -60,6 +60,7 @@ namespace Gameplay.Waves
             _levelData = gameObject.GetComponent<GameManager>().levelData;
             _countdown = preparationTime;
             _waveIndex = GameStats.Rounds;
+            waveText.text = "Wave " + GameStats.Rounds;
         }
         
         /// <summary>
@@ -112,7 +113,7 @@ namespace Gameplay.Waves
             waveCountdownText.text = "Spawning...";
             Wave wave = waves[_waveIndex % waves.Length];
             GameStats.Rounds = _waveIndex + 1;
-            waveText.text = "Wave " + (_waveIndex + 1);
+            waveText.text = "Wave " + GameStats.Rounds;
             _totalEnemies = 0;
 
             for (var i = 0; i < wave.enemySets.Length; i++)

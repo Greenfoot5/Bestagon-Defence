@@ -45,6 +45,7 @@ namespace Gameplay
 
         private void Awake()
         {
+            _startLives = GameStats.Lives;
             if (PlayerPrefs.GetInt("LoadingLevel", 0) == 0) return;
             LoadJsonData(this);
         }
@@ -62,7 +63,7 @@ namespace Gameplay
             }
             
             GameStats.OnLoseLife += UpdateLives;
-            _startLives = GameStats.Lives;
+            UpdateLives();
         }
     
         /// <summary>
@@ -101,6 +102,7 @@ namespace Gameplay
         {
             saveData.lives = GameStats.Lives;
             saveData.money = GameStats.Money;
+            saveData.powercells = GameStats.Powercells;
             saveData.waveIndex = GameStats.Rounds - 1;
             saveData.random = Random.state;
             saveData.shopCost = shop.GetComponent<Shop>().nextCost;
@@ -151,11 +153,12 @@ namespace Gameplay
         {
             _startLives = GameStats.Lives;
             GameStats.Lives = saveData.lives;
-            GameStats.Money = saveData.money;
-            GameStats.Rounds = saveData.waveIndex;
+            GameStats.PopulateRounds(saveData.waveIndex + 1);
             Random.state = saveData.random;
             var shopComponent = shop.GetComponent<Shop>();
             shopComponent.nextCost = saveData.shopCost;
+            GameStats.Powercells = saveData.powercells;
+            GameStats.Money = saveData.money;
 
             foreach (SaveLevel.NodeData nodeData in saveData.nodes)
             {

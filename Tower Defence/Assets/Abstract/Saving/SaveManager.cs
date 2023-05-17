@@ -120,18 +120,13 @@ namespace Abstract.Saving
 
         public static bool SaveExists(string sceneName)
         {
-            if (FileManager.FileExists(sceneName + "Save.dat"))
-            {
-                FileManager.LoadFromFile(sceneName + "Save.dat", out string json);
-                var sd = new SaveLevel();
-                sd.LoadFromJson(json);
+            if (!FileManager.FileExists(sceneName + "Save.dat")) return false;
+            
+            FileManager.LoadFromFile(sceneName + "Save.dat", out string json);
+            var sd = new SaveLevel();
+            sd.LoadFromJson(json);
 
-                if (sd.version == Application.version)
-                {
-                    return true;
-                }
-            }
-            return false;
+            return sd.version == Application.version;
         }
 
         public static void ClearSave(string sceneName)

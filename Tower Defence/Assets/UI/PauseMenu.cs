@@ -62,6 +62,7 @@ namespace UI
         /// </summary>
         public void Retry()
         {
+            GameStats.ClearStats();
             Toggle(new InputAction.CallbackContext());
             SaveManager.ClearSave(SceneManager.GetActiveScene().name);
             TransitionManager.Instance.LoadScene(SceneManager.GetActiveScene().name);
@@ -72,8 +73,6 @@ namespace UI
         /// </summary>
         public void Menu()
         {
-            GameStats.ClearStats();
-            
             // Transition to the main menu
             Toggle(new InputAction.CallbackContext());
             TransitionManager.Instance.LoadScene("LevelSelect");
