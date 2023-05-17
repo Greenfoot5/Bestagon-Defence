@@ -297,7 +297,7 @@ Material:
     - _Flip: 1
     - _OutOffset: 0
     - _OutX: 0
-    - _OutY: 0
+    - _OutY: 0.126
     - _Percentage: 1
     - _ShowHalf: 0.752
     - _TrapPercent: 0.858
@@ -306,8 +306,8 @@ Material:
     - _BarColorB: {r: 0.509434, g: 0.03604485, b: 0.18933281, a: 1}
     - _BgColorA: {r: 0, g: 0, b: 0, a: 0}
     - _BgColorB: {r: 0, g: 0, b: 0, a: 0}
-    - _OutColorA: {r: 0, g: 0, b: 0, a: 0}
-    - _OutColorB: {r: 0, g: 0, b: 0, a: 0}
+    - _OutColorA: {r: 1, g: 1, b: 1, a: 1}
+    - _OutColorB: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
 --- !u!21 &304529284
 Material:
@@ -471,6 +471,28 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 5837894107962673298, guid: 84f5c17147e1542e289158835f7db2e2, type: 3}
   m_PrefabInstance: {fileID: 5837894107527360749}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &605083547 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4161275288486783620, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
+  m_PrefabInstance: {fileID: 4077244562611154295}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e46fd070950fe4ee1a3c17bf4a290d0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &660153468 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5312225537624139111, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
+  m_PrefabInstance: {fileID: 4077244562611154295}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &708064495
 GameObject:
   m_ObjectHideFlags: 0
@@ -1220,6 +1242,10 @@ PrefabInstance:
       propertyPath: glyphsLookup.sprites.Array.size
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 4077244561523284678, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
+      propertyPath: m_fontSize
+      value: 46.7
+      objectReference: {fileID: 0}
     - target: {fileID: 4077244561648582632, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: moduleInventory
       value: 
@@ -1627,9 +1653,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1579177155}
     - target: {fileID: 5782079356602982493, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: livesBar
+      value: 
+      objectReference: {fileID: 605083547}
+    - target: {fileID: 5782079356602982493, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
       propertyPath: levelData
       value: 
       objectReference: {fileID: 11400000, guid: 6f49670e531a1439c8d13bde5464212f, type: 2}
+    - target: {fileID: 5782079356602982493, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
+      propertyPath: livesText
+      value: 
+      objectReference: {fileID: 660153468}
     - target: {fileID: 5782079356602982493, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
       propertyPath: gameOverUI
       value: 

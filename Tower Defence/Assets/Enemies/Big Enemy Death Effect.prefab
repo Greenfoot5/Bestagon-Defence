@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7152970123269664365}
   - component: {fileID: 2631104467574053806}
   m_Layer: 0
-  m_Name: Enemy Death Effect
+  m_Name: Big Enemy Death Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41,7 +41,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 710779272522642178}
   serializedVersion: 8
-  lengthInSec: 0.6
+  lengthInSec: 0.8
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -116,8 +116,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.5
-      minScalar: 0.4
+      scalar: 0.8
+      minScalar: 0.6
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -980,8 +980,8 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 3
-        scalar: 10
-        minScalar: 5
+        scalar: 15
+        minScalar: 8
         maxCurve:
           serializedVersion: 2
           m_Curve:
@@ -1545,7 +1545,7 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 21300000, guid: b81fa4945c4fd4274b8356352e61668e, type: 3}
+    - sprite: {fileID: 21300000, guid: b5d490c96ba654815ac80f004933f222, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:

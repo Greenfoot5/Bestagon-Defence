@@ -1,11 +1,13 @@
 ﻿using System;
 using Abstract.Data;
 using Levels.Maps;
+using MaterialLibrary.Trapezium;
 using TMPro;
 using Turrets;
 using UI.Modules;
 using UI.Shop;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Gameplay
@@ -36,14 +38,15 @@ namespace Gameplay
         [Tooltip("The UI to display when the player opens the shop")]
         [SerializeField]
         private GameObject selectionUI;
-        [Range(0, Mathf.Infinity)]
-        public int selectionCost;
+        [FormerlySerializedAs("selectionCost")] [Range(0, Mathf.Infinity)]
+        [HideInInspector]
+        public int nextCost;
         private bool _hasPlayerMadePurchase;
         
+        [FormerlySerializedAs("shopButton")] [FormerlySerializedAs("turretInventoryButton")] [SerializeField]
+        private TextMeshProUGUI powercellsText;
         [SerializeField]
-        private TextMeshProUGUI turretInventoryButton;
-        [SerializeField]
-        private TextMeshProUGUI moduleInventoryButton;
+        private Progress energyProgress;
 
         [Tooltip("The percentage of the selection cost to sell turrets for")]
         [SerializeField]
@@ -57,9 +60,9 @@ namespace Gameplay
             _buildManager = BuildManager.instance;
             _levelData = _buildManager.GetComponent<GameManager>().levelData;
             // It should only be greater than 0 if we've loaded a save
-            if (selectionCost == 0)
+            if (nextCost == 0)
             {
-                selectionCost = _levelData.initialSelectionCost;
+                nextCost = _levelData.initialSelectionCost;
             }
             else
             {
@@ -67,8 +70,10 @@ namespace Gameplay
             }
 
             // Update button text
-            turretInventoryButton.text = "<sprite=\"UI-Powercell\" name=\"full\"> " + selectionCost;
-            moduleInventoryButton.text = "<sprite=\"UI-Powercell\" name=\"full\"> " + selectionCost;
+            powercellsText.text = "<sprite=\"UI-Powercell\" name=\"full\"> " + nextCost;
+            GameStats.OnGainMoney += CalculateEnergy;
+            GameStats.OnGainPowercell += UpdateEnergyButton;
+            CalculateEnergy();
         }
         
         /// <summary>
@@ -160,26 +165,7 @@ namespace Gameplay
         {
             return _hasPlayerMadePurchase || (!_levelData.hasInitialSelection);
         }
-        
-        /// <summary>
-        /// Increases the shop cost by the amount in the level data
-        /// </summary>
-        public void IncrementSelectionCost()
-        {
-            GameStats.money -= selectionCost;
-            selectionCost += _levelData.selectionCostIncrement;
-            UpdateCostText();
-        }
 
-        /// <summary>
-        /// Updates the text displaying the cost of the next shop opening
-        /// </summary>
-        public void UpdateCostText()
-        {
-            turretInventoryButton.text = "<sprite=\"UI-Powercell\" name=\"full\"> " + selectionCost;
-            moduleInventoryButton.text = "<sprite=\"UI-Powercell\" name=\"full\"> " + selectionCost;
-        }
-        
         /// <summary>
         /// Displays the module inventory and hides the turret inventory
         /// </summary>
@@ -230,7 +216,26 @@ namespace Gameplay
 
         public int GetSellAmount()
         {
-            return (int) (sellPercentage * selectionCost);
+            return (int) (sellPercentage * nextCost);
+        }
+
+        private void CalculateEnergy()
+        {
+            while (GameStats.Money > nextCost)
+            {
+                GameStats.Money -= nextCost;
+                nextCost += _levelData.selectionCostIncrement;
+                GameStats.Powercells++;
+            }
+            UpdateEnergyButton();
+        }
+
+        private void UpdateEnergyButton()
+        {
+            powercellsText.text = "<sprite=\"UI-Powercell\" name=\"empty\"> " + 0;
+            if (GameStats.Powercells > 0)
+                powercellsText.text = "<sprite=\"UI-Powercell\" name=\"full\"> " + GameStats.Powercells;
+            energyProgress.percentage = GameStats.Money / (float)nextCost;
         }
     }
 }

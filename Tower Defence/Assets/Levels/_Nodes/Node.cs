@@ -124,9 +124,9 @@ namespace Levels._Nodes
         /// </summary>
         public void SellTurret(int sellAmount)
         {
-            // // Grant the money
-            GameStats.money += sellAmount;
-        
+            // Grant the money
+            GameStats.Money += sellAmount;
+
             // Spawn the sell effect
             GameObject effect = Instantiate(_buildManager.sellEffect, transform.position, Quaternion.identity);
             effect.name = "_" + effect.name;

@@ -380,7 +380,7 @@ MonoBehaviour:
   rightBar: {fileID: 9058776261530500049}
   rotationRoot: {fileID: 1876962160361282837}
   doesRotation: 1
-  deathEffect: {fileID: 710779272522642178, guid: d286b443e8ade4d4cb1ec3e2a41a94f8, type: 3}
+  deathEffect: {fileID: 710779272522642178, guid: e3996eb16906b49aebb5de3dba91a939, type: 3}
   startingAbilities:
   - {fileID: 11400000, guid: 7abfb9b9f415147ccafd4ebefb61f8f2, type: 2}
   - {fileID: 11400000, guid: eab12303331974bfdbade13fb31851b0, type: 2}

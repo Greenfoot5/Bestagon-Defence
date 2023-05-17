@@ -29,7 +29,7 @@ namespace UI.Shop
         public TypeSpriteLookup glyphsLookup;
         
         [Tooltip("The turrets already purchased")]
-        private readonly List<Type> _turretTypes = new List<Type>();
+        private readonly List<Type> _turretTypes = new();
     
         /// <summary>
         /// Setups references, checks the player has enough gold and freezes the game when enabled
@@ -40,16 +40,14 @@ namespace UI.Shop
             _levelData = BuildManager.instance.GetComponent<GameManager>().levelData;
 
             // Check the player can afford to open the shop
-            if (GameStats.money < shop.selectionCost)
+            if (GameStats.Powercells < 1)
             {
-                //Debug.Log("Not enough gold!");
                 transform.parent.gameObject.SetActive(false);
                 return;
             }
 
             Time.timeScale = 0f;
-            shop.IncrementSelectionCost();
-            
+            GameStats.Powercells--;
         }
     
         /// <summary>

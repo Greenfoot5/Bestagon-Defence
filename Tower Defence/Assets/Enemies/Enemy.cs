@@ -301,7 +301,7 @@ namespace Enemies
             WaveSpawner.enemiesAlive--;
         
             // Grant money and destroy self
-            GameStats.money += deathMoney;
+            GameStats.Money += deathMoney;
             Destroy(gameObject);
         }
 
@@ -316,7 +316,7 @@ namespace Enemies
             // Let our other systems know the enemy reached the end
             GameStats.Lives -= deathLives;
             WaveSpawner.enemiesAlive--;
-            GameStats.money += endPathMoney;
+            GameStats.Money += endPathMoney;
         
             Destroy(gameObject);
         }

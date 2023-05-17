@@ -101,10 +101,10 @@ namespace Gameplay
         public void PopulateSaveData(SaveLevel saveData)
         {
             saveData.lives = GameStats.Lives;
-            saveData.money = GameStats.money;
+            saveData.money = GameStats.Money;
             saveData.waveIndex = GameStats.Rounds - 1;
             saveData.random = Random.state;
-            saveData.shopCost = shop.GetComponent<Shop>().selectionCost;
+            saveData.shopCost = shop.GetComponent<Shop>().nextCost;
             saveData.nodes = new List<SaveLevel.NodeData>();
             saveData.turretInventory = new List<TurretBlueprint>();
             saveData.moduleInventory = new List<ModuleChainHandler>();
@@ -150,12 +150,13 @@ namespace Gameplay
 
         public void LoadFromSaveData(SaveLevel saveData)
         {
+            _startLives = GameStats.Lives;
             GameStats.Lives = saveData.lives;
-            GameStats.money = saveData.money;
+            GameStats.Money = saveData.money;
             GameStats.Rounds = saveData.waveIndex;
             Random.state = saveData.random;
             var shopComponent = shop.GetComponent<Shop>();
-            shopComponent.selectionCost = saveData.shopCost;
+            shopComponent.nextCost = saveData.shopCost;
 
             foreach (SaveLevel.NodeData nodeData in saveData.nodes)
             {

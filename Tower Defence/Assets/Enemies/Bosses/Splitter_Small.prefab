@@ -380,7 +380,7 @@ MonoBehaviour:
   rightBar: {fileID: 9058776261530500049}
   rotationRoot: {fileID: 4440596545689421015}
   doesRotation: 0
-  deathEffect: {fileID: 2228279973635050725, guid: 5195c5e9c4b5144629a6da1edc537dd8, type: 3}
+  deathEffect: {fileID: 710779272522642178, guid: e3996eb16906b49aebb5de3dba91a939, type: 3}
   startingAbilities: []
   iconLayout: {fileID: 755010576676188860}
   isBoss: 1

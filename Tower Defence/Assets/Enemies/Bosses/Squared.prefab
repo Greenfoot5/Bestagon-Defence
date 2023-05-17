@@ -464,7 +464,7 @@ MonoBehaviour:
   rightBar: {fileID: 7585035796575315977}
   rotationRoot: {fileID: 697065739320494036}
   doesRotation: 0
-  deathEffect: {fileID: 710779272522642178, guid: d286b443e8ade4d4cb1ec3e2a41a94f8, type: 3}
+  deathEffect: {fileID: 710779272522642178, guid: e3996eb16906b49aebb5de3dba91a939, type: 3}
   startingAbilities:
   - {fileID: 11400000, guid: 966da114d7727432380233ed8306b9c2, type: 2}
   iconLayout: {fileID: 4154926920291916909}

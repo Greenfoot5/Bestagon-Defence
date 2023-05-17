@@ -31,7 +31,7 @@ namespace UI.Shop
         private GameObject reroll;
         [SerializeField]
         [Tooltip("The color of the reroll hexagons when the player cannot afford it")]
-        private Color rerollDisabledColor = new Color(0.3f, 0.3f, 0.3f, 1f);
+        private Color rerollDisabledColor = new(0.3f, 0.3f, 0.3f, 1f);
 
         private Color _rerollDefaultColor;
         private int _rerollsLeft;
@@ -53,9 +53,7 @@ namespace UI.Shop
         private void OnEnable()
         {
             revitaliseText.text = "+" + _levelData.revitaliseLives + " <sprite=\"UI-Life\" name=\"life\">";
-            int refundAmount = shop.selectionCost - _levelData.selectionCostIncrement;
-            refundText.text = "+" + (int)(refundAmount * _levelData.refundPercentage) +
-                              "<sprite=\"UI-Gold\" name=\"gold\">";
+            refundText.text = "+" + (_levelData.refundPercentage * 100) + "% <sprite=\"UI-EnergyBit\" name=\"bit\">";
             CheckReroll();
         }
         
@@ -75,9 +73,8 @@ namespace UI.Shop
         /// </summary>
         public void Refund()
         {
-            int refundAmount = shop.selectionCost - _levelData.selectionCostIncrement;
-            GameStats.money += (int) (refundAmount * _levelData.refundPercentage);
-            shop.UpdateCostText();
+            int refundAmount = shop.nextCost - _levelData.selectionCostIncrement;
+            GameStats.Money += (int) (refundAmount * _levelData.refundPercentage);
             transform.parent.gameObject.SetActive(false);
             Time.timeScale = 1f;
         }
