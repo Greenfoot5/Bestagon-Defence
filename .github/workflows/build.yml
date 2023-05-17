@@ -13,23 +13,23 @@ jobs:
     runs-on: ${{ matrix.jobOS }}
     strategy:
       fail-fast: false
-      #max-parallel: 5
+      max-parallel: 1
       matrix:
         include:
           - targetPlatform: StandaloneOSX # Build a macOS standalone (Intel 64-bit).
             jobOS: macos-latest
           - targetPlatform: StandaloneWindows # Build a Windows standalone.
-            jobOS: macos-latest
+            jobOS: ubuntu-latest
           - targetPlatform: StandaloneWindows64 # Build a Windows 64-bit standalone.
-            jobOS: macos-latest
+            jobOS: ubuntu-latest
           - targetPlatform: StandaloneLinux64 # Build a Linux 64-bit standalone.
-            jobOS: macos-latest
+            jobOS: ubuntu-latest
 #          - targetPlatform: iOS # Build an iOS player.
-#            jobOS: macos-latest
-          - targetPlatform: Android # Build an Android .apk standalone app.
-            jobOS: macos-latest
+#            jobOS: ubuntu-latest
+#          - targetPlatform: Android # Build an Android .apk standalone app.
+#            jobOS: ubuntu-latest
 #          - targetPlatform: WebGL # WebGL.
-#            jobOS: macos-latest
+#            jobOS: ubuntu-latest
         
     outputs:
       StandaloneOSX: ${{ steps.outputResult.outputs.StandaloneOSX }}
