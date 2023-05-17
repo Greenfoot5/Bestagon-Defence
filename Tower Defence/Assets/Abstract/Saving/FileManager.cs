@@ -21,7 +21,6 @@ namespace Abstract.Saving
 
             try
             {
-                Debug.Log(fullPath);
                 File.WriteAllText(fullPath, fileContents);
                 return true;
             }

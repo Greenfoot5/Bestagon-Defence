@@ -201,10 +201,10 @@ namespace Gameplay
                 { }
             }
 
-            if (moduleTransform.childCount != 2 ||
-                !moduleTransform.GetChild(1).GetComponentInChildren<Button>().interactable) return;
+            if (moduleTransform.childCount == 0 ||
+                !moduleTransform.GetChild(0).GetComponentInChildren<Button>().interactable) return;
             
-            var button = moduleTransform.GetChild(1).GetComponentInChildren<Button>();
+            var button = moduleTransform.GetChild(0).GetComponentInChildren<Button>();
             button.onClick.Invoke();
             button.Select();
         }
@@ -217,9 +217,9 @@ namespace Gameplay
             turretInventory.SetActive(true);
             moduleInventory.SetActive(false);
 
-            if (turretInventory.transform.childCount != 2) return;
+            if (turretInventory.transform.childCount == 0) return;
 
-            var button = turretInventory.transform.GetChild(1).GetComponent<Button>();
+            var button = turretInventory.transform.GetChild(0).GetComponent<Button>();
             button.onClick.Invoke();
             button.Select();
         }

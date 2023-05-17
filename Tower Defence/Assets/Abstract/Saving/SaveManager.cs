@@ -82,7 +82,7 @@ namespace Abstract.Saving
                 // Tell our leaderboard API to add the player
                 string leaderboardData =
                     Environment.GetEnvironmentVariable(SceneManager.GetActiveScene().name + "Leaderboard");
-                if (leaderboardData != null)
+                if (leaderboardData != null && _bridge != null)
                 {
                     string[] splitData = leaderboardData.Split(';');
                     _bridge.SendPlayerValue(PlayerPrefs.GetString("Username"), GameStats.Rounds, splitData[0],
