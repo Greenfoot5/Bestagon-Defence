@@ -1,5 +1,7 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization;
+using UnityEngine.Serialization;
 
 namespace Levels.Generic.MainMenu
 {
@@ -8,10 +10,26 @@ namespace Levels.Generic.MainMenu
     /// </summary>
     public class SetUsername : MonoBehaviour
     {
-        public GameObject mainMenuCanvas;
-        public MainMenu mainMenu;
-        public TMP_Text input;
-        public TMP_Text result;
+        [SerializeField]
+        [Tooltip("The canvas for the main menu")]
+        private GameObject mainMenuCanvas;
+        [SerializeField]
+        [Tooltip("The main menu in the scene")]
+        private MainMenu mainMenu;
+        [SerializeField]
+        [Tooltip("The Text the player's input")]
+        private TMP_Text input;
+        [SerializeField]
+        [Tooltip("The text to fill with the error message")]
+        [FormerlySerializedAs("result")]
+        private TMP_Text errorText;
+
+        [SerializeField]
+        [Tooltip("Too short error message")]
+        private LocalizedString tooShortErrorMessage;
+        [SerializeField]
+        [Tooltip("Too long error message")]
+        private LocalizedString tooLongErrorMessage;
         
         /// <summary>
         /// Saves the username the player picked if valid
@@ -21,10 +39,10 @@ namespace Levels.Generic.MainMenu
             switch (input.text.Length)
             {
                 case < 2:
-                    result.text = "Please enter a name";
+                    errorText.text = tooShortErrorMessage.GetLocalizedString();
                     break;
                 case > 20:
-                    result.text = "Please enter a name less than 20 characters";
+                    errorText.text = tooLongErrorMessage.GetLocalizedString();
                     break;
                 default:
                     // The username is valid and the game can save it
