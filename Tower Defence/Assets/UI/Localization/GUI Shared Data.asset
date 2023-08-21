@@ -175,10 +175,6 @@ MonoBehaviour:
     m_Key: Buttons/Retry
     m_Metadata:
       m_Items: []
-  - m_Id: 91135513976832
-    m_Key: New Entry
-    m_Metadata:
-      m_Items: []
   - m_Id: 91364149682176
     m_Key: GamePaused/Title
     m_Metadata:

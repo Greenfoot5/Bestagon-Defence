@@ -27,23 +27,23 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 5262608949248
-    m_Localized: Prototype
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 5276487901184
-    m_Localized: Polygon
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 5940530110464
-    m_Localized: Hexagon
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 5993328009216
-    m_Localized: Loop
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 6037959598080
-    m_Localized: Upgrade
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 6293510152192

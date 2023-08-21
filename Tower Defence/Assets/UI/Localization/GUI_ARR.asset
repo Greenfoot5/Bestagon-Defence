@@ -20,19 +20,19 @@ MonoBehaviour:
     - rid: 1943649921315110920
   m_TableData:
   - m_Id: 3603971432448
-    m_Localized: Main Menu
+    m_Localized: Port
     m_Metadata:
       m_Items: []
   - m_Id: 8265319571456
-    m_Localized: Privacy Policy
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 7730319319040
-    m_Localized: Settings
+    m_Localized: Arrangements
     m_Metadata:
       m_Items: []
   - m_Id: 6205761118208
-    m_Localized: Wiki
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 5170262958080
@@ -156,7 +156,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6251567112192
-    m_Localized: Controls
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 3645272743936
@@ -164,39 +164,39 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 3460605927424
-    m_Localized: Levels
+    m_Localized: Seas
     m_Metadata:
       m_Items: []
   - m_Id: 4203710767104
-    m_Localized: Could not display leaderboard
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 4094923104256
-    m_Localized: 'Top Score:'
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 3300756807680
-    m_Localized: Scoreboard
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 3506449670144
-    m_Localized: ' Scores'
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 22886260662272
-    m_Localized: Continue
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 3226630873088
-    m_Localized: Play
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 3540838768640
-    m_Localized: Leaderboard
+    m_Localized: Wanted Board
     m_Metadata:
       m_Items: []
   - m_Id: 6536389713920
-    m_Localized: Quit
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 6552697167872
@@ -224,7 +224,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7327833907200
-    m_Localized: Submit
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 26385253916672
@@ -236,23 +236,23 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 27931517640704
-    m_Localized: Tutorial
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 7585750048768
-    m_Localized: Continue Anyway
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 7517991067648
-    m_Localized: Update
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 7411002761216
-    m_Localized: Update Available
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 7447962968064
-    m_Localized: You are not on the latest version
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 7662262542336
@@ -260,7 +260,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 56904050008064
-    m_Localized: 'Wave '
+    m_Localized: 
     m_Metadata:
       m_Items:
       - rid: 1943649921315110920
@@ -281,10 +281,6 @@ MonoBehaviour:
     m_Localized: SAIL AGAIN
     m_Metadata:
       m_Items: []
-  - m_Id: 91135513976832
-    m_Localized: SAIL AGAIN
-    m_Metadata:
-      m_Items: []
   - m_Id: 91364149682176
     m_Localized: 'SAIL
 
@@ -300,15 +296,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 92190142357504
-    m_Localized: Revitalise
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 92361047662592
-    m_Localized: Refund
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 92483575865344
-    m_Localized: Reroll
+    m_Localized: 
     m_Metadata:
       m_Items: []
   references:

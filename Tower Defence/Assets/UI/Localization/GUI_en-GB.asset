@@ -56,7 +56,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 4094923104256
-    m_Localized: 'High Score:'
+    m_Localized: 'Best Score:'
     m_Metadata:
       m_Items: []
   - m_Id: 4203710767104
@@ -277,10 +277,6 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 91045730705408
-    m_Localized: RETRY
-    m_Metadata:
-      m_Items: []
-  - m_Id: 91135513976832
     m_Localized: RETRY
     m_Metadata:
       m_Items: []
