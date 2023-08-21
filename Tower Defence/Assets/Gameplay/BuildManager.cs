@@ -1,6 +1,6 @@
 ﻿using Levels._Nodes;
 using Turrets;
-using UI.Nodes;
+using UI.Inventory;
 using UnityEngine;
 
 namespace Gameplay
@@ -21,10 +21,6 @@ namespace Gameplay
         private TurretBlueprint _turretToBuild;
         private GameObject _buildingButton;
         private Node _selectedNode;
-    
-        [Tooltip("The UI to move above the turret")]
-        [SerializeField]
-        private NodeUI nodeUI;
         
         /// <summary>
         /// If the player is currently building or not
@@ -64,7 +60,8 @@ namespace Gameplay
         {
             Destroy(_buildingButton);
             GameManager.TurretInventory.Remove(_turretToBuild);
-            Deselect();
+            DeselectNode();
+            _turretToBuild = null;
         }
     
         /// <summary>
@@ -85,6 +82,7 @@ namespace Gameplay
             if (_selectedNode == node)
             {
                 DeselectNode();
+                TurretInfo.instance.Close();
                 return;
             }
             if (_selectedNode != null)
@@ -92,8 +90,8 @@ namespace Gameplay
         
             _selectedNode = node;
             _turretToBuild = null;
-
-            nodeUI.SetTarget(node);
+            
+            TurretInfo.instance.SetTarget(node);
         }
     
         /// <summary>
@@ -101,13 +99,13 @@ namespace Gameplay
         /// </summary>
         public void DeselectNode()
         {
+            Debug.Log("Deselecting Node");
             if (_selectedNode != null && _selectedNode.turret != null)
             {
                 _selectedNode.turret.GetComponent<Turret>().Deselected();
             }
 
             _selectedNode = null;
-            nodeUI.Hide();
         }
         
         /// <summary>
@@ -117,6 +115,8 @@ namespace Gameplay
         {
             DeselectNode();
             _turretToBuild = null;
+            Debug.Log("Closing");
+            TurretInfo.instance.Close();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Abstract.Data;
+using UI.Glyphs;
 using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Serialization;
@@ -20,6 +21,9 @@ namespace Turrets
         [FormerlySerializedAs("locTagline")]
         [Tooltip("The tagline of the turret. It's not a description, just a witty little remark")]
         public LocalizedString tagline;
+        [Tooltip("The glyph for the turret")]
+        [HideInInspector]
+        public TurretGlyphSo glyph;
         
         [Tooltip("The main colour of the turret. Is used in various ways for display")]
         public Color accent;

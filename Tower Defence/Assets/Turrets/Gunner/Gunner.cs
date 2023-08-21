@@ -1,6 +1,6 @@
 ﻿using System;
 using Abstract.Data;
-using UI.Nodes;
+using UI.Inventory;
 using UnityEngine;
 
 namespace Turrets.Gunner
@@ -115,9 +115,9 @@ namespace Turrets.Gunner
             }
             
             // Update the stats of the turret if it's selected
-            if (NodeUI.instance.GetTurret() != null && NodeUI.instance.GetTurret() == gameObject)
+            if (TurretInfo.instance.GetTurret() == gameObject)
             {
-                NodeUI.instance.UpdateStats();
+                TurretInfo.instance.UpdateStats();
             }
         }
 

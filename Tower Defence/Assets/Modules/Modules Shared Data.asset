@@ -243,6 +243,10 @@ MonoBehaviour:
     m_Key: Reload/Tagline
     m_Metadata:
       m_Items: []
+  - m_Id: 87557608142004224
+    m_Key: Card_Turret/Canvas (Environment)/Card_Turret/Background/Content/Modules/Title
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

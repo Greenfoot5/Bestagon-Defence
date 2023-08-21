@@ -3,6 +3,7 @@ using System.Linq;
 using Abstract.Data;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Localization;
 
 namespace Turrets
 {
@@ -34,7 +35,7 @@ namespace Turrets
         public UpgradableStat range = new(2.5f);
         [Tooltip("The shader that display's the turret's range when clicked")]
         [SerializeField]
-        private GameObject rangeDisplay;
+        public GameObject rangeDisplay;
 
         // Attack speed
         [Tooltip("How many times per second the turret attacks")]
@@ -50,6 +51,10 @@ namespace Turrets
         [Tooltip("What events to run when starting")]
         [SerializeField]
         private UnityEvent awakeEvents;
+
+        [Tooltip("The display name of the turret")]
+        [HideInInspector]
+        public LocalizedString displayName;
         
         /// <summary>
         /// Stops the range displaying

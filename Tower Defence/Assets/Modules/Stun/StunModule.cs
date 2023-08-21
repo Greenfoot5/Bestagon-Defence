@@ -8,6 +8,7 @@ using Turrets.Gunner;
 using Turrets.Lancer;
 using Turrets.Shooter;
 using Turrets.Smasher;
+using UI.Inventory;
 using UI.Nodes;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -111,7 +112,7 @@ namespace Modules.Stun
             turret.fireRate.SetBase(0);
             if (turret is DynamicTurret dynamicTurret1)
                 dynamicTurret1.rotationSpeed.SetBase(0);
-            NodeUI.instance.UpdateStats();
+            TurretInfo.instance.UpdateStats();
             
             yield return new WaitForSeconds(turretDuration);
             
@@ -124,7 +125,7 @@ namespace Modules.Stun
             turret.fireRate.SetBase(originalFireRate);
             if (turret is DynamicTurret dynamicTurret2)
                 dynamicTurret2.rotationSpeed.SetBase(originalRotSpeed);
-            NodeUI.instance.UpdateStats();
+            TurretInfo.instance.UpdateStats();
         }
     }
 }

@@ -79,6 +79,7 @@ namespace Levels._Nodes
             turret = newTurret;
             var turretClass = turret.GetComponent<Turret>();
             turretBlueprint = blueprint;
+            turretClass.displayName = blueprint.displayName;
         
             foreach (ModuleChainHandler handler in blueprint.moduleHandlers)
             {

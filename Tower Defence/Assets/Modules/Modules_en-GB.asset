@@ -79,9 +79,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 4163470614528
-    m_Localized: 'Fire Rate
-
-'
+    m_Localized: Fire Rate
     m_Metadata:
       m_Items: []
   - m_Id: 4543776546816
@@ -246,6 +244,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 51340224704274432
     m_Localized: Another one!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 87557608142004224
+    m_Localized: Modules
     m_Metadata:
       m_Items: []
   references:

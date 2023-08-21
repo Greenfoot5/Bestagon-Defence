@@ -7,7 +7,7 @@ using Turrets.Gunner;
 using Turrets.Lancer;
 using Turrets.Shooter;
 using Turrets.Smasher;
-using UI.Nodes;
+using UI.Inventory;
 using UnityEngine;
 
 namespace Modules.Surge
@@ -62,7 +62,7 @@ namespace Modules.Surge
             {
                 // SURGE!
                 turret.fireRate.AddModifier(fireRateChange);
-                NodeUI.instance.UpdateStats();
+                TurretInfo.instance.UpdateStats();
                 Vector3 position = turret.transform.position;
                 GameObject effect = Instantiate(surgeEffect, position, Quaternion.identity);
                 effect.name = "_" + effect.name;
@@ -72,7 +72,7 @@ namespace Modules.Surge
                 yield return new WaitForSeconds(duration);
                 
                 turret.fireRate.TakeModifier(fireRateChange);
-                NodeUI.instance.UpdateStats();
+                TurretInfo.instance.UpdateStats();
                 GameObject endEffect = Instantiate(surgeEndEffect, position, Quaternion.identity);
                 endEffect.name = "_" + endEffect.name;
                 Destroy(endEffect, endEffect.GetComponent<ParticleSystem>().main.duration);

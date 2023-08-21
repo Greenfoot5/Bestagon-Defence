@@ -4,6 +4,7 @@ using Levels.Maps;
 using MaterialLibrary.Trapezium;
 using TMPro;
 using Turrets;
+using UI.Inventory;
 using UI.Modules;
 using UI.Shop;
 using UnityEngine;
@@ -21,10 +22,11 @@ namespace Gameplay
         private LevelData _levelData;
         private ModuleChainHandler _selectedHandler;
         private GameObject _selectedHandlerButton;
+
         
         [SerializeField]
         [Tooltip("The inventory to place turret buttons")]
-        private GameObject turretInventory; 
+        private GameObject turretInventory;
         [SerializeField]
         [Tooltip("The inventory to place module buttons under")]
         private GameObject moduleInventory;
@@ -87,16 +89,6 @@ namespace Gameplay
         }
         
         /// <summary>
-        /// Selects a turret from the inventory
-        /// </summary>
-        /// <param name="turret">The TurretBlueprint of the selected turret</param>
-        /// <param name="button">The button that selected the turret</param>
-        private void SelectTurret(TurretBlueprint turret, GameObject button)
-        {
-            _buildManager.SelectTurretToBuild(turret, button);
-        }
-        
-        /// <summary>
         /// Selects a module from the inventory
         /// </summary>
         /// <param name="module">The selected module</param>
@@ -127,7 +119,7 @@ namespace Gameplay
             GameManager.ModuleInventory.Remove(_selectedHandler);
             _selectedHandler = new ModuleChainHandler();
         }
-        
+
         /// <summary>
         /// Adds a new turret button to the turret inventory
         /// </summary>
@@ -138,8 +130,7 @@ namespace Gameplay
             // Add and display the new item
             GameObject turretButton = Instantiate(defaultTurretButton, turretInventory.transform);
             turretButton.name = "_" + turretButton.name;
-            turretButton.GetComponent<Image>().sprite = turret.shopIcon;
-            turretButton.GetComponent<Button>().onClick.AddListener(delegate { SelectTurret(turret, turretButton); });
+            turretButton.GetComponent<TurretInventoryItem>().Init(turret);
             
             selectionUI.GetComponentInChildren<AddSelection>().AddTurretType(turret.prefab.GetComponent<Turret>().GetType());
             GameManager.TurretInventory.Add(turret);
@@ -153,7 +144,7 @@ namespace Gameplay
         {
             GameObject moduleButton = Instantiate(defaultModuleButton, moduleInventory.transform);
             moduleButton.name = "_" + moduleButton.name;
-            moduleButton.GetComponentInChildren<ModuleIcon>().SetData(module);
+            moduleButton.GetComponentInChildren<ModuleInventoryItem>().Init(module);
             moduleButton.GetComponentInChildren<Button>().onClick.AddListener(delegate { SelectModule(module, moduleButton); });
             
             GameManager.ModuleInventory.Add(module);
@@ -174,6 +165,21 @@ namespace Gameplay
         public bool HasPlayerMadePurchase()
         {
             return _hasPlayerMadePurchase || (!_levelData.hasInitialSelection);
+        }
+        
+        /// <summary>
+        /// Displays the turret inventory and hides the module inventory
+        /// </summary>
+        public void EnableTurretInventory()
+        {
+            turretInventory.SetActive(true);
+            moduleInventory.SetActive(false);
+
+            if (turretInventory.transform.childCount == 0) return;
+
+            var button = turretInventory.transform.GetChild(0).GetComponent<Button>();
+            button.onClick.Invoke();
+            button.Select();
         }
 
         /// <summary>
@@ -205,21 +211,6 @@ namespace Gameplay
                 !moduleTransform.GetChild(0).GetComponentInChildren<Button>().interactable) return;
             
             var button = moduleTransform.GetChild(0).GetComponentInChildren<Button>();
-            button.onClick.Invoke();
-            button.Select();
-        }
-        
-        /// <summary>
-        /// Displays the turret inventory and hides the module inventory
-        /// </summary>
-        public void EnableTurretInventory()
-        {
-            turretInventory.SetActive(true);
-            moduleInventory.SetActive(false);
-
-            if (turretInventory.transform.childCount == 0) return;
-
-            var button = turretInventory.transform.GetChild(0).GetComponent<Button>();
             button.onClick.Invoke();
             button.Select();
         }

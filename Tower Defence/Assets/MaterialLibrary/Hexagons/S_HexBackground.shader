@@ -261,5 +261,5 @@ Shader "Custom/Hexagon/Background"
         }
     }
 
-    CustomEditor "HexagonsShaderEditor"
+    CustomEditor "Editor.Shader.HexagonsShaderEditor"
 }

@@ -259,9 +259,10 @@ namespace UI.Shop
         /// <param name="turret">The turret the player can pick</param>
         private void GenerateTurretUI(TurretBlueprint turret)
         {
+            turret.glyph = glyphsLookup.GetForType(turret.prefab.GetComponent<Turret>().GetType());
             GameObject turretUI = Instantiate(turretSelectionUI, transform);
             turretUI.name = "_" + turretUI.name;
-            turretUI.GetComponent<TurretSelectionUI>().Init(turret, shop, glyphsLookup);
+            turretUI.GetComponent<TurretSelectionUI>().Init(turret, shop);
         }
         
         /// <summary>
