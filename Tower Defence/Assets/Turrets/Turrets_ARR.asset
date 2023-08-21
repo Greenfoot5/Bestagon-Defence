@@ -178,6 +178,10 @@ MonoBehaviour:
     m_Localized: sea splitter
     m_Metadata:
       m_Items: []
+  - m_Id: 89061478064185344
+    m_Localized: Cannon
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

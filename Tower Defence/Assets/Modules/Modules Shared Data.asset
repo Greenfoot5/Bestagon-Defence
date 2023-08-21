@@ -244,7 +244,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 87557608142004224
-    m_Key: Card_Turret/Canvas (Environment)/Card_Turret/Background/Content/Modules/Title
+    m_Key: Text/Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89775783831134208
+    m_Key: TypePanel/Module
     m_Metadata:
       m_Items: []
   m_Metadata:

@@ -17,13 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 21c82bb164c6849e88c5a168bea561d1
   m_SerializeEntries:
-  - m_GUID: 54956c3529b4341ab8379612ad287d9c
-    m_Address: MainMenu_ARR
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-ARR
-    - Preload
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f347eaea1b11f43e5ad781df5c477c93
     m_Address: Modules_ARR
     m_ReadOnly: 1
@@ -38,32 +31,11 @@ MonoBehaviour:
     - Locale-ARR
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 64a240bdd2001456d8d972e882810c4d
-    m_Address: Tutorial_ARR
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-ARR
-    - Preload
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 197d34ce078fe45619f09c3a449dcdd9
-    m_Address: LevelSelect_ARR
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-ARR
-    - Preload
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d664118972c81424fae431f487aaf0b1
     m_Address: Turrets_ARR
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-ARR
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9f178041c184c42de83b3541d4c75b4d
-    m_Address: Settings_ARR
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-ARR
-    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 33134590c4e0143c9b9caa4981fc3447
     m_Address: GUI_ARR
