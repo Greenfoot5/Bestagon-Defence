@@ -4381,9 +4381,36 @@ MonoBehaviour:
   shop: {fileID: 4077244561648582632}
   inventoryTitle: {fileID: 7422758902196720371}
   turretInventoryPage: {fileID: 8839925850798872335}
+  turretInventoryTitle:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   applyModuleButton: {fileID: 8164882230545668516}
   moduleInventoryPage: {fileID: 1565807002715283539}
+  moduleInventoryTitle:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   turretInfoPage: {fileID: 8118530878004778793}
+  turretInfoTitle:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   damage: {fileID: 7519240089067828750}
   rate: {fileID: 125264433033226515}
   range: {fileID: 6745050030195863244}
@@ -4391,6 +4418,9 @@ MonoBehaviour:
   moduleIconPrefab: {fileID: 2469623391304704137, guid: 199784de83837a343bb9f0740a40d2ce, type: 3}
   cycleTargetingButton: {fileID: 7297193026911473419}
   sellButtonText: {fileID: 3229589489898098832}
+  references:
+    version: 2
+    RefIds: []
 --- !u!114 &1089969878073488254
 MonoBehaviour:
   m_ObjectHideFlags: 0

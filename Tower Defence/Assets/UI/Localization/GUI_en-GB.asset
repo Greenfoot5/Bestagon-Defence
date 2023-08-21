@@ -258,10 +258,24 @@ MonoBehaviour:
     m_Localized: Your high scores will not be recorded!
     m_Metadata:
       m_Items: []
+  - m_Id: 56904050008064
+    m_Localized: 'Wave '
+    m_Metadata:
+      m_Items:
+      - rid: 1943649921315110921
+  - m_Id: 87191660257280
+    m_Localized: '{Spawner.enemiesAlive} Enemies Left'
+    m_Metadata:
+      m_Items:
+      - rid: 1943649921315110921
+  - m_Id: 88854060064768
+    m_Localized: Spawning...
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
     - rid: 1943649921315110921
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00e02fabf5050000
+        m_Entries: 00e02fabf505000000e0af01c133000000e0efe34c4f0000

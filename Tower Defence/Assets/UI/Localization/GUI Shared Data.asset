@@ -155,6 +155,18 @@ MonoBehaviour:
     m_Key: Buttons/Tutorial
     m_Metadata:
       m_Items: []
+  - m_Id: 56904050008064
+    m_Key: Text/WaveCount
+    m_Metadata:
+      m_Items: []
+  - m_Id: 87191660257280
+    m_Key: Text/EnemiesLeft
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88854060064768
+    m_Key: Text/Spawning
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

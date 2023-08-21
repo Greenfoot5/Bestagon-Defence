@@ -5,6 +5,7 @@ using Levels.Maps;
 using MaterialLibrary.Trapezium;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization;
 using UnityEngine.SceneManagement;
 
 namespace Gameplay.Waves
@@ -51,6 +52,17 @@ namespace Gameplay.Waves
 
         private LevelData _levelData;
 
+        [Header("Localization")]
+        [SerializeField]
+        [Tooltip("The text to show with the wave count")]
+        private LocalizedString waveCountText;
+        [SerializeField]
+        [Tooltip("The text to show how many enemies are alive")]
+        private LocalizedString enemiesAliveText;
+        [SerializeField]
+        [Tooltip("The text to show when more enemies are being spawned")]
+        private LocalizedString spawningText;
+
         /// <summary>
         /// Sets the starting variables
         /// </summary>
@@ -60,7 +72,7 @@ namespace Gameplay.Waves
             _levelData = gameObject.GetComponent<GameManager>().levelData;
             _countdown = preparationTime;
             _waveIndex = GameStats.Rounds;
-            waveText.text = "Wave " + GameStats.Rounds;
+            waveText.text = waveCountText.GetLocalizedString() + GameStats.Rounds;
         }
         
         /// <summary>
@@ -74,7 +86,7 @@ namespace Gameplay.Waves
                 if (_isSpawning)
                     return;
                 waveProgress.percentage = enemiesAlive / _totalEnemies;
-                waveCountdownText.text = enemiesAlive + " Enemies Left";
+                waveCountdownText.text = enemiesAliveText.GetLocalizedString();
                 return;
             }
 
@@ -110,10 +122,10 @@ namespace Gameplay.Waves
         private IEnumerator SpawnWave()
         {
             _isSpawning = true;
-            waveCountdownText.text = "Spawning...";
+            waveCountdownText.text = spawningText.GetLocalizedString();
             Wave wave = waves[_waveIndex % waves.Length];
             GameStats.Rounds = _waveIndex + 1;
-            waveText.text = "Wave " + GameStats.Rounds;
+            waveText.text = waveCountText.GetLocalizedString() + GameStats.Rounds;
             _totalEnemies = 0;
 
             for (var i = 0; i < wave.enemySets.Length; i++)
