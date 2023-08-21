@@ -8,6 +8,7 @@ using Turrets.Lancer;
 using UI.Modules;
 using UI.TurretStats;
 using UnityEngine;
+using UnityEngine.Localization;
 using UnityEngine.UI;
 
 namespace UI.Inventory
@@ -28,6 +29,9 @@ namespace UI.Inventory
         [SerializeField]
         [Tooltip("The inventory show/hide for the turrets")]
         private GameObject turretInventoryPage;
+        [SerializeField]
+        [Tooltip("The text to display for the title")]
+        private LocalizedString turretInventoryTitle;
         
         [Header("Module Inventory")]
         [SerializeField]
@@ -36,11 +40,17 @@ namespace UI.Inventory
         [SerializeField]
         [Tooltip("The inventory to show/hide for the modules")]
         private GameObject moduleInventoryPage;
+        [SerializeField]
+        [Tooltip("The text to display for the title")]
+        private LocalizedString moduleInventoryTitle;
         
         [Header("Turret Info")]
         [SerializeField]
         [Tooltip("The page show/hide for the turret info")]
         private GameObject turretInfoPage;
+        [SerializeField]
+        [Tooltip("The text to display for the title")]
+        private LocalizedString turretInfoTitle;
         
         [Space(10)]
         [Tooltip("The TurretStat used to display the damage")]
@@ -181,6 +191,12 @@ namespace UI.Inventory
             rate.SetColor(color);
             range.SetColor(color);
         }
+
+        public void UpdateSelection()
+        {
+            UpdateStats();
+            UpdateModules();
+        }
         
         /// <summary>
         /// Sells the turret
@@ -229,7 +245,6 @@ namespace UI.Inventory
         {
             if (turretInventoryPage.activeSelf)
             {
-                Close();
                 BuildManager.instance.Deselect();
                 return;
             }
@@ -260,11 +275,10 @@ namespace UI.Inventory
             applyModuleButton.SetActive(_target != null);
         }
 
-        public void OpenTurretInfo()
+        private void OpenTurretInfo()
         {
             if (turretInfoPage.activeSelf)
             {
-                Close();
                 BuildManager.instance.Deselect();
                 return;
             }
@@ -279,21 +293,18 @@ namespace UI.Inventory
 
         public void Close()
         {
-            Debug.Log("Called Close");
             turretInfoPage.SetActive(false);
             turretInventoryPage.SetActive(false);
             moduleInventoryPage.SetActive(false);
             
-            BuildManager.instance.DeselectNode();
             _target = null;
             
-            Debug.Log("Changing Anchors");
             var rt = (RectTransform)transform;
             rt.anchorMin = new Vector2(-0.25f, rt.anchorMin.y);
             rt.anchorMax = new Vector2(0f, rt.anchorMax.y);
         }
 
-        public void Show()
+        private void Show()
         {
             var rt = (RectTransform)transform;
             rt.anchorMin = new Vector2(0f, rt.anchorMin.y);

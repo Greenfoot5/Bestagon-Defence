@@ -25,7 +25,7 @@ namespace Gameplay
         /// <summary>
         /// If the player is currently building or not
         /// </summary>
-        public bool CanBuild => _turretToBuild != null;
+        public bool HasTurretToBuild => _turretToBuild != null;
         
         /// <summary>
         /// Check there is only one build manager when loading in
@@ -54,13 +54,12 @@ namespace Gameplay
         }
         
         /// <summary>
-        /// Builds the turret on the node and removes the inventory button
+        /// Let the build manager know the turret has been constructed
         /// </summary>
-        public void BuildTurret()
+        public void BuiltTurret()
         {
             Destroy(_buildingButton);
             GameManager.TurretInventory.Remove(_turretToBuild);
-            DeselectNode();
             _turretToBuild = null;
         }
     
@@ -74,48 +73,34 @@ namespace Gameplay
         }
     
         /// <summary>
-        /// Sets the selected node and moves the NodeUI
+        /// Sets the selected node
         /// </summary>
         /// <param name="node">The selected node</param>
         public void SelectNode(Node node)
         {
             if (_selectedNode == node)
             {
-                DeselectNode();
+                Deselect();
                 TurretInfo.instance.Close();
                 return;
             }
-            if (_selectedNode != null)
-                DeselectNode();
+            
+            // Clear any previous selection
+            Deselect();
         
             _selectedNode = node;
-            _turretToBuild = null;
-            
             TurretInfo.instance.SetTarget(node);
         }
-    
-        /// <summary>
-        /// Deselects the node the player currently has selected
-        /// </summary>
-        public void DeselectNode()
+
+        public void Deselect()
         {
-            Debug.Log("Deselecting Node");
+            _turretToBuild = null;
+
             if (_selectedNode != null && _selectedNode.turret != null)
             {
                 _selectedNode.turret.GetComponent<Turret>().Deselected();
             }
-
             _selectedNode = null;
-        }
-        
-        /// <summary>
-        /// Deselects both the node and the turret the player wants to build
-        /// </summary>
-        public void Deselect()
-        {
-            DeselectNode();
-            _turretToBuild = null;
-            Debug.Log("Closing");
             TurretInfo.instance.Close();
         }
     }

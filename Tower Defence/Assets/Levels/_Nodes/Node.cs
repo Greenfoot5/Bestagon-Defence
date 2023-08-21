@@ -1,6 +1,7 @@
 ﻿using Abstract.Data;
 using Gameplay;
 using Turrets;
+using UI.Inventory;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -114,9 +115,8 @@ namespace Levels._Nodes
             effect.name = "_" + effect.name;
             Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
         
-            // Deselect and reselect to avoid issues from upgrading
-            BuildManager.instance.DeselectNode();
-            BuildManager.instance.SelectNode(this);
+            // Update the TurretInfo
+            TurretInfo.instance.UpdateSelection();
             return true;
         }
     
@@ -137,7 +137,7 @@ namespace Levels._Nodes
             Destroy(turret);
             turretBlueprint = null;
 
-            BuildManager.instance.DeselectNode();
+            BuildManager.instance.Deselect();
         }
     
         /// <summary>
@@ -193,9 +193,10 @@ namespace Levels._Nodes
                 _buildManager.SelectNode(this);
                 return;
             }
+            // If the player is clicking an empty node
 
-            // Check the player is trying to build
-            if (!_buildManager.CanBuild)
+            // Player doesn't have a build button selected
+            if (!_buildManager.HasTurretToBuild)
             {
                 _buildManager.Deselect();
                 return;
@@ -203,7 +204,7 @@ namespace Levels._Nodes
 
             // Construct a turret
             BuildTurret(_buildManager.GetTurretToBuild());
-            _buildManager.BuildTurret();
+            _buildManager.BuiltTurret();
         }
         
         /// <summary>
@@ -212,7 +213,7 @@ namespace Levels._Nodes
         public void OnPointerEnter(PointerEventData eventData)
         {
             // Make sure the player is trying to build
-            if (!_buildManager.CanBuild)
+            if (!_buildManager.HasTurretToBuild)
             {
                 return;
             }
