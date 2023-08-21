@@ -12,18 +12,23 @@ namespace Levels.Generic.MainMenu
     /// </summary>
     public class MainMenu : MonoBehaviour
     {
+        [SerializeField]
         [Header("Wordmark")]
         [Tooltip("The wordmark/logo on the main screen to colour based on version")]
-        public Image wordmark;
+        private Image wordmark;
 
+        [SerializeField]
         [Tooltip("The colour to make the wordmark if it's a nightly build")]
-        public Color nightlyColor;
+        private Color nightlyColor;
+        [SerializeField]
         [Tooltip("The colour to make the wordmark if it's a alpha build")]
-        public Color alphaColor;
+        private Color alphaColor;
+        [SerializeField]
         [Tooltip("The colour to make the wordmark if it's a beta build")]
-        public Color betaColor;
+        private Color betaColor;
+        [SerializeField]
         [Tooltip("The colour to make the wordmark if it's a release build")]
-        public Color releaseColor;
+        private Color releaseColor;
         
         [Header("Username")]
         [Tooltip("The text that displays the username of the player")]
