@@ -58,10 +58,6 @@ MonoBehaviour:
     m_Localized: Arrrangements
     m_Metadata:
       m_Items: []
-  - m_Id: 84487053033594880
-    m_Localized: GUID:a6170bad920ce47ac8d85f7255dd7a10
-    m_Metadata:
-      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -167,6 +167,42 @@ MonoBehaviour:
     m_Key: Text/Spawning
     m_Metadata:
       m_Items: []
+  - m_Id: 90562316197888
+    m_Key: GameOver/Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91045730705408
+    m_Key: Buttons/Retry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91135513976832
+    m_Key: New Entry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91364149682176
+    m_Key: GamePaused/Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91663031590912
+    m_Key: Buttons/Restart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91945329221632
+    m_Key: Shop/Game Paused
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92190142357504
+    m_Key: Shop/Revitalise
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92361047662592
+    m_Key: Shop/Refund
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92483575865344
+    m_Key: Shop/Reroll
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

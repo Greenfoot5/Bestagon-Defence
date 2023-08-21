@@ -55,10 +55,6 @@ MonoBehaviour:
     m_Key: Settings
     m_Metadata:
       m_Items: []
-  - m_Id: 84487053033594880
-    m_Key: PrototypeLevel/@Managers/GameManager
-    m_Metadata:
-      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

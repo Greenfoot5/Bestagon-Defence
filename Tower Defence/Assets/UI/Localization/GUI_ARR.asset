@@ -273,6 +273,44 @@ MonoBehaviour:
     m_Localized: Boarding...
     m_Metadata:
       m_Items: []
+  - m_Id: 90562316197888
+    m_Localized: Sail Over
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91045730705408
+    m_Localized: SAIL AGAIN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91135513976832
+    m_Localized: SAIL AGAIN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91364149682176
+    m_Localized: 'SAIL
+
+      PAUSED'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91663031590912
+    m_Localized: Restart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91945329221632
+    m_Localized: SAIL PAUSED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92190142357504
+    m_Localized: Revitalise
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92361047662592
+    m_Localized: Refund
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92483575865344
+    m_Localized: Reroll
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
