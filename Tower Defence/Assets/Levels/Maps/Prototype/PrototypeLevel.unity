@@ -203,6 +203,46 @@ Material:
     m_Colors:
     - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
+--- !u!21 &81678079
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Custom/ProgressBar
+  m_Shader: {fileID: 4800000, guid: 310735eb07c0c45138732ef42591db14, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _Flip: 1
+    - _OutOffset: 0
+    - _OutX: 0.074
+    - _OutY: 0.166
+    - _Percentage: 0.497
+    - _ShowHalf: 0.447
+    - _TrapPercent: 0.771
+    m_Colors:
+    - _BarColorA: {r: 0.039215688, g: 0.8862745, b: 0.9490196, a: 1}
+    - _BarColorB: {r: 0.058823526, g: 0.617323, b: 0.8392157, a: 1}
+    - _BgColorA: {r: 0.26286048, g: 0.2632012, b: 0.31132078, a: 1}
+    - _BgColorB: {r: 0.1728818, g: 0.1728818, b: 0.1981132, a: 1}
+    - _OutColorA: {r: 0.6740388, g: 0.6740388, b: 0.764151, a: 1}
+    - _OutColorB: {r: 0.374466, g: 0.374466, b: 0.4811321, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1001 &112508244
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -778,6 +818,46 @@ MonoBehaviour:
         - localeIdentifier:
             m_Code: ARR
           value: 773.3744
+--- !u!21 &683658631
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Custom/Hexagon/Background
+  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _GlowClamp: 0
+    - _GlowIntensity: 0
+    - _GlowOpacity: 0
+    - _HexScale: 20
+    - _Opacity: 1
+    - _Overlay: -0.05
+    - _ScrollSpeed: 0.002
+    - _ShiftSpeed: 0.3
+    m_Colors:
+    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1 &708064495
 GameObject:
   m_ObjectHideFlags: 0
@@ -1290,46 +1370,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!21 &1401101404
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Custom/Hexagon/Background
-  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _GlowClamp: 0
-    - _GlowIntensity: 0
-    - _GlowOpacity: 0
-    - _HexScale: 20
-    - _Opacity: 1
-    - _Overlay: -0.05
-    - _ScrollSpeed: 0.002
-    - _ShiftSpeed: 0.3
-    m_Colors:
-    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
-  m_BuildTextureStacks: []
 --- !u!114 &1523963598 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7935189852862486145, guid: 20ef5804d1a7b4d538d07d8c94025e14, type: 3}
@@ -1520,46 +1560,6 @@ Transform:
   - {fileID: 855740748}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &1995207637
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Custom/ProgressBar
-  m_Shader: {fileID: 4800000, guid: 310735eb07c0c45138732ef42591db14, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs: []
-    m_Ints: []
-    m_Floats:
-    - _Flip: 1
-    - _OutOffset: 0
-    - _OutX: 0.074
-    - _OutY: 0.166
-    - _Percentage: 0.497
-    - _ShowHalf: 0.447
-    - _TrapPercent: 0.771
-    m_Colors:
-    - _BarColorA: {r: 0.039215688, g: 0.8862745, b: 0.9490196, a: 1}
-    - _BarColorB: {r: 0.058823526, g: 0.617323, b: 0.8392157, a: 1}
-    - _BgColorA: {r: 0.26286048, g: 0.2632012, b: 0.31132078, a: 1}
-    - _BgColorB: {r: 0.1728818, g: 0.1728818, b: 0.1981132, a: 1}
-    - _OutColorA: {r: 0.6740388, g: 0.6740388, b: 0.764151, a: 1}
-    - _OutColorB: {r: 0.374466, g: 0.374466, b: 0.4811321, a: 1}
-  m_BuildTextureStacks: []
 --- !u!114 &2009016680 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7229574083802123749, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
@@ -1882,7 +1882,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1898650749496772999, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.0009588204
+      value: -0.00092461775
       objectReference: {fileID: 0}
     - target: {fileID: 1961169739310181259, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2778,7 +2778,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5298390122067880784, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -43.294373
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5327006930858223940, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2847,6 +2847,10 @@ PrefabInstance:
     - target: {fileID: 5558196434861175411, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -455
+      objectReference: {fileID: 0}
+    - target: {fileID: 5560657744649793517, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
+      propertyPath: m_fontSize
+      value: 9.35
       objectReference: {fileID: 0}
     - target: {fileID: 5611073458244472218, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2958,7 +2962,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6004221437146632574, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 773.3744
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6004221437146632574, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_LocalRotation.x
@@ -2978,7 +2982,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6004221437146632574, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -436.6872
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6057104136550691608, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_SizeDelta.x
@@ -3212,6 +3216,18 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 810912410}
+    - target: {fileID: 7078878467254237086, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
+      propertyPath: m_Color.b
+      value: 0.9490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 7078878467254237086, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
+      propertyPath: m_Color.g
+      value: 0.8862745
+      objectReference: {fileID: 0}
+    - target: {fileID: 7078878467254237086, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
+      propertyPath: m_Color.r
+      value: 0.039215688
+      objectReference: {fileID: 0}
     - target: {fileID: 7079503843740585749, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -3342,7 +3358,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7323306986885200608, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -43.294373
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7422668096910840528, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_SizeDelta.x
@@ -3394,7 +3410,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7640816732435327082, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 773.3744
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7640816732435327082, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_LocalRotation.x
@@ -3414,7 +3430,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7640816732435327082, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -436.6872
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7684713889358990388, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3460,6 +3476,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7877642082842346609, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
+      propertyPath: m_fontSize
+      value: 9.35
+      objectReference: {fileID: 0}
     - target: {fileID: 7941989898777393924, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3478,7 +3498,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8132740608030233156, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -43.294373
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8225548137224231950, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_SizeDelta.x

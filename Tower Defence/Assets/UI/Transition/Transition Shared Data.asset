@@ -55,6 +55,27 @@ MonoBehaviour:
     m_Key: Settings
     m_Metadata:
       m_Items: []
+  - m_Id: 84529257412288512
+    m_Key: PrototypeLevel/@UI/ScreenCanvas/Inventory/CloseButton/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84529390979899392
+    m_Key: PrototypeLevel/@UI/ScreenCanvas/Inventory/TurretInfo/SellButton/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84529824431857664
+    m_Key: PrototypeLevel/@UI/ScreenCanvas/Inventory/TurretTypePanel/Type
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84530131941449728
+    m_Key: PrototypeLevel/@UI/ScreenCanvas/Inventory/ModuleTypePanel/Type
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84530867404267520
+    m_Key: PrototypeLevel/@UI/ScreenCanvas/Inventory/TurretInfo/SellButton/Text (TMP)
+      1
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

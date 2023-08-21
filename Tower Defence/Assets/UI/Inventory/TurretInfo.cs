@@ -75,9 +75,13 @@ namespace UI.Inventory
         [Tooltip("The button that changes the targeting method of the turret")]
         [SerializeField]
         private GameObject cycleTargetingButton;
+        [SerializeField]
+        [Tooltip("The text to display on the rotation button")]
+        private LocalizedString rotateText;
         [Tooltip("The text on the button that sells the turret")]
         [SerializeField]
         private TMP_Text sellButtonText;
+        
         
         /// <summary>
         /// Check there is only one NodeUI when loading in
@@ -118,7 +122,7 @@ namespace UI.Inventory
             else if (_target.turret.GetComponent<Turret>() is Lancer)
             {
                 cycleTargetingButton.SetActive(true);
-                cycleTargetingButton.transform.GetComponentInChildren<TMP_Text>().text = "<b>Rotate</b>";
+                cycleTargetingButton.transform.GetComponentInChildren<TMP_Text>().text = rotateText.GetLocalizedString();
                 cycleTargetingButton.GetComponent<Button>().onClick.RemoveAllListeners();
                 cycleTargetingButton.GetComponent<Button>().onClick.AddListener(RotateLancer);
             }
@@ -127,7 +131,7 @@ namespace UI.Inventory
                 cycleTargetingButton.SetActive(false);
             }
             
-            sellButtonText.text = "<b>Sell:</b>\n" + shop.GetSellAmount() + " <sprite=\"UI-Gold\" name=\"gold\">";
+            //sellButtonText.text = se;
 
             // Rebuild the Modules and add the stats
             LayoutRebuilder.MarkLayoutForRebuild((RectTransform) modules);

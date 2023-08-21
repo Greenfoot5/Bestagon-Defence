@@ -214,6 +214,11 @@ namespace Gameplay
             button.onClick.Invoke();
             button.Select();
         }
+        
+        public int GetSellPercentage()
+        {
+            return (int) (_levelData.sellPercentage * 100);
+        }
 
         public int GetSellAmount()
         {

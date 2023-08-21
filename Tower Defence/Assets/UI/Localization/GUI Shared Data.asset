@@ -199,6 +199,26 @@ MonoBehaviour:
     m_Key: Shop/Reroll
     m_Metadata:
       m_Items: []
+  - m_Id: 99064019410944
+    m_Key: Buttons/Close
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99206508306432
+    m_Key: Buttons/Sell
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99687196516352
+    m_Key: Turrets/Vertical
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99931195957248
+    m_Key: Modules/Vertical
+    m_Metadata:
+      m_Items: []
+  - m_Id: 102905083322368
+    m_Key: Buttons/Rotate
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

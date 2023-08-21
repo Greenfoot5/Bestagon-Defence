@@ -176,7 +176,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 89061478064185344
-    m_Key: TypePanel/Turret
+    m_Key: TurretInventory/Turrets
     m_Metadata:
       m_Items: []
   m_Metadata:

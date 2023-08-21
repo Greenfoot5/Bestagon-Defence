@@ -280,6 +280,10 @@ MonoBehaviour:
     m_Localized: RETRY
     m_Metadata:
       m_Items: []
+  - m_Id: 99064019410944
+    m_Localized: Close
+    m_Metadata:
+      m_Items: []
   - m_Id: 91364149682176
     m_Localized: 'GAME
 
@@ -304,6 +308,46 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 92483575865344
     m_Localized: Reroll
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99206508306432
+    m_Localized: Sell
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99687196516352
+    m_Localized: 'T
+
+      U
+
+      R
+
+      R
+
+      E
+
+      T
+
+      S'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99931195957248
+    m_Localized: 'M
+
+      O
+
+      D
+
+      U
+
+      L
+
+      E
+
+      S'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 102905083322368
+    m_Localized: <b>Rotate</b>
     m_Metadata:
       m_Items: []
   references:
