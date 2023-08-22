@@ -1386,6 +1386,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4077244561648582637, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
   m_PrefabInstance: {fileID: 4077244562611154295}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1579177157 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3949709464969229406, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
+  m_PrefabInstance: {fileID: 4077244562611154295}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1579177155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e701623cf6dd4c548a1ba90135cb7f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1834435421 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6181639253345663808, guid: 22e255e61c57c4eaa91bbd28e8c2b0b1, type: 3}
@@ -1747,6 +1758,14 @@ PrefabInstance:
     - target: {fileID: 682631642578070376, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 690520120431851252, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1579177157}
+    - target: {fileID: 690520120431851252, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SellTurret
       objectReference: {fileID: 0}
     - target: {fileID: 770417945088661378, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_SizeDelta.x
