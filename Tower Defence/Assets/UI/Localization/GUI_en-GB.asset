@@ -350,6 +350,10 @@ MonoBehaviour:
     m_Localized: <b>Rotate</b>
     m_Metadata:
       m_Items: []
+  - m_Id: 344334145675264
+    m_Localized: None
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

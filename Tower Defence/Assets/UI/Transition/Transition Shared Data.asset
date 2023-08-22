@@ -76,6 +76,11 @@ MonoBehaviour:
       1
     m_Metadata:
       m_Items: []
+  - m_Id: 84774458538057728
+    m_Key: InventoryItem_Turret/Canvas (Environment)/InventoryItem_Turret/Modules/ModulesList/Text
+      (TMP)
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

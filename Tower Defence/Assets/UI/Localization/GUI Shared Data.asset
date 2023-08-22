@@ -219,6 +219,10 @@ MonoBehaviour:
     m_Key: Buttons/Rotate
     m_Metadata:
       m_Items: []
+  - m_Id: 344334145675264
+    m_Key: Text/None
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

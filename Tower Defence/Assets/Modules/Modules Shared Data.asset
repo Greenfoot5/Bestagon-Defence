@@ -251,6 +251,10 @@ MonoBehaviour:
     m_Key: TypePanel/Module
     m_Metadata:
       m_Items: []
+  - m_Id: 90085520309215232
+    m_Key: Title/Modules
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

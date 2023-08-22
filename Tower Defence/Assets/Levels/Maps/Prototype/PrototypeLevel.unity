@@ -2311,6 +2311,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 50.50009
       objectReference: {fileID: 0}
+    - target: {fileID: 3949709464969229406, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
+      propertyPath: moduleInventoryTitle.m_TableEntryReference.m_KeyId
+      value: 90085520309215232
+      objectReference: {fileID: 0}
+    - target: {fileID: 3949709464969229406, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
+      propertyPath: moduleInventoryTitle.m_TableReference.m_TableCollectionName
+      value: GUID:a4bbea44c52ee4ec1ada344d809c9849
+      objectReference: {fileID: 0}
     - target: {fileID: 3949904492204866889, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
