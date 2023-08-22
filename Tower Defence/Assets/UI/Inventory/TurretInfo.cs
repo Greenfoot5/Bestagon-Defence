@@ -249,6 +249,7 @@ namespace UI.Inventory
         {
             BuildManager.instance.Deselect();
             Show();
+            inventoryTitle.text = turretInventoryTitle.GetLocalizedString();
             turretInventoryPage.SetActive(true);
             moduleInventoryPage.SetActive(false);
             turretInfoPage.SetActive(false);
@@ -269,6 +270,7 @@ namespace UI.Inventory
             }
             
             Show();
+            inventoryTitle.text = turretInventoryTitle.GetLocalizedString();
             turretInventoryPage.SetActive(true);
             moduleInventoryPage.SetActive(false);
             turretInfoPage.SetActive(false);
@@ -279,8 +281,15 @@ namespace UI.Inventory
 
         public void OpenModuleInventory()
         {
+            if (moduleInventoryPage.activeSelf)
+            {
+                BuildManager.instance.Deselect();
+                return;
+            }
+            
             Show();
             // TODO: If turret is selected, work the button
+            inventoryTitle.text = moduleInventoryTitle.GetLocalizedString();
             moduleInventoryPage.SetActive(true);
             turretInventoryPage.SetActive(false);
             turretInfoPage.SetActive(false);
@@ -297,6 +306,7 @@ namespace UI.Inventory
             }
             
             Show();
+            inventoryTitle.text = _target.turretBlueprint.displayName.GetLocalizedString();
             turretInfoPage.SetActive(true);
             turretInventoryPage.SetActive(false);
             moduleInventoryPage.SetActive(false);
