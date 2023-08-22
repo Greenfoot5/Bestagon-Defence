@@ -16,8 +16,7 @@ MonoBehaviour:
     m_Code: en-GB
   m_SharedData: {fileID: 11400000, guid: 8d753a620fec74fffb30bd1439f06f78, type: 2}
   m_Metadata:
-    m_Items:
-    - rid: 1943649921315111066
+    m_Items: []
   m_TableData:
   - m_Id: 12544106496
     m_Localized: Level Select
@@ -61,64 +60,6 @@ MonoBehaviour:
     m_Localized: Settings
     m_Metadata:
       m_Items: []
-  - m_Id: 84529257412288512
-    m_Localized: Close
-    m_Metadata:
-      m_Items: []
-  - m_Id: 84529390979899392
-    m_Localized: 'Sell
-
-'
-    m_Metadata:
-      m_Items: []
-  - m_Id: 84529824431857664
-    m_Localized: 'T
-
-      U
-
-      R
-
-      R
-
-      E
-
-      T
-
-      S'
-    m_Metadata:
-      m_Items: []
-  - m_Id: 84530131941449728
-    m_Localized: 'M
-
-      O
-
-      D
-
-      U
-
-      L
-
-      E
-
-      S'
-    m_Metadata:
-      m_Items: []
-  - m_Id: 84530867404267520
-    m_Localized: '<b>Sell:</b>
-
-      {shop.GetSellPercentage}% <sprite="UI-EnergyBit"
-      name="bit">'
-    m_Metadata:
-      m_Items:
-      - rid: 1943649921315111066
-  - m_Id: 84774458538057728
-    m_Localized: NONE
-    m_Metadata:
-      m_Items: []
   references:
     version: 2
-    RefIds:
-    - rid: 1943649921315111066
-      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
-      data:
-        m_Entries: 00e02f4460502c01
+    RefIds: []
