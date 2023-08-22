@@ -244,6 +244,15 @@ namespace UI.Inventory
             // Display the radius of the turret
             _target.turret.GetComponent<Turret>().UpdateRange();
         }
+        
+        public void DisplayTurretInventory()
+        {
+            BuildManager.instance.Deselect();
+            Show();
+            turretInventoryPage.SetActive(true);
+            moduleInventoryPage.SetActive(false);
+            turretInfoPage.SetActive(false);
+        }
 
         public void OpenTurretInventory()
         {
