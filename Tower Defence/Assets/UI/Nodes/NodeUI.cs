@@ -71,7 +71,7 @@ namespace UI.Nodes
         {
             _target = node;
 
-            shop.EnableModuleInventory(node.turret.GetComponent<Turret>());
+            //shop.EnableModuleInventory(node.turret.GetComponent<Turret>());
         
             // Move the UI to be above the node
             transform.position = _target.transform.position;
@@ -113,7 +113,7 @@ namespace UI.Nodes
         public void Hide()
         {
             ui.SetActive(false);
-            shop.EnableTurretInventory();
+            //shop.EnableTurretInventory();
         }
     
         /// <summary>

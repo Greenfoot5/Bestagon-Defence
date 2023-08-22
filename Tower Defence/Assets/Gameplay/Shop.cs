@@ -1,11 +1,9 @@
-﻿using System;
-using Abstract.Data;
+﻿using Abstract.Data;
 using Levels.Maps;
 using MaterialLibrary.Trapezium;
 using TMPro;
 using Turrets;
 using UI.Inventory;
-using UI.Modules;
 using UI.Shop;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -165,54 +163,6 @@ namespace Gameplay
         public bool HasPlayerMadePurchase()
         {
             return _hasPlayerMadePurchase || (!_levelData.hasInitialSelection);
-        }
-        
-        /// <summary>
-        /// Displays the turret inventory and hides the module inventory
-        /// </summary>
-        public void EnableTurretInventory()
-        {
-            turretInventory.SetActive(true);
-            moduleInventory.SetActive(false);
-
-            if (turretInventory.transform.childCount == 0) return;
-
-            var button = turretInventory.transform.GetChild(0).GetComponent<Button>();
-            button.onClick.Invoke();
-            button.Select();
-        }
-
-        /// <summary>
-        /// Displays the module inventory and hides the turret inventory
-        /// </summary>
-        /// <param name="turret">The selected turret</param>
-        public void EnableModuleInventory(Turret turret)
-        {
-            turretInventory.SetActive(false);
-            moduleInventory.SetActive(true);
-
-            Transform moduleTransform = moduleInventory.transform;
-            
-            // Loop through all modules and check if they are applicable
-            for(var i = 0; i < moduleTransform.childCount; i++)
-            {
-                Transform child = moduleTransform.GetChild(i);
-                try
-                {
-                    child.GetComponentInChildren<Button>().interactable =
-                        child.GetComponentInChildren<ModuleIcon>().GetModule().ValidModule(turret);
-                }
-                // One will be the shop button
-                catch (NullReferenceException)
-                { }
-            }
-
-            if (moduleTransform.childCount == 0 ||
-                !moduleTransform.GetChild(0).GetComponentInChildren<Button>().interactable) return;
-            
-            var button = moduleTransform.GetChild(0).GetComponentInChildren<Button>();
-            button.onClick.Invoke();
-            button.Select();
         }
         
         public int GetSellPercentage()
