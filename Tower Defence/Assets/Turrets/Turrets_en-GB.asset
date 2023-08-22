@@ -182,6 +182,10 @@ MonoBehaviour:
     m_Localized: Turrets
     m_Metadata:
       m_Items: []
+  - m_Id: 89369000264327168
+    m_Localized: Turret
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
