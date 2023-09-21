@@ -101,12 +101,11 @@ namespace UI.Shop
 
         /// <summary>
         /// Called when the player clicks on the card.
-        /// Selects the ModuleChainHandler and closes the shop
         /// </summary>
         /// <param name="shop"></param>
         private void MakeSelection (Gameplay.Shop shop)
         {
-            transform.parent.parent.gameObject.SetActive (false);
+            transform.parent.parent.gameObject.SetActive(false);
             Time.timeScale = 1f;
         
             shop.SpawnNewModule(handler);
