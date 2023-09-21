@@ -91,7 +91,8 @@ namespace UI.Inventory
             // Make sure there is only ever have one NodeUI
             if (instance != null)
             {
-                Debug.LogError("More than one NodeUI in scene!");
+                Debug.LogWarning("More than one TurretInfo in scene!");
+                Destroy(gameObject);
                 return;
             }
             instance = this;
@@ -130,8 +131,6 @@ namespace UI.Inventory
             {
                 cycleTargetingButton.SetActive(false);
             }
-            
-            //sellButtonText.text = se;
 
             // Rebuild the Modules and add the stats
             LayoutRebuilder.MarkLayoutForRebuild((RectTransform) modules);
@@ -159,6 +158,7 @@ namespace UI.Inventory
             if (!isApplied) return;
             
             shop.RemoveModule();
+            OpenTurretInfo();
         }
         
         /// <summary>
@@ -188,8 +188,6 @@ namespace UI.Inventory
             range.SetData(turret.range);
             // Display the radius of the turret
             turret.Selected();
-            Debug.Log(turret);
-            Debug.Log(turret.rangeDisplay);
             Color color = turret.rangeDisplay.GetComponent<SpriteRenderer>().color;
             damage.SetColor(color);
             rate.SetColor(color);
