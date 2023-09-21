@@ -1,4 +1,5 @@
-﻿using Abstract.Data;
+﻿using Abstract;
+using Abstract.Data;
 using Levels.Maps;
 using MaterialLibrary.Trapezium;
 using TMPro;
@@ -20,7 +21,6 @@ namespace Gameplay
         private LevelData _levelData;
         private ModuleChainHandler _selectedHandler;
         private GameObject _selectedHandlerButton;
-
         
         [SerializeField]
         [Tooltip("The inventory to place turret buttons")]
@@ -61,6 +61,10 @@ namespace Gameplay
         [Tooltip("Shop Button Colours Bottom when can afford")]
         [SerializeField]
         private Color expensiveButtonBottom;
+        
+        [Tooltip("The GlyphsLookup index in the scene")]
+        [SerializeField]
+        public TypeSpriteLookup glyphsLookup;
 
         /// <summary>
         /// Initialises values and set's starting prices
@@ -93,7 +97,7 @@ namespace Gameplay
         /// <param name="button">The button that selected the module</param>
         private void SelectModule(ModuleChainHandler module, GameObject button)
         {
-            if (_selectedHandlerButton != null) _selectedHandlerButton.transform.GetChild(0).gameObject.SetActive(false);
+            //if (_selectedHandlerButton != null) _selectedHandlerButton.transform.GetChild(0).gameObject.SetActive(false);
             _selectedHandlerButton = button;
             button.transform.GetChild(0).gameObject.SetActive(true);
             _selectedHandler = module;
@@ -142,7 +146,7 @@ namespace Gameplay
         {
             GameObject moduleButton = Instantiate(defaultModuleButton, moduleInventory.transform);
             moduleButton.name = "_" + moduleButton.name;
-            moduleButton.GetComponentInChildren<ModuleInventoryItem>().Init(module);
+            moduleButton.GetComponentInChildren<ModuleInventoryItem>().Init(module, glyphsLookup);
             moduleButton.GetComponentInChildren<Button>().onClick.AddListener(delegate { SelectModule(module, moduleButton); });
             
             GameManager.ModuleInventory.Add(module);

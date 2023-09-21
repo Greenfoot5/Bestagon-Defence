@@ -1,6 +1,10 @@
+using System;
+using Abstract;
 using Abstract.Data;
+using MaterialLibrary;
 using MaterialLibrary.Hexagons;
 using TMPro;
+using UI.Glyphs;
 using UI.Modules;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,9 +18,6 @@ namespace UI.Inventory
         [Tooltip("The TMP text to display the module's display name")]
         [SerializeField]
         private TMP_Text displayName;
-        [Tooltip("The TMP text to display the module's tagline")]
-        [SerializeField]
-        private TMP_Text tagline;
         [Tooltip("The text to set for the module's effect")]
         [SerializeField]
         private TMP_Text effectText;
@@ -32,18 +33,26 @@ namespace UI.Inventory
         [Tooltip("The background Image of the modules section")]
         [SerializeField]
         private Image modulesBg;
+        
+        [Tooltip("The generic glyph prefab to use to display the applicable turrets")]
+        [SerializeField]
+        private GameObject glyphPrefab;
+        [Tooltip("The Transform to set as the parent for the module's turret glyphs")]
+        [SerializeField]
+        private Transform applicableGlyphs;
 
         /// <summary>
         /// Creates and setups the Selection UI.
         /// </summary>
         /// <param name="module">The module the option selects</param>
-        public void Init (ModuleChainHandler module)
+        /// <param name="lookup">The TypeSpriteLookup</param>
+        public void Init (ModuleChainHandler module, TypeSpriteLookup lookup)
         {
             _module = module;
             
             // Module text
             displayName.text = module.GetDisplayName();
-            tagline.text = module.GetChain().tagline.GetLocalizedString();
+            //tagline.text = module.GetChain().tagline.GetLocalizedString();
             effectText.text = module.GetChain().description.GetLocalizedString();
             
             // Icon
@@ -52,6 +61,30 @@ namespace UI.Inventory
             // Colors
             bg.color = module.GetChain().accentColor;
             modulesBg.color = module.GetChain().accentColor * new Color(1, 1, 1, .16f);
+            
+            // Adds the any glyph
+            if (_module.GetModule().GetValidTypes() == null)
+            {
+                TurretGlyphSo glyphSo = lookup.GetForType(null);
+                Transform glyph = Instantiate(glyphPrefab, applicableGlyphs.transform).transform;
+                glyph.name = "_" + glyph.name;
+                glyph.Find("Body").GetComponent<HexagonSprite>().color = glyphSo.body;
+                glyph.Find("Shade").GetComponent<HexagonSprite>().color = glyphSo.shade;
+                glyph.Find("Glyph").GetComponent<Image>().sprite = glyphSo.glyph;
+            }
+            // Adds the glyph for every turret the module supports
+            else
+            {
+                foreach (Type turretType in module.GetModule().GetValidTypes())
+                {
+                    TurretGlyphSo glyphSo = lookup.GetForType(turretType);
+                    Transform glyph = Instantiate(glyphPrefab, applicableGlyphs).transform;
+                    glyph.name = "_" + glyph.name;
+                    glyph.Find("Body").GetComponent<HexagonSprite>().color = glyphSo.body;
+                    glyph.Find("Shade").GetComponent<HexagonSprite>().color = glyphSo.shade;
+                    glyph.Find("Glyph").GetComponent<Image>().sprite = glyphSo.glyph;
+                }
+            }
         }
     }
 }
