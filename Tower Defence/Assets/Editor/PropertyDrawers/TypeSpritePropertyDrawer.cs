@@ -9,10 +9,12 @@ namespace Editor.PropertyDrawers
     [CustomPropertyDrawer(typeof(TypeSpriteLookup))]
     public class TypeSpriteLookupPropertyDrawer : PropertyDrawer
     {
-        private const float Height = 18;
+        private const float Height = 19f;
+        private const float Spacer = 2f;
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
+            const float fHeight = Height + Spacer;
             // Setup
             SerializedProperty sprites = property.FindPropertyRelative("sprites");
             List<Type> types = TypeSpriteLookup.GetAllTypes();
@@ -27,22 +29,21 @@ namespace Editor.PropertyDrawers
             }
 
             var rect = new Rect(position.x, position.y, position.width, Height);
+            rect.y += Height / 2f;
             
             // Add a mini header to make it clear
             EditorGUI.LabelField(rect, property.displayName, EditorStyles.boldLabel);
-            rect.y += Height;
+            rect.y += fHeight;
             
             // Add null
             EditorGUI.PropertyField(rect, sprites.GetArrayElementAtIndex(0), new GUIContent("null"));
-            rect.y += Height;
+            rect.y += fHeight;
             
             // Display each of the types & sprites
             for (var i = 1; i < types.Count; ++i)
             {
-                //EditorGUI.LabelField(rect, types[i].Name, EditorStyles.boldLabel);
-                //rect.y += Height;
                 EditorGUI.PropertyField(rect, sprites.GetArrayElementAtIndex(i), new GUIContent(types[i].Name));
-                rect.y += Height;
+                rect.y += fHeight;
             }
             
             property.serializedObject.ApplyModifiedProperties();
@@ -50,7 +51,7 @@ namespace Editor.PropertyDrawers
     
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            return TypeSpriteLookup.GetAllTypes().Count * Height * 2;
+            return (TypeSpriteLookup.GetAllTypes().Count + 2) * (Height + Spacer);
         }
     }
 }
