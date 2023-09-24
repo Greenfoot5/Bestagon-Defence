@@ -48,9 +48,6 @@ namespace UI.Inventory
         [SerializeField]
         [Tooltip("The page show/hide for the turret info")]
         private GameObject turretInfoPage;
-        [SerializeField]
-        [Tooltip("The text to display for the title")]
-        private LocalizedString turretInfoTitle;
         
         [Space(10)]
         [Tooltip("The TurretStat used to display the damage")]
@@ -78,9 +75,6 @@ namespace UI.Inventory
         [SerializeField]
         [Tooltip("The text to display on the rotation button")]
         private LocalizedString rotateText;
-        [Tooltip("The text on the button that sells the turret")]
-        [SerializeField]
-        private TMP_Text sellButtonText;
         
         
         /// <summary>
@@ -105,8 +99,6 @@ namespace UI.Inventory
         public void SetTarget(Node node)
         {
             _target = node;
-            
-            UpdateModules();
             
             // Display the radius of the turret
             _target.turret.GetComponent<Turret>().Selected();
@@ -133,8 +125,6 @@ namespace UI.Inventory
             }
 
             // Rebuild the Modules and add the stats
-            LayoutRebuilder.MarkLayoutForRebuild((RectTransform) modules);
-            UpdateStats();
             OpenTurretInfo();
         }
         
@@ -158,6 +148,7 @@ namespace UI.Inventory
             if (!isApplied) return;
             
             shop.RemoveModule();
+            UpdateModules();
             OpenTurretInfo();
         }
         
@@ -272,9 +263,6 @@ namespace UI.Inventory
             turretInventoryPage.SetActive(true);
             moduleInventoryPage.SetActive(false);
             turretInfoPage.SetActive(false);
-            
-            // TODO - Don't always do this
-            //BuildManager.instance.Deselect();
         }
 
         public void OpenModuleInventory()
@@ -286,7 +274,6 @@ namespace UI.Inventory
             }
             
             Show();
-            // TODO: If turret is selected, work the button
             inventoryTitle.text = moduleInventoryTitle.GetLocalizedString();
             moduleInventoryPage.SetActive(true);
             turretInventoryPage.SetActive(false);
@@ -310,6 +297,7 @@ namespace UI.Inventory
             moduleInventoryPage.SetActive(false);
             
             UpdateStats();
+            UpdateModules();
         }
 
         public void Close()

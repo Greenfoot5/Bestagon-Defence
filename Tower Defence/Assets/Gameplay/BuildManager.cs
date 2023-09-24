@@ -50,7 +50,6 @@ namespace Gameplay
         {
             _turretToBuild = turret;
             _buildingButton = buttonToDelete;
-            //DeselectNode();
         }
         
         /// <summary>
