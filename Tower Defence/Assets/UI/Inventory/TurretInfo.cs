@@ -155,7 +155,7 @@ namespace UI.Inventory
         /// <summary>
         /// Turret's targeting method increments once through the cycle of targeting methods
         /// </summary>
-        public void CycleTargeting()
+        private void CycleTargeting()
         {
             Array types = Enum.GetValues(typeof(TargetingMethod));
             var currentMethod = (int)_target.turret.GetComponent<DynamicTurret>().targetingMethod;

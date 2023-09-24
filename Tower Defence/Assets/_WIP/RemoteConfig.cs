@@ -13,7 +13,7 @@ namespace _WIP
 {
     public class RemoteConfig : MonoBehaviour
     {
-        private static readonly BestagonVersion Version = new BestagonVersion(1, 1, 10);
+        private static readonly BestagonVersion Version = new(1, 1, 10);
 
         private static async Task InitializeRemoteConfigAsync()
         {
@@ -114,10 +114,8 @@ namespace _WIP
         private static T DeserializeJson<T>(string result)
         {
             var jsonSer = new DataContractJsonSerializer(typeof(T));
-            using var ms = new MemoryStream(Encoding.UTF8.GetBytes(result))
-            {
-                Position = 0
-            };
+            using var ms = new MemoryStream(Encoding.UTF8.GetBytes(result));
+            ms.Position = 0;
             return (T)jsonSer.ReadObject(ms);
         }
     }
