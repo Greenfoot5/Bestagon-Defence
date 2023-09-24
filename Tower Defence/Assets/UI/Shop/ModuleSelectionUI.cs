@@ -1,11 +1,11 @@
 using System;
-using Abstract;
 using Abstract.Data;
 using MaterialLibrary;
 using MaterialLibrary.Hexagons;
 using Modules;
 using TMPro;
 using UI.Glyphs;
+using UI.Inventory;
 using UI.Modules;
 using UnityEngine;
 using UnityEngine.UI;
@@ -52,8 +52,7 @@ namespace UI.Shop
         /// </summary>
         /// <param name="initHandler">The ModuleChainHandler the card is for</param>
         /// <param name="shop">The shop script</param>
-        /// <param name="lookup">The TypeSpriteLookup to get the glyph</param>
-        public void Init (ModuleChainHandler initHandler, Gameplay.Shop shop, TypeSpriteLookup lookup)
+        public void Init (ModuleChainHandler initHandler, Gameplay.Shop shop)
         {
             handler = initHandler;
 
@@ -74,7 +73,7 @@ namespace UI.Shop
             // Adds the any glyph
             if (module.GetValidTypes() == null)
             {
-                TurretGlyphSo glyphSo = lookup.GetForType(null);
+                TurretGlyphSo glyphSo = shop.glyphsLookup.GetForType(null);
                 Transform glyph = Instantiate(glyphPrefab, applicableGlyphs.transform).transform;
                 glyph.name = "_" + glyph.name;
                 glyph.Find("Body").GetComponent<HexagonSprite>().color = glyphSo.body;
@@ -86,7 +85,7 @@ namespace UI.Shop
             {
                 foreach (Type turretType in module.GetValidTypes())
                 {
-                    TurretGlyphSo glyphSo = lookup.GetForType(turretType);
+                    TurretGlyphSo glyphSo = shop.glyphsLookup.GetForType(turretType);
                     Transform glyph = Instantiate(glyphPrefab, applicableGlyphs).transform;
                     glyph.name = "_" + glyph.name;
                     glyph.Find("Body").GetComponent<HexagonSprite>().color = glyphSo.body;
@@ -109,6 +108,7 @@ namespace UI.Shop
             Time.timeScale = 1f;
         
             shop.SpawnNewModule(handler);
+            TurretInfo.instance.OpenModuleInventory();
         }
     }
 }

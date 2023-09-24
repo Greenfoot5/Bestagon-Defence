@@ -313,7 +313,7 @@ GameObject:
   - component: {fileID: 4985354737434308397}
   - component: {fileID: 3794430891210867962}
   - component: {fileID: 7272652433108344858}
-  - component: {fileID: 5290212609203093776}
+  - component: {fileID: 4836155962571801946}
   - component: {fileID: 5075240828042136047}
   m_Layer: 5
   m_Name: InventoryItem_Module
@@ -393,11 +393,11 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 5290212609203093776}
+  m_TargetGraphic: {fileID: 4836155962571801946}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &5290212609203093776
+--- !u!114 &4836155962571801946
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -406,22 +406,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 4985354737434308386}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81c539d1bed6fb24fa8f48ee788db0e9, type: 3}
+  m_Script: {fileID: 11500000, guid: 9cefa55fab2543f5951cdb59076a30eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 89b66e649dfab4ad0af5e6009285f343, type: 2}
   m_Color: {r: 0.18039216, g: 0.78431374, b: 0.8980392, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  offsetUV: {x: 0, y: 0}
-  hexagonScale: 6
-  scrollSpeed: 0.03
-  luminanceShiftSpeed: 0.75
-  overlayStrength: -0.2
-  hexagonOpacity: 0.4
+  baseOpacity: 0.1
   glowIntensity: 0.3
   glowClamp: 0.5
-  glowOpacity: 0.2
+  glowOpacity: 0.7
 --- !u!114 &5075240828042136047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -437,7 +432,7 @@ MonoBehaviour:
   displayName: {fileID: 4567486237702544503}
   effectText: {fileID: 8853534791256937520}
   icon: {fileID: 9192664281605614043}
-  bg: {fileID: 5290212609203093776}
+  bg: {fileID: 4836155962571801946}
   modulesBg: {fileID: 3176922926783445552}
   glyphPrefab: {fileID: 3688469175720797820, guid: ce51595031e3355478e8d944509a4d88, type: 3}
   applicableGlyphs: {fileID: 1232673582454904983}

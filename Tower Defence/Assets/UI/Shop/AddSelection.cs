@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Abstract;
 using Abstract.Data;
 using Gameplay;
 using Levels.Maps;
@@ -23,10 +22,6 @@ namespace UI.Shop
         [Tooltip("The Shop component in the scene")]
         [SerializeField]
         private Gameplay.Shop shop;
-        
-        [Tooltip("The GlyphsLookup index in the scene")]
-        [SerializeField]
-        public TypeSpriteLookup glyphsLookup;
         
         [Tooltip("The turrets already purchased")]
         private readonly List<Type> _turretTypes = new();
@@ -250,7 +245,7 @@ namespace UI.Shop
             // Create the ui as a child
             GameObject moduleUI = Instantiate(moduleSelectionUI, transform);
             moduleUI.name = "_" + moduleUI.name;
-            moduleUI.GetComponent<ModuleSelectionUI>().Init(handler, shop, glyphsLookup);
+            moduleUI.GetComponent<ModuleSelectionUI>().Init(handler, shop);
         }
     
         /// <summary>
@@ -259,7 +254,7 @@ namespace UI.Shop
         /// <param name="turret">The turret the player can pick</param>
         private void GenerateTurretUI(TurretBlueprint turret)
         {
-            turret.glyph = glyphsLookup.GetForType(turret.prefab.GetComponent<Turret>().GetType());
+            turret.glyph = shop.glyphsLookup.GetForType(turret.prefab.GetComponent<Turret>().GetType());
             GameObject turretUI = Instantiate(turretSelectionUI, transform);
             turretUI.name = "_" + turretUI.name;
             turretUI.GetComponent<TurretSelectionUI>().Init(turret, shop);

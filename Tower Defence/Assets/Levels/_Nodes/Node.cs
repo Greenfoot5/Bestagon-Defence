@@ -205,6 +205,7 @@ namespace Levels._Nodes
             // Construct a turret
             BuildTurret(_buildManager.GetTurretToBuild());
             _buildManager.BuiltTurret();
+            _buildManager.SelectNode(this);
         }
         
         /// <summary>
