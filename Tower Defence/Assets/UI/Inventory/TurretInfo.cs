@@ -32,6 +32,9 @@ namespace UI.Inventory
         [SerializeField]
         [Tooltip("The text to display for the title")]
         private LocalizedString turretInventoryTitle;
+        [SerializeField]
+        [Tooltip("The button to open the turret inventory")]
+        private GameObject turretInventoryButton;
         
         [Header("Module Inventory")]
         [SerializeField]
@@ -43,6 +46,9 @@ namespace UI.Inventory
         [SerializeField]
         [Tooltip("The text to display for the title")]
         private LocalizedString moduleInventoryTitle;
+        [SerializeField]
+        [Tooltip("The button to open the turret inventory")]
+        private GameObject turretInfoButton;
         
         [Header("Turret Info")]
         [SerializeField]
@@ -258,11 +264,7 @@ namespace UI.Inventory
                 return;
             }
             
-            Show();
-            inventoryTitle.text = turretInventoryTitle.GetLocalizedString();
-            turretInventoryPage.SetActive(true);
-            moduleInventoryPage.SetActive(false);
-            turretInfoPage.SetActive(false);
+            DisplayTurretInventory();
         }
 
         public void OpenModuleInventory()
@@ -282,7 +284,7 @@ namespace UI.Inventory
             applyModuleButton.SetActive(_target != null);
         }
 
-        private void OpenTurretInfo()
+        public void OpenTurretInfo()
         {
             if (turretInfoPage.activeSelf)
             {
@@ -295,6 +297,10 @@ namespace UI.Inventory
             turretInfoPage.SetActive(true);
             turretInventoryPage.SetActive(false);
             moduleInventoryPage.SetActive(false);
+            turretInfoButton.SetActive(true);
+            turretInventoryButton.SetActive(false);
+
+            turretInfoButton.GetComponent<Image>().color = _target.turretBlueprint.accent;
             
             UpdateStats();
             UpdateModules();
@@ -305,6 +311,8 @@ namespace UI.Inventory
             turretInfoPage.SetActive(false);
             turretInventoryPage.SetActive(false);
             moduleInventoryPage.SetActive(false);
+            turretInventoryButton.SetActive(true);
+            turretInfoButton.SetActive(false);
             
             _target = null;
             

@@ -362,6 +362,16 @@ MonoBehaviour:
     m_Localized: Waves Spawned
     m_Metadata:
       m_Items: []
+  - m_Id: 12345099416494080
+    m_Localized: 'I
+
+      N
+
+      F
+
+      O'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

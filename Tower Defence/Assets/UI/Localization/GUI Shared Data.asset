@@ -231,6 +231,10 @@ MonoBehaviour:
     m_Key: Test/Waves Spawned
     m_Metadata:
       m_Items: []
+  - m_Id: 12345099416494080
+    m_Key: TurretInfo/Vertical
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
