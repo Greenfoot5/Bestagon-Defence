@@ -332,7 +332,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3949709464969229406}
         m_TargetAssemblyTypeName: UI.Inventory.TurretInfo, Assembly-CSharp
-        m_MethodName: OpenTurretInventory
+        m_MethodName: ToggleTurretInventory
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9100,7 +9100,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3949709464969229406}
         m_TargetAssemblyTypeName: UI.Inventory.TurretInfo, Assembly-CSharp
-        m_MethodName: OpenModuleInventory
+        m_MethodName: ToggleModuleInventory
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
