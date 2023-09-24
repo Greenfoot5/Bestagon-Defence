@@ -146,10 +146,8 @@ namespace UI.Inventory
         /// <summary>
         /// Applies a module to the currently selected turret
         /// </summary>
-        public void ApplyModule()
+        public void ApplyModule(ModuleChainHandler handler)
         {
-            ModuleChainHandler handler = shop.GetModuleChainHandler();
-
             bool isApplied = _target.ApplyModuleToTurret(handler);
             if (!isApplied) return;
             

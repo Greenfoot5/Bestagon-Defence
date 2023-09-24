@@ -91,19 +91,6 @@ namespace Gameplay
         }
         
         /// <summary>
-        /// Selects a module from the inventory
-        /// </summary>
-        /// <param name="module">The selected module</param>
-        /// <param name="button">The button that selected the module</param>
-        private void SelectModule(ModuleChainHandler module, GameObject button)
-        {
-            //if (_selectedHandlerButton != null) _selectedHandlerButton.transform.GetChild(0).gameObject.SetActive(false);
-            _selectedHandlerButton = button;
-            button.transform.GetChild(0).gameObject.SetActive(true);
-            _selectedHandler = module;
-        }
-        
-        /// <summary>
         /// Returns the currently selected module
         /// </summary>
         /// <returns>The currently selected ModuleChainHandler</returns>
@@ -147,7 +134,7 @@ namespace Gameplay
             GameObject moduleButton = Instantiate(defaultModuleButton, moduleInventory.transform);
             moduleButton.name = "_" + moduleButton.name;
             moduleButton.GetComponentInChildren<ModuleInventoryItem>().Init(module, glyphsLookup);
-            moduleButton.GetComponentInChildren<Button>().onClick.AddListener(delegate { SelectModule(module, moduleButton); });
+            moduleButton.GetComponentInChildren<Button>().onClick.AddListener(delegate { TurretInfo.instance.ApplyModule(module); });
             
             GameManager.ModuleInventory.Add(module);
         }

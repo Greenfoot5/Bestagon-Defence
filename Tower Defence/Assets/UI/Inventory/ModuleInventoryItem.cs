@@ -52,7 +52,6 @@ namespace UI.Inventory
             
             // Module text
             displayName.text = module.GetDisplayName();
-            //tagline.text = module.GetChain().tagline.GetLocalizedString();
             effectText.text = module.GetChain().description.GetLocalizedString();
             
             // Icon
