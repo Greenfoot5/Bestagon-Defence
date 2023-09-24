@@ -102,9 +102,9 @@ namespace Gameplay
         /// <summary>
         /// Removes a module from the inventory
         /// </summary>
-        public void RemoveModule()
+        public void RemoveModule(GameObject button)
         {
-            Destroy(_selectedHandlerButton);
+            Destroy(button);
             GameManager.ModuleInventory.Remove(_selectedHandler);
             _selectedHandler = new ModuleChainHandler();
         }
@@ -134,7 +134,7 @@ namespace Gameplay
             GameObject moduleButton = Instantiate(defaultModuleButton, moduleInventory.transform);
             moduleButton.name = "_" + moduleButton.name;
             moduleButton.GetComponentInChildren<ModuleInventoryItem>().Init(module, glyphsLookup);
-            moduleButton.GetComponentInChildren<Button>().onClick.AddListener(delegate { TurretInfo.instance.ApplyModule(module); });
+            moduleButton.GetComponentInChildren<Button>().onClick.AddListener(delegate { TurretInfo.instance.ApplyModule(module, moduleButton); });
             
             GameManager.ModuleInventory.Add(module);
         }

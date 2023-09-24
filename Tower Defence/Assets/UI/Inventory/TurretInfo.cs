@@ -146,12 +146,12 @@ namespace UI.Inventory
         /// <summary>
         /// Applies a module to the currently selected turret
         /// </summary>
-        public void ApplyModule(ModuleChainHandler handler)
+        public void ApplyModule(ModuleChainHandler handler, GameObject button)
         {
             bool isApplied = _target.ApplyModuleToTurret(handler);
             if (!isApplied) return;
             
-            shop.RemoveModule();
+            shop.RemoveModule(button);
             UpdateModules();
             OpenTurretInfo();
         }
@@ -247,15 +247,19 @@ namespace UI.Inventory
             moduleInventoryPage.SetActive(false);
             turretInfoPage.SetActive(false);
         }
-
-        public void OpenTurretInventory()
+        
+        public void ToggleTurretInventory()
         {
-            if (turretInventoryPage.activeSelf)
+            if (moduleInventoryPage.activeSelf)
             {
                 BuildManager.instance.Deselect();
                 return;
             }
+            OpenModuleInventory();
+        }
 
+        public void OpenTurretInventory()
+        {
             if (turretInfoPage.activeSelf)
             {
                 OpenTurretInfo();
@@ -265,14 +269,18 @@ namespace UI.Inventory
             DisplayTurretInventory();
         }
 
-        public void OpenModuleInventory()
+        public void ToggleModuleInventory()
         {
             if (moduleInventoryPage.activeSelf)
             {
                 BuildManager.instance.Deselect();
                 return;
             }
-            
+            OpenModuleInventory();
+        }
+
+        public void OpenModuleInventory()
+        {
             Show();
             inventoryTitle.text = moduleInventoryTitle.GetLocalizedString();
             moduleInventoryPage.SetActive(true);
