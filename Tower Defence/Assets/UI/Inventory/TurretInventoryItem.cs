@@ -1,11 +1,10 @@
 using Abstract.Data;
 using Gameplay;
 using MaterialLibrary;
-using MaterialLibrary.Hexagons;
+using MaterialLibrary.GlowBox;
 using TMPro;
 using Turrets;
 using UI.Modules;
-using UI.Shop;
 using UI.TurretStats;
 using UnityEngine;
 using UnityEngine.UI;
@@ -55,7 +54,7 @@ namespace UI.Inventory
         [Header("Colors")]
         [Tooltip("The Hexagons shader background of the card")]
         [SerializeField]
-        private Hexagons bg;
+        private GlowBox bg;
         [Tooltip("The background Image of the modules section")]
         [SerializeField]
         private Image modulesBg;

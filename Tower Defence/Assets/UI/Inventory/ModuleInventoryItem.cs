@@ -2,7 +2,7 @@ using System;
 using Abstract;
 using Abstract.Data;
 using MaterialLibrary;
-using MaterialLibrary.Hexagons;
+using MaterialLibrary.GlowBox;
 using TMPro;
 using UI.Glyphs;
 using UI.Modules;
@@ -29,7 +29,7 @@ namespace UI.Inventory
         [Header("Colors")]
         [Tooltip("The Hexagons shader background of the card")]
         [SerializeField]
-        private Hexagons bg;
+        private GlowBox bg;
         [Tooltip("The background Image of the modules section")]
         [SerializeField]
         private Image modulesBg;

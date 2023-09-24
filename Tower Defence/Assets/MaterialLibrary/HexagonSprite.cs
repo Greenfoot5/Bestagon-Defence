@@ -5,7 +5,7 @@ using UnityEngine.UI;
 namespace MaterialLibrary
 {
     [ExecuteInEditMode]
-    public class HexagonSprite : Graphic
+    public class HexagonSprite : MaskableGraphic
     {
         public enum ScaleType
         {

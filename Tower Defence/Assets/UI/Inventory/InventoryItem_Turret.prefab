@@ -740,8 +740,8 @@ GameObject:
   - component: {fileID: 3942835963936203608}
   - component: {fileID: 3942835963936203611}
   - component: {fileID: 3942835963936203609}
-  - component: {fileID: 8696009219497892769}
   - component: {fileID: 2227325175471804895}
+  - component: {fileID: 3688201930123771916}
   m_Layer: 5
   m_Name: InventoryItem_Turret
   m_TagString: Untagged
@@ -821,7 +821,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 8696009219497892769}
+  m_TargetGraphic: {fileID: 3688201930123771916}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -837,31 +837,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &8696009219497892769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3942835963936203607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81c539d1bed6fb24fa8f48ee788db0e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.12156863, g: 0.8117647, b: 0.53333336, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  offsetUV: {x: 0, y: 0}
-  hexagonScale: 6
-  scrollSpeed: 0.03
-  luminanceShiftSpeed: 0.75
-  overlayStrength: -0.2
-  hexagonOpacity: 0.4
-  glowIntensity: 0.3
-  glowClamp: 0.5
-  glowOpacity: 0.2
 --- !u!114 &2227325175471804895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -884,8 +859,28 @@ MonoBehaviour:
   damage: {fileID: 2640655077739581024}
   rate: {fileID: 2219499082711905535}
   range: {fileID: 8075363404298681285}
-  bg: {fileID: 8696009219497892769}
+  bg: {fileID: 3688201930123771916}
   modulesBg: {fileID: 2724762630283602900}
+--- !u!114 &3688201930123771916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3942835963936203607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cefa55fab2543f5951cdb59076a30eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 2100000, guid: 89b66e649dfab4ad0af5e6009285f343, type: 2}
+  m_Color: {r: 0.12156863, g: 0.8117647, b: 0.53333336, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  baseOpacity: 0.1
+  glowIntensity: 0.3
+  glowClamp: 0.5
+  glowOpacity: 0.7
 --- !u!1 &4143490127469989932
 GameObject:
   m_ObjectHideFlags: 0
