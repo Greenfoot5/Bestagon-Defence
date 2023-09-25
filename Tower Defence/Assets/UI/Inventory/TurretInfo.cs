@@ -54,6 +54,9 @@ namespace UI.Inventory
         [SerializeField]
         [Tooltip("The page show/hide for the turret info")]
         private GameObject turretInfoPage;
+        [SerializeField]
+        [Tooltip("The button to add more modules")]
+        private GameObject addModuleButton;
         
         [Space(10)]
         [Tooltip("The TurretStat used to display the damage")]
@@ -230,9 +233,10 @@ namespace UI.Inventory
                 {
                     image.raycastTarget = false;
                 }
-
-                moduleIcon.GetComponentsInChildren<Image>();
             }
+
+            GameObject addModule = Instantiate(addModuleButton, modules);
+            addModule.GetComponent<Button>().onClick.AddListener(delegate { OpenModuleInventory(); });
             
             // Display the radius of the turret
             _target.turret.GetComponent<Turret>().UpdateRange();
