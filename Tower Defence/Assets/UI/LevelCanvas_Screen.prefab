@@ -4654,7 +4654,6 @@ MonoBehaviour:
     m_WaitForCompletion: 0
     m_LocalVariables: []
   turretInventoryButton: {fileID: 395543463301343132}
-  applyModuleButton: {fileID: 0}
   moduleInventoryPage: {fileID: 1565807002715283539}
   moduleInventoryTitle:
     m_TableReference:
@@ -4666,6 +4665,8 @@ MonoBehaviour:
     m_WaitForCompletion: 0
     m_LocalVariables: []
   turretInfoButton: {fileID: 3266441549719767058}
+  moduleInventoryContent: {fileID: 1048273387375053859}
+  moduleDisabledColor: {r: 0, g: 0, b: 0, a: 0}
   turretInfoPage: {fileID: 8118530878004778793}
   addModuleButton: {fileID: 2469623391304704137, guid: afbf4eb7443a147889a71726be0c1893, type: 3}
   damage: {fileID: 7519240089067828750}

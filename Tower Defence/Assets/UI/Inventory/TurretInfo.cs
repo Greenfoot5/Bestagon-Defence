@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Abstract.Data;
 using Gameplay;
 using Levels._Nodes;
@@ -38,9 +39,6 @@ namespace UI.Inventory
         
         [Header("Module Inventory")]
         [SerializeField]
-        [Tooltip("The inventory to place turret buttons")]
-        private GameObject applyModuleButton;
-        [SerializeField]
         [Tooltip("The inventory to show/hide for the modules")]
         private GameObject moduleInventoryPage;
         [SerializeField]
@@ -49,6 +47,12 @@ namespace UI.Inventory
         [SerializeField]
         [Tooltip("The button to open the turret inventory")]
         private GameObject turretInfoButton;
+        [SerializeField]
+        [Tooltip("The button list")]
+        private Transform moduleInventoryContent;
+        [SerializeField]
+        [Tooltip("The colour to set the bg when disabled")]
+        private Color moduleDisabledColor;
         
         [Header("Turret Info")]
         [SerializeField]
@@ -145,6 +149,11 @@ namespace UI.Inventory
         {
             return _target != null ? _target.turret : null;
         }
+
+        public void AddButton(ModuleChainHandler handler, GameObject button)
+        {
+            
+        }
         
         /// <summary>
         /// Applies a module to the currently selected turret
@@ -236,7 +245,7 @@ namespace UI.Inventory
             }
 
             GameObject addModule = Instantiate(addModuleButton, modules);
-            addModule.GetComponent<Button>().onClick.AddListener(delegate { OpenModuleInventory(); });
+            addModule.GetComponent<Button>().onClick.AddListener(OpenModuleInventory);
             
             // Display the radius of the turret
             _target.turret.GetComponent<Turret>().UpdateRange();
@@ -259,11 +268,7 @@ namespace UI.Inventory
                 BuildManager.instance.Deselect();
                 return;
             }
-            OpenModuleInventory();
-        }
-
-        public void OpenTurretInventory()
-        {
+            
             if (turretInfoPage.activeSelf)
             {
                 OpenTurretInfo();
@@ -285,13 +290,29 @@ namespace UI.Inventory
 
         public void OpenModuleInventory()
         {
+            foreach (Transform child in moduleInventoryContent)
+            {
+                var item = child.GetComponent<ModuleInventoryItem>();
+                if (_target != null && (item.turretTypes == null ||
+                    item.turretTypes.Contains(_target.turret.GetComponent<Turret>().GetType())))
+                {
+                    item.bg.color = item.accent;
+                    item.modulesBg.color = item.accent * new Color(1, 1, 1, 0.16f);
+                    item.GetComponent<Button>().interactable = true;
+                }
+                else
+                {
+                    item.bg.color = moduleDisabledColor;
+                    item.modulesBg.color = moduleDisabledColor * new Color(1, 1, 1, 0.16f);
+                    item.GetComponent<Button>().interactable = false;
+                }
+            }
+            
             Show();
             inventoryTitle.text = moduleInventoryTitle.GetLocalizedString();
             moduleInventoryPage.SetActive(true);
             turretInventoryPage.SetActive(false);
             turretInfoPage.SetActive(false);
-
-            applyModuleButton.SetActive(_target != null);
         }
 
         public void OpenTurretInfo()

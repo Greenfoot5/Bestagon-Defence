@@ -29,10 +29,10 @@ namespace UI.Inventory
         [Header("Colors")]
         [Tooltip("The Hexagons shader background of the card")]
         [SerializeField]
-        private GlowBox bg;
+        public GlowBox bg;
         [Tooltip("The background Image of the modules section")]
         [SerializeField]
-        private Image modulesBg;
+        public Image modulesBg;
         
         [Tooltip("The generic glyph prefab to use to display the applicable turrets")]
         [SerializeField]
@@ -40,6 +40,12 @@ namespace UI.Inventory
         [Tooltip("The Transform to set as the parent for the module's turret glyphs")]
         [SerializeField]
         private Transform applicableGlyphs;
+        
+        [Tooltip("The list of types the turret has")]
+        public Type[] turretTypes;
+        //[HideInInspector]
+        [Tooltip("The original accent colour")]
+        public Color accent;
 
         /// <summary>
         /// Creates and setups the Selection UI.
@@ -59,6 +65,7 @@ namespace UI.Inventory
 
             // Colors
             bg.color = module.GetChain().accentColor;
+            accent = module.GetChain().accentColor;
             modulesBg.color = module.GetChain().accentColor * new Color(1, 1, 1, .16f);
             
             // Adds the any glyph
@@ -84,6 +91,8 @@ namespace UI.Inventory
                     glyph.Find("Glyph").GetComponent<Image>().sprite = glyphSo.glyph;
                 }
             }
+
+            turretTypes = module.GetModule().GetValidTypes();
         }
     }
 }
