@@ -2,7 +2,6 @@
 using System.Linq;
 using Abstract.Data;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.Localization;
 
 namespace Turrets
@@ -47,10 +46,6 @@ namespace Turrets
         [Tooltip("Which modules the turret has applied")]
         [SerializeField]
         public List<ModuleChainHandler> moduleHandlers = new();
-        
-        [Tooltip("What events to run when starting")]
-        [SerializeField]
-        private UnityEvent awakeEvents;
 
         [Tooltip("The display name of the turret")]
         [HideInInspector]
@@ -62,7 +57,6 @@ namespace Turrets
         private void Awake()
         {
             rangeDisplay.SetActive(false);
-            awakeEvents.Invoke();
         }
         
         /// <summary>

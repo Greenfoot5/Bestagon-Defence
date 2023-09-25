@@ -2,6 +2,7 @@
 using Gameplay;
 using Turrets;
 using UI.Inventory;
+using Unity.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -18,8 +19,12 @@ namespace Levels._Nodes
         public Color invalidColour;
         private Color _defaultColour;
         
+        [Tooltip("A turret that starts on the node")]
+        [SerializeField]
+        private TurretBlueprint initialTurret;
+        
         // Turret info
-        //[HideInInspector]
+        [HideInInspector]
         public GameObject turret;
         [HideInInspector]
         public TurretBlueprint turretBlueprint;
@@ -29,6 +34,12 @@ namespace Levels._Nodes
 
         // Pointer handling
         private bool _isHolding;
+
+        private void Awake()
+        {
+            if (initialTurret != null)
+                LoadTurret(initialTurret);
+        }
 
         private void Start()
         {
@@ -43,8 +54,7 @@ namespace Levels._Nodes
         /// <param name="blueprint">The blueprint of the turret to build</param>
         public void LoadTurret(TurretBlueprint blueprint)
         {
-            Vector3 nodePosition = transform.position;
-            GameObject newTurret = Instantiate(blueprint.prefab, nodePosition, Quaternion.identity);
+            GameObject newTurret = Instantiate(blueprint.prefab, transform.position, Quaternion.identity);
             newTurret.name = "_" + newTurret.name;
             turret = newTurret;
             turretBlueprint = blueprint;
