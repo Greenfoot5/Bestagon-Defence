@@ -263,18 +263,11 @@ namespace UI.Inventory
         
         public void ToggleTurretInventory()
         {
-            if (moduleInventoryPage.activeSelf)
+            if (turretInventoryPage.activeSelf)
             {
                 BuildManager.instance.Deselect();
                 return;
             }
-            
-            if (turretInfoPage.activeSelf)
-            {
-                OpenTurretInfo();
-                return;
-            }
-            
             DisplayTurretInventory();
         }
 
@@ -324,6 +317,10 @@ namespace UI.Inventory
             }
             
             Show();
+            Debug.Log(inventoryTitle);
+            Debug.Log(_target);
+            Debug.Log(_target.turretBlueprint);
+            Debug.Log(_target.turretBlueprint.displayName);
             inventoryTitle.text = _target.turretBlueprint.displayName.GetLocalizedString();
             turretInfoPage.SetActive(true);
             turretInventoryPage.SetActive(false);

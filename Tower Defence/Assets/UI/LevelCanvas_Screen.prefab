@@ -565,7 +565,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 71.2
+  m_fontSize: 71.55
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -700,7 +700,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 52.45
+  m_fontSize: 52.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2834,8 +2834,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 347534423946609031}
   m_HandleRect: {fileID: 2791789973202689821}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3213,7 +3213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ShowMaskGraphic: 0
+  m_ShowMaskGraphic: 1
 --- !u!114 &8656477935577362112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3230,7 +3230,7 @@ MonoBehaviour:
   m_Color: {r: 0.21052632, g: 0.21052632, b: 0.25, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  baseOpacity: 0
+  baseOpacity: 0.1
   glowIntensity: 0.3
   glowClamp: 0.5
   glowOpacity: 0.7
@@ -3312,11 +3312,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cefa55fab2543f5951cdb59076a30eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: ad6be0de3ccf84117a995a6c65265c5c, type: 2}
   m_Color: {r: 0.21052632, g: 0.21052632, b: 0.25, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  baseOpacity: 0
+  baseOpacity: 0.1
   glowIntensity: 0.3
   glowClamp: 0.5
   glowOpacity: 0.7
@@ -3953,7 +3953,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4077244561330815656}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -4263,7 +4263,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48.7
+  m_fontSize: 49
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4666,7 +4666,7 @@ MonoBehaviour:
     m_LocalVariables: []
   turretInfoButton: {fileID: 3266441549719767058}
   moduleInventoryContent: {fileID: 1048273387375053859}
-  moduleDisabledColor: {r: 0, g: 0, b: 0, a: 0}
+  moduleDisabledColor: {r: 1, g: 1, b: 1, a: 1}
   turretInfoPage: {fileID: 8118530878004778793}
   addModuleButton: {fileID: 2469623391304704137, guid: afbf4eb7443a147889a71726be0c1893, type: 3}
   damage: {fileID: 7519240089067828750}
@@ -7586,7 +7586,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 43.35
+  m_fontSize: 43.6
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -9546,7 +9546,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 791988554963584261}
   m_HandleRect: {fileID: 3323252647223219514}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
