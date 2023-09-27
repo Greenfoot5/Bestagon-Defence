@@ -3933,10 +3933,10 @@ RectTransform:
   - {fileID: 4077244561523284679}
   m_Father: {fileID: 4077244562271899436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.45, y: 0.01}
-  m_AnchorMax: {x: 0.55, y: 0.06}
+  m_AnchorMin: {x: 0.42, y: 0.01}
+  m_AnchorMax: {x: 0.58, y: 0.08}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: -0.000015258789}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4077244561330815636
 CanvasRenderer:
@@ -4025,8 +4025,8 @@ MonoBehaviour:
   percentage: 0.497
   trapeziumPercentage: 0.771
   flipTrapezium: 1
-  outColorA: {r: 0.6740388, g: 0.6740388, b: 0.764151, a: 1}
-  outColorB: {r: 0.374466, g: 0.374466, b: 0.4811321, a: 1}
+  outColorA: {r: 1, g: 1, b: 1, a: 1}
+  outColorB: {r: 0.6745098, g: 0.6745098, b: 0.7647059, a: 1}
   outPercentage: 0.074
   outOffset: 0
   outY: 0.166
@@ -4203,10 +4203,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 4077244561330815639}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.1, y: 0}
-  m_AnchorMax: {x: 0.9, y: 1}
+  m_AnchorMin: {x: 0.15, y: 0}
+  m_AnchorMax: {x: 0.85, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0.00000020446896}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4077244561523284677
 CanvasRenderer:
@@ -4236,7 +4236,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 5 <sprite="UI-Powercell" name="full">
+  m_text: Shop - 5 <sprite="UI-Powercell" name="full">
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ed862fa2de5a148a8adb187ac55cd3eb, type: 2}
   m_sharedMaterial: {fileID: 7459919616753430026, guid: ed862fa2de5a148a8adb187ac55cd3eb, type: 2}
@@ -4263,7 +4263,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 49
+  m_fontSize: 42.45
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4299,7 +4299,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 5, z: 0, w: 0}
+  m_margin: {x: 0, y: 15, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4617,8 +4617,6 @@ MonoBehaviour:
   nextCost: 0
   powercellsText: {fileID: 4077244561523284678}
   energyProgress: {fileID: 6923508768487608851}
-  defaultButtonTop: {r: 0.6745098, g: 0.6745098, b: 0.7647059, a: 1}
-  defaultButtonBottom: {r: 0.37254903, g: 0.37254903, b: 0.48235294, a: 1}
   expensiveButtonTop: {r: 0.7921569, g: 0.011764706, b: 0.27058825, a: 1}
   expensiveButtonBottom: {r: 0.50980395, g: 0.03529412, b: 0.1882353, a: 1}
   glyphsLookup:
@@ -5051,9 +5049,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 4077244562271899436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 20, y: -7}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -80, y: -7}
   m_SizeDelta: {x: 60, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &4077244561732951825

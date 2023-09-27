@@ -1,5 +1,4 @@
-﻿using System;
-using Abstract;
+﻿using Abstract;
 using Abstract.Data;
 using Levels.Maps;
 using MaterialLibrary.Trapezium;
@@ -21,7 +20,6 @@ namespace Gameplay
         private BuildManager _buildManager;
         private LevelData _levelData;
         private ModuleChainHandler _selectedHandler;
-        private GameObject _selectedHandlerButton;
         
         [SerializeField]
         [Tooltip("The inventory to place turret buttons")]
@@ -51,11 +49,9 @@ namespace Gameplay
         
         [Header("Shop Button Colours")]
         [Tooltip("Shop Button Colours Top when can afford")]
-        [SerializeField]
-        private Color defaultButtonTop;
+        private Color _defaultButtonTop;
         [Tooltip("Shop Button Colours Bottom when can afford")]
-        [SerializeField]
-        private Color defaultButtonBottom;
+        private Color _defaultButtonBottom;
         [Tooltip("Shop Button Colours Top when can't afford")]
         [SerializeField]
         private Color expensiveButtonTop;
@@ -84,20 +80,14 @@ namespace Gameplay
                 _hasPlayerMadePurchase = true;
             }
 
+            _defaultButtonTop = energyProgress.outColorA;
+            _defaultButtonBottom = energyProgress.outColorB;
+
             // Update button text
             powercellsText.text = "<sprite=\"UI-Powercell\" name=\"full\"> " + nextCost;
             GameStats.OnGainMoney += CalculateEnergy;
             GameStats.OnGainPowercell += UpdateEnergyButton;
             CalculateEnergy();
-        }
-        
-        /// <summary>
-        /// Returns the currently selected module
-        /// </summary>
-        /// <returns>The currently selected ModuleChainHandler</returns>
-        public ModuleChainHandler GetModuleChainHandler()
-        {
-            return _selectedHandler;
         }
         
         /// <summary>
@@ -186,8 +176,8 @@ namespace Gameplay
             powercellsText.text = "<sprite=\"UI-Powercell\" name=\"empty\"> " + 0;
             if (GameStats.Powercells > 0)
             {
-                energyProgress.outColorA = defaultButtonTop;
-                energyProgress.outColorB = defaultButtonBottom;
+                energyProgress.outColorA = _defaultButtonTop;
+                energyProgress.outColorB = _defaultButtonBottom;
                 powercellsText.color = new Color(1,1,1);
                 powercellsText.text = "<sprite=\"UI-Powercell\" name=\"full\"> " + GameStats.Powercells;
             }
