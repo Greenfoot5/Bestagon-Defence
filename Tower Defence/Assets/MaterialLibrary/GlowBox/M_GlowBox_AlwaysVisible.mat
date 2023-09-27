@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GlowBox_NonAdditive
+  m_Name: M_GlowBox_AlwaysVisible
   m_Shader: {fileID: 4800000, guid: 7de4ed2dc5ffe4692bab04ccee07312e, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -34,8 +34,8 @@ Material:
     - _GlowIntensity: 0.3
     - _GlowOpacity: 0.7
     - _Opacity: 0.1
-    - _Stencil: 1
-    - _StencilComp: 4
+    - _Stencil: 0
+    - _StencilComp: 8
     - _StencilOp: 0
     - _StencilReadMask: 1
     - _StencilWriteMask: 1
