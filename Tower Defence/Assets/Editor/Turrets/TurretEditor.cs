@@ -47,8 +47,6 @@ namespace Editor.Turrets
             
             EditorGUILayout.PropertyField(_rangeDisplay);
 
-            EditorGUILayout.PropertyField(_awakeEvents);
-
             serializedObject.ApplyModifiedProperties();
         }
     }

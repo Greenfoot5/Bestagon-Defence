@@ -235,6 +235,10 @@ MonoBehaviour:
     m_Key: TurretInfo/Vertical
     m_Metadata:
       m_Items: []
+  - m_Id: 13806592842522624
+    m_Key: Shop/Shop
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

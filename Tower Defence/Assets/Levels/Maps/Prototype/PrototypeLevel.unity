@@ -445,15 +445,15 @@ Material:
     - _StencilWriteMask: 1
     m_Colors: []
   m_BuildTextureStacks: []
---- !u!21 &295714646
+--- !u!21 &258833224
 Material:
   serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Custom/ProgressBar
-  m_Shader: {fileID: 4800000, guid: 310735eb07c0c45138732ef42591db14, type: 3}
+  m_Name: Custom/Hexagon/Background
+  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -467,23 +467,23 @@ Material:
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Flip: 1
-    - _OutOffset: 0
-    - _OutX: 0.074
-    - _OutY: 0.166
-    - _Percentage: 0.497
-    - _ShowHalf: 0.447
-    - _TrapPercent: 0.771
+    - _GlowClamp: 0
+    - _GlowIntensity: 0
+    - _GlowOpacity: 0
+    - _HexScale: 15
+    - _Opacity: 1
+    - _Overlay: -0.03
+    - _ScrollSpeed: 0.002
+    - _ShiftSpeed: 0.3
     m_Colors:
-    - _BarColorA: {r: 0.039215688, g: 0.8862745, b: 0.9490196, a: 1}
-    - _BarColorB: {r: 0.058823526, g: 0.617323, b: 0.8392157, a: 1}
-    - _BgColorA: {r: 0.26286048, g: 0.2632012, b: 0.31132078, a: 1}
-    - _BgColorB: {r: 0.1728818, g: 0.1728818, b: 0.1981132, a: 1}
-    - _OutColorA: {r: 0.6740388, g: 0.6740388, b: 0.764151, a: 1}
-    - _OutColorB: {r: 0.374466, g: 0.374466, b: 0.4811321, a: 1}
+    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!21 &304529284
 Material:
@@ -1272,13 +1272,53 @@ Material:
     - _GlowClamp: 0.5
     - _GlowIntensity: 0.3
     - _GlowOpacity: 0.7
-    - _Opacity: 0
+    - _Opacity: 0.1
     - _Stencil: 1
     - _StencilComp: 2
     - _StencilOp: 3
     - _StencilReadMask: 1
     - _StencilWriteMask: 1
     m_Colors: []
+  m_BuildTextureStacks: []
+--- !u!21 &1831715507
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Custom/ProgressBar
+  m_Shader: {fileID: 4800000, guid: 310735eb07c0c45138732ef42591db14, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _Flip: 1
+    - _OutOffset: 0
+    - _OutX: 0.074
+    - _OutY: 0.166
+    - _Percentage: 0.497
+    - _ShowHalf: 0.447
+    - _TrapPercent: 0.771
+    m_Colors:
+    - _BarColorA: {r: 0.039215688, g: 0.8862745, b: 0.9490196, a: 1}
+    - _BarColorB: {r: 0.058823526, g: 0.617323, b: 0.8392157, a: 1}
+    - _BgColorA: {r: 0.26286048, g: 0.2632012, b: 0.31132078, a: 1}
+    - _BgColorB: {r: 0.1728818, g: 0.1728818, b: 0.1981132, a: 1}
+    - _OutColorA: {r: 1, g: 1, b: 1, a: 1}
+    - _OutColorB: {r: 0.6745098, g: 0.6745098, b: 0.7647059, a: 1}
   m_BuildTextureStacks: []
 --- !u!1 &1834435421 stripped
 GameObject:
@@ -1453,46 +1493,6 @@ Transform:
   - {fileID: 7964934783970315043}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &1930409630
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Custom/Hexagon/Background
-  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _GlowClamp: 0
-    - _GlowIntensity: 0
-    - _GlowOpacity: 0
-    - _HexScale: 15
-    - _Opacity: 1
-    - _Overlay: -0.03
-    - _ScrollSpeed: 0.002
-    - _ShiftSpeed: 0.3
-    m_Colors:
-    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
-  m_BuildTextureStacks: []
 --- !u!114 &2009016680 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7229574083802123749, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
@@ -1537,47 +1537,6 @@ Transform:
   - {fileID: 5782079355676140686}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &2119507868
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: UI/Default/GlowBox
-  m_Shader: {fileID: 4800000, guid: 7de4ed2dc5ffe4692bab04ccee07312e, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorMask: 15
-    - _GlowClamp: 0.5
-    - _GlowIntensity: 0.3
-    - _GlowOpacity: 0.7
-    - _Opacity: 0
-    - _Stencil: 1
-    - _StencilComp: 2
-    - _StencilOp: 3
-    - _StencilReadMask: 1
-    - _StencilWriteMask: 1
-    m_Colors: []
-  m_BuildTextureStacks: []
 --- !u!1001 &4077244562611154295
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1872,11 +1831,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1898650749496772999, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000002257526
+      value: -0.0010154133
       objectReference: {fileID: 0}
     - target: {fileID: 1910452813586111486, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_fontSize
-      value: 71.2
+      value: 71.55
       objectReference: {fileID: 0}
     - target: {fileID: 1915395863917741158, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2316,7 +2275,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4077244561523284678, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_fontSize
-      value: 48.7
+      value: 42.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077244561648582632, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
+      propertyPath: managedReferences[8246286180777459714]
+      value: Unity.Localization UnityEngine.Localization.SmartFormat.PersistentVariables.IntVariable
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077244561648582632, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
+      propertyPath: shopText.m_LocalVariables.Array.data[0].name
+      value: variable
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077244561648582632, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
+      propertyPath: managedReferences[8246286180777459714].m_Value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077244561648582632, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
+      propertyPath: shopText.m_LocalVariables.Array.data[0].variable
+      value: 8246286180777459714
       objectReference: {fileID: 0}
     - target: {fileID: 4077244561675534173, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2768,7 +2743,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5312225537624139111, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_fontSize
-      value: 43.35
+      value: 43.6
       objectReference: {fileID: 0}
     - target: {fileID: 5327006930858223940, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2908,6 +2883,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5735982225783824884, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735982225783824884, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5774610302525722246, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
@@ -3256,7 +3235,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7229574083802123749, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_fontSize
-      value: 52.45
+      value: 52.7
       objectReference: {fileID: 0}
     - target: {fileID: 7264003235290674892, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3432,6 +3411,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7751654724891099008, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767939903718673250, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
+      propertyPath: m_Size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767939903718673250, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
+      propertyPath: m_Value
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7770236075983348245, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}

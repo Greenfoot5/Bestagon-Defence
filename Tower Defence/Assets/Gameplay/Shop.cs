@@ -7,6 +7,7 @@ using Turrets;
 using UI.Inventory;
 using UI.Shop;
 using UnityEngine;
+using UnityEngine.Localization;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
@@ -47,7 +48,7 @@ namespace Gameplay
         [SerializeField]
         private Progress energyProgress;
         
-        [Header("Shop Button Colours")]
+        [Header("Shop Button")]
         [Tooltip("Shop Button Colours Top when can afford")]
         private Color _defaultButtonTop;
         [Tooltip("Shop Button Colours Bottom when can afford")]
@@ -58,6 +59,9 @@ namespace Gameplay
         [Tooltip("Shop Button Colours Bottom when can afford")]
         [SerializeField]
         private Color expensiveButtonBottom;
+        [Tooltip("The text to display")]
+        [SerializeField]
+        private LocalizedString shopText;
         
         [Tooltip("The GlyphsLookup index in the scene")]
         [SerializeField]
@@ -173,13 +177,13 @@ namespace Gameplay
             energyProgress.outColorA = expensiveButtonTop;
             energyProgress.outColorB = expensiveButtonBottom;
             powercellsText.color = expensiveButtonTop;
-            powercellsText.text = "<sprite=\"UI-Powercell\" name=\"empty\"> " + 0;
+            powercellsText.text = shopText.GetLocalizedString() + " - <sprite=\"UI-Powercell\" name=\"empty\"> " + 0;
             if (GameStats.Powercells > 0)
             {
                 energyProgress.outColorA = _defaultButtonTop;
                 energyProgress.outColorB = _defaultButtonBottom;
                 powercellsText.color = new Color(1,1,1);
-                powercellsText.text = "<sprite=\"UI-Powercell\" name=\"full\"> " + GameStats.Powercells;
+                powercellsText.text = shopText.GetLocalizedString() + " - <sprite=\"UI-Powercell\" name=\"full\"> " + GameStats.Powercells;
             }
 
             energyProgress.percentage = GameStats.Money / (float)nextCost;
