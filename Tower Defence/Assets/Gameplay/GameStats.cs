@@ -69,7 +69,6 @@ namespace Gameplay
         }
         public static void PopulateLives(int lives)
         {
-            Debug.Log("Populating Lives " + lives);
             _lives = lives;
         }
 

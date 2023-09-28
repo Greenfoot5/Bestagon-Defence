@@ -317,10 +317,6 @@ namespace UI.Inventory
             }
             
             Show();
-            Debug.Log(inventoryTitle);
-            Debug.Log(_target);
-            Debug.Log(_target.turretBlueprint);
-            Debug.Log(_target.turretBlueprint.displayName);
             inventoryTitle.text = _target.turretBlueprint.displayName.GetLocalizedString();
             turretInfoPage.SetActive(true);
             turretInventoryPage.SetActive(false);

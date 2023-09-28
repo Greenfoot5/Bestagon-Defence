@@ -99,7 +99,7 @@ namespace Abstract.Saving
             
             if (FileManager.WriteToFile(sceneName + "Save.dat", sd.ToJson()))
             {
-                Debug.Log("Saving " + sceneName + " successful");
+                //Debug.Log("Saving " + sceneName + " successful");
             }
         }
 
