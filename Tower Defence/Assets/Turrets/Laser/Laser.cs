@@ -90,7 +90,7 @@ namespace Turrets.Laser
             if (!lineRenderer.enabled)
             {
                 lineRenderer.enabled = true;
-                //impactEffect.Play();
+                impactEffect.Play();
             }
             
             // Set Laser positions
@@ -99,12 +99,12 @@ namespace Turrets.Laser
             lineRenderer.SetPosition(1, endPosition);
             
             // Set impact effect rotation
-            Transform impactEffectTransform = impactEffect.transform;
-            var aimDir = (Vector3)((Vector2)firePointPosition - (Vector2)impactEffectTransform.position).normalized;
-            impactEffectTransform.rotation = Quaternion.LookRotation(aimDir);
+            // Transform impactEffectTransform = impactEffect.transform;
+            // var aimDir = (Vector3)((Vector2)firePointPosition - (Vector2)impactEffectTransform.position).normalized;
+            // impactEffectTransform.rotation = Quaternion.LookRotation(aimDir);
             
             // Set impact effect position
-            impactEffectTransform.position = endPosition + aimDir * 0.2f;
+            //impactEffectTransform.position = endPosition + aimDir * 0.2f;
         }
     }
 }

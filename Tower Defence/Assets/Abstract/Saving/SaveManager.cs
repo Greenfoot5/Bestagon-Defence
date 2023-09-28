@@ -82,7 +82,7 @@ namespace Abstract.Saving
                 // Tell our leaderboard API to add the player
                 string leaderboardData =
                     Environment.GetEnvironmentVariable(SceneManager.GetActiveScene().name + "Leaderboard");
-                if (leaderboardData != null)
+                if (leaderboardData != null && _bridge != null)
                 {
                     string[] splitData = leaderboardData.Split(';');
                     _bridge.SendPlayerValue(PlayerPrefs.GetString("Username"), GameStats.Rounds, splitData[0],
@@ -120,18 +120,13 @@ namespace Abstract.Saving
 
         public static bool SaveExists(string sceneName)
         {
-            if (FileManager.FileExists(sceneName + "Save.dat"))
-            {
-                FileManager.LoadFromFile(sceneName + "Save.dat", out string json);
-                var sd = new SaveLevel();
-                sd.LoadFromJson(json);
+            if (!FileManager.FileExists(sceneName + "Save.dat")) return false;
+            
+            FileManager.LoadFromFile(sceneName + "Save.dat", out string json);
+            var sd = new SaveLevel();
+            sd.LoadFromJson(json);
 
-                if (sd.version == Application.version)
-                {
-                    return true;
-                }
-            }
-            return false;
+            return sd.version == Application.version;
         }
 
         public static void ClearSave(string sceneName)

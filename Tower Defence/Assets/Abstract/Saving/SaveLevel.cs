@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using Abstract.Data;
 using Turrets;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Abstract.Saving
 {
@@ -10,7 +12,7 @@ namespace Abstract.Saving
     /// </summary>
     public class SaveLevel
     {
-        [System.Serializable]
+        [Serializable]
         public struct NodeData
         {
             public string uuid;
@@ -22,6 +24,7 @@ namespace Abstract.Saving
         
         
         public int money;
+        public int powercells;
         public int lives;
         public int waveIndex;
         public Random.State random;

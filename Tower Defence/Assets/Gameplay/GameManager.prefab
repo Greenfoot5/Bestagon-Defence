@@ -29,13 +29,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5782079356602982470}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5782079356602982465
 MonoBehaviour:
@@ -220,7 +220,53 @@ MonoBehaviour:
   timeBetweenWaves: 5
   preparationTime: 8
   waveCountdownText: {fileID: 0}
+  waveProgress: {fileID: 0}
+  waveText: {fileID: 0}
   spawnPoint: {fileID: 0}
+  waveCountText:
+    m_TableReference:
+      m_TableCollectionName: GUID:a6170bad920ce47ac8d85f7255dd7a10
+    m_TableEntryReference:
+      m_KeyId: 56904050008064
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables:
+    - name: Spawner
+      variable:
+        rid: 1943649921315110943
+  enemiesAliveText:
+    m_TableReference:
+      m_TableCollectionName: GUID:a6170bad920ce47ac8d85f7255dd7a10
+    m_TableEntryReference:
+      m_KeyId: 87191660257280
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables:
+    - name: Spawner
+      variable:
+        rid: 1943649921315110942
+  spawningText:
+    m_TableReference:
+      m_TableCollectionName: GUID:a6170bad920ce47ac8d85f7255dd7a10
+    m_TableEntryReference:
+      m_KeyId: 88854060064768
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 1943649921315110942
+      type: {class: ObjectVariable, ns: UnityEngine.Localization.SmartFormat.PersistentVariables, asm: Unity.Localization}
+      data:
+        m_Value: {fileID: 5782079356602982465}
+    - rid: 1943649921315110943
+      type: {class: ObjectVariable, ns: UnityEngine.Localization.SmartFormat.PersistentVariables, asm: Unity.Localization}
+      data:
+        m_Value: {fileID: 5782079356602982465}
 --- !u!114 &5782079356602982467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,7 +281,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildEffect: {fileID: 2228279973635050725, guid: 0819bd4b36b114943ba247527c0225db, type: 3}
   sellEffect: {fileID: 710779272522642178, guid: c237ec1a850104d038377b19c877601e, type: 3}
-  nodeUI: {fileID: 0}
 --- !u!114 &5782079356602982466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,6 +309,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverUI: {fileID: 0}
   shop: {fileID: 0}
+  livesText: {fileID: 0}
+  livesBar: {fileID: 0}
   levelData: {fileID: 11400000, guid: 6f49670e531a1439c8d13bde5464212f, type: 2}
   nodeParent: {fileID: 0}
 --- !u!114 &5782079356602982492

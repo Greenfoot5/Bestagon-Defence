@@ -1,6 +1,6 @@
 ﻿using System;
 using Abstract.Data;
-using UI.Nodes;
+using UI.Inventory;
 using UnityEngine;
 
 namespace Turrets.Gunner
@@ -115,9 +115,9 @@ namespace Turrets.Gunner
             }
             
             // Update the stats of the turret if it's selected
-            if (NodeUI.instance.GetTurret() != null && NodeUI.instance.GetTurret() == gameObject)
+            if (TurretInfo.instance.GetTurret() == gameObject)
             {
-                NodeUI.instance.UpdateStats();
+                TurretInfo.instance.UpdateStats();
             }
         }
 
@@ -131,6 +131,7 @@ namespace Turrets.Gunner
             bulletGo.name = "_" + bulletGo.name;
             var bullet = bulletGo.GetComponent<Bullet>();
             bullet.damage = damage;
+            bullet.Seek(target, this);
 
             // Adds the modules to the bullet
             foreach (ModuleChainHandler handler in moduleHandlers)
@@ -138,8 +139,6 @@ namespace Turrets.Gunner
                 handler.GetModule().OnAttack(this);
                 bullet.AddModule(handler.GetModule());
             }
-            
-            bullet.Seek(target, this);
         }
     }
 }

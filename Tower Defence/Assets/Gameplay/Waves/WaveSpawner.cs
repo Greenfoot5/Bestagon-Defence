@@ -2,8 +2,10 @@
 using Abstract.Saving;
 using Enemies;
 using Levels.Maps;
+using MaterialLibrary.Trapezium;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization;
 using UnityEngine.SceneManagement;
 
 namespace Gameplay.Waves
@@ -29,8 +31,14 @@ namespace Gameplay.Waves
         private float _countdown = 5f;
         
         [SerializeField]
-        [Tooltip("The text to update with the countdown")]
+        [Tooltip("The text to update with the countdown/spawning/enemies")]
         private TMP_Text waveCountdownText;
+        [SerializeField]
+        [Tooltip("The Progress Graphic to display the wave progress")]
+        private Progress waveProgress;
+        [SerializeField]
+        [Tooltip("The text to display the current wave")]
+        private TMP_Text waveText;
     
         // The current wave the player is on -1 (as it's indexed from 0)
         private int _waveIndex;
@@ -40,8 +48,20 @@ namespace Gameplay.Waves
         private Transform spawnPoint;
 
         private bool _isSpawning;
+        private float _totalEnemies;
 
         private LevelData _levelData;
+
+        [Header("Localization")]
+        [SerializeField]
+        [Tooltip("The text to show with the wave count")]
+        private LocalizedString waveCountText;
+        [SerializeField]
+        [Tooltip("The text to show how many enemies are alive")]
+        private LocalizedString enemiesAliveText;
+        [SerializeField]
+        [Tooltip("The text to show when more enemies are being spawned")]
+        private LocalizedString spawningText;
 
         /// <summary>
         /// Sets the starting variables
@@ -52,6 +72,7 @@ namespace Gameplay.Waves
             _levelData = gameObject.GetComponent<GameManager>().levelData;
             _countdown = preparationTime;
             _waveIndex = GameStats.Rounds;
+            waveText.text = waveCountText.GetLocalizedString() + GameStats.Rounds;
         }
         
         /// <summary>
@@ -59,10 +80,13 @@ namespace Gameplay.Waves
         /// </summary>
         private void Update()
         {
-            // Only reduce the countdown if there are enemies remaining
-            // TODO - Update countdown text to enemies remaining
+            // Only reduce the countdown if there are no enemies remaining
             if (enemiesAlive > 0 || _isSpawning)
             {
+                if (_isSpawning)
+                    return;
+                waveProgress.percentage = enemiesAlive / _totalEnemies;
+                waveCountdownText.text = enemiesAliveText.GetLocalizedString();
                 return;
             }
 
@@ -88,7 +112,8 @@ namespace Gameplay.Waves
             _countdown -= Time.deltaTime;
             _countdown = Mathf.Clamp(_countdown, 0f, Mathf.Infinity);
         
-            waveCountdownText.text = $"<sprite=\"UI-Icons\" name=\"Clock\">{_countdown:0.00}";
+            waveCountdownText.text = $"{_countdown:0.00}";
+            waveProgress.percentage = _countdown / timeBetweenWaves;
         }
     
         /// <summary>
@@ -97,12 +122,16 @@ namespace Gameplay.Waves
         private IEnumerator SpawnWave()
         {
             _isSpawning = true;
+            waveCountdownText.text = spawningText.GetLocalizedString();
             Wave wave = waves[_waveIndex % waves.Length];
             GameStats.Rounds = _waveIndex + 1;
+            waveText.text = waveCountText.GetLocalizedString() + GameStats.Rounds;
+            _totalEnemies = 0;
 
             for (var i = 0; i < wave.enemySets.Length; i++)
             {
                 EnemySet set = wave.enemySets[i];
+                waveProgress.percentage = i/ (float) wave.enemySets.Length;
             
                 // For all the enemies the enemySet will spawn,
                 // spawn one, then wait timeBetweenEnemies seconds
@@ -110,6 +139,7 @@ namespace Gameplay.Waves
                 for (var j = 0; j < setCount; j++)
                 {
                     SpawnEnemy(set.enemy);
+                    _totalEnemies++;
 
                     if (j + 1 != setCount)
                     {

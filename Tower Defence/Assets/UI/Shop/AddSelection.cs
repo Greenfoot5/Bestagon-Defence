@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Abstract;
 using Abstract.Data;
 using Gameplay;
 using Levels.Maps;
@@ -24,12 +23,8 @@ namespace UI.Shop
         [SerializeField]
         private Gameplay.Shop shop;
         
-        [Tooltip("The GlyphsLookup index in the scene")]
-        [SerializeField]
-        public TypeSpriteLookup glyphsLookup;
-        
         [Tooltip("The turrets already purchased")]
-        private readonly List<Type> _turretTypes = new List<Type>();
+        private readonly List<Type> _turretTypes = new();
     
         /// <summary>
         /// Setups references, checks the player has enough gold and freezes the game when enabled
@@ -40,16 +35,14 @@ namespace UI.Shop
             _levelData = BuildManager.instance.GetComponent<GameManager>().levelData;
 
             // Check the player can afford to open the shop
-            if (GameStats.money < shop.selectionCost)
+            if (GameStats.Powercells < 1)
             {
-                //Debug.Log("Not enough gold!");
                 transform.parent.gameObject.SetActive(false);
                 return;
             }
 
             Time.timeScale = 0f;
-            shop.IncrementSelectionCost();
-            
+            GameStats.Powercells--;
         }
     
         /// <summary>
@@ -252,7 +245,7 @@ namespace UI.Shop
             // Create the ui as a child
             GameObject moduleUI = Instantiate(moduleSelectionUI, transform);
             moduleUI.name = "_" + moduleUI.name;
-            moduleUI.GetComponent<ModuleSelectionUI>().Init(handler, shop, glyphsLookup);
+            moduleUI.GetComponent<ModuleSelectionUI>().Init(handler, shop);
         }
     
         /// <summary>
@@ -261,9 +254,10 @@ namespace UI.Shop
         /// <param name="turret">The turret the player can pick</param>
         private void GenerateTurretUI(TurretBlueprint turret)
         {
+            turret.glyph = shop.glyphsLookup.GetForType(turret.prefab.GetComponent<Turret>().GetType());
             GameObject turretUI = Instantiate(turretSelectionUI, transform);
             turretUI.name = "_" + turretUI.name;
-            turretUI.GetComponent<TurretSelectionUI>().Init(turret, shop, glyphsLookup);
+            turretUI.GetComponent<TurretSelectionUI>().Init(turret, shop);
         }
         
         /// <summary>

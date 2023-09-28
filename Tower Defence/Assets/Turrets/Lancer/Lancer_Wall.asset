@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d437c567020b4f2599bfd79f544c3bc, type: 3}
   m_Name: Lancer_Wall
   m_EditorClassIdentifier: 
-  shopIcon: {fileID: 21300000, guid: 1107d216d6dc84ddda3609fcbbadc09f, type: 3}
+  shopIcon: {fileID: 21300000, guid: 6f1bcabc952884af8b16bc42da6ecc5f, type: 3}
   displayName:
     m_TableReference:
       m_TableCollectionName: GUID:7c2fd8aac1d4a4e3e9098ede69f277bd
@@ -38,8 +38,8 @@ MonoBehaviour:
     tier: 3
   - chain: {fileID: 11400000, guid: 7452851d1c2b745bcbfffd73ec35d11f, type: 2}
     tier: 2
-  - chain: {fileID: 11400000, guid: 808825b7d51f74137b9b191403ea8738, type: 2}
-    tier: 1
+  - chain: {fileID: 11400000, guid: 4790f2db3ddc94e49a962eea7c8566e0, type: 2}
+    tier: 2
   references:
     version: 2
     RefIds: []

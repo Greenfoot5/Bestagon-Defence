@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Abstract;
+using Abstract.Data;
 using Enemies;
 using Turrets;
 using Turrets.Gunner;
@@ -9,6 +10,7 @@ using Turrets.Lancer;
 using Turrets.Shooter;
 using Turrets.Smasher;
 using UnityEngine;
+using UnityEngine.Localization;
 
 namespace Modules.Slow
 {
@@ -24,6 +26,8 @@ namespace Modules.Slow
         [SerializeField]
         [Tooltip("The percentage the slow the enemy's movement speed")]
         private float slowPercentage;
+        
+        [Header("Gunner & Shooter")]
         [SerializeField]
         [Tooltip("How long each slow stack should last")]
         private float duration;
@@ -38,9 +42,16 @@ namespace Modules.Slow
 
         [Header("Smasher")]
         [SerializeField]
+        [Tooltip("The percentage the slow the enemy's movement speed")]
+        private float smasherSlowPercentage;
+        [DisplayName("Duration")]
+        [Tooltip("The percentage of the attack speed cooldown the slow will last")]
+        [SerializeField]
+        private float smasherDuration;
+        [SerializeField]
         [Tooltip("The percentage change to the smasher's range")]
         private float smasherRangeChange;
-        
+
         /// <summary>
         /// Modifies the stats of the turret when applied
         /// </summary>
@@ -89,7 +100,9 @@ namespace Modules.Slow
         {
             foreach (Enemy target in targets)
             {
-                Runner.Run(SlowEnemy(target));
+                Runner.Run(turret.GetType() == typeof(Smasher)
+                    ? SmasherSlowEnemy(target, turret.fireRate)
+                    : SlowEnemy(target));
             }
         }
         
@@ -115,6 +128,33 @@ namespace Modules.Slow
             target.speed.MultiplyModifier(slowValue);
 
             yield return new WaitForSeconds(duration);
+
+            target.speed.DivideModifier(slowValue);
+        }
+
+        /// <summary>
+        /// Applies the slow effect for a set duration for smasher
+        /// </summary>
+        /// <param name="target">The enemy to slow</param>
+        /// <param name="fireRate">The fire rate of the smasher</param>
+        private IEnumerator SmasherSlowEnemy(Enemy target, UpgradableStat fireRate)
+        {
+            // Check the enemy is immune
+            if (target.uniqueEffects.Contains("Slow") || fireRate.GetStat() == 0)
+            {
+                yield break;
+            }
+            
+            float slowValue = 1f - smasherSlowPercentage;
+
+            if (target.speed.GetModifier() * slowValue <= 0.4f)
+            {
+                yield break;
+            }
+            
+            target.speed.MultiplyModifier(slowValue);
+            
+            yield return new WaitForSeconds(1f / (fireRate.GetStat() * smasherDuration));
 
             target.speed.DivideModifier(slowValue);
         }

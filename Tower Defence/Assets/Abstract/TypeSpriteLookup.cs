@@ -16,7 +16,7 @@ namespace Abstract
     [Serializable]
     public class TypeSpriteLookup
     {
-        private static readonly List<Type> Types = new List<Type>
+        private static readonly List<Type> Types = new()
         {
             null, // Represents no specific turret type
             typeof(Shooter),

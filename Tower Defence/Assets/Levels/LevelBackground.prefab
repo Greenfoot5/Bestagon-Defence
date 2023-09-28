@@ -28,10 +28,10 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7964934783628850435}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -55,7 +55,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: -10000
   m_TargetDisplay: 0
@@ -110,9 +112,9 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7964934783553584940}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -143,12 +145,12 @@ MonoBehaviour:
   m_Color: {r: 0.06666667, g: 0.09411765, b: 0.12156863, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  OffsetUV: {x: 0, y: 0}
-  HexagonScale: 50
-  ScrollSpeed: 0.001
-  LuminanceShiftSpeed: 0.5
-  OverlayStrength: 0.05
-  HexagonOpacity: 1
-  GlowIntensity: 0.5
-  GlowClamp: 1
-  GlowOpacity: 0.5
+  offsetUV: {x: 0, y: 0}
+  hexagonScale: 50
+  scrollSpeed: 0.001
+  luminanceShiftSpeed: 0.5
+  overlayStrength: 0.05
+  hexagonOpacity: 1
+  glowIntensity: 0.5
+  glowClamp: 1
+  glowOpacity: 0.5

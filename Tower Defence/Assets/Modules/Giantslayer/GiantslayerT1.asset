@@ -13,9 +13,5 @@ MonoBehaviour:
   m_Name: GiantslayerT1
   m_EditorClassIdentifier: 
   moduleTier: 1
-  accentColor: {r: 0.91764706, g: 0.6431373, b: 0.1254902, a: 1}
-  displayName: Giantslayer I
-  tagline: Wait 'till they come crashing down
-  icon: {fileID: -7979691553943755389, guid: 16c979c866f439b4b988e7020b313794, type: 3}
-  effectText: Deal 1.5x damage to bosses
-  damagePercentage: 0.5
+  isUpgradableTo: 1
+  damagePercentage: 0.25

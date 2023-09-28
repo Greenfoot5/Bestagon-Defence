@@ -1,0 +1,248 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: GUI Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: GUI
+  m_TableCollectionNameGuidString: a6170bad920ce47ac8d85f7255dd7a10
+  m_Entries:
+  - m_Id: 3226630873088
+    m_Key: Buttons/Play
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3300756807680
+    m_Key: Buttons/Leaderboard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3460605927424
+    m_Key: Buttons/Levels
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3506449670144
+    m_Key: LevelsScoresSuffix
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3540838768640
+    m_Key: Buttons/LevelInfo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3603971432448
+    m_Key: Buttons/MainMenu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3645272743936
+    m_Key: LevelSelect/Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4094923104256
+    m_Key: Text/HighScore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4203710767104
+    m_Key: Text/FailedToDisplayLeaderboard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5170262958080
+    m_Key: Tutorial/Content/Genesis
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5232535789568
+    m_Key: Tutorial/Content/TheGoal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5390363254784
+    m_Key: Tutorial/Content/TheShop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5906971484160
+    m_Key: Tutorial/Content/TurretsAndModules
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6032959987712
+    m_Key: Tutorial/Controls/KeyboardAndMouse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6136999698432
+    m_Key: Tutorial/Controls/Mobile
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6205761118208
+    m_Key: Buttons/Wiki
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6251567112192
+    m_Key: Buttons/Controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6536389713920
+    m_Key: Buttons/Quit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6552697167872
+    m_Key: Text/LoggedInAs
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6592312369152
+    m_Key: InputUsername/UsernameInputPlaceholder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7007758180352
+    m_Key: InputUsername/UsernameInfo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7029841190912
+    m_Key: InputUsername/Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7292345901056
+    m_Key: InputUsername/CantChangeWarning
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7327833907200
+    m_Key: Buttons/Submit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7411002761216
+    m_Key: UpdateAvailable/Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7447962968064
+    m_Key: UpdateAvailable/Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7517991067648
+    m_Key: Buttons/Update
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7585750048768
+    m_Key: Buttons/ContinueAnyway
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7662262542336
+    m_Key: UpdateAvailable/WarningText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7730319319040
+    m_Key: Settings/Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8265319571456
+    m_Key: Buttons/PrivacyPolicy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22886260662272
+    m_Key: Buttons/Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26385253916672
+    m_Key: InputUsername/TooShort
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26534868934656
+    m_Key: InputUsername/TooLong
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27931517640704
+    m_Key: Buttons/Tutorial
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56904050008064
+    m_Key: Text/WaveCount
+    m_Metadata:
+      m_Items: []
+  - m_Id: 87191660257280
+    m_Key: Text/EnemiesLeft
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88854060064768
+    m_Key: Text/Spawning
+    m_Metadata:
+      m_Items: []
+  - m_Id: 90562316197888
+    m_Key: GameOver/Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91045730705408
+    m_Key: Buttons/Retry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91364149682176
+    m_Key: GamePaused/Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91663031590912
+    m_Key: Buttons/Restart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91945329221632
+    m_Key: Shop/Game Paused
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92190142357504
+    m_Key: Shop/Revitalise
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92361047662592
+    m_Key: Shop/Refund
+    m_Metadata:
+      m_Items: []
+  - m_Id: 92483575865344
+    m_Key: Shop/Reroll
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99064019410944
+    m_Key: Buttons/Close
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99206508306432
+    m_Key: Buttons/Sell
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99687196516352
+    m_Key: Turrets/Vertical
+    m_Metadata:
+      m_Items: []
+  - m_Id: 99931195957248
+    m_Key: Modules/Vertical
+    m_Metadata:
+      m_Items: []
+  - m_Id: 102905083322368
+    m_Key: Buttons/Rotate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 344334145675264
+    m_Key: Text/None
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11225653000003584
+    m_Key: Buttons/Apply
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11331646061010944
+    m_Key: Test/Waves Spawned
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12345099416494080
+    m_Key: TurretInfo/Vertical
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 1943649921315110916
+  references:
+    version: 2
+    RefIds:
+    - rid: 1943649921315110916
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1692626017983

@@ -179,10 +179,8 @@ namespace Levels.Generic.LevelSelect
         private static T DeserializeJson<T>(string result)
         {
             var jsonSer = new DataContractJsonSerializer(typeof(T));
-            using var ms = new MemoryStream(Encoding.UTF8.GetBytes(result))
-            {
-                Position = 0
-            };
+            using var ms = new MemoryStream(Encoding.UTF8.GetBytes(result));
+            ms.Position = 0;
             return (T)jsonSer.ReadObject(ms);
         }
     }

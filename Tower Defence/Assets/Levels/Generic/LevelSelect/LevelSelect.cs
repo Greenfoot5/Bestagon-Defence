@@ -113,7 +113,7 @@ namespace Levels.Generic.LevelSelect
                 levelName.text = levelNameLocalized + scoresText.GetLocalizedString();
                 
                 // Setup to display scores
-                var bridge = levelInfo.GetComponent<LeaderboardServerBridge>();
+                var bridge = new LeaderboardServerBridge();
                 string leaderboardID =
                     System.Environment.GetEnvironmentVariable(_selectedLevel + "Leaderboard")?.Split(';')[0];
                 // Check the level has a leaderboard

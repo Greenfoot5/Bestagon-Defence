@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d437c567020b4f2599bfd79f544c3bc, type: 3}
   m_Name: Laser_ElfEyes
   m_EditorClassIdentifier: 
-  shopIcon: {fileID: 21300000, guid: 53d2e052e8cb94f7fb4d11ccacec5eaa, type: 3}
+  shopIcon: {fileID: 21300000, guid: 0616cd5a169944126b1b4373e396c061, type: 3}
   displayName:
     m_TableReference:
       m_TableCollectionName: GUID:7c2fd8aac1d4a4e3e9098ede69f277bd

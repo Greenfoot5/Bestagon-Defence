@@ -19,7 +19,7 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 130051727360
-    m_Localized: Bombs
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 265670352896
@@ -202,47 +202,59 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 691326222852096
-    m_Localized: Ghost
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 691476622204928
-    m_Localized: etheral properties
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 691559048667136
-    m_Localized: Projectiles passing through enemies deal damage
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 696061810171904
-    m_Localized: Missiles
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 697535218835456
-    m_Localized: Reload
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 697997502439424
-    m_Localized: rocket science
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 698034219376640
-    m_Localized: A lower fire rate, but projectiles explode!
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 698421399773184
-    m_Localized: Attacks again shortly after firing
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 701015455162368
-    m_Localized: Stun
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 701051983355904
-    m_Localized: bzzzzzzzzt
+    m_Localized: 
     m_Metadata:
       m_Items: []
   - m_Id: 701102625382400
-    m_Localized: Can briefly stuns both enemies and the attacking tower
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51340224704274432
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 87557608142004224
+    m_Localized: Modules
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89775783831134208
+    m_Localized: 
     m_Metadata:
       m_Items: []
   references:

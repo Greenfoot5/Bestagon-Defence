@@ -53,15 +53,15 @@ namespace _WIP.Abilities.PositiveAbilities
                 return;
             }
 
-            Runner.Run(SpawnEnemies(target.transform.position, targetMovement));
+            Runner.Run(SpawnEnemies(target.transform, targetMovement));
         }
         
         /// <summary>
         /// Handles the instantiation in a timely manner
         /// </summary>
-        /// <param name="position">The position to spawn the enemies</param>
+        /// <param name="transform">The transformer of the spawner</param>
         /// <param name="targetMovement">The EnemyMovement to assign (for waypoints)</param>
-        private IEnumerator SpawnEnemies(Vector3 position, EnemyMovement targetMovement)
+        private IEnumerator SpawnEnemies(Transform transform, EnemyMovement targetMovement)
         {
             for (var i = 0; i < count; i++)
             {
@@ -69,15 +69,17 @@ namespace _WIP.Abilities.PositiveAbilities
                 if (doSpawnFromStart)
                 {
                     Instantiate(spawn, Waypoints.points[0].transform);
+                    yield return new WaitForSeconds(spawnTimer);
                 }
                 else
                 {
-                    GameObject enemy = Instantiate(spawn, position, new Quaternion());
+                    Vector3 pos = transform.position;
+                    yield return new WaitForSeconds(spawnTimer);
+                    GameObject enemy = Instantiate(spawn, pos, new Quaternion());
                     enemy.GetComponent<EnemyMovement>().waypointIndex = targetMovement.waypointIndex;
                 }
 
                 WaveSpawner.enemiesAlive += 1;
-                yield return new WaitForSeconds(spawnTimer);
             }
         }
 

@@ -87,7 +87,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730604566994944
-    m_Localized: arctic beacon
+    m_Localized: honing beacon
     m_Metadata:
       m_Items: []
   - m_Id: 730677770182656
@@ -176,6 +176,14 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 733078312968192
     m_Localized: valley maker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89061478064185344
+    m_Localized: Turrets
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89369000264327168
+    m_Localized: Turret
     m_Metadata:
       m_Items: []
   references:

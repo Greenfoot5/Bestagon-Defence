@@ -41,7 +41,7 @@ namespace Modules
             {
                 return false;
             }
-
+            
             Module currentTier = moduleTiers[tier - 1];
             Module nextTier = moduleTiers[tier];
             // Check the next tier isn't skipped and can be upgraded to

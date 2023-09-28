@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moduleTier: 5
   isUpgradableTo: 1
-  damagePercentage: 7.75
+  damagePercentage: 3

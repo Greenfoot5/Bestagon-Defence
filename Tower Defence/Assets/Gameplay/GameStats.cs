@@ -11,9 +11,29 @@ namespace Gameplay
     {
         private static bool _active;
 
-        public static int money;
+        private static int _money;
         [Tooltip("How much money the player starts the level with")]
         public int startMoney = 200;
+        public static int Money
+        {
+            get => _money;
+            set
+            {
+                _money = value;
+                OnGainMoney?.Invoke();
+            }
+        }
+        
+        private static int _powercells;
+        public static int Powercells
+        {
+            get => _powercells;
+            set
+            {
+                _powercells = value;
+                OnGainPowercell?.Invoke();
+            }
+        }
 
         private static int _lives;
         [Tooltip("How many lives the player starts the level with")]
@@ -24,6 +44,7 @@ namespace Gameplay
             set
             {
                 _lives = value;
+                OnLoseLife?.Invoke();
                 if (value == 0)
                 {
                     OnGameOver?.Invoke();
@@ -42,11 +63,24 @@ namespace Gameplay
             }
         }
 
+        public static void PopulateRounds(int rounds)
+        {
+            _rounds = rounds;
+        }
+        public static void PopulateLives(int lives)
+        {
+            Debug.Log("Populating Lives " + lives);
+            _lives = lives;
+        }
+
         public static GameControls controls;
 
         // Events
         public static event RoundProgressEvent OnRoundProgress;
         public static event GameOverEvent OnGameOver;
+        public static event LoseLife OnLoseLife;
+        public static event GainMoney OnGainMoney;
+        public static event GainCell OnGainPowercell;
         
         /// <summary>
         /// Resets all stats and enables the game's controls at the start of the game
@@ -55,8 +89,9 @@ namespace Gameplay
         {
             if (!_active)
             {
-                money = startMoney;
+                Money = startMoney;
                 _lives = startLives;
+                _rounds = 0;
             }
 
             // Controls
@@ -76,4 +111,10 @@ namespace Gameplay
 
     public delegate void RoundProgressEvent();
     public delegate void GameOverEvent();
+
+    public delegate void LoseLife();
+
+    public delegate void GainMoney();
+
+    public delegate void GainCell();
 }

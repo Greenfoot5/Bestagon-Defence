@@ -32,4 +32,4 @@ MonoBehaviour:
     - rid: 7619633646490091564
       type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_CommentText: 30% complete
+        m_CommentText: 50% complete

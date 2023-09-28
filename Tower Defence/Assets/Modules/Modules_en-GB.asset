@@ -59,7 +59,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2449824800768
-    m_Localized: feath wonder
+    m_Localized: death wonder
     m_Metadata:
       m_Items: []
   - m_Id: 2700287664128
@@ -79,9 +79,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 4163470614528
-    m_Localized: 'Fire Rate
-
-'
+    m_Localized: Fire Rate
     m_Metadata:
       m_Items: []
   - m_Id: 4543776546816
@@ -225,7 +223,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 698034219376640
-    m_Localized: A lower fire rate, but projectiles explode!
+    m_Localized: Lower fire rate, but projectiles explode!
     m_Metadata:
       m_Items: []
   - m_Id: 698421399773184
@@ -242,6 +240,22 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 701102625382400
     m_Localized: Can briefly stuns both enemies and the attacking tower
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51340224704274432
+    m_Localized: Another one!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 87557608142004224
+    m_Localized: Modules
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89775783831134208
+    m_Localized: Module
+    m_Metadata:
+      m_Items: []
+  - m_Id: 90085520309215232
+    m_Localized: Modules
     m_Metadata:
       m_Items: []
   references:

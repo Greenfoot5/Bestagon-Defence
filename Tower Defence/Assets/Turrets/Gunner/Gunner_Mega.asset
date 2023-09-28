@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d437c567020b4f2599bfd79f544c3bc, type: 3}
   m_Name: Gunner_Mega
   m_EditorClassIdentifier: 
-  shopIcon: {fileID: 21300000, guid: 2a202431f24604b319e9b8afaa8f1994, type: 3}
+  shopIcon: {fileID: 21300000, guid: 709b80ecf3dca43b195973a94b954009, type: 3}
   displayName:
     m_TableReference:
       m_TableCollectionName: GUID:7c2fd8aac1d4a4e3e9098ede69f277bd
@@ -37,11 +37,11 @@ MonoBehaviour:
   - chain: {fileID: 11400000, guid: d312f79296a2146e3976d8622d6b1b8c, type: 2}
     tier: 2
   - chain: {fileID: 11400000, guid: 1f607adabd390408e85118b1cffe1d8b, type: 2}
-    tier: 2
+    tier: 3
   - chain: {fileID: 11400000, guid: 2bdc773f9c2ea4f8292ef859b337f751, type: 2}
-    tier: 1
+    tier: 2
   - chain: {fileID: 11400000, guid: 7452851d1c2b745bcbfffd73ec35d11f, type: 2}
-    tier: 1
+    tier: 2
   references:
     version: 2
     RefIds: []

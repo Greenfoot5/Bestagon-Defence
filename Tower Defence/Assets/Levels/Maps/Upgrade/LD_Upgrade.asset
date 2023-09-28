@@ -2338,3 +2338,4 @@ MonoBehaviour:
   revitaliseLives: 5
   refundPercentage: 0.95
   rerollCost: 1
+  sellPercentage: 0.85

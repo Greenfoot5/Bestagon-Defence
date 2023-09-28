@@ -13,13 +13,11 @@ MonoBehaviour:
   m_Name: SlowT1
   m_EditorClassIdentifier: 
   moduleTier: 1
-  accentColor: {r: 0.18039216, g: 0.78431374, b: 0.8980392, a: 1}
-  displayName: Slow I
-  tagline: Subzero
-  icon: {fileID: -3843445929337379658, guid: 16c979c866f439b4b988e7020b313794, type: 3}
-  effectText: Slows enemies per hit by 7.5% for 2s
+  isUpgradableTo: 1
   slowPercentage: 0.075
   duration: 2
   gunnerSpinUpChange: -0.1
   gunnerSpinDownChange: 0.075
+  smasherSlowPercentage: 0.05
+  smasherDuration: 0.25
   smasherRangeChange: -0.15

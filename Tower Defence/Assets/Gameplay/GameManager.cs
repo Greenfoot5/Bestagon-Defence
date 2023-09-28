@@ -3,9 +3,12 @@ using Abstract.Data;
 using Abstract.Saving;
 using Levels._Nodes;
 using Levels.Maps;
+using MaterialLibrary.Trapezium;
+using TMPro;
 using Turrets;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 namespace Gameplay
 {
@@ -23,6 +26,14 @@ namespace Gameplay
         [Tooltip("The UI that displays the shop")]
         [SerializeField]
         private GameObject shop;
+
+        [Tooltip("The Text for the lives amount")]
+        [SerializeField]
+        private TMP_Text livesText;
+        [Tooltip("The Progress Graphic for the lives bar")]
+        [SerializeField]
+        private Progress livesBar;
+        private int _startLives;
         
         [Tooltip("The levelData to use for the current level")]
         public LevelData levelData;
@@ -35,6 +46,7 @@ namespace Gameplay
 
         private void Awake()
         {
+            _startLives = GameStats.Lives;
             if (PlayerPrefs.GetInt("LoadingLevel", 0) == 0) return;
             LoadJsonData(this);
         }
@@ -50,6 +62,9 @@ namespace Gameplay
             {
                 Debug.LogError("No level data set!", this);
             }
+            
+            GameStats.OnLoseLife += UpdateLives;
+            UpdateLives();
         }
     
         /// <summary>
@@ -87,10 +102,11 @@ namespace Gameplay
         public void PopulateSaveData(SaveLevel saveData)
         {
             saveData.lives = GameStats.Lives;
-            saveData.money = GameStats.money;
+            saveData.money = GameStats.Money;
+            saveData.powercells = GameStats.Powercells;
             saveData.waveIndex = GameStats.Rounds - 1;
             saveData.random = Random.state;
-            saveData.shopCost = shop.GetComponent<Shop>().selectionCost;
+            saveData.shopCost = shop.GetComponent<Shop>().nextCost;
             saveData.nodes = new List<SaveLevel.NodeData>();
             saveData.turretInventory = new List<TurretBlueprint>();
             saveData.moduleInventory = new List<ModuleChainHandler>();
@@ -136,12 +152,14 @@ namespace Gameplay
 
         public void LoadFromSaveData(SaveLevel saveData)
         {
+            _startLives = GameStats.Lives;
             GameStats.Lives = saveData.lives;
-            GameStats.money = saveData.money;
-            GameStats.Rounds = saveData.waveIndex;
+            GameStats.PopulateRounds(saveData.waveIndex + 1);
             Random.state = saveData.random;
             var shopComponent = shop.GetComponent<Shop>();
-            shopComponent.selectionCost = saveData.shopCost;
+            shopComponent.nextCost = saveData.shopCost;
+            GameStats.Powercells = saveData.powercells;
+            GameStats.Money = saveData.money;
 
             foreach (SaveLevel.NodeData nodeData in saveData.nodes)
             {
@@ -166,6 +184,12 @@ namespace Gameplay
             {
                 shopComponent.SpawnNewModule(module);
             }
+        }
+
+        private void UpdateLives()
+        {
+            livesBar.percentage = GameStats.Lives / (float)_startLives;
+            livesText.text = $"{GameStats.Lives}";
         }
     }
 }

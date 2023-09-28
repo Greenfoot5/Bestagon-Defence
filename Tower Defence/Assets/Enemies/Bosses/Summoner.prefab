@@ -58,6 +58,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: -520248425
@@ -378,7 +379,8 @@ MonoBehaviour:
   leftBar: {fileID: 2116079699}
   rightBar: {fileID: 9058776261530500049}
   rotationRoot: {fileID: 1876962160361282837}
-  deathEffect: {fileID: 710779272522642178, guid: d286b443e8ade4d4cb1ec3e2a41a94f8, type: 3}
+  doesRotation: 1
+  deathEffect: {fileID: 710779272522642178, guid: e3996eb16906b49aebb5de3dba91a939, type: 3}
   startingAbilities:
   - {fileID: 11400000, guid: 7abfb9b9f415147ccafd4ebefb61f8f2, type: 2}
   - {fileID: 11400000, guid: eab12303331974bfdbade13fb31851b0, type: 2}
@@ -549,9 +551,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1179752323
-  m_SortingLayer: 3
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: aadbf91f8371b4756b8922df0dae8cb8, type: 3}
+  m_SortingLayer: 2
+  m_SortingOrder: 5
+  m_Sprite: {fileID: 21300000, guid: 8403a6f8642a242f9b199631e13cee8e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

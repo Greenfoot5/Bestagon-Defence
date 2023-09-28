@@ -10,41 +10,48 @@ on:
 jobs:
   buildForAllSupportedPlatforms:
     name: Build for ${{ matrix.targetPlatform }}
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.jobOS }}
     strategy:
       fail-fast: false
-      max-parallel: 3
+      max-parallel: 1
       matrix:
-        targetPlatform:
-          #- StandaloneOSX # Build a macOS standalone (Intel 64-bit).
-          - StandaloneWindows # Build a Windows standalone.
-          - StandaloneWindows64 # Build a Windows 64-bit standalone.
-          - StandaloneLinux64 # Build a Linux 64-bit standalone.
-          #- iOS # Build an iOS player.
-          #- Android # Build an Android .apk standalone app.
-          #- WebGL # WebGL.
+        include:
+          - targetPlatform: StandaloneOSX # Build a macOS standalone (Intel 64-bit).
+            jobOS: macos-latest
+          - targetPlatform: StandaloneWindows # Build a Windows standalone.
+            jobOS: ubuntu-latest
+          - targetPlatform: StandaloneWindows64 # Build a Windows 64-bit standalone.
+            jobOS: ubuntu-latest
+          - targetPlatform: StandaloneLinux64 # Build a Linux 64-bit standalone.
+            jobOS: ubuntu-latest
+#          - targetPlatform: iOS # Build an iOS player.
+#            jobOS: ubuntu-latest
+#          - targetPlatform: Android # Build an Android .apk standalone app.
+#            jobOS: ubuntu-latest
+#          - targetPlatform: WebGL # WebGL.
+#            jobOS: ubuntu-latest
+        
     outputs:
-      #StandaloneOSX: ${{ steps.outputResult.outputs.StandaloneOSX }}
+      StandaloneOSX: ${{ steps.outputResult.outputs.StandaloneOSX }}
       StandaloneWindows: ${{ steps.outputResult.outputs.StandaloneWindows }}
       StandaloneWindows64: ${{ steps.outputResult.outputs.StandaloneWindows64 }}
       StandaloneLinux64: ${{ steps.outputResult.outputs.StandaloneLinux64 }}
       #iOS: ${{ steps.outputResult.outputs.iOS }}
-      #Android: ${{ steps.outputResult.outputs.Android }}
+      Android: ${{ steps.outputResult.outputs.Android }}
       #WebGL: ${{ steps.outputResult.outputs.WebGL }}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
           lfs: true
 
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         with:
           path: Library
           key: Library-${{ matrix.targetPlatform }}
-          restore-keys: Library-
 
-      - uses: game-ci/unity-builder@v2
+      - uses: game-ci/unity-builder@v3
         env:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
@@ -57,40 +64,42 @@ jobs:
         with:
           projectPath: 'Tower Defence'
           targetPlatform: ${{ matrix.targetPlatform }}
+        if: ${{ matrix.targetPlatform != 'Android' }}
+          
+      - uses: game-ci/unity-builder@v3
+        env:
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
 
-      - uses: actions/upload-artifact@v2
+          # Use for paid version:
+          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+
+          # Use for free version:
+          #UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        with:
+          projectPath: 'Tower Defence'
+          targetPlatform: ${{ matrix.targetPlatform }}
+          androidKeystoreName: user # This file won't exist, but this property needs to exist.
+          androidKeystoreBase64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          androidKeystorePass: ${{ secrets.ANDROID_KEYSTORE_PASS }}
+          androidKeyaliasName: ${{ secrets.ANDROID_KEYALIAS_NAME }}
+          androidKeyaliasPass: ${{ secrets.ANDROID_KEYALIAS_PASS }}
+          androidTargetSdkVersion: AndroidApiLevel31
+        if: ${{ matrix.targetPlatform == 'Android' }}
+
+      - uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.targetPlatform }}
-          path: 'build'
+          path: |
+            build/
+            !*DoNotShip/
           
-      # ERROR - Causes errors for some reason.
       # Return License
-#      - uses: game-ci/unity-return-license@v1
+#      - uses: game-ci/unity-return-license@v2.0.0
 #        if: always()
       
-      # NOT NEEDED - We don't currently make use of this, instead opting for manual builds for new versions
-#      - uses: paulhatch/semantic-version@v4.0.2
-#        with:
-#          tag_prefix: "v"
-#          # A string which, if present in a git commit, indicates that a change represents a
-#          # major (breaking) change, supports regular expressions wrapped with '/'
-#          major_pattern: "(MAJOR)"
-#          # Same as above except indicating a minor change, supports regular expressions wrapped with '/'
-#          minor_pattern: "(MINOR)"
-#          # A string to determine the format of the version output
-#          format: "${major}.${minor}.${patch}"
-#          # Optional path to check for changes. If any changes are detected in the path the
-#          # 'changed' output will true. Enter multiple paths separated by spaces.
-#          change_path: "Tower Defence"
-#          # Named version, will be used as suffix for name version tag
-#          namespace: Bestagone-Defence
-#          # Indicate whether short tags like 'v1' should be supported. If false only full
-#          # tags like 'v1.0.0' will be recognized.
-#          short_tags: false
-#          # If this is set to true, *every* commit will be treated as a new version.
-#          bump_each_commit: false
       - id: outputResult
-        run: echo "${{ matrix.targetPlatform }}=${{ job.status }}" >> $GITHUB_OUTPUT
+        run: echo "${{ matrix.targetPlatform }}Result=${{ job.status }}" >> $GITHUB_ENV
   
   sendSuccessNotification:
     runs-on: ubuntu-latest
@@ -104,13 +113,13 @@ jobs:
           content: "Build Success"
           embed-title: "New Nightly Build Available!"
           embed-description: "[You can get the new builds here](https://github.com/Greenfoot5/Bestagon-Defence/actions/runs/${{ github.run_id }})
-          \n\n*You may need to scroll down to the bottom*"
+          \n${{ env.StandaloneWindowsResult }}\n*You may need to scroll down to the bottom*"
           embed-color: 1546855
       
   sendFailureNotification:
     runs-on: ubuntu-latest
     needs: 
-    - buildForAllSupportedPlatforms
+      - buildForAllSupportedPlatforms
     if: ${{ failure() }}
     steps:
       - uses: tsickert/discord-webhook@v5.3.0
@@ -118,6 +127,6 @@ jobs:
           webhook-url: ${{ secrets.NIGHTLY_WEBHOOK_URL }}
           content: "Build Failure"
           embed-title: "New Nightly Build Failed!"
-          embed-description: "[You can find the results here](https://github.com/Greenfoot5/Bestagon-Defence/actions/runs/${{ github.run_id }})"
+          embed-description: "[You can find the results here](https://github.com/Greenfoot5/Bestagon-Defence/actions/runs/${{ github.run_id }})\n${{ env.StandaloneWindowsResult }}"
           embed-color: 10949957
       

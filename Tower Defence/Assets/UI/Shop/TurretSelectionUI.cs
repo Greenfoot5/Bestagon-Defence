@@ -1,9 +1,8 @@
-using Abstract;
 using Abstract.Data;
 using MaterialLibrary.Hexagons;
 using TMPro;
 using Turrets;
-using UI.Glyphs;
+using UI.Inventory;
 using UI.TurretStats;
 using UnityEngine;
 using UnityEngine.UI;
@@ -70,8 +69,7 @@ namespace UI.Shop
         /// </summary>
         /// <param name="turret">The turret the option selects</param>
         /// <param name="shop">The Shop (allows the game to select the turret when the player clicks the panel)</param>
-        /// <param name="lookup">The turret type to glyph lookup</param>
-        public void Init (TurretBlueprint turret, Gameplay.Shop shop, TypeSpriteLookup lookup)
+        public void Init (TurretBlueprint turret, Gameplay.Shop shop)
         {
             _turretBlueprint = turret;
             
@@ -81,9 +79,8 @@ namespace UI.Shop
             
             // Icon and Glyph
             icon.sprite = turret.shopIcon;
-            TurretGlyphSo glyphSo = lookup.GetForType(turret.prefab.GetComponent<Turret>().GetType());
-            glyph.sprite = glyphSo.glyph;
-            glyph.color = glyphSo.body;
+            glyph.sprite = turret.glyph.glyph;
+            glyph.color = turret.glyph.body;
             
             // Turret stats
             var turretPrefab = turret.prefab.GetComponent<Turret>();
@@ -131,6 +128,7 @@ namespace UI.Shop
             Time.timeScale = 1f;
         
             shop.SpawnNewTurret(_turretBlueprint);
+            TurretInfo.instance.DisplayTurretInventory();
         }
     }
 }

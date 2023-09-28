@@ -28,14 +28,12 @@ namespace Levels.Generic.MainMenu
                 menuCanvas.SetActive(false);
                 loginCanvas.SetActive(false);
                 updateCanvas.SetActive(true);
-                Debug.Log("Outdated");
             }
             else if (!SetUsername.HasUsername())
             {
                 menuCanvas.SetActive(false);
                 loginCanvas.SetActive(true);
                 updateCanvas.SetActive(false);
-                Debug.Log("No Username!r");
             }
             else
             {

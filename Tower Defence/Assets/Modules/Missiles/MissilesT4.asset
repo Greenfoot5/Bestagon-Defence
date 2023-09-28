@@ -15,8 +15,8 @@ MonoBehaviour:
   moduleTier: 4
   isUpgradableTo: 1
   explosionRadiusChange: 0.7
-  damagePercentageChange: 4
-  fireRatePercentageChange: -0.6
+  damagePercentageChange: 1
+  fireRatePercentageChange: 0.6
   speedPercentageChange: 0.85
   gunnerFireRateCapChange: -0.6
-  gunnerSpinUpChange: 0.5
+  gunnerSpinUpChange: 0.6

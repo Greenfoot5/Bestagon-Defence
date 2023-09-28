@@ -37,10 +37,20 @@ namespace Abstract.Data
             // If the upgrade is of a different type,
             if (sibling.GetModule().GetType() != GetModule().GetType()) return false;
             // If the upgrade is of a different tier, 
-            if (sibling.tier != tier || !chain.CanUpgrade(tier)) return false;
+            if (!CanUpgrade(sibling.GetTier())) return false;
                 
             tier += 1;
             return true;
+        }
+
+        /// <summary>
+        /// Checks if the module can be upgraded from it's current tier
+        /// </summary>
+        /// <param name="otherTier">The tier of the other module this module is trying to upgrade with</param>
+        /// <returns></returns>
+        public bool CanUpgrade(int otherTier)
+        {
+            return otherTier == tier && chain.CanUpgrade(otherTier);
         }
         
         /// <summary>

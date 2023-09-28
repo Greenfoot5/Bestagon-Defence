@@ -18,7 +18,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 95fd0fa09b03945dcb06a4e36ec77042, type: 2}
   - {fileID: 11400000, guid: a5929e9575453409aa0ceff1be997124, type: 2}
   - {fileID: 11400000, guid: 744c7aa4b8cba43db855cefb40ae5ff4, type: 2}
-  unique: 0
+  unique: 1
   accentColor: {r: 0.91764706, g: 0.6431373, b: 0.1254902, a: 1}
   icon: {fileID: -7979691553943755389, guid: 16c979c866f439b4b988e7020b313794, type: 3}
   displayName:
