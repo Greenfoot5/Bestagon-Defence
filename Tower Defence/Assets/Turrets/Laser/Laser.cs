@@ -19,35 +19,60 @@ namespace Turrets.Laser
         [Tooltip("The particle effect that's spawned at the end of the laser's line")]
         private ParticleSystem impactEffect;
 
+        // Laser Duration
+        [Tooltip("How long the laser lasts before it goes on cooldown")]
+        public UpgradableStat laserDuration = new(1f);
+        /// <summary> How long left until the next attack </summary>
+        public float durationCountdown;
+        [Tooltip("How long the laser should go on cooldown for")]
+        public UpgradableStat laserCooldown = new(1f);
+        /// <summary> How long left until the next attack </summary>
+        public float cooldownCountdown;
+
         /// <summary>
         /// Fires the laser if the turret have a target and are looking at them.
         /// Otherwise rotate to target if there is one.
         /// </summary>
         private void Update()
         {
-            // Don't do anything if the turret doesn't have a target
-            // or fire rate is <= 0
-            if (target == null || fireRate.GetStat() == 0)
+            durationCountdown -= Time.deltaTime;
+            
+            if (cooldownCountdown >= 0 && durationCountdown <= 0)
             {
+                cooldownCountdown -= Time.deltaTime;
+
+                if (target != null)
+                    LookAtTarget();
+                
                 if (!lineRenderer.enabled) return;
                 
                 lineRenderer.enabled = false;
                 impactEffect.Stop();
+                return;
+            }
+            
+            // Don't do anything if the turret doesn't have a target
+            // or fire rate is <= 0
+            if (target == null || laserDuration.GetStat() < 0)
+            {
                 return;
             }
         
             // Rotates the turret each frame
             LookAtTarget();
-
-            if (!IsLookingAtTarget())
+            
+            // One of the two laser timers expired
+            if (durationCountdown <= 0)
             {
-                if (!lineRenderer.enabled) return;
-                
-                lineRenderer.enabled = false;
-                impactEffect.Stop();
+                if (!IsLookingAtTarget())
+                {
+                    durationCountdown = laserDuration.GetStat();
+                    cooldownCountdown = laserCooldown.GetStat();
+                }
+
                 return;
             }
-
+            
             Attack();
         }
         
