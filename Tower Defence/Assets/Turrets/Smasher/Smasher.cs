@@ -66,8 +66,9 @@ namespace Turrets.Smasher
                 enemies.Add(enemy);
                 
                 // Take damage depending on how close the enemy is to the turret's centre
-                float damagePercentage = 1 - (transform.position - collider2d.transform.position).sqrMagnitude /
-                                         (range.GetTrueStat() * range.GetTrueStat());
+                float distance = 1 - (transform.position - collider2d.transform.position).sqrMagnitude /
+                    (range.GetTrueStat() * range.GetTrueStat());
+                float damagePercentage = Mathf.Clamp(distance + 0.33f, 0f, 1f);
                 // Only deal damage if it will actually damage the enemy
                 if (damagePercentage > 0)
                 {
