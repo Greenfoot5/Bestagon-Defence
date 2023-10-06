@@ -24,7 +24,6 @@ namespace Abstract.Saving
         
         
         public int money;
-        public int powercells;
         public int lives;
         public int waveIndex;
         public Random.State random;

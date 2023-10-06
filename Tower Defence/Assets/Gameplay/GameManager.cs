@@ -103,7 +103,6 @@ namespace Gameplay
         {
             saveData.lives = GameStats.Lives;
             saveData.money = GameStats.Money;
-            saveData.powercells = GameStats.Powercells;
             saveData.waveIndex = GameStats.Rounds - 1;
             saveData.random = Random.state;
             saveData.shopCost = shop.GetComponent<Shop>().nextCost;
@@ -158,7 +157,6 @@ namespace Gameplay
             Random.state = saveData.random;
             var shopComponent = shop.GetComponent<Shop>();
             shopComponent.nextCost = saveData.shopCost;
-            GameStats.Powercells = saveData.powercells;
             GameStats.Money = saveData.money;
 
             foreach (SaveLevel.NodeData nodeData in saveData.nodes)

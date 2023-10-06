@@ -100,8 +100,6 @@ namespace Gameplay
         public void RemoveModule(GameObject button)
         {
             Destroy(button);
-            GameManager.ModuleInventory.Remove(_selectedHandler);
-            _selectedHandler = new ModuleChainHandler();
         }
 
         /// <summary>

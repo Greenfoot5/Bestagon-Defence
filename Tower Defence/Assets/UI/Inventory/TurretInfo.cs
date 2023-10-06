@@ -163,6 +163,7 @@ namespace UI.Inventory
             bool isApplied = _target.ApplyModuleToTurret(handler);
             if (!isApplied) return;
             
+            GameManager.ModuleInventory.Remove(handler);
             shop.RemoveModule(button);
             UpdateModules();
             OpenTurretInfo();
