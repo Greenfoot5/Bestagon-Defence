@@ -2168,11 +2168,11 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     variable: {fileID: 0}
-  hasInitialSelection: 0
-  initialSelectionCount: 3
+  hasInitialSelection: 1
+  initialSelectionCount: 4
   selectionCount: 3
   initialSelectionCost: 61
-  selectionCostIncrement: 9
+  selectionCostIncrement: 19
   health:
     useConstant: 1
     constantValue:
