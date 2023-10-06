@@ -445,46 +445,6 @@ Material:
     - _StencilWriteMask: 1
     m_Colors: []
   m_BuildTextureStacks: []
---- !u!21 &258833224
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Custom/Hexagon/Background
-  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _GlowClamp: 0
-    - _GlowIntensity: 0
-    - _GlowOpacity: 0
-    - _HexScale: 15
-    - _Opacity: 1
-    - _Overlay: -0.03
-    - _ScrollSpeed: 0.002
-    - _ShiftSpeed: 0.3
-    m_Colors:
-    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
-  m_BuildTextureStacks: []
 --- !u!21 &304529284
 Material:
   serializedVersion: 8
@@ -1280,46 +1240,6 @@ Material:
     - _StencilWriteMask: 1
     m_Colors: []
   m_BuildTextureStacks: []
---- !u!21 &1831715507
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Custom/ProgressBar
-  m_Shader: {fileID: 4800000, guid: 310735eb07c0c45138732ef42591db14, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs: []
-    m_Ints: []
-    m_Floats:
-    - _Flip: 1
-    - _OutOffset: 0
-    - _OutX: 0.074
-    - _OutY: 0.166
-    - _Percentage: 0.497
-    - _ShowHalf: 0.447
-    - _TrapPercent: 0.771
-    m_Colors:
-    - _BarColorA: {r: 0.039215688, g: 0.8862745, b: 0.9490196, a: 1}
-    - _BarColorB: {r: 0.058823526, g: 0.617323, b: 0.8392157, a: 1}
-    - _BgColorA: {r: 0.26286048, g: 0.2632012, b: 0.31132078, a: 1}
-    - _BgColorB: {r: 0.1728818, g: 0.1728818, b: 0.1981132, a: 1}
-    - _OutColorA: {r: 1, g: 1, b: 1, a: 1}
-    - _OutColorB: {r: 0.6745098, g: 0.6745098, b: 0.7647059, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1 &1834435421 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6181639253345663808, guid: 22e255e61c57c4eaa91bbd28e8c2b0b1, type: 3}
@@ -1364,6 +1284,46 @@ Material:
     - _ShiftSpeed: 0.75
     m_Colors:
     - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
+--- !u!21 &1862067780
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Custom/ProgressBar
+  m_Shader: {fileID: 4800000, guid: 310735eb07c0c45138732ef42591db14, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _Flip: 1
+    - _OutOffset: 0
+    - _OutX: 0.074
+    - _OutY: 0.166
+    - _Percentage: 0.497
+    - _ShowHalf: 0.447
+    - _TrapPercent: 0.771
+    m_Colors:
+    - _BarColorA: {r: 0.039215688, g: 0.8862745, b: 0.9490196, a: 1}
+    - _BarColorB: {r: 0.058823526, g: 0.617323, b: 0.8392157, a: 1}
+    - _BgColorA: {r: 0.26286048, g: 0.2632012, b: 0.31132078, a: 1}
+    - _BgColorB: {r: 0.1728818, g: 0.1728818, b: 0.1981132, a: 1}
+    - _OutColorA: {r: 1, g: 1, b: 1, a: 1}
+    - _OutColorB: {r: 0.6745098, g: 0.6745098, b: 0.7647059, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &1910718154
 MonoBehaviour:
@@ -1504,6 +1464,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!21 &2034919678
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Custom/Hexagon/Background
+  m_Shader: {fileID: 4800000, guid: ed68a8b04f84ecb409d59da8d5a51d8d, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _GlowClamp: 0
+    - _GlowIntensity: 0
+    - _GlowOpacity: 0
+    - _HexScale: 15
+    - _Opacity: 1
+    - _Overlay: -0.03
+    - _ScrollSpeed: 0.002
+    - _ShiftSpeed: 0.3
+    m_Colors:
+    - _OffsetUV: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1 &2057348009
 GameObject:
   m_ObjectHideFlags: 0
@@ -1831,7 +1831,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1898650749496772999, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.0010154133
+      value: -0.0010029977
       objectReference: {fileID: 0}
     - target: {fileID: 1910452813586111486, guid: 4804c306899ea47ffbe14d11731a53dc, type: 3}
       propertyPath: m_fontSize

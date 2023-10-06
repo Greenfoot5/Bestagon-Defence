@@ -21,20 +21,27 @@ namespace Modules.Execute
         [SerializeField]
         private float percentageHealthRemaining;
 
+        public override void AddModule(Damager damager)
+        {
+            damager.OnHit += OnHit;
+        }
+
+        public override void RemoveModule(Damager damager)
+        {
+            damager.OnHit -= OnHit;
+        }
+
         /// <summary>
         /// Adds the EnemyAbility to some target(s)
         /// </summary>
-        /// <param name="targets">The target(s) to apply the ability to</param>
-        /// <param name="turret">The turret that attacked the enemies</param>
+        /// <param name="target">The target(s) to apply the ability to</param>
+        /// <param name="damager">The turret that attacked the enemies</param>
         /// <param name="bullet">The bullet (if any) that hit the enemies</param>
-        public override void OnHit(IEnumerable<Enemy> targets, Turret turret, Bullet bullet = null)
+        private void OnHit(Enemy target, Damager damager, Bullet bullet = null)
         {
-            foreach (Enemy target in targets)
+            if ((target.health / target.maxHealth) <= percentageHealthRemaining)
             {
-                if ((target.health / target.maxHealth) <= percentageHealthRemaining)
-                {
-                    target.TakeDamage(target.maxHealth, null);
-                }
+                target.TakeDamage(target.maxHealth, null);
             }
         }
     }

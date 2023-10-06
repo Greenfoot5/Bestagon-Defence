@@ -1,4 +1,5 @@
 using Modules;
+using Turrets;
 using UnityEngine;
 
 namespace Abstract.Data
@@ -101,6 +102,11 @@ namespace Abstract.Data
         public string GetDisplayName()
         {
             return chain.displayName.GetLocalizedString() + " " + GetTierDisplay();
+        }
+        
+        public bool ValidModule(Damager damager)
+        {
+            return chain.GetModule(tier).ValidModule(damager);
         }
     }
 }

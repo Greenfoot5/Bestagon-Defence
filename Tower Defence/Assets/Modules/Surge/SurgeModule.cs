@@ -40,12 +40,18 @@ namespace Modules.Surge
         /// <summary>
         /// Begins the surge effect on the turret
         /// </summary>
-        /// <param name="turret">The turret to start the surge loop on</param>
-        public override void AddModule(Turret turret)
+        /// <param name="damager">The turret to start the surge loop on</param>
+        public override void AddModule(Damager damager)
         {
+            if (damager is not Turret turret) return;
             // LINQ to get the turret tier
-            int tier = turret.moduleHandlers.Where(handler => handler.GetModule().GetType() == typeof(SurgeModule)).Select(handler => handler.GetTier()).FirstOrDefault();
+            int tier = damager.moduleHandlers.Where(handler => handler.GetModule().GetType() == typeof(SurgeModule)).Select(handler => handler.GetTier()).FirstOrDefault();
             Runner.Run(Surge(turret, tier));
+        }
+
+        public override void RemoveModule(Damager damager)
+        {
+            
         }
 
         /// <summary>

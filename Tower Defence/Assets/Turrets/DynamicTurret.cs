@@ -8,10 +8,7 @@ using UnityEngine;
 
 namespace Turrets
 {
-    /// <summary>
-    /// Extends the turret class with rotation and targeting abilities
-    /// </summary>
-    public abstract class DynamicOldTurret : OldTurret
+    public abstract class DynamicTurret : Turret
     {
         // How long between each target update
         private const float UpdateTargetTimer = 0.5f;
@@ -40,8 +37,7 @@ namespace Turrets
         [Tooltip("The Transform to perform any rotations on")]
         [SerializeField]
         protected Transform partToRotate;
-
-
+        
         /// <summary>
         /// Begins the target searching
         /// </summary>
@@ -62,7 +58,7 @@ namespace Turrets
                 yield return new WaitForSeconds(UpdateTargetTimer);
             }
         }
-        
+
         /// <summary>
         /// Update our current target to check if it's still the most valuable, or pick a new one.
         /// </summary>
@@ -140,6 +136,7 @@ namespace Turrets
                             currentValue = mapProgress;
                             mostValuableEnemy = enemy;
                         }
+
                         break;
                     case TargetingMethod.Last:
                         // Find if the enemy has the lease map progress than our current most valuable
@@ -149,12 +146,13 @@ namespace Turrets
                             currentValue = pathProgress;
                             mostValuableEnemy = enemy;
                         }
+
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
             }
-
+            
             // Check if the turret have a valid target
             if (mostValuableEnemy != null)
             {
@@ -167,7 +165,7 @@ namespace Turrets
                 target = null;
             }
         }
-
+        
         /// <summary>
         /// Rotates the turret towards our target
         /// </summary>

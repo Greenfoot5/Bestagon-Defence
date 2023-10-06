@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using Enemies;
 using Turrets;
 using Turrets.Gunner;
@@ -25,19 +24,28 @@ namespace Modules.Instakill
         [SerializeField]
         private float instakillChance;
 
+        public override void AddModule(Damager damager)
+        {
+            damager.OnHit += OnHit;
+        }
+
+        public override void RemoveModule(Damager damager)
+        {
+            damager.OnHit -= OnHit;
+        }
+
         /// <summary>
         /// Attempt to instakill all hit enemies
         /// </summary>
-        /// <param name="targets">The targets to attempt to instakill</param>
-        /// <param name="turret">The turret that attacked the enemies</param>
+        /// <param name="target">The targets to attempt to instakill</param>
+        /// <param name="damager">The turret that attacked the enemies</param>
         /// <param name="bullet">The bullet (if any) that hit the enemies</param>
-        public override void OnHit(IEnumerable<Enemy> targets, Turret turret, Bullet bullet = null)
+        private void OnHit(Enemy target, Damager damager, Bullet bullet = null)
         {
-            foreach (Enemy target in targets)
-            {
-                if (Random.value < (instakillChance / turret.fireRate.GetStat()) && target.health > 0 && !target.isBoss) 
-                    target.TakeDamage(target.maxHealth, null);
-            }
+            if (damager is not Turret turret) return;
+            if (Random.value < (instakillChance / turret.fireRate.GetStat()) && target.health > 0 &&
+                !target.isBoss)
+                target.TakeDamage(target.maxHealth, null);
         }
     }
 }

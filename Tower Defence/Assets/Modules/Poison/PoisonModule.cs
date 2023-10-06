@@ -36,18 +36,25 @@ namespace Modules.Poison
         // ReSharper disable once NotAccessedField.Local
         private GameObject tickEffect;
 
+        public override void AddModule(Damager damager)
+        {
+            damager.OnHit += OnHit;
+        }
+
+        public override void RemoveModule(Damager damager)
+        {
+            damager.OnHit -= OnHit;
+        }
+
         /// <summary>
         /// Adds the EnemyAbility to some target(s)
         /// </summary>
-        /// <param name="targets">The target(s) to apply the ability to</param>
-        /// <param name="turret">The turret that attacked the enemies</param>
+        /// <param name="target">The target(s) to apply the ability to</param>
+        /// <param name="damager">The turret that attacked the enemies</param>
         /// <param name="bullet">The bullet (if any) that hit the enemies</param>
-        public override void OnHit(IEnumerable<Enemy> targets, Turret turret, Bullet bullet = null)
+        private void OnHit(Enemy target, Damager damager, Bullet bullet = null)
         {
-            foreach (Enemy target in targets)
-            {
-                Runner.Run(PoisonEnemy(target));
-            }
+            Runner.Run(PoisonEnemy(target));
         }
         
         /// <summary>

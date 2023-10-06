@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using Abstract;
 using Abstract.Data;
 using Enemies;
@@ -55,55 +54,53 @@ namespace Modules.Slow
         /// <summary>
         /// Modifies the stats of the turret when applied
         /// </summary>
-        /// <param name="turret">The turret to modify the stats for</param>
-        public override void AddModule(Turret turret)
+        /// <param name="damager">The turret to modify the stats for</param>
+        public override void AddModule(Damager damager)
         {
-            if (turret.GetType() == typeof(Gunner))
+            switch (damager)
             {
-                var gunner = (Gunner)turret;
-                gunner.spinMultiplier.AddModifier(gunnerSpinUpChange);
-                gunner.spinCooldown.AddModifier(gunnerSpinDownChange);
+                case Gunner gunner:
+                    gunner.spinMultiplier.AddModifier(gunnerSpinUpChange);
+                    gunner.spinCooldown.AddModifier(gunnerSpinDownChange);
+                    break;
+                case Smasher smasher:
+                    smasher.range.AddModifier(smasherRangeChange);
+                    break;
             }
-            else if (turret.GetType() == typeof(Smasher))
-            {
-                var smasher = (Smasher)turret;
-                smasher.range.AddModifier(smasherRangeChange);
-            }
+
+            damager.OnHit += OnHit;
         }
         
         /// <summary>
         /// Removes stats modifications of the turret
         /// </summary>
-        /// <param name="turret">The turrets to remove the modifications of</param>
-        public override void RemoveModule(Turret turret)
+        /// <param name="damager">The turrets to remove the modifications of</param>
+        public override void RemoveModule(Damager damager)
         {
-            if (turret.GetType() == typeof(Gunner))
+            switch (damager)
             {
-                var gunner = (Gunner)turret;
-                gunner.spinMultiplier.TakeModifier(gunnerSpinUpChange);
-                gunner.spinCooldown.TakeModifier(gunnerSpinDownChange);
-            }
-            else if (turret.GetType() == typeof(Smasher))
-            {
-                var smasher = (Smasher)turret;
-                smasher.range.TakeModifier(smasherRangeChange);
+                case Gunner gunner:
+                    gunner.spinMultiplier.TakeModifier(gunnerSpinUpChange);
+                    gunner.spinCooldown.TakeModifier(gunnerSpinDownChange);
+                    break;
+                case Smasher smasher:
+                    smasher.range.TakeModifier(smasherRangeChange);
+                    break;
             }
         }
 
         /// <summary>
         /// Adds the EnemyAbility to some target(s)
         /// </summary>
-        /// <param name="targets">The target(s) to apply the ability to</param>
-        /// <param name="turret">The turret that attacked the enemies</param>
+        /// <param name="target">The target(s) to apply the ability to</param>
+        /// <param name="damager">The turret that attacked the enemies</param>
         /// <param name="bullet">The bullet (if any) that hit the enemies</param>
-        public override void OnHit(IEnumerable<Enemy> targets, Turret turret, Bullet bullet = null)
+        public void OnHit(Enemy target, Damager damager, Bullet bullet = null)
         {
-            foreach (Enemy target in targets)
-            {
-                Runner.Run(turret.GetType() == typeof(Smasher)
-                    ? SmasherSlowEnemy(target, turret.fireRate)
-                    : SlowEnemy(target));
-            }
+            if (damager is not Turret turret) return;
+            Runner.Run(turret.GetType() == typeof(Smasher)
+                ? SmasherSlowEnemy(target, turret.fireRate)
+                : SlowEnemy(target));
         }
         
         /// <summary>

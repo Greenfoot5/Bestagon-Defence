@@ -30,25 +30,29 @@ namespace Modules.Tracker
         /// <summary>
         /// Increases the rotation speed of a turret
         /// </summary>
-        /// <param name="turret">The turret to affect</param>
-        public override void AddModule(Turret turret)
+        /// <param name="damager">The turret to affect</param>
+        public override void AddModule(Damager damager)
         {
-            ((DynamicTurret)turret).rotationSpeed.AddModifier(rotationSpeedPercentageChange);
-            turret.damage.AddModifier(damagePercentageChange);
-            if (turret.GetType() == typeof(Gunner))
-                ((Gunner)turret).maxFireRate.AddModifier(gunnerFireRateCapChange);
+            damager.damage.AddModifier(damagePercentageChange);
+            if (damager is DynamicTurret turret)
+                turret.rotationSpeed.AddModifier(rotationSpeedPercentageChange);
+            
+            if (damager is Gunner gunner)
+                gunner.maxFireRate.AddModifier(gunnerFireRateCapChange);
         }
         
         /// <summary>
         /// Removes the rotation speed increase of a turret
         /// </summary>
-        /// <param name="turret">The turret to affect</param>
-        public override void RemoveModule(Turret turret)
+        /// <param name="damager">The turret to affect</param>
+        public override void RemoveModule(Damager damager)
         {
-            ((DynamicTurret)turret).rotationSpeed.TakeModifier(rotationSpeedPercentageChange);
-            turret.damage.TakeModifier(damagePercentageChange);
-            if (turret.GetType() == typeof(Gunner))
-                ((Gunner)turret).maxFireRate.TakeModifier(gunnerFireRateCapChange);
+            damager.damage.TakeModifier(damagePercentageChange);
+            if (damager is DynamicTurret turret)
+                turret.rotationSpeed.TakeModifier(rotationSpeedPercentageChange);
+            
+            if (damager is Gunner gunner)
+                gunner.maxFireRate.TakeModifier(gunnerFireRateCapChange);
         }
     }
 }

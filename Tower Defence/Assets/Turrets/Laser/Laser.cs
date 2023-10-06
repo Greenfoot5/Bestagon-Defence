@@ -96,19 +96,13 @@ namespace Turrets.Laser
             List<Enemy> enemies = results.Select(result => result.transform.GetComponent<Enemy>()).ToList();
             enemies.RemoveAll(x => x == null);
             
+            base.Attack(this);
+            HitMany(enemies, this);
+            
             // Deal damage to every enemy hit
             foreach (Enemy enemy in enemies)
             {
                 enemy.TakeDamage(damage.GetStat() * Time.deltaTime, gameObject);
-            }
-
-            foreach (ModuleChainHandler handler in moduleHandlers)
-            {
-                handler.GetModule().OnAttack(this);
-            }
-            foreach (ModuleChainHandler handler in moduleHandlers)
-            {
-                handler.GetModule().OnHit(enemies, this);
             }
 
             // Enable visuals

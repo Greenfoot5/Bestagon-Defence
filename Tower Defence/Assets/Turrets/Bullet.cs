@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Abstract.Data;
 using Enemies;
-using Modules;
 using UnityEngine;
 
 namespace Turrets
@@ -36,8 +35,7 @@ namespace Turrets
     
         [Tooltip("The effect spawned when the bullet hit's a target")]
         public GameObject impactEffect;
-
-        private readonly List<Module> _modules = new();
+        
         private readonly List<int> _hitEnemies = new();
         
         /// <summary>
@@ -71,17 +69,11 @@ namespace Turrets
         {
             // Check the bullet still have a target to move towards
             if (target == null && !useLocation)
-            {
                 Destroy(gameObject);
-            }
             else if (useLocation)
-            {
                 SeekTarget(targetLocation, false);
-            }
             else
-            {
                 SeekTarget(target.position, true);
-            }
         }
         
         /// <summary>
@@ -129,13 +121,14 @@ namespace Turrets
             {
                 // If the bullet has AoE damage or not
                 if (explosionRadius.GetStat() > 0f)
-                {
                     Explode();
-                }
                 else
-                {
                     Damage(target);
-                }
+            }
+            else
+            {
+                if (explosionRadius.GetStat() > 0f)
+                    Explode();
             }
 
             // Destroy so the bullet only hits the target once
@@ -149,14 +142,9 @@ namespace Turrets
         private void Damage(Component enemy)
         {
             var em = enemy.GetComponent<Enemy>();
-            
-            // Add module effects
-            foreach (Module module in _modules)
-            {
-                module.OnHit(new []{em}, _source, this);
-            }
-
             if (em == null) return;
+            
+            _source.Hit(em, _source, this);
 
             if (knockbackAmount.GetTrueStat() != 0)
             {
@@ -177,22 +165,8 @@ namespace Turrets
             {
                 if (!collider2d.CompareTag("Enemy")) continue;
                 
-                foreach (Module module in _modules)
-                {
-                    module.OnHit(new []{collider2d.GetComponent<Enemy>()}, _source, this);
-                }
                 Damage(collider2d.transform);
             }
-        }
-        
-        /// <summary>
-        /// Adds a module to the bullet
-        /// </summary>
-        /// <param name="module">The module to add</param>
-        public void AddModule(Module module)
-        {
-            module.OnShoot(this);
-            _modules.Add(module);
         }
     
         /// <summary>

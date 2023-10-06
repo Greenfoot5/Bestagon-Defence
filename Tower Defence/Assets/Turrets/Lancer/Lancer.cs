@@ -117,13 +117,8 @@ namespace Turrets.Lancer
             bulletGo.name = "_" + bulletGo.name;
             var bullet = bulletGo.GetComponent<Bullet>();
             bullet.damage = damage;
-
-            // Adds the modules to the bullet
-            foreach (ModuleChainHandler handler in moduleHandlers)
-            {
-                handler.GetModule().OnAttack(this);
-                bullet.AddModule(handler.GetModule());
-            }
+            
+            base.Attack(this);
             
             // Get the end point of the line renderer
             Vector3 direction = (firePoint.up * bulletRange.GetStat());

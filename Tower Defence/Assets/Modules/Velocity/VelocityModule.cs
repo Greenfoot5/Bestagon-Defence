@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using Turrets;
 using Turrets.Gunner;
 using Turrets.Lancer;
@@ -50,60 +49,60 @@ namespace Modules.Velocity
         /// <summary>
         /// Increases the bullet speed of a turret
         /// </summary>
-        /// <param name="turret">The turret to apply the modifications to</param>
-        public override void AddModule(Turret turret)
+        /// <param name="damager">The turret to apply the modifications to</param>
+        public override void AddModule(Damager damager)
         {
-            if (turret.GetType() != typeof(Smasher))
+            switch (damager)
             {
-                turret.fireRate.AddModifier(fireRateChange);
-                if (turret.GetType() == typeof(Lancer))
-                {
-                    ((Lancer) turret).bulletRange.AddModifier(lancerBulletRangeChange);
-                }
-                else
-                {
+                case Smasher smasher:
+                    smasher.damage.AddModifier(smasherDamageChange);
+                    smasher.range.AddModifier(smasherRangeChange);
+                    smasher.fireRate.AddModifier(smasherFireRateChange);
+                    break;
+                case Lancer lancer:
+                    lancer.fireRate.AddModifier(fireRateChange);
+                    lancer.bulletRange.AddModifier(lancerBulletRangeChange);
+                    break;
+                case Turret turret:
+                    turret.fireRate.AddModifier(fireRateChange);
                     turret.range.AddModifier(rangeChange);
-                }
+                    break;
             }
-            else
-            {
-                turret.damage.AddModifier(smasherDamageChange);
-                turret.range.AddModifier(smasherRangeChange);
-                turret.fireRate.AddModifier(smasherFireRateChange);
-            }
+
+            damager.OnShoot += OnShoot;
         }
         
         /// <summary>
         /// Decreases the bullet speed
         /// </summary>
-        /// <param name="turret"></param>
-        public override void RemoveModule(Turret turret)
+        /// <param name="damager"></param>
+        public override void RemoveModule(Damager damager)
         {
-            if (new[] {typeof(Shooter), typeof(Gunner), typeof(Lancer)}.Contains(turret.GetType()))
+            switch (damager)
             {
-                turret.fireRate.TakeModifier(fireRateChange);
-                if (turret.GetType() == typeof(Lancer))
-                {
-                    ((Lancer) turret).bulletRange.TakeModifier(lancerBulletRangeChange);
-                }
-                else
-                {
-                    turret.range.AddModifier(rangeChange);
-                }
+                case Smasher smasher:
+                    smasher.damage.TakeModifier(smasherDamageChange);
+                    smasher.range.TakeModifier(smasherRangeChange);
+                    smasher.fireRate.TakeModifier(smasherFireRateChange);
+                    break;
+                case Lancer lancer:
+                    lancer.fireRate.TakeModifier(fireRateChange);
+                    lancer.bulletRange.TakeModifier(lancerBulletRangeChange);
+                    break;
+                case Turret turret:
+                    turret.fireRate.TakeModifier(fireRateChange);
+                    turret.range.TakeModifier(rangeChange);
+                    break;
             }
-            else
-            {
-                turret.damage.TakeModifier(smasherDamageChange);
-                turret.range.TakeModifier(smasherRangeChange);
-                turret.fireRate.TakeModifier(smasherFireRateChange);
-            }
+
+            damager.OnShoot -= OnShoot;
         }
         
         /// <summary>
         /// Increases the speed of the bullet once fired
         /// </summary>
         /// <param name="bullet">The bullet to accelerate</param>
-        public override void OnShoot(Bullet bullet)
+        private void OnShoot(Bullet bullet)
         {
             bullet.speed.AddModifier(bulletSpeedChange);
         }

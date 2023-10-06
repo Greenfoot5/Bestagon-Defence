@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Abstract.Data;
+﻿using System.Linq;
 using Enemies;
 using UnityEngine;
 
@@ -53,37 +51,28 @@ namespace Turrets.Smasher
         {
             smashEffect.Play();
             
+            base.Attack(this);
+            
             // Gets all the enemies in the AoE and calls Damage on them
             // ReSharper disable once Unity.PreferNonAllocApi
             Collider2D[] results = Physics2D.OverlapCircleAll(transform.position, range.GetStat());
             
-            var enemies = new List<Enemy>();
             foreach (Collider2D collider2d in results)
             {
                 if (!collider2d.CompareTag(enemyTag)) continue;
                 
                 var enemy = collider2d.GetComponent<Enemy>();
-                enemies.Add(enemy);
                 
                 // Take damage depending on how close the enemy is to the turret's centre
                 float distance = 1 - (transform.position - collider2d.transform.position).sqrMagnitude /
                     (range.GetTrueStat() * range.GetTrueStat());
                 float damagePercentage = Mathf.Clamp(distance + 0.33f, 0f, 1f);
+                
                 // Only deal damage if it will actually damage the enemy
-                if (damagePercentage > 0)
-                {
-                    enemy.TakeDamage(damage.GetTrueStat() * damagePercentage, gameObject);
-                }
-            }
-
-            foreach (ModuleChainHandler handler in moduleHandlers)
-            {
-                handler.GetModule().OnAttack(this);
-            }
-            // Activates the turret's OnHit modules
-            foreach (ModuleChainHandler handler in moduleHandlers)
-            {
-                handler.GetModule().OnHit(enemies.ToArray(), this);
+                if (!(damagePercentage > 0)) continue;
+                
+                Hit(enemy, this);
+                enemy.TakeDamage(damage.GetTrueStat() * damagePercentage, gameObject);
             }
         }
     }

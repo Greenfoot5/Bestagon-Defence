@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using Abstract;
 using Enemies;
 using Turrets;
@@ -45,18 +44,28 @@ namespace Modules.Stun
         [Tooltip("The VFX to spawn when the ends it's turret stun")]
         private GameObject stunEndEffect;
 
+        public override void AddModule(Damager damager)
+        {
+            damager.OnHit += OnHit;
+            damager.OnAttack += OnAttack;
+        }
+
+        public override void RemoveModule(Damager damager)
+        {
+            damager.OnHit -= OnHit;
+            damager.OnAttack -= OnAttack;
+        }
+
         /// <summary>
         /// Adds the EnemyAbility to some target(s)
         /// </summary>
-        /// <param name="targets">The target(s) to apply the ability to</param>
-        /// <param name="turret">The turret that attacked the enemies</param>
+        /// <param name="target">The target(s) to apply the ability to</param>
+        /// <param name="damager">The turret that attacked the enemies</param>
         /// <param name="bullet">The bullet (if any) that hit the enemies</param>
-        public override void OnHit(IEnumerable<Enemy> targets, Turret turret, Bullet bullet = null)
+        private void OnHit(Enemy target, Damager damager, Bullet bullet = null)
         {
-            foreach (Enemy target in targets)
-            {
-                Runner.Run(StunEnemy(target, turret));
-            }
+            if (damager is not Turret turret) return;
+            Runner.Run(StunEnemy(target, turret));
         }
         
         /// <summary>
@@ -83,9 +92,10 @@ namespace Modules.Stun
 
             target.speed.SetBase(originalSpeed);
         }
-        
-        public override void OnAttack(Turret turret)
+
+        private void OnAttack(Damager damager)
         {
+            if (damager is not Turret turret) return;
             if (Random.value < turretStunChance) 
                 Runner.Run(StunTurret(turret));
         }

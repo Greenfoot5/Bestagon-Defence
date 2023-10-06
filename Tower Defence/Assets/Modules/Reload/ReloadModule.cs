@@ -21,12 +21,26 @@ namespace Modules.Reload
         [SerializeField]
         private float reloadChance;
 
+        public override void AddModule(Damager damager)
+        {
+            damager.OnAttack += OnAttack;
+        }
+
+        public override void RemoveModule(Damager damager)
+        {
+            damager.OnAttack -= OnAttack;
+        }
+
         /// <summary>
         /// When attacking, checks to see if the turret should attack again
         /// </summary>
-        /// <param name="turret">The turret that attacked</param>
-        public override void OnAttack(Turret turret)
+        /// <param name="damager">The turret that attacked</param>
+        private void OnAttack(Damager damager)
         {
+            if (damager is not Turret turret) return;
+            
+            Debug.Log("Attacking");
+            
             if (Random.value < (reloadChance / turret.fireRate.GetStat()))
             {
                 // We don't want to instantly fire again, we want a slight delay to make it clear the turret has attacked again

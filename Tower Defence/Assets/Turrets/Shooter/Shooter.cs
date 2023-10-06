@@ -1,5 +1,4 @@
-﻿using Abstract.Data;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Turrets.Shooter
 {
@@ -63,12 +62,7 @@ namespace Turrets.Shooter
             bullet.damage = damage;
             bullet.Seek(target, this);
 
-            // Adds the modules to the bullet
-            foreach (ModuleChainHandler handler in moduleHandlers)
-            {
-                handler.GetModule().OnAttack(this);
-                bullet.AddModule(handler.GetModule());
-            }
+            base.Attack(this);
         }
     }
 }

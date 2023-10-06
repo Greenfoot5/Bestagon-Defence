@@ -4631,6 +4631,7 @@ MonoBehaviour:
   glyphsLookup:
     sprites:
     - {fileID: 11400000, guid: 49504fee69ac947e29cccad1da730902, type: 2}
+    - {fileID: 11400000, guid: 49504fee69ac947e29cccad1da730902, type: 2}
     - {fileID: 11400000, guid: e3767d3ff0aee4d4b8b3375f8677b042, type: 2}
     - {fileID: 11400000, guid: fa447f2b0617b42ff9f08e910fa3e554, type: 2}
     - {fileID: 11400000, guid: bed22f2549eb24cf59e80fef4cf4c712, type: 2}

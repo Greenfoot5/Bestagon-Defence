@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using Enemies;
 using Turrets;
 using Turrets.Smasher;
@@ -18,34 +17,43 @@ namespace Modules.Giantslayer
         [SerializeField]
         [Tooltip("The percentage damage change if attacking a boss")]
         private float damagePercentage;
-        
+
+        public override void AddModule(Damager damager)
+        {
+            damager.OnHit += OnHit;
+        }
+
+        public override void RemoveModule(Damager damager)
+        {
+            damager.OnHit -= OnHit;
+        }
+
         /// <summary>
         /// Attempts to deal double damage on all enemies hit
         /// </summary>
-        /// <param name="targets">The targets to attempt to critically strike</param>
-        /// <param name="turret">The turret that attacked the enemies</param>
+        /// <param name="target">The targets to attempt to critically strike</param>
+        /// <param name="damager">The turret that attacked the enemies</param>
         /// <param name="bullet">The bullet (if any) that hit the enemies</param>
-        public override void OnHit(IEnumerable<Enemy> targets, Turret turret, Bullet bullet = null)
+        private void OnHit(Enemy target, Damager damager, Bullet bullet = null)
         {
-            foreach (Enemy target in targets)
-            {
-                if (!target.isBoss) continue;
+            if (!target.isBoss) return;
 
-                if (turret.GetType() != typeof(Smasher))
-                {
-                    float baseDamage = bullet == null ? turret.damage.GetStat() : bullet.damage.GetStat();
-                    target.TakeDamageWithoutAbilities(baseDamage * damagePercentage);
-                }
-                else
-                {
-                    float locationPercentage = 1 - (turret.transform.position - target.transform.position).sqrMagnitude /
-                        (turret.range.GetTrueStat() * turret.range.GetTrueStat());
+            switch (damager)
+            {
+                case Smasher smasher:
+                    float locationPercentage = 1 - (damager.transform.position - target.transform.position).sqrMagnitude /
+                        (smasher.range.GetTrueStat() * smasher.range.GetTrueStat());
                     // Only deal damage if it will actually damage the enemy
                     if (locationPercentage > 0)
                     {
-                        target.TakeDamageWithoutAbilities(turret.damage.GetTrueStat() * locationPercentage * damagePercentage);
+                        target.TakeDamageWithoutAbilities(damager.damage.GetTrueStat() * locationPercentage * damagePercentage);
                     }
-                }
+
+                    break;
+                case Turret:
+                    float baseDamage = bullet == null ? damager.damage.GetStat() : bullet.damage.GetStat();
+                    target.TakeDamageWithoutAbilities(baseDamage * damagePercentage);
+                    break;
             }
         }
     }
