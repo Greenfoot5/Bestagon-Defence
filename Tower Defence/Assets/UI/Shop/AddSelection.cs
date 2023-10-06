@@ -69,14 +69,13 @@ namespace UI.Shop
                 Destroy(transform.GetChild(i).gameObject);
             }
             
+            int selectionCount = shop.HasPlayerMadePurchase() ? _levelData.selectionCount : _levelData.initialSelectionCount;
             // Tracks what the game has given the player, so the game don't give duplicates
-            var selectedTypes = new Type[3];
-            var selectedNames = new string[3];
+            var selectedTypes = new Type[selectionCount];
+            var selectedNames = new string[selectionCount];
             // So the game doesn't keep retying to select a non-duplicate option forever
             var lagCounter = 0;
             const int lagCap = 5000;
-            
-            int selectionCount = shop.HasPlayerMadePurchase() ? _levelData.initialSelectionCount : _levelData.selectionCount;
             
             for (var i = 0; i < selectionCount; i++)
             {
