@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using Enemies;
 using UnityEngine;
+using UnityEngine.VFX;
 
 namespace Turrets.Smasher
 {
@@ -11,7 +12,7 @@ namespace Turrets.Smasher
     {
         [Tooltip("The effect to play when the smasher attacks")]
         [SerializeField]
-        private ParticleSystem smashEffect;
+        private VisualEffect smashEffect;
 
         /// <summary>
         /// Check for new enemies in radius and attacks if there are.

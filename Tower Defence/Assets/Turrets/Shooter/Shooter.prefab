@@ -168,7 +168,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -252,7 +252,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -331,19 +331,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd1d9560ab06442d0b2ff06b393b45d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage:
-    stat: 500
-    modifier: 1
-  enemyTag: Enemy
-  range:
-    stat: 3
-    modifier: 1
-  rangeDisplay: {fileID: 1139687739}
-  fireRate:
-    stat: 0.7
-    modifier: 1
-  fireCountdown: 0
-  moduleHandlers: []
   displayName:
     m_TableReference:
       m_TableCollectionName: 
@@ -353,6 +340,19 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
+  damage:
+    stat: 500
+    modifier: 1
+  enemyTag: Enemy
+  moduleHandlers: []
+  range:
+    stat: 3
+    modifier: 1
+  rangeDisplay: {fileID: 1139687739}
+  fireRate:
+    stat: 0.7
+    modifier: 1
+  fireCountdown: 0
   targetingMethod: 0
   aggressiveRetargeting: 0
   firePoint: {fileID: 1483480927}
