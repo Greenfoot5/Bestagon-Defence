@@ -137,8 +137,12 @@ namespace UI.Inventory
                 cycleTargetingButton.SetActive(false);
             }
 
+            Debug.Log(moduleInventoryPage.activeSelf);
             // Rebuild the Modules and add the stats
-            OpenTurretInfo();
+            if (moduleInventoryPage.activeSelf)
+                OpenModuleInventory();
+            else
+                OpenTurretInfo();
         }
         
         /// <summary>
@@ -148,11 +152,6 @@ namespace UI.Inventory
         public GameObject GetTurret()
         {
             return _target != null ? _target.turret : null;
-        }
-
-        public void AddButton(ModuleChainHandler handler, GameObject button)
-        {
-            
         }
         
         /// <summary>
@@ -166,7 +165,6 @@ namespace UI.Inventory
             GameManager.ModuleInventory.Remove(handler);
             shop.RemoveModule(button);
             UpdateModules();
-            OpenTurretInfo();
         }
         
         /// <summary>
