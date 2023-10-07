@@ -44,6 +44,18 @@ namespace Turrets.Smasher
             
             fireCountdown -= Time.deltaTime;
         }
+
+        public override void UpdateRange()
+        {
+            // Update the effect radius
+            smashEffect.SetFloat("size", range.GetStat() * (3f/7f));
+            // Update the range shader's size
+            Vector3 localScale = transform.localScale;
+            rangeDisplay.transform.localScale = new Vector3(
+                range.GetStat() / localScale.x * 2,
+                range.GetStat() / localScale.y * 2,
+                1);
+        }
         
         /// <summary>
         /// Deals damage to all enemies in range

@@ -28,7 +28,7 @@ namespace Turrets
         /// <summary>
         /// Update the range shader's size
         /// </summary>
-        public void UpdateRange()
+        public virtual void UpdateRange()
         {
             // Update the range shader's size
             Vector3 localScale = transform.localScale;
