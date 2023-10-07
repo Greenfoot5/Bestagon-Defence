@@ -3,7 +3,7 @@ using UnityEditor;
 
 namespace Editor.Turrets
 {
-    [CustomEditor(typeof(OldTurret), true)]
+    //[CustomEditor(typeof(OldTurret), true)]
     public class TurretEditor : UnityEditor.Editor
     {
         // PROPERTIES

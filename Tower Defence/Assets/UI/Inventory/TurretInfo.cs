@@ -174,9 +174,9 @@ namespace UI.Inventory
         /// </summary>
         private void CycleTargeting()
         {
-            Array types = Enum.GetValues(typeof(TargetingMethod));
+            Array types = Enum.GetValues(typeof(DynamicTurret.TargetingMethod));
             var currentMethod = (int)_target.turret.GetComponent<DynamicTurret>().targetingMethod;
-            _target.turret.GetComponent<DynamicTurret>().targetingMethod = (TargetingMethod)( (currentMethod + 1) % types.Length);
+            _target.turret.GetComponent<DynamicTurret>().targetingMethod = (DynamicTurret.TargetingMethod)( (currentMethod + 1) % types.Length);
             
             // Update our button text
             cycleTargetingButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "<b>Targeting:</b>\n" +

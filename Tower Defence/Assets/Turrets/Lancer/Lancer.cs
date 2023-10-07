@@ -116,7 +116,6 @@ namespace Turrets.Lancer
             GameObject bulletGo = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             bulletGo.name = "_" + bulletGo.name;
             var bullet = bulletGo.GetComponent<Bullet>();
-            bullet.damage = damage;
             
             base.Attack(this);
             

@@ -51,8 +51,7 @@ namespace Modules.Giantslayer
 
                     break;
                 case Turret:
-                    float baseDamage = bullet == null ? damager.damage.GetStat() : bullet.damage.GetStat();
-                    target.TakeDamageWithoutAbilities(baseDamage * damagePercentage);
+                    target.TakeDamageWithoutAbilities(damager.damage.GetStat() * damagePercentage);
                     break;
             }
         }

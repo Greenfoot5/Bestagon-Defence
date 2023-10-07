@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: DamageT6
   m_EditorClassIdentifier: 
   moduleTier: 6
-  isUpgradableTo: 1
+  isUpgradableTo: 0
   percentageChange: 4.5

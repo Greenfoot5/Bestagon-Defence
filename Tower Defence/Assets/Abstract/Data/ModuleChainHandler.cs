@@ -62,6 +62,7 @@ namespace Abstract.Data
         {
             if (chain == null || tier == 0)
             {
+                Debug.LogWarning("Attempt to obtain an invalid module");
                 return null;
             }
             return chain.GetModule(tier);

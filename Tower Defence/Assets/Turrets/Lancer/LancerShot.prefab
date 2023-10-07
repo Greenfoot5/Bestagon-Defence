@@ -110,7 +110,7 @@ MonoBehaviour:
     stat: 0
     modifier: 1
   knockbackAmount:
-    stat: 1.5
+    stat: 1.75
     modifier: 1
   damage:
     stat: 50

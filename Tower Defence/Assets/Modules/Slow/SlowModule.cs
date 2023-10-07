@@ -9,7 +9,6 @@ using Turrets.Lancer;
 using Turrets.Shooter;
 using Turrets.Smasher;
 using UnityEngine;
-using UnityEngine.Localization;
 
 namespace Modules.Slow
 {
@@ -31,25 +30,25 @@ namespace Modules.Slow
         [Tooltip("How long each slow stack should last")]
         private float duration;
         
-        [Header("Gunner")]
-        [SerializeField]
-        [Tooltip("The percentage change to the gunner's spin up multiplier")]
-        private float gunnerSpinUpChange;
-        [SerializeField]
-        [Tooltip("The percentage change to the gunner's spin down multiplier")]
-        private float gunnerSpinDownChange;
-
-        [Header("Smasher")]
-        [SerializeField]
-        [Tooltip("The percentage the slow the enemy's movement speed")]
-        private float smasherSlowPercentage;
-        [DisplayName("Duration")]
-        [Tooltip("The percentage of the attack speed cooldown the slow will last")]
-        [SerializeField]
-        private float smasherDuration;
-        [SerializeField]
-        [Tooltip("The percentage change to the smasher's range")]
-        private float smasherRangeChange;
+        // [Header("Gunner")]
+        // [SerializeField]
+        // [Tooltip("The percentage change to the gunner's spin up multiplier")]
+        // private float gunnerSpinUpChange;
+        // [SerializeField]
+        // [Tooltip("The percentage change to the gunner's spin down multiplier")]
+        // private float gunnerSpinDownChange;
+        //
+        // [Header("Smasher")]
+        // [SerializeField]
+        // [Tooltip("The percentage the slow the enemy's movement speed")]
+        // private float smasherSlowPercentage;
+        // [DisplayName("Duration")]
+        // [Tooltip("The percentage of the attack speed cooldown the slow will last")]
+        // [SerializeField]
+        // private float smasherDuration;
+        // [SerializeField]
+        // [Tooltip("The percentage change to the smasher's range")]
+        // private float smasherRangeChange;
 
         /// <summary>
         /// Modifies the stats of the turret when applied
@@ -57,16 +56,16 @@ namespace Modules.Slow
         /// <param name="damager">The turret to modify the stats for</param>
         public override void AddModule(Damager damager)
         {
-            switch (damager)
-            {
-                case Gunner gunner:
-                    gunner.spinMultiplier.AddModifier(gunnerSpinUpChange);
-                    gunner.spinCooldown.AddModifier(gunnerSpinDownChange);
-                    break;
-                case Smasher smasher:
-                    smasher.range.AddModifier(smasherRangeChange);
-                    break;
-            }
+            // switch (damager)
+            // {
+            //     case Gunner gunner:
+            //         gunner.spinMultiplier.AddModifier(gunnerSpinUpChange);
+            //         gunner.spinCooldown.AddModifier(gunnerSpinDownChange);
+            //         break;
+            //     case Smasher smasher:
+            //         smasher.range.AddModifier(smasherRangeChange);
+            //         break;
+            // }
 
             damager.OnHit += OnHit;
         }
@@ -77,16 +76,18 @@ namespace Modules.Slow
         /// <param name="damager">The turrets to remove the modifications of</param>
         public override void RemoveModule(Damager damager)
         {
-            switch (damager)
-            {
-                case Gunner gunner:
-                    gunner.spinMultiplier.TakeModifier(gunnerSpinUpChange);
-                    gunner.spinCooldown.TakeModifier(gunnerSpinDownChange);
-                    break;
-                case Smasher smasher:
-                    smasher.range.TakeModifier(smasherRangeChange);
-                    break;
-            }
+            // switch (damager)
+            // {
+            //     case Gunner gunner:
+            //         gunner.spinMultiplier.TakeModifier(gunnerSpinUpChange);
+            //         gunner.spinCooldown.TakeModifier(gunnerSpinDownChange);
+            //         break;
+            //     case Smasher smasher:
+            //         smasher.range.TakeModifier(smasherRangeChange);
+            //         break;
+            // }
+            
+            damager.OnHit -= OnHit;
         }
 
         /// <summary>
@@ -98,6 +99,8 @@ namespace Modules.Slow
         public void OnHit(Enemy target, Damager damager, Bullet bullet = null)
         {
             if (damager is not Turret turret) return;
+            Runner.Run(SlowEnemy(target));
+            return;
             Runner.Run(turret.GetType() == typeof(Smasher)
                 ? SmasherSlowEnemy(target, turret.fireRate)
                 : SlowEnemy(target));
@@ -142,18 +145,18 @@ namespace Modules.Slow
                 yield break;
             }
             
-            float slowValue = 1f - smasherSlowPercentage;
+            //float slowValue = 1f - smasherSlowPercentage;
 
-            if (target.speed.GetModifier() * slowValue <= 0.4f)
-            {
-                yield break;
-            }
-            
-            target.speed.MultiplyModifier(slowValue);
-            
-            yield return new WaitForSeconds(1f / (fireRate.GetStat() * smasherDuration));
-
-            target.speed.DivideModifier(slowValue);
+            // if (target.speed.GetModifier() * slowValue <= 0.4f)
+            // {
+            //     yield break;
+            // }
+            //
+            // target.speed.MultiplyModifier(slowValue);
+            //
+            // //yield return new WaitForSeconds(1f / (fireRate.GetStat() * smasherDuration));
+            //
+            // target.speed.DivideModifier(slowValue);
         }
     }
 }

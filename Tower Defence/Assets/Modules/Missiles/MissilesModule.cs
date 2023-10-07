@@ -42,6 +42,8 @@ namespace Modules.Missiles
         public override void AddModule(Damager damager)
         {
             damager.OnShoot += OnShoot;
+            damager.damage.AddModifier(damagePercentageChange);
+            
             if (damager is not Turret turret) return;
             turret.fireRate.AddModifier(fireRatePercentageChange);
 
@@ -57,6 +59,8 @@ namespace Modules.Missiles
         public override void RemoveModule(Damager damager)
         {
             damager.OnShoot -= OnShoot;
+            damager.damage.TakeModifier(damagePercentageChange);
+            
             if (damager is not Turret turret) return;
             turret.fireRate.TakeModifier(fireRatePercentageChange);
 
@@ -72,7 +76,6 @@ namespace Modules.Missiles
         private void OnShoot(Bullet bullet)
         {
             bullet.explosionRadius.AddModifier(explosionRadiusChange);
-            bullet.damage.AddModifier(damagePercentageChange);
             bullet.speed.AddModifier(speedPercentageChange);
         }
     }

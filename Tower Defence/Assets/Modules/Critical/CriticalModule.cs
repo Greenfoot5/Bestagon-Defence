@@ -41,7 +41,7 @@ namespace Modules.Critical
 
             target.TakeDamageWithoutAbilities(bullet == null
                 ? turret.damage.GetStat()
-                : bullet.damage.GetStat());
+                : damager.damage.GetStat());
         }
     }
 }

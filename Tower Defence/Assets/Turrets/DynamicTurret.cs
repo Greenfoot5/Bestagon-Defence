@@ -10,6 +10,18 @@ namespace Turrets
 {
     public abstract class DynamicTurret : Turret
     {
+        /// <summary>
+        /// The various targeting methods a turret can use to find a target
+        /// </summary>
+        public enum TargetingMethod
+        {
+            Closest = 0,
+            Weakest,
+            Strongest,
+            First,
+            Last
+        }
+        
         // How long between each target update
         private const float UpdateTargetTimer = 0.5f;
         

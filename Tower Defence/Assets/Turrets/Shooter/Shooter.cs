@@ -59,7 +59,6 @@ namespace Turrets.Shooter
             GameObject bulletGo = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             bulletGo.name = "_" + bulletGo.name;
             var bullet = bulletGo.GetComponent<Bullet>();
-            bullet.damage = damage;
             bullet.Seek(target, this);
 
             base.Attack(this);
