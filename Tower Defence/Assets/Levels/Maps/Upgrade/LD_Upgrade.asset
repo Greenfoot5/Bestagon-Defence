@@ -14,15 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialTurretSelection:
     list:
-    - item: {fileID: 11400000, guid: d2db62c1bef594027b45aec4631e1e6a, type: 2}
-      weight: 0
     - item: {fileID: 11400000, guid: 40dc94d320d594a5fad076af47f85c42, type: 2}
       weight: 0
     - item: {fileID: 11400000, guid: 957e7ef90aad744a4bf2718c30338651, type: 2}
       weight: 0
-    - item: {fileID: 11400000, guid: 0f0a6da7d36a64a3a89ddcc104e995c0, type: 2}
+    - item: {fileID: 11400000, guid: d2db62c1bef594027b45aec4631e1e6a, type: 2}
       weight: 0
     - item: {fileID: 11400000, guid: 679643e6d11db41afa216c584e276c87, type: 2}
+      weight: 0
+    - item: {fileID: 11400000, guid: 0f0a6da7d36a64a3a89ddcc104e995c0, type: 2}
       weight: 0
   initialDuplicateCheck: 1
   turrets:

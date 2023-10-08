@@ -21,7 +21,12 @@ namespace Abstract.Data
         /// <param name="list">The list to create</param>
         public WeightedList(List<WeightedItem<T>> list)
         {
-            this.list = list ?? new List<WeightedItem<T>>();
+            this.list = new List<WeightedItem<T>>(list);
+        }
+
+        public WeightedList(WeightedList<T> list)
+        {
+            this.list = new List<WeightedItem<T>>(list.list);
         }
 
         /// <summary>
@@ -65,6 +70,18 @@ namespace Abstract.Data
             float total = list.Sum(t => t.weight);
 
             return total;
+        }
+
+        public void RemoveItem(T item)
+        {
+            var i = 0;
+            while (i < list.Count)
+            {
+                if (list[i].item.Equals(item))
+                    list.RemoveAt(i);
+                else
+                    i++;
+            }
         }
     
         /// <summary>
