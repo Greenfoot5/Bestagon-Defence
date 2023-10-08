@@ -22,11 +22,13 @@ namespace Abstract.Data
         public WeightedList(List<WeightedItem<T>> list)
         {
             this.list = new List<WeightedItem<T>>(list);
+            RemoveUnweighted();
         }
 
         public WeightedList(WeightedList<T> list)
         {
             this.list = new List<WeightedItem<T>>(list.list);
+            RemoveUnweighted();
         }
 
         /// <summary>
@@ -74,10 +76,23 @@ namespace Abstract.Data
 
         public void RemoveItem(T item)
         {
+            RemoveUnweighted();
             var i = 0;
             while (i < list.Count)
             {
                 if (list[i].item.Equals(item))
+                    list.RemoveAt(i);
+                else
+                    i++;
+            }
+        }
+
+        public void RemoveUnweighted()
+        {
+            var i = 0;
+            while (i < list.Count)
+            {
+                if (list[i].weight <= 0)
                     list.RemoveAt(i);
                 else
                     i++;
@@ -90,6 +105,11 @@ namespace Abstract.Data
         public void Clear()
         {
             list = new List<WeightedItem<T>>();
+        }
+
+        public bool IsEmpty()
+        {
+            return list.Count == 0;
         }
     }
 }
