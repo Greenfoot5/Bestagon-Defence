@@ -48,7 +48,7 @@ namespace Turrets.Smasher
         public override void UpdateRange()
         {
             // Update the effect radius
-            smashEffect.SetFloat("size", range.GetStat() * (3f/7f));
+            smashEffect.SetFloat("size", range.GetStat() * (7f/3f));
             // Update the range shader's size
             Vector3 localScale = transform.localScale;
             rangeDisplay.transform.localScale = new Vector3(

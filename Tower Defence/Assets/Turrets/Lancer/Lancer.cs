@@ -4,6 +4,7 @@ using System.Linq;
 using Abstract.Data;
 using Enemies;
 using UnityEngine;
+using UnityEngine.VFX;
 
 namespace Turrets.Lancer
 {
@@ -18,6 +19,9 @@ namespace Turrets.Lancer
         [Tooltip("The bullet prefab to spawn each attack")]
         [SerializeField]
         private GameObject bulletPrefab;
+        [Tooltip("The effect to fire when the bullet is shot")]
+        [SerializeField]
+        private VisualEffect attackEffect;
 
         [Tooltip("The current target")]
         private Transform _target;
@@ -112,6 +116,7 @@ namespace Turrets.Lancer
         /// </summary>
         protected override void Attack()
         {
+            attackEffect.Play();
             // Creates the bullet
             GameObject bulletGo = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             bulletGo.name = "_" + bulletGo.name;
