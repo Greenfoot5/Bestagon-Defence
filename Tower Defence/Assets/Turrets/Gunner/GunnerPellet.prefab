@@ -135,7 +135,7 @@ MonoBehaviour:
   useLocation: 0
   isEthereal: 0
   speed:
-    stat: 15
+    stat: 10
     modifier: 1
   explosionRadius:
     stat: 1

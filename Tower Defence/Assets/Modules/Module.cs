@@ -24,7 +24,7 @@ namespace Modules
         /// <returns>If the DamagerObject is in the valid types</returns>
         public virtual bool ValidModule(Damager damager)
         {
-            return ValidTypes == null || ValidTypes.Contains(damager.GetType());
+            return ValidTypes.Any(type => type.IsInstanceOfType(damager));
         }
         
         /// <summary>

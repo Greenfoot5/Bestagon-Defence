@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using Abstract.Data;
 using Gameplay;
 using Levels._Nodes;
@@ -285,8 +284,7 @@ namespace UI.Inventory
             foreach (Transform child in moduleInventoryContent)
             {
                 var item = child.GetComponent<ModuleInventoryItem>();
-                if (_target != null && (item.turretTypes == null ||
-                    item.turretTypes.Contains(_target.turret.GetComponent<Turret>().GetType())))
+                if (_target != null && item.IsValid(_target.turret.GetComponent<Damager>()))
                 {
                     item.bg.color = item.accent;
                     item.modulesBg.color = item.accent * new Color(1, 1, 1, 0.16f);

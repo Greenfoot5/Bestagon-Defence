@@ -141,7 +141,7 @@ namespace UI.Shop
                     if (_turretTypes.Any())
                     {
                         while (!(selected.GetModule().GetValidTypes() == null ||
-                                 _turretTypes.Any(x => selected.GetModule().GetValidTypes().Contains(x))))
+                                 _turretTypes.Any(x => selected.GetModule().GetValidTypes().Any(y => y.IsInstanceOfType(x)))))
                         {
                             selected = modules.GetRandomItem();
                             lagCounter++;
@@ -269,15 +269,6 @@ namespace UI.Shop
         {
             if (!_turretTypes.Contains(type))
                 _turretTypes.Add(type);
-        }
-        
-        /// <summary>
-        /// Adds the turret to the selected types list
-        /// </summary>
-        /// <param name="turret">The turret the user picked</param>
-        public void AddTurret(Turret turret)
-        {
-            AddTurretType(turret.GetType());
         }
     }
 }
