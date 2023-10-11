@@ -183,11 +183,12 @@ namespace Turrets
         /// </summary>
         protected void LookAtTarget()
         {
-            // Gets the rotation the turret need to end up at, and lerp each frame towards that
-            Vector2 aimDir = ((Vector2)target.position - (Vector2)transform.position).normalized;
-            Vector3 up = partToRotate.up;
-            Vector3 lookDir = Vector3.Lerp(up, aimDir, Time.deltaTime * rotationSpeed.GetStat());
-            partToRotate.rotation *= Quaternion.FromToRotation(up, lookDir);
+            Vector2 aimDir = (target.position - partToRotate.position).normalized;
+
+            float rotationAngleNeed = Vector2.SignedAngle(partToRotate.up, aimDir);
+            float zAngle = Mathf.Clamp(rotationAngleNeed, -rotationSpeed.GetStat() * Time.deltaTime,
+                rotationSpeed.GetStat() * Time.deltaTime);
+            partToRotate.Rotate(0f, 0f, zAngle);
         }
 
         /// <summary>

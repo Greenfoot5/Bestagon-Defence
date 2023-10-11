@@ -351,14 +351,14 @@ MonoBehaviour:
     modifier: 1
   rangeDisplay: {fileID: 1139687739}
   fireRate:
-    stat: 0.7
+    stat: 0.65
     modifier: 1
   fireCountdown: 0
   targetingMethod: 0
   aggressiveRetargeting: 0
   firePoint: {fileID: 1483480927}
   rotationSpeed:
-    stat: 7
+    stat: 70
     modifier: 1
   partToRotate: {fileID: 4656168879664339822}
   bulletPrefab: {fileID: 8554329261332597528, guid: 73df7aaa5f02848a59285b946c547b07, type: 3}
