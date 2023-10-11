@@ -64,7 +64,7 @@ namespace Turrets.Laser
             // One of the two laser timers expired
             if (durationCountdown <= 0)
             {
-                if (!IsLookingAtTarget())
+                if (IsLookingAtTarget())
                 {
                     durationCountdown = laserDuration.GetStat();
                     cooldownCountdown = laserCooldown.GetStat();
@@ -88,10 +88,9 @@ namespace Turrets.Laser
             Vector3 direction = (firePoint.up * range.GetStat());
             Vector3 endPosition = (direction + triangleCentre);
             
-            
             // Get all enemies the laser hits
             var results = new List<Collider2D>();
-            Physics2D.OverlapCapsule(direction/2 + triangleCentre, new Vector2(range.GetStat(), lineRenderer.endWidth), 
+            Physics2D.OverlapCapsule(direction/2 + triangleCentre, new Vector2(lineRenderer.endWidth, range.GetStat()), 
                 CapsuleDirection2D.Vertical, transform.rotation.y, new ContactFilter2D().NoFilter(), results);
             List<Enemy> enemies = results.Select(result => result.transform.GetComponent<Enemy>()).ToList();
             enemies.RemoveAll(x => x == null);
