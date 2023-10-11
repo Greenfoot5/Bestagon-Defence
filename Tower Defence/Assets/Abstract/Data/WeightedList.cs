@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Abstract.Data
@@ -89,6 +90,10 @@ namespace Abstract.Data
 
         public void RemoveUnweighted()
         {
+            // We don't want to remove anything if the total weight is 0
+            if (GetTotalWeight() == 0)
+                return;
+            
             var i = 0;
             while (i < list.Count)
             {
