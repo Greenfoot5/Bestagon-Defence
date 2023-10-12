@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: FireRateT5
   m_EditorClassIdentifier: 
   moduleTier: 5
-  isUpgradableTo: 0
-  percentageChange: 1.6
+  isUpgradableTo: 1
+  percentageChange: 7.1

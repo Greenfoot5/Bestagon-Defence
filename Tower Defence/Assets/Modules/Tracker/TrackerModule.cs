@@ -21,11 +21,6 @@ namespace Modules.Tracker
         [SerializeField]
         [Tooltip("The percentage to modify the damage of the turret by")]
         private float damagePercentageChange;
-
-        [Header("Gunner")]
-        [SerializeField]
-        [Tooltip("The percentage to modify the fire rate cap by")]
-        private float gunnerFireRateCapChange;
         
         /// <summary>
         /// Increases the rotation speed of a turret
@@ -36,9 +31,6 @@ namespace Modules.Tracker
             damager.damage.AddModifier(damagePercentageChange);
             if (damager is DynamicTurret turret)
                 turret.rotationSpeed.AddModifier(rotationSpeedPercentageChange);
-            
-            if (damager is Gunner gunner)
-                gunner.maxFireRate.AddModifier(gunnerFireRateCapChange);
         }
         
         /// <summary>
@@ -50,9 +42,6 @@ namespace Modules.Tracker
             damager.damage.TakeModifier(damagePercentageChange);
             if (damager is DynamicTurret turret)
                 turret.rotationSpeed.TakeModifier(rotationSpeedPercentageChange);
-            
-            if (damager is Gunner gunner)
-                gunner.maxFireRate.TakeModifier(gunnerFireRateCapChange);
         }
     }
 }
