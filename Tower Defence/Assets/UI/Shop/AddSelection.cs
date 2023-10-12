@@ -194,7 +194,7 @@ namespace UI.Shop
             if (_turretTypes.Any())
             {
                 while (!(selected.GetModule().GetValidTypes() == null ||
-                         _turretTypes.Any(x => selected.GetModule().GetValidTypes().Any(y => y.IsInstanceOfType(x)))))
+                         _turretTypes.Any(x => selected.GetModule().GetValidTypes().Any(y => y.IsAssignableFrom(x)))))
                 {
                     modules.RemoveItem(selected);
                     selected = modules.GetRandomItem();
