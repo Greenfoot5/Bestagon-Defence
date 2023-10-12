@@ -23,6 +23,10 @@ namespace Modules.Instakill
         [Tooltip("The percentage chance to kill the enemy")]
         [SerializeField]
         private float instakillChance;
+        
+        [Tooltip("The effect to play on kill")]
+        [SerializeField]
+        private GameObject instakillEffect;
 
         public override void AddModule(Damager damager)
         {
@@ -43,9 +47,13 @@ namespace Modules.Instakill
         private void OnHit(Enemy target, Damager damager, Bullet bullet = null)
         {
             if (damager is not Turret turret) return;
-            if (Random.value < (instakillChance / turret.fireRate.GetStat()) && target.health > 0 &&
-                !target.isBoss)
-                target.TakeDamage(target.maxHealth, null);
+            if (!(Random.value < (instakillChance / turret.fireRate.GetStat())) || !(target.health > 0) ||
+                target.isBoss) return;
+            
+            GameObject effect = Instantiate(instakillEffect);
+            effect.transform.position = target.transform.position;
+            Destroy(effect, 1f);
+            target.TakeDamage(target.maxHealth, null);
         }
     }
 }
