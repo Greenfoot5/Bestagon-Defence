@@ -266,9 +266,9 @@ MonoBehaviour:
       data:
         m_Localized:
           m_TableReference:
-            m_TableCollectionName: GUID:a4bbea44c52ee4ec1ada344d809c9849
+            m_TableCollectionName: GUID:a6170bad920ce47ac8d85f7255dd7a10
           m_TableEntryReference:
-            m_KeyId: 109755961609019392
+            m_KeyId: 20227354377838592
             m_Key: 
           m_FallbackState: 0
           m_WaitForCompletion: 0
