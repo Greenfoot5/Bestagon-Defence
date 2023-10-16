@@ -27,19 +27,23 @@ namespace Levels.Maps
         public DuplicateTypes initialDuplicateCheck = DuplicateTypes.None;
 
         [Header("Selection")]
+        [Tooltip("The weighted chance of picking a turret card to appear in the selection")]
+        public CurvedReference turretOptionWeight;
+        [Tooltip("The weighted chance of picking a module card to appear in the selection")]
+        public CurvedReference moduleOptionWeight;
+        [Tooltip("The weighted chance of pickup an additional life")]
+        public CurvedReference lifeOptionWeight;
+        [Tooltip("How many lives the life card will grant")]
+        public int lifeCount;
         [Tooltip("What turrets can appear and their weighted chance of appearing on a turret selection card")]
         public WeightedCurveList<TurretBlueprint> turrets;
         [Tooltip("What type of duplicate check to perform, if any, against the rest of the selection")]
         public DuplicateTypes turretDuplicateCheck = DuplicateTypes.ByName;
-        [Tooltip("The weighted chance of picking a turret card to appear in the selection")]
-        public CurvedReference turretOptionWeight;
         [Tooltip("What module can appear and their weighted chance of appearing on a module selection card")]
         public WeightedCurveList<ModuleChainHandler> moduleHandlers;
         [Tooltip("What type of duplicate check to perform, if any, against the rest of the selection")]
         public DuplicateTypes moduleDuplicateCheck = DuplicateTypes.ByType;
-        [Tooltip("The weighted chance of picking a module card to appear in the selection")]
-        public CurvedReference moduleOptionWeight;
-
+        
         [Header("Selection Counts")]
         [Tooltip("Is there an initial selection?")]
         public bool hasInitialSelection = true;

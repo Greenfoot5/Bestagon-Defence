@@ -18,6 +18,9 @@ namespace UI.Shop
         [Tooltip("The game object for a module selection card")]
         [SerializeField]
         private GameObject moduleSelectionUI;
+        [Tooltip("The game object for a life selection card")]
+        [SerializeField]
+        private GameObject lifeSelectionUI;
         private LevelData _levelData;
         [Tooltip("The Shop component in the scene")]
         [SerializeField]
@@ -85,16 +88,22 @@ namespace UI.Shop
                 {
                     // Select if the game should get an Module or a turret
                     float choice = Random.Range(0f, _levelData.turretOptionWeight.Value.Evaluate(GameStats.Rounds)
-                                                    + _levelData.moduleOptionWeight.Value.Evaluate(GameStats.Rounds));
-                    if (choice > _levelData.turretOptionWeight.Value.Evaluate(GameStats.Rounds))
+                                                    + _levelData.moduleOptionWeight.Value.Evaluate(GameStats.Rounds)
+                                                    + _levelData.lifeOptionWeight.Value.Evaluate(GameStats.Rounds));
+                    if (choice <= _levelData.moduleOptionWeight.Value.Evaluate(GameStats.Rounds))
                     {
                         // Grants an Module option
                         GenerateModuleItem(i, ref selectedTypes, ref selectedNames);
 
                     }
-                    else
+                    else if (_levelData.moduleOptionWeight.Value.Evaluate(GameStats.Rounds) < choice && choice <=
+                             _levelData.moduleOptionWeight.Value.Evaluate(GameStats.Rounds) + _levelData.turretOptionWeight.Value.Evaluate(GameStats.Rounds))
                     {
                         GenerateTurretItem(i, ref selectedTypes, ref selectedNames);
+                    }
+                    else
+                    {
+                        GenerateLifeItem();
                     }
                 }
             }
@@ -235,6 +244,14 @@ namespace UI.Shop
             // Add it to our "history" to avoid duplicates on our next selection
             selectedTypes[selectionIndex] = selected.GetModule().GetType();
             selectedNames[selectionIndex] = selected.GetChain().displayName.GetLocalizedString();
+        }
+
+        private void GenerateLifeItem()
+        {
+            // Create the ui as a child
+            GameObject lifeUI = Instantiate(lifeSelectionUI, transform);
+            lifeUI.name = "_" + lifeUI.name;
+            lifeUI.GetComponent<LifeSelectionUI>().Init(_levelData.lifeCount, shop);
         }
     
         /// <summary>

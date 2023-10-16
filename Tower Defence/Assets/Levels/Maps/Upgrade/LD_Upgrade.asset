@@ -25,6 +25,124 @@ MonoBehaviour:
     - item: {fileID: 11400000, guid: 0f0a6da7d36a64a3a89ddcc104e995c0, type: 2}
       weight: 1
   initialDuplicateCheck: 1
+  turretOptionWeight:
+    useConstant: 1
+    constantValue:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 2
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 10
+        value: 2
+        inSlope: Infinity
+        outSlope: -0.00026399863
+        tangentMode: 7
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.23592724
+      - serializedVersion: 3
+        time: 75
+        value: 4
+        inSlope: 0.029329639
+        outSlope: 0.029329639
+        tangentMode: 1
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 130
+        value: 3
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    variable: {fileID: 0}
+  moduleOptionWeight:
+    useConstant: 1
+    constantValue:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 5
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 10
+        value: 1
+        inSlope: -0
+        outSlope: 0.08630451
+        tangentMode: 5
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 45
+        value: 3
+        inSlope: 0.0420681
+        outSlope: 0.0420681
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 90
+        value: 5
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 120
+        value: 20
+        inSlope: 0.5
+        outSlope: 0
+        tangentMode: 5
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    variable: {fileID: 0}
+  lifeOptionWeight:
+    useConstant: 1
+    constantValue:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 500
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    variable: {fileID: 0}
+  lifeCount: 2
   turrets:
     list:
     - useConstant: 0
@@ -73,51 +191,6 @@ MonoBehaviour:
         m_RotationOrder: 0
       variable: {fileID: 11400000, guid: b54cb3d9e6f25430dbcb163e806032f4, type: 2}
   turretDuplicateCheck: 1
-  turretOptionWeight:
-    useConstant: 1
-    constantValue:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 2
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 10
-        value: 2
-        inSlope: Infinity
-        outSlope: -0.00026399863
-        tangentMode: 7
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.23592724
-      - serializedVersion: 3
-        time: 75
-        value: 4
-        inSlope: 0.029329639
-        outSlope: 0.029329639
-        tangentMode: 1
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 130
-        value: 3
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    variable: {fileID: 0}
   moduleHandlers:
     list:
     - useConstant: 0
@@ -194,60 +267,6 @@ MonoBehaviour:
         m_RotationOrder: 0
       variable: {fileID: 11400000, guid: b54cb3d9e6f25430dbcb163e806032f4, type: 2}
   moduleDuplicateCheck: 2
-  moduleOptionWeight:
-    useConstant: 1
-    constantValue:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 5
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 10
-        value: 1
-        inSlope: -0
-        outSlope: 0.08630451
-        tangentMode: 5
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 45
-        value: 3
-        inSlope: 0.0420681
-        outSlope: 0.0420681
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 90
-        value: 5
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 120
-        value: 20
-        inSlope: 0.5
-        outSlope: 0
-        tangentMode: 5
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    variable: {fileID: 0}
   hasInitialSelection: 1
   initialSelectionCount: 4
   selectionCount: 3

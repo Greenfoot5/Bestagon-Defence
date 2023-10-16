@@ -376,10 +376,27 @@ MonoBehaviour:
     m_Localized: Shop
     m_Metadata:
       m_Items: []
+  - m_Id: 20018362405871616
+    m_Localized: Gain +{} Life
+    m_Metadata:
+      m_Items:
+      - rid: 1943649921315110921
+  - m_Id: 20018500012597248
+    m_Localized: Life
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20018537140576256
+    m_Localized: Live Longer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20227354377838592
+    m_Localized: Resource
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
     - rid: 1943649921315110921
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00e02fabf505000000e0af01c133000000e0efe34c4f0000
+        m_Entries: 00e02fabf505000000e0af01c133000000e0efe34c4f000000e02f34981e4700

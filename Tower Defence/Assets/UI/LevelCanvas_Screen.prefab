@@ -4119,7 +4119,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turretSelectionUI: {fileID: 7349952435930394342, guid: 5453fbd1fffdc4a799b811ae56769adb, type: 3}
-  moduleSelectionUI: {fileID: 7349952435930394342, guid: 2c152cea0b9334ff7b4ae9dfbbcfe040, type: 3}
+  moduleSelectionUI: {fileID: 7349952435930394342, guid: 1fd7562f294fb4ebfa9c3ec91a6f36e8, type: 3}
+  lifeSelectionUI: {fileID: 7349952435930394342, guid: 2c152cea0b9334ff7b4ae9dfbbcfe040, type: 3}
   shop: {fileID: 4077244561648582632}
 --- !u!1 &4077244561414875947
 GameObject:
