@@ -29,6 +29,9 @@ namespace Gameplay.Waves
         [Tooltip("The time at the beginning before the start of the game")]
         private float preparationTime = 8f;
         private float _countdown = 5f;
+        [SerializeField]
+        [Tooltip("The index of the wave to start from after the boss wave")]
+        private int waveRepeatIndex;
         
         [SerializeField]
         [Tooltip("The text to update with the countdown/spawning/enemies")]
