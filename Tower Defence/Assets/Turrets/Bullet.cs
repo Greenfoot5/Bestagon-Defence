@@ -2,6 +2,7 @@
 using Abstract.Data;
 using Enemies;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Turrets
 {
@@ -10,7 +11,7 @@ namespace Turrets
     /// </summary>
     public class Bullet : MonoBehaviour
     {
-        public Turret _source;
+        [FormerlySerializedAs("_source")] public Turret source;
         [HideInInspector]
         public Transform target;
         [HideInInspector]
@@ -43,7 +44,7 @@ namespace Turrets
         public void Seek(Transform newTarget, Turret turret)
         {
             target = newTarget;
-            _source = turret;
+            source = turret;
             useLocation = false;
         }
         
@@ -55,7 +56,7 @@ namespace Turrets
         public void Seek(Vector3 location, Turret turret)
         {
             targetLocation = location;
-            _source = turret;
+            source = turret;
             useLocation = true;
         }
 
@@ -141,14 +142,14 @@ namespace Turrets
             var em = enemy.GetComponent<Enemy>();
             if (em == null) return;
             
-            _source.Hit(em, _source, this);
+            source.Hit(em, source, this);
 
             if (knockbackAmount.GetTrueStat() != 0)
             {
-                em.GetComponent<EnemyMovement>().TakeKnockback(knockbackAmount.GetTrueStat(), _source.transform.position);
+                em.GetComponent<EnemyMovement>().TakeKnockback(knockbackAmount.GetTrueStat(), source.transform.position);
             }
 
-            em.TakeDamage(_source.damage.GetStat(), gameObject);
+            em.TakeDamage(source.damage.GetStat(), gameObject);
         }
     
         /// <summary>

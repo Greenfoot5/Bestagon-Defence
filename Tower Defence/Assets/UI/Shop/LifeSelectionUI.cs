@@ -39,14 +39,13 @@ namespace UI.Shop
             effect.text = lifeCount.GetLocalizedString(count);
             
             // When the card is clicked, the game picks the module
-            bg.GetComponent<Button>().onClick.AddListener(delegate { MakeSelection(shop); });
+            bg.GetComponent<Button>().onClick.AddListener(delegate { MakeSelection(); });
         }
 
         /// <summary>
         /// Called when the player clicks on the card.
         /// </summary>
-        /// <param name="shop"></param>
-        private void MakeSelection (Gameplay.Shop shop)
+        private void MakeSelection ()
         {
             transform.parent.parent.gameObject.SetActive(false);
             Time.timeScale = 1f;
