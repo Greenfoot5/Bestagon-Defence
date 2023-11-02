@@ -126,7 +126,10 @@ namespace Gameplay.Waves
         {
             _isSpawning = true;
             waveCountdownText.text = spawningText.GetLocalizedString();
-            Wave wave = waves[_waveIndex % waves.Length];
+            Wave wave = waves[_waveIndex % waveRepeatIndex];
+            if (GameStats.Rounds > waveRepeatIndex)
+                wave = waves[(_waveIndex - waveRepeatIndex) % (waves.Length - waveRepeatIndex) + waveRepeatIndex];
+            
             GameStats.Rounds = _waveIndex + 1;
             waveText.text = waveCountText.GetLocalizedString() + GameStats.Rounds;
             _totalEnemies = 0;

@@ -136,7 +136,6 @@ namespace UI.Inventory
                 cycleTargetingButton.SetActive(false);
             }
 
-            Debug.Log(moduleInventoryPage.activeSelf);
             // Rebuild the Modules and add the stats
             if (moduleInventoryPage.activeSelf)
                 OpenModuleInventory();
