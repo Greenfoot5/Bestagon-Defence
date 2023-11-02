@@ -161,9 +161,6 @@ namespace Gameplay.Waves
 
             _waveIndex++;
             _isSpawning = false;
-
-            //if (_waveIndex % waves.Length != 0) yield break;
-            //Debug.Log("Level complete!");
         }
     
         /// <summary>
