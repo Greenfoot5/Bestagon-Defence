@@ -7,17 +7,16 @@ namespace UI
     {
         public TMP_Text[] textObjects;
  
-        private void Awake()
+        public void Size()
         {
             if (textObjects == null || textObjects.Length == 0)
                 return;
  
             // Iterate over each of the text objects in the array to find the smallest font size
             float minSize = textObjects[0].fontSize;
-            
-            
             foreach (TMP_Text t in textObjects)
             {
+                Debug.Log(t.fontSize + " and " + t.enableAutoSizing);
                 float fontSize = t.fontSize;
                 if (fontSize < minSize && fontSize > t.minWidth)
                 {

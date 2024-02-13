@@ -4527,7 +4527,7 @@ MonoBehaviour:
         m_VariantData:
         - localeIdentifier:
             m_Code: en-GB
-          value: 514
+          value: 0
         - localeIdentifier:
             m_Code: ARR
           value: 0
@@ -4690,7 +4690,7 @@ MonoBehaviour:
         m_VariantData:
         - localeIdentifier:
             m_Code: en-GB
-          value: 1
+          value: 0
         - localeIdentifier:
             m_Code: ARR
           value: 0
@@ -4701,7 +4701,7 @@ MonoBehaviour:
         m_VariantData:
         - localeIdentifier:
             m_Code: en-GB
-          value: -7
+          value: 0
         - localeIdentifier:
             m_Code: ARR
           value: 0
@@ -5448,7 +5448,7 @@ MonoBehaviour:
         m_VariantData:
         - localeIdentifier:
             m_Code: en-GB
-          value: 1
+          value: 0
         - localeIdentifier:
             m_Code: ARR
           value: 0
@@ -5459,7 +5459,7 @@ MonoBehaviour:
         m_VariantData:
         - localeIdentifier:
             m_Code: en-GB
-          value: -17
+          value: 0
         - localeIdentifier:
             m_Code: ARR
           value: 0
