@@ -7,7 +7,7 @@ using Turrets.Smasher;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Modules.Reload
+namespace Modules._NeedRebalace.Reload
 {
     /// <summary>
     /// Chance to attack again
@@ -38,8 +38,6 @@ namespace Modules.Reload
         private void OnAttack(Damager damager)
         {
             if (damager is not Turret turret) return;
-            
-            Debug.Log("Attacking");
             
             if (Random.value < (reloadChance / turret.fireRate.GetStat()))
             {
