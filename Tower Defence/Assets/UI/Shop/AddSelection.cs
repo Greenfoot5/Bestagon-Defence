@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Abstract.Data;
@@ -277,7 +276,6 @@ namespace UI.Shop
             GameObject turretUI = Instantiate(turretSelectionUI, transform);
             turretUI.name = "_" + turretUI.name;
             turretUI.GetComponent<TurretSelectionUI>().Init(turret, shop);
-            Debug.Log("Sized");
         }
         
         /// <summary>

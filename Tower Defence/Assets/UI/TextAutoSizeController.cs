@@ -16,7 +16,6 @@ namespace UI
             float minSize = textObjects[0].fontSize;
             foreach (TMP_Text t in textObjects)
             {
-                Debug.Log(t.fontSize + " and " + t.enableAutoSizing);
                 float fontSize = t.fontSize;
                 if (fontSize < minSize && fontSize > t.minWidth)
                 {
