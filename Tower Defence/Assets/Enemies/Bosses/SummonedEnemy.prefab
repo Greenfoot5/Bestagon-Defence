@@ -523,14 +523,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startSpeed: 1.5
-  maxHealth: 1000
+  maxHealth: 850
   knockbackModifier: 0.8
   speed:
     stat: 0
     modifier: 0
   health: 100
   deathMoney: 0
-  deathLives: 2
+  deathLives: 1
   endPathMoney: 30
   leftBar: {fileID: 5532738286270056061}
   rightBar: {fileID: 6346128270463089290}
