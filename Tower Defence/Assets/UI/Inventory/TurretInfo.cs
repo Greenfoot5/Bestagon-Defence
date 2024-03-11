@@ -136,11 +136,11 @@ namespace UI.Inventory
                 cycleTargetingButton.SetActive(false);
             }
 
-            // Rebuild the Modules and add the stats
-            if (moduleInventoryPage.activeSelf)
-                OpenModuleInventory();
-            else
-                OpenTurretInfo();
+            // // Rebuild the Modules and add the stats
+            // if (moduleInventoryPage.activeSelf)
+            //     OpenModuleInventory();
+            // else
+            OpenTurretInfo();
         }
         
         /// <summary>
@@ -163,6 +163,7 @@ namespace UI.Inventory
             GameManager.ModuleInventory.Remove(handler);
             shop.RemoveModule(button);
             UpdateModules();
+            OpenTurretInfo();
         }
         
         /// <summary>
