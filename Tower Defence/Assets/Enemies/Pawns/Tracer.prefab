@@ -126,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startSpeed: 3
   maxHealth: 75
-  knockbackModifier: 1.5
+  knockbackModifier: 1.1
   speed:
     stat: 0
     modifier: 0
@@ -193,7 +193,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.1}
   serializedVersion: 2
   m_Radius: 0.2
 --- !u!50 &-8739970269333961808

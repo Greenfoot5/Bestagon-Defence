@@ -125,7 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startSpeed: 1.5
   maxHealth: 850
-  knockbackModifier: 0.6
+  knockbackModifier: 0.7
   speed:
     stat: 0
     modifier: 0
@@ -232,7 +232,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5714286, y: 0.5714286}
+  m_Size: {x: 0.75, y: 0.75}
   m_EdgeRadius: 0
 --- !u!50 &-32090543215727474
 Rigidbody2D:

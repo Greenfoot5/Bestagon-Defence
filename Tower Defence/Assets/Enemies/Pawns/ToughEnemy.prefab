@@ -113,7 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startSpeed: 1.75
   maxHealth: 500
-  knockbackModifier: 0.75
+  knockbackModifier: 0.8
   speed:
     stat: 0
     modifier: 0
