@@ -280,7 +280,7 @@ MonoBehaviour:
   initialSelectionCount: 4
   selectionCount: 3
   initialSelectionCost: 61
-  selectionCostIncrement: 21
+  selectionCostIncrement: 22
   health:
     useConstant: 0
     constantValue:
