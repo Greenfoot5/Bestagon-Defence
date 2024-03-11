@@ -157,6 +157,7 @@ namespace Gameplay
             Random.state = saveData.random;
             var shopComponent = shop.GetComponent<Shop>();
             shopComponent.nextCost = saveData.shopCost;
+            GameStats.Powercells = 0;
             GameStats.Money = saveData.money;
 
             foreach (SaveLevel.NodeData nodeData in saveData.nodes)
