@@ -10546,11 +10546,11 @@ PrefabInstance:
       objectReference: {fileID: 895393602812883857, guid: 22ab1e0fa4cca4734967d023c1bec9ac, type: 3}
     - target: {fileID: 5782079356602982466, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
       propertyPath: startLives
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5782079356602982466, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
       propertyPath: startMoney
-      value: 300
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 5782079356602982467, guid: a2097a488113d46eca02849b0d52a9fc, type: 3}
       propertyPath: nodeUI
