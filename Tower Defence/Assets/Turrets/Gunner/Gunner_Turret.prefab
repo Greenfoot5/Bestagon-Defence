@@ -406,10 +406,10 @@ MonoBehaviour:
   bulletPrefab: {fileID: 8554329261332597528, guid: 7918a479628b945539b9ed050eacb045, type: 3}
   attackEffect: {fileID: 3181578962669598878}
   spinMultiplier:
-    stat: 1.07
+    stat: 1.03
     modifier: 1
   spinCooldown:
-    stat: 1.05
+    stat: 1.02
     modifier: 1
   maxFireRate:
     stat: 7
