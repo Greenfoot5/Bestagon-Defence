@@ -161,14 +161,12 @@ namespace Gameplay
 
         private void CalculateEnergy()
         {
-            Debug.Log("Calculating Energy " + GameStats.Powercells);
             while (GameStats.Money > nextCost)
             {
-                GameStats.Money -= nextCost;
                 nextCost += _levelData.selectionCostIncrement;
+                GameStats.Money -= nextCost;
                 GameStats.Powercells++;
             }
-            Debug.Log("Calculated Energy " + GameStats.Powercells);
             UpdateEnergyButton();
         }
 
