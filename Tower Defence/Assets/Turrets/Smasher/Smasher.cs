@@ -77,9 +77,10 @@ namespace Turrets.Smasher
                 var enemy = collider2d.GetComponent<Enemy>();
                 
                 // Take damage depending on how close the enemy is to the turret's centre
-                float distance = 1 - (transform.position - collider2d.transform.position).sqrMagnitude /
-                    (range.GetTrueStat() * range.GetTrueStat());
-                float damagePercentage = Mathf.Clamp(distance + 0.33f, 0f, 1f);
+                Vector2 position = transform.position;
+                float distance = 1 - (position - collider2d.ClosestPoint(position)).sqrMagnitude /
+                    (range.GetTrueStat() * range.GetTrueStat()) + 0.25f;
+                float damagePercentage = Mathf.Clamp(distance, 0.2f, 1f);
                 
                 // Only deal damage if it will actually damage the enemy
                 if (!(damagePercentage > 0)) continue;
