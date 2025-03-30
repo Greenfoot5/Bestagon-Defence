@@ -1,0 +1,33 @@
+[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://cqec5gsl2jrtp"]
+
+[ext_resource type="Texture2D" uid="uid://clh6px2ep770r" path="res://_WIP/Art/path.png" id="1_v4mc0"]
+[ext_resource type="Texture2D" uid="uid://d1qo5etsblcq1" path="res://_WIP/Art/start.png" id="2_hwqy1"]
+[ext_resource type="Texture2D" uid="uid://d0u45dj0t2hka" path="res://_WIP/Art/end.png" id="3_wt5wx"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jd2yj"]
+resource_name = "path"
+texture = ExtResource("1_v4mc0")
+texture_region_size = Vector2i(480, 416)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a6ump"]
+resource_name = "start"
+texture = ExtResource("2_hwqy1")
+texture_region_size = Vector2i(480, 416)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lf7ax"]
+resource_name = "end"
+texture = ExtResource("3_wt5wx")
+texture_region_size = Vector2i(480, 416)
+0:0/0 = 0
+
+[resource]
+tile_shape = 3
+tile_offset_axis = 1
+tile_size = Vector2i(528, 458)
+uv_clipping = true
+sources/0 = SubResource("TileSetAtlasSource_jd2yj")
+sources/1 = SubResource("TileSetAtlasSource_a6ump")
+sources/2 = SubResource("TileSetAtlasSource_lf7ax")
+tile_proxies/coords_level = [[0, Vector2i(0, 0)], [6, Vector2i(0, 0)], [1, Vector2i(0, 0)], [6, Vector2i(1, 0)], [2, Vector2i(0, 0)], [6, Vector2i(2, 0)]]

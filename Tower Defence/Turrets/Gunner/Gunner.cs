@@ -1,0 +1,137 @@
+﻿using Abstract.Attributes;
+using Godot;
+using UI.Inventory;
+
+namespace Turrets.Gunner
+{
+    /// <summary>
+    /// Extends DynamicTurret to add Shooting functionality.
+    /// </summary>
+    public partial class Gunner : DynamicTurret
+    {
+        // Bullets
+        /// <summary>
+        /// The bullet prefab to spawn each attack
+        /// </summary>
+        [Export]
+        private PackedScene _bulletPrefab;
+        // <summary>
+        // The effect to fire when the bullet is shot
+        // </summary>
+        // [Export]
+        // private VisualEffect attackEffect;
+        
+        // Spin up stats
+        private float _fireRateIncrease = 1f;
+
+        public Gunner()
+        {
+            Stats[AttributeType.SpinMultiplier] = new Attribute(1.1f);
+            Stats[AttributeType.SpinCooldown] = new Attribute(1.08f);
+            Stats[AttributeType.SpinIncrease] = new Attribute(_fireRateIncrease, min: 1f);
+        }
+
+        /// <summary>
+        /// Rotates towards the target if the turret have one.
+        /// Shoots if the turret is looking towards the target
+        /// </summary>
+        public override void _Process(double delta)
+        {
+            if (FireCountdown > 1 / Stats[AttributeType.FireRate].Value)
+            {
+                FireCountdown = 1 / Stats[AttributeType.FireRate].Value;
+            }
+            
+            // If there's no fire rate, the turret shouldn't do anything
+            // However, it should rapidly cool down
+            if (Stats[AttributeType.FireRate].Value == 0)
+            {
+                UpdateFireRate(false);
+                return;
+            }
+            
+            // Don't do anything if the turret doesn't have a target
+            if (TargetEnemy is null)
+            {
+                if (FireCountdown <= 0f)
+                {
+                    UpdateFireRate(false);
+                    FireCountdown = 1 / Stats[AttributeType.FireRate].Value;
+                }
+                
+                FireCountdown -= delta;
+
+                return;
+            }
+        
+            // Rotates the turret each frame
+            LookAtTarget();
+
+            if (!IsLookingAtTarget())
+            {
+                if (FireCountdown <= 0f)
+                {
+                    UpdateFireRate(false);
+                    FireCountdown = 1 / Stats[AttributeType.FireRate].Value;
+                }
+
+                FireCountdown -= delta;
+                return;
+            }
+            
+            
+            if (FireCountdown <= 0)
+            {
+                UpdateFireRate(true);
+                
+                FireCountdown = 1 / Stats[AttributeType.FireRate].Value;
+                
+                Attack();
+            }
+
+            FireCountdown -= delta;
+        }
+        
+        /// <summary>
+        /// Updates the fire rate so there's no duplicated code in Attack().
+        /// Also handles all edge cases with the increase being too low or high
+        /// </summary>
+        /// <param name="isIncrease">To increase or decrease the fireRate</param>
+        private void UpdateFireRate(bool isIncrease)
+        {
+            if (isIncrease)
+            {
+                _fireRateIncrease += Stats[AttributeType.SpinMultiplier].Value;
+            }
+            else
+            {
+                _fireRateIncrease -= Stats[AttributeType.SpinCooldown].Value;
+            }
+            
+            Stats[AttributeType.SpinIncrease]["this"].Value = _fireRateIncrease - 1;
+
+            // Update the stats of the turret if it's selected
+            if (TurretInfo.instance.GetTurret() == this)
+            {
+                TurretInfo.instance.UpdateStats();
+            }
+        }
+
+        /// <summary>
+        /// Create the bullet and give it a target
+        /// </summary>
+        protected override void Attack()
+        {
+            // attackEffect.Play();
+            // Creates the bullet
+            var bullet = _bulletPrefab.Instantiate<Bullet>();
+            bullet.Position = FirePoint.Position;
+            bullet.Rotation = FirePoint.Rotation;
+            bullet.Name = "_" + bullet.Name;
+            bullet.Seek(TargetEnemy, this);
+            
+            base.Attack(this);
+            Shoot(bullet);
+        }
+    }
+}

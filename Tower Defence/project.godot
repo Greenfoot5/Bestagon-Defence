@@ -1,0 +1,38 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Bestagon Defense"
+config/features=PackedStringArray("4.3", "C#", "Mobile")
+config/icon="res://icon.svg"
+config/save_version=""
+
+[dotnet]
+
+project/assembly_name="Bestagon Defense"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/unidot_importer/plugin.cfg")
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[layer_names]
+
+2d_physics/layer_2="Enemies"
+2d_physics/layer_3="Bullets"
+2d_physics/layer_4="Turrets"
+
+[rendering]
+
+renderer/rendering_method="mobile"
