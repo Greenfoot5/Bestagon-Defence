@@ -4,6 +4,7 @@ using Godot.Collections;
 
 namespace Abstract.Attributes;
 
+[Tool]
 public partial class Attribute : RefCounted
 {
     // Displays with fewer decimal places if so
@@ -153,7 +154,7 @@ public partial class Attribute : RefCounted
                     multMax += mod.Value;
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(nameof(modifiers), message:"Invalid modifier found: " + mod.Value);
             }
         }
     
