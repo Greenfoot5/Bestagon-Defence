@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Abstract;
 using Abstract.Attributes;
-using Abstract.Data;
 using Gameplay;
 using Godot;
 using Levels._Nodes;
@@ -98,7 +97,6 @@ namespace Enemies
         /// <summary>
         /// How many waypoints the enemy has passed, and the percentage to the next one
         /// </summary>
-        [Export]
         public float mapProgress;
         private float _maxDistance;
         

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Bestagon Defense"
-config/features=PackedStringArray("4.3", "C#", "Mobile")
+config/features=PackedStringArray("4.4", "C#", "Mobile")
 config/icon="res://icon.svg"
 config/save_version=""
 
@@ -21,7 +21,7 @@ project/assembly_name="Bestagon Defense"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/unidot_importer/plugin.cfg")
+enabled=PackedStringArray("res://addons/attribute_editor/plugin.cfg")
 
 [input_devices]
 
