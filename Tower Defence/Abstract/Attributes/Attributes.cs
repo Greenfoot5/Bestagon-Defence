@@ -8,7 +8,7 @@ public partial class Attributes : Resource
 {
     public static readonly Attributes Global = new();
 
-    // [Export]
+    [Export]
     private Godot.Collections.Dictionary<AttributeType, Attribute> _attributes;
     private Godot.Collections.Dictionary<AttributeType, Attribute> _defaults = new()
     {
