@@ -220,9 +220,9 @@ namespace Gameplay.Waves
             // spawnedEnemy.layer = LayerMask.NameToLayer("Enemies");
         
             // Apply scaling
-            spawnedEnemy.Attributes[AttributeType.MaxHealth].Add("SpawnerScaling",
+            spawnedEnemy.Stats.Attributes[AttributeType.MaxHealth].Add("SpawnerScaling",
                 new AttributeModifier(_levelData.health.Value.Sample(_waveIndex + 1), Operation.Multiplicative));
-            spawnedEnemy.TakeDamage(spawnedEnemy.Attributes[AttributeType.MaxHealth].Value, this);
+            spawnedEnemy.TakeDamage(spawnedEnemy.Stats.Attributes[AttributeType.MaxHealth].Value, this);
             
             spawnedEnemy.OnDeath += () => { enemiesAlive--; };
         }

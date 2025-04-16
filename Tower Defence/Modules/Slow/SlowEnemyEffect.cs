@@ -19,7 +19,7 @@ namespace Modules.Slow
             if (!base.Apply(target))
                 return false;
             
-            Target.Attributes[AttributeType.Speed].Add(Name, _slowPercentage);
+            Target.Stats.Attributes[AttributeType.Speed].Add(Name, _slowPercentage);
 
             return true;
         }
@@ -28,7 +28,7 @@ namespace Modules.Slow
         {
             base.Remove();
 
-            Target.Attributes[AttributeType.Speed].Remove(Name);
+            Target.Stats.Attributes[AttributeType.Speed].Remove(Name);
         }
 
         protected override void DoEffect() { }

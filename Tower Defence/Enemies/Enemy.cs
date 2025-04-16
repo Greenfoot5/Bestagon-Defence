@@ -13,35 +13,14 @@ namespace Enemies
     public partial class Enemy : Area2D
     {
         [Export]
-        public Attributes Attributes = new(
-            new Godot.Collections.Dictionary<AttributeType, Attribute> { 
-                [AttributeType.Speed] = new(AttributeType.Speed, 2f, min:0.8f),
-                [AttributeType.MaxHealth] = new(AttributeType.MaxHealth, 20f),
-            });
+        public EnemyStats Stats = new();
         
         public float Health { get; private set; }
-    
-        /// <summary>
-        /// The amount of money to grant the player when the enemy is killed
-        /// </summary>
-        [ExportGroup("Death Stats")]
-        [Export]
-        public int DeathMoney = 10;
-        /// <summary>
-        /// The amount of lives lost if the enemy finishes the path
-        /// </summary>
-        [Export]
-        public int DeathLives = 1;
-        /// <summary>
-        /// The amount of money to grant the player if the enemy finishes the path
-        /// </summary>
-        [Export]
-        public int EndPathMoney = 10;
 
         /// <summary>
         /// The left health bar
         /// </summary>
-        [ExportGroup("Health Bar")]
+        [ExportGroup("Visuals")]
         [Export]
         public ProgressBar LeftBar;
         /// <summary>
@@ -49,6 +28,8 @@ namespace Enemies
         /// </summary>
         [Export]
         public ProgressBar RightBar;
+        [Export]
+        public Sprite2D sprite;
 
         /// <summary>
         /// The root game object to rotate to change the enemy's looking direction
@@ -56,29 +37,6 @@ namespace Enemies
         [ExportGroup("Other")]
         [Export]
         public Node2D RotationRoot;
-        /// <summary>
-        /// If the enemy rotates towards the next waypoint
-        /// </summary>
-        [Export]
-        public bool DoesRotation = true;
-        /// <summary>
-        /// The particle effect prefab to spawn when the enemy dies
-        /// </summary>
-        [Export]
-        public PackedScene DeathEffect;
-        /// <summary>
-        /// The radius of a circle the bullet can collide with this target
-        /// </summary>
-        [Export]
-        public float HitboxSize = 0.25f;
-
-        /// <summary>
-        /// If the enemy is a boss
-        /// </summary>
-        [ExportGroup("Bosses")]
-        [Export]
-        // TODO - Maybe put in immunities?
-        public bool IsBoss;
         
         /// <summary>
         /// The next position the enemy moves towards
@@ -89,27 +47,10 @@ namespace Enemies
         public int waypointIndex;
         
         /// <summary>
-        /// The distance from enemy to waypoint before it's considered reached
-        /// </summary>
-        [Export] 
-        private float distanceToWaypoint = 0.05f;
-        
-        /// <summary>
         /// How many waypoints the enemy has passed, and the percentage to the next one
         /// </summary>
         public float mapProgress;
         private float _maxDistance;
-        
-        /// <summary>
-        /// A list of the effect names (internal names) that the enemy is immune to
-        /// 
-        /// During runtime, also contains any unique effects applied to the enemy as they are immune to it
-        /// </summary>
-        [ExportGroup("Effect Immunities")]
-        // TODO - List Export
-        // [Export]
-        public List<string> UniqueEffects;
-        public readonly Dictionary<string, EnemyEffect> ActiveEffects = new();
 
         // If the enemy has died
         private bool _isDead;
@@ -121,15 +62,16 @@ namespace Enemies
         /// </summary>
         public override void _Ready()
         {
-            Health = Attributes[AttributeType.MaxHealth].Value;
+            Health = Stats.Attributes[AttributeType.MaxHealth].Value;
             _target = Waypoints.points[waypointIndex];
+            sprite.Texture = Stats.sprite;
         }
 
 
         public override void _Process(double delta)
         {
             // If the enemy is moving backwards
-            if (Attributes[AttributeType.Speed].GetTrueValue() < 0)
+            if (Stats.Attributes[AttributeType.Speed].GetTrueValue() < 0)
             {
                 MoveBackwards();
                 return;
@@ -138,14 +80,14 @@ namespace Enemies
             // Get the direction of the target, and the distance to move this frame
             Vector2 position = Position;
             Vector2 location = _target.Position;
-            var distanceThisFrame = (float)(Attributes[AttributeType.Speed].Value * delta);
+            var distanceThisFrame = (float)(Stats.Attributes[AttributeType.Speed].Value * delta);
 
             Position = position.MoveToward(location, distanceThisFrame);
             
             Vector2 difference = location - position; // Distance & direction to next target
 
             // If within this frame the enemy will pass the waypoint, it's a guaranteed hit
-            if (difference.LengthSquared() <= distanceToWaypoint * distanceToWaypoint)
+            if (difference.LengthSquared() <= Stats.distanceToWaypoint * Stats.distanceToWaypoint)
             {
                 GetNextWaypoint();
             }
@@ -155,7 +97,7 @@ namespace Enemies
                 mapProgress = waypointIndex + 1 - (sqrDistance / (_maxDistance * _maxDistance));
             }
 
-            if (DoesRotation) { }
+            if (Stats.DoesRotation) { }
             // Attempt at rotation
             // TODO - Transform.up
             // _enemy.RotationRoot.transform.up = (location - position).normalized;
@@ -195,10 +137,10 @@ namespace Enemies
             Vector2 dir = Waypoints.points[waypointIndex - 1].Position - Position;
             // TODO - Perform translation in godot
             // transform.Translate(dir.normalized * (Mathf.Abs(_enemy.speed.GetTrueStat()) * delta), Space.World);
-            mapProgress = waypointIndex - (distanceToWaypoint / _maxDistance);
+            mapProgress = waypointIndex - (Stats.distanceToWaypoint / _maxDistance);
         
             // If the enemy hasn't reached the previous waypoint, there's no point knocking it back further
-            if (!(Position.DistanceTo(Waypoints.points[waypointIndex - 1].Position) <= distanceToWaypoint)) return;
+            if (!(Position.DistanceTo(Waypoints.points[waypointIndex - 1].Position) <= Stats.distanceToWaypoint)) return;
 
             // Get the next waypoint
             waypointIndex--;
@@ -214,7 +156,7 @@ namespace Enemies
         /// <param name="turretLocation">The location of the turret</param>
         public void TakeKnockback(float amount, Vector2 turretLocation)
         {
-            if (Attributes[AttributeType.KnockbackResistance].Value <= 0)
+            if (Stats.Attributes[AttributeType.KnockbackResistance].Value <= 0)
             {
                 return;
             }
@@ -225,11 +167,11 @@ namespace Enemies
             
             // Actually deal knockback
             // Multiply by -1 to knock backwards
-            float knockback = amount * Attributes[AttributeType.KnockbackResistance].Value * multiplier * -1;
+            float knockback = amount * Stats.Attributes[AttributeType.KnockbackResistance].Value * multiplier * -1;
             Variant uid = GD.Randi();
-            Attributes[AttributeType.Speed].Add(uid, new AttributeModifier(knockback, Operation.Multiplicative));
+            Stats.Attributes[AttributeType.Speed].Add(uid, new AttributeModifier(knockback, Operation.Multiplicative));
 
-            GetTree().CreateTimer(Attributes[AttributeType.KnockbackDuration].Value).Timeout += () => { Attributes[AttributeType.Speed].Remove(uid); };
+            GetTree().CreateTimer(Stats.Attributes[AttributeType.KnockbackDuration].Value).Timeout += () => { Stats.Attributes[AttributeType.Speed].Remove(uid); };
         }
     
         /// <summary>
@@ -243,15 +185,15 @@ namespace Enemies
             // Edit the health
             Health -= amount;
 
-            LeftBar.Value = Health / Attributes[AttributeType.MaxHealth].Value;
-            RightBar.Value = Health / Attributes[AttributeType.MaxHealth].Value;
+            LeftBar.Value = Health / Stats.Attributes[AttributeType.MaxHealth].Value;
+            RightBar.Value = Health / Stats.Attributes[AttributeType.MaxHealth].Value;
 
             if (Health <= 0)
             {
                 Die();
-            } else if (Health > Attributes[AttributeType.MaxHealth].Value)
+            } else if (Health > Stats.Attributes[AttributeType.MaxHealth].Value)
             {
-                Health = Attributes[AttributeType.MaxHealth].Value;
+                Health = Stats.Attributes[AttributeType.MaxHealth].Value;
             }
         }
 
@@ -266,12 +208,12 @@ namespace Enemies
                 return;
             _isDead = true;
             
-            DeathBitManager.DropEnergy(Position, DeathMoney);
+            DeathBitManager.DropEnergy(Position, Stats.DeathMoney);
 
             OnDeath?.Invoke();
 
             // Spawn death effect
-            var effect = (Node2D) DeathEffect.Instantiate();
+            var effect = (Node2D) Stats.DeathEffect.Instantiate();
             effect.Position = Position;
             effect.Name = "_" + effect.Name;
             GetTree().CreateTimer(5).Timeout += () => effect.QueueFree();
@@ -286,8 +228,8 @@ namespace Enemies
         private void FinishPath()
         {
             // Let our other systems know the enemy reached the end
-            GameStats.Lives -= DeathLives;
-            GameStats.Energy += EndPathMoney;
+            GameStats.Lives -= Stats.DeathLives;
+            GameStats.Energy += Stats.EndPathMoney;
         
             QueueFree();
         }

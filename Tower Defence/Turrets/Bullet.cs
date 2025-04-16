@@ -114,7 +114,7 @@ namespace Turrets
             Vector2 difference = location - position;
             
             // Has the bullet "hit" the target?
-            if (difference.LengthSquared() <= target.HitboxSize * target.HitboxSize)
+            if (difference.LengthSquared() <= target.Stats.HitboxSize * target.Stats.HitboxSize)
             {
                 HitTarget(isEnemy); 
                 return;

@@ -50,14 +50,14 @@ namespace Modules.Instakill
         {
             if (damager is not Turret turret) return;
             if (!(GD.Randf() < (_instakillChance / turret.Stats[AttributeType.FireRate].Value)) || !(target.Health > 0) ||
-                target.IsBoss) return;
+                target.Stats.IsBoss) return;
             
             var effect = _instakillEffect.Instantiate<Node2D>();
             effect.Position = target.Position;
             
             // TODO - Use the correct time
             effect.GetTree().CreateTimer(1).Timeout += () => { effect.QueueFree(); };
-            target.TakeDamage(target.Attributes[AttributeType.MaxHealth].Value, this);
+            target.TakeDamage(target.Stats.Attributes[AttributeType.MaxHealth].Value, this);
         }
     }
 }

@@ -73,31 +73,31 @@ namespace Abstract
             Target = target;
             ticksLeft = tickCount;
             
-            if (Target.UniqueEffects.Contains(effectType))
+            if (Target.Stats.UniqueEffects.Contains(effectType))
                 return false;
 
-            if (Target.ActiveEffects.ContainsKey(effectType))
+            if (Target.Stats.ActiveEffects.ContainsKey(effectType))
             {
-                if (Target.ActiveEffects[effectType].tier > tier && !Target.ActiveEffects[effectType].isCancelled)
+                if (Target.Stats.ActiveEffects[effectType].tier > tier && !Target.Stats.ActiveEffects[effectType].isCancelled)
                 {
                     return false;
                 }
 
-                if (Target.ActiveEffects[effectType].tier == tier)
+                if (Target.Stats.ActiveEffects[effectType].tier == tier)
                 {
-                    Target.ActiveEffects[effectType].ticksLeft = tickCount;
-                    Target.ActiveEffects[effectType]._durationLeft = 0f;
+                    Target.Stats.ActiveEffects[effectType].ticksLeft = tickCount;
+                    Target.Stats.ActiveEffects[effectType]._durationLeft = 0f;
                     return false;
                 }
 
-                if (Target.ActiveEffects[effectType].tier < tier)
+                if (Target.Stats.ActiveEffects[effectType].tier < tier)
                 {
-                    Target.ActiveEffects[effectType].isCancelled = true;
-                    Target.ActiveEffects.Remove(effectType);
+                    Target.Stats.ActiveEffects[effectType].isCancelled = true;
+                    Target.Stats.ActiveEffects.Remove(effectType);
                 }
             }
             
-            Target.ActiveEffects.Add(effectType, this);
+            Target.Stats.ActiveEffects.Add(effectType, this);
             Target.OnDeath += CancelFromDeath;
 
             return true;
@@ -105,7 +105,7 @@ namespace Abstract
 
         protected virtual void Remove()
         {
-            Target.ActiveEffects.Remove(effectType);
+            Target.Stats.ActiveEffects.Remove(effectType);
             Target.OnDeath -= CancelFromDeath;
         }
 
