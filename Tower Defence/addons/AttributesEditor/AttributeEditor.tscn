@@ -1,0 +1,136 @@
+[gd_scene load_steps=3 format=3 uid="uid://de1q5ei5pgjck"]
+
+[ext_resource type="Script" uid="uid://qn2unglytt2j" path="res://addons/AttributesEditor/AttributeEditor.cs" id="1_hxon5"]
+[ext_resource type="PackedScene" uid="uid://is6wwho46lgs" path="res://addons/AttributesEditor/AttributeModifierEditor.tscn" id="2_3sn8p"]
+
+[node name="AttributesEditor" type="VBoxContainer" node_paths=PackedStringArray("_nameOptionButton", "_valueLabel", "_baseLineEdit", "_minLineEdit", "_maxLineEdit", "_modifiersParent")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_hxon5")
+_nameOptionButton = NodePath("Name/OptionButton")
+_valueLabel = NodePath("Value/ReadOnly")
+_baseLineEdit = NodePath("Base/Base")
+_minLineEdit = NodePath("Min/LineEdit")
+_maxLineEdit = NodePath("Max/LineEdit")
+_modifiersParent = NodePath("Modifiers/VBoxContainer")
+_modifierItem = ExtResource("2_3sn8p")
+
+[node name="Name" type="HSplitContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Name"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+text = "Name"
+
+[node name="OptionButton" type="OptionButton" parent="Name"]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 20
+popup/item_0/text = "Nil"
+popup/item_0/id = 0
+popup/item_1/id = 999
+popup/item_1/separator = true
+popup/item_2/text = "BulletRange"
+popup/item_2/id = 1
+popup/item_3/text = "Damage"
+popup/item_3/id = 2
+popup/item_4/text = "FireRate"
+popup/item_4/id = 3
+popup/item_5/text = "ExplosionRadius"
+popup/item_5/id = 4
+popup/item_6/text = "Knockback"
+popup/item_6/id = 5
+popup/item_7/text = "KnockbackDuration"
+popup/item_7/id = 6
+popup/item_8/text = "KnockbackResistance"
+popup/item_8/id = 7
+popup/item_9/text = "LaserDuration"
+popup/item_9/id = 8
+popup/item_10/text = "LaserCooldown"
+popup/item_10/id = 9
+popup/item_11/text = "MaxHealth"
+popup/item_11/id = 10
+popup/item_12/text = "PartCount"
+popup/item_12/id = 11
+popup/item_13/text = "PartSpread"
+popup/item_13/id = 12
+popup/item_14/text = "Range"
+popup/item_14/id = 13
+popup/item_15/text = "RotationSpeed"
+popup/item_15/id = 14
+popup/item_16/text = "Speed"
+popup/item_16/id = 15
+popup/item_17/text = "SpinCooldown"
+popup/item_17/id = 16
+popup/item_18/text = "SpinIncrease"
+popup/item_18/id = 17
+popup/item_19/text = "SpinMultiplier"
+popup/item_19/id = 18
+
+[node name="Value" type="HSplitContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Value"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+text = "Value"
+
+[node name="ReadOnly" type="Label" parent="Value"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Base" type="HSplitContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Base"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+text = "Base"
+
+[node name="Base" type="LineEdit" parent="Base"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Min" type="HSplitContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Min"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+text = "Min"
+
+[node name="LineEdit" type="LineEdit" parent="Min"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Max" type="HSplitContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Max"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+text = "Max"
+
+[node name="LineEdit" type="LineEdit" parent="Max"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Modifiers" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Modifiers"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Modifiers"]
+layout_mode = 2
+text = "Add New"

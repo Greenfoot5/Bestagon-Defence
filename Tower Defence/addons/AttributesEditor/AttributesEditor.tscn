@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmod64yel40xc"]
+
+[ext_resource type="Script" uid="uid://duaprsqlc3kqq" path="res://addons/AttributesEditor/AttributesEditor.cs" id="1_p2by2"]
+[ext_resource type="PackedScene" uid="uid://de1q5ei5pgjck" path="res://addons/AttributesEditor/AttributeEditor.tscn" id="2_2lqv8"]
+[ext_resource type="PackedScene" uid="uid://is6wwho46lgs" path="res://addons/AttributesEditor/AttributeModifierEditor.tscn" id="3_lc4j8"]
+
+[node name="Attributes" type="VBoxContainer" node_paths=PackedStringArray("_attributesContainer")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_p2by2")
+_attributesContainer = NodePath("Attributes/VBoxContainer")
+AttributesItem = ExtResource("2_2lqv8")
+AttributeModifierItem = ExtResource("3_lc4j8")
+
+[node name="Attributes" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Attributes"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Attributes"]
+layout_mode = 2
+text = "Add New"
+
+[connection signal="pressed" from="Attributes/Button" to="." method="AddNewAttribute"]

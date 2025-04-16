@@ -21,7 +21,7 @@ project/assembly_name="Bestagon Defense"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/attribute_editor/plugin.cfg")
+enabled=PackedStringArray("res://addons/AttributesEditor/plugin.cfg")
 
 [input_devices]
 
