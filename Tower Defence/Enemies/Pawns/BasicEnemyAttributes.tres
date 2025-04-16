@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Attributes" load_steps=6 format=3 uid="uid://darown7j506sk"]
+
+[ext_resource type="Script" uid="uid://blnrq5atpcclw" path="res://Abstract/Attributes/Attribute.cs" id="1_mbyoc"]
+[ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/AttributeModifier.cs" id="2_akbpu"]
+[ext_resource type="Script" uid="uid://c80di1i4n41ig" path="res://Abstract/Attributes/Attributes.cs" id="3_jwkax"]
+
+[sub_resource type="Resource" id="Resource_dwn44"]
+script = ExtResource("1_mbyoc")
+Name = 15
+Base = 2.0
+_modifiers = Dictionary[Variant, ExtResource("2_akbpu")]({})
+Min = 0.8
+Max = inf
+
+[sub_resource type="Resource" id="Resource_60ni5"]
+script = ExtResource("1_mbyoc")
+Name = 10
+Base = 20.0
+_modifiers = Dictionary[Variant, ExtResource("2_akbpu")]({})
+Min = inf_neg
+Max = inf
+
+[resource]
+script = ExtResource("3_jwkax")
+_attributes = Dictionary[int, ExtResource("1_mbyoc")]({
+10: SubResource("Resource_60ni5"),
+15: SubResource("Resource_dwn44")
+})
