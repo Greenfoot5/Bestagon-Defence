@@ -1,22 +1,29 @@
+using System.Collections.Generic;
 using Godot;
-using Godot.Collections;
 
 namespace Abstract.Attributes;
 
+[Tool]
+[GlobalClass]
 public partial class Attributes : RefCounted
 {
-    private Dictionary<AttributeType, Attribute> _attributes;
-    private Dictionary<AttributeType, Attribute> _defaults = new()
+    public static readonly Attributes Global = new();
+
+    // [Export]
+    private Godot.Collections.Dictionary<AttributeType, Attribute> _attributes;
+    private Godot.Collections.Dictionary<AttributeType, Attribute> _defaults = new()
     {
         [AttributeType.KnockbackDuration] = new Attribute(0.2f)
     };
+    
+    public ICollection<AttributeType> Keys => _attributes.Keys;
 
     public Attributes()
     {
-        _attributes = new Dictionary<AttributeType, Attribute>();
+        _attributes = new Godot.Collections.Dictionary<AttributeType, Attribute>();
     }
     
-    public Attributes(Dictionary<AttributeType, Attribute> attributes)
+    public Attributes(Godot.Collections.Dictionary<AttributeType, Attribute> attributes)
     {
         _attributes = attributes;
     }
@@ -27,7 +34,7 @@ public partial class Attributes : RefCounted
         {
             if (_attributes.TryGetValue(key, out Attribute item))
                 return item;
-            
+
             if (_defaults.TryGetValue(key, out Attribute @default))
             {
                 _attributes.Add(key, new Attribute(@default));
@@ -45,6 +52,4 @@ public partial class Attributes : RefCounted
             _attributes[key].Name = key;
         }
     }
-    
-    public static Attributes global = new();
 }

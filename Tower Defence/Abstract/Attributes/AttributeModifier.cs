@@ -8,8 +8,11 @@ namespace Abstract.Attributes;
 [GlobalClass]
 public partial class AttributeModifier : Resource
 {
+    [Export]
     public Variant Uid { get; set; }
+    [Export]
     public float Value { get; set; }
+    [Export]
     public Operation Op { get; set; }
 
     public AttributeModifier()

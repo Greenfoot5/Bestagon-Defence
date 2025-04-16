@@ -1,6 +1,6 @@
 using System;
+using System.Collections.Generic;
 using Godot;
-using Godot.Collections;
 
 namespace Abstract.Attributes;
 
@@ -14,17 +14,17 @@ public partial class Attribute : RefCounted
     [Export]
     public AttributeType Name;
     [Export]
-    public float Base { get; private set; }
+    public float Base;
     [Export]
-    private Dictionary<Variant, AttributeModifier> _modifiers;
+    private Godot.Collections.Dictionary<Variant, AttributeModifier> _modifiers = new();
     
     private float _value;
-    public float Value => CalculateValue(_value, Attributes.global[Name]._modifiers);
+    public float Value => CalculateValue(_value, Attributes.Global[Name]._modifiers);
 
     [Export]
-    private float _min = -Mathf.Inf;
+    public float Min { get; set; } = -Mathf.Inf;
     [Export]
-    private float _max = Mathf.Inf;
+    public float Max { get; set; } = Mathf.Inf;
     
     [Signal]
     public delegate void AttributeUpdatedEventHandler(float newValue);
@@ -40,8 +40,8 @@ public partial class Attribute : RefCounted
     {
         Base = @base;
         _value = @base;
-        _min = min;
-        _max = max;
+        Min = min;
+        Max = max;
     }
     
     public Attribute(AttributeType attributeType, float @base, float min = -Mathf.Inf, float max = Mathf.Inf)
@@ -49,8 +49,8 @@ public partial class Attribute : RefCounted
         Name = attributeType;
         Base = @base;
         _value = @base;
-        _min = min;
-        _max = max;
+        Min = min;
+        Max = max;
     }
     
     public Attribute(Attribute attribute)
@@ -71,7 +71,9 @@ public partial class Attribute : RefCounted
         return _value;
     }
     
-    public AttributeModifier this[string key] => _modifiers.TryGetValue(key, out AttributeModifier item) ? item : new AttributeModifier();
+    public AttributeModifier this[Variant key] => _modifiers.TryGetValue(key, out AttributeModifier item) ? item : new AttributeModifier();
+    
+    public ICollection<Variant> Keys => _modifiers.Keys;
 
     public void Add(Variant key, AttributeModifier mod)
     {
@@ -108,15 +110,15 @@ public partial class Attribute : RefCounted
         return Value > LargeValue ? $"{Value:#,##0.#}" : $"{Value:#0.0#}";
     }
     
-    private float CalculateValue(float start, Dictionary<Variant, AttributeModifier> modifiers)
+    private float CalculateValue(float start, Godot.Collections.Dictionary<Variant, AttributeModifier> modifiers)
     {
         float val = start;
         float additive = 1;
         float multiplicative = 1;
-        float min = _min;
+        float min = Min;
         float addiMin = 1;
         float multMin = 1;
-        float max = _max;
+        float max = Max;
         float addiMax = 1;
         float multMax = 1;
         foreach (AttributeModifier mod in modifiers.Values)

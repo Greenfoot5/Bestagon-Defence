@@ -57,7 +57,7 @@ namespace Modules.Instakill
             
             // TODO - Use the correct time
             effect.GetTree().CreateTimer(1).Timeout += () => { effect.QueueFree(); };
-            target.TakeDamage(target.Stats[AttributeType.MaxHealth].Value, this);
+            target.TakeDamage(target.Attributes[AttributeType.MaxHealth].Value, this);
         }
     }
 }
