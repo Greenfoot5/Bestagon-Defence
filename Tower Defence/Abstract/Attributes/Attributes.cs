@@ -3,9 +3,8 @@ using Godot;
 
 namespace Abstract.Attributes;
 
-[Tool]
 [GlobalClass]
-public partial class Attributes : RefCounted
+public partial class Attributes : Resource
 {
     public static readonly Attributes Global = new();
 

@@ -4,8 +4,8 @@ using Godot;
 
 namespace Abstract.Attributes;
 
-[Tool]
-public partial class Attribute : RefCounted
+[GlobalClass]
+public partial class Attribute : Resource
 {
     // Displays with fewer decimal places if so
     private const int LargeValue = 50;
