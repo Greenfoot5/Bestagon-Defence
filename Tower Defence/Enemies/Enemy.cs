@@ -42,8 +42,8 @@ namespace Enemies
         /// The next position the enemy moves towards
         /// </summary>
         [ExportGroup("Movement")]
-        [Export]
-        private Node2D _target;
+        public Vector2[] points;
+        public int pathIndex;
         public int waypointIndex;
         
         /// <summary>
@@ -63,10 +63,8 @@ namespace Enemies
         public override void _Ready()
         {
             Health = Stats.Attributes[AttributeType.MaxHealth].Value;
-            _target = Waypoints.points[waypointIndex];
             sprite.Texture = Stats.sprite;
         }
-
 
         public override void _Process(double delta)
         {
@@ -79,7 +77,7 @@ namespace Enemies
             
             // Get the direction of the target, and the distance to move this frame
             Vector2 position = Position;
-            Vector2 location = _target.Position;
+            Vector2 location = points[waypointIndex];
             var distanceThisFrame = (float)(Stats.Attributes[AttributeType.Speed].Value * delta);
 
             Position = position.MoveToward(location, distanceThisFrame);
@@ -87,13 +85,13 @@ namespace Enemies
             Vector2 difference = location - position; // Distance & direction to next target
 
             // If within this frame the enemy will pass the waypoint, it's a guaranteed hit
-            if (difference.LengthSquared() <= Stats.distanceToWaypoint * Stats.distanceToWaypoint)
+            if (difference.LengthSquared() <= Stats.DistanceToWaypoint * Stats.DistanceToWaypoint)
             {
                 GetNextWaypoint();
             }
             else
             {
-                float sqrDistance = (Position - _target.Position).LengthSquared();
+                float sqrDistance = (Position - points[waypointIndex]).LengthSquared();
                 mapProgress = waypointIndex + 1 - (sqrDistance / (_maxDistance * _maxDistance));
             }
 
@@ -109,7 +107,7 @@ namespace Enemies
         private void GetNextWaypoint()
         {
             // If the enemy has reached the end, destroy
-            if (waypointIndex >= Waypoints.points.Length - 1)
+            if (waypointIndex >= points.Length - 1)
             {
                 FinishPath();
                 return;
@@ -117,9 +115,8 @@ namespace Enemies
         
             // Get the next waypoint
             waypointIndex++;
-            _target = Waypoints.points[waypointIndex];
             mapProgress = waypointIndex;
-            _maxDistance = Position.DistanceTo(_target.Position);
+            _maxDistance = Position.DistanceTo(points[waypointIndex]);
         }
         
         /// <summary>
@@ -134,19 +131,18 @@ namespace Enemies
             }
                 
             // Get the direction and move in that direction
-            Vector2 dir = Waypoints.points[waypointIndex - 1].Position - Position;
+            Vector2 dir = points[waypointIndex - 1] - Position;
             // TODO - Perform translation in godot
             // transform.Translate(dir.normalized * (Mathf.Abs(_enemy.speed.GetTrueStat()) * delta), Space.World);
-            mapProgress = waypointIndex - (Stats.distanceToWaypoint / _maxDistance);
+            mapProgress = waypointIndex - (Stats.DistanceToWaypoint / _maxDistance);
         
             // If the enemy hasn't reached the previous waypoint, there's no point knocking it back further
-            if (!(Position.DistanceTo(Waypoints.points[waypointIndex - 1].Position) <= Stats.distanceToWaypoint)) return;
+            if (!(Position.DistanceTo(points[waypointIndex - 1]) <= Stats.DistanceToWaypoint)) return;
 
             // Get the next waypoint
             waypointIndex--;
-            _target = Waypoints.points[waypointIndex];
             mapProgress = waypointIndex;
-            _maxDistance = _target.Position.DistanceTo(Waypoints.points[waypointIndex + 1].Position);
+            _maxDistance = points[waypointIndex].DistanceTo(points[waypointIndex + 1]);
         }
         
         /// <summary>
@@ -161,7 +157,7 @@ namespace Enemies
                 return;
             }
             
-            Vector2 v = _target.Position - Position;
+            Vector2 v = points[waypointIndex] - Position;
             Vector2 w = turretLocation - Position;
             float multiplier = v.Normalized().Dot(w.Normalized());
             

@@ -19,7 +19,7 @@ public partial class Attribute : Resource
     private Godot.Collections.Dictionary<Variant, AttributeModifier> _modifiers = new();
     
     private float _value;
-    public float Value => CalculateValue(_value, Attributes.Global[Name]._modifiers);
+    public float Value => CalculateValue(Base, Attributes.Global[Name]._modifiers);
 
     [Export]
     public float Min { get; set; } = -Mathf.Inf;

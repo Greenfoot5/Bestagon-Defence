@@ -30,17 +30,17 @@ namespace Levels.Maps
         /// </summary>
         [ExportGroup("Selection")]
         [Export]
-        public CurvedReference turretOptionWeight;
+        public CurvedVariable turretOptionWeight;
         /// <summary>
         /// The weighted chance of a module card to appear in the selection
         /// </summary>
         [Export]
-        public CurvedReference moduleOptionWeight;
+        public CurvedVariable moduleOptionWeight;
         /// <summary>
         /// The weighted chance of additional lives to appear in the selection
         /// </summary>
         [Export]
-        public CurvedReference lifeOptionWeight;
+        public CurvedVariable lifeOptionWeight;
         /// <summary>
         /// How many lives a life card will grant
         /// </summary>
@@ -108,18 +108,6 @@ namespace Levels.Maps
         [ExportGroup("Costs")]
         [Export]
         public string selectionCostFormula;
-        
-        /// <summary>
-        /// Wave based multiplier for health
-        /// </summary>
-        [ExportGroup("Wave Scaling")]
-        [Export]
-        public CurvedReference health;
-        /// <summary>
-        /// Wave based multiplier for count
-        /// </summary>
-        [Export]
-        public CurvedReference enemyCount;
         
         /// <summary>
         /// Lives to reroll ration for the selection

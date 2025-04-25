@@ -62,7 +62,7 @@ public partial class EnemyStats : Resource
     /// The distance from enemy to waypoint before it's considered reached
     /// </summary>
     [Export] 
-    public float distanceToWaypoint = 0.05f;
+    public float DistanceToWaypoint = 0.05f;
     
     /// <summary>
     /// A list of the effect names (internal names) that the enemy is immune to

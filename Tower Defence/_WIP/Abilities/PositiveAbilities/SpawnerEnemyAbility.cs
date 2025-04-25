@@ -61,7 +61,8 @@ namespace _WIP.Abilities.PositiveAbilities
                 // Spawn from the enemy's location or from the start of the map
                 if (doSpawnFromStart) {
                     var spawned = (Node2D) spawn.Instantiate();
-                    spawned.Position = Waypoints.points[0].Position;
+                    // TODO - Check paths index properly
+                    // spawned.Position = Waypoints.paths[0][0];
                     
                     // TODO - User timer
                     // yield return new WaitForSeconds(spawnTimer);
@@ -76,7 +77,7 @@ namespace _WIP.Abilities.PositiveAbilities
                     enemy.waypointIndex = enemy.waypointIndex;
                 }
 
-                WaveSpawner.enemiesAlive += 1;
+                WaveSpawner.EnemiesAlive += 1;
             }
             yield break;
         }

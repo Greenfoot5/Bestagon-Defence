@@ -50,7 +50,6 @@ namespace Levels._Nodes
 
         public override void _EnterTree()
         {
-            GD.Print(initialTurret.displayName);
             if (initialTurret != null)
                 LoadTurret(initialTurret);
         }
@@ -66,10 +65,8 @@ namespace Levels._Nodes
         /// <param name="blueprint">The blueprint of the turret to build</param>
         public void LoadTurret(TurretBlueprint blueprint)
         {
-            GD.Print("Loading Turret");
             var newTurret = (Turret)blueprint.prefab.Instantiate();
             AddChild(newTurret);
-            GD.Print(newTurret.Name);
             newTurret.Name = "_" + newTurret.Name;
             Turret = newTurret;
             TurretBlueprint = blueprint;

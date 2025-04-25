@@ -18,7 +18,7 @@ namespace Gameplay
         /// How much energy the player starts the level with
         /// </summary>
         [Export]
-        public int startEnergy = 200;
+        public int StartEnergy = 200;
         public static int Energy
         {
             get => _energy;
@@ -45,7 +45,7 @@ namespace Gameplay
         /// How many lives the player starts the level with
         /// </summary>
         [Export]
-        public int startLives;
+        public int StartLives = 20;
         public static int Lives
         {
             get => _lives;
@@ -60,7 +60,7 @@ namespace Gameplay
             }
         }
 
-        private static int _rounds;
+        private static int _rounds = 1;
         public static int Rounds
         { 
             get => _rounds;
@@ -97,9 +97,9 @@ namespace Gameplay
         {
             if (!_active)
             {
-                _energy = startEnergy;
+                _energy = StartEnergy;
                 _powercells = 0;
-                _lives = startLives;
+                _lives = StartLives;
                 _rounds = 0;
                 _randomSeed = Environment.TickCount;
                 GD.Seed((ulong)_randomSeed);

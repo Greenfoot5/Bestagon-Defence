@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using Abstract.Data;
 using Gameplay;
@@ -127,17 +126,17 @@ namespace UI.Shop
                     // Can only have one life option
                     // We clamp to make sure they don't affect each other if < 0
                     float choice = Shop.random.Range(0f,
-                        Mathf.Clamp(_levelData.turretOptionWeight.Value.Sample(GameStats.Rounds), 0f, float.MaxValue)
-                        + Mathf.Clamp(_levelData.moduleOptionWeight.Value.Sample(GameStats.Rounds), 0f, float.MaxValue)
-                        + (!hasLife ? 1 : 0) * Mathf.Clamp(_levelData.lifeOptionWeight.Value.Sample(GameStats.Rounds), 0f, float.MaxValue));
-                    if (choice <= _levelData.moduleOptionWeight.Value.Sample(GameStats.Rounds))
+                        Mathf.Clamp(_levelData.turretOptionWeight.value.Sample(GameStats.Rounds), 0f, float.MaxValue)
+                        + Mathf.Clamp(_levelData.moduleOptionWeight.value.Sample(GameStats.Rounds), 0f, float.MaxValue)
+                        + (!hasLife ? 1 : 0) * Mathf.Clamp(_levelData.lifeOptionWeight.value.Sample(GameStats.Rounds), 0f, float.MaxValue));
+                    if (choice <= _levelData.moduleOptionWeight.value.Sample(GameStats.Rounds))
                     {
                         // Grants an Module option
                         selectedModules.Add(GenerateModuleItem(i, selectedModules));
 
                     }
-                    else if (_levelData.moduleOptionWeight.Value.Sample(GameStats.Rounds) < choice && choice <=
-                             _levelData.moduleOptionWeight.Value.Sample(GameStats.Rounds) + _levelData.turretOptionWeight.Value.Sample(GameStats.Rounds))
+                    else if (_levelData.moduleOptionWeight.value.Sample(GameStats.Rounds) < choice && choice <=
+                             _levelData.moduleOptionWeight.value.Sample(GameStats.Rounds) + _levelData.turretOptionWeight.value.Sample(GameStats.Rounds))
                     {
                         selectedTurrets.Add(GenerateTurretItem(i, selectedTurrets));
                     }
@@ -270,7 +269,7 @@ namespace UI.Shop
         {
             try
             {
-                if (_levelData.turretOptionWeight.Value.Sample(GameStats.Rounds) < 0)
+                if (_levelData.turretOptionWeight.value.Sample(GameStats.Rounds) < 0)
                     _levelData.turrets.ToWeightedList(GameStats.Rounds)
                         .GetRandomItems(selectionCount, _levelData.turretDuplicateCheck);
             }
@@ -280,7 +279,7 @@ namespace UI.Shop
             }
             try
             {
-                if (_levelData.moduleOptionWeight.Value.Sample(GameStats.Rounds) < 0)
+                if (_levelData.moduleOptionWeight.value.Sample(GameStats.Rounds) < 0)
                     _levelData.moduleHandlers.ToWeightedList(GameStats.Rounds)
                         .GetRandomItems(selectionCount, _levelData.moduleDuplicateCheck);
             }
