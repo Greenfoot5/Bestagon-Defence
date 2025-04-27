@@ -65,7 +65,7 @@ namespace Turrets.Gunner
             }
         
             // Rotates the turret each frame
-            LookAtTarget();
+            LookAtTarget(delta);
 
             if (!IsLookingAtTarget())
             {

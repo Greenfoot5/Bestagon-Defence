@@ -45,7 +45,7 @@ namespace Turrets.Laser
                 cooldownCountdown -= delta;
 
                 if (TargetEnemy is not null)
-                    LookAtTarget();
+                    LookAtTarget(delta);
                 
                 // if (!lineRenderer.enabled) return;
                 
@@ -62,7 +62,7 @@ namespace Turrets.Laser
             }
         
             // Rotates the turret each frame
-            LookAtTarget();
+            LookAtTarget(delta);
             
             // One of the two laser timers expired
             if (durationCountdown <= 0)

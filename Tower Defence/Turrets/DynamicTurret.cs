@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Abstract.Attributes;
 using Enemies;
 using Godot;
@@ -61,6 +62,7 @@ namespace Turrets
         /// </summary>
         public override void _Ready()
         {
+            base._Ready();
             // Start finding targets
             var targeting = new Timer();
             targeting.WaitTime = UpdateTargetTimer;
@@ -85,12 +87,9 @@ namespace Turrets
             }
 
             // Create a list of enemies within range
-            // TODO - Update FindGodotObjectsWithTag to Godot
-            Enemy[] enemiesInRange = Array.Empty<Enemy>();
-            // GodotObject[] enemiesInRange = (from enemy in GodotObject.FindGodotObjectsWithTag(enemyTag)
-            //     let distanceToEnemy = Vector2.Distance(Position, enemy.Position)
-            //     where distanceToEnemy <= range.GetStat()
-            //     select enemy).ToArray();
+            Enemy[] enemiesInRange = (from enemy in Range.GetOverlappingAreas()
+                where enemy is Enemy
+                select (Enemy)enemy).ToArray();
             // Set the current value to be too high or too low.
             // Value is based on targeting method
             float currentValue = Mathf.Inf;
@@ -107,6 +106,8 @@ namespace Turrets
                 TargetEnemy = null;
                 return;
             }
+            
+            GD.Print("Found Enemy!");
             
             TargetEnemy ??= enemiesInRange[0];
 
@@ -191,16 +192,13 @@ namespace Turrets
         /// <summary>
         /// Rotates the turret towards our target
         /// </summary>
-        protected void LookAtTarget()
+        protected void LookAtTarget(double delta)
         {
-            Vector2 aimDir = (TargetEnemy.Position - PartToRotate.Position).Normalized();
-
-            // float rotationAngleNeed = Vector2.SignedAngle(partToRotate.up, aimDir);
-            float rotationAngleNeed = aimDir.Angle();
-            // TODO - fix rotation
-            // float zAngle = Mathf.Clamp(rotationAngleNeed, -rotationSpeed.GetStat() * delta,
-            //     rotationSpeed.GetStat() * delta);
-            // partToRotate.Rotate(0f, 0f, zAngle);
+            float rotationAngleNeed = PartToRotate.GetAngleTo(TargetEnemy.Position) + float.Pi / 2;
+            
+            double zAngle = Mathf.Clamp(rotationAngleNeed, -Stats[AttributeType.RotationSpeed].Value * delta,
+                Stats[AttributeType.RotationSpeed].Value * delta);
+            PartToRotate.Rotation += (float)zAngle;
         }
 
         /// <summary>

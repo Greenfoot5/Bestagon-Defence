@@ -11,8 +11,12 @@ namespace Turrets
         /// </summary>
         [Export]
         public Node2D RangeDisplay;
+        [Export]
+        public Area2D Range;
         
-        /// <summary> How long left until the next attack </summary>
+        /// <summary>
+        /// How long left until the next attack
+        /// </summary>
         [Export]
         public double FireCountdown;
 
@@ -27,8 +31,9 @@ namespace Turrets
         /// </summary>
         public override void _Ready()
         {
-            RangeDisplay.Visible = false;
-            RangeDisplay.ProcessMode = ProcessModeEnum.Disabled;
+            // RangeDisplay.Visible = false;
+            // RangeDisplay.ProcessMode = ProcessModeEnum.Disabled;
+            UpdateRange();
         }
 
         protected void Update()
@@ -51,20 +56,11 @@ namespace Turrets
         public virtual void UpdateRange()
         {
             // Update the range shader's size
-            Vector2 localScale = GetScale();
-            RangeDisplay.Scale = new Vector2(
-                Stats[AttributeType.Range].Value / localScale.X * 2,
-                Stats[AttributeType.Range].Value / localScale.Y * 2);
-        }
-        
-        /// <summary>
-        /// Allows the editor to display the range of the turret
-        /// </summary>
-        // TODO - Godot version of gizmos
-        private void OnDrawGizmosSelected()
-        {
-            // Gizmos.color = Color.red;
-            // Gizmos.DrawWireSphere(Position, range.GetStat());
+            // Vector2 localScale = GetScale();
+            // RangeDisplay.Scale = new Vector2(
+            //     Stats[AttributeType.Range].Value / localScale.X * 2,
+            //     Stats[AttributeType.Range].Value / localScale.Y * 2);
+            // ((CircleShape2D)((CollisionShape2D)Range.GetChild(0)).Shape).Radius = Stats[AttributeType.Range].Value;
         }
         
         /// <summary>
