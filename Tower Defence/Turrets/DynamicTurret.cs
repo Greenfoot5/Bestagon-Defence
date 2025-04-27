@@ -85,7 +85,7 @@ namespace Turrets
         private void UpdateTarget()
         {
             // If the turret is not aggressively retargeting, check if the target is still in range
-            if (!_aggressiveRetargeting && TargetEnemy != null)
+            if (!_aggressiveRetargeting && IsInstanceValid(TargetEnemy))
             {
                 float distanceToEnemy = Position.DistanceSquaredTo(TargetEnemy.Position);
                 if (distanceToEnemy <= Stats[AttributeType.Range].Value * Stats[AttributeType.Range].Value)
@@ -94,7 +94,7 @@ namespace Turrets
 
             // Create a list of enemies within range
             Enemy[] enemiesInRange = (from enemy in Range.GetOverlappingAreas()
-                where enemy is Enemy
+                where enemy is Enemy && IsInstanceValid(enemy)
                 select (Enemy)enemy).ToArray();
             // Set the current value to be too high or too low.
             // Value is based on targeting method
@@ -113,7 +113,10 @@ namespace Turrets
                 return;
             }
             
-            TargetEnemy ??= enemiesInRange[0];
+            if (!IsInstanceValid(TargetEnemy))
+            {
+                TargetEnemy = enemiesInRange[0];
+            }
 
             // Loop through the enemies and find the most valuable
             foreach (Enemy enemy in enemiesInRange)
@@ -198,6 +201,8 @@ namespace Turrets
         /// </summary>
         protected void LookAtTarget(double delta)
         {
+            if (!IsInstanceValid(TargetEnemy)) return;
+            
             float rotationAngleNeed = PartToRotate.GetAngleTo(TargetEnemy.Position) + float.Pi / 2;
             
             double zAngle = Mathf.Clamp(rotationAngleNeed, -Stats[AttributeType.RotationSpeed].Value * delta,

@@ -13,49 +13,51 @@ namespace Turrets
         [Export]
         public Attributes Stats = new(
             new Godot.Collections.Dictionary<AttributeType, Attribute> { 
-                [AttributeType.Speed] = new(30f),
-                [AttributeType.ExplosionRadius] = new(0f, min:0f),
-                [AttributeType.Knockback] = new(0f, min:0f),
-                [AttributeType.Damage] = new(5f),
+                [AttributeType.Speed] = new(AttributeType.Speed, 30f),
+                [AttributeType.ExplosionRadius] = new(AttributeType.ExplosionRadius, 0f, min:0f),
+                [AttributeType.Knockback] = new(AttributeType.Knockback, 0f, min:0f),
+                [AttributeType.Damage] = new(AttributeType.Damage, 5f),
             });
 
         
         [Export]
-        public Turret source;
-        public Enemy target;
-        public Vector2 targetLocation;
-        public bool useLocation;
+        public Turret Source;
+        public Enemy Target;
+        public Vector2 TargetLocation;
+        public bool UseLocation;
 
         // TODO - Convert to Enum?
         /// <summary>
         /// Hits all enemies on path
         /// </summary>
         [ExportGroup("Types")]
+        // TODO - Implement isEtheral
         [Export]
-        public bool isEthereal;
+        public bool IsEthereal;
         /// <summary>
         /// Hits the first enemy it touches, rather than just target
         /// </summary>
         [Export]
-        public bool willHitFirst;
+        // TODO - Implement willHitFirst
+        public bool WillHitFirst;
     
         /// <summary>
         /// The effect spawned when the bullet hits a target
         /// </summary>
         [Export]
-        private PackedScene impactEffect;
+        private PackedScene _impactEffect;
         /// <summary>
         /// Explosion effect
         /// </summary>
         [Export]
-        private PackedScene explodeEffect;
+        private PackedScene _explodeEffect;
         /// <summary>
         /// Explosion collision shape
         /// </summary>
         // [Export]
         // private CollisionShape2D explodeArea;
         
-        private readonly List<ulong> _hitEnemies = new();
+        private readonly List<ulong> _hitEnemies = [];
         
         /// <summary>
         /// Sets the new transform the bullet shoot go towards
@@ -64,9 +66,9 @@ namespace Turrets
         /// <param name="turret">The turret telling the bullet to seek a target</param>
         public void Seek(Enemy newTarget, Turret turret)
         {
-            target = newTarget;
-            source = turret;
-            useLocation = false;
+            Target = newTarget;
+            Source = turret;
+            UseLocation = false;
             Stats[AttributeType.Damage] = new Attribute(turret.Stats[AttributeType.Damage]);
         }
         
@@ -77,9 +79,9 @@ namespace Turrets
         /// <param name="turret">The turret telling the bullet to seek the location</param>
         public void Seek(Vector2 location, Turret turret)
         {
-            targetLocation = location;
-            source = turret;
-            useLocation = true;
+            TargetLocation = location;
+            Source = turret;
+            UseLocation = true;
             Stats[AttributeType.Damage] = new Attribute(turret.Stats[AttributeType.Damage]);
         }
 
@@ -89,12 +91,12 @@ namespace Turrets
         public override void _Process(double delta)
         {
             // Check the bullet still have a target to move towards
-            if (target == null && !useLocation)
+            if ((!IsInstanceValid(Target)) && !UseLocation)
                 QueueFree();
-            else if (useLocation)
-                SeekTarget(targetLocation, false, delta);
+            else if (UseLocation)
+                SeekTarget(TargetLocation, false, delta);
             else
-                SeekTarget(target.Position, true, delta);
+                SeekTarget(Target.Position, true, delta);
         }
         
         /// <summary>
@@ -107,19 +109,9 @@ namespace Turrets
             // Get the direction of the target, and the distance to move this frame
             Vector2 position = Position;
             var distanceThisFrame = (float)(Stats[AttributeType.Speed].Value * delta);
-            GD.Print(Stats[AttributeType.Speed]);
             
             // Move bullet towards target
             Position = Position.MoveToward(location, distanceThisFrame);
-
-            Vector2 difference = location - position;
-            
-            // Has the bullet "hit" the target?
-            if (difference.LengthSquared() <= target.Stats.HitboxSize * target.Stats.HitboxSize)
-            {
-                HitTarget(isEnemy); 
-                return;
-            }
             
             // Rotate to target
             Rotation = (location - position).Normalized().Angle();
@@ -130,14 +122,18 @@ namespace Turrets
         /// </summary>
         private void HitTarget(bool isEnemy, Enemy enemy = null)
         {
-            enemy ??= target;
+            enemy ??= Target;
             
-            var effect = impactEffect.Instantiate<Node2D>();
-            effect.Name = "_" + effect.Name;
-            effect.Position = Position;
-            effect.Rotation = Rotation;
-
-            GetTree().CreateTimer(2).Timeout += () => { effect.QueueFree(); };
+            // TODO - Impact Effects
+            
+            // var effect = impactEffect.Instantiate<Node2D>();
+            // effect.Name = "_" + effect.Name;
+            // effect.Position = Position;
+            // effect.Rotation = Rotation;
+            //
+            // GetTree().CreateTimer(2).Timeout += () => { effect.QueueFree(); };
+            
+            GD.Print(Stats[AttributeType.ExplosionRadius].Value);
 
             if (isEnemy)
             {
@@ -166,7 +162,9 @@ namespace Turrets
         {
             if (enemy == null) return;
             
-            source.Hit(enemy, source, this);
+            GD.Print("Hit!");
+            
+            Source.Hit(enemy, Source, this);
 
             if (Stats[AttributeType.Knockback].Value > 0)
             {
@@ -182,11 +180,12 @@ namespace Turrets
         /// </summary>
         private void Explode()
         {
-            if (explodeEffect is not null)
+            GD.Print("BOOM!");
+            if (_explodeEffect is not null)
             {
                 // Spawn explode effect
                 
-                var effect = explodeEffect.Instantiate<Node2D>();
+                var effect = _explodeEffect.Instantiate<Node2D>();
                 effect.Name = "_" + effect.Name;
                 effect.Position = Position;
                 effect.Rotation = Rotation;
@@ -217,18 +216,28 @@ namespace Turrets
         /// <param name="col">The collider that was touched</param>
         private void OnAreaEntered(Area2D col)
         {
-            if (!(isEthereal || willHitFirst) || col is not Enemy enemy) return;
+            GD.Print(col.GetType());
+            if (col is not Enemy enemy) return;
 
             if (_hitEnemies.Contains(col.GetInstanceId())) return;
             
+            GD.Print("Not already hit");
+            
             _hitEnemies.Add(col.GetInstanceId());
 
-            if (target != null && target.GetInstanceId() == col.GetInstanceId()) return;
-
-            if (!willHitFirst)
-                Damage(target);
-            else
+            if (Target != null && Target.GetInstanceId() == col.GetInstanceId())
+            {
                 HitTarget(true, enemy);
+                return;
+            }
+
+            if (IsEthereal)
+            {
+                if (!WillHitFirst)
+                    Damage(Target);
+                else
+                    HitTarget(true, enemy);
+            }
         }
     }
 }

@@ -194,7 +194,7 @@ namespace Modules.Sniper
         /// <param name="bullet">The bullet to modify</param>
         private void OnShoot(Bullet bullet)
         {
-            switch (bullet.source)
+            switch (bullet.Source)
             {
                 case Shooter:
                     bullet.Stats[AttributeType.Speed].Add(GetSceneUniqueId(), _shooterBulletSpeedChange);

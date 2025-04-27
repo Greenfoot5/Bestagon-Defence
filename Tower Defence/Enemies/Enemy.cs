@@ -204,17 +204,17 @@ namespace Enemies
                 return;
             _isDead = true;
             
-            DeathBitManager.DropEnergy(Position, Stats.DeathMoney);
+            // DeathBitManager.DropEnergy(Position, Stats.DeathMoney);
 
             OnDeath?.Invoke();
 
             // Spawn death effect
-            var effect = (Node2D) Stats.DeathEffect.Instantiate();
-            effect.Position = Position;
-            effect.Name = "_" + effect.Name;
-            GetTree().CreateTimer(5).Timeout += () => effect.QueueFree();
+            // var effect = (Node2D) Stats.DeathEffect.Instantiate();
+            // effect.Position = Position;
+            // effect.Name = "_" + effect.Name;
+            // GetTree().CreateTimer(5).Timeout += () => effect.QueueFree();
             
-            QueueFree();
+            Free();
         }
 
         /// <summary>

@@ -132,7 +132,7 @@ namespace Modules.Bombs
         /// <param name="bullet">The bullet to add stats for</param>
         private void OnShoot(Bullet bullet)
         {
-            switch (bullet.source)
+            switch (bullet.Source)
             {
                 case Choker:
                     bullet.Stats[AttributeType.ExplosionRadius].Add(GetSceneUniqueId(), _chokerExplosionRadiusChange);
@@ -143,8 +143,8 @@ namespace Modules.Bombs
                 case Shooter:
                     bullet.Stats[AttributeType.ExplosionRadius].Add(GetSceneUniqueId(), _shooterExplosionRadiusChange);
                     bullet.Stats[AttributeType.Speed].Add(GetSceneUniqueId(), _shooterBulletSpeedChange);
-                    bullet.useLocation = true;
-                    bullet.targetLocation = bullet.target.Position;
+                    bullet.UseLocation = true;
+                    bullet.TargetLocation = bullet.Target.Position;
                     break;
             }
         }

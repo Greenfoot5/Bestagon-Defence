@@ -20,7 +20,7 @@ metadata/_custom_type_script = "uid://blnrq5atpcclw"
 [sub_resource type="Resource" id="Resource_l2lx8"]
 script = ExtResource("4_82dt4")
 Name = 3
-Base = 7.0
+Base = 0.7
 _modifiers = {}
 Min = inf_neg
 Max = inf

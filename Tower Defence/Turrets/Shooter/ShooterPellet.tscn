@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b07wmtlp10ngi"]
+[gd_scene load_steps=5 format=3 uid="uid://b07wmtlp10ngi"]
 
 [ext_resource type="Script" uid="uid://drvqbyytx8ijt" path="res://Turrets/Bullet.cs" id="1_ilsky"]
 [ext_resource type="Texture2D" uid="uid://dqdclyaiummnh" path="res://Turrets/Shooter/T_ShooterBase_Light.png" id="2_lndna"]
+[ext_resource type="Resource" uid="uid://cmcb6mh82k7y5" path="res://Turrets/Shooter/PelletAttributes.tres" id="2_p5xc8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wr7bq"]
 radius = 200.0
@@ -12,6 +13,7 @@ scale = Vector2(0.03, -0.03)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_ilsky")
+Stats = ExtResource("2_p5xc8")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_lndna")
