@@ -1,0 +1,610 @@
+[gd_scene load_steps=12 format=3 uid="uid://ba4i0b03tnxwn"]
+
+[ext_resource type="PackedScene" uid="uid://ctpe8wmgmufyr" path="res://Levels/@System.prefab.tscn" id="1_tf5uv"]
+[ext_resource type="PackedScene" uid="uid://xieb0bpqncyx" path="res://Levels/LevelBackground.prefab.tscn" id="2_nyoni"]
+[ext_resource type="PackedScene" uid="uid://daeb652ptiyu3" path="res://UI/LevelCanvas_Screen.prefab.tscn" id="3_pq7ve"]
+[ext_resource type="PackedScene" uid="uid://byjsl0dj1gws5" path="res://Levels/_Tiles/Tile_Buildable.prefab.tscn" id="4_u0vjr"]
+[ext_resource type="PackedScene" uid="uid://d1ocjsgyjfhhi" path="res://Levels/_Tiles/Tile_Start.prefab.tscn" id="5_hw7ve"]
+[ext_resource type="PackedScene" uid="uid://b6kydmu88g1bk" path="res://Levels/_Tiles/Tile_End.prefab.tscn" id="6_go2kx"]
+[ext_resource type="PackedScene" uid="uid://jfgbalgaxb53" path="res://Levels/_Tiles/Tile_Path.prefab.tscn" id="7_ecliw"]
+[ext_resource type="PackedScene" uid="uid://b270o1vaaahf1" path="res://Levels/_Tiles/Waypoint.prefab.tscn" id="8_kw5wc"]
+[ext_resource type="PackedScene" uid="uid://csbrvqal5y5dv" path="res://Gameplay/Camera/MainCamera.prefab.tscn" id="9_2541r"]
+[ext_resource type="PackedScene" uid="uid://d1ifn2y5xul52" path="res://Gameplay/GameManager.prefab.tscn" id="10_fmt3l"]
+
+[sub_resource type="Environment" id="Environment_e71xd"]
+ambient_light_color = Color(0.212, 0.227, 0.259, 1)
+ambient_light_sky_contribution = 0.0
+fog_light_color = Color(0.5, 0.5, 0.5, 1)
+
+[node name="RootNode3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_e71xd")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+visible = false
+
+[node name="_System\'" parent="." instance=ExtResource("1_tf5uv")]
+
+[node name="AnimationTree" parent="_System\'/Transition" index="1"]
+root_motion_local = false
+
+[node name="_UI\'" type="Node3D" parent="."]
+
+[node name="LevelBackground" parent="_UI\'" instance=ExtResource("2_nyoni")]
+
+[node name="ScreenCanvas" parent="_UI\'" instance=ExtResource("3_pq7ve")]
+
+[node name="Map" type="Node3D" parent="."]
+
+[node name="Grid" type="Node" parent="Map"]
+
+[node name="Nodes" type="Node3D" parent="Map"]
+
+[node name="Node" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(-2.38419e-07, 6)
+
+[node name="Node (1)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(-5.175, 3)
+
+[node name="Node (2)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(-5.175, -3)
+
+[node name="Node (3)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(-4.76837e-07, -6)
+
+[node name="Node (4)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(5.175, -3)
+
+[node name="Node (5)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(5.175, 3)
+
+[node name="Node (6)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(-1.725, 5)
+
+[node name="Node (7)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(-5.175, 2)
+
+[node name="Node (8)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(-4.3125, -3.5)
+
+[node name="Node (9)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(0.8625, -5.5)
+
+[node name="Node (10)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(5.175, -2)
+
+[node name="Node (11)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(4.3125, 3.5)
+
+[node name="Node (12)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(-2.5875, 4.5)
+
+[node name="Node (13)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(-5.175, 0)
+
+[node name="Node (14)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(-3.45, -4)
+
+[node name="Node (15)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(1.725, -5)
+
+[node name="Node (16)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(5.175, -1)
+
+[node name="Node (17)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(3.45, 4)
+
+[node name="Node (18)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(-3.45, 4)
+
+[node name="Node (19)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(-5.175, -1)
+
+[node name="Node (20)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(-1.725, -5)
+
+[node name="Node (21)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(2.5875, -4.5)
+
+[node name="Node (22)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(5.175, 0)
+
+[node name="Node (23)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(2.5875, 4.5)
+
+[node name="Node (24)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(-4.3125, 3.5)
+
+[node name="Node (25)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(-5.175, -2)
+
+[node name="Node (26)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(-0.8625, -5.5)
+
+[node name="Node (27)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(3.45, -4)
+
+[node name="Node (28)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(5.175, 2)
+
+[node name="Node (29)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(1.725, 5)
+
+[node name="Node (30)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(0.8625, 5.5)
+
+[node name="Node (31)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(0, 5)
+
+[node name="Node (32)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(0, 4)
+
+[node name="Node (33)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(-0.8625, 3.5)
+
+[node name="Node (34)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(-1.725, 3)
+
+[node name="Node (35)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(-4.3125, 2.5)
+
+[node name="Node (36)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(-3.45, 2)
+
+[node name="Node (37)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(-3.45, 1)
+
+[node name="Node (38)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(-3.45, 0)
+
+[node name="Node (39)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(-3.45, -2)
+
+[node name="Node (40)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(-4.3125, -2.5)
+
+[node name="Node (41)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(-2.5875, -2.5)
+
+[node name="Node (42)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(0, -5)
+
+[node name="Node (43)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(0, -4)
+
+[node name="Node (44)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(4.3125, -2.5)
+
+[node name="Node (45)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(3.45, -2)
+
+[node name="Node (46)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(4.3125, 2.5)
+
+[node name="Node (47)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(3.45, 2)
+
+[node name="Node (48)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(2.5875, 2.5)
+
+[node name="Node (49)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(1.725, 3)
+
+[node name="Node (50)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(3.45, -1)
+
+[node name="Node (51)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(3.45, 0)
+
+[node name="Node (52)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(-1.725, -3)
+
+[node name="Node (53)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(0.8625, -3.5)
+
+[node name="Node (54)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(1.725, -3)
+
+[node name="Node (55)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(2.5875, 0.5)
+
+[node name="Node (56)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(1.725, 1)
+
+[node name="Node (57)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+
+[node name="Node (58)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(0, 2)
+
+[node name="Node (59)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(0.8625, 2.5)
+
+[node name="Node (60)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(-0.8625, 1.5)
+
+[node name="Node (61)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(-1.725, 1)
+
+[node name="Node (62)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(-1.725, 0)
+
+[node name="Node (63)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(-1.725, -1)
+
+[node name="Node (64)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(-0.8625, -1.5)
+
+[node name="Node (65)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(0, -2)
+
+[node name="Node (66)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(0.8625, -1.5)
+
+[node name="Node (67)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(1.725, -1)
+
+[node name="Node (68)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(1.725, 0)
+
+[node name="Node (69)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(-1.725, 2)
+
+[node name="Node (70)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(-2.5875, -0.5)
+
+[node name="Node (71)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(-0.8625, -2.5)
+
+[node name="Node (72)" parent="Map/Nodes" instance=ExtResource("4_u0vjr")]
+position = Vector2(1.725, -2)
+
+[node name="Path" type="Node3D" parent="Map"]
+
+[node name="START" parent="Map/Path" instance=ExtResource("5_hw7ve")]
+position = Vector2(2.38419e-07, 7)
+scale = Vector2(1, 1)
+
+[node name="END" parent="Map/Path" instance=ExtResource("6_go2kx")]
+position = Vector2(0.8625, 6.5)
+scale = Vector2(1, 1)
+
+[node name="Path" parent="Map/Path" instance=ExtResource("7_ecliw")]
+position = Vector2(-0.8625, 6.5)
+scale = Vector2(1, 1)
+
+[node name="Path (1)" parent="Map/Path" instance=ExtResource("7_ecliw")]
+position = Vector2(-1.725, 6)
+scale = Vector2(1, 1)
+
+[node name="Path (2)" parent="Map/Path" instance=ExtResource("7_ecliw")]
+position = Vector2(-2.5875, 5.5)
+scale = Vector2(1, 1)
+
+[node name="Path (3)" parent="Map/Path" instance=ExtResource("7_ecliw")]
+position = Vector2(-3.45, 5)
+scale = Vector2(1, 1)
+
+[node name="Path (4)" parent="Map/Path" instance=ExtResource("7_ecliw")]
+position = Vector2(-4.3125, 4.5)
+scale = Vector2(1, 1)
+
+[node name="Path (5)" parent="Map/Path" instance=ExtResource("7_ecliw")]
+position = Vector2(-5.175, 4)
+scale = Vector2(1, 1)
+
+[node name="Path (6)" parent="Map/Path" instance=ExtResource("7_ecliw")]
+position = Vector2(-6.0375, 3.5)
+scale = Vector2(1, 1)
+
+[node name="Path (7)" parent="Map/Path" instance=ExtResource("7_ecliw")]
+position = Vector2(-6.0375, 2.5)
+scale = Vector2(1, 1)
+
+[node name="Path (8)" parent="Map/Path" instance=ExtResource("7_ecliw")]
+position = Vector2(-6.0375, 1.5)
+scale = Vector2(1, 1)
+
+[node name="Path (9)" parent="Map/Path" instance=ExtResource("7_ecliw")]
+position = Vector2(-6.0375, 0.5)
+scale = Vector2(1, 1)
+
+[node name="Path (10)" parent="Map/Path" instance=ExtResource("7_ecliw")]
+position = Vector2(-6.0375, -0.5)
+scale = Vector2(1, 1)
+
+[node name="Path (11)" parent="Map/Path" instance=ExtResource("7_ecliw")]
+position = Vector2(-6.0375, -1.5)
+scale = Vector2(1, 1)
+
+[node name="Path (12)" parent="Map/Path" instance=ExtResource("7_ecliw")]
+position = Vector2(-6.0375, -2.5)
+scale = Vector2(1, 1)
+
+[node name="Path (13)" parent="Map/Path" instance=ExtResource("7_ecliw")]
+position = Vector2(-6.0375, -3.5)
+scale = Vector2(1, 1)
+
+[node name="Path (14)" parent="Map/Path" instance=ExtResource("7_ecliw")]
+position = Vector2(-5.175, -4)
+scale = Vector2(1, 1)
+
+[node name="Path (15)" parent="Map/Path" instance=ExtResource("7_ecliw")]
+position = Vector2(-4.3125, -4.5)
+scale = Vector2(1, 1)
+
+[node name="Path (16)" parent="Map/Path" instance=ExtResource("7_ecliw")]
+position = Vector2(-3.45, -5)
+scale = Vector2(1, 1)
+
+[node name="Path (17)" parent="Map/Path" instance=ExtResource("7_ecliw")]
+position = Vector2(-2.5875, -5.5)
+scale = Vector2(1, 1)
+
+[node name="Path (18)" parent="Map/Path" instance=ExtResource("7_ecliw")]
+position = Vector2(-1.725, -6)
+scale = Vector2(1, 1)
+
+[node name="Path (19)" parent="Map/Path" instance=ExtResource("7_ecliw")]
+position = Vector2(-0.862499, -6.5)
+scale = Vector2(1, 1)
+
+[node name="Path (20)" parent="Map/Path" instance=ExtResource("7_ecliw")]
+position = Vector2(-2.38419e-07, -7)
+scale = Vector2(1, 1)
+
+[node name="Path (21)" parent="Map/Path" instance=ExtResource("7_ecliw")]
+position = Vector2(0.8625, -6.5)
+scale = Vector2(1, 1)
+
+[node name="Path (22)" parent="Map/Path" instance=ExtResource("7_ecliw")]
+position = Vector2(1.725, -6)
+scale = Vector2(1, 1)
+
+[node name="Path (23)" parent="Map/Path" instance=ExtResource("7_ecliw")]
+position = Vector2(2.5875, -5.5)
+scale = Vector2(1, 1)
+
+[node name="Path (24)" parent="Map/Path" instance=ExtResource("7_ecliw")]
+position = Vector2(3.45, -5)
+scale = Vector2(1, 1)
+
+[node name="Path (25)" parent="Map/Path" instance=ExtResource("7_ecliw")]
+position = Vector2(4.3125, -4.5)
+scale = Vector2(1, 1)
+
+[node name="Path (26)" parent="Map/Path" instance=ExtResource("7_ecliw")]
+position = Vector2(5.175, -4)
+scale = Vector2(1, 1)
+
+[node name="Path (27)" parent="Map/Path" instance=ExtResource("7_ecliw")]
+position = Vector2(6.0375, -3.5)
+scale = Vector2(1, 1)
+
+[node name="Path (28)" parent="Map/Path" instance=ExtResource("7_ecliw")]
+position = Vector2(6.0375, -2.5)
+scale = Vector2(1, 1)
+
+[node name="Path (29)" parent="Map/Path" instance=ExtResource("7_ecliw")]
+position = Vector2(6.0375, -1.5)
+scale = Vector2(1, 1)
+
+[node name="Path (30)" parent="Map/Path" instance=ExtResource("7_ecliw")]
+position = Vector2(6.0375, -0.5)
+scale = Vector2(1, 1)
+
+[node name="Path (31)" parent="Map/Path" instance=ExtResource("7_ecliw")]
+position = Vector2(6.0375, 0.5)
+scale = Vector2(1, 1)
+
+[node name="Path (32)" parent="Map/Path" instance=ExtResource("7_ecliw")]
+position = Vector2(6.0375, 1.5)
+scale = Vector2(1, 1)
+
+[node name="Path (33)" parent="Map/Path" instance=ExtResource("7_ecliw")]
+position = Vector2(6.0375, 2.5)
+scale = Vector2(1, 1)
+
+[node name="Path (34)" parent="Map/Path" instance=ExtResource("7_ecliw")]
+position = Vector2(6.0375, 3.5)
+scale = Vector2(1, 1)
+
+[node name="Path (35)" parent="Map/Path" instance=ExtResource("7_ecliw")]
+position = Vector2(5.175, 4)
+scale = Vector2(1, 1)
+
+[node name="Path (36)" parent="Map/Path" instance=ExtResource("7_ecliw")]
+position = Vector2(4.3125, 4.5)
+scale = Vector2(1, 1)
+
+[node name="Path (37)" parent="Map/Path" instance=ExtResource("7_ecliw")]
+position = Vector2(3.45, 5)
+scale = Vector2(1, 1)
+
+[node name="Path (38)" parent="Map/Path" instance=ExtResource("7_ecliw")]
+position = Vector2(2.5875, 5.5)
+scale = Vector2(1, 1)
+
+[node name="Path (39)" parent="Map/Path" instance=ExtResource("7_ecliw")]
+position = Vector2(1.725, 6)
+scale = Vector2(1, 1)
+
+[node name="Waypoints" type="Node3D" parent="Map"]
+
+[node name="MonoBehaviour" type="Node" parent="Map/Waypoints"]
+
+[node name="Waypoint" parent="Map/Waypoints" instance=ExtResource("8_kw5wc")]
+position = Vector2(0, 7)
+
+[node name="Waypoint (1)" parent="Map/Waypoints" instance=ExtResource("8_kw5wc")]
+position = Vector2(-6.0375, 3.5)
+
+[node name="Waypoint (2)" parent="Map/Waypoints" instance=ExtResource("8_kw5wc")]
+position = Vector2(-6.0375, -3.5)
+
+[node name="Waypoint (3)" parent="Map/Waypoints" instance=ExtResource("8_kw5wc")]
+position = Vector2(-2.38419e-07, -7)
+
+[node name="Waypoint (4)" parent="Map/Waypoints" instance=ExtResource("8_kw5wc")]
+position = Vector2(6.0375, -3.5)
+
+[node name="Waypoint (5)" parent="Map/Waypoints" instance=ExtResource("8_kw5wc")]
+position = Vector2(6.0375, 3.5)
+
+[node name="Waypoint (6)" parent="Map/Waypoints" instance=ExtResource("8_kw5wc")]
+position = Vector2(0.8625, 6.5)
+
+[node name="Deselect" type="Node3D" parent="Map"]
+transform = Transform3D(1015.87, 0, 0, 0, 1015.87, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="SpriteRenderer" type="Node" parent="Map/Deselect"]
+
+[node name="MonoBehaviour" type="Node" parent="Map/Deselect"]
+
+[node name="BoxCollider2D" type="Node" parent="Map/Deselect"]
+
+[node name="Camera" parent="." instance=ExtResource("9_2541r")]
+
+[node name="_Managers\'" type="Node3D" parent="."]
+
+[node name="EventSystem" type="Node3D" parent="_Managers\'"]
+
+[node name="MonoBehaviour" type="Node" parent="_Managers\'/EventSystem"]
+
+[node name="MonoBehaviour2" type="Node" parent="_Managers\'/EventSystem"]
+
+[node name="GameManager" parent="_Managers\'" instance=ExtResource("10_fmt3l")]
+
+[editable path="_System\'"]
+[editable path="_System\'/Transition"]
+[editable path="_UI\'/LevelBackground"]
+[editable path="_UI\'/ScreenCanvas"]
+[editable path="_UI\'/ScreenCanvas/Selection/SelectionCards/Card_Turret"]
+[editable path="_UI\'/ScreenCanvas/Selection/SelectionCards/Card_Module"]
+[editable path="_UI\'/ScreenCanvas/Selection/SelectionCards/Card_Module/Background/Icon"]
+[editable path="_UI\'/ScreenCanvas/Selection/SelectionCards/Card_Life"]
+[editable path="_UI\'/ScreenCanvas/Selection/SelectionCards/Card_Hidden"]
+[editable path="Map/Nodes/Node"]
+[editable path="Map/Nodes/Node (1)"]
+[editable path="Map/Nodes/Node (2)"]
+[editable path="Map/Nodes/Node (3)"]
+[editable path="Map/Nodes/Node (4)"]
+[editable path="Map/Nodes/Node (5)"]
+[editable path="Map/Nodes/Node (6)"]
+[editable path="Map/Nodes/Node (7)"]
+[editable path="Map/Nodes/Node (8)"]
+[editable path="Map/Nodes/Node (9)"]
+[editable path="Map/Nodes/Node (10)"]
+[editable path="Map/Nodes/Node (11)"]
+[editable path="Map/Nodes/Node (12)"]
+[editable path="Map/Nodes/Node (13)"]
+[editable path="Map/Nodes/Node (14)"]
+[editable path="Map/Nodes/Node (15)"]
+[editable path="Map/Nodes/Node (16)"]
+[editable path="Map/Nodes/Node (17)"]
+[editable path="Map/Nodes/Node (18)"]
+[editable path="Map/Nodes/Node (19)"]
+[editable path="Map/Nodes/Node (20)"]
+[editable path="Map/Nodes/Node (21)"]
+[editable path="Map/Nodes/Node (22)"]
+[editable path="Map/Nodes/Node (23)"]
+[editable path="Map/Nodes/Node (24)"]
+[editable path="Map/Nodes/Node (25)"]
+[editable path="Map/Nodes/Node (26)"]
+[editable path="Map/Nodes/Node (27)"]
+[editable path="Map/Nodes/Node (28)"]
+[editable path="Map/Nodes/Node (29)"]
+[editable path="Map/Nodes/Node (30)"]
+[editable path="Map/Nodes/Node (31)"]
+[editable path="Map/Nodes/Node (32)"]
+[editable path="Map/Nodes/Node (33)"]
+[editable path="Map/Nodes/Node (34)"]
+[editable path="Map/Nodes/Node (35)"]
+[editable path="Map/Nodes/Node (36)"]
+[editable path="Map/Nodes/Node (37)"]
+[editable path="Map/Nodes/Node (38)"]
+[editable path="Map/Nodes/Node (39)"]
+[editable path="Map/Nodes/Node (40)"]
+[editable path="Map/Nodes/Node (41)"]
+[editable path="Map/Nodes/Node (42)"]
+[editable path="Map/Nodes/Node (43)"]
+[editable path="Map/Nodes/Node (44)"]
+[editable path="Map/Nodes/Node (45)"]
+[editable path="Map/Nodes/Node (46)"]
+[editable path="Map/Nodes/Node (47)"]
+[editable path="Map/Nodes/Node (48)"]
+[editable path="Map/Nodes/Node (49)"]
+[editable path="Map/Nodes/Node (50)"]
+[editable path="Map/Nodes/Node (51)"]
+[editable path="Map/Nodes/Node (52)"]
+[editable path="Map/Nodes/Node (53)"]
+[editable path="Map/Nodes/Node (54)"]
+[editable path="Map/Nodes/Node (55)"]
+[editable path="Map/Nodes/Node (56)"]
+[editable path="Map/Nodes/Node (57)"]
+[editable path="Map/Nodes/Node (58)"]
+[editable path="Map/Nodes/Node (59)"]
+[editable path="Map/Nodes/Node (60)"]
+[editable path="Map/Nodes/Node (61)"]
+[editable path="Map/Nodes/Node (62)"]
+[editable path="Map/Nodes/Node (63)"]
+[editable path="Map/Nodes/Node (64)"]
+[editable path="Map/Nodes/Node (65)"]
+[editable path="Map/Nodes/Node (66)"]
+[editable path="Map/Nodes/Node (67)"]
+[editable path="Map/Nodes/Node (68)"]
+[editable path="Map/Nodes/Node (69)"]
+[editable path="Map/Nodes/Node (70)"]
+[editable path="Map/Nodes/Node (71)"]
+[editable path="Map/Nodes/Node (72)"]
+[editable path="Map/Path/START"]
+[editable path="Map/Path/END"]
+[editable path="Map/Path/Path"]
+[editable path="Map/Path/Path (1)"]
+[editable path="Map/Path/Path (2)"]
+[editable path="Map/Path/Path (3)"]
+[editable path="Map/Path/Path (4)"]
+[editable path="Map/Path/Path (5)"]
+[editable path="Map/Path/Path (6)"]
+[editable path="Map/Path/Path (7)"]
+[editable path="Map/Path/Path (8)"]
+[editable path="Map/Path/Path (9)"]
+[editable path="Map/Path/Path (10)"]
+[editable path="Map/Path/Path (11)"]
+[editable path="Map/Path/Path (12)"]
+[editable path="Map/Path/Path (13)"]
+[editable path="Map/Path/Path (14)"]
+[editable path="Map/Path/Path (15)"]
+[editable path="Map/Path/Path (16)"]
+[editable path="Map/Path/Path (17)"]
+[editable path="Map/Path/Path (18)"]
+[editable path="Map/Path/Path (19)"]
+[editable path="Map/Path/Path (20)"]
+[editable path="Map/Path/Path (21)"]
+[editable path="Map/Path/Path (22)"]
+[editable path="Map/Path/Path (23)"]
+[editable path="Map/Path/Path (24)"]
+[editable path="Map/Path/Path (25)"]
+[editable path="Map/Path/Path (26)"]
+[editable path="Map/Path/Path (27)"]
+[editable path="Map/Path/Path (28)"]
+[editable path="Map/Path/Path (29)"]
+[editable path="Map/Path/Path (30)"]
+[editable path="Map/Path/Path (31)"]
+[editable path="Map/Path/Path (32)"]
+[editable path="Map/Path/Path (33)"]
+[editable path="Map/Path/Path (34)"]
+[editable path="Map/Path/Path (35)"]
+[editable path="Map/Path/Path (36)"]
+[editable path="Map/Path/Path (37)"]
+[editable path="Map/Path/Path (38)"]
+[editable path="Map/Path/Path (39)"]
+[editable path="Map/Waypoints/Waypoint"]
+[editable path="Map/Waypoints/Waypoint (1)"]
+[editable path="Map/Waypoints/Waypoint (2)"]
+[editable path="Map/Waypoints/Waypoint (3)"]
+[editable path="Map/Waypoints/Waypoint (4)"]
+[editable path="Map/Waypoints/Waypoint (5)"]
+[editable path="Map/Waypoints/Waypoint (6)"]
+[editable path="Camera"]
+[editable path="_Managers\'/GameManager"]

@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=3 uid="uid://dw08nlypn12a4"]
+
+[ext_resource type="PackedScene" uid="uid://bkngqb47yt4mq" path="res://UI/Modules/ModuleIcon.prefab.tscn" id="1_2iecb"]
+
+[node name="InventoryItem_Module" type="Node3D"]
+
+[node name="CanvasRenderer" type="Node" parent="."]
+
+[node name="MonoBehaviour" type="Node" parent="."]
+
+[node name="MonoBehaviour2" type="Node" parent="."]
+
+[node name="MonoBehaviour3" type="Node" parent="."]
+
+[node name="Title" type="Node3D" parent="."]
+
+[node name="CanvasRenderer" type="Node" parent="Title"]
+
+[node name="MonoBehaviour" type="Node" parent="Title"]
+
+[node name="Applicable" type="Node3D" parent="."]
+
+[node name="CanvasRenderer" type="Node" parent="Applicable"]
+
+[node name="MonoBehaviour" type="Node" parent="Applicable"]
+
+[node name="ModuleIcon" parent="." instance=ExtResource("1_2iecb")]
+
+[node name="Modules" type="Node3D" parent="."]
+
+[node name="CanvasRenderer" type="Node" parent="Modules"]
+
+[node name="MonoBehaviour" type="Node" parent="Modules"]
+
+[node name="MonoBehaviour2" type="Node" parent="Modules"]
+
+[node name="Effect" type="Node3D" parent="Modules"]
+
+[node name="CanvasRenderer" type="Node" parent="Modules/Effect"]
+
+[node name="MonoBehaviour" type="Node" parent="Modules/Effect"]
+
+[editable path="ModuleIcon"]

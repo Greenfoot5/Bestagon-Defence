@@ -1,0 +1,249 @@
+[gd_scene load_steps=29 format=4 uid="uid://dxeskbdbxmflu"]
+
+[ext_resource type="TileSet" uid="uid://cqec5gsl2jrtp" path="res://Levels/_Tiles/PathTiles.tres" id="1_dbecs"]
+[ext_resource type="PackedScene" uid="uid://bl5bfgnh4ruki" path="res://Levels/_Tiles/Tile_Buildable.tscn" id="2_jq068"]
+[ext_resource type="Script" uid="uid://ifi3my065eu" path="res://Gameplay/Waves/WaveSpawner.cs" id="3_o3dn4"]
+[ext_resource type="PackedScene" uid="uid://dof5pvxvtw0bh" path="res://Enemies/Pawns/Enemy.tscn" id="4_sxdqs"]
+[ext_resource type="Script" uid="uid://ec8kag3n2o3m" path="res://Abstract/Data/CurvedVariable.cs" id="5_8tbnj"]
+[ext_resource type="Script" uid="uid://7xk8cvu5cc84" path="res://Gameplay/Waves/WaveData.cs" id="6_yrqfs"]
+[ext_resource type="Resource" uid="uid://bm67ol4yudaf4" path="res://Enemies/Pawns/BasicEnemyStats.tres" id="7_pse8l"]
+[ext_resource type="Script" uid="uid://bmxuh31stih5j" path="res://Gameplay/Waves/EnemySet.cs" id="8_72yxd"]
+[ext_resource type="Script" uid="uid://bgfugrs685jpk" path="res://Gameplay/Waves/Wave.cs" id="9_niq5q"]
+[ext_resource type="PackedScene" uid="uid://n7yy8bgppstk" path="res://Levels/_Tiles/Waypoint.tscn" id="10_4ignw"]
+[ext_resource type="PackedScene" uid="uid://bf14d8qox8yy5" path="res://UI/LevelCanvas_Screen.tscn" id="11_ml50w"]
+[ext_resource type="PackedScene" uid="uid://307b6816jqs4" path="res://Levels/LevelBackground.tscn" id="12_ogs00"]
+[ext_resource type="Script" uid="uid://b7c7g8jqgu062" path="res://Gameplay/GameStats.cs" id="13_p388s"]
+[ext_resource type="PackedScene" uid="uid://ctr8gdwd3r5bw" path="res://Gameplay/GameManager.tscn" id="14_b88u8"]
+[ext_resource type="PackedScene" uid="uid://piplrc6lu1y5" path="res://Gameplay/Camera/MainCamera.tscn" id="15_nt6x0"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_4pwqs"]
+resource_name = "buildable"
+scenes/1/scene = ExtResource("2_jq068")
+
+[sub_resource type="TileSet" id="TileSet_uqua4"]
+tile_shape = 3
+tile_offset_axis = 1
+tile_size = Vector2i(528, 458)
+sources/1 = SubResource("TileSetScenesCollectionSource_4pwqs")
+
+[sub_resource type="Curve" id="Curve_kj4gn"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_7umrs"]
+script = ExtResource("5_8tbnj")
+value = SubResource("Curve_kj4gn")
+metadata/_custom_type_script = "uid://ec8kag3n2o3m"
+
+[sub_resource type="Resource" id="Resource_3gc0d"]
+script = ExtResource("5_8tbnj")
+value = SubResource("Curve_kj4gn")
+metadata/_custom_type_script = "uid://ec8kag3n2o3m"
+
+[sub_resource type="Resource" id="Resource_uvjqi"]
+script = ExtResource("6_yrqfs")
+Enemy = ExtResource("4_sxdqs")
+Health = SubResource("Resource_3gc0d")
+EnemyCount = SubResource("Resource_7umrs")
+TimeBetweenWaves = 5.0
+PreparationTime = 8.0
+RepeatIndex = 2
+Length = 3
+metadata/_custom_type_script = "uid://7xk8cvu5cc84"
+
+[sub_resource type="Resource" id="Resource_kj4gn"]
+script = ExtResource("8_72yxd")
+enemy = ExtResource("7_pse8l")
+count = 7
+rate = 0.5
+metadata/_custom_type_script = "uid://bmxuh31stih5j"
+
+[sub_resource type="Resource" id="Resource_7j0gl"]
+script = ExtResource("9_niq5q")
+enemySets = [SubResource("Resource_kj4gn")]
+setDelays = PackedFloat32Array()
+metadata/_custom_type_script = "uid://bgfugrs685jpk"
+
+[sub_resource type="Resource" id="Resource_vfinc"]
+script = ExtResource("8_72yxd")
+enemy = ExtResource("7_pse8l")
+count = 5
+rate = 0.7
+metadata/_custom_type_script = "uid://bmxuh31stih5j"
+
+[sub_resource type="Resource" id="Resource_x65do"]
+script = ExtResource("8_72yxd")
+enemy = ExtResource("7_pse8l")
+count = 3
+rate = 0.1
+metadata/_custom_type_script = "uid://bmxuh31stih5j"
+
+[sub_resource type="Resource" id="Resource_tpvnd"]
+script = ExtResource("9_niq5q")
+enemySets = [SubResource("Resource_vfinc"), SubResource("Resource_x65do")]
+setDelays = PackedFloat32Array(1)
+metadata/_custom_type_script = "uid://bgfugrs685jpk"
+
+[sub_resource type="Resource" id="Resource_mv5cv"]
+script = ExtResource("8_72yxd")
+enemy = ExtResource("7_pse8l")
+count = 10
+rate = 1.0
+metadata/_custom_type_script = "uid://bmxuh31stih5j"
+
+[sub_resource type="Resource" id="Resource_cqc0v"]
+script = ExtResource("9_niq5q")
+enemySets = [SubResource("Resource_mv5cv")]
+setDelays = PackedFloat32Array()
+metadata/_custom_type_script = "uid://bgfugrs685jpk"
+
+[node name="Upgrade" type="Node"]
+
+[node name="Map" type="Node2D" parent="."]
+
+[node name="PathGrid" type="TileMapLayer" parent="Map"]
+position = Vector2(1, 0)
+scale = Vector2(0.1, 0.1)
+tile_map_data = PackedByteArray("AAD1//r/AQAAAAAAAAD2//v/AAAAAAAAAAD3//v/AAAAAAAAAAD4//v/AAAAAAAAAAD5//v/AAAAAAAAAAD6//z/AAAAAAAAAAD7//v/AAAAAAAAAAD8//z/AAAAAAAAAAD8//3/AAAAAAAAAAD7//3/AAAAAAAAAAD7//7/AAAAAAAAAAD8////AAAAAAAAAAD9//7/AAAAAAAAAAD+//7/AAAAAAAAAAD///7/AAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAMAAAAAAAAAAAACAAMAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAADAAAAAAAAAAAAAAACAAAAAAAAAAAAAAABAAAAAAAAAAAAAAD//wEAAAAAAAAAAAD+/wIAAAAAAAAAAAD9/wIAAAAAAAAAAAD8/wIAAAAAAAAAAAD7/wEAAAAAAAAAAAD6/wEAAAAAAAAAAAD5/wEAAAAAAAAAAAD4/wIAAAAAAAAAAAD4/wMAAAAAAAAAAAD4/wQAAAAAAAAAAAD5/wQAAgAAAAAAAAA=")
+tile_set = ExtResource("1_dbecs")
+
+[node name="BuildableGrid" type="TileMapLayer" parent="Map"]
+scale = Vector2(0.1, 0.1)
+tile_map_data = PackedByteArray("AAD4//z/AQAAAAAAAQD5//z/AQAAAAAAAQD6//3/AQAAAAAAAQD6//v/AQAAAAAAAQD7//z/AQAAAAAAAQD8//7/AQAAAAAAAQD9//3/AQAAAAAAAQD9//z/AQAAAAAAAQAAAP7/AQAAAAAAAQABAP//AQAAAAAAAQABAAEAAQAAAAAAAQACAAIAAQAAAAAAAQADAAEAAQAAAAAAAQD//wIAAQAAAAAAAQAAAAQAAQAAAAAAAQABAAQAAQAAAAAAAQACAAQAAQAAAAAAAQAFAAIAAQAAAAAAAQAGAAIAAQAAAAAAAQAFAAAAAQAAAAAAAQACAP7/AQAAAAAAAQAEAP7/AQAAAAAAAQD8/wQAAQAAAAAAAQD9/wQAAQAAAAAAAQD+/wQAAQAAAAAAAQD+/wUAAQAAAAAAAQD8/wUAAQAAAAAAAQD7/wMAAQAAAAAAAQD5/wIAAQAAAAAAAQD+/wAAAQAAAAAAAQD7////AQAAAAAAAQD8/wAAAQAAAAAAAQD7/wAAAQAAAAAAAQD9/wEAAQAAAAAAAQD4/wEAAQAAAAAAAQD5////AQAAAAAAAQD4//7/AQAAAAAAAQD2//7/AQAAAAAAAQD2/wEAAQAAAAAAAQDz//z/AQAAAAAAAQACAPz/AQAAAAAAAQAAAPr/AQAAAAAAAQDz/wAAAQAAAAAAAQD0////AQAAAAAAAQD1/wQAAQAAAAAAAQA=")
+tile_set = SubResource("TileSet_uqua4")
+
+[node name="SpawnPoint" type="Node2D" parent="Map" node_paths=PackedStringArray("_countdown")]
+position = Vector2(-405, -225)
+script = ExtResource("3_o3dn4")
+_waveData = SubResource("Resource_uvjqi")
+_waves = [SubResource("Resource_7j0gl"), SubResource("Resource_tpvnd"), SubResource("Resource_cqc0v")]
+_countdown = NodePath("../../UI/Timer")
+
+[node name="Waypoint (1)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
+position = Vector2(80, 45)
+
+[node name="Waypoint (2)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
+position = Vector2(120, 20)
+
+[node name="Waypoint (3)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
+position = Vector2(200, 70)
+
+[node name="Waypoint (4)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
+position = Vector2(240, 45)
+
+[node name="Waypoint (5)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
+position = Vector2(280, 70)
+
+[node name="Waypoint (6)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
+position = Vector2(280, 115)
+
+[node name="Waypoint (7)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
+position = Vector2(237.313, 134.5)
+
+[node name="Waypoint (8)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
+position = Vector2(240.313, 186.5)
+
+[node name="Waypoint (9)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
+position = Vector2(281.313, 208.5)
+
+[node name="Waypoint (10)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
+position = Vector2(358.313, 161.5)
+
+[node name="Waypoint (11)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
+position = Vector2(439.313, 202.5)
+
+[node name="Waypoint (12)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
+position = Vector2(440.313, 391.5)
+
+[node name="Waypoint (13)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
+position = Vector2(476.313, 412.5)
+
+[node name="Waypoint (14)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
+position = Vector2(634.313, 319.5)
+
+[node name="Waypoint (15)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
+position = Vector2(516.313, 248.5)
+
+[node name="Waypoint (16)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
+position = Vector2(314.313, 361.5)
+
+[node name="Waypoint (17)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
+position = Vector2(199.313, 297.5)
+
+[node name="Waypoint (18)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
+position = Vector2(122.313, 337.5)
+
+[node name="Waypoint (19)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
+position = Vector2(122.313, 433.5)
+
+[node name="Waypoint (20)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
+position = Vector2(158.313, 457.5)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Timer" type="Timer" parent="UI"]
+one_shot = true
+autostart = true
+
+[node name="_UI\'" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03661, -1.26226, -2.43096)
+
+[node name="ScreenCanvas" parent="_UI\'" instance=ExtResource("11_ml50w")]
+
+[node name="PausedTimer" parent="_UI\'/ScreenCanvas" index="7"]
+visible = false
+
+[node name="BackgroundCanvas" parent="_UI\'" instance=ExtResource("12_ogs00")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.43096)
+
+[node name="_Managers\'" type="Node" parent="."]
+
+[node name="GameStats" type="Node" parent="_Managers\'"]
+script = ExtResource("13_p388s")
+
+[node name="GameManager" parent="_Managers\'" instance=ExtResource("14_b88u8")]
+
+[node name="DeathBitManager" type="Node3D" parent="_Managers\'"]
+
+[node name="Camera" type="Camera2D" parent="_Managers\'/DeathBitManager"]
+rotation = 3.14159
+scale = Vector2(1, -1)
+enabled = false
+
+[node name="DeathBitManager" type="Node" parent="_Managers\'/DeathBitManager"]
+
+[node name="Camera" parent="." instance=ExtResource("15_nt6x0")]
+
+[editable path="Map/SpawnPoint/Waypoint (1)"]
+[editable path="Map/SpawnPoint/Waypoint (2)"]
+[editable path="Map/SpawnPoint/Waypoint (3)"]
+[editable path="Map/SpawnPoint/Waypoint (4)"]
+[editable path="Map/SpawnPoint/Waypoint (5)"]
+[editable path="Map/SpawnPoint/Waypoint (6)"]
+[editable path="Map/SpawnPoint/Waypoint (7)"]
+[editable path="Map/SpawnPoint/Waypoint (8)"]
+[editable path="Map/SpawnPoint/Waypoint (9)"]
+[editable path="Map/SpawnPoint/Waypoint (10)"]
+[editable path="Map/SpawnPoint/Waypoint (11)"]
+[editable path="Map/SpawnPoint/Waypoint (12)"]
+[editable path="Map/SpawnPoint/Waypoint (13)"]
+[editable path="Map/SpawnPoint/Waypoint (14)"]
+[editable path="Map/SpawnPoint/Waypoint (15)"]
+[editable path="Map/SpawnPoint/Waypoint (16)"]
+[editable path="Map/SpawnPoint/Waypoint (17)"]
+[editable path="Map/SpawnPoint/Waypoint (18)"]
+[editable path="Map/SpawnPoint/Waypoint (19)"]
+[editable path="Map/SpawnPoint/Waypoint (20)"]
+[editable path="_UI\'/ScreenCanvas"]
+[editable path="_UI\'/ScreenCanvas/Selection/SelectionCards/Card_Turret"]
+[editable path="_UI\'/ScreenCanvas/Selection/SelectionCards/Card_Module"]
+[editable path="_UI\'/ScreenCanvas/Selection/SelectionCards/Card_Module/Background/Icon"]
+[editable path="_UI\'/ScreenCanvas/Selection/SelectionCards/Card_Life"]
+[editable path="_UI\'/ScreenCanvas/Selection/SelectionCards/Card_Hidden"]
+[editable path="_UI\'/BackgroundCanvas"]
+[editable path="_Managers\'/GameManager"]
+[editable path="Camera"]

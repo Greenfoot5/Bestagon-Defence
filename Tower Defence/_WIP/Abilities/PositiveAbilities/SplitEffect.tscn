@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bnhq8164vt66h"]
+
+[node name="SplitEffect" type="Node3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="ParticleSystem" type="Node" parent="."]
+
+[node name="ParticleSystemRenderer" type="Node" parent="."]

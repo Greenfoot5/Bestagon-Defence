@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Bestagon Defense"
-run/main_scene="uid://cxug8xaew1uc7"
+run/main_scene="uid://dxeskbdbxmflu"
 config/features=PackedStringArray("4.4", "C#", "Mobile")
 config/icon="res://icon.svg"
 config/save_version=""

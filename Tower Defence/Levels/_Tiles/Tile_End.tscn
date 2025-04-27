@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cf7gn7iikwyjg"]
+
+[ext_resource type="Texture2D" uid="uid://d0u45dj0t2hka" path="res://_WIP/Art/end.png" id="1_u5rsa"]
+
+[node name="Node_End" type="Sprite2D"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_u5rsa")

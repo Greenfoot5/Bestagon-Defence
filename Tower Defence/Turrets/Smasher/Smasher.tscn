@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://caolu26tbgyo"]
+
+[ext_resource type="PackedScene" uid="uid://bireyhlc5x7r6" path="res://Turrets/Range.prefab.tscn" id="1_qwivx"]
+
+[node name="Smasher" type="Node3D"]
+
+[node name="MonoBehaviour" type="Node" parent="."]
+
+[node name="Turret" type="Node3D" parent="."]
+
+[node name="SpriteRenderer" type="Node" parent="Turret"]
+
+[node name="TurretBottom" type="Node3D" parent="."]
+
+[node name="SpriteRenderer" type="Node" parent="TurretBottom"]
+
+[node name="Fire Point" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.641, 0)
+
+[node name="SmasherSmash" type="Node3D" parent="."]
+
+[node name="VisualEffect" type="Node" parent="SmasherSmash"]
+
+[node name="VFXRenderer" type="Node" parent="SmasherSmash"]
+
+[node name="Range" parent="." instance=ExtResource("1_qwivx")]
+scale = Vector2(3, 3)
+
+[editable path="Range"]

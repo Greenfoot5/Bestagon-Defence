@@ -1,0 +1,286 @@
+[gd_scene load_steps=10 format=3 uid="uid://cid8e4udpoh2r"]
+
+[ext_resource type="PackedScene" uid="uid://ctpe8wmgmufyr" path="res://Levels/@System.prefab.tscn" id="1_bq30k"]
+[ext_resource type="PackedScene" uid="uid://0nf61aiynlkb" path="res://Turrets/Shooter/Shooter.prefab.tscn" id="2_1lhxr"]
+[ext_resource type="PackedScene" uid="uid://daeb652ptiyu3" path="res://UI/LevelCanvas_Screen.prefab.tscn" id="3_rk76a"]
+[ext_resource type="PackedScene" uid="uid://xieb0bpqncyx" path="res://Levels/LevelBackground.prefab.tscn" id="4_3p14q"]
+[ext_resource type="PackedScene" uid="uid://d1ifn2y5xul52" path="res://Gameplay/GameManager.prefab.tscn" id="5_r7uxn"]
+[ext_resource type="PackedScene" uid="uid://csbrvqal5y5dv" path="res://Gameplay/Camera/MainCamera.prefab.tscn" id="6_jd27m"]
+[ext_resource type="PackedScene" uid="uid://deidbvd0xuwxs" path="res://Levels/Map.prefab.tscn" id="7_hgrmn"]
+[ext_resource type="PackedScene" uid="uid://byjsl0dj1gws5" path="res://Levels/_Tiles/Tile_Buildable.prefab.tscn" id="8_lbcql"]
+
+[sub_resource type="Environment" id="Environment_am6pn"]
+ambient_light_color = Color(0.212, 0.227, 0.259, 1)
+ambient_light_sky_contribution = 0.0
+fog_light_color = Color(0.5, 0.5, 0.5, 1)
+
+[node name="RootNode3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_am6pn")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+visible = false
+
+[node name="_System\'" parent="." instance=ExtResource("1_bq30k")]
+
+[node name="AnimationTree" parent="_System\'/Transition" index="1"]
+root_motion_local = false
+
+[node name="Shooter" parent="." instance=ExtResource("2_1lhxr")]
+position = Vector2(0, -3)
+
+[node name="_UI\'" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03661, -1.26226, -2.43096)
+
+[node name="ScreenCanvas" parent="_UI\'" instance=ExtResource("3_rk76a")]
+
+[node name="Modules" parent="_UI\'/ScreenCanvas/Inventory" index="8"]
+visible = false
+
+[node name="TurretInfo2" parent="_UI\'/ScreenCanvas/Inventory" index="9"]
+visible = false
+
+[node name="PauseMenu" parent="_UI\'/ScreenCanvas" index="11"]
+visible = false
+
+[node name="Selection" parent="_UI\'/ScreenCanvas" index="12"]
+visible = false
+
+[node name="Options" parent="_UI\'/ScreenCanvas/Selection" index="4"]
+visible = false
+
+[node name="BackgroundCanvas" parent="_UI\'" instance=ExtResource("4_3p14q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.43096)
+
+[node name="_Managers\'" type="Node3D" parent="."]
+
+[node name="EventSystem" type="Node3D" parent="_Managers\'"]
+
+[node name="MonoBehaviour" type="Node" parent="_Managers\'/EventSystem"]
+
+[node name="MonoBehaviour2" type="Node" parent="_Managers\'/EventSystem"]
+
+[node name="GameManager" parent="_Managers\'" instance=ExtResource("5_r7uxn")]
+
+[node name="Camera" parent="." instance=ExtResource("6_jd27m")]
+
+[node name="MonoBehaviour4" type="Node" parent="Camera"]
+
+[node name="Map" parent="." instance=ExtResource("7_hgrmn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Node (1)" parent="Map/Nodes" index="1"]
+position = Vector2(-0.8625, 0.5)
+
+[node name="Node (2)" parent="Map/Nodes" index="2"]
+position = Vector2(-1.725, 1)
+
+[node name="Node (3)" parent="Map/Nodes" index="3"]
+position = Vector2(-2.5875, 1.5)
+
+[node name="Node (4)" parent="Map/Nodes" index="4"]
+position = Vector2(0.8625, -0.5)
+
+[node name="Node (5)" parent="Map/Nodes" index="5"]
+position = Vector2(0.8625, -1.5)
+
+[node name="Node (6)" parent="Map/Nodes" index="6"]
+position = Vector2(1.725, -1)
+
+[node name="Node (7)" parent="Map/Nodes" index="7"]
+position = Vector2(1.725, 1)
+
+[node name="Node (8)" parent="Map/Nodes" index="8"]
+position = Vector2(1.725, 0)
+
+[node name="Node (9)" parent="Map/Nodes" index="9"]
+position = Vector2(0, 2)
+
+[node name="Node (10)" parent="Map/Nodes" index="10"]
+position = Vector2(0, 3)
+
+[node name="Node (11)" parent="Map/Nodes" index="11"]
+position = Vector2(-0.8625, 3.5)
+
+[node name="Node (12)" parent="Map/Nodes" index="12"]
+position = Vector2(-1.725, 4)
+
+[node name="Node (13)" parent="Map/Nodes" index="13"]
+position = Vector2(-2.5875, 4.5)
+
+[node name="Node (14)" parent="Map/Nodes" index="14"]
+position = Vector2(0.8625, -3.5)
+
+[node name="Node (15)" parent="Map/Nodes" index="15"]
+position = Vector2(3.45, -2)
+
+[node name="Node (16)" parent="Map/Nodes" index="16"]
+position = Vector2(4.3125, -2.5)
+
+[node name="Node (17)" parent="Map/Nodes" index="17"]
+position = Vector2(1.725, -3)
+
+[node name="Node (18)" parent="Map/Nodes" index="18"]
+position = Vector2(-0.8625, -1.5)
+
+[node name="Node (19)" parent="Map/Nodes" index="19" instance=ExtResource("8_lbcql")]
+position = Vector2(0, -3)
+
+[node name="Path" parent="Map/Path" index="2"]
+position = Vector2(0, 1)
+scale = Vector2(1, 1)
+
+[node name="Path (1)" parent="Map/Path" index="3"]
+position = Vector2(-0.8625, 1.5)
+scale = Vector2(1, 1)
+
+[node name="Path (2)" parent="Map/Path" index="4"]
+position = Vector2(-1.725, 2)
+scale = Vector2(1, 1)
+
+[node name="Path (3)" parent="Map/Path" index="5"]
+position = Vector2(-2.5875, 2.5)
+scale = Vector2(1, 1)
+
+[node name="Path (4)" parent="Map/Path" index="6"]
+position = Vector2(-3.45, 2)
+scale = Vector2(1, 1)
+
+[node name="Path (5)" parent="Map/Path" index="7"]
+position = Vector2(-4.3125, 2.5)
+scale = Vector2(1, 1)
+
+[node name="Path (6)" parent="Map/Path" index="8"]
+position = Vector2(-5.175, 3)
+scale = Vector2(1, 1)
+
+[node name="Path (7)" parent="Map/Path" index="9"]
+position = Vector2(0.8625, 0.5)
+scale = Vector2(1, 1)
+
+[node name="Path (9)" parent="Map/Path" index="11"]
+position = Vector2(0, -2)
+scale = Vector2(1, 1)
+
+[node name="Path (10)" parent="Map/Path" index="12"]
+position = Vector2(0, -1)
+scale = Vector2(1, 1)
+
+[node name="Path (11)" parent="Map/Path" index="13"]
+position = Vector2(0.8625, -2.5)
+scale = Vector2(1, 1)
+
+[node name="Path (12)" parent="Map/Path" index="14"]
+position = Vector2(1.725, -2)
+scale = Vector2(1, 1)
+
+[node name="Path (13)" parent="Map/Path" index="15"]
+position = Vector2(2.5875, -2.5)
+scale = Vector2(1, 1)
+
+[node name="Path (14)" parent="Map/Path" index="16"]
+position = Vector2(3.45, -3)
+scale = Vector2(1, 1)
+
+[node name="Path (15)" parent="Map/Path" index="17"]
+position = Vector2(3.45, -4)
+scale = Vector2(1, 1)
+
+[node name="Waypoint" parent="Map/Waypoints" index="1"]
+position = Vector2(-5.175, 4)
+
+[node name="Waypoint (1)" parent="Map/Waypoints" index="2"]
+position = Vector2(-5.175, 3)
+
+[node name="Waypoint (2)" parent="Map/Waypoints" index="3"]
+position = Vector2(-3.45, 2)
+
+[node name="Waypoint (3)" parent="Map/Waypoints" index="4"]
+position = Vector2(-2.5875, 2.5)
+
+[node name="Waypoint (4)" parent="Map/Waypoints" index="5"]
+position = Vector2(0.8625, 0.5)
+
+[node name="Waypoint (7)" parent="Map/Waypoints" index="8"]
+position = Vector2(0.8625, -2.5)
+
+[node name="Waypoint (8)" parent="Map/Waypoints" index="9"]
+position = Vector2(1.725, -2)
+
+[node name="Waypoint (9)" parent="Map/Waypoints" index="10"]
+position = Vector2(3.45, -3)
+
+[node name="Waypoint (10)" parent="Map/Waypoints" index="11"]
+position = Vector2(3.45, -4)
+
+[node name="Waypoint (11)" parent="Map/Waypoints" index="12"]
+position = Vector2(2.5875, -3.5)
+
+[node name="Deselect" parent="Map" index="4"]
+visible = false
+
+[editable path="_System\'"]
+[editable path="_System\'/Transition"]
+[editable path="Shooter"]
+[editable path="Shooter/Range"]
+[editable path="_UI\'/ScreenCanvas"]
+[editable path="_UI\'/ScreenCanvas/Selection/SelectionCards/Card_Turret"]
+[editable path="_UI\'/ScreenCanvas/Selection/SelectionCards/Card_Module"]
+[editable path="_UI\'/ScreenCanvas/Selection/SelectionCards/Card_Module/Background/Icon"]
+[editable path="_UI\'/ScreenCanvas/Selection/SelectionCards/Card_Life"]
+[editable path="_UI\'/ScreenCanvas/Selection/SelectionCards/Card_Hidden"]
+[editable path="_UI\'/BackgroundCanvas"]
+[editable path="_Managers\'/GameManager"]
+[editable path="Camera"]
+[editable path="Map"]
+[editable path="Map/Nodes/Node"]
+[editable path="Map/Nodes/Node (1)"]
+[editable path="Map/Nodes/Node (2)"]
+[editable path="Map/Nodes/Node (3)"]
+[editable path="Map/Nodes/Node (4)"]
+[editable path="Map/Nodes/Node (5)"]
+[editable path="Map/Nodes/Node (6)"]
+[editable path="Map/Nodes/Node (7)"]
+[editable path="Map/Nodes/Node (8)"]
+[editable path="Map/Nodes/Node (9)"]
+[editable path="Map/Nodes/Node (10)"]
+[editable path="Map/Nodes/Node (11)"]
+[editable path="Map/Nodes/Node (12)"]
+[editable path="Map/Nodes/Node (13)"]
+[editable path="Map/Nodes/Node (14)"]
+[editable path="Map/Nodes/Node (15)"]
+[editable path="Map/Nodes/Node (16)"]
+[editable path="Map/Nodes/Node (17)"]
+[editable path="Map/Nodes/Node (18)"]
+[editable path="Map/Nodes/Node (19)"]
+[editable path="Map/Path/START"]
+[editable path="Map/Path/END"]
+[editable path="Map/Path/Path"]
+[editable path="Map/Path/Path (1)"]
+[editable path="Map/Path/Path (2)"]
+[editable path="Map/Path/Path (3)"]
+[editable path="Map/Path/Path (4)"]
+[editable path="Map/Path/Path (5)"]
+[editable path="Map/Path/Path (6)"]
+[editable path="Map/Path/Path (7)"]
+[editable path="Map/Path/Path (8)"]
+[editable path="Map/Path/Path (9)"]
+[editable path="Map/Path/Path (10)"]
+[editable path="Map/Path/Path (11)"]
+[editable path="Map/Path/Path (12)"]
+[editable path="Map/Path/Path (13)"]
+[editable path="Map/Path/Path (14)"]
+[editable path="Map/Path/Path (15)"]
+[editable path="Map/Waypoints/Waypoint"]
+[editable path="Map/Waypoints/Waypoint (1)"]
+[editable path="Map/Waypoints/Waypoint (2)"]
+[editable path="Map/Waypoints/Waypoint (3)"]
+[editable path="Map/Waypoints/Waypoint (4)"]
+[editable path="Map/Waypoints/Waypoint (5)"]
+[editable path="Map/Waypoints/Waypoint (6)"]
+[editable path="Map/Waypoints/Waypoint (7)"]
+[editable path="Map/Waypoints/Waypoint (8)"]
+[editable path="Map/Waypoints/Waypoint (9)"]
+[editable path="Map/Waypoints/Waypoint (10)"]
+[editable path="Map/Waypoints/Waypoint (11)"]

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dp711l52tg2ry"]
+
+[node name="TurretEffect_Build" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -1)
+
+[node name="ParticleSystem" type="Node" parent="."]
+
+[node name="ParticleSystemRenderer" type="Node" parent="."]

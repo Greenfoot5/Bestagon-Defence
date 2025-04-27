@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://dof5pvxvtw0bh"]
+
+[ext_resource type="Script" uid="uid://d3r255yshmkbg" path="res://Enemies/Enemy.cs" id="1_jqv6l"]
+[ext_resource type="Texture2D" uid="uid://knixu5x6g42p" path="res://Enemies/Pawns/T_Circled_Orange.png" id="2_urepl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_juylw"]
+radius = 130.0
+
+[node name="Enemy" type="Area2D" node_paths=PackedStringArray("LeftBar", "RightBar", "sprite")]
+scale = Vector2(0.08, 0.08)
+collision_layer = 2
+collision_mask = 0
+input_pickable = false
+monitoring = false
+script = ExtResource("1_jqv6l")
+LeftBar = NodePath("HealthLeft")
+RightBar = NodePath("HealthRight")
+sprite = NodePath("Sprite")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_urepl")
+
+[node name="HealthLeft" type="ProgressBar" parent="."]
+offset_top = 150.0
+offset_right = 150.0
+offset_bottom = 175.0
+show_percentage = false
+
+[node name="HealthRight" type="ProgressBar" parent="."]
+offset_top = 150.0
+offset_right = 150.0
+offset_bottom = 175.0
+scale = Vector2(-1, 1)
+show_percentage = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_juylw")

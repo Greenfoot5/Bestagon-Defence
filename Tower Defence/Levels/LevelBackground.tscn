@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://307b6816jqs4"]
+
+[node name="LevelBackground" type="Node3D"]
+
+[node name="Canvas" type="Node" parent="."]
+
+[node name="MonoBehaviour" type="Node" parent="."]
+
+[node name="Background" type="Node3D" parent="."]
+
+[node name="CanvasRenderer" type="Node" parent="Background"]
+
+[node name="MonoBehaviour" type="Node" parent="Background"]

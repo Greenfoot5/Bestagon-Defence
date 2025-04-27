@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://d3fscchrqfp5t"]
+
+[node name="SummonedEnemy" type="Node3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="MonoBehaviour" type="Node" parent="."]
+
+[node name="MonoBehaviour2" type="Node" parent="."]
+
+[node name="BoxCollider2D" type="Node" parent="."]
+
+[node name="Rigidbody2D" type="Node" parent="."]
+
+[node name="Canvas (1)" type="Node3D" parent="."]
+
+[node name="Canvas" type="Node" parent="Canvas (1)"]
+
+[node name="MonoBehaviour" type="Node" parent="Canvas (1)"]
+
+[node name="MonoBehaviour2" type="Node" parent="Canvas (1)"]
+
+[node name="HealthBG" type="Node3D" parent="Canvas (1)"]
+
+[node name="CanvasRenderer" type="Node" parent="Canvas (1)/HealthBG"]
+
+[node name="MonoBehaviour" type="Node" parent="Canvas (1)/HealthBG"]
+
+[node name="HealthBarLeft" type="Node3D" parent="Canvas (1)/HealthBG"]
+
+[node name="CanvasRenderer" type="Node" parent="Canvas (1)/HealthBG/HealthBarLeft"]
+
+[node name="MonoBehaviour" type="Node" parent="Canvas (1)/HealthBG/HealthBarLeft"]
+
+[node name="HealthBarRight" type="Node3D" parent="Canvas (1)/HealthBG"]
+
+[node name="CanvasRenderer" type="Node" parent="Canvas (1)/HealthBG/HealthBarRight"]
+
+[node name="MonoBehaviour" type="Node" parent="Canvas (1)/HealthBG/HealthBarRight"]
+
+[node name="Icons" type="Node3D" parent="Canvas (1)"]
+
+[node name="MonoBehaviour" type="Node" parent="Canvas (1)/Icons"]
+
+[node name="Sprite" type="Node3D" parent="."]
+
+[node name="SpriteRenderer" type="Node" parent="Sprite"]

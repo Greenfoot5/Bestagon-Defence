@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://dcdfawohp4hf8"]
+
+[node name="Card_Hidden" type="Node3D"]
+
+[node name="CanvasRenderer" type="Node" parent="."]
+
+[node name="MonoBehaviour" type="Node" parent="."]
+
+[node name="TypePanel" type="Node3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.41, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CanvasRenderer" type="Node" parent="TypePanel"]
+
+[node name="MonoBehaviour" type="Node" parent="TypePanel"]
+
+[node name="Canvas" type="Node" parent="TypePanel"]
+
+[node name="Type" type="Node3D" parent="TypePanel"]
+
+[node name="CanvasRenderer" type="Node" parent="TypePanel/Type"]
+
+[node name="MonoBehaviour" type="Node" parent="TypePanel/Type"]
+
+[node name="MonoBehaviour2" type="Node" parent="TypePanel/Type"]
+
+[node name="Image" type="Node3D" parent="TypePanel"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CanvasRenderer" type="Node" parent="TypePanel/Image"]
+
+[node name="MonoBehaviour" type="Node" parent="TypePanel/Image"]
+
+[node name="MonoBehaviour2" type="Node" parent="TypePanel/Image"]
+
+[node name="Background" type="Node3D" parent="."]
+
+[node name="CanvasRenderer" type="Node" parent="Background"]
+
+[node name="MonoBehaviour" type="Node" parent="Background"]
+
+[node name="MonoBehaviour2" type="Node" parent="Background"]
+
+[node name="Name" type="Node3D" parent="Background"]
+
+[node name="CanvasRenderer" type="Node" parent="Background/Name"]
+
+[node name="MonoBehaviour" type="Node" parent="Background/Name"]
+
+[node name="MonoBehaviour2" type="Node" parent="Background/Name"]
+
+[node name="Tagline" type="Node3D" parent="Background"]
+
+[node name="CanvasRenderer" type="Node" parent="Background/Tagline"]
+
+[node name="MonoBehaviour" type="Node" parent="Background/Tagline"]
+
+[node name="MonoBehaviour2" type="Node" parent="Background/Tagline"]
+
+[node name="Effect" type="Node3D" parent="Background"]
+
+[node name="CanvasRenderer" type="Node" parent="Background/Effect"]
+
+[node name="MonoBehaviour" type="Node" parent="Background/Effect"]
+
+[node name="MonoBehaviour2" type="Node" parent="Background/Effect"]
+
+[node name="Icon" type="Node3D" parent="Background"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CanvasRenderer" type="Node" parent="Background/Icon"]
+
+[node name="MonoBehaviour" type="Node" parent="Background/Icon"]
+
+[node name="MonoBehaviour2" type="Node" parent="Background/Icon"]

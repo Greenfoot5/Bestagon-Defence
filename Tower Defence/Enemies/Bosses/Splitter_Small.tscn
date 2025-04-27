@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dx1c6vn0h44wh"]
+
+[node name="Splitter_Small" type="Node3D"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="MonoBehaviour" type="Node" parent="."]
+
+[node name="MonoBehaviour2" type="Node" parent="."]
+
+[node name="Rigidbody2D" type="Node" parent="."]
+
+[node name="BoxCollider2D" type="Node" parent="."]
+
+[node name="Canvas" type="Node3D" parent="."]
+
+[node name="Canvas" type="Node" parent="Canvas"]
+
+[node name="MonoBehaviour" type="Node" parent="Canvas"]
+
+[node name="MonoBehaviour2" type="Node" parent="Canvas"]
+
+[node name="HealthBG" type="Node3D" parent="Canvas"]
+
+[node name="CanvasRenderer" type="Node" parent="Canvas/HealthBG"]
+
+[node name="MonoBehaviour" type="Node" parent="Canvas/HealthBG"]
+
+[node name="HealthBarLeft" type="Node3D" parent="Canvas/HealthBG"]
+
+[node name="CanvasRenderer" type="Node" parent="Canvas/HealthBG/HealthBarLeft"]
+
+[node name="MonoBehaviour" type="Node" parent="Canvas/HealthBG/HealthBarLeft"]
+
+[node name="Icons" type="Node3D" parent="Canvas"]
+
+[node name="MonoBehaviour" type="Node" parent="Canvas/Icons"]

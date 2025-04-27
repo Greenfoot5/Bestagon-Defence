@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://b3augw3l6xvqw"]
+
+[node name="InstakillEffect" type="Node3D"]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="VisualEffect" type="Node" parent="."]
+
+[node name="VFXRenderer" type="Node" parent="."]

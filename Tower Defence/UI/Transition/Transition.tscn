@@ -1,0 +1,90 @@
+[gd_scene load_steps=4 format=3 uid="uid://dh6o8j2gy2gvo"]
+
+[ext_resource type="Script" uid="uid://dou5piqex85u7" path="res://UI/Transition/TransitionManager.cs" id="1_qjpdg"]
+[ext_resource type="AnimationLibrary" uid="uid://cskdf3q5s3opt" path="res://UI/Transition/AC_Transition.library.res" id="2_sj1w7"]
+[ext_resource type="AnimationNodeBlendTree" uid="uid://cgjxvkik72n2y" path="res://UI/Transition/AC_Transition.controller.res" id="3_oso0g"]
+
+[node name="Transition" type="Node3D"]
+script = ExtResource("1_qjpdg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": ExtResource("2_sj1w7")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+deterministic = false
+root_motion_track = NodePath("%GeneralSkeleton:Root")
+root_motion_local = false
+tree_root = ExtResource("3_oso0g")
+anim_player = NodePath("../AnimationPlayer")
+"parameters/Base Layer/Transition IN/TimeScale/scale" = 6.0
+"parameters/Base Layer/Transition OUT/TimeScale/scale" = 6.0
+metadata/Close = false
+metadata/Open = false
+metadata/guid_fileid_to_animation_name = {
+"1e69f24e7fb68406da001bef665be9ba:7400000": "Transition IN",
+"531072e8c78e249da9d267509024509d:7400000": "Transition OUT"
+}
+
+[node name="Canvas" type="Node3D" parent="."]
+transform = Transform3D(1e-07, 0, 0, 0, 1e-07, 0, 0, 0, 1e-07, 0, 0, 0)
+
+[node name="Canvas" type="Node" parent="Canvas"]
+
+[node name="MonoBehaviour" type="Node" parent="Canvas"]
+
+[node name="MonoBehaviour2" type="Node" parent="Canvas"]
+
+[node name="CanvasGroup" type="Node" parent="Canvas"]
+
+[node name="CanvasRenderer" type="Node" parent="Canvas"]
+
+[node name="RingInner" type="Node3D" parent="Canvas"]
+
+[node name="CanvasRenderer" type="Node" parent="Canvas/RingInner"]
+
+[node name="MonoBehaviour" type="Node" parent="Canvas/RingInner"]
+
+[node name="RingOuter" type="Node3D" parent="Canvas"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CanvasRenderer" type="Node" parent="Canvas/RingOuter"]
+
+[node name="MonoBehaviour" type="Node" parent="Canvas/RingOuter"]
+
+[node name="LoadingText" type="Node3D" parent="Canvas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+
+[node name="CanvasRenderer" type="Node" parent="Canvas/LoadingText"]
+
+[node name="MonoBehaviour" type="Node" parent="Canvas/LoadingText"]
+
+[node name="MonoBehaviour2" type="Node" parent="Canvas/LoadingText"]
+
+[node name="NewSceneText" type="Node3D" parent="Canvas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+
+[node name="CanvasRenderer" type="Node" parent="Canvas/NewSceneText"]
+
+[node name="MonoBehaviour" type="Node" parent="Canvas/NewSceneText"]
+
+[node name="Background" type="Node3D" parent="."]
+
+[node name="CanvasRenderer" type="Node" parent="Background"]
+
+[node name="MonoBehaviour" type="Node" parent="Background"]
+
+[node name="TransitionCamera" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+
+[node name="Camera" type="Camera3D" parent="TransitionCamera"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+cull_mask = 1024
+projection = 1
+fov = 60.0
+size = 1.1e-05
+near = 0.3
+far = 1000.0
+
+[node name="MonoBehaviour" type="Node" parent="TransitionCamera"]

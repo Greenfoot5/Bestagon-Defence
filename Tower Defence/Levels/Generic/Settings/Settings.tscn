@@ -1,0 +1,267 @@
+[gd_scene load_steps=5 format=3 uid="uid://d4ddofseuiiku"]
+
+[ext_resource type="PackedScene" uid="uid://r0qpca2d6y6x" path="res://UI/MenuButton.prefab.tscn" id="1_y15sw"]
+[ext_resource type="PackedScene" uid="uid://ctpe8wmgmufyr" path="res://Levels/@System.prefab.tscn" id="2_qpwie"]
+
+[sub_resource type="Environment" id="Environment_k7ch0"]
+background_mode = 1
+background_color = Color(0, 0, 0, 0)
+ambient_light_color = Color(0.212, 0.227, 0.259, 1)
+ambient_light_sky_contribution = 0.0
+fog_light_color = Color(0.5, 0.5, 0.5, 1)
+
+[sub_resource type="Environment" id="Environment_dx7uf"]
+background_mode = 1
+background_color = Color(0, 0, 0, 0)
+ambient_light_color = Color(0.212, 0.227, 0.259, 1)
+ambient_light_sky_contribution = 0.0
+fog_light_color = Color(0.5, 0.5, 0.5, 1)
+
+[node name="RootNode3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_k7ch0")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+visible = false
+
+[node name="Camera" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+
+[node name="Camera" type="Camera3D" parent="Camera"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+cull_mask = 16777215
+environment = SubResource("Environment_dx7uf")
+projection = 1
+current = true
+fov = 60.0
+size = 1.1e-05
+near = 0.3
+far = 1000.0
+
+[node name="_UI\'" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 90)
+
+[node name="MenuCanvas" type="Node3D" parent="_UI\'"]
+transform = Transform3D(1e-07, 0, 0, 0, 1e-07, 0, 0, 0, 1e-07, 0, 0, 0)
+
+[node name="Canvas" type="Node" parent="_UI\'/MenuCanvas"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/MenuCanvas"]
+
+[node name="Menu" type="Node3D" parent="_UI\'/MenuCanvas"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/MenuCanvas/Menu"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas/Menu"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/MenuCanvas/Menu"]
+
+[node name="Title" type="Node3D" parent="_UI\'/MenuCanvas/Menu"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/MenuCanvas/Menu/Title"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas/Menu/Title"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/MenuCanvas/Menu/Title"]
+
+[node name="SettingsScrollView" type="Node3D" parent="_UI\'/MenuCanvas/Menu"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView"]
+
+[node name="Viewport" type="Node3D" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport"]
+
+[node name="Content" type="Node3D" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content"]
+
+[node name="LauguageLoV" type="Node3D" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/LauguageLoV"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/LauguageLoV"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/LauguageLoV"]
+
+[node name="Label" type="Node3D" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/LauguageLoV"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/LauguageLoV/Label"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/LauguageLoV/Label"]
+
+[node name="Arrow" type="Node3D" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/LauguageLoV"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/LauguageLoV/Arrow"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/LauguageLoV/Arrow"]
+
+[node name="Template" type="Node3D" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/LauguageLoV"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/LauguageLoV/Template"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/LauguageLoV/Template"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/LauguageLoV/Template"]
+
+[node name="Viewport" type="Node3D" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/LauguageLoV/Template"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/LauguageLoV/Template/Viewport"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/LauguageLoV/Template/Viewport"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/LauguageLoV/Template/Viewport"]
+
+[node name="Content" type="Node3D" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/LauguageLoV/Template/Viewport"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/LauguageLoV/Template/Viewport/Content"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/LauguageLoV/Template/Viewport/Content"]
+
+[node name="Item" type="Node3D" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/LauguageLoV/Template/Viewport/Content"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/LauguageLoV/Template/Viewport/Content/Item"]
+
+[node name="Item Background" type="Node3D" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/LauguageLoV/Template/Viewport/Content/Item"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/LauguageLoV/Template/Viewport/Content/Item/Item Background"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/LauguageLoV/Template/Viewport/Content/Item/Item Background"]
+
+[node name="Item Checkmark" type="Node3D" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/LauguageLoV/Template/Viewport/Content/Item"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/LauguageLoV/Template/Viewport/Content/Item/Item Checkmark"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/LauguageLoV/Template/Viewport/Content/Item/Item Checkmark"]
+
+[node name="Item Label" type="Node3D" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/LauguageLoV/Template/Viewport/Content/Item"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/LauguageLoV/Template/Viewport/Content/Item/Item Label"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/LauguageLoV/Template/Viewport/Content/Item/Item Label"]
+
+[node name="Scrollbar" type="Node3D" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/LauguageLoV/Template"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/LauguageLoV/Template/Scrollbar"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/LauguageLoV/Template/Scrollbar"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/LauguageLoV/Template/Scrollbar"]
+
+[node name="Sliding Area" type="Node3D" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/LauguageLoV/Template/Scrollbar"]
+
+[node name="Handle" type="Node3D" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/LauguageLoV/Template/Scrollbar/Sliding Area"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/LauguageLoV/Template/Scrollbar/Sliding Area/Handle"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/LauguageLoV/Template/Scrollbar/Sliding Area/Handle"]
+
+[node name="EnergyDropToggle" type="Node3D" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/EnergyDropToggle"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/EnergyDropToggle"]
+
+[node name="Label" type="Node3D" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/EnergyDropToggle"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/EnergyDropToggle/Label"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/EnergyDropToggle/Label"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/EnergyDropToggle/Label"]
+
+[node name="Background" type="Node3D" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/EnergyDropToggle"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/EnergyDropToggle/Background"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/EnergyDropToggle/Background"]
+
+[node name="Checkmark" type="Node3D" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/EnergyDropToggle/Background"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/EnergyDropToggle/Background/Checkmark"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/EnergyDropToggle/Background/Checkmark"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/EnergyDropToggle/Background/Checkmark"]
+
+[node name="PrivacyPolicyButton" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content" instance=ExtResource("1_y15sw")]
+
+[node name="Scrollbar Horizontal" type="Node3D" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Scrollbar Horizontal"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Scrollbar Horizontal"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Scrollbar Horizontal"]
+
+[node name="Sliding Area" type="Node3D" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Scrollbar Horizontal"]
+
+[node name="Handle" type="Node3D" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Scrollbar Horizontal/Sliding Area"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Scrollbar Horizontal/Sliding Area/Handle"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Scrollbar Horizontal/Sliding Area/Handle"]
+
+[node name="Scrollbar Vertical" type="Node3D" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Scrollbar Vertical"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Scrollbar Vertical"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Scrollbar Vertical"]
+
+[node name="Sliding Area" type="Node3D" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Scrollbar Vertical"]
+
+[node name="Handle" type="Node3D" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Scrollbar Vertical/Sliding Area"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Scrollbar Vertical/Sliding Area/Handle"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsScrollView/Scrollbar Vertical/Sliding Area/Handle"]
+
+[node name="MainMenuButton" parent="_UI\'/MenuCanvas/Menu" instance=ExtResource("1_y15sw")]
+
+[node name="_Overlay\'" type="Node3D" parent="."]
+transform = Transform3D(1e-07, 0, 0, 0, 1e-07, 0, 0, 0, 1e-07, 0, 0, 0)
+
+[node name="Canvas" type="Node" parent="_Overlay\'"]
+
+[node name="MonoBehaviour" type="Node" parent="_Overlay\'"]
+
+[node name="CanvasRenderer" type="Node" parent="_Overlay\'"]
+
+[node name="MonoBehaviour2" type="Node" parent="_Overlay\'"]
+
+[node name="MonoBehaviour3" type="Node" parent="_Overlay\'"]
+
+[node name="MonoBehaviour4" type="Node" parent="_Overlay\'"]
+
+[node name="_System\'" parent="." instance=ExtResource("2_qpwie")]
+
+[node name="AnimationTree" parent="_System\'/Transition" index="1"]
+root_motion_local = false
+
+[node name="_Managers\'" type="Node3D" parent="."]
+
+[node name="EventSystem" type="Node3D" parent="_Managers\'"]
+
+[node name="MonoBehaviour" type="Node" parent="_Managers\'/EventSystem"]
+
+[node name="MonoBehaviour2" type="Node" parent="_Managers\'/EventSystem"]
+
+[editable path="_UI\'/MenuCanvas/Menu/SettingsScrollView/Viewport/Content/PrivacyPolicyButton"]
+[editable path="_UI\'/MenuCanvas/Menu/MainMenuButton"]
+[editable path="_System\'"]
+[editable path="_System\'/Transition"]

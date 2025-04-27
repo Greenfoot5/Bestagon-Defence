@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://ctr8gdwd3r5bw"]
+
+[node name="GameManager" type="Node3D"]
+
+[node name="WaveSpawner" type="Node" parent="."]
+
+[node name="BuildManager" type="Node" parent="."]
+
+[node name="GameStats" type="Node" parent="."]
+
+[node name="GameManager" type="Node" parent="."]

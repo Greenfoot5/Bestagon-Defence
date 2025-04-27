@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://2rggdi5ebxhc"]
+
+[ext_resource type="PackedScene" uid="uid://bireyhlc5x7r6" path="res://Turrets/Range.prefab.tscn" id="1_dkqnp"]
+
+[node name="Laser_Turret" type="Node3D"]
+
+[node name="MonoBehaviour" type="Node" parent="."]
+
+[node name="LineRenderer" type="Node" parent="."]
+
+[node name="Turret" type="Node3D" parent="."]
+
+[node name="SpriteRenderer" type="Node" parent="Turret"]
+
+[node name="Fire Point" type="Node3D" parent="Turret"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+
+[node name="Particle System" type="Node3D" parent="Turret/Fire Point"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="ParticleSystem" type="Node" parent="Turret/Fire Point/Particle System"]
+
+[node name="ParticleSystemRenderer" type="Node" parent="Turret/Fire Point/Particle System"]
+
+[node name="Range" parent="." instance=ExtResource("1_dkqnp")]
+
+[node name="Base" type="Node3D" parent="."]
+
+[node name="SpriteRenderer" type="Node" parent="Base"]
+
+[editable path="Range"]

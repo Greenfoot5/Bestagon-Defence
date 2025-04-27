@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://hqx2w2q8weko"]
+
+[node name="ChokerPart" type="Node3D"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="MonoBehaviour" type="Node" parent="."]
+
+[node name="CircleCollider2D" type="Node" parent="."]
+
+[node name="Sprite" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, 1.50996e-07, 0, -1.50996e-07, -1, 0, 0, 0)
+
+[node name="SpriteRenderer" type="Node" parent="Sprite"]

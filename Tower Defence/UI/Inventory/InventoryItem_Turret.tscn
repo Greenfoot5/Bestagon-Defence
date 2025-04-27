@@ -1,0 +1,126 @@
+[gd_scene load_steps=2 format=3 uid="uid://cn8o5altl8rd7"]
+
+[ext_resource type="PackedScene" uid="uid://cibhoxfl2332d" path="res://UI/Glyphs/TurretGlyph.prefab.tscn" id="1_23x3u"]
+
+[node name="InventoryItem_Turret" type="Node3D"]
+
+[node name="CanvasRenderer" type="Node" parent="."]
+
+[node name="MonoBehaviour" type="Node" parent="."]
+
+[node name="MonoBehaviour2" type="Node" parent="."]
+
+[node name="MonoBehaviour3" type="Node" parent="."]
+
+[node name="TurretGlyph" parent="." instance=ExtResource("1_23x3u")]
+
+[node name="Title" type="Node3D" parent="."]
+
+[node name="CanvasRenderer" type="Node" parent="Title"]
+
+[node name="MonoBehaviour" type="Node" parent="Title"]
+
+[node name="Icon" type="Node3D" parent="."]
+
+[node name="CanvasRenderer" type="Node" parent="Icon"]
+
+[node name="MonoBehaviour" type="Node" parent="Icon"]
+
+[node name="MonoBehaviour2" type="Node" parent="Icon"]
+
+[node name="Stats" type="Node3D" parent="."]
+
+[node name="MonoBehaviour" type="Node" parent="Stats"]
+
+[node name="MonoBehaviour2" type="Node" parent="Stats"]
+
+[node name="Damage" type="Node3D" parent="Stats"]
+
+[node name="Canvas" type="Node" parent="Stats/Damage"]
+
+[node name="MonoBehaviour" type="Node" parent="Stats/Damage"]
+
+[node name="MonoBehaviour2" type="Node" parent="Stats/Damage"]
+
+[node name="MonoBehaviour3" type="Node" parent="Stats/Damage"]
+
+[node name="Icon" type="Node3D" parent="Stats/Damage"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CanvasRenderer" type="Node" parent="Stats/Damage/Icon"]
+
+[node name="MonoBehaviour" type="Node" parent="Stats/Damage/Icon"]
+
+[node name="Data" type="Node3D" parent="Stats/Damage"]
+
+[node name="CanvasRenderer" type="Node" parent="Stats/Damage/Data"]
+
+[node name="MonoBehaviour" type="Node" parent="Stats/Damage/Data"]
+
+[node name="Rate" type="Node3D" parent="Stats"]
+
+[node name="Canvas" type="Node" parent="Stats/Rate"]
+
+[node name="MonoBehaviour" type="Node" parent="Stats/Rate"]
+
+[node name="MonoBehaviour2" type="Node" parent="Stats/Rate"]
+
+[node name="MonoBehaviour3" type="Node" parent="Stats/Rate"]
+
+[node name="Icon" type="Node3D" parent="Stats/Rate"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CanvasRenderer" type="Node" parent="Stats/Rate/Icon"]
+
+[node name="MonoBehaviour" type="Node" parent="Stats/Rate/Icon"]
+
+[node name="Data" type="Node3D" parent="Stats/Rate"]
+
+[node name="CanvasRenderer" type="Node" parent="Stats/Rate/Data"]
+
+[node name="MonoBehaviour" type="Node" parent="Stats/Rate/Data"]
+
+[node name="Range" type="Node3D" parent="Stats"]
+
+[node name="Canvas" type="Node" parent="Stats/Range"]
+
+[node name="MonoBehaviour" type="Node" parent="Stats/Range"]
+
+[node name="MonoBehaviour2" type="Node" parent="Stats/Range"]
+
+[node name="MonoBehaviour3" type="Node" parent="Stats/Range"]
+
+[node name="Icon" type="Node3D" parent="Stats/Range"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CanvasRenderer" type="Node" parent="Stats/Range/Icon"]
+
+[node name="MonoBehaviour" type="Node" parent="Stats/Range/Icon"]
+
+[node name="Data" type="Node3D" parent="Stats/Range"]
+
+[node name="CanvasRenderer" type="Node" parent="Stats/Range/Data"]
+
+[node name="MonoBehaviour" type="Node" parent="Stats/Range/Data"]
+
+[node name="Modules" type="Node3D" parent="."]
+
+[node name="CanvasRenderer" type="Node" parent="Modules"]
+
+[node name="MonoBehaviour" type="Node" parent="Modules"]
+
+[node name="MonoBehaviour2" type="Node" parent="Modules"]
+
+[node name="ModulesList" type="Node3D" parent="Modules"]
+
+[node name="MonoBehaviour" type="Node" parent="Modules/ModulesList"]
+
+[node name="Text (TMP)" type="Node3D" parent="Modules/ModulesList"]
+
+[node name="CanvasRenderer" type="Node" parent="Modules/ModulesList/Text (TMP)"]
+
+[node name="MonoBehaviour" type="Node" parent="Modules/ModulesList/Text (TMP)"]
+
+[node name="MonoBehaviour2" type="Node" parent="Modules/ModulesList/Text (TMP)"]
+
+[editable path="TurretGlyph"]

@@ -52,8 +52,8 @@ namespace Turrets
         /// <summary>
         /// Explosion collision shape
         /// </summary>
-        [Export]
-        private CollisionShape2D explodeArea;
+        // [Export]
+        // private CollisionShape2D explodeArea;
         
         private readonly List<ulong> _hitEnemies = new();
         
@@ -107,9 +107,10 @@ namespace Turrets
             // Get the direction of the target, and the distance to move this frame
             Vector2 position = Position;
             var distanceThisFrame = (float)(Stats[AttributeType.Speed].Value * delta);
+            GD.Print(Stats[AttributeType.Speed]);
             
             // Move bullet towards target
-            Position.MoveToward(location, distanceThisFrame);
+            Position = Position.MoveToward(location, distanceThisFrame);
 
             Vector2 difference = location - position;
             
@@ -199,7 +200,7 @@ namespace Turrets
             }
 
             // TODO - What if not a circle?
-            ((CircleShape2D)explodeArea.Shape).Radius *= Stats[AttributeType.ExplosionRadius].Value;
+            // ((CircleShape2D)explodeArea.Shape).Radius *= Stats[AttributeType.ExplosionRadius].Value;
 
             // Gets all the enemies in the AoE and calls Damage on them
             // TODO - OverlapCircleAll

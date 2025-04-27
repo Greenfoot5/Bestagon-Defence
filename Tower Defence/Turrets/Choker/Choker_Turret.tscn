@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://drpqer5xenoqe"]
+
+[ext_resource type="PackedScene" uid="uid://bireyhlc5x7r6" path="res://Turrets/Range.prefab.tscn" id="1_4sjs1"]
+
+[node name="Choker_Turret" type="Node3D"]
+
+[node name="MonoBehaviour" type="Node" parent="."]
+
+[node name="Turret" type="Node3D" parent="."]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="SpriteRenderer" type="Node" parent="Turret"]
+
+[node name="Fire Point" type="Node3D" parent="Turret"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+
+[node name="Range" parent="." instance=ExtResource("1_4sjs1")]
+scale = Vector2(2, 2)
+
+[node name="Base" type="Node3D" parent="."]
+
+[node name="SpriteRenderer" type="Node" parent="Base"]
+
+[editable path="Range"]

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bs4yo2ybqdx8a"]
+
+[node name="MenuButton" type="Node3D"]
+
+[node name="CanvasRenderer" type="Node" parent="."]
+
+[node name="MonoBehaviour" type="Node" parent="."]
+
+[node name="MonoBehaviour2" type="Node" parent="."]
+
+[node name="Text (TMP)" type="Node3D" parent="."]
+
+[node name="CanvasRenderer" type="Node" parent="Text (TMP)"]
+
+[node name="MonoBehaviour" type="Node" parent="Text (TMP)"]
+
+[node name="MonoBehaviour2" type="Node" parent="Text (TMP)"]

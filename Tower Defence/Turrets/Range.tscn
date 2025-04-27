@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://br5mievu4lflw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6qncp"]
+radius = 200.0
+
+[node name="Range" type="Area2D"]
+scale = Vector2(6, 6)
+collision_layer = 8
+collision_mask = 8
+
+[node name="SpriteRenderer" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6qncp")

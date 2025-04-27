@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://curuco3nihehq"]
+
+[node name="Squared" type="Node3D"]
+
+[node name="MonoBehaviour" type="Node" parent="."]
+
+[node name="MonoBehaviour2" type="Node" parent="."]
+
+[node name="Rigidbody2D" type="Node" parent="."]
+
+[node name="BoxCollider2D" type="Node" parent="."]
+
+[node name="Canvas" type="Node3D" parent="."]
+
+[node name="Canvas" type="Node" parent="Canvas"]
+
+[node name="MonoBehaviour" type="Node" parent="Canvas"]
+
+[node name="MonoBehaviour2" type="Node" parent="Canvas"]
+
+[node name="HealthBG" type="Node3D" parent="Canvas"]
+
+[node name="CanvasRenderer" type="Node" parent="Canvas/HealthBG"]
+
+[node name="MonoBehaviour" type="Node" parent="Canvas/HealthBG"]
+
+[node name="HealthBarRight" type="Node3D" parent="Canvas/HealthBG"]
+
+[node name="CanvasRenderer" type="Node" parent="Canvas/HealthBG/HealthBarRight"]
+
+[node name="MonoBehaviour" type="Node" parent="Canvas/HealthBG/HealthBarRight"]
+
+[node name="Icons" type="Node3D" parent="Canvas"]
+
+[node name="MonoBehaviour" type="Node" parent="Canvas/Icons"]
+
+[node name="Sprite" type="Node3D" parent="."]
+
+[node name="SpriteRenderer" type="Node" parent="Sprite"]

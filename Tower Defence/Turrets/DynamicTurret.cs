@@ -45,6 +45,12 @@ namespace Turrets
         /// </summary>
         [Export]
         protected Node2D FirePoint;
+
+        /// <summary>
+        /// The raycast to check if looking at enemy
+        /// </summary>
+        [Export]
+        protected ShapeCast2D ShapeCast;
         
         /// <summary>
         /// The transform to perform any rotations on
@@ -106,8 +112,6 @@ namespace Turrets
                 TargetEnemy = null;
                 return;
             }
-            
-            GD.Print("Found Enemy!");
             
             TargetEnemy ??= enemiesInRange[0];
 
@@ -209,23 +213,18 @@ namespace Turrets
         protected bool IsLookingAtTarget()
         {
             if (TargetEnemy == null) return false;
+            
+            // Setup the raycast
+            for (var i = 0; i < ShapeCast.GetCollisionCount(); i++)
+            {
+                var collider = (Enemy)ShapeCast.GetCollider(i);
+                if (collider == TargetEnemy)
+                {
+                    return true;
+                }
+            }
 
-            // // Setup the raycast
-            // var results = new List<RaycastHit2D>();
-            // var contactFilter = new ContactFilter2D()
-            // {
-            //     layerMask = LayerMask.GetMask("Enemies")
-            // };
-            // Physics2D.Raycast(firePoint.position, firePoint.up, contactFilter, results, range.GetStat());
-            //
-            // // Loop through the hits to see if the turret can hit the target
-            // var foundEnemy = false;
-            // foreach (RaycastHit2D unused in results.Where(hit => hit.transform == _targetEnemy.transform))
-            // {
-            //     foundEnemy = true;
-            // }
-            var foundEnemy = false;
-            return foundEnemy;
+            return false;
         }
     }
 }

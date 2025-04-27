@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://ccppuoth5cgn0"]
+
+[node name="ModuleIcon" type="Node3D"]
+
+[node name="CanvasRenderer" type="Node" parent="."]
+
+[node name="MonoBehaviour" type="Node" parent="."]
+
+[node name="MonoBehaviour2" type="Node" parent="."]
+
+[node name="MonoBehaviour3" type="Node" parent="."]
+
+[node name="BackShadow" type="Node3D" parent="."]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CanvasRenderer" type="Node" parent="BackShadow"]
+
+[node name="MonoBehaviour" type="Node" parent="BackShadow"]
+
+[node name="BackOutline" type="Node3D" parent="."]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CanvasRenderer" type="Node" parent="BackOutline"]
+
+[node name="MonoBehaviour" type="Node" parent="BackOutline"]
+
+[node name="Icon" type="Node3D" parent="."]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CanvasRenderer" type="Node" parent="Icon"]
+
+[node name="MonoBehaviour" type="Node" parent="Icon"]
+
+[node name="LevelBox" type="Node3D" parent="."]
+
+[node name="CanvasRenderer" type="Node" parent="LevelBox"]
+
+[node name="MonoBehaviour" type="Node" parent="LevelBox"]
+
+[node name="Level" type="Node3D" parent="LevelBox"]
+
+[node name="CanvasRenderer" type="Node" parent="LevelBox/Level"]
+
+[node name="MonoBehaviour" type="Node" parent="LevelBox/Level"]

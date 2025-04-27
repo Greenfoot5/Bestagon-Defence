@@ -1,0 +1,400 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvp1vml6scsiu"]
+
+[ext_resource type="PackedScene" uid="uid://ctpe8wmgmufyr" path="res://Levels/@System.prefab.tscn" id="1_ed7t7"]
+
+[sub_resource type="Environment" id="Environment_exo1s"]
+background_mode = 1
+background_color = Color(0, 0, 0, 0)
+ambient_light_color = Color(0.212, 0.227, 0.259, 1)
+ambient_light_sky_contribution = 0.0
+fog_light_color = Color(0.5, 0.5, 0.5, 1)
+
+[sub_resource type="Environment" id="Environment_t37nb"]
+background_mode = 1
+background_color = Color(0, 0, 0, 0)
+ambient_light_color = Color(0.212, 0.227, 0.259, 1)
+ambient_light_sky_contribution = 0.0
+fog_light_color = Color(0.5, 0.5, 0.5, 1)
+
+[node name="RootNode3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_exo1s")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+visible = false
+
+[node name="Camera" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+
+[node name="Camera" type="Camera3D" parent="Camera"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+cull_mask = 16777215
+environment = SubResource("Environment_t37nb")
+projection = 1
+current = true
+fov = 60.0
+size = 1.1e-05
+near = 0.3
+far = 1000.0
+
+[node name="MonoBehaviour" type="Node" parent="Camera"]
+
+[node name="_UI\'" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 90)
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'"]
+
+[node name="MenuCanvas" type="Node3D" parent="_UI\'"]
+transform = Transform3D(1e-07, 0, 0, 0, 1e-07, 0, 0, 0, 1e-07, 0, 0, 0)
+
+[node name="Canvas" type="Node" parent="_UI\'/MenuCanvas"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/MenuCanvas"]
+
+[node name="Menu" type="Node3D" parent="_UI\'/MenuCanvas"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/MenuCanvas/Menu"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas/Menu"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/MenuCanvas/Menu"]
+
+[node name="Logo" type="Node3D" parent="_UI\'/MenuCanvas/Menu"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/MenuCanvas/Menu/Logo"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas/Menu/Logo"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/MenuCanvas/Menu/Logo"]
+
+[node name="PlayButton" type="Node3D" parent="_UI\'/MenuCanvas/Menu"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/MenuCanvas/Menu/PlayButton"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas/Menu/PlayButton"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/MenuCanvas/Menu/PlayButton"]
+
+[node name="MonoBehaviour3" type="Node" parent="_UI\'/MenuCanvas/Menu/PlayButton"]
+
+[node name="MonoBehaviour4" type="Node" parent="_UI\'/MenuCanvas/Menu/PlayButton"]
+
+[node name="Text (TMP)" type="Node3D" parent="_UI\'/MenuCanvas/Menu/PlayButton"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/MenuCanvas/Menu/PlayButton/Text (TMP)"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas/Menu/PlayButton/Text (TMP)"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/MenuCanvas/Menu/PlayButton/Text (TMP)"]
+
+[node name="TutorialButton" type="Node3D" parent="_UI\'/MenuCanvas/Menu"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/MenuCanvas/Menu/TutorialButton"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas/Menu/TutorialButton"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/MenuCanvas/Menu/TutorialButton"]
+
+[node name="MonoBehaviour3" type="Node" parent="_UI\'/MenuCanvas/Menu/TutorialButton"]
+
+[node name="MonoBehaviour4" type="Node" parent="_UI\'/MenuCanvas/Menu/TutorialButton"]
+
+[node name="Text (TMP)" type="Node3D" parent="_UI\'/MenuCanvas/Menu/TutorialButton"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/MenuCanvas/Menu/TutorialButton/Text (TMP)"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas/Menu/TutorialButton/Text (TMP)"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/MenuCanvas/Menu/TutorialButton/Text (TMP)"]
+
+[node name="SettingsButton" type="Node3D" parent="_UI\'/MenuCanvas/Menu"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsButton"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsButton"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsButton"]
+
+[node name="MonoBehaviour3" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsButton"]
+
+[node name="MonoBehaviour4" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsButton"]
+
+[node name="Text (TMP)" type="Node3D" parent="_UI\'/MenuCanvas/Menu/SettingsButton"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsButton/Text (TMP)"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsButton/Text (TMP)"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/MenuCanvas/Menu/SettingsButton/Text (TMP)"]
+
+[node name="QuitButton" type="Node3D" parent="_UI\'/MenuCanvas/Menu"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/MenuCanvas/Menu/QuitButton"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas/Menu/QuitButton"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/MenuCanvas/Menu/QuitButton"]
+
+[node name="MonoBehaviour3" type="Node" parent="_UI\'/MenuCanvas/Menu/QuitButton"]
+
+[node name="MonoBehaviour4" type="Node" parent="_UI\'/MenuCanvas/Menu/QuitButton"]
+
+[node name="Text (TMP)" type="Node3D" parent="_UI\'/MenuCanvas/Menu/QuitButton"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/MenuCanvas/Menu/QuitButton/Text (TMP)"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas/Menu/QuitButton/Text (TMP)"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/MenuCanvas/Menu/QuitButton/Text (TMP)"]
+
+[node name="LoggedInAs" type="Node3D" parent="_UI\'/MenuCanvas/Menu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/MenuCanvas/Menu/LoggedInAs"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas/Menu/LoggedInAs"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="_UI\'/MenuCanvas/Menu/LoggedInAs"]
+
+[node name="AnimationTree" type="AnimationTree" parent="_UI\'/MenuCanvas/Menu/LoggedInAs"]
+deterministic = false
+root_motion_track = NodePath("%GeneralSkeleton:Root")
+root_motion_local = false
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/MenuCanvas/Menu/LoggedInAs"]
+
+[node name="MonoBehaviour3" type="Node" parent="_UI\'/MenuCanvas/Menu/LoggedInAs"]
+
+[node name="Discord" type="Node3D" parent="_UI\'/MenuCanvas/Menu"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/MenuCanvas/Menu/Discord"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas/Menu/Discord"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/MenuCanvas/Menu/Discord"]
+
+[node name="Github" type="Node3D" parent="_UI\'/MenuCanvas/Menu"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/MenuCanvas/Menu/Github"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas/Menu/Github"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/MenuCanvas/Menu/Github"]
+
+[node name="Ko-Fi" type="Node3D" parent="_UI\'/MenuCanvas/Menu"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/MenuCanvas/Menu/Ko-Fi"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/MenuCanvas/Menu/Ko-Fi"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/MenuCanvas/Menu/Ko-Fi"]
+
+[node name="LoginCanvas" type="Node3D" parent="_UI\'"]
+transform = Transform3D(1e-07, 0, 0, 0, 1e-07, 0, 0, 0, 1e-07, 0, 0, 0)
+
+[node name="Canvas" type="Node" parent="_UI\'/LoginCanvas"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/LoginCanvas"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/LoginCanvas"]
+
+[node name="Login" type="Node3D" parent="_UI\'/LoginCanvas"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/LoginCanvas/Login"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/LoginCanvas/Login"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/LoginCanvas/Login"]
+
+[node name="PickUsernameText" type="Node3D" parent="_UI\'/LoginCanvas/Login"]
+transform = Transform3D(0.65951, 0, 0, 0, 0.65951, 0, 0, 0, 0.65951, 0, 0, 0)
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/LoginCanvas/Login/PickUsernameText"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/LoginCanvas/Login/PickUsernameText"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/LoginCanvas/Login/PickUsernameText"]
+
+[node name="UsernameInfoText" type="Node3D" parent="_UI\'/LoginCanvas/Login"]
+transform = Transform3D(0.65951, 0, 0, 0, 0.65951, 0, 0, 0, 0.65951, 0, 0, 0)
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/LoginCanvas/Login/UsernameInfoText"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/LoginCanvas/Login/UsernameInfoText"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/LoginCanvas/Login/UsernameInfoText"]
+
+[node name="ErrorText" type="Node3D" parent="_UI\'/LoginCanvas/Login"]
+transform = Transform3D(0.65951, 0, 0, 0, 0.65951, 0, 0, 0, 0.65951, 0, 0, 0)
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/LoginCanvas/Login/ErrorText"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/LoginCanvas/Login/ErrorText"]
+
+[node name="UsernameTextBox" type="Node3D" parent="_UI\'/LoginCanvas/Login"]
+transform = Transform3D(0.65951, 0, 0, 0, 0.65951, 0, 0, 0, 0.65951, 0, 0, 0)
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/LoginCanvas/Login/UsernameTextBox"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/LoginCanvas/Login/UsernameTextBox"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/LoginCanvas/Login/UsernameTextBox"]
+
+[node name="Text Area" type="Node3D" parent="_UI\'/LoginCanvas/Login/UsernameTextBox"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/LoginCanvas/Login/UsernameTextBox/Text Area"]
+
+[node name="Placeholder" type="Node3D" parent="_UI\'/LoginCanvas/Login/UsernameTextBox/Text Area"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/LoginCanvas/Login/UsernameTextBox/Text Area/Placeholder"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/LoginCanvas/Login/UsernameTextBox/Text Area/Placeholder"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/LoginCanvas/Login/UsernameTextBox/Text Area/Placeholder"]
+
+[node name="MonoBehaviour3" type="Node" parent="_UI\'/LoginCanvas/Login/UsernameTextBox/Text Area/Placeholder"]
+
+[node name="Text" type="Node3D" parent="_UI\'/LoginCanvas/Login/UsernameTextBox/Text Area"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/LoginCanvas/Login/UsernameTextBox/Text Area/Text"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/LoginCanvas/Login/UsernameTextBox/Text Area/Text"]
+
+[node name="CantChangeWarningText" type="Node3D" parent="_UI\'/LoginCanvas/Login"]
+transform = Transform3D(0.65951, 0, 0, 0, 0.65951, 0, 0, 0, 0.65951, 0, 0, 0)
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/LoginCanvas/Login/CantChangeWarningText"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/LoginCanvas/Login/CantChangeWarningText"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/LoginCanvas/Login/CantChangeWarningText"]
+
+[node name="SubmitButton" type="Node3D" parent="_UI\'/LoginCanvas/Login"]
+transform = Transform3D(0.65951, 0, 0, 0, 0.65951, 0, 0, 0, 0.65951, 0, 0, 0)
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/LoginCanvas/Login/SubmitButton"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/LoginCanvas/Login/SubmitButton"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/LoginCanvas/Login/SubmitButton"]
+
+[node name="Text (TMP)" type="Node3D" parent="_UI\'/LoginCanvas/Login/SubmitButton"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/LoginCanvas/Login/SubmitButton/Text (TMP)"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/LoginCanvas/Login/SubmitButton/Text (TMP)"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/LoginCanvas/Login/SubmitButton/Text (TMP)"]
+
+[node name="NotUpdatedCanvas" type="Node3D" parent="_UI\'"]
+transform = Transform3D(1e-07, 0, 0, 0, 1e-07, 0, 0, 0, 1e-07, 0, 0, 0)
+
+[node name="Canvas" type="Node" parent="_UI\'/NotUpdatedCanvas"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/NotUpdatedCanvas"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/NotUpdatedCanvas"]
+
+[node name="NotUpdated" type="Node3D" parent="_UI\'/NotUpdatedCanvas"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/NotUpdatedCanvas/NotUpdated"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/NotUpdatedCanvas/NotUpdated"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/NotUpdatedCanvas/NotUpdated"]
+
+[node name="UpdateText" type="Node3D" parent="_UI\'/NotUpdatedCanvas/NotUpdated"]
+transform = Transform3D(0.65951, 0, 0, 0, 0.65951, 0, 0, 0, 0.65951, 0, 0, 0)
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/NotUpdatedCanvas/NotUpdated/UpdateText"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/NotUpdatedCanvas/NotUpdated/UpdateText"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/NotUpdatedCanvas/NotUpdated/UpdateText"]
+
+[node name="UpdateInfoText" type="Node3D" parent="_UI\'/NotUpdatedCanvas/NotUpdated"]
+transform = Transform3D(0.65951, 0, 0, 0, 0.65951, 0, 0, 0, 0.65951, 0, 0, 0)
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/NotUpdatedCanvas/NotUpdated/UpdateInfoText"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/NotUpdatedCanvas/NotUpdated/UpdateInfoText"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/NotUpdatedCanvas/NotUpdated/UpdateInfoText"]
+
+[node name="UpdateButton" type="Node3D" parent="_UI\'/NotUpdatedCanvas/NotUpdated"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/NotUpdatedCanvas/NotUpdated/UpdateButton"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/NotUpdatedCanvas/NotUpdated/UpdateButton"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/NotUpdatedCanvas/NotUpdated/UpdateButton"]
+
+[node name="Text (TMP)" type="Node3D" parent="_UI\'/NotUpdatedCanvas/NotUpdated/UpdateButton"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/NotUpdatedCanvas/NotUpdated/UpdateButton/Text (TMP)"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/NotUpdatedCanvas/NotUpdated/UpdateButton/Text (TMP)"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/NotUpdatedCanvas/NotUpdated/UpdateButton/Text (TMP)"]
+
+[node name="ScoresWontSaveWarningText" type="Node3D" parent="_UI\'/NotUpdatedCanvas/NotUpdated"]
+transform = Transform3D(0.65951, 0, 0, 0, 0.65951, 0, 0, 0, 0.65951, 0, 0, 0)
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/NotUpdatedCanvas/NotUpdated/ScoresWontSaveWarningText"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/NotUpdatedCanvas/NotUpdated/ScoresWontSaveWarningText"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/NotUpdatedCanvas/NotUpdated/ScoresWontSaveWarningText"]
+
+[node name="ContinueButton" type="Node3D" parent="_UI\'/NotUpdatedCanvas/NotUpdated"]
+transform = Transform3D(0.65951, 0, 0, 0, 0.65951, 0, 0, 0, 0.65951, 0, 0, 0)
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/NotUpdatedCanvas/NotUpdated/ContinueButton"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/NotUpdatedCanvas/NotUpdated/ContinueButton"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/NotUpdatedCanvas/NotUpdated/ContinueButton"]
+
+[node name="Text (TMP)" type="Node3D" parent="_UI\'/NotUpdatedCanvas/NotUpdated/ContinueButton"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/NotUpdatedCanvas/NotUpdated/ContinueButton/Text (TMP)"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/NotUpdatedCanvas/NotUpdated/ContinueButton/Text (TMP)"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/NotUpdatedCanvas/NotUpdated/ContinueButton/Text (TMP)"]
+
+[node name="_Overlay\'" type="Node3D" parent="."]
+transform = Transform3D(1e-07, 0, 0, 0, 1e-07, 0, 0, 0, 1e-07, 0, 0, 0)
+
+[node name="Canvas" type="Node" parent="_Overlay\'"]
+
+[node name="MonoBehaviour" type="Node" parent="_Overlay\'"]
+
+[node name="CanvasRenderer" type="Node" parent="_Overlay\'"]
+
+[node name="MonoBehaviour2" type="Node" parent="_Overlay\'"]
+
+[node name="MonoBehaviour3" type="Node" parent="_Overlay\'"]
+
+[node name="MonoBehaviour4" type="Node" parent="_Overlay\'"]
+
+[node name="_System\'" parent="." instance=ExtResource("1_ed7t7")]
+
+[node name="AnimationTree" parent="_System\'/Transition" index="1"]
+root_motion_local = false
+
+[node name="_Managers\'" type="Node3D" parent="."]
+
+[node name="EventSystem" type="Node3D" parent="_Managers\'"]
+
+[node name="MonoBehaviour" type="Node" parent="_Managers\'/EventSystem"]
+
+[node name="MonoBehaviour2" type="Node" parent="_Managers\'/EventSystem"]
+
+[editable path="_System\'"]
+[editable path="_System\'/Transition"]

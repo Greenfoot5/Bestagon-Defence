@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5v3yudk3ll0h"]
+
+[ext_resource type="PackedScene" uid="uid://llh0wpagpj1n" path="res://UI/Transition/Transition.prefab.tscn" id="1_i1u7p"]
+
+[node name="_System\'" type="Node3D"]
+
+[node name="MonoBehaviour" type="Node" parent="."]
+
+[node name="MonoBehaviour2" type="Node" parent="."]
+
+[node name="MonoBehaviour3" type="Node" parent="."]
+
+[node name="MonoBehaviour4" type="Node" parent="."]
+
+[node name="Transition" parent="." instance=ExtResource("1_i1u7p")]
+
+[node name="AnimationTree" parent="Transition" index="1"]
+root_motion_local = false
+
+[editable path="Transition"]

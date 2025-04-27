@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://n7yy8bgppstk"]
+
+[node name="Waypoint" type="Node2D"]

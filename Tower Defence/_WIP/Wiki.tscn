@@ -1,0 +1,145 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7wsxknt1s2lt"]
+
+[ext_resource type="PackedScene" uid="uid://bkngqb47yt4mq" path="res://UI/Modules/ModuleIcon.prefab.tscn" id="1_8e5gw"]
+
+[sub_resource type="Environment" id="Environment_75bbt"]
+ambient_light_color = Color(0.212, 0.227, 0.259, 1)
+ambient_light_sky_contribution = 0.0
+fog_light_color = Color(0.5, 0.5, 0.5, 1)
+
+[node name="RootNode3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_75bbt")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+visible = false
+
+[node name="Main Camera" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+
+[node name="Camera" type="Camera3D" parent="Main Camera"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+cull_mask = 16777215
+projection = 1
+current = true
+fov = 60.0
+size = 1.1e-05
+near = 0.3
+far = 1000.0
+
+[node name="Canvas" type="Node3D" parent="."]
+transform = Transform3D(1e-07, 0, 0, 0, 1e-07, 0, 0, 0, 1e-07, 0, 0, 0)
+
+[node name="Canvas" type="Node" parent="Canvas"]
+
+[node name="MonoBehaviour" type="Node" parent="Canvas"]
+
+[node name="MonoBehaviour2" type="Node" parent="Canvas"]
+
+[node name="Modules" type="Node3D" parent="Canvas"]
+
+[node name="CanvasRenderer" type="Node" parent="Canvas/Modules"]
+
+[node name="MonoBehaviour" type="Node" parent="Canvas/Modules"]
+
+[node name="Text (TMP)" type="Node3D" parent="Canvas/Modules"]
+
+[node name="CanvasRenderer" type="Node" parent="Canvas/Modules/Text (TMP)"]
+
+[node name="MonoBehaviour" type="Node" parent="Canvas/Modules/Text (TMP)"]
+
+[node name="Unlocked Modules" type="Node3D" parent="Canvas/Modules"]
+
+[node name="CanvasRenderer" type="Node" parent="Canvas/Modules/Unlocked Modules"]
+
+[node name="MonoBehaviour" type="Node" parent="Canvas/Modules/Unlocked Modules"]
+
+[node name="MonoBehaviour2" type="Node" parent="Canvas/Modules/Unlocked Modules"]
+
+[node name="ModuleIcon" parent="Canvas/Modules/Unlocked Modules" instance=ExtResource("1_8e5gw")]
+
+[node name="ModuleIcon (1)" parent="Canvas/Modules/Unlocked Modules" instance=ExtResource("1_8e5gw")]
+
+[node name="ModuleIcon (2)" parent="Canvas/Modules/Unlocked Modules" instance=ExtResource("1_8e5gw")]
+
+[node name="ModuleIcon (3)" parent="Canvas/Modules/Unlocked Modules" instance=ExtResource("1_8e5gw")]
+
+[node name="ModuleIcon (4)" parent="Canvas/Modules/Unlocked Modules" instance=ExtResource("1_8e5gw")]
+
+[node name="ModuleIcon (5)" parent="Canvas/Modules/Unlocked Modules" instance=ExtResource("1_8e5gw")]
+
+[node name="Text (TMP) (1)" type="Node3D" parent="Canvas/Modules"]
+
+[node name="CanvasRenderer" type="Node" parent="Canvas/Modules/Text (TMP) (1)"]
+
+[node name="MonoBehaviour" type="Node" parent="Canvas/Modules/Text (TMP) (1)"]
+
+[node name="locked Modules (1)" type="Node3D" parent="Canvas/Modules"]
+
+[node name="CanvasRenderer" type="Node" parent="Canvas/Modules/locked Modules (1)"]
+
+[node name="MonoBehaviour" type="Node" parent="Canvas/Modules/locked Modules (1)"]
+
+[node name="MonoBehaviour2" type="Node" parent="Canvas/Modules/locked Modules (1)"]
+
+[node name="ModuleIcon" parent="Canvas/Modules/locked Modules (1)" instance=ExtResource("1_8e5gw")]
+
+[node name="ModuleIcon (1)" parent="Canvas/Modules/locked Modules (1)" instance=ExtResource("1_8e5gw")]
+
+[node name="ModuleIcon (2)" parent="Canvas/Modules/locked Modules (1)" instance=ExtResource("1_8e5gw")]
+
+[node name="ModuleIcon (3)" parent="Canvas/Modules/locked Modules (1)" instance=ExtResource("1_8e5gw")]
+
+[node name="ModuleIcon (4)" parent="Canvas/Modules/locked Modules (1)" instance=ExtResource("1_8e5gw")]
+
+[node name="ModuleIcon (5)" parent="Canvas/Modules/locked Modules (1)" instance=ExtResource("1_8e5gw")]
+
+[node name="ModuleIcon (6)" parent="Canvas/Modules/locked Modules (1)" instance=ExtResource("1_8e5gw")]
+
+[node name="Description" type="Node3D" parent="Canvas"]
+
+[node name="CanvasRenderer" type="Node" parent="Canvas/Description"]
+
+[node name="MonoBehaviour" type="Node" parent="Canvas/Description"]
+
+[node name="Title" type="Node3D" parent="Canvas/Description"]
+
+[node name="CanvasRenderer" type="Node" parent="Canvas/Description/Title"]
+
+[node name="MonoBehaviour" type="Node" parent="Canvas/Description/Title"]
+
+[node name="Text (TMP)" type="Node3D" parent="Canvas/Description/Title"]
+
+[node name="CanvasRenderer" type="Node" parent="Canvas/Description/Title/Text (TMP)"]
+
+[node name="MonoBehaviour" type="Node" parent="Canvas/Description/Title/Text (TMP)"]
+
+[node name="ModuleIcon" parent="Canvas/Description/Title" instance=ExtResource("1_8e5gw")]
+
+[node name="Effect" type="Node3D" parent="Canvas/Description"]
+
+[node name="CanvasRenderer" type="Node" parent="Canvas/Description/Effect"]
+
+[node name="MonoBehaviour" type="Node" parent="Canvas/Description/Effect"]
+
+[node name="EventSystem" type="Node3D" parent="."]
+
+[node name="MonoBehaviour" type="Node" parent="EventSystem"]
+
+[node name="MonoBehaviour2" type="Node" parent="EventSystem"]
+
+[editable path="Canvas/Modules/Unlocked Modules/ModuleIcon"]
+[editable path="Canvas/Modules/Unlocked Modules/ModuleIcon (1)"]
+[editable path="Canvas/Modules/Unlocked Modules/ModuleIcon (2)"]
+[editable path="Canvas/Modules/Unlocked Modules/ModuleIcon (3)"]
+[editable path="Canvas/Modules/Unlocked Modules/ModuleIcon (4)"]
+[editable path="Canvas/Modules/Unlocked Modules/ModuleIcon (5)"]
+[editable path="Canvas/Modules/locked Modules (1)/ModuleIcon"]
+[editable path="Canvas/Modules/locked Modules (1)/ModuleIcon (1)"]
+[editable path="Canvas/Modules/locked Modules (1)/ModuleIcon (2)"]
+[editable path="Canvas/Modules/locked Modules (1)/ModuleIcon (3)"]
+[editable path="Canvas/Modules/locked Modules (1)/ModuleIcon (4)"]
+[editable path="Canvas/Modules/locked Modules (1)/ModuleIcon (5)"]
+[editable path="Canvas/Modules/locked Modules (1)/ModuleIcon (6)"]
+[editable path="Canvas/Description/Title/ModuleIcon"]

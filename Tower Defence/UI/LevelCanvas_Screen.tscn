@@ -1,0 +1,750 @@
+[gd_scene load_steps=5 format=3 uid="uid://bf14d8qox8yy5"]
+
+[ext_resource type="PackedScene" uid="uid://dpv0bwn2n0ebh" path="res://UI/Shop/Card_Turret.tscn" id="1_iukjl"]
+[ext_resource type="PackedScene" uid="uid://bxr1qd0pjiu10" path="res://UI/Shop/Card_Module.tscn" id="2_wvkwj"]
+[ext_resource type="PackedScene" uid="uid://psuoawl8jg4k" path="res://UI/Shop/Card_Life.tscn" id="3_pmuhg"]
+[ext_resource type="PackedScene" uid="uid://dcdfawohp4hf8" path="res://UI/Shop/Card_Hidden.tscn" id="4_q3du4"]
+
+[node name="LevelCanvas_Screen" type="Node3D"]
+transform = Transform3D(1e-07, 0, 0, 0, 1e-07, 0, 0, 0, 1e-07, 0, 0, 0)
+
+[node name="Canvas" type="Node" parent="."]
+
+[node name="MonoBehaviour" type="Node" parent="."]
+
+[node name="MonoBehaviour2" type="Node" parent="."]
+
+[node name="SpeedControls" type="Node3D" parent="."]
+
+[node name="MonoBehaviour" type="Node" parent="SpeedControls"]
+
+[node name="MonoBehaviour2" type="Node" parent="SpeedControls"]
+
+[node name="StopButton" type="Node3D" parent="SpeedControls"]
+
+[node name="CanvasRenderer" type="Node" parent="SpeedControls/StopButton"]
+
+[node name="MonoBehaviour" type="Node" parent="SpeedControls/StopButton"]
+
+[node name="MonoBehaviour2" type="Node" parent="SpeedControls/StopButton"]
+
+[node name="PauseButton" type="Node3D" parent="SpeedControls"]
+
+[node name="CanvasRenderer" type="Node" parent="SpeedControls/PauseButton"]
+
+[node name="MonoBehaviour" type="Node" parent="SpeedControls/PauseButton"]
+
+[node name="MonoBehaviour2" type="Node" parent="SpeedControls/PauseButton"]
+
+[node name="PlayButton" type="Node3D" parent="SpeedControls"]
+
+[node name="CanvasRenderer" type="Node" parent="SpeedControls/PlayButton"]
+
+[node name="MonoBehaviour" type="Node" parent="SpeedControls/PlayButton"]
+
+[node name="MonoBehaviour2" type="Node" parent="SpeedControls/PlayButton"]
+
+[node name="FastButton" type="Node3D" parent="SpeedControls"]
+
+[node name="CanvasRenderer" type="Node" parent="SpeedControls/FastButton"]
+
+[node name="MonoBehaviour" type="Node" parent="SpeedControls/FastButton"]
+
+[node name="MonoBehaviour2" type="Node" parent="SpeedControls/FastButton"]
+
+[node name="Lives" type="Node3D" parent="."]
+
+[node name="CanvasRenderer" type="Node" parent="Lives"]
+
+[node name="MonoBehaviour" type="Node" parent="Lives"]
+
+[node name="Text (TMP)" type="Node3D" parent="Lives"]
+
+[node name="CanvasRenderer" type="Node" parent="Lives/Text (TMP)"]
+
+[node name="MonoBehaviour" type="Node" parent="Lives/Text (TMP)"]
+
+[node name="Image" type="Node3D" parent="Lives"]
+
+[node name="CanvasRenderer" type="Node" parent="Lives/Image"]
+
+[node name="MonoBehaviour" type="Node" parent="Lives/Image"]
+
+[node name="MonoBehaviour2" type="Node" parent="Lives/Image"]
+
+[node name="Powercells" type="Node3D" parent="."]
+
+[node name="CanvasRenderer" type="Node" parent="Powercells"]
+
+[node name="MonoBehaviour" type="Node" parent="Powercells"]
+
+[node name="Text (TMP)" type="Node3D" parent="Powercells"]
+
+[node name="CanvasRenderer" type="Node" parent="Powercells/Text (TMP)"]
+
+[node name="MonoBehaviour" type="Node" parent="Powercells/Text (TMP)"]
+
+[node name="Image" type="Node3D" parent="Powercells"]
+
+[node name="CanvasRenderer" type="Node" parent="Powercells/Image"]
+
+[node name="MonoBehaviour" type="Node" parent="Powercells/Image"]
+
+[node name="MonoBehaviour2" type="Node" parent="Powercells/Image"]
+
+[node name="Timer" type="Node3D" parent="."]
+
+[node name="CanvasRenderer" type="Node" parent="Timer"]
+
+[node name="MonoBehaviour" type="Node" parent="Timer"]
+
+[node name="Image" type="Node3D" parent="Timer"]
+
+[node name="CanvasRenderer" type="Node" parent="Timer/Image"]
+
+[node name="MonoBehaviour" type="Node" parent="Timer/Image"]
+
+[node name="Timer_EnemyText" type="Node3D" parent="Timer"]
+
+[node name="CanvasRenderer" type="Node" parent="Timer/Timer_EnemyText"]
+
+[node name="MonoBehaviour" type="Node" parent="Timer/Timer_EnemyText"]
+
+[node name="WaveText" type="Node3D" parent="Timer"]
+
+[node name="CanvasRenderer" type="Node" parent="Timer/WaveText"]
+
+[node name="MonoBehaviour" type="Node" parent="Timer/WaveText"]
+
+[node name="MonoBehaviour2" type="Node" parent="Timer/WaveText"]
+
+[node name="PausedTimer" type="Node3D" parent="."]
+
+[node name="CanvasRenderer" type="Node" parent="PausedTimer"]
+
+[node name="MonoBehaviour" type="Node" parent="PausedTimer"]
+
+[node name="Image" type="Node3D" parent="PausedTimer"]
+
+[node name="CanvasRenderer" type="Node" parent="PausedTimer/Image"]
+
+[node name="MonoBehaviour" type="Node" parent="PausedTimer/Image"]
+
+[node name="Timer_EnemyText" type="Node3D" parent="PausedTimer"]
+
+[node name="CanvasRenderer" type="Node" parent="PausedTimer/Timer_EnemyText"]
+
+[node name="MonoBehaviour" type="Node" parent="PausedTimer/Timer_EnemyText"]
+
+[node name="MonoBehaviour2" type="Node" parent="PausedTimer/Timer_EnemyText"]
+
+[node name="WaveText" type="Node3D" parent="PausedTimer"]
+
+[node name="CanvasRenderer" type="Node" parent="PausedTimer/WaveText"]
+
+[node name="MonoBehaviour" type="Node" parent="PausedTimer/WaveText"]
+
+[node name="MonoBehaviour2" type="Node" parent="PausedTimer/WaveText"]
+
+[node name="ShopButton" type="Node3D" parent="."]
+
+[node name="CanvasRenderer" type="Node" parent="ShopButton"]
+
+[node name="MonoBehaviour" type="Node" parent="ShopButton"]
+
+[node name="MonoBehaviour2" type="Node" parent="ShopButton"]
+
+[node name="MonoBehaviour3" type="Node" parent="ShopButton"]
+
+[node name="MonoBehaviour4" type="Node" parent="ShopButton"]
+
+[node name="MonoBehaviour5" type="Node" parent="ShopButton"]
+
+[node name="Text (TMP)" type="Node3D" parent="ShopButton"]
+
+[node name="CanvasRenderer" type="Node" parent="ShopButton/Text (TMP)"]
+
+[node name="MonoBehaviour" type="Node" parent="ShopButton/Text (TMP)"]
+
+[node name="MonoBehaviour2" type="Node" parent="ShopButton/Text (TMP)"]
+
+[node name="Crack" type="Node3D" parent="ShopButton"]
+
+[node name="CanvasRenderer" type="Node" parent="ShopButton/Crack"]
+
+[node name="MonoBehaviour" type="Node" parent="ShopButton/Crack"]
+
+[node name="MonoBehaviour2" type="Node" parent="ShopButton/Crack"]
+
+[node name="Inventory" type="Node3D" parent="."]
+
+[node name="CanvasRenderer" type="Node" parent="Inventory"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory"]
+
+[node name="MonoBehaviour2" type="Node" parent="Inventory"]
+
+[node name="TurretTypePanel" type="Node3D" parent="Inventory"]
+
+[node name="CanvasRenderer" type="Node" parent="Inventory/TurretTypePanel"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/TurretTypePanel"]
+
+[node name="MonoBehaviour2" type="Node" parent="Inventory/TurretTypePanel"]
+
+[node name="Type" type="Node3D" parent="Inventory/TurretTypePanel"]
+
+[node name="CanvasRenderer" type="Node" parent="Inventory/TurretTypePanel/Type"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/TurretTypePanel/Type"]
+
+[node name="MonoBehaviour2" type="Node" parent="Inventory/TurretTypePanel/Type"]
+
+[node name="Image" type="Node3D" parent="Inventory/TurretTypePanel"]
+
+[node name="CanvasRenderer" type="Node" parent="Inventory/TurretTypePanel/Image"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/TurretTypePanel/Image"]
+
+[node name="MonoBehaviour2" type="Node" parent="Inventory/TurretTypePanel/Image"]
+
+[node name="TurretInfo" type="Node3D" parent="Inventory"]
+
+[node name="CanvasRenderer" type="Node" parent="Inventory/TurretInfo"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/TurretInfo"]
+
+[node name="MonoBehaviour2" type="Node" parent="Inventory/TurretInfo"]
+
+[node name="Type" type="Node3D" parent="Inventory/TurretInfo"]
+
+[node name="CanvasRenderer" type="Node" parent="Inventory/TurretInfo/Type"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/TurretInfo/Type"]
+
+[node name="MonoBehaviour2" type="Node" parent="Inventory/TurretInfo/Type"]
+
+[node name="Image" type="Node3D" parent="Inventory/TurretInfo"]
+
+[node name="CanvasRenderer" type="Node" parent="Inventory/TurretInfo/Image"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/TurretInfo/Image"]
+
+[node name="ModuleTypePanel" type="Node3D" parent="Inventory"]
+
+[node name="CanvasRenderer" type="Node" parent="Inventory/ModuleTypePanel"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/ModuleTypePanel"]
+
+[node name="MonoBehaviour2" type="Node" parent="Inventory/ModuleTypePanel"]
+
+[node name="Type" type="Node3D" parent="Inventory/ModuleTypePanel"]
+
+[node name="CanvasRenderer" type="Node" parent="Inventory/ModuleTypePanel/Type"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/ModuleTypePanel/Type"]
+
+[node name="MonoBehaviour2" type="Node" parent="Inventory/ModuleTypePanel/Type"]
+
+[node name="Image" type="Node3D" parent="Inventory/ModuleTypePanel"]
+
+[node name="CanvasRenderer" type="Node" parent="Inventory/ModuleTypePanel/Image"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/ModuleTypePanel/Image"]
+
+[node name="MonoBehaviour2" type="Node" parent="Inventory/ModuleTypePanel/Image"]
+
+[node name="Title" type="Node3D" parent="Inventory"]
+
+[node name="CanvasRenderer" type="Node" parent="Inventory/Title"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/Title"]
+
+[node name="Turrets" type="Node3D" parent="Inventory"]
+
+[node name="CanvasRenderer" type="Node" parent="Inventory/Turrets"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/Turrets"]
+
+[node name="Viewport" type="Node3D" parent="Inventory/Turrets"]
+
+[node name="CanvasRenderer" type="Node" parent="Inventory/Turrets/Viewport"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/Turrets/Viewport"]
+
+[node name="MonoBehaviour2" type="Node" parent="Inventory/Turrets/Viewport"]
+
+[node name="Content" type="Node3D" parent="Inventory/Turrets/Viewport"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/Turrets/Viewport/Content"]
+
+[node name="MonoBehaviour2" type="Node" parent="Inventory/Turrets/Viewport/Content"]
+
+[node name="Scrollbar Horizontal" type="Node3D" parent="Inventory/Turrets"]
+
+[node name="CanvasRenderer" type="Node" parent="Inventory/Turrets/Scrollbar Horizontal"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/Turrets/Scrollbar Horizontal"]
+
+[node name="MonoBehaviour2" type="Node" parent="Inventory/Turrets/Scrollbar Horizontal"]
+
+[node name="Sliding Area" type="Node3D" parent="Inventory/Turrets/Scrollbar Horizontal"]
+
+[node name="Handle" type="Node3D" parent="Inventory/Turrets/Scrollbar Horizontal/Sliding Area"]
+
+[node name="CanvasRenderer" type="Node" parent="Inventory/Turrets/Scrollbar Horizontal/Sliding Area/Handle"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/Turrets/Scrollbar Horizontal/Sliding Area/Handle"]
+
+[node name="Scrollbar Vertical" type="Node3D" parent="Inventory/Turrets"]
+
+[node name="CanvasRenderer" type="Node" parent="Inventory/Turrets/Scrollbar Vertical"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/Turrets/Scrollbar Vertical"]
+
+[node name="MonoBehaviour2" type="Node" parent="Inventory/Turrets/Scrollbar Vertical"]
+
+[node name="Sliding Area" type="Node3D" parent="Inventory/Turrets/Scrollbar Vertical"]
+
+[node name="Handle" type="Node3D" parent="Inventory/Turrets/Scrollbar Vertical/Sliding Area"]
+
+[node name="CanvasRenderer" type="Node" parent="Inventory/Turrets/Scrollbar Vertical/Sliding Area/Handle"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/Turrets/Scrollbar Vertical/Sliding Area/Handle"]
+
+[node name="Modules" type="Node3D" parent="Inventory"]
+
+[node name="CanvasRenderer" type="Node" parent="Inventory/Modules"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/Modules"]
+
+[node name="Viewport" type="Node3D" parent="Inventory/Modules"]
+
+[node name="CanvasRenderer" type="Node" parent="Inventory/Modules/Viewport"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/Modules/Viewport"]
+
+[node name="MonoBehaviour2" type="Node" parent="Inventory/Modules/Viewport"]
+
+[node name="Content" type="Node3D" parent="Inventory/Modules/Viewport"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/Modules/Viewport/Content"]
+
+[node name="MonoBehaviour2" type="Node" parent="Inventory/Modules/Viewport/Content"]
+
+[node name="Scrollbar Horizontal" type="Node3D" parent="Inventory/Modules"]
+
+[node name="CanvasRenderer" type="Node" parent="Inventory/Modules/Scrollbar Horizontal"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/Modules/Scrollbar Horizontal"]
+
+[node name="MonoBehaviour2" type="Node" parent="Inventory/Modules/Scrollbar Horizontal"]
+
+[node name="Sliding Area" type="Node3D" parent="Inventory/Modules/Scrollbar Horizontal"]
+
+[node name="Handle" type="Node3D" parent="Inventory/Modules/Scrollbar Horizontal/Sliding Area"]
+
+[node name="CanvasRenderer" type="Node" parent="Inventory/Modules/Scrollbar Horizontal/Sliding Area/Handle"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/Modules/Scrollbar Horizontal/Sliding Area/Handle"]
+
+[node name="Scrollbar Vertical" type="Node3D" parent="Inventory/Modules"]
+
+[node name="CanvasRenderer" type="Node" parent="Inventory/Modules/Scrollbar Vertical"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/Modules/Scrollbar Vertical"]
+
+[node name="MonoBehaviour2" type="Node" parent="Inventory/Modules/Scrollbar Vertical"]
+
+[node name="Sliding Area" type="Node3D" parent="Inventory/Modules/Scrollbar Vertical"]
+
+[node name="Handle" type="Node3D" parent="Inventory/Modules/Scrollbar Vertical/Sliding Area"]
+
+[node name="CanvasRenderer" type="Node" parent="Inventory/Modules/Scrollbar Vertical/Sliding Area/Handle"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/Modules/Scrollbar Vertical/Sliding Area/Handle"]
+
+[node name="TurretInfo2" type="Node3D" parent="Inventory"]
+
+[node name="Stats" type="Node3D" parent="Inventory/TurretInfo2"]
+transform = Transform3D(0.985222, 0, 0, 0, 0.985222, 0, 0, 0, 0.985222, 0, 0, 0)
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/TurretInfo2/Stats"]
+
+[node name="MonoBehaviour2" type="Node" parent="Inventory/TurretInfo2/Stats"]
+
+[node name="Damage" type="Node3D" parent="Inventory/TurretInfo2/Stats"]
+
+[node name="Canvas" type="Node" parent="Inventory/TurretInfo2/Stats/Damage"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/TurretInfo2/Stats/Damage"]
+
+[node name="MonoBehaviour2" type="Node" parent="Inventory/TurretInfo2/Stats/Damage"]
+
+[node name="MonoBehaviour3" type="Node" parent="Inventory/TurretInfo2/Stats/Damage"]
+
+[node name="Icon" type="Node3D" parent="Inventory/TurretInfo2/Stats/Damage"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CanvasRenderer" type="Node" parent="Inventory/TurretInfo2/Stats/Damage/Icon"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/TurretInfo2/Stats/Damage/Icon"]
+
+[node name="Data" type="Node3D" parent="Inventory/TurretInfo2/Stats/Damage"]
+
+[node name="CanvasRenderer" type="Node" parent="Inventory/TurretInfo2/Stats/Damage/Data"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/TurretInfo2/Stats/Damage/Data"]
+
+[node name="Rate" type="Node3D" parent="Inventory/TurretInfo2/Stats"]
+
+[node name="Canvas" type="Node" parent="Inventory/TurretInfo2/Stats/Rate"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/TurretInfo2/Stats/Rate"]
+
+[node name="MonoBehaviour2" type="Node" parent="Inventory/TurretInfo2/Stats/Rate"]
+
+[node name="MonoBehaviour3" type="Node" parent="Inventory/TurretInfo2/Stats/Rate"]
+
+[node name="Icon" type="Node3D" parent="Inventory/TurretInfo2/Stats/Rate"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CanvasRenderer" type="Node" parent="Inventory/TurretInfo2/Stats/Rate/Icon"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/TurretInfo2/Stats/Rate/Icon"]
+
+[node name="Data" type="Node3D" parent="Inventory/TurretInfo2/Stats/Rate"]
+
+[node name="CanvasRenderer" type="Node" parent="Inventory/TurretInfo2/Stats/Rate/Data"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/TurretInfo2/Stats/Rate/Data"]
+
+[node name="Range" type="Node3D" parent="Inventory/TurretInfo2/Stats"]
+
+[node name="Canvas" type="Node" parent="Inventory/TurretInfo2/Stats/Range"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/TurretInfo2/Stats/Range"]
+
+[node name="MonoBehaviour2" type="Node" parent="Inventory/TurretInfo2/Stats/Range"]
+
+[node name="MonoBehaviour3" type="Node" parent="Inventory/TurretInfo2/Stats/Range"]
+
+[node name="Icon" type="Node3D" parent="Inventory/TurretInfo2/Stats/Range"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CanvasRenderer" type="Node" parent="Inventory/TurretInfo2/Stats/Range/Icon"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/TurretInfo2/Stats/Range/Icon"]
+
+[node name="Data" type="Node3D" parent="Inventory/TurretInfo2/Stats/Range"]
+
+[node name="CanvasRenderer" type="Node" parent="Inventory/TurretInfo2/Stats/Range/Data"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/TurretInfo2/Stats/Range/Data"]
+
+[node name="Modules" type="Node3D" parent="Inventory/TurretInfo2"]
+
+[node name="CanvasRenderer" type="Node" parent="Inventory/TurretInfo2/Modules"]
+
+[node name="Layout" type="Node3D" parent="Inventory/TurretInfo2/Modules"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/TurretInfo2/Modules/Layout"]
+
+[node name="CanvasRenderer" type="Node" parent="Inventory/TurretInfo2/Modules/Layout"]
+
+[node name="MonoBehaviour2" type="Node" parent="Inventory/TurretInfo2/Modules/Layout"]
+
+[node name="Title" type="Node3D" parent="Inventory/TurretInfo2/Modules"]
+
+[node name="CanvasRenderer" type="Node" parent="Inventory/TurretInfo2/Modules/Title"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/TurretInfo2/Modules/Title"]
+
+[node name="MonoBehaviour2" type="Node" parent="Inventory/TurretInfo2/Modules/Title"]
+
+[node name="SellButton" type="Node3D" parent="Inventory/TurretInfo2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="CanvasRenderer" type="Node" parent="Inventory/TurretInfo2/SellButton"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/TurretInfo2/SellButton"]
+
+[node name="MonoBehaviour2" type="Node" parent="Inventory/TurretInfo2/SellButton"]
+
+[node name="Text (TMP)" type="Node3D" parent="Inventory/TurretInfo2/SellButton"]
+
+[node name="CanvasRenderer" type="Node" parent="Inventory/TurretInfo2/SellButton/Text (TMP)"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/TurretInfo2/SellButton/Text (TMP)"]
+
+[node name="MonoBehaviour2" type="Node" parent="Inventory/TurretInfo2/SellButton/Text (TMP)"]
+
+[node name="TargetingRotateButton" type="Node3D" parent="Inventory/TurretInfo2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="CanvasRenderer" type="Node" parent="Inventory/TurretInfo2/TargetingRotateButton"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/TurretInfo2/TargetingRotateButton"]
+
+[node name="MonoBehaviour2" type="Node" parent="Inventory/TurretInfo2/TargetingRotateButton"]
+
+[node name="Text (TMP)" type="Node3D" parent="Inventory/TurretInfo2/TargetingRotateButton"]
+
+[node name="CanvasRenderer" type="Node" parent="Inventory/TurretInfo2/TargetingRotateButton/Text (TMP)"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/TurretInfo2/TargetingRotateButton/Text (TMP)"]
+
+[node name="CloseButton" type="Node3D" parent="Inventory"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="CanvasRenderer" type="Node" parent="Inventory/CloseButton"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/CloseButton"]
+
+[node name="MonoBehaviour2" type="Node" parent="Inventory/CloseButton"]
+
+[node name="Text (TMP)" type="Node3D" parent="Inventory/CloseButton"]
+
+[node name="CanvasRenderer" type="Node" parent="Inventory/CloseButton/Text (TMP)"]
+
+[node name="MonoBehaviour" type="Node" parent="Inventory/CloseButton/Text (TMP)"]
+
+[node name="MonoBehaviour2" type="Node" parent="Inventory/CloseButton/Text (TMP)"]
+
+[node name="GameOverUI" type="Node3D" parent="."]
+
+[node name="MonoBehaviour" type="Node" parent="GameOverUI"]
+
+[node name="Background" type="Node3D" parent="GameOverUI"]
+
+[node name="CanvasRenderer" type="Node" parent="GameOverUI/Background"]
+
+[node name="MonoBehaviour" type="Node" parent="GameOverUI/Background"]
+
+[node name="GameOverText" type="Node3D" parent="GameOverUI/Background"]
+
+[node name="CanvasRenderer" type="Node" parent="GameOverUI/Background/GameOverText"]
+
+[node name="MonoBehaviour" type="Node" parent="GameOverUI/Background/GameOverText"]
+
+[node name="MonoBehaviour2" type="Node" parent="GameOverUI/Background/GameOverText"]
+
+[node name="WavesSpawned" type="Node3D" parent="GameOverUI/Background"]
+
+[node name="WavesCount" type="Node3D" parent="GameOverUI/Background/WavesSpawned"]
+
+[node name="CanvasRenderer" type="Node" parent="GameOverUI/Background/WavesSpawned/WavesCount"]
+
+[node name="MonoBehaviour" type="Node" parent="GameOverUI/Background/WavesSpawned/WavesCount"]
+
+[node name="WavesSpawnedText" type="Node3D" parent="GameOverUI/Background/WavesSpawned"]
+
+[node name="CanvasRenderer" type="Node" parent="GameOverUI/Background/WavesSpawned/WavesSpawnedText"]
+
+[node name="MonoBehaviour" type="Node" parent="GameOverUI/Background/WavesSpawned/WavesSpawnedText"]
+
+[node name="MonoBehaviour2" type="Node" parent="GameOverUI/Background/WavesSpawned/WavesSpawnedText"]
+
+[node name="RetryButton" type="Node3D" parent="GameOverUI/Background"]
+
+[node name="CanvasRenderer" type="Node" parent="GameOverUI/Background/RetryButton"]
+
+[node name="MonoBehaviour" type="Node" parent="GameOverUI/Background/RetryButton"]
+
+[node name="MonoBehaviour2" type="Node" parent="GameOverUI/Background/RetryButton"]
+
+[node name="Text (TMP)" type="Node3D" parent="GameOverUI/Background/RetryButton"]
+
+[node name="CanvasRenderer" type="Node" parent="GameOverUI/Background/RetryButton/Text (TMP)"]
+
+[node name="MonoBehaviour" type="Node" parent="GameOverUI/Background/RetryButton/Text (TMP)"]
+
+[node name="MonoBehaviour2" type="Node" parent="GameOverUI/Background/RetryButton/Text (TMP)"]
+
+[node name="MenuButton" type="Node3D" parent="GameOverUI/Background"]
+
+[node name="CanvasRenderer" type="Node" parent="GameOverUI/Background/MenuButton"]
+
+[node name="MonoBehaviour" type="Node" parent="GameOverUI/Background/MenuButton"]
+
+[node name="MonoBehaviour2" type="Node" parent="GameOverUI/Background/MenuButton"]
+
+[node name="Text (TMP)" type="Node3D" parent="GameOverUI/Background/MenuButton"]
+
+[node name="CanvasRenderer" type="Node" parent="GameOverUI/Background/MenuButton/Text (TMP)"]
+
+[node name="MonoBehaviour" type="Node" parent="GameOverUI/Background/MenuButton/Text (TMP)"]
+
+[node name="MonoBehaviour2" type="Node" parent="GameOverUI/Background/MenuButton/Text (TMP)"]
+
+[node name="PauseMenu" type="Node3D" parent="."]
+
+[node name="CanvasRenderer" type="Node" parent="PauseMenu"]
+
+[node name="MonoBehaviour" type="Node" parent="PauseMenu"]
+
+[node name="Background" type="Node3D" parent="PauseMenu"]
+
+[node name="CanvasRenderer" type="Node" parent="PauseMenu/Background"]
+
+[node name="MonoBehaviour" type="Node" parent="PauseMenu/Background"]
+
+[node name="GamePausedText" type="Node3D" parent="PauseMenu"]
+
+[node name="CanvasRenderer" type="Node" parent="PauseMenu/GamePausedText"]
+
+[node name="MonoBehaviour" type="Node" parent="PauseMenu/GamePausedText"]
+
+[node name="MonoBehaviour2" type="Node" parent="PauseMenu/GamePausedText"]
+
+[node name="ContineButton" type="Node3D" parent="PauseMenu"]
+
+[node name="CanvasRenderer" type="Node" parent="PauseMenu/ContineButton"]
+
+[node name="MonoBehaviour" type="Node" parent="PauseMenu/ContineButton"]
+
+[node name="MonoBehaviour2" type="Node" parent="PauseMenu/ContineButton"]
+
+[node name="Text (TMP)" type="Node3D" parent="PauseMenu/ContineButton"]
+
+[node name="CanvasRenderer" type="Node" parent="PauseMenu/ContineButton/Text (TMP)"]
+
+[node name="MonoBehaviour" type="Node" parent="PauseMenu/ContineButton/Text (TMP)"]
+
+[node name="MonoBehaviour2" type="Node" parent="PauseMenu/ContineButton/Text (TMP)"]
+
+[node name="BottomButtons" type="Node3D" parent="PauseMenu"]
+
+[node name="MonoBehaviour" type="Node" parent="PauseMenu/BottomButtons"]
+
+[node name="RestartButton" type="Node3D" parent="PauseMenu/BottomButtons"]
+
+[node name="CanvasRenderer" type="Node" parent="PauseMenu/BottomButtons/RestartButton"]
+
+[node name="MonoBehaviour" type="Node" parent="PauseMenu/BottomButtons/RestartButton"]
+
+[node name="MonoBehaviour2" type="Node" parent="PauseMenu/BottomButtons/RestartButton"]
+
+[node name="Text (TMP)" type="Node3D" parent="PauseMenu/BottomButtons/RestartButton"]
+
+[node name="CanvasRenderer" type="Node" parent="PauseMenu/BottomButtons/RestartButton/Text (TMP)"]
+
+[node name="MonoBehaviour" type="Node" parent="PauseMenu/BottomButtons/RestartButton/Text (TMP)"]
+
+[node name="MonoBehaviour2" type="Node" parent="PauseMenu/BottomButtons/RestartButton/Text (TMP)"]
+
+[node name="QuitButton" type="Node3D" parent="PauseMenu/BottomButtons"]
+
+[node name="CanvasRenderer" type="Node" parent="PauseMenu/BottomButtons/QuitButton"]
+
+[node name="MonoBehaviour" type="Node" parent="PauseMenu/BottomButtons/QuitButton"]
+
+[node name="MonoBehaviour2" type="Node" parent="PauseMenu/BottomButtons/QuitButton"]
+
+[node name="Text (TMP)" type="Node3D" parent="PauseMenu/BottomButtons/QuitButton"]
+
+[node name="CanvasRenderer" type="Node" parent="PauseMenu/BottomButtons/QuitButton/Text (TMP)"]
+
+[node name="MonoBehaviour" type="Node" parent="PauseMenu/BottomButtons/QuitButton/Text (TMP)"]
+
+[node name="MonoBehaviour2" type="Node" parent="PauseMenu/BottomButtons/QuitButton/Text (TMP)"]
+
+[node name="Selection" type="Node3D" parent="."]
+
+[node name="CanvasRenderer" type="Node" parent="Selection"]
+
+[node name="MonoBehaviour" type="Node" parent="Selection"]
+
+[node name="PausedText" type="Node3D" parent="Selection"]
+
+[node name="CanvasRenderer" type="Node" parent="Selection/PausedText"]
+
+[node name="MonoBehaviour" type="Node" parent="Selection/PausedText"]
+
+[node name="MonoBehaviour2" type="Node" parent="Selection/PausedText"]
+
+[node name="SelectionCards" type="Node3D" parent="Selection"]
+
+[node name="CanvasRenderer" type="Node" parent="Selection/SelectionCards"]
+
+[node name="MonoBehaviour" type="Node" parent="Selection/SelectionCards"]
+
+[node name="Card_Turret" parent="Selection/SelectionCards" instance=ExtResource("1_iukjl")]
+
+[node name="Card_Module" parent="Selection/SelectionCards" instance=ExtResource("2_wvkwj")]
+
+[node name="Card_Life" parent="Selection/SelectionCards" instance=ExtResource("3_pmuhg")]
+
+[node name="Card_Hidden" parent="Selection/SelectionCards" instance=ExtResource("4_q3du4")]
+
+[node name="Options" type="Node3D" parent="Selection"]
+
+[node name="MonoBehaviour" type="Node" parent="Selection/Options"]
+
+[node name="Resume" type="Node3D" parent="Selection/Options"]
+
+[node name="CanvasRenderer" type="Node" parent="Selection/Options/Resume"]
+
+[node name="MonoBehaviour" type="Node" parent="Selection/Options/Resume"]
+
+[node name="MonoBehaviour2" type="Node" parent="Selection/Options/Resume"]
+
+[node name="Name" type="Node3D" parent="Selection/Options/Resume"]
+
+[node name="CanvasRenderer" type="Node" parent="Selection/Options/Resume/Name"]
+
+[node name="MonoBehaviour" type="Node" parent="Selection/Options/Resume/Name"]
+
+[node name="MonoBehaviour2" type="Node" parent="Selection/Options/Resume/Name"]
+
+[node name="Lock" type="Node3D" parent="Selection/Options"]
+
+[node name="CanvasRenderer" type="Node" parent="Selection/Options/Lock"]
+
+[node name="MonoBehaviour" type="Node" parent="Selection/Options/Lock"]
+
+[node name="MonoBehaviour2" type="Node" parent="Selection/Options/Lock"]
+
+[node name="Name" type="Node3D" parent="Selection/Options/Lock"]
+
+[node name="CanvasRenderer" type="Node" parent="Selection/Options/Lock/Name"]
+
+[node name="MonoBehaviour" type="Node" parent="Selection/Options/Lock/Name"]
+
+[node name="MonoBehaviour2" type="Node" parent="Selection/Options/Lock/Name"]
+
+[node name="LockText" type="Node3D" parent="Selection/Options/Lock"]
+
+[node name="CanvasRenderer" type="Node" parent="Selection/Options/Lock/LockText"]
+
+[node name="MonoBehaviour" type="Node" parent="Selection/Options/Lock/LockText"]
+
+[node name="MonoBehaviour2" type="Node" parent="Selection/Options/Lock/LockText"]
+
+[node name="Locked" type="Node3D" parent="Selection/Options"]
+
+[node name="CanvasRenderer" type="Node" parent="Selection/Options/Locked"]
+
+[node name="MonoBehaviour" type="Node" parent="Selection/Options/Locked"]
+
+[node name="Name" type="Node3D" parent="Selection/Options/Locked"]
+
+[node name="CanvasRenderer" type="Node" parent="Selection/Options/Locked/Name"]
+
+[node name="MonoBehaviour" type="Node" parent="Selection/Options/Locked/Name"]
+
+[node name="MonoBehaviour2" type="Node" parent="Selection/Options/Locked/Name"]
+
+[node name="UnlockText" type="Node3D" parent="Selection/Options/Locked"]
+
+[node name="CanvasRenderer" type="Node" parent="Selection/Options/Locked/UnlockText"]
+
+[node name="MonoBehaviour" type="Node" parent="Selection/Options/Locked/UnlockText"]
+
+[node name="MonoBehaviour2" type="Node" parent="Selection/Options/Locked/UnlockText"]
+
+[editable path="Selection/SelectionCards/Card_Turret"]
+[editable path="Selection/SelectionCards/Card_Module"]
+[editable path="Selection/SelectionCards/Card_Module/Background/Icon"]
+[editable path="Selection/SelectionCards/Card_Life"]
+[editable path="Selection/SelectionCards/Card_Hidden"]

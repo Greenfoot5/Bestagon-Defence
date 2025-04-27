@@ -65,8 +65,10 @@ namespace Turrets.Shooter
             
             // Creates the bullet
             var bullet = (Bullet)bulletPrefab.Instantiate();
+            bullet.GlobalPosition = GlobalPosition;
             bullet.Name = "_" + bullet.Name;
             bullet.Seek(TargetEnemy, this);
+            GetTree().Root.AddChild(bullet);
             Shoot(bullet);
 
             base.Attack(this);

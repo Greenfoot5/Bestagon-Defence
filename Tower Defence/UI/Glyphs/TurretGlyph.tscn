@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://q4vdeurrxpak"]
+
+[node name="TurretGlyph" type="Node3D"]
+
+[node name="CanvasRenderer" type="Node" parent="."]
+
+[node name="MonoBehaviour" type="Node" parent="."]
+
+[node name="MonoBehaviour2" type="Node" parent="."]
+
+[node name="Body" type="Node3D" parent="."]
+
+[node name="CanvasRenderer" type="Node" parent="Body"]
+
+[node name="MonoBehaviour" type="Node" parent="Body"]
+
+[node name="Shade" type="Node3D" parent="."]
+
+[node name="CanvasRenderer" type="Node" parent="Shade"]
+
+[node name="MonoBehaviour" type="Node" parent="Shade"]
+
+[node name="Glyph" type="Node3D" parent="."]
+
+[node name="CanvasRenderer" type="Node" parent="Glyph"]
+
+[node name="MonoBehaviour" type="Node" parent="Glyph"]

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cae3o1wxhku6p"]
+
+[node name="StunEffect" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -1)
+
+[node name="ParticleSystem" type="Node" parent="."]
+
+[node name="ParticleSystemRenderer" type="Node" parent="."]

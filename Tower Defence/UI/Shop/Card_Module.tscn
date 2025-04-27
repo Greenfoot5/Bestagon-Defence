@@ -1,0 +1,68 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxr1qd0pjiu10"]
+
+[ext_resource type="PackedScene" uid="uid://ccppuoth5cgn0" path="res://UI/Modules/ModuleIcon.tscn" id="1_w7h7o"]
+
+[node name="Card_Module" type="Node3D"]
+
+[node name="CanvasRenderer" type="Node" parent="."]
+
+[node name="MonoBehaviour" type="Node" parent="."]
+
+[node name="TypePanel" type="Node3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.41, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CanvasRenderer" type="Node" parent="TypePanel"]
+
+[node name="MonoBehaviour" type="Node" parent="TypePanel"]
+
+[node name="Canvas" type="Node" parent="TypePanel"]
+
+[node name="Type" type="Node3D" parent="TypePanel"]
+
+[node name="CanvasRenderer" type="Node" parent="TypePanel/Type"]
+
+[node name="MonoBehaviour" type="Node" parent="TypePanel/Type"]
+
+[node name="MonoBehaviour2" type="Node" parent="TypePanel/Type"]
+
+[node name="Image" type="Node3D" parent="TypePanel"]
+
+[node name="CanvasRenderer" type="Node" parent="TypePanel/Image"]
+
+[node name="MonoBehaviour" type="Node" parent="TypePanel/Image"]
+
+[node name="MonoBehaviour2" type="Node" parent="TypePanel/Image"]
+
+[node name="Background" type="Node3D" parent="."]
+
+[node name="CanvasRenderer" type="Node" parent="Background"]
+
+[node name="MonoBehaviour" type="Node" parent="Background"]
+
+[node name="MonoBehaviour2" type="Node" parent="Background"]
+
+[node name="Name" type="Node3D" parent="Background"]
+
+[node name="CanvasRenderer" type="Node" parent="Background/Name"]
+
+[node name="MonoBehaviour" type="Node" parent="Background/Name"]
+
+[node name="Tagline" type="Node3D" parent="Background"]
+
+[node name="CanvasRenderer" type="Node" parent="Background/Tagline"]
+
+[node name="MonoBehaviour" type="Node" parent="Background/Tagline"]
+
+[node name="Applicable" type="Node3D" parent="Background"]
+
+[node name="MonoBehaviour" type="Node" parent="Background/Applicable"]
+
+[node name="Icon" parent="Background" instance=ExtResource("1_w7h7o")]
+
+[node name="Effect" type="Node3D" parent="Background"]
+
+[node name="CanvasRenderer" type="Node" parent="Background/Effect"]
+
+[node name="MonoBehaviour" type="Node" parent="Background/Effect"]
+
+[editable path="Background/Icon"]

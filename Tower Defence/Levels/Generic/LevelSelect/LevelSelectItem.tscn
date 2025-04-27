@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://qhe5usqc0xuc"]
+
+[node name="LevelSelectItem" type="Node3D"]
+
+[node name="ImageMask" type="Node3D" parent="."]
+
+[node name="CanvasRenderer" type="Node" parent="ImageMask"]
+
+[node name="MonoBehaviour" type="Node" parent="ImageMask"]
+
+[node name="Button" type="Node3D" parent="ImageMask"]
+
+[node name="CanvasRenderer" type="Node" parent="ImageMask/Button"]
+
+[node name="MonoBehaviour" type="Node" parent="ImageMask/Button"]
+
+[node name="MonoBehaviour2" type="Node" parent="ImageMask/Button"]
+
+[node name="MonoBehaviour3" type="Node" parent="ImageMask/Button"]
+
+[node name="Image" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -32.6)
+
+[node name="CanvasRenderer" type="Node" parent="Image"]
+
+[node name="MonoBehaviour" type="Node" parent="Image"]
+
+[node name="LevelName" type="Node3D" parent="Image"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.91821e-05)
+
+[node name="CanvasRenderer" type="Node" parent="Image/LevelName"]
+
+[node name="MonoBehaviour" type="Node" parent="Image/LevelName"]

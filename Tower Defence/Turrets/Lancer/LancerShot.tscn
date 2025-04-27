@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://r3ph8plamg5o"]
+
+[node name="LancerShot" type="Node3D"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="SpriteRenderer" type="Node" parent="."]
+
+[node name="MonoBehaviour" type="Node" parent="."]
+
+[node name="CircleCollider2D" type="Node" parent="."]

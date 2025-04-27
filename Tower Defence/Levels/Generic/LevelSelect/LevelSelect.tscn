@@ -1,0 +1,350 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbbifs4o5yuun"]
+
+[ext_resource type="PackedScene" uid="uid://d28oqc20mqcrr" path="res://Levels/Generic/LevelSelect/LevelSelectItem.prefab.tscn" id="1_se728"]
+[ext_resource type="PackedScene" uid="uid://ctpe8wmgmufyr" path="res://Levels/@System.prefab.tscn" id="2_nvyur"]
+
+[sub_resource type="Environment" id="Environment_c10pr"]
+background_mode = 1
+background_color = Color(0.196078, 0.160784, 0.278431, 0)
+ambient_light_color = Color(0.212, 0.227, 0.259, 1)
+ambient_light_sky_contribution = 0.0
+fog_light_color = Color(0.5, 0.5, 0.5, 1)
+
+[sub_resource type="Environment" id="Environment_dew7f"]
+background_mode = 1
+background_color = Color(0.196078, 0.160784, 0.278431, 0)
+ambient_light_color = Color(0.212, 0.227, 0.259, 1)
+ambient_light_sky_contribution = 0.0
+fog_light_color = Color(0.5, 0.5, 0.5, 1)
+
+[node name="RootNode3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_c10pr")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+visible = false
+
+[node name="Camera" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+
+[node name="Camera" type="Camera3D" parent="Camera"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+cull_mask = 16777215
+environment = SubResource("Environment_dew7f")
+projection = 1
+current = true
+fov = 60.0
+size = 1.1e-05
+near = 0.3
+far = 1000.0
+
+[node name="MonoBehaviour" type="Node" parent="Camera"]
+
+[node name="_Managers\'" type="Node3D" parent="."]
+
+[node name="EventSystem" type="Node3D" parent="_Managers\'"]
+
+[node name="MonoBehaviour" type="Node" parent="_Managers\'/EventSystem"]
+
+[node name="MonoBehaviour2" type="Node" parent="_Managers\'/EventSystem"]
+
+[node name="_UI\'" type="Node3D" parent="."]
+transform = Transform3D(1e-07, 0, 0, 0, 1e-07, 0, 0, 0, 1e-07, 0, 0, 0)
+
+[node name="Canvas" type="Node" parent="_UI\'"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'"]
+
+[node name="MonoBehaviour3" type="Node" parent="_UI\'"]
+
+[node name="Background" type="Node3D" parent="_UI\'"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/Background"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/Background"]
+
+[node name="Title" type="Node3D" parent="_UI\'"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/Title"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/Title"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/Title"]
+
+[node name="LevelSelectMenu" type="Node3D" parent="_UI\'"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/LevelSelectMenu"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/LevelSelectMenu"]
+
+[node name="Scroll View" type="Node3D" parent="_UI\'/LevelSelectMenu"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/LevelSelectMenu/Scroll View"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/LevelSelectMenu/Scroll View"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/LevelSelectMenu/Scroll View"]
+
+[node name="Viewport" type="Node3D" parent="_UI\'/LevelSelectMenu/Scroll View"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/LevelSelectMenu/Scroll View/Viewport"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/LevelSelectMenu/Scroll View/Viewport"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/LevelSelectMenu/Scroll View/Viewport"]
+
+[node name="Content" type="Node3D" parent="_UI\'/LevelSelectMenu/Scroll View/Viewport"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/LevelSelectMenu/Scroll View/Viewport/Content"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/LevelSelectMenu/Scroll View/Viewport/Content"]
+
+[node name="MonoBehaviour3" type="Node" parent="_UI\'/LevelSelectMenu/Scroll View/Viewport/Content"]
+
+[node name="PrototypeLevel" parent="_UI\'/LevelSelectMenu/Scroll View/Viewport/Content" instance=ExtResource("1_se728")]
+visible = false
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/LevelSelectMenu/Scroll View/Viewport/Content/PrototypeLevel/Image/LevelName" index="2"]
+
+[node name="PolygonLevel" parent="_UI\'/LevelSelectMenu/Scroll View/Viewport/Content" instance=ExtResource("1_se728")]
+visible = false
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/LevelSelectMenu/Scroll View/Viewport/Content/PolygonLevel/Image/LevelName" index="2"]
+
+[node name="HexagonLevel" parent="_UI\'/LevelSelectMenu/Scroll View/Viewport/Content" instance=ExtResource("1_se728")]
+visible = false
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/LevelSelectMenu/Scroll View/Viewport/Content/HexagonLevel/Image/LevelName" index="2"]
+
+[node name="LoopLevel" parent="_UI\'/LevelSelectMenu/Scroll View/Viewport/Content" instance=ExtResource("1_se728")]
+visible = false
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/LevelSelectMenu/Scroll View/Viewport/Content/LoopLevel/Image/LevelName" index="2"]
+
+[node name="UpgradeLevel" parent="_UI\'/LevelSelectMenu/Scroll View/Viewport/Content" instance=ExtResource("1_se728")]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/LevelSelectMenu/Scroll View/Viewport/Content/UpgradeLevel/Image/LevelName" index="2"]
+
+[node name="Scrollbar Horizontal" type="Node3D" parent="_UI\'/LevelSelectMenu/Scroll View"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/LevelSelectMenu/Scroll View/Scrollbar Horizontal"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/LevelSelectMenu/Scroll View/Scrollbar Horizontal"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/LevelSelectMenu/Scroll View/Scrollbar Horizontal"]
+
+[node name="MonoBehaviour3" type="Node" parent="_UI\'/LevelSelectMenu/Scroll View/Scrollbar Horizontal"]
+
+[node name="Sliding Area" type="Node3D" parent="_UI\'/LevelSelectMenu/Scroll View/Scrollbar Horizontal"]
+
+[node name="Handle" type="Node3D" parent="_UI\'/LevelSelectMenu/Scroll View/Scrollbar Horizontal/Sliding Area"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/LevelSelectMenu/Scroll View/Scrollbar Horizontal/Sliding Area/Handle"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/LevelSelectMenu/Scroll View/Scrollbar Horizontal/Sliding Area/Handle"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/LevelSelectMenu/Scroll View/Scrollbar Horizontal/Sliding Area/Handle"]
+
+[node name="Scrollbar Vertical" type="Node3D" parent="_UI\'/LevelSelectMenu/Scroll View"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/LevelSelectMenu/Scroll View/Scrollbar Vertical"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/LevelSelectMenu/Scroll View/Scrollbar Vertical"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/LevelSelectMenu/Scroll View/Scrollbar Vertical"]
+
+[node name="MonoBehaviour3" type="Node" parent="_UI\'/LevelSelectMenu/Scroll View/Scrollbar Vertical"]
+
+[node name="Sliding Area" type="Node3D" parent="_UI\'/LevelSelectMenu/Scroll View/Scrollbar Vertical"]
+
+[node name="Handle" type="Node3D" parent="_UI\'/LevelSelectMenu/Scroll View/Scrollbar Vertical/Sliding Area"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/LevelSelectMenu/Scroll View/Scrollbar Vertical/Sliding Area/Handle"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/LevelSelectMenu/Scroll View/Scrollbar Vertical/Sliding Area/Handle"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/LevelSelectMenu/Scroll View/Scrollbar Vertical/Sliding Area/Handle"]
+
+[node name="LevelInfo" type="Node3D" parent="_UI\'"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/LevelInfo"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/LevelInfo"]
+
+[node name="LevelName" type="Node3D" parent="_UI\'/LevelInfo"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/LevelInfo/LevelName"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/LevelInfo/LevelName"]
+
+[node name="Leaderboard" type="Node3D" parent="_UI\'/LevelInfo"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/LevelInfo/Leaderboard"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/LevelInfo/Leaderboard"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/LevelInfo/Leaderboard"]
+
+[node name="Viewport" type="Node3D" parent="_UI\'/LevelInfo/Leaderboard"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/LevelInfo/Leaderboard/Viewport"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/LevelInfo/Leaderboard/Viewport"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/LevelInfo/Leaderboard/Viewport"]
+
+[node name="Content" type="Node3D" parent="_UI\'/LevelInfo/Leaderboard/Viewport"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/LevelInfo/Leaderboard/Viewport/Content"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/LevelInfo/Leaderboard/Viewport/Content"]
+
+[node name="MonoBehaviour3" type="Node" parent="_UI\'/LevelInfo/Leaderboard/Viewport/Content"]
+
+[node name="Nope" type="Node3D" parent="_UI\'/LevelInfo/Leaderboard/Viewport/Content"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/LevelInfo/Leaderboard/Viewport/Content/Nope"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/LevelInfo/Leaderboard/Viewport/Content/Nope"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/LevelInfo/Leaderboard/Viewport/Content/Nope"]
+
+[node name="Scrollbar Vertical" type="Node3D" parent="_UI\'/LevelInfo/Leaderboard"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/LevelInfo/Leaderboard/Scrollbar Vertical"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/LevelInfo/Leaderboard/Scrollbar Vertical"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/LevelInfo/Leaderboard/Scrollbar Vertical"]
+
+[node name="Sliding Area" type="Node3D" parent="_UI\'/LevelInfo/Leaderboard/Scrollbar Vertical"]
+
+[node name="Handle" type="Node3D" parent="_UI\'/LevelInfo/Leaderboard/Scrollbar Vertical/Sliding Area"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/LevelInfo/Leaderboard/Scrollbar Vertical/Sliding Area/Handle"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/LevelInfo/Leaderboard/Scrollbar Vertical/Sliding Area/Handle"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/LevelInfo/Leaderboard/Scrollbar Vertical/Sliding Area/Handle"]
+
+[node name="Scrollbar Horizontal" type="Node3D" parent="_UI\'/LevelInfo/Leaderboard"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/LevelInfo/Leaderboard/Scrollbar Horizontal"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/LevelInfo/Leaderboard/Scrollbar Horizontal"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/LevelInfo/Leaderboard/Scrollbar Horizontal"]
+
+[node name="Sliding Area" type="Node3D" parent="_UI\'/LevelInfo/Leaderboard/Scrollbar Horizontal"]
+
+[node name="Handle" type="Node3D" parent="_UI\'/LevelInfo/Leaderboard/Scrollbar Horizontal/Sliding Area"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/LevelInfo/Leaderboard/Scrollbar Horizontal/Sliding Area/Handle"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/LevelInfo/Leaderboard/Scrollbar Horizontal/Sliding Area/Handle"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/LevelInfo/Leaderboard/Scrollbar Horizontal/Sliding Area/Handle"]
+
+[node name="HighScoreTitle" type="Node3D" parent="_UI\'/LevelInfo"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/LevelInfo/HighScoreTitle"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/LevelInfo/HighScoreTitle"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/LevelInfo/HighScoreTitle"]
+
+[node name="HighScorePanel" type="Node3D" parent="_UI\'/LevelInfo"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/LevelInfo/HighScorePanel"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/LevelInfo/HighScorePanel"]
+
+[node name="HighScoreValue" type="Node3D" parent="_UI\'/LevelInfo/HighScorePanel"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/LevelInfo/HighScorePanel/HighScoreValue"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/LevelInfo/HighScorePanel/HighScoreValue"]
+
+[node name="Buttons" type="Node3D" parent="_UI\'"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/Buttons"]
+
+[node name="Continue" type="Node3D" parent="_UI\'/Buttons"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/Buttons/Continue"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/Buttons/Continue"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/Buttons/Continue"]
+
+[node name="Text (TMP)" type="Node3D" parent="_UI\'/Buttons/Continue"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/Buttons/Continue/Text (TMP)"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/Buttons/Continue/Text (TMP)"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/Buttons/Continue/Text (TMP)"]
+
+[node name="Play" type="Node3D" parent="_UI\'/Buttons"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/Buttons/Play"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/Buttons/Play"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/Buttons/Play"]
+
+[node name="Text (TMP)" type="Node3D" parent="_UI\'/Buttons/Play"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/Buttons/Play/Text (TMP)"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/Buttons/Play/Text (TMP)"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/Buttons/Play/Text (TMP)"]
+
+[node name="LeaderboardButton" type="Node3D" parent="_UI\'/Buttons"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/Buttons/LeaderboardButton"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/Buttons/LeaderboardButton"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/Buttons/LeaderboardButton"]
+
+[node name="Text (TMP)" type="Node3D" parent="_UI\'/Buttons/LeaderboardButton"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/Buttons/LeaderboardButton/Text (TMP)"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/Buttons/LeaderboardButton/Text (TMP)"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/Buttons/LeaderboardButton/Text (TMP)"]
+
+[node name="MainMenu" type="Node3D" parent="_UI\'/Buttons"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/Buttons/MainMenu"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/Buttons/MainMenu"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/Buttons/MainMenu"]
+
+[node name="Text (TMP)" type="Node3D" parent="_UI\'/Buttons/MainMenu"]
+
+[node name="CanvasRenderer" type="Node" parent="_UI\'/Buttons/MainMenu/Text (TMP)"]
+
+[node name="MonoBehaviour" type="Node" parent="_UI\'/Buttons/MainMenu/Text (TMP)"]
+
+[node name="MonoBehaviour2" type="Node" parent="_UI\'/Buttons/MainMenu/Text (TMP)"]
+
+[node name="_System\'" parent="." instance=ExtResource("2_nvyur")]
+
+[node name="AnimationTree" parent="_System\'/Transition" index="1"]
+root_motion_local = false
+
+[editable path="_UI\'/LevelSelectMenu/Scroll View/Viewport/Content/PrototypeLevel"]
+[editable path="_UI\'/LevelSelectMenu/Scroll View/Viewport/Content/PolygonLevel"]
+[editable path="_UI\'/LevelSelectMenu/Scroll View/Viewport/Content/HexagonLevel"]
+[editable path="_UI\'/LevelSelectMenu/Scroll View/Viewport/Content/LoopLevel"]
+[editable path="_UI\'/LevelSelectMenu/Scroll View/Viewport/Content/UpgradeLevel"]
+[editable path="_System\'"]
+[editable path="_System\'/Transition"]

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://qyw4v7kt511"]
+
+[node name="LeaderboardEntry" type="Node3D"]
+
+[node name="CanvasRenderer" type="Node" parent="."]
+
+[node name="Background" type="Node3D" parent="."]
+
+[node name="CanvasRenderer" type="Node" parent="Background"]
+
+[node name="MonoBehaviour" type="Node" parent="Background"]
+
+[node name="Username" type="Node3D" parent="Background"]
+
+[node name="CanvasRenderer" type="Node" parent="Background/Username"]
+
+[node name="MonoBehaviour" type="Node" parent="Background/Username"]
+
+[node name="Score" type="Node3D" parent="Background"]
+
+[node name="CanvasRenderer" type="Node" parent="Background/Score"]
+
+[node name="MonoBehaviour" type="Node" parent="Background/Score"]

@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpj1f8162nio"]
+
+[ext_resource type="PackedScene" uid="uid://bkngqb47yt4mq" path="res://UI/Modules/ModuleIcon.prefab.tscn" id="1_0ucb5"]
+
+[node name="Card_Turret_ModuleIcon" type="Node3D"]
+
+[node name="CanvasRenderer" type="Node" parent="."]
+
+[node name="MonoBehaviour" type="Node" parent="."]
+
+[node name="Text (TMP)" type="Node3D" parent="."]
+
+[node name="CanvasRenderer" type="Node" parent="Text (TMP)"]
+
+[node name="MonoBehaviour" type="Node" parent="Text (TMP)"]
+
+[node name="Fitter" type="Node3D" parent="."]
+
+[node name="ModuleIcon" parent="Fitter" instance=ExtResource("1_0ucb5")]
+
+[editable path="Fitter/ModuleIcon"]
