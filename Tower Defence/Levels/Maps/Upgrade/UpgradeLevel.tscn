@@ -1,13 +1,12 @@
-[gd_scene load_steps=29 format=4 uid="uid://dxeskbdbxmflu"]
+[gd_scene load_steps=24 format=4 uid="uid://dxeskbdbxmflu"]
 
 [ext_resource type="TileSet" uid="uid://cqec5gsl2jrtp" path="res://Levels/_Tiles/PathTiles.tres" id="1_dbecs"]
 [ext_resource type="PackedScene" uid="uid://bl5bfgnh4ruki" path="res://Levels/_Tiles/Tile_Buildable.tscn" id="2_jq068"]
 [ext_resource type="Script" uid="uid://ifi3my065eu" path="res://Gameplay/Waves/WaveSpawner.cs" id="3_o3dn4"]
-[ext_resource type="PackedScene" uid="uid://dof5pvxvtw0bh" path="res://Enemies/Pawns/Enemy.tscn" id="4_sxdqs"]
-[ext_resource type="Script" uid="uid://ec8kag3n2o3m" path="res://Abstract/Data/CurvedVariable.cs" id="5_8tbnj"]
-[ext_resource type="Script" uid="uid://7xk8cvu5cc84" path="res://Gameplay/Waves/WaveData.cs" id="6_yrqfs"]
 [ext_resource type="Resource" uid="uid://bm67ol4yudaf4" path="res://Enemies/Pawns/BasicEnemyStats.tres" id="7_pse8l"]
 [ext_resource type="Script" uid="uid://bmxuh31stih5j" path="res://Gameplay/Waves/EnemySet.cs" id="8_72yxd"]
+[ext_resource type="Script" uid="uid://cpv5idbjts0wp" path="res://Levels/Maps/Upgrade/WaveTimer.cs" id="8_a02h1"]
+[ext_resource type="Resource" uid="uid://dv2epgpot8n1v" path="res://Levels/Maps/Upgrade/WaveData.tres" id="9_h5o5v"]
 [ext_resource type="Script" uid="uid://bgfugrs685jpk" path="res://Gameplay/Waves/Wave.cs" id="9_niq5q"]
 [ext_resource type="PackedScene" uid="uid://n7yy8bgppstk" path="res://Levels/_Tiles/Waypoint.tscn" id="10_4ignw"]
 [ext_resource type="PackedScene" uid="uid://bf14d8qox8yy5" path="res://UI/LevelCanvas_Screen.tscn" id="11_ml50w"]
@@ -25,31 +24,6 @@ tile_shape = 3
 tile_offset_axis = 1
 tile_size = Vector2i(528, 458)
 sources/1 = SubResource("TileSetScenesCollectionSource_4pwqs")
-
-[sub_resource type="Curve" id="Curve_kj4gn"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Resource" id="Resource_7umrs"]
-script = ExtResource("5_8tbnj")
-value = SubResource("Curve_kj4gn")
-metadata/_custom_type_script = "uid://ec8kag3n2o3m"
-
-[sub_resource type="Resource" id="Resource_3gc0d"]
-script = ExtResource("5_8tbnj")
-value = SubResource("Curve_kj4gn")
-metadata/_custom_type_script = "uid://ec8kag3n2o3m"
-
-[sub_resource type="Resource" id="Resource_uvjqi"]
-script = ExtResource("6_yrqfs")
-Enemy = ExtResource("4_sxdqs")
-Health = SubResource("Resource_3gc0d")
-EnemyCount = SubResource("Resource_7umrs")
-TimeBetweenWaves = 5.0
-PreparationTime = 8.0
-RepeatIndex = 2
-Length = 3
-metadata/_custom_type_script = "uid://7xk8cvu5cc84"
 
 [sub_resource type="Resource" id="Resource_kj4gn"]
 script = ExtResource("8_72yxd")
@@ -115,7 +89,6 @@ tile_set = SubResource("TileSet_uqua4")
 [node name="SpawnPoint" type="Node2D" parent="Map" node_paths=PackedStringArray("_countdown")]
 position = Vector2(-405, -225)
 script = ExtResource("3_o3dn4")
-_waveData = SubResource("Resource_uvjqi")
 _waves = [SubResource("Resource_7j0gl"), SubResource("Resource_tpvnd"), SubResource("Resource_cqc0v")]
 _countdown = NodePath("../../UI/Timer")
 
@@ -188,6 +161,8 @@ offset_bottom = 40.0
 [node name="Timer" type="Timer" parent="UI"]
 one_shot = true
 autostart = true
+script = ExtResource("8_a02h1")
+WaveData = ExtResource("9_h5o5v")
 
 [node name="_UI\'" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03661, -1.26226, -2.43096)
@@ -217,6 +192,142 @@ enabled = false
 [node name="DeathBitManager" type="Node" parent="_Managers\'/DeathBitManager"]
 
 [node name="Camera" parent="." instance=ExtResource("15_nt6x0")]
+
+[connection signal="input_event" from="Map/BuildableGrid/Node_Buildable" to="Map/BuildableGrid/Node_Buildable" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/Node_Buildable" to="Map/BuildableGrid/Node_Buildable" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/Node_Buildable" to="Map/BuildableGrid/Node_Buildable" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36875" to="Map/BuildableGrid/@Area2D@36875" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36875" to="Map/BuildableGrid/@Area2D@36875" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36875" to="Map/BuildableGrid/@Area2D@36875" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36876" to="Map/BuildableGrid/@Area2D@36876" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36876" to="Map/BuildableGrid/@Area2D@36876" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36876" to="Map/BuildableGrid/@Area2D@36876" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36877" to="Map/BuildableGrid/@Area2D@36877" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36877" to="Map/BuildableGrid/@Area2D@36877" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36877" to="Map/BuildableGrid/@Area2D@36877" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36878" to="Map/BuildableGrid/@Area2D@36878" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36878" to="Map/BuildableGrid/@Area2D@36878" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36878" to="Map/BuildableGrid/@Area2D@36878" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36879" to="Map/BuildableGrid/@Area2D@36879" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36879" to="Map/BuildableGrid/@Area2D@36879" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36879" to="Map/BuildableGrid/@Area2D@36879" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36880" to="Map/BuildableGrid/@Area2D@36880" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36880" to="Map/BuildableGrid/@Area2D@36880" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36880" to="Map/BuildableGrid/@Area2D@36880" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36881" to="Map/BuildableGrid/@Area2D@36881" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36881" to="Map/BuildableGrid/@Area2D@36881" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36881" to="Map/BuildableGrid/@Area2D@36881" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36882" to="Map/BuildableGrid/@Area2D@36882" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36882" to="Map/BuildableGrid/@Area2D@36882" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36882" to="Map/BuildableGrid/@Area2D@36882" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36883" to="Map/BuildableGrid/@Area2D@36883" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36883" to="Map/BuildableGrid/@Area2D@36883" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36883" to="Map/BuildableGrid/@Area2D@36883" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36884" to="Map/BuildableGrid/@Area2D@36884" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36884" to="Map/BuildableGrid/@Area2D@36884" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36884" to="Map/BuildableGrid/@Area2D@36884" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36885" to="Map/BuildableGrid/@Area2D@36885" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36885" to="Map/BuildableGrid/@Area2D@36885" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36885" to="Map/BuildableGrid/@Area2D@36885" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36886" to="Map/BuildableGrid/@Area2D@36886" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36886" to="Map/BuildableGrid/@Area2D@36886" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36886" to="Map/BuildableGrid/@Area2D@36886" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36887" to="Map/BuildableGrid/@Area2D@36887" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36887" to="Map/BuildableGrid/@Area2D@36887" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36887" to="Map/BuildableGrid/@Area2D@36887" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36888" to="Map/BuildableGrid/@Area2D@36888" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36888" to="Map/BuildableGrid/@Area2D@36888" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36888" to="Map/BuildableGrid/@Area2D@36888" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36889" to="Map/BuildableGrid/@Area2D@36889" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36889" to="Map/BuildableGrid/@Area2D@36889" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36889" to="Map/BuildableGrid/@Area2D@36889" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36890" to="Map/BuildableGrid/@Area2D@36890" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36890" to="Map/BuildableGrid/@Area2D@36890" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36890" to="Map/BuildableGrid/@Area2D@36890" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36891" to="Map/BuildableGrid/@Area2D@36891" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36891" to="Map/BuildableGrid/@Area2D@36891" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36891" to="Map/BuildableGrid/@Area2D@36891" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36892" to="Map/BuildableGrid/@Area2D@36892" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36892" to="Map/BuildableGrid/@Area2D@36892" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36892" to="Map/BuildableGrid/@Area2D@36892" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36893" to="Map/BuildableGrid/@Area2D@36893" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36893" to="Map/BuildableGrid/@Area2D@36893" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36893" to="Map/BuildableGrid/@Area2D@36893" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36894" to="Map/BuildableGrid/@Area2D@36894" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36894" to="Map/BuildableGrid/@Area2D@36894" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36894" to="Map/BuildableGrid/@Area2D@36894" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36895" to="Map/BuildableGrid/@Area2D@36895" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36895" to="Map/BuildableGrid/@Area2D@36895" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36895" to="Map/BuildableGrid/@Area2D@36895" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36896" to="Map/BuildableGrid/@Area2D@36896" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36896" to="Map/BuildableGrid/@Area2D@36896" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36896" to="Map/BuildableGrid/@Area2D@36896" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36897" to="Map/BuildableGrid/@Area2D@36897" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36897" to="Map/BuildableGrid/@Area2D@36897" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36897" to="Map/BuildableGrid/@Area2D@36897" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36898" to="Map/BuildableGrid/@Area2D@36898" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36898" to="Map/BuildableGrid/@Area2D@36898" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36898" to="Map/BuildableGrid/@Area2D@36898" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36899" to="Map/BuildableGrid/@Area2D@36899" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36899" to="Map/BuildableGrid/@Area2D@36899" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36899" to="Map/BuildableGrid/@Area2D@36899" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36900" to="Map/BuildableGrid/@Area2D@36900" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36900" to="Map/BuildableGrid/@Area2D@36900" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36900" to="Map/BuildableGrid/@Area2D@36900" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36901" to="Map/BuildableGrid/@Area2D@36901" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36901" to="Map/BuildableGrid/@Area2D@36901" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36901" to="Map/BuildableGrid/@Area2D@36901" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36902" to="Map/BuildableGrid/@Area2D@36902" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36902" to="Map/BuildableGrid/@Area2D@36902" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36902" to="Map/BuildableGrid/@Area2D@36902" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36903" to="Map/BuildableGrid/@Area2D@36903" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36903" to="Map/BuildableGrid/@Area2D@36903" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36903" to="Map/BuildableGrid/@Area2D@36903" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36904" to="Map/BuildableGrid/@Area2D@36904" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36904" to="Map/BuildableGrid/@Area2D@36904" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36904" to="Map/BuildableGrid/@Area2D@36904" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36905" to="Map/BuildableGrid/@Area2D@36905" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36905" to="Map/BuildableGrid/@Area2D@36905" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36905" to="Map/BuildableGrid/@Area2D@36905" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36906" to="Map/BuildableGrid/@Area2D@36906" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36906" to="Map/BuildableGrid/@Area2D@36906" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36906" to="Map/BuildableGrid/@Area2D@36906" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36907" to="Map/BuildableGrid/@Area2D@36907" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36907" to="Map/BuildableGrid/@Area2D@36907" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36907" to="Map/BuildableGrid/@Area2D@36907" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36908" to="Map/BuildableGrid/@Area2D@36908" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36908" to="Map/BuildableGrid/@Area2D@36908" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36908" to="Map/BuildableGrid/@Area2D@36908" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36909" to="Map/BuildableGrid/@Area2D@36909" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36909" to="Map/BuildableGrid/@Area2D@36909" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36909" to="Map/BuildableGrid/@Area2D@36909" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36910" to="Map/BuildableGrid/@Area2D@36910" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36910" to="Map/BuildableGrid/@Area2D@36910" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36910" to="Map/BuildableGrid/@Area2D@36910" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36911" to="Map/BuildableGrid/@Area2D@36911" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36911" to="Map/BuildableGrid/@Area2D@36911" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36911" to="Map/BuildableGrid/@Area2D@36911" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36912" to="Map/BuildableGrid/@Area2D@36912" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36912" to="Map/BuildableGrid/@Area2D@36912" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36912" to="Map/BuildableGrid/@Area2D@36912" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36913" to="Map/BuildableGrid/@Area2D@36913" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36913" to="Map/BuildableGrid/@Area2D@36913" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36913" to="Map/BuildableGrid/@Area2D@36913" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36914" to="Map/BuildableGrid/@Area2D@36914" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36914" to="Map/BuildableGrid/@Area2D@36914" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36914" to="Map/BuildableGrid/@Area2D@36914" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36915" to="Map/BuildableGrid/@Area2D@36915" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36915" to="Map/BuildableGrid/@Area2D@36915" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36915" to="Map/BuildableGrid/@Area2D@36915" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36916" to="Map/BuildableGrid/@Area2D@36916" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36916" to="Map/BuildableGrid/@Area2D@36916" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36916" to="Map/BuildableGrid/@Area2D@36916" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36917" to="Map/BuildableGrid/@Area2D@36917" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36917" to="Map/BuildableGrid/@Area2D@36917" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36917" to="Map/BuildableGrid/@Area2D@36917" method="OnMouseExit"]
+[connection signal="input_event" from="Map/BuildableGrid/@Area2D@36918" to="Map/BuildableGrid/@Area2D@36918" method="OnMouseDown"]
+[connection signal="mouse_entered" from="Map/BuildableGrid/@Area2D@36918" to="Map/BuildableGrid/@Area2D@36918" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Map/BuildableGrid/@Area2D@36918" to="Map/BuildableGrid/@Area2D@36918" method="OnMouseExit"]
 
 [editable path="Map/SpawnPoint/Waypoint (1)"]
 [editable path="Map/SpawnPoint/Waypoint (2)"]

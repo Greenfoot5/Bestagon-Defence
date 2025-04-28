@@ -12,7 +12,7 @@ namespace Gameplay.Waves
     /// </summary>
     public partial class WaveSpawner : Node2D
     {
-        private enum State
+        public enum State
         {
             // Countdown to next spawn
             Countdown,
@@ -24,7 +24,7 @@ namespace Gameplay.Waves
         /// <summary>
         /// Current stats of all spawners
         /// </summary>
-        private static State _spawnerState = State.Waiting;
+        public static State SpawnerState = State.Waiting;
         private static int _activeSpawners;
         
         /// <summary>
@@ -32,7 +32,6 @@ namespace Gameplay.Waves
         /// </summary>
         public static int EnemiesAlive;
         
-        [Export]
         private WaveData _waveData;
         private Timer _spawnTimer;
         private int _waveIndex;
@@ -49,7 +48,7 @@ namespace Gameplay.Waves
         
         [ExportGroup("Scene References")]
         [Export]
-        private Timer _countdown;
+        private WaveTimer _countdown;
         
         /// <summary>
         /// The text to update when the countdown/spawning/enemies
@@ -102,6 +101,7 @@ namespace Gameplay.Waves
                 _points[i] = ((Node2D)GetChild(i)).GlobalPosition;
             }
 
+            _waveData = _countdown.WaveData;
             GameStats.OnRoundProgress += UpdateWaveText;
             _countdown.Timeout += StartSpawning;
             _spawnTimer = new Timer();
@@ -124,7 +124,6 @@ namespace Gameplay.Waves
             Interlocked.Increment(ref _activeSpawners);
             
             // Update the wave index and spawn the first enemy
-            // TODO - Move to Timer
             _waveIndex = GameStats.Rounds - 1;
             if (GameStats.Rounds > _waveData.Length)
                 _waveIndex = (_waveIndex - _waveData.RepeatIndex) % (_waveData.Length - _waveData.RepeatIndex) + _waveData.RepeatIndex;
@@ -159,11 +158,8 @@ namespace Gameplay.Waves
                     // This spawner is last to finish
                     if (Interlocked.Decrement(ref _activeSpawners) == 0)
                     {
-                        _spawnerState = State.Waiting;
+                        SpawnerState = State.Waiting;
                         _spawnTimer.Stop();
-                        
-                        // Set _waveIndex to match the NEXT wave
-                        GameStats.Rounds++;
                         
                         return;
                     }

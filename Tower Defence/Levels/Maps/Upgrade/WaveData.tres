@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="WaveData" load_steps=8 format=3 uid="uid://dv2epgpot8n1v"]
+
+[ext_resource type="Script" uid="uid://7xk8cvu5cc84" path="res://Gameplay/Waves/WaveData.cs" id="1_ait8m"]
+[ext_resource type="PackedScene" uid="uid://dof5pvxvtw0bh" path="res://Enemies/Pawns/Enemy.tscn" id="1_re8jd"]
+[ext_resource type="Script" uid="uid://ec8kag3n2o3m" path="res://Abstract/Data/CurvedVariable.cs" id="2_5i15o"]
+
+[sub_resource type="Curve" id="Curve_7e1fl"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="Resource" id="Resource_hwjic"]
+script = ExtResource("2_5i15o")
+value = SubResource("Curve_7e1fl")
+metadata/_custom_type_script = "uid://ec8kag3n2o3m"
+
+[sub_resource type="Curve" id="Curve_uma1v"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="Resource" id="Resource_eib2t"]
+script = ExtResource("2_5i15o")
+value = SubResource("Curve_uma1v")
+metadata/_custom_type_script = "uid://ec8kag3n2o3m"
+
+[resource]
+script = ExtResource("1_ait8m")
+Enemy = ExtResource("1_re8jd")
+Health = SubResource("Resource_eib2t")
+EnemyCount = SubResource("Resource_hwjic")
+TimeBetweenWaves = 5.0
+PreparationTime = 8.0
+RepeatIndex = 1
+Length = 3
+metadata/_custom_type_script = "uid://7xk8cvu5cc84"

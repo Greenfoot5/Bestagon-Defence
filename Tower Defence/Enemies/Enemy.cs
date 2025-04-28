@@ -56,6 +56,7 @@ namespace Enemies
         private bool _isDead;
         public delegate void DeathEvent();
         public event DeathEvent OnDeath;
+        public static event DeathEvent OnEnemyDeath;
         
         /// <summary>
         /// Initialises relevant variables
@@ -207,6 +208,7 @@ namespace Enemies
             // DeathBitManager.DropEnergy(Position, Stats.DeathMoney);
 
             OnDeath?.Invoke();
+            OnEnemyDeath?.Invoke();
 
             // Spawn death effect
             // var effect = (Node2D) Stats.DeathEffect.Instantiate();
