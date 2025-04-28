@@ -7,7 +7,7 @@
 [sub_resource type="Resource" id="Resource_c2iah"]
 script = ExtResource("1_6jclm")
 Name = 2
-Base = 5.0
+Base = 650.0
 _modifiers = {}
 Min = inf_neg
 Max = inf

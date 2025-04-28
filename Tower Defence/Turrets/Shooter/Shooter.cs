@@ -65,6 +65,7 @@ namespace Turrets.Shooter
             
             // Creates the bullet
             var bullet = (Bullet)bulletPrefab.Instantiate();
+            bullet.Stats[AttributeType.Damage] = Stats[AttributeType.Damage];
             bullet.GlobalPosition = GlobalPosition;
             bullet.Name = "_" + bullet.Name;
             bullet.Seek(TargetEnemy, this);
