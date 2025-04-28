@@ -98,12 +98,13 @@ namespace Turrets
             else
                 SeekTarget(Target.Position, true, delta);
         }
-        
+
         /// <summary>
         /// Moves the bullet towards a target location
         /// </summary>
         /// <param name="location">The location to move towards</param>
         /// <param name="isEnemy">If the location is an enemy</param>
+        /// <param name="delta">The length of the frame</param>
         private void SeekTarget(Vector2 location, bool isEnemy, double delta)
         {
             // Get the direction of the target, and the distance to move this frame
@@ -112,6 +113,15 @@ namespace Turrets
             
             // Move bullet towards target
             Position = Position.MoveToward(location, distanceThisFrame);
+            
+            Vector2 difference = location - Position;
+            const float targetSize = 0.25f;
+            // Has the bullet "hit" the target?
+            if (difference.LengthSquared() <= targetSize * targetSize)
+            {
+                HitTarget(isEnemy); 
+                return;
+            }
             
             // Rotate to target
             Rotation = (location - position).Normalized().Angle();
@@ -132,8 +142,6 @@ namespace Turrets
             // effect.Rotation = Rotation;
             //
             // GetTree().CreateTimer(2).Timeout += () => { effect.QueueFree(); };
-            
-            GD.Print(Stats[AttributeType.ExplosionRadius].Value);
 
             if (isEnemy)
             {
@@ -162,8 +170,6 @@ namespace Turrets
         {
             if (enemy == null) return;
             
-            GD.Print("Hit!");
-            
             Source.Hit(enemy, Source, this);
 
             if (Stats[AttributeType.Knockback].Value > 0)
@@ -180,7 +186,6 @@ namespace Turrets
         /// </summary>
         private void Explode()
         {
-            GD.Print("BOOM!");
             if (_explodeEffect is not null)
             {
                 // Spawn explode effect
@@ -202,7 +207,6 @@ namespace Turrets
             // ((CircleShape2D)explodeArea.Shape).Radius *= Stats[AttributeType.ExplosionRadius].Value;
 
             // Gets all the enemies in the AoE and calls Damage on them
-            // TODO - OverlapCircleAll
             foreach (Area2D area in GetOverlappingAreas())
             {
                 var enemy = (Enemy)area;
@@ -216,12 +220,9 @@ namespace Turrets
         /// <param name="col">The collider that was touched</param>
         private void OnAreaEntered(Area2D col)
         {
-            GD.Print(col.GetType());
             if (col is not Enemy enemy) return;
 
             if (_hitEnemies.Contains(col.GetInstanceId())) return;
-            
-            GD.Print("Not already hit");
             
             _hitEnemies.Add(col.GetInstanceId());
 
