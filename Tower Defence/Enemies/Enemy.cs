@@ -1,9 +1,6 @@
-﻿using System.Collections.Generic;
-using Abstract;
-using Abstract.Attributes;
+﻿using Abstract.Attributes;
 using Gameplay;
 using Godot;
-using Levels._Nodes;
 
 namespace Enemies
 {
@@ -77,13 +74,14 @@ namespace Enemies
             }
             
             // Get the direction of the target, and the distance to move this frame
-            Vector2 position = Position;
+            Vector2 position = GlobalPosition;
             Vector2 location = points[waypointIndex];
             var distanceThisFrame = (float)(Stats.Attributes[AttributeType.Speed].Value * delta);
 
-            Position = position.MoveToward(location, distanceThisFrame);
+            GlobalPosition = position.MoveToward(location, distanceThisFrame);
             
             Vector2 difference = location - position; // Distance & direction to next target
+            GD.Print(difference.LengthSquared());
 
             // If within this frame the enemy will pass the waypoint, it's a guaranteed hit
             if (difference.LengthSquared() <= Stats.DistanceToWaypoint * Stats.DistanceToWaypoint)
