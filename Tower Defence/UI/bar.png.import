@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://boqpfvlhmmt15"
-path="res://.godot/imported/T_SpeedControls.png-527f2032a708183a3cc1608fecf9050d.ctex"
+uid="uid://bjiiej5uob71f"
+path="res://.godot/imported/bar.png-e5acca021345c74945efdaccc35ac6e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/T_SpeedControls.png"
-dest_files=["res://.godot/imported/T_SpeedControls.png-527f2032a708183a3cc1608fecf9050d.ctex"]
+source_file="res://UI/bar.png"
+dest_files=["res://.godot/imported/bar.png-e5acca021345c74945efdaccc35ac6e1.ctex"]
 
 [params]
 

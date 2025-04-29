@@ -9,7 +9,7 @@ namespace Gameplay
     /// <summary>
     /// Handles all tasks related to building turrets and selecting nodes
     /// </summary>
-    public partial class BuildManager : BuildableTile
+    public partial class BuildManager : Node
     {
         /// <summary>
         /// The instance of the BuildManager
@@ -19,19 +19,19 @@ namespace Gameplay
         /// <summary>
         /// The effect spawned when a turret is built
         /// </summary>
-        [Export]
+        // [Export]
         public PackedScene buildEffect;
         /// <summary>
         /// The effect spawned when a turret is sold
         /// </summary>
-        [Export]
+        // [Export]
         public PackedScene sellEffect;
         
                 
         /// <summary>
         /// The scene to use when displaying potential range when building
         /// </summary>
-        [Export]
+        // [Export]
         private PackedScene rangePreview;
         /// <summary>
         /// The current range preview
@@ -50,7 +50,7 @@ namespace Gameplay
         /// <summary>
         /// Check there is only one build manager when loading in
         /// </summary>
-        private void Awake()
+        public override void _Ready()
         {
             // Make sure there is only ever have one BuildManager
             if (instance != null)
@@ -107,7 +107,7 @@ namespace Gameplay
             if (_selectedTile == tile)
             {
                 Deselect();
-                TurretInfo.instance.Close();
+                // TurretInfo.instance.Close();
                 return;
             }
 
@@ -118,7 +118,7 @@ namespace Gameplay
             }
 
             _selectedTile = tile;
-            TurretInfo.instance.SetTarget(tile);
+            // TurretInfo.instance.SetTarget(tile);
         }
 
         public void Deselect()
@@ -131,7 +131,7 @@ namespace Gameplay
                 // _selectedNode.Turret.GetComponent<Turret>().Deselected();
             }
             _selectedTile = null;
-            TurretInfo.instance.Close();
+            // TurretInfo.instance.Close();
         }
     }
 }

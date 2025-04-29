@@ -123,14 +123,14 @@ namespace UI
         {
             if (Engine.TimeScale != 0f)
             {
-                timer.Visible = true;
-                pausedTimer.Visible = false;
+                // timer.Visible = true;
+                // pausedTimer.Visible = false;
             }
             else
             {
-                timer.Visible = false;
-                pausedTimer.Visible = true;
-                pausedWaveText.Text = waveText + GameStats.Rounds;
+                // timer.Visible = false;
+                // pausedTimer.Visible = true;
+                // pausedWaveText.Text = waveText + GameStats.Rounds;
             }
         }
     

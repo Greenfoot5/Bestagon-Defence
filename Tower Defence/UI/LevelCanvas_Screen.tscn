@@ -1,180 +1,169 @@
-[gd_scene load_steps=5 format=3 uid="uid://bf14d8qox8yy5"]
+[gd_scene load_steps=19 format=3 uid="uid://bf14d8qox8yy5"]
 
+[ext_resource type="Script" uid="uid://b1y7106ggbj46" path="res://UI/SpeedControls.cs" id="1_3vno0"]
+[ext_resource type="Texture2D" uid="uid://bs37ieabggvk2" path="res://UI/Stop.tres" id="1_anr6t"]
 [ext_resource type="PackedScene" uid="uid://dpv0bwn2n0ebh" path="res://UI/Shop/Card_Turret.tscn" id="1_iukjl"]
+[ext_resource type="Texture2D" uid="uid://g63k4ffc8ofv" path="res://UI/Pause.tres" id="2_5do7x"]
 [ext_resource type="PackedScene" uid="uid://bxr1qd0pjiu10" path="res://UI/Shop/Card_Module.tscn" id="2_wvkwj"]
+[ext_resource type="Texture2D" uid="uid://dpl600v8e8aim" path="res://UI/Play.tres" id="3_3vno0"]
 [ext_resource type="PackedScene" uid="uid://psuoawl8jg4k" path="res://UI/Shop/Card_Life.tscn" id="3_pmuhg"]
 [ext_resource type="PackedScene" uid="uid://dcdfawohp4hf8" path="res://UI/Shop/Card_Hidden.tscn" id="4_q3du4"]
-
-[node name="LevelCanvas_Screen" type="Node3D"]
-transform = Transform3D(1e-07, 0, 0, 0, 1e-07, 0, 0, 0, 1e-07, 0, 0, 0)
-
-[node name="Canvas" type="Node" parent="."]
-
-[node name="MonoBehaviour" type="Node" parent="."]
-
-[node name="MonoBehaviour2" type="Node" parent="."]
-
-[node name="SpeedControls" type="Node3D" parent="."]
-
-[node name="MonoBehaviour" type="Node" parent="SpeedControls"]
-
-[node name="MonoBehaviour2" type="Node" parent="SpeedControls"]
-
-[node name="StopButton" type="Node3D" parent="SpeedControls"]
-
-[node name="CanvasRenderer" type="Node" parent="SpeedControls/StopButton"]
-
-[node name="MonoBehaviour" type="Node" parent="SpeedControls/StopButton"]
-
-[node name="MonoBehaviour2" type="Node" parent="SpeedControls/StopButton"]
-
-[node name="PauseButton" type="Node3D" parent="SpeedControls"]
-
-[node name="CanvasRenderer" type="Node" parent="SpeedControls/PauseButton"]
-
-[node name="MonoBehaviour" type="Node" parent="SpeedControls/PauseButton"]
-
-[node name="MonoBehaviour2" type="Node" parent="SpeedControls/PauseButton"]
-
-[node name="PlayButton" type="Node3D" parent="SpeedControls"]
-
-[node name="CanvasRenderer" type="Node" parent="SpeedControls/PlayButton"]
-
-[node name="MonoBehaviour" type="Node" parent="SpeedControls/PlayButton"]
-
-[node name="MonoBehaviour2" type="Node" parent="SpeedControls/PlayButton"]
-
-[node name="FastButton" type="Node3D" parent="SpeedControls"]
-
-[node name="CanvasRenderer" type="Node" parent="SpeedControls/FastButton"]
-
-[node name="MonoBehaviour" type="Node" parent="SpeedControls/FastButton"]
-
-[node name="MonoBehaviour2" type="Node" parent="SpeedControls/FastButton"]
-
-[node name="Lives" type="Node3D" parent="."]
-
-[node name="CanvasRenderer" type="Node" parent="Lives"]
-
-[node name="MonoBehaviour" type="Node" parent="Lives"]
-
-[node name="Text (TMP)" type="Node3D" parent="Lives"]
-
-[node name="CanvasRenderer" type="Node" parent="Lives/Text (TMP)"]
-
-[node name="MonoBehaviour" type="Node" parent="Lives/Text (TMP)"]
-
-[node name="Image" type="Node3D" parent="Lives"]
-
-[node name="CanvasRenderer" type="Node" parent="Lives/Image"]
-
-[node name="MonoBehaviour" type="Node" parent="Lives/Image"]
-
-[node name="MonoBehaviour2" type="Node" parent="Lives/Image"]
-
-[node name="Powercells" type="Node3D" parent="."]
-
-[node name="CanvasRenderer" type="Node" parent="Powercells"]
-
-[node name="MonoBehaviour" type="Node" parent="Powercells"]
-
-[node name="Text (TMP)" type="Node3D" parent="Powercells"]
-
-[node name="CanvasRenderer" type="Node" parent="Powercells/Text (TMP)"]
-
-[node name="MonoBehaviour" type="Node" parent="Powercells/Text (TMP)"]
-
-[node name="Image" type="Node3D" parent="Powercells"]
-
-[node name="CanvasRenderer" type="Node" parent="Powercells/Image"]
-
-[node name="MonoBehaviour" type="Node" parent="Powercells/Image"]
-
-[node name="MonoBehaviour2" type="Node" parent="Powercells/Image"]
-
-[node name="Timer" type="Node3D" parent="."]
-
-[node name="CanvasRenderer" type="Node" parent="Timer"]
-
-[node name="MonoBehaviour" type="Node" parent="Timer"]
-
-[node name="Image" type="Node3D" parent="Timer"]
-
-[node name="CanvasRenderer" type="Node" parent="Timer/Image"]
-
-[node name="MonoBehaviour" type="Node" parent="Timer/Image"]
-
-[node name="Timer_EnemyText" type="Node3D" parent="Timer"]
-
-[node name="CanvasRenderer" type="Node" parent="Timer/Timer_EnemyText"]
-
-[node name="MonoBehaviour" type="Node" parent="Timer/Timer_EnemyText"]
-
-[node name="WaveText" type="Node3D" parent="Timer"]
-
-[node name="CanvasRenderer" type="Node" parent="Timer/WaveText"]
-
-[node name="MonoBehaviour" type="Node" parent="Timer/WaveText"]
-
-[node name="MonoBehaviour2" type="Node" parent="Timer/WaveText"]
-
-[node name="PausedTimer" type="Node3D" parent="."]
-
-[node name="CanvasRenderer" type="Node" parent="PausedTimer"]
-
-[node name="MonoBehaviour" type="Node" parent="PausedTimer"]
-
-[node name="Image" type="Node3D" parent="PausedTimer"]
-
-[node name="CanvasRenderer" type="Node" parent="PausedTimer/Image"]
-
-[node name="MonoBehaviour" type="Node" parent="PausedTimer/Image"]
-
-[node name="Timer_EnemyText" type="Node3D" parent="PausedTimer"]
-
-[node name="CanvasRenderer" type="Node" parent="PausedTimer/Timer_EnemyText"]
-
-[node name="MonoBehaviour" type="Node" parent="PausedTimer/Timer_EnemyText"]
-
-[node name="MonoBehaviour2" type="Node" parent="PausedTimer/Timer_EnemyText"]
-
-[node name="WaveText" type="Node3D" parent="PausedTimer"]
-
-[node name="CanvasRenderer" type="Node" parent="PausedTimer/WaveText"]
-
-[node name="MonoBehaviour" type="Node" parent="PausedTimer/WaveText"]
-
-[node name="MonoBehaviour2" type="Node" parent="PausedTimer/WaveText"]
-
-[node name="ShopButton" type="Node3D" parent="."]
-
-[node name="CanvasRenderer" type="Node" parent="ShopButton"]
-
-[node name="MonoBehaviour" type="Node" parent="ShopButton"]
-
-[node name="MonoBehaviour2" type="Node" parent="ShopButton"]
-
-[node name="MonoBehaviour3" type="Node" parent="ShopButton"]
-
-[node name="MonoBehaviour4" type="Node" parent="ShopButton"]
-
-[node name="MonoBehaviour5" type="Node" parent="ShopButton"]
-
-[node name="Text (TMP)" type="Node3D" parent="ShopButton"]
-
-[node name="CanvasRenderer" type="Node" parent="ShopButton/Text (TMP)"]
-
-[node name="MonoBehaviour" type="Node" parent="ShopButton/Text (TMP)"]
-
-[node name="MonoBehaviour2" type="Node" parent="ShopButton/Text (TMP)"]
-
-[node name="Crack" type="Node3D" parent="ShopButton"]
-
-[node name="CanvasRenderer" type="Node" parent="ShopButton/Crack"]
-
-[node name="MonoBehaviour" type="Node" parent="ShopButton/Crack"]
-
-[node name="MonoBehaviour2" type="Node" parent="ShopButton/Crack"]
+[ext_resource type="Texture2D" uid="uid://37piix4n332g" path="res://UI/Fast.tres" id="4_tqgei"]
+[ext_resource type="Texture2D" uid="uid://b62bpy01o0yum" path="res://UI/Generic/T_Life.png" id="5_2lohw"]
+[ext_resource type="Texture2D" uid="uid://dhwain58mvf31" path="res://UI/Generic/T_Powercell.png" id="6_s0rbo"]
+[ext_resource type="Texture2D" uid="uid://bvrudgxpv3fb2" path="res://UI/Shop/T_EnergyButton.png" id="8_m17u4"]
+[ext_resource type="Texture2D" uid="uid://du0afunbxvjlp" path="res://UI/Shop/T_BrokenButton.png" id="9_m17u4"]
+[ext_resource type="FontFile" uid="uid://bfgualfwa123d" path="res://UI/Fonts/Font_Futured.TTF" id="9_uty7o"]
+[ext_resource type="Texture2D" uid="uid://c3ik8e3iy56ad" path="res://UI/Shop/T_Crack.png" id="10_p77s1"]
+[ext_resource type="Texture2D" uid="uid://bjiiej5uob71f" path="res://UI/bar.png" id="12_p77s1"]
+[ext_resource type="FontFile" uid="uid://1ojapw2lf2sh" path="res://UI/Fonts/Font_NikkyouSans.ttf" id="13_viuft"]
+[ext_resource type="Texture2D" uid="uid://cs1neednfxbpe" path="res://UI/Generic/T_TextButton.png" id="14_viuft"]
+
+[node name="LevelCanvas_Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SpeedControls" type="VBoxContainer" parent="." node_paths=PackedStringArray("pausedUI")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+alignment = 1
+script = ExtResource("1_3vno0")
+pausedUI = NodePath("../PauseMenu")
+waveText = "Yeet"
+
+[node name="StopButton" type="Button" parent="SpeedControls"]
+layout_mode = 2
+icon = ExtResource("1_anr6t")
+
+[node name="PauseButton" type="Button" parent="SpeedControls"]
+layout_mode = 2
+icon = ExtResource("2_5do7x")
+
+[node name="PlayButton" type="Button" parent="SpeedControls"]
+layout_mode = 2
+icon = ExtResource("3_3vno0")
+
+[node name="FastButton" type="Button" parent="SpeedControls"]
+layout_mode = 2
+icon = ExtResource("4_tqgei")
+
+[node name="GameStats" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -65.0
+offset_top = -50.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Powercells" type="HSplitContainer" parent="GameStats"]
+layout_mode = 2
+
+[node name="Image" type="TextureRect" parent="GameStats/Powercells"]
+layout_mode = 2
+texture = ExtResource("6_s0rbo")
+expand_mode = 3
+
+[node name="Text (TMP)" type="Label" parent="GameStats/Powercells"]
+layout_mode = 2
+text = "3"
+
+[node name="Lives" type="HSplitContainer" parent="GameStats"]
+layout_mode = 2
+
+[node name="Image" type="TextureRect" parent="GameStats/Lives"]
+layout_mode = 2
+texture = ExtResource("5_2lohw")
+expand_mode = 3
+
+[node name="Text (TMP)" type="Label" parent="GameStats/Lives"]
+layout_mode = 2
+text = "20"
+
+[node name="Timer" type="Control" parent="."]
+anchors_preset = 0
+
+[node name="Image" type="TextureRect" parent="Timer"]
+layout_mode = 0
+
+[node name="Timer_EnemyText" type="Label" parent="Timer"]
+layout_mode = 0
+
+[node name="WaveText" type="Label" parent="Timer"]
+layout_mode = 0
+
+[node name="Timer_Paused" type="Control" parent="."]
+anchors_preset = 0
+
+[node name="Image" type="TextureRect" parent="Timer_Paused"]
+layout_mode = 0
+
+[node name="Timer_EnemyText" type="Label" parent="Timer_Paused"]
+layout_mode = 0
+
+[node name="WaveText" type="Label" parent="Timer_Paused"]
+layout_mode = 0
+
+[node name="ShopButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -77.5
+offset_top = -78.666
+offset_right = 77.5
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("8_m17u4")
+texture_disabled = ExtResource("9_m17u4")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="GenerateShopSelection" type="Node" parent="ShopButton"]
+
+[node name="Shop" type="Node" parent="ShopButton"]
+
+[node name="Text (TMP)" type="Label" parent="ShopButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -11.5
+offset_right = 16.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("9_uty7o")
+theme_override_font_sizes/font_size = 40
+text = "BUY"
+
+[node name="Crack" type="TextureRect" parent="ShopButton"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_p77s1")
+expand_mode = 1
 
 [node name="Inventory" type="Node3D" parent="."]
 
@@ -577,77 +566,132 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
 [node name="MonoBehaviour2" type="Node" parent="GameOverUI/Background/MenuButton/Text (TMP)"]
 
-[node name="PauseMenu" type="Node3D" parent="."]
+[node name="PauseMenu" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
 
-[node name="CanvasRenderer" type="Node" parent="PauseMenu"]
+[node name="VSplitContainer" type="VSplitContainer" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="MonoBehaviour" type="Node" parent="PauseMenu"]
+[node name="TextureRect" type="TextureRect" parent="PauseMenu/VSplitContainer"]
+layout_mode = 2
+texture = ExtResource("12_p77s1")
+expand_mode = 5
+stretch_mode = 4
 
-[node name="Background" type="Node3D" parent="PauseMenu"]
+[node name="Label" type="Label" parent="PauseMenu/VSplitContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("13_viuft")
+theme_override_font_sizes/font_size = 60
+text = "EXIT"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="CanvasRenderer" type="Node" parent="PauseMenu/Background"]
+[node name="Panel" type="Panel" parent="PauseMenu/VSplitContainer"]
+layout_mode = 2
 
-[node name="MonoBehaviour" type="Node" parent="PauseMenu/Background"]
+[node name="GamePausedText" type="Label" parent="PauseMenu/VSplitContainer/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.5
+offset_left = -0.5
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("9_uty7o")
+theme_override_font_sizes/font_size = 80
+text = "Are you sure you wish to leave the level?"
+horizontal_alignment = 1
+autowrap_mode = 3
 
-[node name="GamePausedText" type="Node3D" parent="PauseMenu"]
+[node name="FlowContainer" type="VSplitContainer" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.5
+anchor_right = 0.95
+anchor_bottom = 0.9
 
-[node name="CanvasRenderer" type="Node" parent="PauseMenu/GamePausedText"]
+[node name="ContineButton" type="TextureButton" parent="PauseMenu/FlowContainer"]
+self_modulate = Color(0.156863, 0.752941, 0.454902, 1)
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("14_viuft")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="MonoBehaviour" type="Node" parent="PauseMenu/GamePausedText"]
+[node name="Text (TMP)" type="Label" parent="PauseMenu/FlowContainer/ContineButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Continue"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="MonoBehaviour2" type="Node" parent="PauseMenu/GamePausedText"]
+[node name="HSplitContainer" type="HSplitContainer" parent="PauseMenu/FlowContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 
-[node name="ContineButton" type="Node3D" parent="PauseMenu"]
+[node name="Restart" type="TextureButton" parent="PauseMenu/FlowContainer/HSplitContainer"]
+self_modulate = Color(0.25098, 0.592157, 1, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("14_viuft")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="CanvasRenderer" type="Node" parent="PauseMenu/ContineButton"]
+[node name="Text (TMP)" type="Label" parent="PauseMenu/FlowContainer/HSplitContainer/Restart"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Restart"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="MonoBehaviour" type="Node" parent="PauseMenu/ContineButton"]
+[node name="MainMenu" type="TextureButton" parent="PauseMenu/FlowContainer/HSplitContainer"]
+self_modulate = Color(0.831373, 0.117647, 0.235294, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("14_viuft")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="MonoBehaviour2" type="Node" parent="PauseMenu/ContineButton"]
-
-[node name="Text (TMP)" type="Node3D" parent="PauseMenu/ContineButton"]
-
-[node name="CanvasRenderer" type="Node" parent="PauseMenu/ContineButton/Text (TMP)"]
-
-[node name="MonoBehaviour" type="Node" parent="PauseMenu/ContineButton/Text (TMP)"]
-
-[node name="MonoBehaviour2" type="Node" parent="PauseMenu/ContineButton/Text (TMP)"]
-
-[node name="BottomButtons" type="Node3D" parent="PauseMenu"]
-
-[node name="MonoBehaviour" type="Node" parent="PauseMenu/BottomButtons"]
-
-[node name="RestartButton" type="Node3D" parent="PauseMenu/BottomButtons"]
-
-[node name="CanvasRenderer" type="Node" parent="PauseMenu/BottomButtons/RestartButton"]
-
-[node name="MonoBehaviour" type="Node" parent="PauseMenu/BottomButtons/RestartButton"]
-
-[node name="MonoBehaviour2" type="Node" parent="PauseMenu/BottomButtons/RestartButton"]
-
-[node name="Text (TMP)" type="Node3D" parent="PauseMenu/BottomButtons/RestartButton"]
-
-[node name="CanvasRenderer" type="Node" parent="PauseMenu/BottomButtons/RestartButton/Text (TMP)"]
-
-[node name="MonoBehaviour" type="Node" parent="PauseMenu/BottomButtons/RestartButton/Text (TMP)"]
-
-[node name="MonoBehaviour2" type="Node" parent="PauseMenu/BottomButtons/RestartButton/Text (TMP)"]
-
-[node name="QuitButton" type="Node3D" parent="PauseMenu/BottomButtons"]
-
-[node name="CanvasRenderer" type="Node" parent="PauseMenu/BottomButtons/QuitButton"]
-
-[node name="MonoBehaviour" type="Node" parent="PauseMenu/BottomButtons/QuitButton"]
-
-[node name="MonoBehaviour2" type="Node" parent="PauseMenu/BottomButtons/QuitButton"]
-
-[node name="Text (TMP)" type="Node3D" parent="PauseMenu/BottomButtons/QuitButton"]
-
-[node name="CanvasRenderer" type="Node" parent="PauseMenu/BottomButtons/QuitButton/Text (TMP)"]
-
-[node name="MonoBehaviour" type="Node" parent="PauseMenu/BottomButtons/QuitButton/Text (TMP)"]
-
-[node name="MonoBehaviour2" type="Node" parent="PauseMenu/BottomButtons/QuitButton/Text (TMP)"]
+[node name="Text (TMP)" type="Label" parent="PauseMenu/FlowContainer/HSplitContainer/MainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Main Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Selection" type="Node3D" parent="."]
 
@@ -742,6 +786,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 [node name="MonoBehaviour" type="Node" parent="Selection/Options/Locked/UnlockText"]
 
 [node name="MonoBehaviour2" type="Node" parent="Selection/Options/Locked/UnlockText"]
+
+[connection signal="pressed" from="SpeedControls/StopButton" to="SpeedControls" method="ToggleMenu"]
+[connection signal="pressed" from="SpeedControls/PauseButton" to="SpeedControls" method="SetSpeed" binds= [0.0]]
+[connection signal="pressed" from="SpeedControls/PlayButton" to="SpeedControls" method="SetSpeed" binds= [1.0]]
+[connection signal="pressed" from="SpeedControls/FastButton" to="SpeedControls" method="SetSpeed" binds= [2.0]]
+[connection signal="pressed" from="PauseMenu/FlowContainer/ContineButton" to="SpeedControls" method="ToggleMenu"]
+[connection signal="pressed" from="PauseMenu/FlowContainer/HSplitContainer/Restart" to="SpeedControls" method="Retry"]
+[connection signal="pressed" from="PauseMenu/FlowContainer/HSplitContainer/MainMenu" to="SpeedControls" method="Menu"]
 
 [editable path="Selection/SelectionCards/Card_Turret"]
 [editable path="Selection/SelectionCards/Card_Module"]

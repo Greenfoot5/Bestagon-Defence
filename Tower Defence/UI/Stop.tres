@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://bs37ieabggvk2"]
+
+[ext_resource type="Texture2D" uid="uid://boqpfvlhmmt15" path="res://UI/T_SpeedControls.png" id="1_xi7j4"]
+
+[resource]
+atlas = ExtResource("1_xi7j4")
+region = Rect2(2, 0, 54, 55)

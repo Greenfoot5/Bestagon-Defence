@@ -1,13 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bl5bfgnh4ruki"]
+[gd_scene load_steps=3 format=3 uid="uid://bl5bfgnh4ruki"]
 
 [ext_resource type="Script" uid="uid://fuhxgp2k2mrl" path="res://Levels/_Tiles/BuildableTile.cs" id="1_2xiig"]
-[ext_resource type="Resource" uid="uid://d373knvixoopr" path="res://Turrets/Shooter/BasicTurret.tres" id="2_1sbpi"]
 [ext_resource type="Texture2D" uid="uid://jjvkculthe4o" path="res://_WIP/Art/node.png" id="3_tublc"]
 
 [node name="Node_Buildable" type="Area2D"]
 script = ExtResource("1_2xiig")
 HoverColour = Color(0.698039, 0.698039, 0.698039, 1)
-initialTurret = ExtResource("2_1sbpi")
 
 [node name="Hitbox" type="CollisionPolygon2D" parent="."]
 rotation = 1.5708

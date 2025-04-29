@@ -24,7 +24,7 @@ namespace Levels._Nodes
         /// A turret that starts on the node
         /// </summary>
         [Export]
-        private TurretBlueprint initialTurret;
+        private TurretBlueprint _initialTurret;
 
         /// <summary>
         /// The node to spawn the module icons as a child of
@@ -50,8 +50,8 @@ namespace Levels._Nodes
 
         public override void _EnterTree()
         {
-            if (initialTurret != null)
-                LoadTurret(initialTurret);
+            if (_initialTurret != null)
+                LoadTurret(_initialTurret);
         }
 
         public override void _Ready()
