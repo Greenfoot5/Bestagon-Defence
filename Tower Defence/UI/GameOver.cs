@@ -13,14 +13,14 @@ namespace UI
         /// The text to display the current round number on
         /// </summary>
         [Export]
-        private RichTextLabel roundsText;
+        private Label roundsText;
         
         /// <summary>
         /// Sets the player's score display when enabled
         /// </summary>
         public void OnEnable()
         {
-            roundsText.Text = "<size=4em><b>" + GameStats.Rounds + "</b></size>";
+            roundsText.Text = GameStats.Rounds.ToString();
         }
         
         /// <summary>

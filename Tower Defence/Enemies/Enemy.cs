@@ -81,7 +81,6 @@ namespace Enemies
             GlobalPosition = position.MoveToward(location, distanceThisFrame);
             
             Vector2 difference = location - position; // Distance & direction to next target
-            GD.Print(difference.LengthSquared());
 
             // If within this frame the enemy will pass the waypoint, it's a guaranteed hit
             if (difference.LengthSquared() <= Stats.DistanceToWaypoint * Stats.DistanceToWaypoint)
