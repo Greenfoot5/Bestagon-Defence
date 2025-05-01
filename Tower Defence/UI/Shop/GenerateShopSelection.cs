@@ -59,12 +59,12 @@ namespace UI.Shop
         /// The button to show when unlocked
         /// </summary>
         [Export]
-        private Button lockButton;
+        private BaseButton lockButton;
         /// <summary>
         /// The status to show when locked
         /// </summary>
         [Export]
-        private Button lockedButton;
+        private BaseButton lockedButton;
         private bool _isLocked;
 
         private List<Tuple<Object, int>> _hiddenChoices;

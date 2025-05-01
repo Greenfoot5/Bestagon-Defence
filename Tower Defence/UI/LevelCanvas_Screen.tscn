@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bf14d8qox8yy5"]
+[gd_scene load_steps=24 format=3 uid="uid://bf14d8qox8yy5"]
 
 [ext_resource type="Script" uid="uid://b1y7106ggbj46" path="res://UI/SpeedControls.cs" id="1_3vno0"]
 [ext_resource type="Texture2D" uid="uid://bs37ieabggvk2" path="res://UI/Stop.tres" id="1_anr6t"]
@@ -20,6 +20,9 @@
 [ext_resource type="FontFile" uid="uid://1ojapw2lf2sh" path="res://UI/Fonts/Font_NikkyouSans.ttf" id="13_viuft"]
 [ext_resource type="Theme" uid="uid://dt5m7cx6h7lam" path="res://UI/GameOver.tres" id="14_ousqf"]
 [ext_resource type="Texture2D" uid="uid://cs1neednfxbpe" path="res://UI/Generic/T_TextButton.png" id="14_viuft"]
+[ext_resource type="Script" uid="uid://7lqnwi2j1ptp" path="res://UI/Shop/GenerateShopSelection.cs" id="17_1a54g"]
+[ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/White_Rectangle.png" id="21_ousqf"]
+[ext_resource type="Texture2D" uid="uid://b4f8iscba8vxk" path="res://Enemies/Bosses/T_Square_Red.png" id="23_4jhpk"]
 
 [node name="LevelCanvas_Screen" type="Control"]
 layout_mode = 3
@@ -744,25 +747,39 @@ text = "Main Menu"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Selection" type="Node3D" parent="."]
+[node name="Selection" type="Panel" parent="." node_paths=PackedStringArray("selectionCardsParent", "lockButton", "lockedButton")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("17_1a54g")
+selectionCardsParent = NodePath("SelectionCards")
+lockButton = NodePath("Options/Lock")
+lockedButton = NodePath("Options/Locked")
 
-[node name="CanvasRenderer" type="Node" parent="Selection"]
+[node name="PausedText" type="Label" parent="Selection"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -56.0
+offset_right = 56.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "GAME PAUSED"
 
-[node name="MonoBehaviour" type="Node" parent="Selection"]
-
-[node name="PausedText" type="Node3D" parent="Selection"]
-
-[node name="CanvasRenderer" type="Node" parent="Selection/PausedText"]
-
-[node name="MonoBehaviour" type="Node" parent="Selection/PausedText"]
-
-[node name="MonoBehaviour2" type="Node" parent="Selection/PausedText"]
-
-[node name="SelectionCards" type="Node3D" parent="Selection"]
-
-[node name="CanvasRenderer" type="Node" parent="Selection/SelectionCards"]
-
-[node name="MonoBehaviour" type="Node" parent="Selection/SelectionCards"]
+[node name="SelectionCards" type="HBoxContainer" parent="Selection"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.2
+anchor_right = 1.0
+anchor_bottom = 0.875
+offset_left = 40.0
+offset_right = -40.0
+offset_bottom = -10.0
+alignment = 1
 
 [node name="Card_Turret" parent="Selection/SelectionCards" instance=ExtResource("1_iukjl")]
 
@@ -772,71 +789,106 @@ vertical_alignment = 1
 
 [node name="Card_Hidden" parent="Selection/SelectionCards" instance=ExtResource("4_q3du4")]
 
-[node name="Options" type="Node3D" parent="Selection"]
+[node name="Options" type="HBoxContainer" parent="Selection"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = -40.0
 
-[node name="MonoBehaviour" type="Node" parent="Selection/Options"]
+[node name="Resume" type="TextureButton" parent="Selection/Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("21_ousqf")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="Resume" type="Node3D" parent="Selection/Options"]
+[node name="Name" type="Label" parent="Selection/Options/Resume"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "RESUME"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="CanvasRenderer" type="Node" parent="Selection/Options/Resume"]
+[node name="Lock" type="TextureButton" parent="Selection/Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("21_ousqf")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="MonoBehaviour" type="Node" parent="Selection/Options/Resume"]
+[node name="VSplitContainer" type="VSplitContainer" parent="Selection/Options/Lock"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+collapsed = true
+dragging_enabled = false
+dragger_visibility = 2
 
-[node name="MonoBehaviour2" type="Node" parent="Selection/Options/Resume"]
+[node name="Title" type="Label" parent="Selection/Options/Lock/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "LOCK"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Name" type="Node3D" parent="Selection/Options/Resume"]
+[node name="Subtext" type="Label" parent="Selection/Options/Lock/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Will reveal hidden choices"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="CanvasRenderer" type="Node" parent="Selection/Options/Resume/Name"]
+[node name="Locked" type="TextureButton" parent="Selection/Options"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+texture_normal = ExtResource("21_ousqf")
+texture_disabled = ExtResource("23_4jhpk")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="MonoBehaviour" type="Node" parent="Selection/Options/Resume/Name"]
+[node name="VSplitContainer" type="VSplitContainer" parent="Selection/Options/Locked"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+collapsed = true
+dragging_enabled = false
+dragger_visibility = 2
 
-[node name="MonoBehaviour2" type="Node" parent="Selection/Options/Resume/Name"]
+[node name="Title" type="Label" parent="Selection/Options/Locked/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "UNLOCK"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Lock" type="Node3D" parent="Selection/Options"]
-
-[node name="CanvasRenderer" type="Node" parent="Selection/Options/Lock"]
-
-[node name="MonoBehaviour" type="Node" parent="Selection/Options/Lock"]
-
-[node name="MonoBehaviour2" type="Node" parent="Selection/Options/Lock"]
-
-[node name="Name" type="Node3D" parent="Selection/Options/Lock"]
-
-[node name="CanvasRenderer" type="Node" parent="Selection/Options/Lock/Name"]
-
-[node name="MonoBehaviour" type="Node" parent="Selection/Options/Lock/Name"]
-
-[node name="MonoBehaviour2" type="Node" parent="Selection/Options/Lock/Name"]
-
-[node name="LockText" type="Node3D" parent="Selection/Options/Lock"]
-
-[node name="CanvasRenderer" type="Node" parent="Selection/Options/Lock/LockText"]
-
-[node name="MonoBehaviour" type="Node" parent="Selection/Options/Lock/LockText"]
-
-[node name="MonoBehaviour2" type="Node" parent="Selection/Options/Lock/LockText"]
-
-[node name="Locked" type="Node3D" parent="Selection/Options"]
-
-[node name="CanvasRenderer" type="Node" parent="Selection/Options/Locked"]
-
-[node name="MonoBehaviour" type="Node" parent="Selection/Options/Locked"]
-
-[node name="Name" type="Node3D" parent="Selection/Options/Locked"]
-
-[node name="CanvasRenderer" type="Node" parent="Selection/Options/Locked/Name"]
-
-[node name="MonoBehaviour" type="Node" parent="Selection/Options/Locked/Name"]
-
-[node name="MonoBehaviour2" type="Node" parent="Selection/Options/Locked/Name"]
-
-[node name="UnlockText" type="Node3D" parent="Selection/Options/Locked"]
-
-[node name="CanvasRenderer" type="Node" parent="Selection/Options/Locked/UnlockText"]
-
-[node name="MonoBehaviour" type="Node" parent="Selection/Options/Locked/UnlockText"]
-
-[node name="MonoBehaviour2" type="Node" parent="Selection/Options/Locked/UnlockText"]
+[node name="Subtext" type="Label" parent="Selection/Options/Locked/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Pick an option to unlock"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="SpeedControls/StopButton" to="SpeedControls" method="ToggleMenu"]
 [connection signal="pressed" from="SpeedControls/PauseButton" to="SpeedControls" method="SetSpeed" binds= [0.0]]
@@ -847,6 +899,8 @@ vertical_alignment = 1
 [connection signal="pressed" from="PauseMenu/FlowContainer/ContineButton" to="SpeedControls" method="ToggleMenu"]
 [connection signal="pressed" from="PauseMenu/FlowContainer/HSplitContainer/Restart" to="SpeedControls" method="Retry"]
 [connection signal="pressed" from="PauseMenu/FlowContainer/HSplitContainer/MainMenu" to="SpeedControls" method="Menu"]
+[connection signal="pressed" from="Selection/Options/Resume" to="Selection" method="Resume"]
+[connection signal="pressed" from="Selection/Options/Lock" to="Selection" method="Lock"]
 
 [editable path="Selection/SelectionCards/Card_Turret"]
 [editable path="Selection/SelectionCards/Card_Module"]
