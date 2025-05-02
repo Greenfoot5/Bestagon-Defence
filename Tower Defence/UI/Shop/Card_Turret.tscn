@@ -1,177 +1,238 @@
-[gd_scene format=3 uid="uid://dpv0bwn2n0ebh"]
-
-[node name="Card_Turret" type="Node3D"]
-
-[node name="CanvasRenderer" type="Node" parent="."]
-
-[node name="MonoBehaviour" type="Node" parent="."]
-
-[node name="Modules" type="Node3D" parent="."]
-
-[node name="CanvasRenderer" type="Node" parent="Modules"]
-
-[node name="MonoBehaviour" type="Node" parent="Modules"]
-
-[node name="TypePanel" type="Node3D" parent="."]
-transform = Transform3D(0.4, 0, 0, 0, 0.41, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="CanvasRenderer" type="Node" parent="TypePanel"]
-
-[node name="MonoBehaviour" type="Node" parent="TypePanel"]
-
-[node name="Canvas" type="Node" parent="TypePanel"]
-
-[node name="Type" type="Node3D" parent="TypePanel"]
-
-[node name="CanvasRenderer" type="Node" parent="TypePanel/Type"]
-
-[node name="MonoBehaviour" type="Node" parent="TypePanel/Type"]
-
-[node name="MonoBehaviour2" type="Node" parent="TypePanel/Type"]
-
-[node name="Image" type="Node3D" parent="TypePanel"]
-
-[node name="CanvasRenderer" type="Node" parent="TypePanel/Image"]
-
-[node name="MonoBehaviour" type="Node" parent="TypePanel/Image"]
-
-[node name="MonoBehaviour2" type="Node" parent="TypePanel/Image"]
-
-[node name="Background" type="Node3D" parent="."]
-
-[node name="CanvasRenderer" type="Node" parent="Background"]
-
-[node name="MonoBehaviour" type="Node" parent="Background"]
-
-[node name="MonoBehaviour2" type="Node" parent="Background"]
-
-[node name="Name" type="Node3D" parent="Background"]
-
-[node name="CanvasRenderer" type="Node" parent="Background/Name"]
-
-[node name="MonoBehaviour" type="Node" parent="Background/Name"]
-
-[node name="Tagline" type="Node3D" parent="Background"]
-
-[node name="CanvasRenderer" type="Node" parent="Background/Tagline"]
-
-[node name="MonoBehaviour" type="Node" parent="Background/Tagline"]
-
-[node name="Content" type="Node3D" parent="Background"]
-
-[node name="Info" type="Node3D" parent="Background/Content"]
-
-[node name="CanvasRenderer" type="Node" parent="Background/Content/Info"]
-
-[node name="MonoBehaviour" type="Node" parent="Background/Content/Info"]
-
-[node name="Glyph" type="Node3D" parent="Background/Content/Info"]
-
-[node name="MonoBehaviour" type="Node" parent="Background/Content/Info/Glyph"]
-
-[node name="CanvasRenderer" type="Node" parent="Background/Content/Info/Glyph"]
-
-[node name="MonoBehaviour2" type="Node" parent="Background/Content/Info/Glyph"]
-
-[node name="Icon" type="Node3D" parent="Background/Content/Info"]
-
-[node name="CanvasRenderer" type="Node" parent="Background/Content/Info/Icon"]
-
-[node name="MonoBehaviour" type="Node" parent="Background/Content/Info/Icon"]
-
-[node name="MonoBehaviour2" type="Node" parent="Background/Content/Info/Icon"]
-
-[node name="Stats" type="Node3D" parent="Background/Content/Info"]
-
-[node name="MonoBehaviour" type="Node" parent="Background/Content/Info/Stats"]
-
-[node name="MonoBehaviour2" type="Node" parent="Background/Content/Info/Stats"]
-
-[node name="Damage" type="Node3D" parent="Background/Content/Info/Stats"]
-
-[node name="Canvas" type="Node" parent="Background/Content/Info/Stats/Damage"]
-
-[node name="MonoBehaviour" type="Node" parent="Background/Content/Info/Stats/Damage"]
-
-[node name="MonoBehaviour2" type="Node" parent="Background/Content/Info/Stats/Damage"]
-
-[node name="MonoBehaviour3" type="Node" parent="Background/Content/Info/Stats/Damage"]
-
-[node name="Icon" type="Node3D" parent="Background/Content/Info/Stats/Damage"]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="CanvasRenderer" type="Node" parent="Background/Content/Info/Stats/Damage/Icon"]
-
-[node name="MonoBehaviour" type="Node" parent="Background/Content/Info/Stats/Damage/Icon"]
-
-[node name="Data" type="Node3D" parent="Background/Content/Info/Stats/Damage"]
-
-[node name="CanvasRenderer" type="Node" parent="Background/Content/Info/Stats/Damage/Data"]
-
-[node name="MonoBehaviour" type="Node" parent="Background/Content/Info/Stats/Damage/Data"]
-
-[node name="Rate" type="Node3D" parent="Background/Content/Info/Stats"]
-
-[node name="Canvas" type="Node" parent="Background/Content/Info/Stats/Rate"]
-
-[node name="MonoBehaviour" type="Node" parent="Background/Content/Info/Stats/Rate"]
-
-[node name="MonoBehaviour2" type="Node" parent="Background/Content/Info/Stats/Rate"]
-
-[node name="MonoBehaviour3" type="Node" parent="Background/Content/Info/Stats/Rate"]
-
-[node name="Icon" type="Node3D" parent="Background/Content/Info/Stats/Rate"]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="CanvasRenderer" type="Node" parent="Background/Content/Info/Stats/Rate/Icon"]
-
-[node name="MonoBehaviour" type="Node" parent="Background/Content/Info/Stats/Rate/Icon"]
-
-[node name="Data" type="Node3D" parent="Background/Content/Info/Stats/Rate"]
-
-[node name="CanvasRenderer" type="Node" parent="Background/Content/Info/Stats/Rate/Data"]
-
-[node name="MonoBehaviour" type="Node" parent="Background/Content/Info/Stats/Rate/Data"]
-
-[node name="Range" type="Node3D" parent="Background/Content/Info/Stats"]
-
-[node name="Canvas" type="Node" parent="Background/Content/Info/Stats/Range"]
-
-[node name="MonoBehaviour" type="Node" parent="Background/Content/Info/Stats/Range"]
-
-[node name="MonoBehaviour2" type="Node" parent="Background/Content/Info/Stats/Range"]
-
-[node name="MonoBehaviour3" type="Node" parent="Background/Content/Info/Stats/Range"]
-
-[node name="Icon" type="Node3D" parent="Background/Content/Info/Stats/Range"]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="CanvasRenderer" type="Node" parent="Background/Content/Info/Stats/Range/Icon"]
-
-[node name="MonoBehaviour" type="Node" parent="Background/Content/Info/Stats/Range/Icon"]
-
-[node name="Data" type="Node3D" parent="Background/Content/Info/Stats/Range"]
-
-[node name="CanvasRenderer" type="Node" parent="Background/Content/Info/Stats/Range/Data"]
-
-[node name="MonoBehaviour" type="Node" parent="Background/Content/Info/Stats/Range/Data"]
-
-[node name="Modules" type="Node3D" parent="Background/Content"]
-
-[node name="CanvasRenderer" type="Node" parent="Background/Content/Modules"]
-
-[node name="MonoBehaviour" type="Node" parent="Background/Content/Modules"]
-
-[node name="MonoBehaviour2" type="Node" parent="Background/Content/Modules"]
-
-[node name="Title" type="Node3D" parent="Background/Content/Modules"]
-
-[node name="CanvasRenderer" type="Node" parent="Background/Content/Modules/Title"]
-
-[node name="MonoBehaviour" type="Node" parent="Background/Content/Modules/Title"]
-
-[node name="MonoBehaviour2" type="Node" parent="Background/Content/Modules/Title"]
-
-[node name="ModulesList" type="Node3D" parent="Background/Content/Modules"]
-
-[node name="MonoBehaviour" type="Node" parent="Background/Content/Modules/ModulesList"]
+[gd_scene load_steps=8 format=3 uid="uid://dpv0bwn2n0ebh"]
+
+[ext_resource type="Script" uid="uid://cg3grjn2ddd8l" path="res://UI/Shop/TurretSelectionUI.cs" id="1_ajfa3"]
+[ext_resource type="Texture2D" uid="uid://bgwjkwx6n6xlm" path="res://UI/Generic/T_Head_Steep.png" id="2_mkcs1"]
+[ext_resource type="PackedScene" uid="uid://cpj1f8162nio" path="res://UI/Shop/Card_Turret_ModuleIcon.tscn" id="2_pittc"]
+[ext_resource type="Texture2D" uid="uid://bqr2h4s8oo5pk" path="res://Turrets/Shooter/T_ShooterTurret.png" id="3_xtsia"]
+[ext_resource type="Texture2D" uid="uid://c1px3poumr7i6" path="res://UI/Glyphs/Shooter.tres" id="4_mkcs1"]
+[ext_resource type="Script" uid="uid://bxvxv7t1wcksh" path="res://UI/TurretStats/TurretStat.cs" id="5_xtsia"]
+[ext_resource type="Texture2D" uid="uid://dvm15nkgk7e1q" path="res://UI/TurretStats/Damage.tres" id="6_3q6l4"]
+
+[node name="Card_Turret" type="Panel" node_paths=PackedStringArray("displayName", "tagline", "icon", "glyph", "modulesSection", "modulesLayout", "damage", "rate", "range", "modulesBg", "modulesTitle")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_ajfa3")
+displayName = NodePath("Button/Name")
+tagline = NodePath("Button/Tagline")
+icon = NodePath("Button/Content/Info/Icon")
+glyph = NodePath("Button/Content/Info/Glyph")
+modulesSection = NodePath("Button/Content/Modules")
+modulesLayout = NodePath("Button/Content/Modules/ModulesList")
+moduleUI = ExtResource("2_pittc")
+damage = NodePath("Button/Content/Info/Stats/Damage")
+rate = NodePath("Button/Content/Info/Stats/Rate")
+range = NodePath("Button/Content/Info/Stats/Range")
+modulesBg = NodePath("Button/Content/Modules")
+modulesTitle = NodePath("Button/Content/Modules/Title")
+
+[node name="TypePanel" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -130.0
+offset_top = -20.0
+offset_right = 130.0
+texture = ExtResource("2_mkcs1")
+region_rect = Rect2(0, 4, 178, 262)
+patch_margin_left = 85
+patch_margin_right = 85
+
+[node name="HSplitContainer" type="HSplitContainer" parent="TypePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 80.0
+offset_right = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+collapsed = true
+dragging_enabled = false
+dragger_visibility = 2
+
+[node name="Image" type="TextureRect" parent="TypePanel/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_xtsia")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Type" type="Label" parent="TypePanel/HSplitContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "TURRET"
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Name" type="Label" parent="Button"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.02
+anchor_right = 0.95
+anchor_bottom = 0.155
+text = "SHOOTER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tagline" type="Label" parent="Button"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.16
+anchor_right = 1.0
+anchor_bottom = 0.23
+text = "It shoots things"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Content" type="Control" parent="Button"]
+layout_mode = 1
+anchor_top = 0.23
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Info" type="Control" parent="Button/Content"]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 0.6
+
+[node name="Glyph" type="TextureRect" parent="Button/Content/Info"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_right = 0.7
+anchor_bottom = 0.125
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_mkcs1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Icon" type="TextureRect" parent="Button/Content/Info"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.65
+texture = ExtResource("3_xtsia")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Stats" type="HBoxContainer" parent="Button/Content/Info"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.7
+anchor_right = 0.9
+anchor_bottom = 1.0
+
+[node name="Damage" type="HSplitContainer" parent="Button/Content/Info/Stats" node_paths=PackedStringArray("icon", "text")]
+layout_mode = 2
+size_flags_horizontal = 3
+dragging_enabled = false
+dragger_visibility = 1
+script = ExtResource("5_xtsia")
+icon = NodePath("Icon")
+text = NodePath("Data")
+
+[node name="Icon" type="TextureRect" parent="Button/Content/Info/Stats/Damage"]
+layout_mode = 2
+size_flags_horizontal = 10
+texture = ExtResource("6_3q6l4")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Data" type="Label" parent="Button/Content/Info/Stats/Damage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "200"
+vertical_alignment = 1
+
+[node name="Rate" type="HSplitContainer" parent="Button/Content/Info/Stats" node_paths=PackedStringArray("icon", "text")]
+layout_mode = 2
+size_flags_horizontal = 3
+dragging_enabled = false
+dragger_visibility = 1
+script = ExtResource("5_xtsia")
+icon = NodePath("Icon")
+text = NodePath("Data")
+
+[node name="Icon" type="TextureRect" parent="Button/Content/Info/Stats/Rate"]
+layout_mode = 2
+size_flags_horizontal = 10
+texture = ExtResource("6_3q6l4")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Data" type="Label" parent="Button/Content/Info/Stats/Rate"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "1.25"
+vertical_alignment = 1
+
+[node name="Range" type="HSplitContainer" parent="Button/Content/Info/Stats" node_paths=PackedStringArray("icon", "text")]
+layout_mode = 2
+size_flags_horizontal = 3
+dragging_enabled = false
+dragger_visibility = 1
+script = ExtResource("5_xtsia")
+icon = NodePath("Icon")
+text = NodePath("Data")
+
+[node name="Icon" type="TextureRect" parent="Button/Content/Info/Stats/Range"]
+layout_mode = 2
+size_flags_horizontal = 10
+texture = ExtResource("6_3q6l4")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Data" type="Label" parent="Button/Content/Info/Stats/Range"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "2.5"
+vertical_alignment = 1
+
+[node name="Modules" type="Panel" parent="Button/Content"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.643
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Button/Content/Modules"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = -0.1
+anchor_right = 0.9
+anchor_bottom = 0.15
+text = "MODULES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ModulesList" type="HBoxContainer" parent="Button/Content/Modules"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.025
+anchor_top = 0.1
+anchor_right = 0.975
+anchor_bottom = 0.95

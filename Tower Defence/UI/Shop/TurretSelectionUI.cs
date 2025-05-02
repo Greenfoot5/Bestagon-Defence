@@ -27,15 +27,15 @@ namespace UI.Shop
         private Label tagline;
         
         /// <summary>
-        /// The Sprite2D to place the turret's icon
+        /// The TextureRect to place the turret's icon
         /// </summary>
         [Export]
-        private Sprite2D icon;
+        private TextureRect icon;
         /// <summary>
-        /// The glyph Sprite2D
+        /// The glyph TextureRect
         /// </summary>
         [Export]
-        private Sprite2D glyph;
+        private TextureRect glyph;
     
         /// <summary>
         /// The selection of modules to enable if the turret has any
@@ -79,10 +79,10 @@ namespace UI.Shop
         // [Export]
         // private Hexagons bg;
         /// <summary>
-        /// The background Sprite2D of the module's selection
+        /// The background Panel of the module's selection
         // </summary>
         [Export]
-        private Sprite2D modulesBg;
+        private Panel modulesBg;
         /// <summary>
         /// The title of the module section
         /// </summary>
