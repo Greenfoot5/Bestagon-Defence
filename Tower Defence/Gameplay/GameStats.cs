@@ -103,7 +103,7 @@ namespace Gameplay
                 _rounds = 0;
                 _randomSeed = Environment.TickCount;
                 GD.Seed((ulong)_randomSeed);
-                Shop.random = new Squirrel3(_randomSeed);
+                Shop.Random = new Squirrel3(_randomSeed);
             }
 
             // Controls

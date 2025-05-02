@@ -150,8 +150,8 @@ namespace Gameplay
             
             // Random
             // saveData.RandomState = Random.state;
-            saveData.RandomSeed = Shop.oldState.Item1;
-            saveData.ShopRandomN = Shop.oldState.Item2;
+            saveData.RandomSeed = Shop.OldState.Item1;
+            saveData.ShopRandomN = Shop.OldState.Item2;
 
             // Node Data
             foreach (Godot.Node node in nodeParent.GetChildren())
@@ -216,13 +216,13 @@ namespace Gameplay
             GameStats.Lives = saveData.Lives;
             GameStats.PopulateRounds(saveData.WaveIndex);
             var shopComponent = shop;
-            shopComponent.totalCellsCollected = saveData.TotalCellsCollected;
+            shopComponent.TotalCellsCollected = saveData.TotalCellsCollected;
             GameStats.Powercells = saveData.Powercells;
             GameStats.Energy = saveData.Energy;
             
             // Random
             // Random.state = saveData.RandomState;
-            Shop.random = new Squirrel3(saveData.RandomSeed, saveData.ShopRandomN);
+            Shop.Random = new Squirrel3(saveData.RandomSeed, saveData.ShopRandomN);
 
             foreach (SaveLevel.NodeData nodeData in saveData.Nodes)
             {
@@ -238,7 +238,7 @@ namespace Gameplay
                     }
                     
                     var turret = tile.Turret;
-                    shopComponent.selectionGenerator.AddTurretType(turret.GetType());
+                    shopComponent.SelectionGenerator.AddTurretType(turret.GetType());
                     if (turret.GetType().IsSubclassOf(typeof(DynamicTurret)))
                     {
                         ((DynamicTurret)turret).PartToRotate.Rotation = nodeData.turretRotation;

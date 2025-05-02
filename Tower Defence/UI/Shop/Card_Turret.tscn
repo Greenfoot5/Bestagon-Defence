@@ -143,17 +143,18 @@ anchor_bottom = 1.0
 [node name="Damage" type="HSplitContainer" parent="Button/Content/Info/Stats" node_paths=PackedStringArray("icon", "text")]
 layout_mode = 2
 size_flags_horizontal = 3
+split_offset = 5
 dragging_enabled = false
-dragger_visibility = 1
+dragger_visibility = 2
 script = ExtResource("5_xtsia")
 icon = NodePath("Icon")
 text = NodePath("Data")
 
 [node name="Icon" type="TextureRect" parent="Button/Content/Info/Stats/Damage"]
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 3
 texture = ExtResource("6_3q6l4")
-expand_mode = 3
+expand_mode = 1
 stretch_mode = 5
 
 [node name="Data" type="Label" parent="Button/Content/Info/Stats/Damage"]
@@ -166,17 +167,18 @@ vertical_alignment = 1
 [node name="Rate" type="HSplitContainer" parent="Button/Content/Info/Stats" node_paths=PackedStringArray("icon", "text")]
 layout_mode = 2
 size_flags_horizontal = 3
+split_offset = 5
 dragging_enabled = false
-dragger_visibility = 1
+dragger_visibility = 2
 script = ExtResource("5_xtsia")
 icon = NodePath("Icon")
 text = NodePath("Data")
 
 [node name="Icon" type="TextureRect" parent="Button/Content/Info/Stats/Rate"]
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 3
 texture = ExtResource("6_3q6l4")
-expand_mode = 3
+expand_mode = 1
 stretch_mode = 5
 
 [node name="Data" type="Label" parent="Button/Content/Info/Stats/Rate"]
@@ -189,17 +191,18 @@ vertical_alignment = 1
 [node name="Range" type="HSplitContainer" parent="Button/Content/Info/Stats" node_paths=PackedStringArray("icon", "text")]
 layout_mode = 2
 size_flags_horizontal = 3
+split_offset = 5
 dragging_enabled = false
-dragger_visibility = 1
+dragger_visibility = 2
 script = ExtResource("5_xtsia")
 icon = NodePath("Icon")
 text = NodePath("Data")
 
 [node name="Icon" type="TextureRect" parent="Button/Content/Info/Stats/Range"]
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 3
 texture = ExtResource("6_3q6l4")
-expand_mode = 3
+expand_mode = 1
 stretch_mode = 5
 
 [node name="Data" type="Label" parent="Button/Content/Info/Stats/Range"]

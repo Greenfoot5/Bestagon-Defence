@@ -7,7 +7,7 @@ using Godot;
 using Levels.Maps;
 using Turrets;
 
-using Object = System.Object;
+using Object = object;
 
 namespace UI.Shop
 {
@@ -24,29 +24,25 @@ namespace UI.Shop
         /// The game object for a turret selection card
         /// </summary>
         [Export]
-        private PackedScene turretSelectionUI;
+        private PackedScene _turretSelectionUI;
         /// <summary>
         /// The game object for a module selection card
         /// </summary>
         [Export]
-        private PackedScene moduleSelectionUI;
+        private PackedScene _moduleSelectionUI;
         /// <summary>
         /// The game object for a life selection card
         /// </summary>
         [Export]
-        private PackedScene lifeSelectionUI;
+        private PackedScene _lifeSelectionUI;
         /// <summary>
         /// The game object for a hidden selection card
         /// </summary>
         [Export]
-        private PackedScene hiddenSelectionUI;
+        private PackedScene _hiddenSelectionUI;
         private LevelData _levelData;
-        private Shop _shop;
-        /// <summary>
-        /// The parent to add the selection to
-        /// </summary>
         [Export]
-        private Node selectionCardsParent;
+        private Shop _shop;
         
         /// <summary>
         /// The turrets already purchased
@@ -59,22 +55,16 @@ namespace UI.Shop
         /// The button to show when unlocked
         /// </summary>
         [Export]
-        private BaseButton lockButton;
+        private BaseButton _lockButton;
         /// <summary>
         /// The status to show when locked
         /// </summary>
         [Export]
-        private BaseButton lockedButton;
+        private BaseButton _lockedButton;
         private bool _isLocked;
 
         private List<Tuple<Object, int>> _hiddenChoices;
         private double _openTimeScale;
-
-        private void Awake()
-        {
-            // TODO - GetComponent
-            // _shop = GetComponent<Shop>();
-        }
     
         /// <summary>
         /// Setups references, checks the player has enough gold and freezes the game when enabled
@@ -92,14 +82,14 @@ namespace UI.Shop
         {
             if (_isLocked) return;
 
-            Shop.oldState = Shop.random.GetState();
+            Shop.OldState = Shop.Random.GetState();
             if (_levelData.hiddenMode != HiddenMode.Disabled)
                 _hiddenChoices = new List<Tuple<Object, int>>();
 
             // Destroy the previous selection
-            for (int i = selectionCardsParent.GetChildCount() - 1; i >= 0; i--)
+            for (int i = GetChildCount() - 1; i >= 0; i--)
             {
-                selectionCardsParent.GetChild(i).QueueFree();
+                GetChild(i).QueueFree();
             }
             
             int selectionCount = _shop.HasPlayerMadePurchase() ? _levelData.selectionChoices : _levelData.initialChoices;
@@ -125,7 +115,7 @@ namespace UI.Shop
                     // Select if the game should get a module, turret or life
                     // Can only have one life option
                     // We clamp to make sure they don't affect each other if < 0
-                    float choice = Shop.random.Range(0f,
+                    float choice = Shop.Random.Range(0f,
                         Mathf.Clamp(_levelData.turretOptionWeight.value.Sample(GameStats.Rounds), 0f, float.MaxValue)
                         + Mathf.Clamp(_levelData.moduleOptionWeight.value.Sample(GameStats.Rounds), 0f, float.MaxValue)
                         + (!hasLife ? 1 : 0) * Mathf.Clamp(_levelData.lifeOptionWeight.value.Sample(GameStats.Rounds), 0f, float.MaxValue));
@@ -159,7 +149,7 @@ namespace UI.Shop
             var turrets = new WeightedList<TurretBlueprint>(_levelData.initialTurretSelection);
             turrets.RemoveUnweighted();
             TurretBlueprint selected = turrets.GetRandomItem(duplicateType: _levelData.initialDuplicateCheck,
-                previousPicks: selectedTurrets.Take(selectionIndex).ToArray(), rng: Shop.random);
+                previousPicks: selectedTurrets.Take(selectionIndex).ToArray(), rng: Shop.Random);
             
             // Add the turret to the ui for the player to pick
             GenerateTurretUI(selected);
@@ -172,7 +162,7 @@ namespace UI.Shop
             // Grants a turret option
             WeightedList<TurretBlueprint> turrets = _levelData.turrets.ToWeightedList(GameStats.Rounds);
             TurretBlueprint selected = turrets.GetRandomItem(duplicateType: _levelData.turretDuplicateCheck,
-                previousPicks: selectedTurrets.Take(selectionIndex).ToArray(), rng: Shop.random);
+                previousPicks: selectedTurrets.Take(selectionIndex).ToArray(), rng: Shop.Random);
 
             if (ShouldHide(selectionIndex))
                 GenerateHiddenUI(selected, selectionIndex);
@@ -197,7 +187,7 @@ namespace UI.Shop
             }
             
             ModuleChainHandler selected = modules.GetRandomItem(duplicateType: _levelData.moduleDuplicateCheck,
-                previousPicks: selectedModules.Take(selectionIndex).ToArray(), rng: Shop.random);
+                previousPicks: selectedModules.Take(selectionIndex).ToArray(), rng: Shop.Random);
 
             if (ShouldHide(selectionIndex))
                 GenerateHiddenUI(selected, selectionIndex);
@@ -210,8 +200,8 @@ namespace UI.Shop
         private GodotObject GenerateLifeItem()
         {
             // Create the ui as a child
-            var lifeUI = lifeSelectionUI.Instantiate<LifeSelectionUI>();
-            selectionCardsParent.AddChild(lifeUI);
+            var lifeUI = _lifeSelectionUI.Instantiate<LifeSelectionUI>();
+            AddChild(lifeUI);
             lifeUI.Name = "_" + lifeUI.Name;
             lifeUI.Init(_levelData.lifeCount, _shop);
             return lifeUI;
@@ -224,8 +214,8 @@ namespace UI.Shop
         private GodotObject GenerateModuleUI(ModuleChainHandler handler)
         {
             // Create the ui as a child
-            var moduleUI = moduleSelectionUI.Instantiate<ModuleSelectionUI>();
-            selectionCardsParent.AddChild(moduleUI);
+            var moduleUI = _moduleSelectionUI.Instantiate<ModuleSelectionUI>();
+            AddChild(moduleUI);
             moduleUI.Name = "_" + moduleUI.Name;
             moduleUI.Init(handler, _shop);
             return moduleUI;
@@ -238,9 +228,9 @@ namespace UI.Shop
         private GodotObject GenerateTurretUI(TurretBlueprint turret)
         {
             // TODO - Does return correct type?
-            turret.glyph = _shop.glyphsLookup.GetForType(turret.prefab.GetType());
-            var turretUI = turretSelectionUI.Instantiate<TurretSelectionUI>();
-            selectionCardsParent.AddChild(turretUI);
+            turret.glyph = _shop.GlyphsLookup.GetForType(turret.prefab.GetType());
+            var turretUI = _turretSelectionUI.Instantiate<TurretSelectionUI>();
+            AddChild(turretUI);
             turretUI.Name = "_" + turretUI.Name;
             turretUI.Init(turret, _shop);
             return turretUI;
@@ -249,8 +239,8 @@ namespace UI.Shop
         private void GenerateHiddenUI(Object choice, int selectionIndex)
         {
             _hiddenChoices.Add(new Tuple<Object, int>(choice, selectionIndex));
-            Node hiddenUI = hiddenSelectionUI.Instantiate();
-            selectionCardsParent.AddChild(hiddenUI);
+            Node hiddenUI = _hiddenSelectionUI.Instantiate();
+            AddChild(hiddenUI);
             hiddenUI.Name = "_" + hiddenUI.Name;
         }
 
@@ -260,7 +250,7 @@ namespace UI.Shop
             {
                 HiddenMode.Disabled => false,
                 HiddenMode.Count => _levelData.selectionChoices - (selectionIndex + 1) < _levelData.hiddenChoices,
-                HiddenMode.Chance => Shop.random.Next() < _levelData.hiddenChance,
+                HiddenMode.Chance => Shop.Random.Next() < _levelData.hiddenChance,
                 _ => throw new Exception("Invalid hidden mode")
             };
         }
@@ -305,20 +295,20 @@ namespace UI.Shop
         {
             _openTimeScale = Engine.TimeScale;
             Engine.TimeScale = 0f;
-            selectionCardsParent.GetParent<CanvasItem>().Visible = true;
+            Visible = true;
         }
 
         public void Resume()
         {
             Engine.TimeScale = _openTimeScale;
-            selectionCardsParent.GetParent<CanvasItem>().Visible = false;
+            Visible = false;
         }
 
         public void Lock()
         {
             for (var i = 0; i < _hiddenChoices.Count; i++)
             {
-                selectionCardsParent.GetChild(_hiddenChoices[i].Item2 + i).QueueFree();
+                GetChild(_hiddenChoices[i].Item2 + i).QueueFree();
                 GodotObject shownItem;
                 if (_hiddenChoices[i].Item1.GetType() == typeof(TurretBlueprint))
                 {
@@ -337,15 +327,15 @@ namespace UI.Shop
             }
             
             _isLocked = true;
-            lockButton.Visible = false;
-            lockedButton.Visible = true;
+            _lockButton.Visible = false;
+            _lockedButton.Visible = true;
         }
 
         public void Unlock()
         {
             _isLocked = false;
-            lockButton.Visible = true;
-            lockedButton.Visible = false;
+            _lockButton.Visible = true;
+            _lockedButton.Visible = false;
         }
     }
 }

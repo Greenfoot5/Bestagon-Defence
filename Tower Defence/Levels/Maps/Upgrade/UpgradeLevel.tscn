@@ -171,6 +171,21 @@ WaveData = ExtResource("9_h5o5v")
 [node name="ScreenCanvas" parent="UI" instance=ExtResource("11_ml50w")]
 layout_mode = 1
 
+[node name="BackShadow" parent="UI/ScreenCanvas/Selection/SelectionCards/Card_Module/Button/Icon" index="0"]
+pivot_offset = Vector2(41.65, 41.685)
+
+[node name="BackOutline" parent="UI/ScreenCanvas/Selection/SelectionCards/Card_Module/Button/Icon" index="1"]
+pivot_offset = Vector2(33.32, 33.348)
+
+[node name="Icon" parent="UI/ScreenCanvas/Selection/SelectionCards/Card_Module/Button/Icon" index="2"]
+pivot_offset = Vector2(28.56, 28.584)
+
+[node name="Card_Life" parent="UI/ScreenCanvas/Selection/SelectionCards" index="2"]
+layout_mode = 2
+
+[node name="Card_Hidden" parent="UI/ScreenCanvas/Selection/SelectionCards" index="3"]
+layout_mode = 2
+
 [node name="_UI\'" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03661, -1.26226, -2.43096)
 
@@ -217,7 +232,7 @@ position = Vector2(576, 324)
 [editable path="UI/ScreenCanvas"]
 [editable path="UI/ScreenCanvas/Selection/SelectionCards/Card_Turret"]
 [editable path="UI/ScreenCanvas/Selection/SelectionCards/Card_Module"]
-[editable path="UI/ScreenCanvas/Selection/SelectionCards/Card_Module/Background/Icon"]
+[editable path="UI/ScreenCanvas/Selection/SelectionCards/Card_Module/Button/Icon"]
 [editable path="UI/ScreenCanvas/Selection/SelectionCards/Card_Life"]
 [editable path="UI/ScreenCanvas/Selection/SelectionCards/Card_Hidden"]
 [editable path="_UI\'/BackgroundCanvas"]

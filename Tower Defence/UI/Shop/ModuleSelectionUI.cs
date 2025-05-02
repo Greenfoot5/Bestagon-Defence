@@ -86,7 +86,7 @@ namespace UI.Shop
             
             foreach (Type turretType in module.GetValidTypes())
             {
-                TurretGlyphSo glyphSo = shop.glyphsLookup.GetForType(turretType);
+                TurretGlyphSo glyphSo = shop.GlyphsLookup.GetForType(turretType);
                 Node glyph = glyphPrefab.Instantiate();
                 applicableGlyphs.AddChild(glyph);
                 glyph.Name = "_" + glyph.Name;
