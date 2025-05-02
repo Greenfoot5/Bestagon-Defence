@@ -1,44 +1,82 @@
-[gd_scene format=3 uid="uid://ccppuoth5cgn0"]
+[gd_scene load_steps=6 format=3 uid="uid://ccppuoth5cgn0"]
 
-[node name="ModuleIcon" type="Node3D"]
+[ext_resource type="Script" uid="uid://qda78uqa18i1" path="res://UI/Modules/ModuleIcon.cs" id="1_3po1c"]
+[ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/White_Rectangle.png" id="2_indtd"]
+[ext_resource type="Script" uid="uid://bggcwhcehi21t" path="res://UI/centre_pivot.gd" id="3_nplle"]
+[ext_resource type="Texture2D" uid="uid://bxa53twnv3u5s" path="res://Modules/Slow/Slow.tres" id="4_m8sfd"]
+[ext_resource type="FontFile" uid="uid://1ojapw2lf2sh" path="res://UI/Fonts/Font_NikkyouSans.ttf" id="5_by0k1"]
 
-[node name="CanvasRenderer" type="Node" parent="."]
+[node name="ModuleIcon" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3po1c")
 
-[node name="MonoBehaviour" type="Node" parent="."]
+[node name="BackShadow" type="TextureRect" parent="."]
+self_modulate = Color(0, 0, 0, 0.28)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.15
+anchor_right = 0.85
+anchor_bottom = 0.85
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.785398
+pivot_offset = Vector2(403.2, 226.8)
+texture = ExtResource("2_indtd")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("3_nplle")
 
-[node name="MonoBehaviour2" type="Node" parent="."]
+[node name="BackOutline" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.22
+anchor_top = 0.22
+anchor_right = 0.78
+anchor_bottom = 0.78
+rotation = 0.785398
+pivot_offset = Vector2(322.56, 181.44)
+texture = ExtResource("2_indtd")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("3_nplle")
 
-[node name="MonoBehaviour3" type="Node" parent="."]
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.26
+anchor_top = 0.26
+anchor_right = 0.74
+anchor_bottom = 0.74
+rotation = 0.785398
+pivot_offset = Vector2(276.48, 155.52)
+texture = ExtResource("4_m8sfd")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("3_nplle")
 
-[node name="BackShadow" type="Node3D" parent="."]
-transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0, 0, 0)
+[node name="LevelBox" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.36
+anchor_top = 0.1
+anchor_right = 0.64
+anchor_bottom = 0.27
 
-[node name="CanvasRenderer" type="Node" parent="BackShadow"]
-
-[node name="MonoBehaviour" type="Node" parent="BackShadow"]
-
-[node name="BackOutline" type="Node3D" parent="."]
-transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="CanvasRenderer" type="Node" parent="BackOutline"]
-
-[node name="MonoBehaviour" type="Node" parent="BackOutline"]
-
-[node name="Icon" type="Node3D" parent="."]
-transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="CanvasRenderer" type="Node" parent="Icon"]
-
-[node name="MonoBehaviour" type="Node" parent="Icon"]
-
-[node name="LevelBox" type="Node3D" parent="."]
-
-[node name="CanvasRenderer" type="Node" parent="LevelBox"]
-
-[node name="MonoBehaviour" type="Node" parent="LevelBox"]
-
-[node name="Level" type="Node3D" parent="LevelBox"]
-
-[node name="CanvasRenderer" type="Node" parent="LevelBox/Level"]
-
-[node name="MonoBehaviour" type="Node" parent="LevelBox/Level"]
+[node name="Level" type="Label" parent="LevelBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_by0k1")
+theme_override_font_sizes/font_size = 15
+text = "III"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,68 +1,122 @@
-[gd_scene load_steps=2 format=3 uid="uid://bxr1qd0pjiu10"]
+[gd_scene load_steps=4 format=3 uid="uid://bxr1qd0pjiu10"]
 
+[ext_resource type="Texture2D" uid="uid://bgwjkwx6n6xlm" path="res://UI/Generic/T_Head_Steep.png" id="1_mfdy0"]
 [ext_resource type="PackedScene" uid="uid://ccppuoth5cgn0" path="res://UI/Modules/ModuleIcon.tscn" id="1_w7h7o"]
+[ext_resource type="Texture2D" uid="uid://dvr7ad4u6su16" path="res://Modules/Instakill/skull.png" id="2_efey1"]
 
-[node name="Card_Module" type="Node3D"]
+[node name="Card_Module" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
 
-[node name="CanvasRenderer" type="Node" parent="."]
+[node name="TypePanel" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -130.0
+offset_top = -20.0
+offset_right = 130.0
+texture = ExtResource("1_mfdy0")
+region_rect = Rect2(0, 4, 178, 262)
+patch_margin_left = 85
+patch_margin_right = 85
 
-[node name="MonoBehaviour" type="Node" parent="."]
+[node name="HSplitContainer" type="HSplitContainer" parent="TypePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 80.0
+offset_right = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+collapsed = true
+dragging_enabled = false
+dragger_visibility = 2
 
-[node name="TypePanel" type="Node3D" parent="."]
-transform = Transform3D(0.4, 0, 0, 0, 0.41, 0, 0, 0, 1, 0, 0, 0)
+[node name="Image" type="TextureRect" parent="TypePanel/HSplitContainer"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_efey1")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="CanvasRenderer" type="Node" parent="TypePanel"]
+[node name="Type" type="Label" parent="TypePanel/HSplitContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "MODULE"
 
-[node name="MonoBehaviour" type="Node" parent="TypePanel"]
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Canvas" type="Node" parent="TypePanel"]
+[node name="Name" type="Label" parent="Button"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.02
+anchor_right = 0.95
+anchor_bottom = 0.155
+text = "SLOW III"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Type" type="Node3D" parent="TypePanel"]
+[node name="Tagline" type="Label" parent="Button"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.16
+anchor_right = 0.9
+anchor_bottom = 0.23
+text = "Subzero"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="CanvasRenderer" type="Node" parent="TypePanel/Type"]
+[node name="Applicable" type="HBoxContainer" parent="Button"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.25
+anchor_right = 0.9
+anchor_bottom = 0.3
+theme_override_constants/separation = 5
 
-[node name="MonoBehaviour" type="Node" parent="TypePanel/Type"]
+[node name="Icon" parent="Button" instance=ExtResource("1_w7h7o")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.35
+anchor_right = 0.75
+anchor_bottom = 0.65
 
-[node name="MonoBehaviour2" type="Node" parent="TypePanel/Type"]
+[node name="BackShadow" parent="Button/Icon" index="0"]
+pivot_offset = Vector2(201.6, 68.04)
 
-[node name="Image" type="Node3D" parent="TypePanel"]
+[node name="BackOutline" parent="Button/Icon" index="1"]
+pivot_offset = Vector2(161.28, 54.432)
 
-[node name="CanvasRenderer" type="Node" parent="TypePanel/Image"]
+[node name="Icon" parent="Button/Icon" index="2"]
+pivot_offset = Vector2(138.24, 46.656)
 
-[node name="MonoBehaviour" type="Node" parent="TypePanel/Image"]
+[node name="Effect" type="Label" parent="Button"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.725
+anchor_right = 0.9
+anchor_bottom = 0.95
+text = "Slow Enemies Hit"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="MonoBehaviour2" type="Node" parent="TypePanel/Image"]
-
-[node name="Background" type="Node3D" parent="."]
-
-[node name="CanvasRenderer" type="Node" parent="Background"]
-
-[node name="MonoBehaviour" type="Node" parent="Background"]
-
-[node name="MonoBehaviour2" type="Node" parent="Background"]
-
-[node name="Name" type="Node3D" parent="Background"]
-
-[node name="CanvasRenderer" type="Node" parent="Background/Name"]
-
-[node name="MonoBehaviour" type="Node" parent="Background/Name"]
-
-[node name="Tagline" type="Node3D" parent="Background"]
-
-[node name="CanvasRenderer" type="Node" parent="Background/Tagline"]
-
-[node name="MonoBehaviour" type="Node" parent="Background/Tagline"]
-
-[node name="Applicable" type="Node3D" parent="Background"]
-
-[node name="MonoBehaviour" type="Node" parent="Background/Applicable"]
-
-[node name="Icon" parent="Background" instance=ExtResource("1_w7h7o")]
-
-[node name="Effect" type="Node3D" parent="Background"]
-
-[node name="CanvasRenderer" type="Node" parent="Background/Effect"]
-
-[node name="MonoBehaviour" type="Node" parent="Background/Effect"]
-
-[editable path="Background/Icon"]
+[editable path="Button/Icon"]
