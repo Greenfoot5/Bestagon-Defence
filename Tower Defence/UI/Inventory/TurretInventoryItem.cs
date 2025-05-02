@@ -15,7 +15,7 @@ namespace UI.Inventory
         /// The TMP text to display the turret's display name
         /// </summary>
         [Export]
-        private RichTextLabel displayName;
+        private Label displayName;
         
         /// <summary>
         /// The Sprite2D to place the turret's icon
@@ -39,7 +39,7 @@ namespace UI.Inventory
         /// </summary>
         [ExportGroup("Modules")]
         [Export]
-        private RichTextLabel noneText;
+        private Label noneText;
         /// <summary>
         /// The parent of any module icons to display
         /// </summary>

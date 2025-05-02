@@ -11,7 +11,7 @@ namespace UI.TurretStats
         /// The icon of the turret stat to set the colour of
         /// </summary>
         [Export]
-        private Sprite2D icon;
+        private TextureRect icon;
         /// <summary>
         /// The text to fill with the current turret's stat
         /// </summary>

@@ -6,10 +6,10 @@ namespace UI
     /// <summary>
     /// Allows a piece of text to have a random hue when loading the scene
     /// </summary>
-    public partial class RandomHueOnLoad : RichTextLabel
+    public partial class RandomHueOnLoad : Label
     {
         [Export]
-        private RichTextLabel[] texts;
+        private Label[] texts;
         
         /// <summary>
         /// Generates a random hue for the text
@@ -17,7 +17,7 @@ namespace UI
         public override void _Ready()
         {
             float hue = GD.Randf();
-            foreach (RichTextLabel text in texts)
+            foreach (Label text in texts)
             {
                 // Load the old colours
                 text.SelfModulate.ToHsv(out float h, out float s, out float v);

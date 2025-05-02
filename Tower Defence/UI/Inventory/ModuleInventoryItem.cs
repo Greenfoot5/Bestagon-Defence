@@ -16,12 +16,12 @@ namespace UI.Inventory
         /// The TMP text to display the module's display name
         /// </summary>
         [Export]
-        private RichTextLabel displayName;
+        private Label displayName;
         /// <summary>
         /// The text to set for the module's effect
         /// </summary>
         [Export]
-        private RichTextLabel effectText;
+        private Label effectText;
         
         /// <summary>
         /// The ModuleIcon for the module card

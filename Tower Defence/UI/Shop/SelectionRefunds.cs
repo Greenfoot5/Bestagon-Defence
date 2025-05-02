@@ -19,15 +19,15 @@ namespace UI.Shop
         [Export]
         /// <summary>
         /// Revitalise tagline")]
-        private RichTextLabel revitaliseText;
+        private Label revitaliseText;
         [Export]
         /// <summary>
         /// Refund tagline")]
-        private RichTextLabel refundText;
+        private Label refundText;
         [Export]
         /// <summary>
         /// Reroll tagline")]
-        private RichTextLabel rerollText;
+        private Label rerollText;
         [Export]
         /// <summary>
         /// The reroll game object with the hexagons and button.")]

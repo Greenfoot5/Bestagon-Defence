@@ -26,7 +26,7 @@ namespace UI.Shop
         /// The label contains the card description
         /// </summary>
         [Export]
-        private RichTextLabel effect;
+        private Label effect;
         
         /// <summary>
         /// The generic glyph to use to display the applicable turrets

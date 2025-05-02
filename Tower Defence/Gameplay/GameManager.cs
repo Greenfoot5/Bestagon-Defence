@@ -33,7 +33,7 @@ namespace Gameplay
         /// The label for the lives amount
         /// </summary>
         [Export]
-        private RichTextLabel livesText;
+        private Label livesText;
         /// <summary>
         /// The Progress Graphic for the lives bar
         // </summary>

@@ -19,12 +19,12 @@ namespace UI.Shop
         /// </summary>
         // Content
         [Export]
-        private RichTextLabel displayName;
+        private Label displayName;
         /// <summary>
         /// The RTL to display the turret's tagline
         /// </summary>
         [Export]
-        private RichTextLabel tagline;
+        private Label tagline;
         
         /// <summary>
         /// The Sprite2D to place the turret's icon
@@ -87,7 +87,7 @@ namespace UI.Shop
         /// The title of the module section
         /// </summary>
         [Export]
-        private RichTextLabel modulesTitle;
+        private Label modulesTitle;
 
         /// <summary>
         /// Creates and setups the Selection UI.

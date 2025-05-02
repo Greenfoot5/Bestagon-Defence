@@ -25,7 +25,7 @@ namespace UI.Inventory
         /// The title for the inventory
         /// </summary>
         [Export]
-        private RichTextLabel inventoryTitle;
+        private Label inventoryTitle;
         
         /// <summary>
         /// The inventory show/hide for the turrets
@@ -216,7 +216,7 @@ namespace UI.Inventory
             dynamic.TargetPriorityMethod = (DynamicTurret.TargetingMethod)( (currentMethod + 1) % types.Length);
             
             // Update our button text
-            cycleTargetingButton.GetChild<RichTextLabel>(0).Text = "<b>Targeting:</b>\n" +
+            cycleTargetingButton.GetChild<Label>(0).Text = "<b>Targeting:</b>\n" +
                 dynamic.TargetPriorityMethod;
         }
         

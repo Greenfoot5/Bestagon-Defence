@@ -54,7 +54,7 @@ namespace Gameplay.Waves
         /// The text to update when the countdown/spawning/enemies
         /// </summary>
         // [Export]
-        // private RichTextLabel waveCountdownText;
+        // private Label waveCountdownText;
         /// <summary>
         /// The Progress Graphic to display the wave progress
         // </summary>
@@ -65,7 +65,7 @@ namespace Gameplay.Waves
         /// The label to display the current wave
         /// </summary>
         // [Export]
-        // private RichTextLabel waveText;
+        // private Label waveText;
 
         /// <summary>
         /// The text to show with the wave count

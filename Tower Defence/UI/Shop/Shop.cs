@@ -57,7 +57,7 @@ namespace UI.Shop
         /// Current count of powercells
         /// </summary>
         [Export]
-        private RichTextLabel powercellCount;
+        private Label powercellCount;
 
         /// <summary>
         /// Progress to next powercell

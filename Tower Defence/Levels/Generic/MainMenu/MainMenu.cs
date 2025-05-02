@@ -41,7 +41,7 @@ namespace Levels.Generic.MainMenu
         /// </summary>
         [ExportGroup("Username")]
         [Export]
-        private RichTextLabel loggedInAs;
+        private Label loggedInAs;
 
         /// <summary>
         /// The saved username

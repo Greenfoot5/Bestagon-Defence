@@ -19,7 +19,7 @@ namespace UI.Shop
         /// The label displaying the display name
         /// </summary>
         [Export]
-        private RichTextLabel text;
+        private Label text;
         
         /// <summary>
         /// Sets the data

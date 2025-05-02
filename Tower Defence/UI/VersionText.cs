@@ -6,7 +6,7 @@ namespace UI
     /// <summary>
     /// Displays the version text so the player can know what version they're on
     /// </summary>
-    public partial class VersionText : RichTextLabel
+    public partial class VersionText : Label
     {
         private static bool _exists;
 

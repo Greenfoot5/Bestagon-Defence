@@ -31,12 +31,12 @@ namespace UI.Shop
         /// The label to display name of the module
         /// </summary>
         [Export]
-        private RichTextLabel displayName;
+        private Label displayName;
         /// <summary>
         /// The label for the tagline
         /// </summary>
         [Export]
-        private RichTextLabel tagline;
+        private Label tagline;
 
         /// <summary>
         /// The ModuleIcon of the module
@@ -48,7 +48,7 @@ namespace UI.Shop
         /// The label to contain the module description
         /// </summary>
         [Export]
-        private RichTextLabel effect;
+        private Label effect;
         
         /// <summary>
         /// The generic glyph PackedScene to use to display applicable turrets

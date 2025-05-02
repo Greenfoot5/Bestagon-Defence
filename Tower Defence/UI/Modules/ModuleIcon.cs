@@ -18,7 +18,7 @@ namespace UI.Modules
         /// The level text to set as the module's level
         /// </summary>
         [Export]
-        private RichTextLabel text;
+        private Label text;
 
         private Module _module;
         

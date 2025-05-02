@@ -46,7 +46,7 @@ namespace Levels.Generic.LevelSelect
         /// </summary>
         [ExportGroup("Level Info")]
         [Export]
-        private RichTextLabel levelName;
+        private Label levelName;
         /// <summary>
         /// The PackedScene for an entry on the leaderboard
         /// </summary>
@@ -61,7 +61,7 @@ namespace Levels.Generic.LevelSelect
         /// The high score label
         /// </summary>
         [Export]
-        private RichTextLabel highScore;
+        private Label highScore;
         
         /// <summary>
         /// The text for translating to for leaderboards
@@ -126,7 +126,7 @@ namespace Levels.Generic.LevelSelect
                 // Display the leaderboard
                 levelInfo.Visible = true;
                 levelSelect.Visible = false;
-                infoButton.GetChild<RichTextLabel>(0).Text = levelSelectButtonText;
+                infoButton.GetChild<Label>(0).Text = levelSelectButtonText;
                 
                 // Display the level info
                 // string levelNameLocalized = 
@@ -156,8 +156,8 @@ namespace Levels.Generic.LevelSelect
                 // {
                 //     GodotObject leaderboardItem = Instantiate(leaderboardEntry, leaderboardContent);
                 //     leaderboardItem.Name = "_" + leaderboardItem.Name;
-                //     leaderboardItem.transform.GetChild(0).GetChild(0).GetComponent<RichTextLabel>().Text = entry.Name;
-                //     leaderboardItem.transform.GetChild(0).GetChild(1).GetComponent<RichTextLabel>().Text = entry.GetValueAsString();
+                //     leaderboardItem.transform.GetChild(0).GetChild(0).GetComponent<Label>().Text = entry.Name;
+                //     leaderboardItem.transform.GetChild(0).GetChild(1).GetComponent<Label>().Text = entry.GetValueAsString();
                 // }
                 
                 // Display the player's high score
@@ -169,7 +169,7 @@ namespace Levels.Generic.LevelSelect
                 // Display the level selection menu
                 levelInfo.Visible = false;
                 levelSelect.Visible = true;
-                infoButton.GetChild<RichTextLabel>(0).Text = leaderboardButtonText;
+                infoButton.GetChild<Label>(0).Text = leaderboardButtonText;
             }
         }
         

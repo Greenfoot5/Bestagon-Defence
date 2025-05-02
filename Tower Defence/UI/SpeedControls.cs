@@ -31,7 +31,7 @@ namespace UI
         /// Text showing the current wave on pause
         /// </summary>
         [Export]
-        private RichTextLabel pausedWaveText;
+        private Label pausedWaveText;
         /// <summary>
         /// Prefix to wave
         /// </summary>

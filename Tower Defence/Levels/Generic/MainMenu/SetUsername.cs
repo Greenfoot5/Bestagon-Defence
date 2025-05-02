@@ -26,7 +26,7 @@ namespace Levels.Generic.MainMenu
         /// The text to fill with the error message
         /// </summary>
         [Export]
-        private RichTextLabel errorText;
+        private Label errorText;
 
         /// <summary>
         /// Too short error message
