@@ -759,16 +759,33 @@ selectionCardsParent = NodePath("SelectionCards")
 lockButton = NodePath("Options/Lock")
 lockedButton = NodePath("Options/Locked")
 
-[node name="PausedText" type="Label" parent="Selection"]
+[node name="GameOverText" type="TextureRect" parent="Selection"]
+self_modulate = Color(0.207843, 0.537255, 0.94902, 1)
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -56.0
-offset_right = 56.0
-offset_bottom = 23.0
+anchors_preset = -1
+anchor_left = 0.1
+anchor_right = 0.9
+offset_top = 30.0
+offset_bottom = 70.0
+texture = ExtResource("14_viuft")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Selection/GameOverText"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -27.0
+offset_bottom = 17.5
 grow_horizontal = 2
-text = "GAME PAUSED"
+grow_vertical = 2
+theme = ExtResource("14_ousqf")
+theme_override_colors/font_outline_color = Color(0.207843, 0.537255, 0.94902, 1)
+theme_override_fonts/font = ExtResource("13_viuft")
+theme_override_font_sizes/font_size = 80
+text = "PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="SelectionCards" type="HBoxContainer" parent="Selection"]
 layout_mode = 1
@@ -778,12 +795,24 @@ anchor_right = 1.0
 anchor_bottom = 0.875
 offset_left = 40.0
 offset_right = -40.0
-offset_bottom = -10.0
+offset_bottom = -40.0
+theme_override_constants/separation = 40
 alignment = 1
 
 [node name="Card_Turret" parent="Selection/SelectionCards" instance=ExtResource("1_iukjl")]
+layout_mode = 2
 
 [node name="Card_Module" parent="Selection/SelectionCards" instance=ExtResource("2_wvkwj")]
+layout_mode = 2
+
+[node name="BackShadow" parent="Selection/SelectionCards/Card_Module/Button/Icon" index="0"]
+pivot_offset = Vector2(90.3, 41.685)
+
+[node name="BackOutline" parent="Selection/SelectionCards/Card_Module/Button/Icon" index="1"]
+pivot_offset = Vector2(72.24, 33.348)
+
+[node name="Icon" parent="Selection/SelectionCards/Card_Module/Button/Icon" index="2"]
+pivot_offset = Vector2(61.92, 28.584)
 
 [node name="Card_Life" parent="Selection/SelectionCards" instance=ExtResource("3_pmuhg")]
 
@@ -799,6 +828,7 @@ offset_left = 40.0
 offset_top = 40.0
 offset_right = -40.0
 offset_bottom = -40.0
+theme_override_constants/separation = 40
 
 [node name="Resume" type="TextureButton" parent="Selection/Options"]
 layout_mode = 2
@@ -904,6 +934,6 @@ vertical_alignment = 1
 
 [editable path="Selection/SelectionCards/Card_Turret"]
 [editable path="Selection/SelectionCards/Card_Module"]
-[editable path="Selection/SelectionCards/Card_Module/Background/Icon"]
+[editable path="Selection/SelectionCards/Card_Module/Button/Icon"]
 [editable path="Selection/SelectionCards/Card_Life"]
 [editable path="Selection/SelectionCards/Card_Hidden"]
