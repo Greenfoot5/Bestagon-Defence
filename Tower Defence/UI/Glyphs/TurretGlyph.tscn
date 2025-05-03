@@ -1,27 +1,62 @@
-[gd_scene format=3 uid="uid://q4vdeurrxpak"]
+[gd_scene load_steps=4 format=3 uid="uid://q4vdeurrxpak"]
 
-[node name="TurretGlyph" type="Node3D"]
+[ext_resource type="Texture2D" uid="uid://of1ow1ab3ea" path="res://_WIP/Art/White_Hexagon-no_outline.png" id="1_7gtba"]
+[ext_resource type="Script" uid="uid://bggcwhcehi21t" path="res://UI/centre_pivot.gd" id="2_xh5bh"]
+[ext_resource type="Texture2D" uid="uid://c1px3poumr7i6" path="res://UI/Glyphs/Shooter.tres" id="3_xh5bh"]
 
-[node name="CanvasRenderer" type="Node" parent="."]
+[node name="TurretGlyph" type="TextureRect"]
+self_modulate = Color(0, 0, 0, 0.25)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(576, 323.5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_7gtba")
+expand_mode = 3
+stretch_mode = 5
+script = ExtResource("2_xh5bh")
 
-[node name="MonoBehaviour" type="Node" parent="."]
+[node name="Body" type="TextureRect" parent="."]
+self_modulate = Color(0.12549, 0.811765, 0.537255, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.113
+anchor_top = 0.114
+anchor_right = 0.887
+anchor_bottom = 0.886
+pivot_offset = Vector2(445.824, 249.742)
+texture = ExtResource("1_7gtba")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("2_xh5bh")
 
-[node name="MonoBehaviour2" type="Node" parent="."]
+[node name="Shade" type="TextureRect" parent="."]
+self_modulate = Color(0, 0, 0, 0.25)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.206
+anchor_top = 0.206
+anchor_right = 0.794
+anchor_bottom = 0.794
+pivot_offset = Vector2(338.688, 190.218)
+texture = ExtResource("1_7gtba")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("2_xh5bh")
 
-[node name="Body" type="Node3D" parent="."]
-
-[node name="CanvasRenderer" type="Node" parent="Body"]
-
-[node name="MonoBehaviour" type="Node" parent="Body"]
-
-[node name="Shade" type="Node3D" parent="."]
-
-[node name="CanvasRenderer" type="Node" parent="Shade"]
-
-[node name="MonoBehaviour" type="Node" parent="Shade"]
-
-[node name="Glyph" type="Node3D" parent="."]
-
-[node name="CanvasRenderer" type="Node" parent="Glyph"]
-
-[node name="MonoBehaviour" type="Node" parent="Glyph"]
+[node name="Glyph" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.206
+anchor_top = 0.206
+anchor_right = 0.794
+anchor_bottom = 0.794
+pivot_offset = Vector2(338.688, 190.218)
+texture = ExtResource("3_xh5bh")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("2_xh5bh")

@@ -6,6 +6,7 @@ namespace UI
     /// A UI layout that forms a triangle with its elements
     /// </summary>
     // TODO - Actually size child size & position
+    [GlobalClass]
     public partial class TriangleLayout : Container
     {
         /// <summary>

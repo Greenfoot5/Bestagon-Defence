@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://dxeskbdbxmflu"]
+[gd_scene load_steps=26 format=4 uid="uid://dxeskbdbxmflu"]
 
 [ext_resource type="TileSet" uid="uid://cqec5gsl2jrtp" path="res://Levels/_Tiles/PathTiles.tres" id="1_dbecs"]
 [ext_resource type="PackedScene" uid="uid://bl5bfgnh4ruki" path="res://Levels/_Tiles/Tile_Buildable.tscn" id="2_jq068"]
@@ -15,6 +15,9 @@
 [ext_resource type="Script" uid="uid://b7c7g8jqgu062" path="res://Gameplay/GameStats.cs" id="13_p388s"]
 [ext_resource type="PackedScene" uid="uid://ctr8gdwd3r5bw" path="res://Gameplay/GameManager.tscn" id="14_b88u8"]
 [ext_resource type="PackedScene" uid="uid://piplrc6lu1y5" path="res://Gameplay/Camera/MainCamera.tscn" id="15_nt6x0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dbecs"]
+bg_color = Color(0.101961, 0.113725, 0.188235, 1)
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_4pwqs"]
 resource_name = "buildable"
@@ -73,6 +76,14 @@ setDelays = PackedFloat32Array()
 metadata/_custom_type_script = "uid://bgfugrs685jpk"
 
 [node name="Upgrade" type="Node"]
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dbecs")
 
 [node name="Map" type="Node2D" parent="."]
 position = Vector2(576, 324)
@@ -170,21 +181,6 @@ WaveData = ExtResource("9_h5o5v")
 
 [node name="ScreenCanvas" parent="UI" instance=ExtResource("11_ml50w")]
 layout_mode = 1
-
-[node name="BackShadow" parent="UI/ScreenCanvas/Selection/SelectionCards/Card_Module/Button/Icon" index="0"]
-pivot_offset = Vector2(41.65, 41.685)
-
-[node name="BackOutline" parent="UI/ScreenCanvas/Selection/SelectionCards/Card_Module/Button/Icon" index="1"]
-pivot_offset = Vector2(33.32, 33.348)
-
-[node name="Icon" parent="UI/ScreenCanvas/Selection/SelectionCards/Card_Module/Button/Icon" index="2"]
-pivot_offset = Vector2(28.56, 28.584)
-
-[node name="Card_Life" parent="UI/ScreenCanvas/Selection/SelectionCards" index="2"]
-layout_mode = 2
-
-[node name="Card_Hidden" parent="UI/ScreenCanvas/Selection/SelectionCards" index="3"]
-layout_mode = 2
 
 [node name="_UI\'" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03661, -1.26226, -2.43096)

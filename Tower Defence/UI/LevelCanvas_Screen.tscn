@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bf14d8qox8yy5"]
+[gd_scene load_steps=31 format=3 uid="uid://bf14d8qox8yy5"]
 
 [ext_resource type="Script" uid="uid://b1y7106ggbj46" path="res://UI/SpeedControls.cs" id="1_3vno0"]
 [ext_resource type="Texture2D" uid="uid://bs37ieabggvk2" path="res://UI/Stop.tres" id="1_anr6t"]
@@ -18,12 +18,22 @@
 [ext_resource type="Texture2D" uid="uid://c3ik8e3iy56ad" path="res://UI/Shop/T_Crack.png" id="10_p77s1"]
 [ext_resource type="Script" uid="uid://v4ltgl8pqv47" path="res://UI/GameOver.cs" id="12_7gih3"]
 [ext_resource type="Texture2D" uid="uid://bjiiej5uob71f" path="res://UI/bar.png" id="12_p77s1"]
+[ext_resource type="Script" uid="uid://blbtkft4ibuqx" path="res://UI/Inventory/TurretInfo.cs" id="13_moy2t"]
 [ext_resource type="FontFile" uid="uid://1ojapw2lf2sh" path="res://UI/Fonts/Font_NikkyouSans.ttf" id="13_viuft"]
 [ext_resource type="Theme" uid="uid://dt5m7cx6h7lam" path="res://UI/GameOver.tres" id="14_ousqf"]
 [ext_resource type="Texture2D" uid="uid://cs1neednfxbpe" path="res://UI/Generic/T_TextButton.png" id="14_viuft"]
+[ext_resource type="Script" uid="uid://bxvxv7t1wcksh" path="res://UI/TurretStats/TurretStat.cs" id="15_j7wgf"]
+[ext_resource type="Texture2D" uid="uid://dvm15nkgk7e1q" path="res://UI/TurretStats/Damage.tres" id="16_rv6h5"]
 [ext_resource type="Script" uid="uid://7lqnwi2j1ptp" path="res://UI/Shop/GenerateShopSelection.cs" id="17_1a54g"]
+[ext_resource type="Script" uid="uid://bumr2t4lefwce" path="res://UI/TriangleLayout.cs" id="17_rv6h5"]
 [ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/White_Rectangle.png" id="21_ousqf"]
 [ext_resource type="Texture2D" uid="uid://b4f8iscba8vxk" path="res://Enemies/Bosses/T_Square_Red.png" id="23_4jhpk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n4ahf"]
+bg_color = Color(0, 0, 0, 0.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_moy2t"]
+bg_color = Color(0, 0, 0, 0.5)
 
 [node name="LevelCanvas_Screen" type="Control"]
 layout_mode = 3
@@ -172,340 +182,318 @@ grow_vertical = 2
 texture = ExtResource("10_p77s1")
 expand_mode = 1
 
-[node name="Inventory" type="Node3D" parent="."]
-
-[node name="CanvasRenderer" type="Node" parent="Inventory"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory"]
-
-[node name="MonoBehaviour2" type="Node" parent="Inventory"]
-
-[node name="TurretTypePanel" type="Node3D" parent="Inventory"]
-
-[node name="CanvasRenderer" type="Node" parent="Inventory/TurretTypePanel"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/TurretTypePanel"]
-
-[node name="MonoBehaviour2" type="Node" parent="Inventory/TurretTypePanel"]
-
-[node name="Type" type="Node3D" parent="Inventory/TurretTypePanel"]
-
-[node name="CanvasRenderer" type="Node" parent="Inventory/TurretTypePanel/Type"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/TurretTypePanel/Type"]
-
-[node name="MonoBehaviour2" type="Node" parent="Inventory/TurretTypePanel/Type"]
-
-[node name="Image" type="Node3D" parent="Inventory/TurretTypePanel"]
-
-[node name="CanvasRenderer" type="Node" parent="Inventory/TurretTypePanel/Image"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/TurretTypePanel/Image"]
-
-[node name="MonoBehaviour2" type="Node" parent="Inventory/TurretTypePanel/Image"]
-
-[node name="TurretInfo" type="Node3D" parent="Inventory"]
-
-[node name="CanvasRenderer" type="Node" parent="Inventory/TurretInfo"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/TurretInfo"]
-
-[node name="MonoBehaviour2" type="Node" parent="Inventory/TurretInfo"]
-
-[node name="Type" type="Node3D" parent="Inventory/TurretInfo"]
-
-[node name="CanvasRenderer" type="Node" parent="Inventory/TurretInfo/Type"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/TurretInfo/Type"]
-
-[node name="MonoBehaviour2" type="Node" parent="Inventory/TurretInfo/Type"]
-
-[node name="Image" type="Node3D" parent="Inventory/TurretInfo"]
-
-[node name="CanvasRenderer" type="Node" parent="Inventory/TurretInfo/Image"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/TurretInfo/Image"]
-
-[node name="ModuleTypePanel" type="Node3D" parent="Inventory"]
-
-[node name="CanvasRenderer" type="Node" parent="Inventory/ModuleTypePanel"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/ModuleTypePanel"]
-
-[node name="MonoBehaviour2" type="Node" parent="Inventory/ModuleTypePanel"]
-
-[node name="Type" type="Node3D" parent="Inventory/ModuleTypePanel"]
-
-[node name="CanvasRenderer" type="Node" parent="Inventory/ModuleTypePanel/Type"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/ModuleTypePanel/Type"]
-
-[node name="MonoBehaviour2" type="Node" parent="Inventory/ModuleTypePanel/Type"]
-
-[node name="Image" type="Node3D" parent="Inventory/ModuleTypePanel"]
-
-[node name="CanvasRenderer" type="Node" parent="Inventory/ModuleTypePanel/Image"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/ModuleTypePanel/Image"]
-
-[node name="MonoBehaviour2" type="Node" parent="Inventory/ModuleTypePanel/Image"]
-
-[node name="Title" type="Node3D" parent="Inventory"]
-
-[node name="CanvasRenderer" type="Node" parent="Inventory/Title"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/Title"]
-
-[node name="Turrets" type="Node3D" parent="Inventory"]
-
-[node name="CanvasRenderer" type="Node" parent="Inventory/Turrets"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/Turrets"]
-
-[node name="Viewport" type="Node3D" parent="Inventory/Turrets"]
-
-[node name="CanvasRenderer" type="Node" parent="Inventory/Turrets/Viewport"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/Turrets/Viewport"]
-
-[node name="MonoBehaviour2" type="Node" parent="Inventory/Turrets/Viewport"]
-
-[node name="Content" type="Node3D" parent="Inventory/Turrets/Viewport"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/Turrets/Viewport/Content"]
-
-[node name="MonoBehaviour2" type="Node" parent="Inventory/Turrets/Viewport/Content"]
-
-[node name="Scrollbar Horizontal" type="Node3D" parent="Inventory/Turrets"]
-
-[node name="CanvasRenderer" type="Node" parent="Inventory/Turrets/Scrollbar Horizontal"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/Turrets/Scrollbar Horizontal"]
-
-[node name="MonoBehaviour2" type="Node" parent="Inventory/Turrets/Scrollbar Horizontal"]
-
-[node name="Sliding Area" type="Node3D" parent="Inventory/Turrets/Scrollbar Horizontal"]
-
-[node name="Handle" type="Node3D" parent="Inventory/Turrets/Scrollbar Horizontal/Sliding Area"]
-
-[node name="CanvasRenderer" type="Node" parent="Inventory/Turrets/Scrollbar Horizontal/Sliding Area/Handle"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/Turrets/Scrollbar Horizontal/Sliding Area/Handle"]
-
-[node name="Scrollbar Vertical" type="Node3D" parent="Inventory/Turrets"]
-
-[node name="CanvasRenderer" type="Node" parent="Inventory/Turrets/Scrollbar Vertical"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/Turrets/Scrollbar Vertical"]
-
-[node name="MonoBehaviour2" type="Node" parent="Inventory/Turrets/Scrollbar Vertical"]
-
-[node name="Sliding Area" type="Node3D" parent="Inventory/Turrets/Scrollbar Vertical"]
-
-[node name="Handle" type="Node3D" parent="Inventory/Turrets/Scrollbar Vertical/Sliding Area"]
-
-[node name="CanvasRenderer" type="Node" parent="Inventory/Turrets/Scrollbar Vertical/Sliding Area/Handle"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/Turrets/Scrollbar Vertical/Sliding Area/Handle"]
-
-[node name="Modules" type="Node3D" parent="Inventory"]
-
-[node name="CanvasRenderer" type="Node" parent="Inventory/Modules"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/Modules"]
-
-[node name="Viewport" type="Node3D" parent="Inventory/Modules"]
-
-[node name="CanvasRenderer" type="Node" parent="Inventory/Modules/Viewport"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/Modules/Viewport"]
-
-[node name="MonoBehaviour2" type="Node" parent="Inventory/Modules/Viewport"]
-
-[node name="Content" type="Node3D" parent="Inventory/Modules/Viewport"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/Modules/Viewport/Content"]
-
-[node name="MonoBehaviour2" type="Node" parent="Inventory/Modules/Viewport/Content"]
-
-[node name="Scrollbar Horizontal" type="Node3D" parent="Inventory/Modules"]
-
-[node name="CanvasRenderer" type="Node" parent="Inventory/Modules/Scrollbar Horizontal"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/Modules/Scrollbar Horizontal"]
-
-[node name="MonoBehaviour2" type="Node" parent="Inventory/Modules/Scrollbar Horizontal"]
-
-[node name="Sliding Area" type="Node3D" parent="Inventory/Modules/Scrollbar Horizontal"]
-
-[node name="Handle" type="Node3D" parent="Inventory/Modules/Scrollbar Horizontal/Sliding Area"]
-
-[node name="CanvasRenderer" type="Node" parent="Inventory/Modules/Scrollbar Horizontal/Sliding Area/Handle"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/Modules/Scrollbar Horizontal/Sliding Area/Handle"]
-
-[node name="Scrollbar Vertical" type="Node3D" parent="Inventory/Modules"]
-
-[node name="CanvasRenderer" type="Node" parent="Inventory/Modules/Scrollbar Vertical"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/Modules/Scrollbar Vertical"]
-
-[node name="MonoBehaviour2" type="Node" parent="Inventory/Modules/Scrollbar Vertical"]
-
-[node name="Sliding Area" type="Node3D" parent="Inventory/Modules/Scrollbar Vertical"]
-
-[node name="Handle" type="Node3D" parent="Inventory/Modules/Scrollbar Vertical/Sliding Area"]
-
-[node name="CanvasRenderer" type="Node" parent="Inventory/Modules/Scrollbar Vertical/Sliding Area/Handle"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/Modules/Scrollbar Vertical/Sliding Area/Handle"]
-
-[node name="TurretInfo2" type="Node3D" parent="Inventory"]
-
-[node name="Stats" type="Node3D" parent="Inventory/TurretInfo2"]
-transform = Transform3D(0.985222, 0, 0, 0, 0.985222, 0, 0, 0, 0.985222, 0, 0, 0)
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/TurretInfo2/Stats"]
-
-[node name="MonoBehaviour2" type="Node" parent="Inventory/TurretInfo2/Stats"]
-
-[node name="Damage" type="Node3D" parent="Inventory/TurretInfo2/Stats"]
-
-[node name="Canvas" type="Node" parent="Inventory/TurretInfo2/Stats/Damage"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/TurretInfo2/Stats/Damage"]
-
-[node name="MonoBehaviour2" type="Node" parent="Inventory/TurretInfo2/Stats/Damage"]
-
-[node name="MonoBehaviour3" type="Node" parent="Inventory/TurretInfo2/Stats/Damage"]
-
-[node name="Icon" type="Node3D" parent="Inventory/TurretInfo2/Stats/Damage"]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="CanvasRenderer" type="Node" parent="Inventory/TurretInfo2/Stats/Damage/Icon"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/TurretInfo2/Stats/Damage/Icon"]
-
-[node name="Data" type="Node3D" parent="Inventory/TurretInfo2/Stats/Damage"]
-
-[node name="CanvasRenderer" type="Node" parent="Inventory/TurretInfo2/Stats/Damage/Data"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/TurretInfo2/Stats/Damage/Data"]
-
-[node name="Rate" type="Node3D" parent="Inventory/TurretInfo2/Stats"]
-
-[node name="Canvas" type="Node" parent="Inventory/TurretInfo2/Stats/Rate"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/TurretInfo2/Stats/Rate"]
-
-[node name="MonoBehaviour2" type="Node" parent="Inventory/TurretInfo2/Stats/Rate"]
-
-[node name="MonoBehaviour3" type="Node" parent="Inventory/TurretInfo2/Stats/Rate"]
-
-[node name="Icon" type="Node3D" parent="Inventory/TurretInfo2/Stats/Rate"]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="CanvasRenderer" type="Node" parent="Inventory/TurretInfo2/Stats/Rate/Icon"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/TurretInfo2/Stats/Rate/Icon"]
-
-[node name="Data" type="Node3D" parent="Inventory/TurretInfo2/Stats/Rate"]
-
-[node name="CanvasRenderer" type="Node" parent="Inventory/TurretInfo2/Stats/Rate/Data"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/TurretInfo2/Stats/Rate/Data"]
-
-[node name="Range" type="Node3D" parent="Inventory/TurretInfo2/Stats"]
-
-[node name="Canvas" type="Node" parent="Inventory/TurretInfo2/Stats/Range"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/TurretInfo2/Stats/Range"]
-
-[node name="MonoBehaviour2" type="Node" parent="Inventory/TurretInfo2/Stats/Range"]
-
-[node name="MonoBehaviour3" type="Node" parent="Inventory/TurretInfo2/Stats/Range"]
-
-[node name="Icon" type="Node3D" parent="Inventory/TurretInfo2/Stats/Range"]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="CanvasRenderer" type="Node" parent="Inventory/TurretInfo2/Stats/Range/Icon"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/TurretInfo2/Stats/Range/Icon"]
-
-[node name="Data" type="Node3D" parent="Inventory/TurretInfo2/Stats/Range"]
-
-[node name="CanvasRenderer" type="Node" parent="Inventory/TurretInfo2/Stats/Range/Data"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/TurretInfo2/Stats/Range/Data"]
-
-[node name="Modules" type="Node3D" parent="Inventory/TurretInfo2"]
-
-[node name="CanvasRenderer" type="Node" parent="Inventory/TurretInfo2/Modules"]
-
-[node name="Layout" type="Node3D" parent="Inventory/TurretInfo2/Modules"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/TurretInfo2/Modules/Layout"]
-
-[node name="CanvasRenderer" type="Node" parent="Inventory/TurretInfo2/Modules/Layout"]
-
-[node name="MonoBehaviour2" type="Node" parent="Inventory/TurretInfo2/Modules/Layout"]
-
-[node name="Title" type="Node3D" parent="Inventory/TurretInfo2/Modules"]
-
-[node name="CanvasRenderer" type="Node" parent="Inventory/TurretInfo2/Modules/Title"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/TurretInfo2/Modules/Title"]
-
-[node name="MonoBehaviour2" type="Node" parent="Inventory/TurretInfo2/Modules/Title"]
-
-[node name="SellButton" type="Node3D" parent="Inventory/TurretInfo2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
-
-[node name="CanvasRenderer" type="Node" parent="Inventory/TurretInfo2/SellButton"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/TurretInfo2/SellButton"]
-
-[node name="MonoBehaviour2" type="Node" parent="Inventory/TurretInfo2/SellButton"]
-
-[node name="Text (TMP)" type="Node3D" parent="Inventory/TurretInfo2/SellButton"]
-
-[node name="CanvasRenderer" type="Node" parent="Inventory/TurretInfo2/SellButton/Text (TMP)"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/TurretInfo2/SellButton/Text (TMP)"]
-
-[node name="MonoBehaviour2" type="Node" parent="Inventory/TurretInfo2/SellButton/Text (TMP)"]
-
-[node name="TargetingRotateButton" type="Node3D" parent="Inventory/TurretInfo2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
-
-[node name="CanvasRenderer" type="Node" parent="Inventory/TurretInfo2/TargetingRotateButton"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/TurretInfo2/TargetingRotateButton"]
-
-[node name="MonoBehaviour2" type="Node" parent="Inventory/TurretInfo2/TargetingRotateButton"]
-
-[node name="Text (TMP)" type="Node3D" parent="Inventory/TurretInfo2/TargetingRotateButton"]
-
-[node name="CanvasRenderer" type="Node" parent="Inventory/TurretInfo2/TargetingRotateButton/Text (TMP)"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/TurretInfo2/TargetingRotateButton/Text (TMP)"]
-
-[node name="CloseButton" type="Node3D" parent="Inventory"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
-
-[node name="CanvasRenderer" type="Node" parent="Inventory/CloseButton"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/CloseButton"]
-
-[node name="MonoBehaviour2" type="Node" parent="Inventory/CloseButton"]
-
-[node name="Text (TMP)" type="Node3D" parent="Inventory/CloseButton"]
-
-[node name="CanvasRenderer" type="Node" parent="Inventory/CloseButton/Text (TMP)"]
-
-[node name="MonoBehaviour" type="Node" parent="Inventory/CloseButton/Text (TMP)"]
-
-[node name="MonoBehaviour2" type="Node" parent="Inventory/CloseButton/Text (TMP)"]
+[node name="Inventory" type="Control" parent="."]
+layout_mode = 1
+anchor_right = 0.2
+anchor_bottom = 1.0
+script = ExtResource("13_moy2t")
+
+[node name="Turrets" type="Panel" parent="Inventory"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_n4ahf")
+
+[node name="Viewport" type="ScrollContainer" parent="Inventory/Turrets"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.9
+offset_top = 10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="Content" type="VBoxContainer" parent="Inventory/Turrets/Viewport"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Close" type="TextureButton" parent="Inventory/Turrets"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.925
+anchor_right = 0.9
+anchor_bottom = 0.975
+offset_right = 1.52588e-05
+texture_normal = ExtResource("14_viuft")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Inventory/Turrets/Close"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Close"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Modules" type="Panel" parent="Inventory"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_n4ahf")
+
+[node name="Viewport" type="ScrollContainer" parent="Inventory/Modules"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.9
+offset_top = 10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="Content" type="VBoxContainer" parent="Inventory/Modules/Viewport"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Close" type="TextureButton" parent="Inventory/Modules"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.925
+anchor_right = 0.9
+anchor_bottom = 0.975
+offset_right = 1.52588e-05
+texture_normal = ExtResource("14_viuft")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Inventory/Modules/Close"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Close"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TurretInfo" type="Panel" parent="Inventory"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_moy2t")
+
+[node name="Label" type="Label" parent="Inventory/TurretInfo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.1
+offset_top = 10.0
+text = "<NAME>"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Stats" type="HBoxContainer" parent="Inventory/TurretInfo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.1
+anchor_right = 0.95
+anchor_bottom = 0.2
+offset_right = 1.52588e-05
+
+[node name="Damage" type="HSplitContainer" parent="Inventory/TurretInfo/Stats" node_paths=PackedStringArray("icon", "text")]
+layout_mode = 2
+size_flags_horizontal = 3
+split_offset = 5
+dragging_enabled = false
+dragger_visibility = 2
+script = ExtResource("15_j7wgf")
+icon = NodePath("Icon")
+text = NodePath("Data")
+
+[node name="Icon" type="TextureRect" parent="Inventory/TurretInfo/Stats/Damage"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("16_rv6h5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Data" type="Label" parent="Inventory/TurretInfo/Stats/Damage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "200"
+vertical_alignment = 1
+
+[node name="Rate" type="HSplitContainer" parent="Inventory/TurretInfo/Stats" node_paths=PackedStringArray("icon", "text")]
+layout_mode = 2
+size_flags_horizontal = 3
+split_offset = 5
+dragging_enabled = false
+dragger_visibility = 2
+script = ExtResource("15_j7wgf")
+icon = NodePath("Icon")
+text = NodePath("Data")
+
+[node name="Icon" type="TextureRect" parent="Inventory/TurretInfo/Stats/Rate"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("16_rv6h5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Data" type="Label" parent="Inventory/TurretInfo/Stats/Rate"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "1.25"
+vertical_alignment = 1
+
+[node name="Range" type="HSplitContainer" parent="Inventory/TurretInfo/Stats" node_paths=PackedStringArray("icon", "text")]
+layout_mode = 2
+size_flags_horizontal = 3
+split_offset = 5
+dragging_enabled = false
+dragger_visibility = 2
+script = ExtResource("15_j7wgf")
+icon = NodePath("Icon")
+text = NodePath("Data")
+
+[node name="Icon" type="TextureRect" parent="Inventory/TurretInfo/Stats/Range"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("16_rv6h5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Data" type="Label" parent="Inventory/TurretInfo/Stats/Range"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "2.5"
+vertical_alignment = 1
+
+[node name="ModulesTitle" type="Label" parent="Inventory/TurretInfo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.2
+anchor_right = 0.9
+anchor_bottom = 0.25
+offset_right = 1.52588e-05
+text = "MODULES"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Modules" type="PanelContainer" parent="Inventory/TurretInfo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.25
+anchor_right = 0.95
+anchor_bottom = 0.75
+
+[node name="CanvasRenderer" type="Node" parent="Inventory/TurretInfo/Modules"]
+
+[node name="Layout" type="Container" parent="Inventory/TurretInfo/Modules"]
+layout_mode = 2
+script = ExtResource("17_rv6h5")
+metadata/_custom_type_script = "uid://bumr2t4lefwce"
+
+[node name="TargetingRotateButton" type="TextureButton" parent="Inventory/TurretInfo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.76
+anchor_right = 1.0
+anchor_bottom = 0.81
+offset_left = 20.0
+offset_right = -20.0
+texture_normal = ExtResource("14_viuft")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Text" type="Label" parent="Inventory/TurretInfo/TargetingRotateButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Rotate"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SellButton" type="TextureButton" parent="Inventory/TurretInfo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.83
+anchor_right = 1.0
+anchor_bottom = 0.88
+offset_left = 20.0
+offset_right = -20.0
+texture_normal = ExtResource("14_viuft")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Text" type="Label" parent="Inventory/TurretInfo/SellButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Sell"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CloseButton" type="TextureButton" parent="Inventory/TurretInfo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.925
+anchor_right = 1.0
+anchor_bottom = 0.975
+offset_left = 20.0
+offset_right = -20.0
+texture_normal = ExtResource("14_viuft")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Text" type="Label" parent="Inventory/TurretInfo/CloseButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Close"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="GameOverUI" type="Panel" parent="."]
 visible = false
@@ -681,6 +669,7 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="FlowContainer" type="VSplitContainer" parent="PauseMenu"]
+process_mode = 4
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05
