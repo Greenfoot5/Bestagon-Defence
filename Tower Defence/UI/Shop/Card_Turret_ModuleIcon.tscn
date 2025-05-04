@@ -1,21 +1,41 @@
 [gd_scene load_steps=2 format=3 uid="uid://cpj1f8162nio"]
 
-[ext_resource type="PackedScene" uid="uid://bkngqb47yt4mq" path="res://UI/Modules/ModuleIcon.prefab.tscn" id="1_0ucb5"]
+[ext_resource type="PackedScene" uid="uid://ccppuoth5cgn0" path="res://UI/Modules/ModuleIcon.tscn" id="1_0ucb5"]
 
-[node name="Card_Turret_ModuleIcon" type="Node3D"]
+[node name="Card_Turret_ModuleIcon" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="CanvasRenderer" type="Node" parent="."]
-
-[node name="MonoBehaviour" type="Node" parent="."]
-
-[node name="Text (TMP)" type="Node3D" parent="."]
-
-[node name="CanvasRenderer" type="Node" parent="Text (TMP)"]
-
-[node name="MonoBehaviour" type="Node" parent="Text (TMP)"]
-
-[node name="Fitter" type="Node3D" parent="."]
+[node name="Fitter" type="VSplitContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ModuleIcon" parent="Fitter" instance=ExtResource("1_0ucb5")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BackShadow" parent="Fitter/ModuleIcon" index="0"]
+pivot_offset = Vector2(403.2, 214.55)
+
+[node name="BackOutline" parent="Fitter/ModuleIcon" index="1"]
+pivot_offset = Vector2(322.56, 171.64)
+
+[node name="Icon" parent="Fitter/ModuleIcon" index="2"]
+pivot_offset = Vector2(276.48, 147.12)
+
+[node name="Text (TMP)" type="Label" parent="Fitter"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Fire Rate III"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [editable path="Fitter/ModuleIcon"]
