@@ -23,9 +23,9 @@ metadata/_custom_type_script = "uid://be3vaboc8v6w0"
 script = ExtResource("1_6jclm")
 Name = 4
 Base = 1.0
-_modifiers = Dictionary[Variant, ExtResource("2_gonbf")]({
+_modifiers = {
 &"Default": SubResource("Resource_6jclm")
-})
+}
 Min = 0.0
 Max = inf
 
@@ -40,9 +40,9 @@ metadata/_custom_type_script = "uid://be3vaboc8v6w0"
 script = ExtResource("1_6jclm")
 Name = 5
 Base = 1.0
-_modifiers = Dictionary[Variant, ExtResource("2_gonbf")]({
+_modifiers = {
 &"Default": SubResource("Resource_gonbf")
-})
+}
 Min = 0.0
 Max = inf
 
