@@ -12,7 +12,7 @@ namespace Gameplay
     /// <summary>
     /// Manages the current game's state
     /// </summary>
-    public partial class GameManager : BuildableTile, ISaveableLevel
+    public partial class GameManager : Node, ISaveableLevel
     {
         // If the game has actually finished yet
         public static bool isGameOver;
@@ -123,7 +123,7 @@ namespace Gameplay
             shop.ProcessMode = ProcessModeEnum.Disabled;
             shop.Visible = false;
 
-            GetTree().Paused = true;
+            Engine.TimeScale = 0;
             
             // TODO - ClearSave
             // SaveManager.ClearSave(SceneManager.GetActiveScene().Name);
