@@ -93,7 +93,7 @@ namespace Gameplay
         /// <summary>
         /// Resets all stats and enables the game's controls at the start of the game
         /// </summary>
-        private void Awake()
+        public override void _Ready()
         {
             if (!_active)
             {
