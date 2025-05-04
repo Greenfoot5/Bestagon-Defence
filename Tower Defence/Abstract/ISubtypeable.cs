@@ -1,9 +1,8 @@
 using System;
 
-namespace Abstract
+namespace Abstract;
+
+public interface ISubtypeable
 {
-    public interface ISubtypeable
-    {
-        public Type GetSubtype();
-    }
+    public Type GetSubtype();
 }

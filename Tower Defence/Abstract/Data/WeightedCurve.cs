@@ -1,30 +1,21 @@
-using System;
 using Godot;
 
 namespace Abstract.Data;
 
 /// <summary>
-/// An item with a float weight
+/// An item with a variable weight
 /// </summary>
-/// <typeparam name="T">The type of item to store</typeparam>
+/// <typeparam name="T">The type of the item</typeparam>
 [System.Serializable]
 [Tool]
-public partial class WeightedItem<[MustBeVariant] T> : Resource where T : Resource, ISubtypeable
+public partial class WeightedCurve<[MustBeVariant] T> : Resource where T : Resource
 {
     public T Item;
-    public float Weight;
+    [Export]
+    public Curve Curve;
 
-    public WeightedItem(T item, float weight)
-    {
-        Item = item;
-        Weight = weight;
-    }
-
-    public WeightedItem()
-    {
-        Weight = 0;
-    }
-
+    public Curve Value => Curve;
+        
     public override Godot.Collections.Array<Godot.Collections.Dictionary> _GetPropertyList()
     {
         Godot.Collections.Array<Godot.Collections.Dictionary> properties =
@@ -39,10 +30,10 @@ public partial class WeightedItem<[MustBeVariant] T> : Resource where T : Resour
 
             new()
             {
-                { "name", "Weight" },
-                { "type", (int)Variant.Type.Float },
-                { "hint", (int)PropertyHint.Range },
-                { "hint_string", "0,100,,or_greater" }
+                { "name", "Curve" },
+                { "type", (int)Variant.Type.Object },
+                { "hint", (int)PropertyHint.ResourceType },
+                { "hint_string", "Curve" }
             }
 
         ];
@@ -55,7 +46,7 @@ public partial class WeightedItem<[MustBeVariant] T> : Resource where T : Resour
         return property.ToString() switch
         {
             "Item" => Variant.From(Item),
-            "Weight" => Weight,
+            "Curve" => Curve,
             _ => default
         };
     }
@@ -67,8 +58,8 @@ public partial class WeightedItem<[MustBeVariant] T> : Resource where T : Resour
             case "Item":
                 Item = value.As<T>();
                 return true;
-            case "Weight":
-                Weight = value.As<float>();
+            case "Curve":
+                Curve = value.As<Curve>();
                 return true;
             default:
                 return false;
