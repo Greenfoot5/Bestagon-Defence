@@ -186,17 +186,17 @@ namespace UI.Shop
         /// <returns>If the player has made a purchase</returns>
         public bool HasPlayerMadePurchase()
         {
-            return TotalCellsCollected - GameStats.Powercells >= _levelData.initialSelectionCount;
+            return TotalCellsCollected - GameStats.Powercells >= _levelData.InitialSelectionCount;
         }
 
         public int GetSellPercentage()
         {
-            return (int)(_levelData.sellPercentage * 100);
+            return (int)(_levelData.SellPercentage * 100);
         }
 
         public int GetSellAmount()
         {
-            return (int)(_levelData.sellPercentage * _nextCost);
+            return (int)(_levelData.SellPercentage * _nextCost);
         }
 
         private void CalculateCells()
@@ -245,7 +245,7 @@ namespace UI.Shop
         public int GetEnergyCost()
         {
             var expression = new Expression();
-            expression.Parse(_levelData.selectionCostFormula.Replace("x", $"({TotalCellsCollected.ToString()})"));
+            expression.Parse(_levelData.SelectionCostFormula.Replace("x", $"({TotalCellsCollected.ToString()})"));
             int output =  expression.Execute().AsInt32();
             if (output == 0) 
                 GD.PushError("Energy Cost was 0, likely an issue with formula");

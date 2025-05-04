@@ -17,12 +17,12 @@ public partial class WaveData : Resource
     /// </summary>
     [ExportGroup("Wave Scaling")]
     [Export]
-    public CurvedVariable Health;
+    public Curve Health;
     /// <summary>
     /// Wave based multiplier for count
     /// </summary>
     [Export]
-    public CurvedVariable EnemyCount;
+    public Curve EnemyCount;
     
     /// <summary>
     /// How long to wait between waves

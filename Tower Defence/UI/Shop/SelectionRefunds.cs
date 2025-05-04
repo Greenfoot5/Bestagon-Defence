@@ -90,14 +90,14 @@ namespace UI.Shop
             // Calculate cost
             if (_rerollsLeft <= 0)
             {
-                if (_levelData.rerollCost < 1)
+                if (_levelData.RerollCost < 1)
                 {
-                    GameStats.Lives -= Mathf.CeilToInt(_levelData.rerollCost);
-                    _rerollsLeft = (int) (1f / _levelData.rerollCost);
+                    GameStats.Lives -= Mathf.CeilToInt(_levelData.RerollCost);
+                    _rerollsLeft = (int) (1f / _levelData.RerollCost);
                 }
                 else
                 {
-                    GameStats.Lives -= (int) _levelData.rerollCost;
+                    GameStats.Lives -= (int) _levelData.RerollCost;
                 }
             }
             _rerollsLeft--;
@@ -114,7 +114,7 @@ namespace UI.Shop
         private void CheckReroll()
         {
             // Check if the player can afford a reroll
-            if (GameStats.Lives > _levelData.rerollCost)
+            if (GameStats.Lives > _levelData.RerollCost)
             {
                 // reroll.GetComponent<Button>().interactable = true;
                 // reroll.GetComponent<Hexagons>().color = _rerollDefaultColor;
@@ -132,10 +132,10 @@ namespace UI.Shop
             {
                 rerollText.Text = "Free for " + _rerollsLeft + " rolls";
             }
-            else if (_levelData.rerollCost < 1)
+            else if (_levelData.RerollCost < 1)
             {
-                rerollText.Text = "-" + Mathf.CeilToInt(_levelData.rerollCost) + " <sprite=\"UI-Life\" name=\"life\"> " +
-                                  "for " + (int) (1 / _levelData.rerollCost) + " rerolls";
+                rerollText.Text = "-" + Mathf.CeilToInt(_levelData.RerollCost) + " <sprite=\"UI-Life\" name=\"life\"> " +
+                                  "for " + (int) (1 / _levelData.RerollCost) + " rerolls";
             }
         }
     }

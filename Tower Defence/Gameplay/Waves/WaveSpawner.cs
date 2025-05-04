@@ -141,7 +141,7 @@ namespace Gameplay.Waves
             float timerLength = _waves[_waveIndex].enemySets[_setIndex].rate;
             
             // TODO - Is calculating this every time the best?
-            int setCount = Mathf.FloorToInt(_waves[_waveIndex].enemySets[_setIndex].count * _waveData.EnemyCount.value.Sample(_setIndex + 1));
+            int setCount = Mathf.FloorToInt(_waves[_waveIndex].enemySets[_setIndex].count * _waveData.EnemyCount.Sample(_setIndex + 1));
             
             // We've spawned the full count of the set
             if (_enemyIndex >= setCount)
@@ -191,7 +191,7 @@ namespace Gameplay.Waves
         
             // Apply scaling
             spawnedEnemy.Stats.Attributes[AttributeType.MaxHealth].Add("SpawnerScaling",
-                new AttributeModifier(_waveData.Health.value.Sample(_setIndex + 1), Operation.Multiplicative));
+                new AttributeModifier(_waveData.Health.Sample(_setIndex + 1), Operation.Multiplicative));
             // spawnedEnemy.TakeDamage(spawnedEnemy.Stats.Attributes[AttributeType.MaxHealth].Value, this);
             
             spawnedEnemy.OnDeath += () => { EnemiesAlive--; };
