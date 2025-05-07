@@ -1,4 +1,3 @@
-using Abstract.Data;
 using Godot;
 
 namespace Gameplay.Waves;

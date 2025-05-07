@@ -24,7 +24,7 @@ public enum DuplicateTypes
 [Serializable]
 [Tool]
 public partial class WeightedList<[MustBeVariant] T> : Resource where T : Resource, ISubtypeable
-{ 
+{
     private Array<WeightedItem<T>> list;
     
     private int _size;
