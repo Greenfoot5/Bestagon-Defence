@@ -43,7 +43,6 @@ namespace Levels._Nodes
         
         [Export]
         private Sprite2D _rend;
-        private BuildManager _buildManager;
 
         // Pointer handling
         private bool _isHolding;
@@ -52,11 +51,6 @@ namespace Levels._Nodes
         {
             if (_initialTurret != null)
                 LoadTurret(_initialTurret);
-        }
-
-        public override void _Ready()
-        {
-            _buildManager = BuildManager.instance;
         }
         
         /// <summary>
@@ -110,7 +104,7 @@ namespace Levels._Nodes
             }
         
             // Spawn the build effect and destroy after
-            Node2D effect = (Node2D)_buildManager.buildEffect.Instantiate();
+            Node2D effect = (Node2D)blueprint.buildEffect.Instantiate();
             effect.Position = Position;
             effect.Name = "_" + effect.Name;
             // TODO - free after correct time
@@ -135,12 +129,16 @@ namespace Levels._Nodes
             if (!hasAppliedModule) return false;
 
             // Spawn the build effect
-            Node2D effect = (Node2D)_buildManager.buildEffect.Instantiate();
-            effect.Position = Position;
-            effect.Name = "_" + effect.Name;
+            // TODO - Module upgrade effect
+            
+            // Node2D effect = (Node2D)_buildManager.buildEffect.Instantiate();
+            // effect.Position = Position;
+            // effect.Name = "_" + effect.Name;
+            
             // TODO - free after correct time
-            GetTree().CreateTimer(2).Timeout += () => { effect.QueueFree(); };
-        
+            
+            // GetTree().CreateTimer(2).Timeout += () => { effect.QueueFree(); };
+            
             // Update the TurretInfo
             TurretInfo.instance.UpdateSelection();
             return true;
@@ -155,17 +153,18 @@ namespace Levels._Nodes
             GameStats.Energy += sellAmount;
 
             // Spawn the sell effect
-            var effect = (Node2D)_buildManager.sellEffect.Instantiate();
-            effect.Position = Position;
-            effect.Name = "_" + effect.Name;
+            // TODO - Sell Effect?
+            //// var effect = (Node2D)_buildManager.sellEffect.Instantiate();
+            // effect.Position = Position;
+            // effect.Name = "_" + effect.Name;
             // TODO - free after correct time
-            GetTree().CreateTimer(2).Timeout += () => { effect.QueueFree(); };
+            //// GetTree().CreateTimer(2).Timeout += () => { effect.QueueFree(); };
         
             // Destroy the turret and reset any of the node's selection variables
             Turret.QueueFree();
             TurretBlueprint = null;
 
-            BuildManager.instance.Deselect();
+            BuildManager.Deselect();
         }
 
         private void OnMouseDown(Viewport viewport, InputEvent @event, int shapeIndex)
@@ -206,22 +205,23 @@ namespace Levels._Nodes
             // Select the node/turret
             if (Turret != null)
             {
-                _buildManager.SelectNode(this);
+                BuildManager.SelectNode(this);
                 return;
             }
             // If the player is clicking an empty node
 
             // Player doesn't have a build button selected
-            if (!_buildManager.HasTurretToBuild)
+            if (!BuildManager.HasTurretToBuild)
             {
-                _buildManager.Deselect();
+                BuildManager.Deselect();
                 return;
             }
 
             // Construct a turret
-            BuildTurret(_buildManager.GetTurretToBuild());
-            _buildManager.BuiltTurret();
-            _buildManager.SelectNode(this);
+            BuildTurret(BuildManager.GetTurretToBuild());
+            BuildManager.TurretBuilt();
+            // TODO - Select Node
+            // _buildManager.SelectNode(this);
         }
         
         /// <summary>
@@ -236,13 +236,14 @@ namespace Levels._Nodes
             }
             
             // Make sure the player is trying to build
-            if (!_buildManager.HasTurretToBuild)
+            if (!BuildManager.HasTurretToBuild)
             {
                 return;
             }
             Modulate = HoverColour;
-            BuildManager.instance.currentPreview.Position = Position;
-            BuildManager.instance.currentPreview.Visible = true;
+            // TODO - Move Module preview
+            // BuildManager.instance.currentPreview.Position = Position;
+            // BuildManager.instance.currentPreview.Visible = true;
         }
     
         /// <summary>
@@ -256,8 +257,9 @@ namespace Levels._Nodes
             }
             
             Modulate = _defaultColour;
-            if (BuildManager.instance.currentPreview != null)
-                BuildManager.instance.currentPreview.Visible = false;
+            // TODO - Disable Module Preview
+            // if (BuildManager.instance.currentPreview != null)
+            //     BuildManager.instance.currentPreview.Visible = false;
         }
         
         /// <summary>

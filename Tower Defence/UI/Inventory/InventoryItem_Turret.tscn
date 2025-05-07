@@ -1,12 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://cn8o5altl8rd7"]
+[gd_scene load_steps=8 format=3 uid="uid://cn8o5altl8rd7"]
 
 [ext_resource type="PackedScene" uid="uid://q4vdeurrxpak" path="res://UI/Glyphs/TurretGlyph.tscn" id="1_23x3u"]
 [ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/White_Rectangle.png" id="1_dxegx"]
+[ext_resource type="Script" uid="uid://bl4fl6wqlfqa7" path="res://UI/Inventory/TurretInventoryItem.cs" id="2_1ivu0"]
 [ext_resource type="Texture2D" uid="uid://bqr2h4s8oo5pk" path="res://Turrets/Shooter/T_ShooterTurret.png" id="2_pm2s8"]
+[ext_resource type="PackedScene" uid="uid://ccppuoth5cgn0" path="res://UI/Modules/ModuleIcon.tscn" id="3_aa1p0"]
 [ext_resource type="Script" uid="uid://bxvxv7t1wcksh" path="res://UI/TurretStats/TurretStat.cs" id="3_dxegx"]
 [ext_resource type="Texture2D" uid="uid://dvm15nkgk7e1q" path="res://UI/TurretStats/Damage.tres" id="4_pdqgl"]
 
-[node name="InventoryItem_Turret" type="TextureButton"]
+[node name="InventoryItem_Turret" type="TextureButton" node_paths=PackedStringArray("displayName", "icon", "glyph", "noneText", "modulesLayout", "damage", "rate", "range", "modulesBg")]
 self_modulate = Color(1, 1, 1, 0.25)
 custom_minimum_size = Vector2(0, 180)
 anchors_preset = 15
@@ -17,6 +19,17 @@ grow_vertical = 2
 texture_normal = ExtResource("1_dxegx")
 ignore_texture_size = true
 stretch_mode = 0
+script = ExtResource("2_1ivu0")
+displayName = NodePath("Title")
+icon = NodePath("Icon")
+glyph = NodePath("TurretGlyph/Glyph")
+noneText = NodePath("Modules/ModulesList/None")
+modulesLayout = NodePath("Modules/ModulesList")
+moduleUI = ExtResource("3_aa1p0")
+damage = NodePath("Stats/Damage")
+rate = NodePath("Stats/Rate")
+range = NodePath("Stats/Range")
+modulesBg = NodePath("Modules")
 
 [node name="TurretGlyph" parent="." instance=ExtResource("1_23x3u")]
 layout_mode = 1
@@ -29,7 +42,6 @@ pivot_offset = Vector2(55.1, 81)
 expand_mode = 1
 
 [node name="Body" parent="TurretGlyph" index="0"]
-self_modulate = Color(0.12549, 0.811765, 0.537255, 1)
 pivot_offset = Vector2(42.6474, 62.532)
 
 [node name="Shade" parent="TurretGlyph" index="1"]
@@ -154,12 +166,14 @@ anchor_bottom = 0.9
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Text (TMP)" type="Label" parent="Modules/ModulesList"]
+[node name="None" type="Label" parent="Modules/ModulesList"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 text = "None"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="." to="." method="Select"]
 
 [editable path="TurretGlyph"]

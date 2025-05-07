@@ -51,6 +51,13 @@ public partial class TurretBlueprint : Resource, ISubtypeable
     /// Any modules that come pre-applied when the turret is placed
     /// </summary>
     public List<ModuleChainHandler> moduleHandlers = new();
+    
+    /// <summary>
+    /// The prefab to use when the turret is built
+    /// </summary>
+    [ExportGroup("Building")]
+    [Export]
+    public PackedScene buildEffect;
 
     public Type GetSubtype()
     {

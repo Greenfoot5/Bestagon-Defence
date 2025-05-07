@@ -54,8 +54,8 @@ namespace Gameplay
         [Export]
         public Node2D nodeParent;
 
-        public static readonly List<TurretBlueprint> TurretInventory = new();
-        public static readonly List<ModuleChainHandler> ModuleInventory = new();
+        public static readonly List<TurretBlueprint> TurretInventory = [];
+        public static readonly List<ModuleChainHandler> ModuleInventory = [];
         
         // TODO - No idea what Unity thing this is
         // [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]

@@ -297,7 +297,7 @@ namespace UI.Inventory
         
         public void DisplayTurretInventory()
         {
-            BuildManager.instance.Deselect();
+            BuildManager.Deselect();
             Show();
             inventoryTitle.Text = turretInventoryTitle;
             turretInventoryPage.Visible = true;
@@ -309,7 +309,7 @@ namespace UI.Inventory
         {
             if (turretInventoryPage.Visible)
             {
-                BuildManager.instance.Deselect();
+                BuildManager.Deselect();
                 return;
             }
             DisplayTurretInventory();
@@ -319,7 +319,7 @@ namespace UI.Inventory
         {
             if (moduleInventoryPage.Visible)
             {
-                BuildManager.instance.Deselect();
+                BuildManager.Deselect();
                 return;
             }
             OpenModuleInventory();
@@ -355,7 +355,7 @@ namespace UI.Inventory
         {
             if (turretInfoPage.Visible)
             {
-                BuildManager.instance.Deselect();
+                BuildManager.Deselect();
                 return;
             }
             

@@ -1,3 +1,4 @@
+using Abstract.Attributes;
 using Abstract.Data;
 using Gameplay;
 using Godot;
@@ -9,8 +10,8 @@ namespace UI.Inventory
 {
     public partial class TurretInventoryItem : Control
     {
-        private TurretBlueprint _turretBlueprint;
-        
+        public TurretBlueprint TurretBlueprint { get; private set; }
+
         /// <summary>
         /// The TMP text to display the turret's display name
         /// </summary>
@@ -21,12 +22,12 @@ namespace UI.Inventory
         /// The Sprite2D to place the turret's icon
         /// </summary>
         [Export]
-        private Sprite2D icon;
+        private TextureRect icon;
         /// <summary>
         /// The Sprite2D to place the turret's glyph
         /// </summary>
         [Export]
-        private Sprite2D glyph;
+        private TextureRect glyph;
         // <summary>
         // The body colour of the turret's glyph
         // </summary>
@@ -80,7 +81,7 @@ namespace UI.Inventory
         /// The background Image of the modules section
         /// </summary>
         [Export]
-        private Image modulesBg;
+        private Panel modulesBg;
 
         /// <summary>
         /// Creates and setups the Selection UI.
@@ -88,7 +89,7 @@ namespace UI.Inventory
         /// <param name="turret">The turret the option selects</param>
         public void Init(TurretBlueprint turret)
         {
-            _turretBlueprint = turret;
+            TurretBlueprint = turret;
             
             // Turret text
             displayName.Text = turret.displayName;
@@ -99,14 +100,15 @@ namespace UI.Inventory
             // glyphBody.color = turret.glyph.body;
             
             // Turret stats
-            // var turretPrefab = turret.prefab;
-            // damage.SetData(turretPrefab.damage);
-            // rate.SetData(turretPrefab.fireRate);
-            // range.SetData(turretPrefab.range);
+            var turretPrefab = turret.prefab.Instantiate<Turret>();
+            damage.SetData(turretPrefab.Stats[AttributeType.Damage].Value);
+            rate.SetData(turretPrefab.Stats[AttributeType.FireRate].Value);
+            range.SetData(turretPrefab.Stats[AttributeType.Range].Value);
+            turretPrefab.QueueFree();
             
             // Colors
             // bg.color = turret.accent;
-            // modulesBg.color = turret.accent * new Color(1, 1, 1, .16f);
+            modulesBg.SelfModulate = turret.accent * new Color(1, 1, 1, .16f);
 
             damage.SetColor(turret.accent);
             rate.SetColor(turret.accent);
@@ -131,7 +133,7 @@ namespace UI.Inventory
         /// </summary>
         public void Select()
         {
-            BuildManager.instance.SelectTurretToBuild(_turretBlueprint, this);
+            BuildManager.SelectBlueprint(this);
         }
     }
 }

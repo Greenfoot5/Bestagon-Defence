@@ -108,7 +108,6 @@ namespace UI.Shop
         /// </summary>
         public override void _Ready()
         {
-            _buildManager = BuildManager.instance;
             // TODO - GetComponent
             // _levelData = _buildManager.GetComponent<GameManager>().levelData;
 

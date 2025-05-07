@@ -12,23 +12,6 @@ namespace Gameplay
     public partial class BuildManager : Node
     {
         /// <summary>
-        /// The instance of the BuildManager
-        /// </summary>
-        public static BuildManager instance;
-        
-        /// <summary>
-        /// The effect spawned when a turret is built
-        /// </summary>
-        // [Export]
-        public PackedScene buildEffect;
-        /// <summary>
-        /// The effect spawned when a turret is sold
-        /// </summary>
-        // [Export]
-        public PackedScene sellEffect;
-        
-                
-        /// <summary>
         /// The scene to use when displaying potential range when building
         /// </summary>
         // [Export]
@@ -36,39 +19,48 @@ namespace Gameplay
         /// <summary>
         /// The current range preview
         /// </summary>
+        [Export]
         public Node2D currentPreview;
-
-        private TurretBlueprint _turretToBuild;
-        private TurretInventoryItem _buildingButton;
-        private BuildableTile _selectedTile;
+        
+        private static TurretInventoryItem _buildingButton;
+        private static BuildableTile _selectedTile;
         
         /// <summary>
         /// If the player is currently building or not
         /// </summary>
-        public bool HasTurretToBuild => _turretToBuild != null;
+        public static bool HasTurretToBuild => _buildingButton != null && IsInstanceValid(_buildingButton);
+        
+        public static event SelectBlueprintEvent OnBlueprintSelected;
+        public delegate void SelectBlueprintEvent(TurretInventoryItem inventoryItem);
+
+        public static void SelectBlueprint(TurretInventoryItem inventoryItem)
+        {
+            OnBlueprintSelected?.Invoke(inventoryItem);
+        }
+        
+        public static event TurretBuiltEvent OnTurretBuilt;
+        public delegate void TurretBuiltEvent();
+
+        public static void TurretBuilt()
+        {
+            OnTurretBuilt?.Invoke();
+        }
         
         /// <summary>
         /// Check there is only one build manager when loading in
         /// </summary>
         public override void _Ready()
         {
-            // Make sure there is only ever have one BuildManager
-            if (instance != null)
-            {
-                GD.PushError("More than one build manager in scene!");
-                return;
-            }
-            instance = this;
+            OnBlueprintSelected += SelectTurretToBuild;
+            OnTurretBuilt += TurretBuilt;
         }
 
         /// <summary>
         /// Sets the turret the player want's to build
         /// </summary>
-        /// <param name="turret">The blueprint of the turret to build</param>
         /// <param name="buttonToDelete">The inventory button to remove</param>
-        public void SelectTurretToBuild(TurretBlueprint turret, TurretInventoryItem buttonToDelete)
+        public void SelectTurretToBuild(TurretInventoryItem buttonToDelete)
         {
-            _turretToBuild = turret;
             _buildingButton = buttonToDelete;
             currentPreview = (Node2D)rangePreview.Instantiate();
             // TODO - GetComponent
@@ -85,24 +77,23 @@ namespace Gameplay
         {
             currentPreview.QueueFree();
             _buildingButton.QueueFree();
-            GameManager.TurretInventory.Remove(_turretToBuild);
-            _turretToBuild = null;
+            GameManager.TurretInventory.Remove(_buildingButton.TurretBlueprint);
         }
     
         /// <summary>
         /// Gets the blueprint of the turret the player currently want to build
         /// </summary>
         /// <returns>The turret blueprint of the turret the player wants to build</returns>
-        public TurretBlueprint GetTurretToBuild()
+        public static TurretBlueprint GetTurretToBuild()
         {
-            return _turretToBuild;
+            return IsInstanceValid(_buildingButton) ? _buildingButton.TurretBlueprint : null;
         }
     
         /// <summary>
         /// Sets the selected node
         /// </summary>
         /// <param name="tile">The selected node</param>
-        public void SelectNode(BuildableTile tile)
+        public static void SelectNode(BuildableTile tile)
         {
             if (_selectedTile == tile)
             {
@@ -121,9 +112,9 @@ namespace Gameplay
             // TurretInfo.instance.SetTarget(tile);
         }
 
-        public void Deselect()
+        public static void Deselect()
         {
-            _turretToBuild = null;
+            _buildingButton = null;
 
             if (_selectedTile != null && _selectedTile.Turret != null)
             {
