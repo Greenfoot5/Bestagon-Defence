@@ -71,8 +71,7 @@ public partial class GenerateShopSelection : Control
     /// </summary>
     public override void _Ready()
     {
-        // TODO - Get leveldata
-        // _levelData = BuildManager.instance.GetComponent<GameManager>().levelData;
+        _levelData = _shop.LevelData;
     }
         
     /// <summary>

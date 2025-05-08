@@ -16,9 +16,13 @@ namespace UI.Shop
     // [RequireComponent(typeof(GenerateShopSelection))]
     public partial class Shop : BaseButton
     {
-        private BuildManager _buildManager;
-        private LevelData _levelData;
         private ModuleChainHandler _selectedHandler;
+        
+        /// <summary>
+        /// The data to use for the shop
+        /// </summary>
+        [Export]
+        public LevelData LevelData { get; private set; }
 
         /// <summary>
         /// The inventory to place the turret buttons
@@ -109,9 +113,6 @@ namespace UI.Shop
         /// </summary>
         public override void _Ready()
         {
-            // TODO - GetComponent
-            // _levelData = _buildManager.GetComponent<GameManager>().levelData;
-
             // It should only be greater than 0 if we've loaded a save
             _nextCost = GetEnergyCost();
 
@@ -189,17 +190,17 @@ namespace UI.Shop
         /// <returns>If the player has made a purchase</returns>
         public bool HasPlayerMadePurchase()
         {
-            return TotalCellsCollected - GameStats.Powercells >= _levelData.InitialSelectionCount;
+            return TotalCellsCollected - GameStats.Powercells >= LevelData.InitialSelectionCount;
         }
 
         public int GetSellPercentage()
         {
-            return (int)(_levelData.SellPercentage * 100);
+            return (int)(LevelData.SellPercentage * 100);
         }
 
         public int GetSellAmount()
         {
-            return (int)(_levelData.SellPercentage * _nextCost);
+            return (int)(LevelData.SellPercentage * _nextCost);
         }
 
         private void CalculateCells()
@@ -248,7 +249,7 @@ namespace UI.Shop
         public int GetEnergyCost()
         {
             var expression = new Expression();
-            expression.Parse(_levelData.SelectionCostFormula.Replace("x", $"({TotalCellsCollected.ToString()})"));
+            expression.Parse(LevelData.SelectionCostFormula.Replace("x", $"({TotalCellsCollected.ToString()})"));
             int output =  expression.Execute().AsInt32();
             if (output == 0) 
                 GD.PushError("Energy Cost was 0, likely an issue with formula");

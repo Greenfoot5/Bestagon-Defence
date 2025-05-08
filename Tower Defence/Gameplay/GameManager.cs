@@ -3,7 +3,6 @@ using Abstract.Data;
 using Abstract.Saving;
 using Godot;
 using Levels._Nodes;
-using Levels.Maps;
 using Turrets;
 using UI.Shop;
 
@@ -21,7 +20,7 @@ namespace Gameplay
         /// The UI to display when the player loses
         /// </summary>
         [Export]
-        public Control gameOverUI;
+        public Control GameOverUI;
 
         /// <summary>
         /// The UI that displays the shop
@@ -41,18 +40,12 @@ namespace Gameplay
         // [Export]
         // private Progress livesBar;
         private int _startLives;
-        
-        /// <summary>
-        /// The levelData to use for the current level
-        /// </summary>
-        [Export]
-        public LevelData levelData;
 
         /// <summary>
         /// The paret of all the nodes
         /// </summary>
         [Export]
-        public Node2D nodeParent;
+        public Node2D NodeParent;
 
         public static readonly List<TurretBlueprint> TurretInventory = [];
         public static readonly List<ModuleChainHandler> ModuleInventory = [];
@@ -80,10 +73,6 @@ namespace Gameplay
         public override void _Ready()
         {
             isGameOver = false;
-            if (levelData == null)
-            {
-                GD.PushError("No level data set!", this);
-            }
             
             GameStats.OnLoseLife += UpdateLives;
             UpdateLives();
@@ -118,8 +107,8 @@ namespace Gameplay
         {
             isGameOver = true;
 
-            gameOverUI.ProcessMode = ProcessModeEnum.Disabled;
-            gameOverUI.Visible = false;
+            GameOverUI.ProcessMode = ProcessModeEnum.Disabled;
+            GameOverUI.Visible = false;
             shop.ProcessMode = ProcessModeEnum.Disabled;
             shop.Visible = false;
 
@@ -144,9 +133,9 @@ namespace Gameplay
             saveData.WaveIndex = GameStats.Rounds - 1;
             // TODO - GetComponent
             // saveData.TotalCellsCollected = shop.GetComponent<Shop>().totalCellsCollected;
-            saveData.Nodes = new List<SaveLevel.NodeData>();
-            saveData.TurretInventory = new List<TurretBlueprint>();
-            saveData.ModuleInventory = new List<ModuleChainHandler>();
+            saveData.Nodes = [];
+            saveData.TurretInventory = [];
+            saveData.ModuleInventory = [];
             
             // Random
             // saveData.RandomState = Random.state;
@@ -154,7 +143,7 @@ namespace Gameplay
             saveData.ShopRandomN = Shop.OldState.Item2;
 
             // Node Data
-            foreach (Godot.Node node in nodeParent.GetChildren())
+            foreach (Node node in NodeParent.GetChildren())
             {
                 var tile = (BuildableTile)node;
                 if (tile.Turret == null)
@@ -163,8 +152,8 @@ namespace Gameplay
                 }
 
                 Turret turret = tile.Turret;
-                List<string> names = new();
-                List<int> tiers = new();
+                List<string> names = [];
+                List<int> tiers = [];
                 foreach (ModuleChainHandler handler in turret.moduleHandlers)
                 {
                     names.Add(handler.GetChain().GetName());
@@ -226,7 +215,7 @@ namespace Gameplay
 
             foreach (SaveLevel.NodeData nodeData in saveData.Nodes)
             {
-                foreach (Godot.Node node in nodeParent.GetChildren())
+                foreach (Node node in NodeParent.GetChildren())
                 {
                     var tile = (BuildableTile)node;
                     if (tile.Name != nodeData.uuid) continue;
@@ -237,7 +226,7 @@ namespace Gameplay
                         tile.LoadModule(new ModuleChainHandler(SaveLevel.Chains[nodeData.moduleNames[i]], nodeData.moduleTiers[i]));
                     }
                     
-                    var turret = tile.Turret;
+                    Turret turret = tile.Turret;
                     shopComponent.SelectionGenerator.AddTurretType(turret.GetType());
                     if (turret.GetType().IsSubclassOf(typeof(DynamicTurret)))
                     {

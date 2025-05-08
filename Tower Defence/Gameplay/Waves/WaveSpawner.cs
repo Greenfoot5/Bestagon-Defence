@@ -90,8 +90,7 @@ namespace Gameplay.Waves
         public override void _Ready()
         {
             EnemiesAlive = 0;
-            // TODO - GetComponent<GameManager>()
-            // _levelData = this.GetComponent<GameManager>().levelData;
+            // TODO - Prep time?
             // _countdown = preparationTime;
             
             // Creates and adds all waypoints to the array
