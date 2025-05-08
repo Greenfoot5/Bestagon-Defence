@@ -110,9 +110,6 @@ public partial class ShopData : Resource
     [ExportGroup("Costs")]
     [Export]
     public string SelectionCostFormula;
-
-    [Export]
-    public float b;
         
     /// <summary>
     /// What percentage of the shop cost to refund when selling
