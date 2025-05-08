@@ -15,12 +15,12 @@ namespace Modules
         /// The tier number of the module
         /// </summary>
         [Export]
-        public int moduleTier;
+        public int ModuleTier;
         /// <summary>
-        /// If the module can be obtaiend through upgrades
+        /// If the module can be obtained through upgrades
         /// </summary>
         [Export]
-        public bool isUpgradableTo = true;
+        public bool IsUpgradableTo = true;
 
         protected abstract Type[] ValidTypes { get; }
 

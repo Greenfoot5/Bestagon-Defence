@@ -1,10 +1,10 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://4o47ot0js36g"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://4o47ot0js36g"]
 
+[ext_resource type="Resource" uid="uid://d373knvixoopr" path="res://Turrets/Shooter/BasicTurret.tres" id="1_8bt7d"]
 [ext_resource type="Script" path="csharp://Abstract/Data/WeightedList.cs:Abstract.Data.WeightedList`1[Turrets.TurretBlueprint].cs" id="1_j6gqt"]
 
 [resource]
 script = ExtResource("1_j6gqt")
-Count = 3
+Count = 1
+list_0/Item = ExtResource("1_8bt7d")
 list_0/Weight = 1.0
-list_1/Weight = 3.0
-list_2/Weight = 0.0

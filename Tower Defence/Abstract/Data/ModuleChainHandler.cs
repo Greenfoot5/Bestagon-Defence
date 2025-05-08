@@ -111,7 +111,7 @@ public partial class ModuleChainHandler : Resource, IEquatable<ModuleChainHandle
     public string GetTierDisplay()
     {
         // The tier supplied is the array index, it might not be the actual tier.
-        return Levels[chain.GetModule(tier).moduleTier];
+        return Levels[chain.GetModule(tier).ModuleTier];
     }
         
     /// <summary>

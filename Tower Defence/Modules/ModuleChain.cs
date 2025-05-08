@@ -64,8 +64,8 @@ namespace Modules
             Module currentTier = moduleTiers[tier - 1];
             Module nextTier = moduleTiers[tier];
             // Check the next tier isn't skipped and can be upgraded to
-            return currentTier.moduleTier + 1 == nextTier.moduleTier
-                   && nextTier.isUpgradableTo;
+            return currentTier.ModuleTier + 1 == nextTier.ModuleTier
+                   && nextTier.IsUpgradableTo;
         }
         
         /// <summary>
