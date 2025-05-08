@@ -2,7 +2,6 @@ using Abstract.Data;
 using Gameplay;
 using Godot;
 using Turrets;
-using UI.Inventory;
 using UI.TurretStats;
 
 namespace UI.Shop
@@ -152,7 +151,6 @@ namespace UI.Shop
         private void MakeSelection(Shop shop)
         {
             shop.SpawnNewTurret(_turretBlueprint);
-            TurretInfo.instance.DisplayTurretInventory();
             GameStats.Powercells -= 1;
         }
     }

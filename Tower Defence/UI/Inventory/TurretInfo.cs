@@ -1,7 +1,6 @@
 using System;
 using Abstract.Attributes;
 using Abstract.Data;
-using Gameplay;
 using Godot;
 using Levels._Nodes;
 using Turrets;
@@ -13,7 +12,6 @@ namespace UI.Inventory
 {
     public partial class TurretInfo : Control
     {
-        public static TurretInfo instance;
         private BuildableTile _target;
 
         /// <summary>
@@ -127,22 +125,6 @@ namespace UI.Inventory
         [Export]
         private string rotateText;
         
-        
-        /// <summary>
-        /// Check there is only one NodeUI when loading in
-        /// </summary>
-        private TurretInfo()
-        {
-            // Make sure there is only ever have one NodeUI
-            if (instance != null)
-            {
-                GD.PushWarning("More than one TurretInfo in scene!");
-                Free();
-                return;
-            }
-            instance = this;
-        }
-        
         /// <summary>
         /// Called when selecting a new node
         /// </summary>
@@ -189,20 +171,6 @@ namespace UI.Inventory
         public GodotObject GetTurret()
         {
             return _target != null ? _target.Turret : null;
-        }
-        
-        /// <summary>
-        /// Applies a module to the currently selected turret
-        /// </summary>
-        public void ApplyModule(ModuleChainHandler handler, ModuleInventoryItem button)
-        {
-            bool isApplied = _target.ApplyModuleToTurret(handler);
-            if (!isApplied) return;
-            
-            GameManager.ModuleInventory.Remove(handler);
-            shop.RemoveModule(button);
-            UpdateModules();
-            OpenTurretInfo();
         }
         
         /// <summary>
@@ -297,7 +265,7 @@ namespace UI.Inventory
         
         public void DisplayTurretInventory()
         {
-            BuildManager.Deselect();
+            BuildableTile.SelectedTile = null;
             Show();
             inventoryTitle.Text = turretInventoryTitle;
             turretInventoryPage.Visible = true;
@@ -309,7 +277,7 @@ namespace UI.Inventory
         {
             if (turretInventoryPage.Visible)
             {
-                BuildManager.Deselect();
+                // TODO - Let tile know to deselect
                 return;
             }
             DisplayTurretInventory();
@@ -319,7 +287,7 @@ namespace UI.Inventory
         {
             if (moduleInventoryPage.Visible)
             {
-                BuildManager.Deselect();
+                BuildableTile.SelectedTile = null;
                 return;
             }
             OpenModuleInventory();
@@ -355,7 +323,7 @@ namespace UI.Inventory
         {
             if (turretInfoPage.Visible)
             {
-                BuildManager.Deselect();
+                BuildableTile.SelectedTile = null;
                 return;
             }
             

@@ -4,12 +4,12 @@ using System.Linq;
 using Abstract;
 using Abstract.Attributes;
 using Godot;
+using Levels._Nodes;
 using Turrets;
 using Turrets.Choker;
 using Turrets.Lancer;
 using Turrets.Shooter;
 using Turrets.Smasher;
-using UI.Inventory;
 
 
 namespace Modules.Surge
@@ -19,7 +19,7 @@ namespace Modules.Surge
     /// </summary>
     public partial class SurgeModule : Module
     {
-        protected override Type[] ValidTypes => new[] { typeof(Shooter), typeof(Smasher), typeof(Lancer), typeof(Choker) };
+        protected override Type[] ValidTypes => [typeof(Shooter), typeof(Smasher), typeof(Lancer), typeof(Choker)];
         
         /// <summary>
         /// How many ticks to burn the enemy for
@@ -169,7 +169,7 @@ namespace Modules.Surge
                         turret.UpdateRange();
                         break;
                 }
-                TurretInfo.instance.UpdateStats();
+                if (BuildableTile.SelectedTile == turret.GetParent()) BuildableTile.SelectedTile = BuildableTile.SelectedTile;
                 Vector2 position = turret.Position;
                 // TODO - Create & remove effect after duration
                 // GodotObject effect = Instantiate(surgeEffect, position, Quaternion.identity);
@@ -200,7 +200,7 @@ namespace Modules.Surge
                         turret.UpdateRange();
                         break;
                 }
-                TurretInfo.instance.UpdateStats();
+                if (BuildableTile.SelectedTile == turret.GetParent()) BuildableTile.SelectedTile = BuildableTile.SelectedTile;
                 // TODO - Create & remove effect after duration
                 // GodotObject endEffect = Instantiate(surgeEndEffect, position, Quaternion.identity);
                 // endEffect.Name = "_" + endEffect.Name;

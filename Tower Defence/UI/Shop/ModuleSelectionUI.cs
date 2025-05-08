@@ -103,10 +103,9 @@ namespace UI.Shop
         /// Called when the player clicks on the card.
         /// </summary>
         /// <param name="shop"></param>
-        private void MakeSelection (Shop shop)
+        private void MakeSelection(Shop shop)
         {
             shop.SpawnNewModule(handler);
-            TurretInfo.instance.OpenModuleInventory();
             GameStats.Powercells -= 1;
         }
     }

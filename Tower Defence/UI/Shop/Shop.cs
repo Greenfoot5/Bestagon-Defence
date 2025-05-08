@@ -3,6 +3,7 @@ using Abstract;
 using Abstract.Data;
 using Gameplay;
 using Godot;
+using Levels._Nodes;
 using Levels.Maps;
 using Turrets;
 using UI.Inventory;
@@ -173,7 +174,10 @@ namespace UI.Shop
             moduleButton.Init(module, GlyphsLookup);
             moduleButton.Pressed += () =>
             {
-                TurretInfo.instance.ApplyModule(module, moduleButton);
+                if (!BuildableTile.SelectedTile.ApplyModuleToTurret(module)) return;
+                
+                GameManager.ModuleInventory.Remove(module);
+                RemoveModule(moduleButton);
             };
 
             GameManager.ModuleInventory.Add(module);

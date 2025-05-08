@@ -3,7 +3,6 @@ using Gameplay;
 using Godot;
 using Turrets;
 using UI;
-using UI.Inventory;
 using UI.Modules;
 
 namespace Levels._Nodes
@@ -46,6 +45,21 @@ namespace Levels._Nodes
 
         // Pointer handling
         private bool _isHolding;
+        
+        private static BuildableTile _selectedTile;
+        public static BuildableTile SelectedTile
+        {
+            get => _selectedTile;
+            set
+            {
+                _selectedTile = value;
+                OnTileSelected?.Invoke(value);
+            }
+        }
+
+        public static event SelectTile OnTileSelected;
+        public delegate void SelectTile(BuildableTile tile);
+        
 
         public override void _EnterTree()
         {
@@ -104,7 +118,7 @@ namespace Levels._Nodes
             }
         
             // Spawn the build effect and destroy after
-            Node2D effect = (Node2D)blueprint.buildEffect.Instantiate();
+            var effect = (Node2D)blueprint.buildEffect.Instantiate();
             effect.Position = Position;
             effect.Name = "_" + effect.Name;
             // TODO - free after correct time
@@ -140,7 +154,7 @@ namespace Levels._Nodes
             // GetTree().CreateTimer(2).Timeout += () => { effect.QueueFree(); };
             
             // Update the TurretInfo
-            TurretInfo.instance.UpdateSelection();
+            SelectedTile = this;
             return true;
         }
     
@@ -164,7 +178,7 @@ namespace Levels._Nodes
             Turret.QueueFree();
             TurretBlueprint = null;
 
-            BuildManager.Deselect();
+            SelectedTile = null;
         }
 
         private void OnMouseDown(Viewport viewport, InputEvent @event, int shapeIndex)
@@ -205,7 +219,7 @@ namespace Levels._Nodes
             // Select the node/turret
             if (Turret != null)
             {
-                BuildManager.SelectNode(this);
+                SelectedTile = this;
                 return;
             }
             // If the player is clicking an empty node
@@ -213,15 +227,14 @@ namespace Levels._Nodes
             // Player doesn't have a build button selected
             if (!BuildManager.HasTurretToBuild)
             {
-                BuildManager.Deselect();
+                SelectedTile = null;
                 return;
             }
 
             // Construct a turret
             BuildTurret(BuildManager.GetTurretToBuild());
             BuildManager.TurretBuilt();
-            // TODO - Select Node
-            // _buildManager.SelectNode(this);
+            OnTileSelected?.Invoke(this);
         }
         
         /// <summary>

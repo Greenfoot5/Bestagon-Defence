@@ -1,6 +1,6 @@
 ﻿using Abstract.Attributes;
 using Godot;
-using UI.Inventory;
+using Levels._Nodes;
 
 namespace Turrets.Gunner
 {
@@ -111,9 +111,9 @@ namespace Turrets.Gunner
             Stats[AttributeType.SpinIncrease]["this"].Value = _fireRateIncrease - 1;
 
             // Update the stats of the turret if it's selected
-            if (TurretInfo.instance.GetTurret() == this)
+            if (BuildableTile.SelectedTile == GetParent())
             {
-                TurretInfo.instance.UpdateStats();
+                BuildableTile.SelectedTile = BuildableTile.SelectedTile;
             }
         }
 

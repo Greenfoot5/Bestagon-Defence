@@ -23,7 +23,6 @@ namespace Gameplay
         public Node2D currentPreview;
         
         private static TurretInventoryItem _buildingButton;
-        private static BuildableTile _selectedTile;
         
         /// <summary>
         /// If the player is currently building or not
@@ -53,6 +52,7 @@ namespace Gameplay
         {
             OnBlueprintSelected += SelectTurretToBuild;
             OnTurretBuilt += TurretBuilt;
+            BuildableTile.OnTileSelected += SelectTile;
         }
 
         /// <summary>
@@ -93,36 +93,12 @@ namespace Gameplay
         /// Sets the selected node
         /// </summary>
         /// <param name="tile">The selected node</param>
-        public static void SelectNode(BuildableTile tile)
+        private static void SelectTile(BuildableTile tile)
         {
-            if (_selectedTile == tile)
+            if (tile != null)
             {
-                Deselect();
-                // TurretInfo.instance.Close();
-                return;
+                _buildingButton = null;
             }
-
-            if (_selectedTile != null)
-            {
-                // Clear any previous selection
-                Deselect();
-            }
-
-            _selectedTile = tile;
-            // TurretInfo.instance.SetTarget(tile);
-        }
-
-        public static void Deselect()
-        {
-            _buildingButton = null;
-
-            if (_selectedTile != null && _selectedTile.Turret != null)
-            {
-                // TODO - GetComponent
-                // _selectedNode.Turret.GetComponent<Turret>().Deselected();
-            }
-            _selectedTile = null;
-            // TurretInfo.instance.Close();
         }
     }
 }
