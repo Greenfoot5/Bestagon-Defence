@@ -22,7 +22,7 @@ namespace UI.Shop
         /// The data to use for the shop
         /// </summary>
         [Export]
-        public LevelData LevelData { get; private set; }
+        public ShopData ShopData { get; private set; }
 
         /// <summary>
         /// The inventory to place the turret buttons
@@ -190,17 +190,17 @@ namespace UI.Shop
         /// <returns>If the player has made a purchase</returns>
         public bool HasPlayerMadePurchase()
         {
-            return TotalCellsCollected - GameStats.Powercells >= LevelData.InitialSelectionCount;
+            return TotalCellsCollected - GameStats.Powercells >= ShopData.InitialSelectionCount;
         }
 
         public int GetSellPercentage()
         {
-            return (int)(LevelData.SellPercentage * 100);
+            return (int)(ShopData.SellPercentage * 100);
         }
 
         public int GetSellAmount()
         {
-            return (int)(LevelData.SellPercentage * _nextCost);
+            return (int)(ShopData.SellPercentage * _nextCost);
         }
 
         private void CalculateCells()
@@ -249,7 +249,7 @@ namespace UI.Shop
         public int GetEnergyCost()
         {
             var expression = new Expression();
-            expression.Parse(LevelData.SelectionCostFormula.Replace("x", $"({TotalCellsCollected.ToString()})"));
+            expression.Parse(ShopData.SelectionCostFormula.Replace("x", $"({TotalCellsCollected.ToString()})"));
             int output =  expression.Execute().AsInt32();
             if (output == 0) 
                 GD.PushError("Energy Cost was 0, likely an issue with formula");

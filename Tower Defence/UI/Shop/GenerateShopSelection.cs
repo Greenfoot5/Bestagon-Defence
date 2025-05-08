@@ -40,7 +40,7 @@ public partial class GenerateShopSelection : Control
     /// </summary>
     [Export]
     private PackedScene _hiddenSelectionUI;
-    private LevelData _levelData;
+    private ShopData _shopData;
     [Export]
     private Shop _shop;
         
@@ -71,7 +71,7 @@ public partial class GenerateShopSelection : Control
     /// </summary>
     public override void _Ready()
     {
-        _levelData = _shop.LevelData;
+        _shopData = _shop.ShopData;
     }
         
     /// <summary>
@@ -82,7 +82,7 @@ public partial class GenerateShopSelection : Control
         if (_isLocked) return;
 
         Shop.OldState = Shop.Random.GetState();
-        if (_levelData.HiddenMode != HiddenMode.Disabled)
+        if (_shopData.HiddenMode != HiddenMode.Disabled)
             _hiddenChoices = new List<Tuple<Object, int>>();
 
         // Destroy the previous selection
@@ -91,7 +91,7 @@ public partial class GenerateShopSelection : Control
             GetChild(i).QueueFree();
         }
             
-        int selectionCount = _shop.HasPlayerMadePurchase() ? _levelData.SelectionChoices : _levelData.InitialChoices;
+        int selectionCount = _shop.HasPlayerMadePurchase() ? _shopData.SelectionChoices : _shopData.InitialChoices;
         // Tracks what the game has given the player, so the game don't give duplicates
         var selectedTurrets = new List<TurretBlueprint>();
         var selectedModules = new List<ModuleChainHandler>();
@@ -115,24 +115,24 @@ public partial class GenerateShopSelection : Control
                 // Can only have one life option
                 // We clamp to make sure they don't affect each other if < 0
                 float choice = Shop.Random.Range(0f,
-                    Mathf.Clamp(_levelData.TurretOptionWeight.Sample(GameStats.Rounds), 0f, float.MaxValue)
-                    + Mathf.Clamp(_levelData.ModuleOptionWeight.Sample(GameStats.Rounds), 0f, float.MaxValue)
-                    + (!hasLife ? 1 : 0) * Mathf.Clamp(_levelData.LifeOptionWeight.Sample(GameStats.Rounds), 0f, float.MaxValue));
-                if (choice <= _levelData.ModuleOptionWeight.Sample(GameStats.Rounds))
+                    Mathf.Clamp(_shopData.TurretOptionWeight.Sample(GameStats.Rounds), 0f, float.MaxValue)
+                    + Mathf.Clamp(_shopData.ModuleOptionWeight.Sample(GameStats.Rounds), 0f, float.MaxValue)
+                    + (!hasLife ? 1 : 0) * Mathf.Clamp(_shopData.LifeOptionWeight.Sample(GameStats.Rounds), 0f, float.MaxValue));
+                if (choice <= _shopData.ModuleOptionWeight.Sample(GameStats.Rounds))
                 {
                     // Grants an Module option
                     selectedModules.Add(GenerateModuleItem(i, selectedModules));
 
                 }
-                else if (_levelData.ModuleOptionWeight.Sample(GameStats.Rounds) < choice && choice <=
-                         _levelData.ModuleOptionWeight.Sample(GameStats.Rounds) + _levelData.TurretOptionWeight.Sample(GameStats.Rounds))
+                else if (_shopData.ModuleOptionWeight.Sample(GameStats.Rounds) < choice && choice <=
+                         _shopData.ModuleOptionWeight.Sample(GameStats.Rounds) + _shopData.TurretOptionWeight.Sample(GameStats.Rounds))
                 {
                     selectedTurrets.Add(GenerateTurretItem(i, selectedTurrets));
                 }
                 else
                 {
                     if (ShouldHide(i))
-                        GenerateHiddenUI(_levelData.LifeCount, i);
+                        GenerateHiddenUI(_shopData.LifeCount, i);
                     else
                         GenerateLifeItem();
                         
@@ -145,9 +145,9 @@ public partial class GenerateShopSelection : Control
     private TurretBlueprint GenerateInitialItem(int selectionIndex, ICollection<TurretBlueprint> selectedTurrets)
     {
         // Grants a turret option
-        var turrets = new WeightedList<TurretBlueprint>(_levelData.InitialTurretSelection);
+        var turrets = new WeightedList<TurretBlueprint>(_shopData.InitialTurretSelection);
         turrets.RemoveUnweighted();
-        TurretBlueprint selected = turrets.GetRandomItem(duplicateType: _levelData.InitialDuplicateCheck,
+        TurretBlueprint selected = turrets.GetRandomItem(duplicateType: _shopData.InitialDuplicateCheck,
             previousPicks: selectedTurrets.Take(selectionIndex).ToArray(), rng: Shop.Random);
             
         // Add the turret to the ui for the player to pick
@@ -159,8 +159,8 @@ public partial class GenerateShopSelection : Control
     private TurretBlueprint GenerateTurretItem(int selectionIndex, ICollection<TurretBlueprint> selectedTurrets)
     {
         // Grants a turret option
-        WeightedList<TurretBlueprint> turrets = _levelData.Turrets.ToWeightedList(GameStats.Rounds);
-        TurretBlueprint selected = turrets.GetRandomItem(duplicateType: _levelData.TurretDuplicateCheck,
+        WeightedList<TurretBlueprint> turrets = _shopData.Turrets.ToWeightedList(GameStats.Rounds);
+        TurretBlueprint selected = turrets.GetRandomItem(duplicateType: _shopData.TurretDuplicateCheck,
             previousPicks: selectedTurrets.Take(selectionIndex).ToArray(), rng: Shop.Random);
 
         if (ShouldHide(selectionIndex))
@@ -173,7 +173,7 @@ public partial class GenerateShopSelection : Control
         
     private ModuleChainHandler GenerateModuleItem(int selectionIndex, ICollection<ModuleChainHandler> selectedModules)
     { 
-        WeightedList<ModuleChainHandler> modules = _levelData.ModuleHandlers.ToWeightedList(GameStats.Rounds);
+        WeightedList<ModuleChainHandler> modules = _shopData.ModuleHandlers.ToWeightedList(GameStats.Rounds);
 
         // Only show modules that can be equipped on a turret the player has (or had)
         for (var i = 0; i < modules.Count; i++)
@@ -185,7 +185,7 @@ public partial class GenerateShopSelection : Control
             i--;
         }
             
-        ModuleChainHandler selected = modules.GetRandomItem(duplicateType: _levelData.ModuleDuplicateCheck,
+        ModuleChainHandler selected = modules.GetRandomItem(duplicateType: _shopData.ModuleDuplicateCheck,
             previousPicks: selectedModules.Take(selectionIndex).ToArray(), rng: Shop.Random);
 
         if (ShouldHide(selectionIndex))
@@ -202,7 +202,7 @@ public partial class GenerateShopSelection : Control
         var lifeUI = _lifeSelectionUI.Instantiate<LifeSelectionUI>();
         AddChild(lifeUI);
         lifeUI.Name = "_" + lifeUI.Name;
-        lifeUI.Init(_levelData.LifeCount, _shop);
+        lifeUI.Init(_shopData.LifeCount, _shop);
         return lifeUI;
     }
     
@@ -245,11 +245,11 @@ public partial class GenerateShopSelection : Control
 
     private bool ShouldHide(int selectionIndex)
     {
-        return _levelData.HiddenMode switch
+        return _shopData.HiddenMode switch
         {
             HiddenMode.Disabled => false,
-            HiddenMode.Count => _levelData.SelectionChoices - (selectionIndex + 1) < _levelData.HiddenChoices,
-            HiddenMode.Chance => Shop.Random.Next() < _levelData.HiddenChance,
+            HiddenMode.Count => _shopData.SelectionChoices - (selectionIndex + 1) < _shopData.HiddenChoices,
+            HiddenMode.Chance => Shop.Random.Next() < _shopData.HiddenChance,
             _ => throw new Exception("Invalid hidden mode")
         };
     }
@@ -258,9 +258,9 @@ public partial class GenerateShopSelection : Control
     {
         try
         {
-            if (_levelData.TurretOptionWeight.Sample(GameStats.Rounds) < 0)
-                _levelData.Turrets.ToWeightedList(GameStats.Rounds)
-                    .GetRandomItems(selectionCount, _levelData.TurretDuplicateCheck);
+            if (_shopData.TurretOptionWeight.Sample(GameStats.Rounds) < 0)
+                _shopData.Turrets.ToWeightedList(GameStats.Rounds)
+                    .GetRandomItems(selectionCount, _shopData.TurretDuplicateCheck);
         }
         catch (NullReferenceException)
         {
@@ -268,9 +268,9 @@ public partial class GenerateShopSelection : Control
         }
         try
         {
-            if (_levelData.ModuleOptionWeight.Sample(GameStats.Rounds) < 0)
-                _levelData.ModuleHandlers.ToWeightedList(GameStats.Rounds)
-                    .GetRandomItems(selectionCount, _levelData.ModuleDuplicateCheck);
+            if (_shopData.ModuleOptionWeight.Sample(GameStats.Rounds) < 0)
+                _shopData.ModuleHandlers.ToWeightedList(GameStats.Rounds)
+                    .GetRandomItems(selectionCount, _shopData.ModuleDuplicateCheck);
         }
         catch (NullReferenceException)
         {

@@ -11,7 +11,7 @@ namespace Levels.Maps;
 /// </summary>
 [GlobalClass]
 [Tool]
-public partial class LevelData : Resource
+public partial class ShopData : Resource
 {
     /// <summary>
     /// The chances for turrets in the initial selection(s)

@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ShopData" load_steps=7 format=3 uid="uid://b6vw6l67k0fne"]
+
+[ext_resource type="Resource" uid="uid://4o47ot0js36g" path="res://Levels/Maps/Upgrade/InitialSelection.tres" id="1_d4njv"]
+[ext_resource type="Script" path="csharp://Abstract/Data/WeightedCurveList.cs:Abstract.Data.WeightedCurveList`1[Abstract.Data.ModuleChainHandler].cs" id="2_7d5lu"]
+[ext_resource type="Script" path="csharp://Abstract/Data/WeightedCurveList.cs:Abstract.Data.WeightedCurveList`1[Turrets.TurretBlueprint].cs" id="3_ksl2g"]
+[ext_resource type="Script" uid="uid://5mfid57rp3et" path="res://Levels/Maps/ShopData.cs" id="4_jbv3k"]
+
+[sub_resource type="Resource" id="Resource_0rvqn"]
+script = ExtResource("2_7d5lu")
+Size = 0
+
+[sub_resource type="Resource" id="Resource_gim8b"]
+script = ExtResource("3_ksl2g")
+Size = 0
+
+[resource]
+script = ExtResource("4_jbv3k")
+InitialTurretSelection = ExtResource("1_d4njv")
+InitialDuplicateCheck = 0
+LifeCount = 0
+Turrets = SubResource("Resource_gim8b")
+TurretDuplicateCheck = 1
+ModuleHandlers = SubResource("Resource_0rvqn")
+ModuleDuplicateCheck = 2
+InitialSelectionCount = 1
+InitialChoices = 3
+SelectionChoices = 3
+HiddenMode = 0
+HiddenChoices = 0
+HiddenChance = 0.0
+SelectionCostFormula = ""
+RerollCost = 0.0
+SellPercentage = 0.0
+metadata/_custom_type_script = "uid://5mfid57rp3et"
