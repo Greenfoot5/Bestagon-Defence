@@ -1,4 +1,3 @@
-using System.ComponentModel.DataAnnotations;
 using Abstract.Data;
 using Godot;
 using Turrets;
@@ -102,13 +101,12 @@ public partial class ShopData : Resource
     /// How many cards to hide
     /// </summary>
     [Export]
-    public int HiddenChoices = 0;
+    public int HiddenChoices;
     /// <summary>
     /// The for a card to be hidden
     /// </summary>
-    [Export]
-    [Range(0f, 1f)]
-    public float HiddenChance = 0;
+    [Export(PropertyHint.Range, "0,1,or_greater")]
+    public float HiddenChance;
         
     /// <summary>
     /// How costs scale per wave.
@@ -122,6 +120,6 @@ public partial class ShopData : Resource
     /// <summary>
     /// What percentage of the shop cost to refund when selling
     /// </summary>
-    [Export]
+    [Export(PropertyHint.Range, "0,1,or_greater")]
     public float SellPercentage;
 }
