@@ -38,7 +38,7 @@ namespace UI.Modules
         public void SetData(ModuleChainHandler handler)
         {
             _module = handler.GetModule();
-            SetSprite(handler.GetChain().icon);
+            SetSprite(handler.GetChain().Icon);
             text.Text = handler.GetTierDisplay();
         }
         

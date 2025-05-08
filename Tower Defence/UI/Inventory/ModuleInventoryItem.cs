@@ -74,15 +74,15 @@ namespace UI.Inventory
             
             // Module text
             displayName.Text = module.GetDisplayName();
-            effectText.Text = module.GetChain().description;
+            effectText.Text = module.GetChain().Description;
             
             // Icon
             icon.SetData(module);
 
             // Colors
             // bg.color = module.GetChain().accentColor;
-            accent = module.GetChain().accentColor;
-            modulesBg.SelfModulate = module.GetChain().accentColor * new Color(1, 1, 1, .16f);
+            accent = module.GetChain().AccentColor;
+            modulesBg.SelfModulate = module.GetChain().AccentColor * new Color(1, 1, 1, .16f);
             
             foreach (Type turretType in module.GetModule().GetValidTypes())
             {

@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics;
 using Godot;
 using Modules;
 using Turrets;
@@ -13,6 +12,7 @@ namespace Abstract.Data;
 /// </summary>
 [Serializable]
 [Tool]
+[GlobalClass]
 public partial class ModuleChainHandler : Resource, IEquatable<ModuleChainHandler>, ISubtypeable
 {
     // The display levels of the modules
@@ -120,7 +120,7 @@ public partial class ModuleChainHandler : Resource, IEquatable<ModuleChainHandle
     /// <returns>Name & tier in roman numerals</returns>
     public string GetDisplayName()
     {
-        return chain.displayName + " " + GetTierDisplay();
+        return chain.DisplayName + " " + GetTierDisplay();
     }
         
     public bool ValidModule(Damager damager)

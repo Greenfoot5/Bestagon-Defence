@@ -83,7 +83,7 @@ namespace Turrets
             // Checks if the module is unique
             // Then if there is a module of the same type but different tier,
             // it cannot be upgraded
-            if (handler.GetChain().unique && 
+            if (handler.GetChain().Unique && 
                 (moduleHandlers.Any(x => x.GetModule().GetType() == handler.GetModule().GetType() &&
                                          !handler.CanUpgrade(x.GetTier()))))
             {

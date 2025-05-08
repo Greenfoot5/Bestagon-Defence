@@ -12,42 +12,42 @@ namespace Modules
         /// The tiers of the module
         /// </summary>
         [Export]
-        public Module[] moduleTiers;
+        public Module[] ModuleTiers;
 
         /// <summary>
         /// If different tiers of the module can be applied to the same turret
         /// </summary>
         [Export]
-        public bool unique;
+        public bool Unique;
         
         // Display
         /// <summary>
         /// The main colour of the module
         /// </summary>
         [Export]
-        public Color accentColor = new(0, 0, 0);
+        public Color AccentColor = new(0, 0, 0);
         /// <summary>
         /// The module's icon
         /// </summary>
         [Export]
-        public Texture2D icon;
+        public Texture2D Icon;
         
         /// <summary>
         /// The name to display for the module, should not include the tier
         /// </summary>
         [ExportGroup("Text")]
         [Export]
-        public string displayName;
+        public string DisplayName;
         /// <summary>
         /// The tagline of the module. It's not a description, just a witty little remark
         /// </summary>
         [Export]
-        public string tagline;
+        public string Tagline;
         /// <summary>
         /// The description of the module and what it does
         /// </summary>
         [Export]
-        public string description;
+        public string Description;
         
         /// <summary>
         /// Checks if a module at a tier can be upgraded
@@ -56,13 +56,13 @@ namespace Modules
         /// <returns>If the module can be upgraded</returns>
         public bool CanUpgrade(int tier)
         {
-            if (tier >= moduleTiers.Length)
+            if (tier >= ModuleTiers.Length)
             {
                 return false;
             }
             
-            Module currentTier = moduleTiers[tier - 1];
-            Module nextTier = moduleTiers[tier];
+            Module currentTier = ModuleTiers[tier - 1];
+            Module nextTier = ModuleTiers[tier];
             // Check the next tier isn't skipped and can be upgraded to
             return currentTier.ModuleTier + 1 == nextTier.ModuleTier
                    && nextTier.IsUpgradableTo;
@@ -75,7 +75,7 @@ namespace Modules
         /// <returns>The module of the provided tier</returns>
         public Module GetModule(int tier)
         {
-            return moduleTiers[tier - 1];
+            return ModuleTiers[tier - 1];
         }
     }
 }

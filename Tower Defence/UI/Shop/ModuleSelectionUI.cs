@@ -76,13 +76,13 @@ namespace UI.Shop
             // bg.color = chain.accentColor;
 
             displayName.Text = initHandler.GetDisplayName();
-            tagline.Text = chain.tagline;
-            tagline.SelfModulate = chain.accentColor;
+            tagline.Text = chain.Tagline;
+            tagline.SelfModulate = chain.AccentColor;
 
             icon.SetData(initHandler);
         
-            effect.Text = chain.description;
-            effect.SelfModulate = chain.accentColor;
+            effect.Text = chain.Description;
+            effect.SelfModulate = chain.AccentColor;
             
             foreach (Type turretType in module.GetValidTypes())
             {
