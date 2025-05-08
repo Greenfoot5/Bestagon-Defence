@@ -89,8 +89,6 @@ namespace Gameplay.Waves
         /// </summary>
         public override void _Ready()
         {
-            // TODO - We need to load the Rounds value somewhere
-            GameStats.Rounds = 1;
             EnemiesAlive = 0;
             // TODO - Prep time?
             // _countdown = preparationTime;
@@ -136,9 +134,6 @@ namespace Gameplay.Waves
         /// </summary>
         private void SpawnNext()
         {
-            GD.Print(_waveIndex);
-            GD.Print("wave" + _waves[_waveIndex]);
-            GD.Print("set" + _waves[_waveIndex].enemySets[_setIndex]);
             SpawnEnemy(_waves[_waveIndex].enemySets[_setIndex].enemy);
 
             _enemyIndex += 1;
