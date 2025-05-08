@@ -13,6 +13,14 @@ namespace Levels.Maps;
 [Tool]
 public partial class ShopData : Resource
 {
+    [ExportToolButton("Refresh Data")]
+    private Callable RefreshButton => Callable.From(RefreshData);
+    
+    private void RefreshData()
+    {
+        ResourceLoader.Load(ResourcePath, cacheMode: ResourceLoader.CacheMode.ReplaceDeep);
+    }
+    
     /// <summary>
     /// The chances for turrets in the initial selection(s)
     /// </summary>
