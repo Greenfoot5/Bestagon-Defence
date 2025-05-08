@@ -70,29 +70,11 @@ namespace UI.Shop
         // [Export]
         // TODO - Progress
         // private Progress powercellProgress;
-
-        /// <summary>
-        /// Shop button colours top when can afford
-        /// </summary>
-        [ExportGroup("Shop Button")] 
-        [Export]
-        private Sprite2D _buyButton;
-
-        /// <summary>
-        /// Shop button image when can afford
-        /// </summary>
-        [Export]
-        private Texture2D _affordButtonImage;
-
-        /// <summary>
-        /// Shop buttons image when can't afford
-        /// </summary>
-        [Export]
-        private Texture2D _expensiveButtonImage;
-
+        
         /// <summary>
         /// Shop button colours button when can afford
         /// </summary>
+        [ExportGroup("Shop Button")] 
         [Export]
         private Control _expensiveButtonOverlay;
 
@@ -223,13 +205,11 @@ namespace UI.Shop
         {
             if (GameStats.Powercells > 0)
             {
-                _buyButton.Texture = _affordButtonImage;
                 _expensiveButtonOverlay.Visible = false;
                 Disabled = false;
             }
             else
             {
-                _buyButton.Texture = _expensiveButtonImage;
                 _expensiveButtonOverlay.Visible = true;
                 Disabled = true;
             }
