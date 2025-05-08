@@ -15,6 +15,7 @@ namespace Modules.FireRate;
 /// Increases the fire rate of a turret
 /// </summary>
 [GlobalClass]
+[Tool]
 public partial class FireRateModule : Module
 {
     protected override Type[] ValidTypes => [typeof(Shooter), typeof(Smasher), typeof(Gunner), typeof(Lancer), typeof(Choker)];

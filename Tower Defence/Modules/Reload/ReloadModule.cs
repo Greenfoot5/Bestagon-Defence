@@ -13,6 +13,7 @@ namespace Modules.Reload;
 /// Chance to attack again
 /// </summary>
 [GlobalClass]
+[Tool]
 public partial class ReloadModule : Module
 {
     protected override Type[] ValidTypes => [typeof(Shooter), typeof(Choker), typeof(Gunner), typeof(Lancer)];

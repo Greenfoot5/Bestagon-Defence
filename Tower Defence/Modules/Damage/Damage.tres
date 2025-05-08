@@ -6,11 +6,11 @@
 
 [resource]
 script = ExtResource("1_8jytx")
-moduleTiers = Array[Object]([ExtResource("1_wvrlx")])
-unique = false
-accentColor = Color(0.964706, 0.788235, 0.0627451, 1)
-icon = ExtResource("1_yx8t3")
-displayName = "Damage"
-tagline = "death wonder"
-description = "Increases Damage"
+ModuleTiers = [ExtResource("1_wvrlx")]
+Unique = false
+AccentColor = Color(0.964706, 0.788235, 0.0627451, 1)
+Icon = ExtResource("1_yx8t3")
+DisplayName = "Damage"
+Tagline = "death wonder"
+Description = "Increases Damage"
 metadata/_custom_type_script = "uid://05pfhoqbexkq"

@@ -7,12 +7,20 @@ namespace Abstract.Data;
 /// An item with a float weight
 /// </summary>
 /// <typeparam name="T">The type of item to store</typeparam>
-[System.Serializable]
+[Serializable]
 [Tool]
 public partial class WeightedItem<[MustBeVariant] T> : Resource where T : Resource, ISubtypeable
 {
     public T Item;
     public float Weight;
+    
+    [ExportToolButton("Refresh Item")]
+    public Callable RefreshButton => Callable.From(RefreshData);
+
+    public void RefreshData()
+    {
+        ResourceLoader.Load<WeightedItem<T>>(ResourcePath, cacheMode: ResourceLoader.CacheMode.ReplaceDeep);
+    }
 
     public WeightedItem(T item, float weight)
     {
@@ -34,7 +42,8 @@ public partial class WeightedItem<[MustBeVariant] T> : Resource where T : Resour
                 { "name", "Item" },
                 { "type", (int)Variant.Type.Object },
                 { "hint", (int)PropertyHint.ResourceType },
-                { "hint_string", typeof(T).Name }
+                { "hint_string", typeof(T).Name },
+                { "usage", (int)PropertyUsageFlags.Editor + (int)PropertyUsageFlags.Storage }
             },
 
             new()
@@ -42,7 +51,8 @@ public partial class WeightedItem<[MustBeVariant] T> : Resource where T : Resour
                 { "name", "Weight" },
                 { "type", (int)Variant.Type.Float },
                 { "hint", (int)PropertyHint.Range },
-                { "hint_string", "0,100,,or_greater" }
+                { "hint_string", "0,100,,or_greater" },
+                { "usage", (int)PropertyUsageFlags.Editor + (int)PropertyUsageFlags.Storage }
             }
 
         ];
@@ -66,9 +76,11 @@ public partial class WeightedItem<[MustBeVariant] T> : Resource where T : Resour
         {
             case "Item":
                 Item = value.As<T>();
+                NotifyPropertyListChanged();
                 return true;
             case "Weight":
                 Weight = value.As<float>();
+                NotifyPropertyListChanged();
                 return true;
             default:
                 return false;

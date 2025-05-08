@@ -17,6 +17,7 @@ namespace Modules.Slow;
 /// Used to add effects to enemies
 /// </summary>
 [GlobalClass]
+[Tool]
 public partial class SlowModule : Module
 {
     protected override Type[] ValidTypes => [typeof(Shooter), typeof(Gunner), typeof(Lancer), typeof(Choker), typeof(Smasher)

@@ -14,6 +14,7 @@ namespace Modules.Bombs;
 /// Extends the Module class to create a BombBullet upgrade
 /// </summary>
 [GlobalClass]
+[Tool]
 public partial class BombsModule : Module
 {
     // Choker - Fewer shots, are explosive

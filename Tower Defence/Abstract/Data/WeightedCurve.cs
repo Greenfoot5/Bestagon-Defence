@@ -8,13 +8,20 @@ namespace Abstract.Data;
 /// <typeparam name="T">The type of the item</typeparam>
 [System.Serializable]
 [Tool]
-public partial class WeightedCurve<[MustBeVariant] T> : Resource where T : Resource
+public partial class WeightedCurve<[MustBeVariant] T> : Resource where T : Resource, ISubtypeable
 {
     public T Item;
-    [Export]
     public Curve Curve;
-
+    
     public Curve Value => Curve;
+    
+    [ExportToolButton("Refresh Item(s)")]
+    public Callable RefreshButton => Callable.From(RefreshData);
+
+    public void RefreshData()
+    {
+        ResourceLoader.Load<WeightedCurve<T>>(ResourcePath, cacheMode: ResourceLoader.CacheMode.ReplaceDeep);
+    }
         
     public override Godot.Collections.Array<Godot.Collections.Dictionary> _GetPropertyList()
     {
@@ -25,7 +32,8 @@ public partial class WeightedCurve<[MustBeVariant] T> : Resource where T : Resou
                 { "name", "Item" },
                 { "type", (int)Variant.Type.Object },
                 { "hint", (int)PropertyHint.ResourceType },
-                { "hint_string", typeof(T).Name }
+                { "hint_string", typeof(T).Name },
+                { "usage", (int)PropertyUsageFlags.Editor + (int)PropertyUsageFlags.Storage }
             },
 
             new()
@@ -33,9 +41,9 @@ public partial class WeightedCurve<[MustBeVariant] T> : Resource where T : Resou
                 { "name", "Curve" },
                 { "type", (int)Variant.Type.Object },
                 { "hint", (int)PropertyHint.ResourceType },
-                { "hint_string", "Curve" }
+                { "hint_string", "Curve" },
+                { "usage", (int)PropertyUsageFlags.Editor + (int)PropertyUsageFlags.Storage }
             }
-
         ];
 
         return properties;
@@ -57,9 +65,11 @@ public partial class WeightedCurve<[MustBeVariant] T> : Resource where T : Resou
         {
             case "Item":
                 Item = value.As<T>();
+                NotifyPropertyListChanged();
                 return true;
             case "Curve":
                 Curve = value.As<Curve>();
+                NotifyPropertyListChanged();
                 return true;
             default:
                 return false;

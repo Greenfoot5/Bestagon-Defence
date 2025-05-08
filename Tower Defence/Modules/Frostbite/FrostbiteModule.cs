@@ -15,6 +15,7 @@ namespace Modules.Frostbite;
 /// Extends the Module class to create a Damage upgrade
 /// </summary>
 [GlobalClass]
+[Tool]
 public partial class FrostbiteModule : Module
 {
     protected override Type[] ValidTypes => [typeof(Choker), typeof(Gunner), typeof(Lancer), typeof(Shooter)];

@@ -2,7 +2,6 @@ using System;
 using System.Linq;
 using Godot;
 using Godot.Collections;
-using Array = System.Array;
 
 namespace Abstract.Data;
 
@@ -18,8 +17,7 @@ public partial class WeightedCurveList<[MustBeVariant] T> : Resource where T : R
     public Array<WeightedCurve<T>> List;
     
     private int _size;
-
-    [Export]
+    
     public int Size
     {
         get => _size;
@@ -29,6 +27,14 @@ public partial class WeightedCurveList<[MustBeVariant] T> : Resource where T : R
             List.Resize(_size);
             NotifyPropertyListChanged();
         }
+    }
+    
+    [ExportToolButton("Refresh Item(s)")]
+    public Callable RefreshButton => Callable.From(RefreshData);
+
+    public void RefreshData()
+    {
+        ResourceLoader.Load<WeightedCurveList<T>>(ResourcePath, cacheMode: ResourceLoader.CacheMode.ReplaceDeep);
     }
     
     /// <summary>
@@ -67,7 +73,17 @@ public partial class WeightedCurveList<[MustBeVariant] T> : Resource where T : R
     
     public override Array<Dictionary> _GetPropertyList()
     {
-        Array<Dictionary> properties = [];
+        Array<Dictionary> properties =
+        [
+            new()
+            {
+                { "name", $"Size" },
+                { "type", (int)Variant.Type.Int },
+                { "hint", (int)PropertyHint.None },
+                { "usage", (int)PropertyUsageFlags.Array + (int)PropertyUsageFlags.Default },
+                { "class_name", "Items,list_" }
+            }
+        ];
     
         for (var i = 0; i < _size; i++)
         {
@@ -77,6 +93,7 @@ public partial class WeightedCurveList<[MustBeVariant] T> : Resource where T : R
                 { "type", (int)Variant.Type.Object },
                 { "hint", (int)PropertyHint.ResourceType },
                 { "hint_string", typeof(T).Name },
+                { "usage", (int)PropertyUsageFlags.Editor + (int)PropertyUsageFlags.Storage }
             });
             properties.Add(new Dictionary()
             {
@@ -84,6 +101,7 @@ public partial class WeightedCurveList<[MustBeVariant] T> : Resource where T : R
                 { "type", (int)Variant.Type.Object },
                 { "hint", (int)PropertyHint.ResourceType },
                 { "hint_string", "Curve" },
+                { "usage", (int)PropertyUsageFlags.Editor + (int)PropertyUsageFlags.Storage }
             });
         }
     
@@ -125,9 +143,11 @@ public partial class WeightedCurveList<[MustBeVariant] T> : Resource where T : R
             {
                 case "Curve":
                     List[index].Curve = value.As<Curve>();
+                    NotifyPropertyListChanged();
                     return true;
                 case "Item":
                     List[index].Item = value.As<T>();
+                    NotifyPropertyListChanged();
                     return true;
                 default:
                     GD.PrintErr("Invalid property name in WeightedList for WeightedItem: " + split[1]);

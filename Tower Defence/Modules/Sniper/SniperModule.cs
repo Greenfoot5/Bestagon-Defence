@@ -14,6 +14,7 @@ namespace Modules.Sniper;
 /// Extends the Module class to create a Sniper upgrade
 /// </summary>
 [GlobalClass]
+[Tool]
 public partial class SniperModule : Module
 {
     protected override Type[] ValidTypes => [typeof(Shooter), typeof(Laser), typeof(Choker), typeof(Lancer)];

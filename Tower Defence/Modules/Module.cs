@@ -9,6 +9,7 @@ namespace Modules
     /// A base abstract class to create a turret module from.
     /// </summary>
     [GlobalClass]
+    [Tool]
     public abstract partial class Module : Resource
     {
         /// <summary>

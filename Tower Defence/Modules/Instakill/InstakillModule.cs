@@ -14,6 +14,7 @@ namespace Modules.Instakill;
 /// Chance to instakill an enemy
 /// </summary>
 [GlobalClass]
+[Tool]
 public partial class InstakillModule : Module
 {
     protected override Type[] ValidTypes => [typeof(Shooter), typeof(Smasher), typeof(Gunner), typeof(Lancer)];

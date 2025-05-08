@@ -10,6 +10,7 @@ namespace Modules.Range;
 /// Increases the range of a turret
 /// </summary>
 [GlobalClass]
+[Tool]
 public partial class RangeModule : Module
 {
     protected override Type[] ValidTypes => [typeof(Turret)];  // any

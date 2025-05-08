@@ -6,6 +6,7 @@ namespace Modules
     /// A chain of modules, allowing traversal up or down the chain
     /// </summary>
     [GlobalClass]
+    [Tool]
     public partial class ModuleChain : Resource
     {
         /// <summary>

@@ -110,15 +110,9 @@ public partial class ShopData : Resource
     [ExportGroup("Costs")]
     [Export]
     public string SelectionCostFormula;
-        
-    /// <summary>
-    /// Lives to reroll ration for the selection
-    ///
-    /// Use an integer to take 1+ hearts per reroll
-    /// Use a decimal to grant extra free rerolls per purchase
-    /// </summary>
+
     [Export]
-    public float RerollCost;
+    public float b;
         
     /// <summary>
     /// What percentage of the shop cost to refund when selling

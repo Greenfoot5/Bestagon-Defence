@@ -6,6 +6,7 @@ namespace Abstract.Attributes;
 /// A value modifier to an attribute
 /// </summary>
 [GlobalClass]
+[Tool]
 public partial class AttributeModifier : Resource
 {
     [Export]

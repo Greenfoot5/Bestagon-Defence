@@ -10,6 +10,7 @@ namespace Modules.Damage;
 /// Extends the Module class to create a Damage upgrade
 /// </summary>
 [GlobalClass]
+[Tool]
 public partial class DamageModule : Module
 {
     protected override Type[] ValidTypes => [typeof(Turret)];  // any

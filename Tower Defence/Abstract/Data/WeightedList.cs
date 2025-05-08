@@ -28,8 +28,7 @@ public partial class WeightedList<[MustBeVariant] T> : Resource where T : Resour
     private Array<WeightedItem<T>> list;
     
     private int _size;
-
-    [Export]
+    
     public int Count
     {
         get => _size;
@@ -39,6 +38,14 @@ public partial class WeightedList<[MustBeVariant] T> : Resource where T : Resour
             list.Resize(_size);
             NotifyPropertyListChanged();
         }
+    }
+        
+    [ExportToolButton("Refresh Item(s)")]
+    public Callable RefreshButton => Callable.From(RefreshData);
+
+    public void RefreshData()
+    {
+        ResourceLoader.Load<WeightedList<T>>(ResourcePath, cacheMode: ResourceLoader.CacheMode.ReplaceDeep);
     }
     
     public WeightedItem<T> this[int key]
@@ -286,8 +293,18 @@ public partial class WeightedList<[MustBeVariant] T> : Resource where T : Resour
     
     public override Array<Dictionary> _GetPropertyList()
     {
-        Array<Dictionary> properties = [];
-    
+        Array<Dictionary> properties =
+        [
+            new()
+            {
+                { "name", $"Count" },
+                { "type", (int)Variant.Type.Int },
+                { "hint", (int)PropertyHint.None },
+                { "usage", (int)PropertyUsageFlags.Array + (int)PropertyUsageFlags.Default },
+                { "class_name", "Items,list_" }
+            }
+        ];
+
         for (var i = 0; i < _size; i++)
         {
             properties.Add(new Dictionary()
@@ -296,6 +313,7 @@ public partial class WeightedList<[MustBeVariant] T> : Resource where T : Resour
                 { "type", (int)Variant.Type.Object },
                 { "hint", (int)PropertyHint.ResourceType },
                 { "hint_string", typeof(T).Name },
+                { "usage", (int)PropertyUsageFlags.Editor + (int)PropertyUsageFlags.Storage }
             });
             properties.Add(new Dictionary()
             {
@@ -303,6 +321,7 @@ public partial class WeightedList<[MustBeVariant] T> : Resource where T : Resour
                 { "type", (int)Variant.Type.Float },
                 { "hint", (int)PropertyHint.Range },
                 { "hint_string", "0,20,,or_greater,hide_slider" },
+                { "usage", (int)PropertyUsageFlags.Editor + (int)PropertyUsageFlags.Storage }
             });
         }
     
@@ -344,9 +363,11 @@ public partial class WeightedList<[MustBeVariant] T> : Resource where T : Resour
             {
                 case "Weight":
                     list[index].Weight = value.As<float>();
+                    NotifyPropertyListChanged();
                     return true;
                 case "Item":
                     list[index].Item = value.As<T>();
+                    NotifyPropertyListChanged();
                     return true;
                 default:
                     GD.PrintErr("Invalid property name in WeightedList for WeightedItem: " + split[1]);
