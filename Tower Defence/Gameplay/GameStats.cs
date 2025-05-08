@@ -66,6 +66,7 @@ namespace Gameplay
             get => _rounds;
             set
             {
+                GD.Print("Setting rounds to " + value);
                 _rounds = value;
                 OnRoundProgress?.Invoke();
             }

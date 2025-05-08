@@ -39,7 +39,7 @@ namespace UI.Inventory
         /// The background Image of the modules section
         /// </summary>
         [Export]
-        public Sprite2D modulesBg;
+        public Button modulesBg;
         
         /// <summary>
         /// The generic glyph prefab to use to display the applicable turrets

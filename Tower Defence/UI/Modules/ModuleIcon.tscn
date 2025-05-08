@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bxa53twnv3u5s" path="res://Modules/Slow/Slow.tres" id="4_m8sfd"]
 [ext_resource type="FontFile" uid="uid://1ojapw2lf2sh" path="res://UI/Fonts/Font_NikkyouSans.ttf" id="5_by0k1"]
 
-[node name="ModuleIcon" type="Control"]
+[node name="ModuleIcon" type="Control" node_paths=PackedStringArray("icon", "text")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,6 +14,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3po1c")
+icon = NodePath("Icon")
+text = NodePath("LevelBox/Level")
 
 [node name="BackShadow" type="TextureRect" parent="."]
 self_modulate = Color(0, 0, 0, 0.28)

@@ -13,7 +13,7 @@ namespace UI.Modules
         /// The Sprite2D to set the icon of
         /// </summary>
         [Export]
-        private Sprite2D icon;
+        private TextureRect icon;
         /// <summary>
         /// The level text to set as the module's level
         /// </summary>

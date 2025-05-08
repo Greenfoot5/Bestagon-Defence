@@ -1,38 +1,21 @@
-[gd_resource type="Resource" script_class="ShopData" load_steps=17 format=3 uid="uid://b6vw6l67k0fne"]
+[gd_resource type="Resource" script_class="ShopData" load_steps=11 format=3 uid="uid://b6vw6l67k0fne"]
 
-[ext_resource type="Resource" uid="uid://d373knvixoopr" path="res://Turrets/Shooter/BasicTurret.tres" id="1_7d5lu"]
 [ext_resource type="Script" path="csharp://Abstract/Data/WeightedCurveList.cs:Abstract.Data.WeightedCurveList`1[Abstract.Data.ModuleChainHandler].cs" id="2_7d5lu"]
-[ext_resource type="Resource" uid="uid://cx2i8uqbstjqg" path="res://Modules/Damage/Damage.tres" id="2_jbv3k"]
 [ext_resource type="Script" path="csharp://Abstract/Data/WeightedList.cs:Abstract.Data.WeightedList`1[Turrets.TurretBlueprint].cs" id="2_ksl2g"]
 [ext_resource type="Script" path="csharp://Abstract/Data/WeightedCurveList.cs:Abstract.Data.WeightedCurveList`1[Turrets.TurretBlueprint].cs" id="3_ksl2g"]
-[ext_resource type="Script" uid="uid://ufdo2vxockv6" path="res://Abstract/Data/ModuleChainHandler.cs" id="3_m084i"]
 [ext_resource type="Script" uid="uid://5mfid57rp3et" path="res://Levels/Maps/ShopData.cs" id="4_jbv3k"]
 
-[sub_resource type="Resource" id="Resource_jbv3k"]
+[sub_resource type="Resource" id="Resource_d4njv"]
 script = ExtResource("2_ksl2g")
-Count = 1
-list_0/Item = ExtResource("1_7d5lu")
-list_0/Weight = 1.0
+Count = 0
 
 [sub_resource type="Curve" id="Curve_d4njv"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
 point_count = 1
 
-[sub_resource type="Curve" id="Curve_jbv3k"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
-point_count = 1
-
-[sub_resource type="Resource" id="Resource_m084i"]
-script = ExtResource("3_m084i")
-chain = ExtResource("2_jbv3k")
-tier = 1
-metadata/_custom_type_script = "uid://ufdo2vxockv6"
-
-[sub_resource type="Resource" id="Resource_xt8uj"]
+[sub_resource type="Resource" id="Resource_7d5lu"]
 script = ExtResource("2_7d5lu")
-Size = 1
-list_0/Item = SubResource("Resource_m084i")
-list_0/Curve = SubResource("Curve_jbv3k")
+Size = 0
 
 [sub_resource type="Curve" id="Curve_7d5lu"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 1]
@@ -42,31 +25,25 @@ point_count = 1
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
 point_count = 1
 
-[sub_resource type="Curve" id="Curve_m084i"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
-point_count = 1
-
-[sub_resource type="Resource" id="Resource_42cso"]
+[sub_resource type="Resource" id="Resource_ksl2g"]
 script = ExtResource("3_ksl2g")
-Size = 1
-list_0/Item = ExtResource("1_7d5lu")
-list_0/Curve = SubResource("Curve_m084i")
+Size = 0
 
 [resource]
 script = ExtResource("4_jbv3k")
-InitialTurretSelection = SubResource("Resource_jbv3k")
+InitialTurretSelection = SubResource("Resource_d4njv")
 InitialDuplicateCheck = 0
 TurretOptionWeight = SubResource("Curve_ksl2g")
 ModuleOptionWeight = SubResource("Curve_7d5lu")
 LifeOptionWeight = SubResource("Curve_d4njv")
 LifeCount = 2
-Turrets = SubResource("Resource_42cso")
+Turrets = SubResource("Resource_ksl2g")
 TurretDuplicateCheck = 1
-ModuleHandlers = SubResource("Resource_xt8uj")
+ModuleHandlers = SubResource("Resource_7d5lu")
 ModuleDuplicateCheck = 2
 InitialSelectionCount = 1
-InitialChoices = 3
-SelectionChoices = 3
+InitialChoices = 1
+SelectionChoices = 1
 HiddenMode = 0
 HiddenChoices = 0
 HiddenChance = 0.0
