@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ModuleChain" load_steps=4 format=3 uid="uid://cx2i8uqbstjqg"]
+
+[ext_resource type="Script" uid="uid://05pfhoqbexkq" path="res://Modules/ModuleChain.cs" id="1_8jytx"]
+[ext_resource type="Resource" uid="uid://037yst8p03wk" path="res://Modules/Damage/DamageT1.tres" id="1_wvrlx"]
+[ext_resource type="Texture2D" uid="uid://ccyakwyjs0yuh" path="res://Modules/Damage/DamageTexture.tres" id="1_yx8t3"]
+
+[resource]
+script = ExtResource("1_8jytx")
+moduleTiers = Array[Object]([ExtResource("1_wvrlx")])
+unique = false
+accentColor = Color(0.964706, 0.788235, 0.0627451, 1)
+icon = ExtResource("1_yx8t3")
+displayName = "Damage"
+tagline = "death wonder"
+description = "Increases Damage"
+metadata/_custom_type_script = "uid://05pfhoqbexkq"
