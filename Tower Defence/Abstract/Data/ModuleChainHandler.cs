@@ -43,7 +43,7 @@ public partial class ModuleChainHandler : Resource, IEquatable<ModuleChainHandle
 
     public ModuleChainHandler()
     {
-        tier = 0;
+        tier = 1;
     }
 
     /// <summary>
