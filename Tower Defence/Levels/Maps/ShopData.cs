@@ -12,21 +12,13 @@ namespace Levels.Maps;
 [Tool]
 public partial class ShopData : Resource
 {
-    [ExportToolButton("Refresh Data")]
-    private Callable RefreshButton => Callable.From(RefreshData);
-    
-    private void RefreshData()
-    {
-        ResourceLoader.Load(ResourcePath, cacheMode: ResourceLoader.CacheMode.ReplaceDeep);
-    }
-    
     /// <summary>
     /// The chances for turrets in the initial selection(s)
     /// </summary>
     [ExportGroup("InitialSelection")]
     [Export]
-    public WeightedList<TurretBlueprint> InitialTurretSelection = new();
-        
+    public WeightedList InitialTurretSelection = new(Strain.TurretBlueprint);
+    
     /// <summary>
     /// The duplicate check to perform when generating the initial selection
     /// </summary>
@@ -59,7 +51,7 @@ public partial class ShopData : Resource
     /// What turrets can appear and their individual chances
     /// </summary>
     [Export]
-    public WeightedCurveList<TurretBlueprint> Turrets = new();
+    public WeightedCurveList Turrets = new(Strain.TurretBlueprint);
     /// <summary>
     /// The duplicate check to perform when generating a turret card
     /// </summary>
@@ -69,7 +61,7 @@ public partial class ShopData : Resource
     /// What modules can appear and their individual chances
     /// </summary>
     [Export]
-    public WeightedCurveList<ModuleChainHandler> ModuleHandlers = new();
+    public WeightedCurveList ModuleHandlers = new(Strain.ModuleChainHandler);
     /// <summary>
     /// The duplicate check to perform when generating a module card
     /// </summary>

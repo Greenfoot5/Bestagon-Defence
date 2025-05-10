@@ -1,7 +1,7 @@
 using System;
-using System.Linq;
 using Godot;
 using Godot.Collections;
+using Turrets;
 
 namespace Abstract.Data;
 
@@ -9,12 +9,15 @@ namespace Abstract.Data;
 /// A list of items and their weight.
 /// Can get a random item and total weight of the values
 /// </summary>
-/// <typeparam name="T">The type of the list</typeparam>
 [Serializable]
 [Tool]
-public partial class WeightedCurveList<[MustBeVariant] T> : Resource where T : Resource, ISubtypeable
+public partial class WeightedCurveList : Resource
 {
-    public Array<WeightedCurve<T>> List;
+    private Array<TurretBlueprint> blueprints = [];
+    private Array<ModuleChainHandler> handlers = [];
+    private Array<Curve> curves = [];
+    
+    private Strain strain;
     
     private int _size;
     
@@ -24,48 +27,36 @@ public partial class WeightedCurveList<[MustBeVariant] T> : Resource where T : R
         set
         {
             _size = value;
-            List.Resize(_size);
+            blueprints.Resize(_size);
+            handlers.Resize(_size);
+            curves.Resize(_size);
             NotifyPropertyListChanged();
         }
     }
     
-    [ExportToolButton("Refresh Item(s)")]
-    public Callable RefreshButton => Callable.From(RefreshData);
-
-    public void RefreshData()
+    public WeightedCurveList(Strain strain)
     {
-        ResourceLoader.Load<WeightedCurveList<T>>(ResourcePath, cacheMode: ResourceLoader.CacheMode.ReplaceDeep);
-    }
-    
-    /// <summary>
-    /// Basic constructor for the list
-    /// </summary>
-    /// <param name="list">The list to create</param>
-    public WeightedCurveList(Array<WeightedCurve<T>> list)
-    {
-        List = list;
+        this.strain = strain;
     }
 
     public WeightedCurveList()
     {
-        List = [];
+        strain = Strain.TurretBlueprint;
     }
-        
+
     /// <summary>
     /// Converts the WeightedCurveList to a WeightedList at a certain time
     /// </summary>
     /// <param name="time">The time to get the weight from the AnimationCurves</param>
     /// <returns>The WeightedList for a specific time</returns>
-    public WeightedList<T> ToWeightedList(float time)
+    public WeightedList ToWeightedList(float time)
     {
-        var weightedList = new WeightedList<T>([new WeightedItem<T>(List[0].Item, List[0].Value.Sample(time))]);
-        weightedList.RemoveAt(0);
-
-        var i = 0;
-        foreach (WeightedCurve<T> item in List.Where(item => item.Value.Sample(time) > 0))
+        var weightedList = new WeightedList();
+        
+        for (var i = 0; i < Size; i++)
         {
-            weightedList[i] = new WeightedItem<T>(item.Item, item.Value.Sample(time));
-            i++;
+            if (curves[i].Sample(time) > 0)
+                weightedList.Add(blueprints[i], handlers[i], curves[i].Sample(time));
         }
 
         return weightedList;
@@ -77,24 +68,42 @@ public partial class WeightedCurveList<[MustBeVariant] T> : Resource where T : R
         [
             new()
             {
-                { "name", $"Size" },
+                { "name", "Strain" },
+                { "type", (int)Variant.Type.Int },
+                { "hint", (int)PropertyHint.Enum },
+                { "hint_string", "Turret Blueprint, Module Chain Handler" },
+                { "usage", (int)PropertyUsageFlags.Editor + (int)PropertyUsageFlags.Storage + (int)PropertyUsageFlags.ReadOnly }
+            },
+            new()
+            {
+                { "name", "Size" },
                 { "type", (int)Variant.Type.Int },
                 { "hint", (int)PropertyHint.None },
-                { "usage", (int)PropertyUsageFlags.Array + (int)PropertyUsageFlags.Default },
+                { "usage", (int)PropertyUsageFlags.Array + (int)PropertyUsageFlags.Editor + (int)PropertyUsageFlags.Storage },
                 { "class_name", "Items,list_" }
             }
         ];
-    
+
         for (var i = 0; i < _size; i++)
         {
-            properties.Add(new Dictionary()
-            {
-                { "name", $"list_{i}/Item" },
-                { "type", (int)Variant.Type.Object },
-                { "hint", (int)PropertyHint.ResourceType },
-                { "hint_string", typeof(T).Name },
-                { "usage", (int)PropertyUsageFlags.Editor + (int)PropertyUsageFlags.Storage }
-            });
+            if (strain == Strain.TurretBlueprint)
+                properties.Add(new Dictionary()
+                {
+                    { "name", $"list_{i}/Blueprint" },
+                    { "type", (int)Variant.Type.Object },
+                    { "hint", (int)PropertyHint.ResourceType },
+                    { "hint_string", nameof(TurretBlueprint) },
+                    { "usage", (int)PropertyUsageFlags.Editor + (int)PropertyUsageFlags.Storage }
+                });
+            else if (strain == Strain.ModuleChainHandler)
+                properties.Add(new Dictionary()
+                {
+                    { "name", $"list_{i}/Handler" },
+                    { "type", (int)Variant.Type.Object },
+                    { "hint", (int)PropertyHint.ResourceType },
+                    { "hint_string", nameof(ModuleChainHandler) },
+                    { "usage", (int)PropertyUsageFlags.Editor + (int)PropertyUsageFlags.Storage }
+                });
             properties.Add(new Dictionary()
             {
                 { "name", $"list_{i}/Curve" },
@@ -115,17 +124,25 @@ public partial class WeightedCurveList<[MustBeVariant] T> : Resource where T : R
         {
             string[] split = propertyName.Split('/');
             int index = int.Parse(split[0]["list_".Length..]);
-            List[index] ??= new WeightedCurve<T>();
             switch (split[1])
             {
                 case "Curve":
-                    return List[index].Curve;
-                case "Item":
-                    return List[index].Item;
+                    return curves[index];
+                case "Blueprint":
+                    return blueprints[index];
+                case "Handler":
+                    return handlers[index];
                 default:
                     GD.PrintErr("Invalid property name in WeightedList for WeightedItem: " + split[1]);
                     break;
             }
+        }
+        else switch (propertyName)
+        {
+            case "Strain":
+                return Variant.From(strain);
+            case "Size":
+                return Size;
         }
 
         return default;
@@ -138,15 +155,18 @@ public partial class WeightedCurveList<[MustBeVariant] T> : Resource where T : R
         {
             string[] split = propertyName.Split('/');
             int index = int.Parse(split[0]["list_".Length..]);
-            List[index] ??= new WeightedCurve<T>();
             switch (split[1])
             {
                 case "Curve":
-                    List[index].Curve = value.As<Curve>();
+                    curves[index] = value.As<Curve>();
                     NotifyPropertyListChanged();
                     return true;
-                case "Item":
-                    List[index].Item = value.As<T>();
+                case "Blueprint":
+                    blueprints[index] = value.As<TurretBlueprint>();
+                    NotifyPropertyListChanged();
+                    return true;
+                case "Handler":
+                    handlers[index] = value.As<ModuleChainHandler>();
                     NotifyPropertyListChanged();
                     return true;
                 default:
@@ -154,6 +174,17 @@ public partial class WeightedCurveList<[MustBeVariant] T> : Resource where T : R
                     break;
             }
         }
+        else switch (propertyName)
+        {
+            case "Strain":
+                strain = value.As<Strain>();
+                NotifyPropertyListChanged();
+                return true;
+            case "Size":
+                Size = value.As<int>();
+                return true;
+        }
+        
         return false;
     }
 }

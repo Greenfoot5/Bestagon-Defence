@@ -266,7 +266,7 @@ namespace UI.Inventory
         public void DisplayTurretInventory()
         {
             BuildableTile.SelectedTile = null;
-            Show();
+            Shuw();
             inventoryTitle.Text = turretInventoryTitle;
             turretInventoryPage.Visible = true;
             moduleInventoryPage.Visible = false;
@@ -312,7 +312,7 @@ namespace UI.Inventory
                 }
             }
             
-            Show();
+            Shuw();
             inventoryTitle.Text = moduleInventoryTitle;
             moduleInventoryPage.Visible = true;
             turretInventoryPage.Visible = false;
@@ -327,7 +327,7 @@ namespace UI.Inventory
                 return;
             }
             
-            Show();
+            Shuw();
             inventoryTitle.Text = _target.TurretBlueprint.displayName;
             turretInfoPage.Visible = true;
             turretInventoryPage.Visible = false;
@@ -358,7 +358,7 @@ namespace UI.Inventory
             // rt.anchorMax = new Vector2(0f, rt.anchorMax.Y);
         }
 
-        private void Show()
+        private void Shuw()
         {
             // var rt = (RectTransform)transform;
             // rt.anchorMin = new Vector2(0f, rt.anchorMin.Y);

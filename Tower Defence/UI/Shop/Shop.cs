@@ -16,6 +16,10 @@ namespace UI.Shop
     // [RequireComponent(typeof(GenerateShopSelection))]
     public partial class Shop : BaseButton
     {
+        public void ShowFirstItem()
+        {
+            GD.Print("Data: " + ShopData.InitialTurretSelection);
+        }
         private ModuleChainHandler _selectedHandler;
         
         /// <summary>

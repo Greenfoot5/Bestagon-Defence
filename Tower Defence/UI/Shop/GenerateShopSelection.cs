@@ -145,7 +145,7 @@ public partial class GenerateShopSelection : Control
     private TurretBlueprint GenerateInitialItem(int selectionIndex, ICollection<TurretBlueprint> selectedTurrets)
     {
         // Grants a turret option
-        var turrets = new WeightedList<TurretBlueprint>(_shopData.InitialTurretSelection);
+        var turrets = new WeightedList(_shopData.InitialTurretSelection);
         turrets.RemoveUnweighted();
         TurretBlueprint selected = turrets.GetRandomItem(duplicateType: _shopData.InitialDuplicateCheck,
             previousPicks: selectedTurrets.Take(selectionIndex).ToArray(), rng: Shop.Random);
@@ -159,7 +159,7 @@ public partial class GenerateShopSelection : Control
     private TurretBlueprint GenerateTurretItem(int selectionIndex, ICollection<TurretBlueprint> selectedTurrets)
     {
         // Grants a turret option
-        WeightedList<TurretBlueprint> turrets = _shopData.Turrets.ToWeightedList(GameStats.Rounds);
+        var turrets = _shopData.Turrets.ToWeightedList(GameStats.Rounds);
         TurretBlueprint selected = turrets.GetRandomItem(duplicateType: _shopData.TurretDuplicateCheck,
             previousPicks: selectedTurrets.Take(selectionIndex).ToArray(), rng: Shop.Random);
 
@@ -173,12 +173,12 @@ public partial class GenerateShopSelection : Control
         
     private ModuleChainHandler GenerateModuleItem(int selectionIndex, ICollection<ModuleChainHandler> selectedModules)
     { 
-        WeightedList<ModuleChainHandler> modules = _shopData.ModuleHandlers.ToWeightedList(GameStats.Rounds);
+        var modules = _shopData.ModuleHandlers.ToWeightedList(GameStats.Rounds);
 
         // Only show modules that can be equipped on a turret the player has (or had)
         for (var i = 0; i < modules.Count; i++)
         {
-            Type[] validTypes = modules[i].Item.GetModule().GetValidTypes();
+            Type[] validTypes = modules.GetHandler(i).GetModule().GetValidTypes();
             if (validTypes.Any(x => _turretTypes.Contains(x))) continue;
                 
             modules.RemoveAt(i);
@@ -260,7 +260,7 @@ public partial class GenerateShopSelection : Control
         {
             if (_shopData.TurretOptionWeight.Sample(GameStats.Rounds) < 0)
                 _shopData.Turrets.ToWeightedList(GameStats.Rounds)
-                    .GetRandomItems(selectionCount, _shopData.TurretDuplicateCheck);
+                    .GetRandomItems<TurretBlueprint>(selectionCount, _shopData.TurretDuplicateCheck);
         }
         catch (NullReferenceException)
         {
@@ -270,7 +270,7 @@ public partial class GenerateShopSelection : Control
         {
             if (_shopData.ModuleOptionWeight.Sample(GameStats.Rounds) < 0)
                 _shopData.ModuleHandlers.ToWeightedList(GameStats.Rounds)
-                    .GetRandomItems(selectionCount, _shopData.ModuleDuplicateCheck);
+                    .GetRandomItems<ModuleChainHandler>(selectionCount, _shopData.ModuleDuplicateCheck);
         }
         catch (NullReferenceException)
         {

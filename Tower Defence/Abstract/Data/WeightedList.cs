@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Godot;
 using Godot.Collections;
+using Turrets;
 
 namespace Abstract.Data;
 
@@ -15,17 +16,26 @@ public enum DuplicateTypes
     ByName,
     ByType
 }
+
+public enum Strain
+{
+    TurretBlueprint,
+    ModuleChainHandler
+}
     
 /// <summary>
 /// A list of items and their weight.
 /// Can get a random item and total weight of the values
 /// </summary>
-/// <typeparam name="T">The type of the list</typeparam>
 [Serializable]
 [Tool]
-public partial class WeightedList<[MustBeVariant] T> : Resource where T : Resource, ISubtypeable
+public partial class WeightedList : Resource
 {
-    private Array<WeightedItem<T>> list;
+    private Array<TurretBlueprint> blueprints = [];
+    private Array<ModuleChainHandler> handlers = [];
+    private Array<float> weights = [];
+    
+    private Strain strain;
     
     private int _size;
     
@@ -35,42 +45,30 @@ public partial class WeightedList<[MustBeVariant] T> : Resource where T : Resour
         set
         {
             _size = value;
-            list.Resize(_size);
+            blueprints.Resize(_size);
+            handlers.Resize(_size);
+            weights.Resize(_size);
             NotifyPropertyListChanged();
         }
     }
-        
-    [ExportToolButton("Refresh Item(s)")]
-    public Callable RefreshButton => Callable.From(RefreshData);
 
-    public void RefreshData()
+    public WeightedList(WeightedList list)
     {
-        ResourceLoader.Load<WeightedList<T>>(ResourcePath, cacheMode: ResourceLoader.CacheMode.ReplaceDeep);
-    }
-    
-    public WeightedItem<T> this[int key]
-    {
-        get => list[key];
-        set => list[key] = value;
-    }
-    
-    /// <summary>
-    /// Basic constructor for the list
-    /// </summary>
-    /// <param name="list">The list to create</param>
-    public WeightedList(List<WeightedItem<T>> list)
-    {
-        this.list = [..list];
+        Count = list.Count;
+        blueprints = list.blueprints;
+        handlers = list.handlers;
+        weights = list.weights;
+        strain = list.strain;
     }
 
-    public WeightedList(WeightedList<T> list)
+    public WeightedList(Strain strain)
     {
-        this.list = [..list.list];
+        this.strain = strain;
     }
 
     public WeightedList()
     {
-        list = [];
+        strain = Strain.TurretBlueprint;
     }
 
     /// <summary>
@@ -81,11 +79,12 @@ public partial class WeightedList<[MustBeVariant] T> : Resource where T : Resour
     /// <param name="previousPicks">The previous picks to check against</param>
     /// <returns>A random item</returns>
     /// <exception cref="NullReferenceException">The list isn't suitable to grant all items</exception>
-    public T GetRandomItem(DuplicateTypes duplicateType = DuplicateTypes.None, Squirrel3 rng = null, ICollection<T> previousPicks = null)
+    public T GetRandomItem<[MustBeVariant] T>(DuplicateTypes duplicateType = DuplicateTypes.None, Squirrel3 rng = null, ICollection<T> previousPicks = null)
+        where T : Resource, ISubtypeable
     {
         rng ??= new Squirrel3();
         previousPicks ??= new Array<T>();
-        var items = new List<WeightedItem<T>>(list);
+        var items = new WeightedList(this);
             
         foreach (T pick in previousPicks)
         {
@@ -94,7 +93,7 @@ public partial class WeightedList<[MustBeVariant] T> : Resource where T : Resour
                 case DuplicateTypes.ByName:
                     for (var k = 0; k < items.Count; k++)
                     {
-                        if (items[k].Item.ToString() == pick.ToString())
+                        if (items.GetItemAsResource(k).ToString() == pick.ToString())
                             items.RemoveAt(k);
                     }
 
@@ -102,7 +101,7 @@ public partial class WeightedList<[MustBeVariant] T> : Resource where T : Resour
                 case DuplicateTypes.ByType:
                     for (var k = 0; k < items.Count; k++)
                     {
-                        if (items[k].Item.GetSubtype() == pick.GetSubtype())
+                        if (items.GetItemAsSubtypable(k).GetSubtype() == pick.GetSubtype())
                         {
                             items.RemoveAt(k);
                         }
@@ -116,7 +115,7 @@ public partial class WeightedList<[MustBeVariant] T> : Resource where T : Resour
             }
         }
 
-        float total = items.Where(item => item.Weight > 0).Sum(item => item.Weight);
+        float total = items.GetTotalWeight();
         if (items.Count < 1) throw new NullReferenceException("WeightedList is not large enough");
         if (total == 0) throw new NullReferenceException("Total Weight is 0");
 
@@ -138,12 +137,17 @@ public partial class WeightedList<[MustBeVariant] T> : Resource where T : Resour
         var j = 0;
         while (picked >= 0)
         {
-            if (picked < items[j].Weight)
+            if (picked < items.weights[j])
             {
-                return items[j].Item;
+                return strain switch
+                {
+                    Strain.TurretBlueprint => blueprints[j] as T,
+                    Strain.ModuleChainHandler => handlers[j] as T,
+                    _ => null
+                };
             }
 
-            picked -= items[j].Weight;
+            picked -= items.weights[j];
             j++;
         }
 
@@ -158,17 +162,18 @@ public partial class WeightedList<[MustBeVariant] T> : Resource where T : Resour
     /// <param name="rng">The random generator to use</param>
     /// <returns>A random item</returns>
     /// <exception cref="NullReferenceException">The list isn't suitable to grant all items</exception>
-    public T[] GetRandomItems(int count, DuplicateTypes duplicateType = DuplicateTypes.None, Squirrel3 rng = null)
+    public T[] GetRandomItems<[MustBeVariant] T>(int count, DuplicateTypes duplicateType = DuplicateTypes.None, Squirrel3 rng = null)
+        where T : Resource, ISubtypeable
     {
         rng ??= new Squirrel3();
         Math.Clamp(count, 0, int.MaxValue);
         float total = GetTotalWeight();
-        if (list.Count < count) throw new NullReferenceException("WeightedList is not large enough");
+        if (Count < count) throw new NullReferenceException("WeightedList is not large enough");
         if (total == 0) throw new NullReferenceException("Total Weight is 0");
-            
+        
         var output = new T[count];
         // Make a copy we can remove items from
-        var items = new List<WeightedItem<T>>(list);
+        var items = new WeightedList(this);
 
         for (var i = 0; i < count; i++)
         {
@@ -182,20 +187,25 @@ public partial class WeightedList<[MustBeVariant] T> : Resource where T : Resour
                     DuplicateTypes.ByType => DuplicateTypes.None,
                     _ => duplicateType
                 };
-                return GetRandomItems(count, duplicateType, rng);
+                return GetRandomItems<T>(count, duplicateType, rng);
             }
                 
             float picked = rng.Next() * total;
             var j = 0;
             while (picked >= 0 && output[i] == null)
             {
-                if (picked < items[j].Weight)
+                if (picked < items.weights[j])
                 {
-                    output[i] = items[j].Item;
+                    output[i] = strain switch
+                    {
+                        Strain.TurretBlueprint => blueprints[j] as T,
+                        Strain.ModuleChainHandler => handlers[j] as T,
+                        _ => null
+                    };
                 }
                 else
                 {
-                    picked -= items[j].Weight;
+                    picked -= items.weights[j];
                     j++;
                 }
             }
@@ -206,14 +216,14 @@ public partial class WeightedList<[MustBeVariant] T> : Resource where T : Resour
                 case DuplicateTypes.ByName:
                     for (var k = 0; k < items.Count; k++)
                     {
-                        if (items[k].Item.ToString() == output[i].ToString())
+                        if (items.GetItemAsResource(k).ToString() == output[i].ToString())
                             items.RemoveAt(k);
                     }
                     break;
                 case DuplicateTypes.ByType:
                     for (var k = 0; k < items.Count; k++)
                     {
-                        if (items[k].Item.GetType() == output[i].GetType())
+                        if (items.GetItemAsSubtypable(k).GetSubtype() == output[i].GetSubtype())
                             items.RemoveAt(k);
                     }
                     break;
@@ -222,10 +232,36 @@ public partial class WeightedList<[MustBeVariant] T> : Resource where T : Resour
                 default:
                     throw new ArgumentOutOfRangeException(nameof(duplicateType), duplicateType, null);
             }
-            total = items.Where(item => item.Weight > 0).Sum(item => item.Weight);
+
+            total = items.GetTotalWeight();
         }
 
         return output;
+    }
+    
+    public Resource GetItemAsResource(int key)
+    {
+        return strain switch
+        {
+            Strain.TurretBlueprint => blueprints[key],
+            Strain.ModuleChainHandler => handlers[key],
+            _ => null
+        };
+    }
+    
+    public ISubtypeable GetItemAsSubtypable(int key)
+    {
+        return strain switch
+        {
+            Strain.TurretBlueprint => blueprints[key],
+            Strain.ModuleChainHandler => handlers[key],
+            _ => null
+        };
+    }
+    
+    public ModuleChainHandler GetHandler(int key)
+    {
+        return handlers[key];
     }
     
     /// <summary>
@@ -235,31 +271,25 @@ public partial class WeightedList<[MustBeVariant] T> : Resource where T : Resour
     /// <exception cref="NullReferenceException">The list is empty</exception>
     public float GetTotalWeight()
     {
-        if (list.Count == 0) throw new NullReferenceException("WeightedList is empty");
+        if (Count == 0) throw new NullReferenceException("WeightedList is empty");
 
-        return list.Where(item => item.Weight > 0).Sum(item => item.Weight);
-    }
-
-    public void RemoveItem(T item)
-    {
-        var i = 0;
-        while (i < list.Count)
-        {
-            if (list[i].Item.Equals(item))
-                list.RemoveAt(i);
-            else
-                i++;
-        }
+        return weights.Where(weight => weight > 0).Sum();
     }
         
     public void RemoveAt(int index)
     {
-        list.RemoveAt(index);
+        blueprints.RemoveAt(index);
+        handlers.RemoveAt(index);
+        weights.RemoveAt(index);
+        Count--;
     }
-
-    public void Add(WeightedItem<T> item)
+    
+    public void Add(TurretBlueprint blueprint, ModuleChainHandler handler, float weight)
     {
-        list.Add(item);
+        blueprints.Add(blueprint);
+        handlers.Add(handler);
+        weights.Add(weight);
+        Count++;
     }
 
     public void RemoveUnweighted()
@@ -269,10 +299,10 @@ public partial class WeightedList<[MustBeVariant] T> : Resource where T : Resour
             Clear();
             
         var i = 0;
-        while (i < list.Count)
+        while (i < Count)
         {
-            if (list[i].Weight <= 0)
-                list.RemoveAt(i);
+            if (weights[i] <= 0)
+                RemoveAt(i);
             else
                 i++;
         }
@@ -283,18 +313,29 @@ public partial class WeightedList<[MustBeVariant] T> : Resource where T : Resour
     /// </summary>
     public void Clear()
     {
-        list = [];
+        blueprints.Clear();
+        handlers.Clear();
+        weights.Clear();
+        Count = 0;
     }
 
     public bool IsEmpty()
     {
-        return list.Count == 0;
+        return Count == 0;
     }
     
     public override Array<Dictionary> _GetPropertyList()
     {
         Array<Dictionary> properties =
         [
+            new()
+            {
+                { "name", "Strain" },
+                { "type", (int)Variant.Type.Int },
+                { "hint", (int)PropertyHint.Enum },
+                { "hint_string", "Turret Blueprint, Module Chain Handler" },
+                { "usage", (int)PropertyUsageFlags.Editor + (int)PropertyUsageFlags.Storage + (int)PropertyUsageFlags.ReadOnly }
+            },
             new()
             {
                 { "name", $"Count" },
@@ -307,14 +348,24 @@ public partial class WeightedList<[MustBeVariant] T> : Resource where T : Resour
 
         for (var i = 0; i < _size; i++)
         {
-            properties.Add(new Dictionary()
-            {
-                { "name", $"list_{i}/Item" },
-                { "type", (int)Variant.Type.Object },
-                { "hint", (int)PropertyHint.ResourceType },
-                { "hint_string", typeof(T).Name },
-                { "usage", (int)PropertyUsageFlags.Editor + (int)PropertyUsageFlags.Storage }
-            });
+            if (strain == Strain.TurretBlueprint)
+                properties.Add(new Dictionary()
+                {
+                    { "name", $"list_{i}/Blueprint" },
+                    { "type", (int)Variant.Type.Object },
+                    { "hint", (int)PropertyHint.ResourceType },
+                    { "hint_string", nameof(TurretBlueprint) },
+                    { "usage", (int)PropertyUsageFlags.Editor + (int)PropertyUsageFlags.Storage }
+                });
+            else if (strain == Strain.ModuleChainHandler)
+                properties.Add(new Dictionary()
+                {
+                    { "name", $"list_{i}/Handler" },
+                    { "type", (int)Variant.Type.Object },
+                    { "hint", (int)PropertyHint.ResourceType },
+                    { "hint_string", nameof(ModuleChainHandler) },
+                    { "usage", (int)PropertyUsageFlags.Editor + (int)PropertyUsageFlags.Storage }
+                });
             properties.Add(new Dictionary()
             {
                 { "name", $"list_{i}/Weight" },
@@ -335,17 +386,25 @@ public partial class WeightedList<[MustBeVariant] T> : Resource where T : Resour
         {
             string[] split = propertyName.Split('/');
             int index = int.Parse(split[0]["list_".Length..]);
-            list[index] ??= new WeightedItem<T>();
             switch (split[1])
             {
                 case "Weight":
-                    return list[index].Weight;
-                case "Item":
-                    return list[index].Item;
+                    return weights[index];
+                case "Blueprint":
+                    return blueprints[index];
+                case "Handler":
+                    return handlers[index];
                 default:
                     GD.PrintErr("Invalid property name in WeightedList for WeightedItem: " + split[1]);
                     break;
             }
+        }
+        else switch (propertyName)
+        {
+            case "Strain":
+                return Variant.From(strain);
+            case "Count":
+                return Count;
         }
 
         return default;
@@ -358,15 +417,18 @@ public partial class WeightedList<[MustBeVariant] T> : Resource where T : Resour
         {
             string[] split = propertyName.Split('/');
             int index = int.Parse(split[0]["list_".Length..]);
-            list[index] ??= new WeightedItem<T>();
             switch (split[1])
             {
                 case "Weight":
-                    list[index].Weight = value.As<float>();
+                    weights[index] = value.As<float>();
                     NotifyPropertyListChanged();
                     return true;
-                case "Item":
-                    list[index].Item = value.As<T>();
+                case "Blueprint":
+                    blueprints[index] = value.As<TurretBlueprint>();
+                    NotifyPropertyListChanged();
+                    return true;
+                case "Handler":
+                    handlers[index] = value.As<ModuleChainHandler>();
                     NotifyPropertyListChanged();
                     return true;
                 default:
@@ -374,6 +436,17 @@ public partial class WeightedList<[MustBeVariant] T> : Resource where T : Resour
                     break;
             }
         }
+        else switch (propertyName)
+        {
+            case "Strain":
+                strain = value.As<Strain>();
+                NotifyPropertyListChanged();
+                return true;
+            case "Count":
+                Count = value.As<int>();
+                return true;
+        }
+        
         return false;
     }
 }

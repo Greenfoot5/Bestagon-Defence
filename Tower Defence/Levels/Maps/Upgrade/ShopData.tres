@@ -1,20 +1,21 @@
-[gd_resource type="Resource" script_class="ShopData" load_steps=11 format=3 uid="uid://b6vw6l67k0fne"]
+[gd_resource type="Resource" script_class="ShopData" load_steps=10 format=3 uid="uid://b6vw6l67k0fne"]
 
-[ext_resource type="Script" path="csharp://Abstract/Data/WeightedCurveList.cs:Abstract.Data.WeightedCurveList`1[Abstract.Data.ModuleChainHandler].cs" id="2_7d5lu"]
-[ext_resource type="Script" path="csharp://Abstract/Data/WeightedList.cs:Abstract.Data.WeightedList`1[Turrets.TurretBlueprint].cs" id="2_ksl2g"]
-[ext_resource type="Script" path="csharp://Abstract/Data/WeightedCurveList.cs:Abstract.Data.WeightedCurveList`1[Turrets.TurretBlueprint].cs" id="3_ksl2g"]
+[ext_resource type="Script" uid="uid://by85y3cqstj04" path="res://Abstract/Data/WeightedList.cs" id="1_ps0rn"]
+[ext_resource type="Script" uid="uid://c02jid8ovdi0j" path="res://Abstract/Data/WeightedCurveList.cs" id="2_d4njv"]
 [ext_resource type="Script" uid="uid://5mfid57rp3et" path="res://Levels/Maps/ShopData.cs" id="4_jbv3k"]
 
-[sub_resource type="Resource" id="Resource_d4njv"]
-script = ExtResource("2_ksl2g")
+[sub_resource type="Resource" id="Resource_ps0rn"]
+script = ExtResource("1_ps0rn")
+Strain = 0
 Count = 0
 
 [sub_resource type="Curve" id="Curve_d4njv"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
 point_count = 1
 
-[sub_resource type="Resource" id="Resource_7d5lu"]
-script = ExtResource("2_7d5lu")
+[sub_resource type="Resource" id="Resource_d4njv"]
+script = ExtResource("2_d4njv")
+Strain = 1
 Size = 0
 
 [sub_resource type="Curve" id="Curve_7d5lu"]
@@ -25,21 +26,22 @@ point_count = 1
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
 point_count = 1
 
-[sub_resource type="Resource" id="Resource_ksl2g"]
-script = ExtResource("3_ksl2g")
+[sub_resource type="Resource" id="Resource_jbv3k"]
+script = ExtResource("2_d4njv")
+Strain = 0
 Size = 0
 
 [resource]
 script = ExtResource("4_jbv3k")
-InitialTurretSelection = SubResource("Resource_d4njv")
+InitialTurretSelection = SubResource("Resource_ps0rn")
 InitialDuplicateCheck = 0
 TurretOptionWeight = SubResource("Curve_ksl2g")
 ModuleOptionWeight = SubResource("Curve_7d5lu")
 LifeOptionWeight = SubResource("Curve_d4njv")
 LifeCount = 2
-Turrets = SubResource("Resource_ksl2g")
+Turrets = SubResource("Resource_jbv3k")
 TurretDuplicateCheck = 1
-ModuleHandlers = SubResource("Resource_7d5lu")
+ModuleHandlers = SubResource("Resource_d4njv")
 ModuleDuplicateCheck = 2
 InitialSelectionCount = 1
 InitialChoices = 1
