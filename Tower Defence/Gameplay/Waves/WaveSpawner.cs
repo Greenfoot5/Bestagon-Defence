@@ -90,8 +90,6 @@ namespace Gameplay.Waves
         public override void _Ready()
         {
             EnemiesAlive = 0;
-            // TODO - Prep time?
-            // _countdown = preparationTime;
             
             // Creates and adds all waypoints to the array
             _points = new Vector2[GetChildCount()];
@@ -106,6 +104,7 @@ namespace Gameplay.Waves
             _spawnTimer = new Timer();
             _spawnTimer.Timeout += SpawnNext;
             _spawnTimer.OneShot = true;
+            _spawnTimer.Autostart = false;
             AddChild(_spawnTimer);
         }
 

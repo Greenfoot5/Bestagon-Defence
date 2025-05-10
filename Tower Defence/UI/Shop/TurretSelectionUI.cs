@@ -74,9 +74,8 @@ namespace UI.Shop
         /// The Hexagons shader background of the card
         // </summary>
         [ExportGroup("Colors")]
-        // TODO - Hexagons shader
-        // [Export]
-        // private Hexagons bg;
+        [Export]
+        private BaseButton bg;
         /// <summary>
         /// The background Panel of the module's selection
         // </summary>
@@ -103,8 +102,8 @@ namespace UI.Shop
             
             // Icon and Glyph
             icon.Texture = turret.shopIcon;
-            glyph.Texture = turret.glyph.glyph;
-            glyph.SelfModulate = turret.glyph.body;
+            // glyph.Texture = turret.glyph.glyph;
+            // glyph.SelfModulate = turret.glyph.body;
             
             // Turret stats
             // TODO - Get stats
@@ -140,7 +139,7 @@ namespace UI.Shop
             range.SetColor(turret.accent);
             
             // Adds the click event to the card
-            // bg.GetComponent<Button>().onClick.AddListener(delegate { MakeSelection(shop); });
+            bg.Pressed += () => { MakeSelection(shop); };
         }
 
         /// <summary>

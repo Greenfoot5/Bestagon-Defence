@@ -47,9 +47,7 @@ public partial class GenerateShopSelection : Control
     /// <summary>
     /// The turrets already purchased
     /// </summary>
-    // [Export]
-    // TODO - Export
-    private readonly List<Type> _turretTypes = new() {typeof(Turret)};
+    private readonly List<Type> _turretTypes = [typeof(Turret)];
 
     /// <summary>
     /// The button to show when unlocked
@@ -72,6 +70,7 @@ public partial class GenerateShopSelection : Control
     public override void _Ready()
     {
         _shopData = _shop.ShopData;
+        GenerateSelection();
     }
         
     /// <summary>
@@ -83,7 +82,7 @@ public partial class GenerateShopSelection : Control
 
         Shop.OldState = Shop.Random.GetState();
         if (_shopData.HiddenMode != HiddenMode.Disabled)
-            _hiddenChoices = new List<Tuple<Object, int>>();
+            _hiddenChoices = [];
 
         // Destroy the previous selection
         for (int i = GetChildCount() - 1; i >= 0; i--)
@@ -196,7 +195,7 @@ public partial class GenerateShopSelection : Control
         return selected;
     }
 
-    private GodotObject GenerateLifeItem()
+    private LifeSelectionUI GenerateLifeItem()
     {
         // Create the ui as a child
         var lifeUI = _lifeSelectionUI.Instantiate<LifeSelectionUI>();
@@ -210,7 +209,7 @@ public partial class GenerateShopSelection : Control
     /// Adds a new Module UI option to the player's choice
     /// </summary>
     /// <param name="handler">The Module the player can pick</param>
-    private GodotObject GenerateModuleUI(ModuleChainHandler handler)
+    private ModuleSelectionUI GenerateModuleUI(ModuleChainHandler handler)
     {
         // Create the ui as a child
         var moduleUI = _moduleSelectionUI.Instantiate<ModuleSelectionUI>();
@@ -224,10 +223,10 @@ public partial class GenerateShopSelection : Control
     /// Adds a new turret UI option to the player's choice
     /// </summary>
     /// <param name="turret">The turret the player can pick</param>
-    private GodotObject GenerateTurretUI(TurretBlueprint turret)
+    private TurretSelectionUI GenerateTurretUI(TurretBlueprint turret)
     {
         // TODO - Does return correct type?
-        turret.glyph = _shop.GlyphsLookup.GetForType(turret.prefab.GetType());
+        // turret.glyph = _shop.GlyphsLookup.GetForType(turret.prefab.GetType());
         var turretUI = _turretSelectionUI.Instantiate<TurretSelectionUI>();
         AddChild(turretUI);
         turretUI.Name = "_" + turretUI.Name;

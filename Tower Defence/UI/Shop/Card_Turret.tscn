@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://bxvxv7t1wcksh" path="res://UI/TurretStats/TurretStat.cs" id="5_xtsia"]
 [ext_resource type="Texture2D" uid="uid://dvm15nkgk7e1q" path="res://UI/TurretStats/Damage.tres" id="6_3q6l4"]
 
-[node name="Card_Turret" type="Panel" node_paths=PackedStringArray("displayName", "tagline", "icon", "glyph", "modulesSection", "modulesLayout", "damage", "rate", "range", "modulesBg", "modulesTitle")]
+[node name="Card_Turret" type="Panel" node_paths=PackedStringArray("displayName", "tagline", "icon", "glyph", "modulesSection", "modulesLayout", "damage", "rate", "range", "bg", "modulesBg", "modulesTitle")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -27,6 +27,7 @@ moduleUI = ExtResource("2_pittc")
 damage = NodePath("Button/Content/Info/Stats/Damage")
 rate = NodePath("Button/Content/Info/Stats/Rate")
 range = NodePath("Button/Content/Info/Stats/Range")
+bg = NodePath("Button")
 modulesBg = NodePath("Button/Content/Modules")
 modulesTitle = NodePath("Button/Content/Modules/Title")
 
