@@ -16,10 +16,6 @@ namespace UI.Shop
     // [RequireComponent(typeof(GenerateShopSelection))]
     public partial class Shop : BaseButton
     {
-        public void ShowFirstItem()
-        {
-            GD.Print("Data: " + ShopData.InitialTurretSelection);
-        }
         private ModuleChainHandler _selectedHandler;
         
         /// <summary>
@@ -233,9 +229,9 @@ namespace UI.Shop
         public int GetEnergyCost()
         {
             var expression = new Expression();
-            expression.Parse(ShopData.SelectionCostFormula.Replace("x", $"({TotalCellsCollected.ToString()})"));
-            int output =  expression.Execute().AsInt32();
-            if (output == 0) 
+            expression.Parse(ShopData.SelectionCostFormula, ["x"]);
+            int output =  expression.Execute([TotalCellsCollected]).AsInt32();
+            if (output <= 0) 
                 GD.PushError("Energy Cost was 0, likely an issue with formula");
             return output;
         }

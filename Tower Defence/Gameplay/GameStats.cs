@@ -97,13 +97,13 @@ namespace Gameplay
         {
             if (!_active)
             {
-                _energy = StartEnergy;
                 _powercells = 0;
                 _lives = StartLives;
                 _rounds = 1;
                 _randomSeed = Environment.TickCount;
                 GD.Seed((ulong)_randomSeed);
                 Shop.Random = new Squirrel3(_randomSeed);
+                Energy = StartEnergy;
             }
 
             // Controls
