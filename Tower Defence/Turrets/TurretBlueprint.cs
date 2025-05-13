@@ -33,7 +33,7 @@ public partial class TurretBlueprint : Resource, ISubtypeable
     /// <summary>
     /// The glyph for the turret
     /// </summary>
-    public TurretGlyphSo glyph;
+    public TurretGlyph glyph;
         
     /// <summary>
     /// The main colour of the turret.

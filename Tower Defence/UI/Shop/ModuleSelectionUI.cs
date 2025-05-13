@@ -86,13 +86,13 @@ namespace UI.Shop
             
             foreach (Type turretType in module.GetValidTypes())
             {
-                TurretGlyphSo glyphSo = shop.GlyphsLookup.GetForType(turretType);
+                TurretGlyph glyphRes = shop.GlyphsLookup.GetForType(turretType);
                 Node glyph = glyphPrefab.Instantiate();
                 applicableGlyphs.AddChild(glyph);
                 glyph.Name = "_" + glyph.Name;
                 // glyph.Find("Body").GetComponent<HexagonSprite>().color = glyphSo.body;
                 // glyph.Find("Shade").GetComponent<HexagonSprite>().color = glyphSo.shade;
-                glyph.GetNode<Sprite2D>("Glyph").Texture = glyphSo.glyph;
+                glyph.GetNode<Sprite2D>("Glyph").Texture = glyphRes.Glyph;
             }
             
             // When the card is clicked, the game picks the module

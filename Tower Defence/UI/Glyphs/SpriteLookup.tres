@@ -1,0 +1,71 @@
+[gd_resource type="Resource" script_class="TypeSpriteLookup" load_steps=17 format=3 uid="uid://n0kcky3mpl8q"]
+
+[ext_resource type="Script" uid="uid://dw73r34mdjcgj" path="res://Abstract/TypeSpriteLookup.cs" id="1_lvwce"]
+[ext_resource type="Texture2D" uid="uid://ck8qfb3vnn670" path="res://UI/Glyphs/Any.tres" id="1_unu14"]
+[ext_resource type="Texture2D" uid="uid://br37km3cwmor1" path="res://UI/Glyphs/Choker.tres" id="1_usrek"]
+[ext_resource type="Script" uid="uid://c51bg7vils860" path="res://UI/Glyphs/TurretGlyph.cs" id="2_djc47"]
+[ext_resource type="Texture2D" uid="uid://btxqimrikf78w" path="res://UI/Glyphs/Gunner.tres" id="3_xbxry"]
+[ext_resource type="Texture2D" uid="uid://7d5is2r7a2uf" path="res://UI/Glyphs/Lancer.tres" id="4_v1bek"]
+[ext_resource type="Texture2D" uid="uid://g3f5rnqin2jp" path="res://UI/Glyphs/Laser.tres" id="5_q1ckl"]
+[ext_resource type="Texture2D" uid="uid://c1px3poumr7i6" path="res://UI/Glyphs/Shooter.tres" id="6_cndl1"]
+[ext_resource type="Texture2D" uid="uid://b6a5tjvgjvvc0" path="res://UI/Glyphs/Smasher.tres" id="7_3hlsn"]
+
+[sub_resource type="Resource" id="Resource_lcq5x"]
+script = ExtResource("2_djc47")
+Glyph = ExtResource("1_usrek")
+Body = Color(0.976471, 0.396078, 0.223529, 1)
+Shade = Color(0, 0, 0, 0.25)
+metadata/_custom_type_script = "uid://c51bg7vils860"
+
+[sub_resource type="Resource" id="Resource_w8nu2"]
+script = ExtResource("2_djc47")
+Glyph = ExtResource("3_xbxry")
+Body = Color(0.588235, 0.219608, 0.94902, 1)
+Shade = Color(0, 0, 0, 0.25)
+metadata/_custom_type_script = "uid://c51bg7vils860"
+
+[sub_resource type="Resource" id="Resource_cl63i"]
+script = ExtResource("2_djc47")
+Glyph = ExtResource("4_v1bek")
+Body = Color(0.203922, 0.266667, 0.670588, 1)
+Shade = Color(0, 0, 0, 0.25)
+metadata/_custom_type_script = "uid://c51bg7vils860"
+
+[sub_resource type="Resource" id="Resource_33q0u"]
+script = ExtResource("2_djc47")
+Glyph = ExtResource("5_q1ckl")
+Body = Color(0.133333, 0.756863, 0.843137, 1)
+Shade = Color(0, 0, 0, 0.25)
+metadata/_custom_type_script = "uid://c51bg7vils860"
+
+[sub_resource type="Resource" id="Resource_2h48r"]
+script = ExtResource("2_djc47")
+Glyph = ExtResource("6_cndl1")
+Body = Color(0.121569, 0.811765, 0.537255, 1)
+Shade = Color(0, 0, 0, 0.25)
+metadata/_custom_type_script = "uid://c51bg7vils860"
+
+[sub_resource type="Resource" id="Resource_6hara"]
+script = ExtResource("2_djc47")
+Glyph = ExtResource("7_3hlsn")
+Body = Color(0.882353, 0.117647, 0.368627, 1)
+Shade = Color(0, 0, 0, 0.25)
+metadata/_custom_type_script = "uid://c51bg7vils860"
+
+[sub_resource type="Resource" id="Resource_r70qi"]
+script = ExtResource("2_djc47")
+Glyph = ExtResource("1_unu14")
+Body = Color(0.6, 0.6, 0.6, 100)
+Shade = Color(0, 0, 0, 0.25)
+metadata/_custom_type_script = "uid://c51bg7vils860"
+
+[resource]
+script = ExtResource("1_lvwce")
+Turret = SubResource("Resource_r70qi")
+Choker = SubResource("Resource_lcq5x")
+Gunner = SubResource("Resource_w8nu2")
+Lancer = SubResource("Resource_cl63i")
+Laser = SubResource("Resource_33q0u")
+Shooter = SubResource("Resource_2h48r")
+Smasher = SubResource("Resource_6hara")
+metadata/_custom_type_script = "uid://dw73r34mdjcgj"

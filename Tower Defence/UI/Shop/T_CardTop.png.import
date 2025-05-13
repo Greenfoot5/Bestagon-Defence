@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bmcmtce7ri7i1"
-path.s3tc="res://.godot/imported/T_CardTop.png-6d64afd9249a1f31405ffb677d4c7e46.s3tc.ctex"
+path="res://.godot/imported/T_CardTop.png-04bb4ce4b30601b4029dd354cfbb9586.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/Generic/T_CardTop.png"
-dest_files=["res://.godot/imported/T_CardTop.png-6d64afd9249a1f31405ffb677d4c7e46.s3tc.ctex"]
+source_file="res://UI/Shop/T_CardTop.png"
+dest_files=["res://.godot/imported/T_CardTop.png-04bb4ce4b30601b4029dd354cfbb9586.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.5
 compress/hdr_compression=1

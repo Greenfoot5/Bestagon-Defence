@@ -96,7 +96,7 @@ namespace UI.Inventory
             
             // Icon and Glyph
             icon.Texture = turret.shopIcon;
-            glyph.Texture = turret.glyph.glyph;
+            glyph.Texture = turret.glyph.Glyph;
             // glyphBody.color = turret.glyph.body;
             
             // Turret stats

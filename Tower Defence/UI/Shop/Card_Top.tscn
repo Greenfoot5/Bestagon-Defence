@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://4yuj26qwmq5v"]
+
+[ext_resource type="Texture2D" uid="uid://b7wqxd00mr1jc" path="res://UI/Shop/Card_Top_Panel.tres" id="1_iillt"]
+[ext_resource type="Texture2D" uid="uid://bqr2h4s8oo5pk" path="res://Turrets/Shooter/T_ShooterTurret.png" id="2_nygnt"]
+
+[node name="TypePanel" type="NinePatchRect"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -90.0
+offset_top = -20.0
+offset_right = 90.0
+texture = ExtResource("1_iillt")
+region_rect = Rect2(0, 0, 99, 72)
+patch_margin_left = 57
+patch_margin_right = 57
+
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_right = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+collapsed = true
+dragging_enabled = false
+dragger_visibility = 2
+
+[node name="Image" type="TextureRect" parent="HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_nygnt")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Type" type="Label" parent="HSplitContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "TURRET"

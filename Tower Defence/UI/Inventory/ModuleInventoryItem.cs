@@ -86,13 +86,13 @@ namespace UI.Inventory
             
             foreach (Type turretType in module.GetModule().GetValidTypes())
             {
-                TurretGlyphSo glyphSo = lookup.GetForType(turretType);
+                TurretGlyph glyphRes = lookup.GetForType(turretType);
                 Node glyph = glyphPrefab.Instantiate();
                 applicableGlyphs.AddChild(glyph);
                 glyph.Name = "_" + glyph.Name;
                 // glyph.Find("Body").GetComponent<HexagonSprite>().color = glyphSo.body;
                 // glyph.Find("Shade").GetComponent<HexagonSprite>().color = glyphSo.shade;
-                glyph.GetNode<Sprite2D>("Glyph").Texture = glyphSo.glyph;
+                glyph.GetNode<Sprite2D>("Glyph").Texture = glyphRes.Glyph;
             }
 
             TurretTypes = module.GetModule().GetValidTypes();

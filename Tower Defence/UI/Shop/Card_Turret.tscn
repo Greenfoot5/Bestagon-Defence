@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://dpv0bwn2n0ebh"]
 
 [ext_resource type="Script" uid="uid://cg3grjn2ddd8l" path="res://UI/Shop/TurretSelectionUI.cs" id="1_ajfa3"]
-[ext_resource type="Texture2D" uid="uid://bgwjkwx6n6xlm" path="res://UI/Generic/T_Head_Steep.png" id="2_mkcs1"]
 [ext_resource type="PackedScene" uid="uid://cpj1f8162nio" path="res://UI/Shop/Card_Turret_ModuleIcon.tscn" id="2_pittc"]
+[ext_resource type="PackedScene" uid="uid://4yuj26qwmq5v" path="res://UI/Shop/Card_Top.tscn" id="3_pittc"]
 [ext_resource type="Texture2D" uid="uid://bqr2h4s8oo5pk" path="res://Turrets/Shooter/T_ShooterTurret.png" id="3_xtsia"]
 [ext_resource type="Texture2D" uid="uid://c1px3poumr7i6" path="res://UI/Glyphs/Shooter.tres" id="4_mkcs1"]
 [ext_resource type="Script" uid="uid://bxvxv7t1wcksh" path="res://UI/TurretStats/TurretStat.cs" id="5_xtsia"]
@@ -31,43 +31,12 @@ bg = NodePath("Button")
 modulesBg = NodePath("Button/Content/Modules")
 modulesTitle = NodePath("Button/Content/Modules/Title")
 
-[node name="TypePanel" type="NinePatchRect" parent="."]
+[node name="TypePanel" parent="." instance=ExtResource("3_pittc")]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -130.0
-offset_top = -20.0
-offset_right = 130.0
-texture = ExtResource("2_mkcs1")
-region_rect = Rect2(0, 4, 178, 262)
-patch_margin_left = 85
-patch_margin_right = 85
-
-[node name="HSplitContainer" type="HSplitContainer" parent="TypePanel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 80.0
-offset_right = -80.0
+anchors_preset = 5
+offset_top = 0.0
+offset_bottom = 20.0
 grow_horizontal = 2
-grow_vertical = 2
-collapsed = true
-dragging_enabled = false
-dragger_visibility = 2
-
-[node name="Image" type="TextureRect" parent="TypePanel/HSplitContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("3_xtsia")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Type" type="Label" parent="TypePanel/HSplitContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "TURRET"
 
 [node name="Button" type="Button" parent="."]
 self_modulate = Color(1, 1, 1, 0)

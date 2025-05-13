@@ -226,7 +226,7 @@ public partial class GenerateShopSelection : Control
     private TurretSelectionUI GenerateTurretUI(TurretBlueprint turret)
     {
         // TODO - Does return correct type?
-        // turret.glyph = _shop.GlyphsLookup.GetForType(turret.prefab.GetType());
+        turret.glyph = _shop.GlyphsLookup.GetForType(turret.prefab.GetType());
         var turretUI = _turretSelectionUI.Instantiate<TurretSelectionUI>();
         AddChild(turretUI);
         turretUI.Name = "_" + turretUI.Name;

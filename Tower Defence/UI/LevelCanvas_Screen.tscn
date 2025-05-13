@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bf14d8qox8yy5"]
+[gd_scene load_steps=35 format=3 uid="uid://bf14d8qox8yy5"]
 
 [ext_resource type="Script" uid="uid://b1y7106ggbj46" path="res://UI/SpeedControls.cs" id="1_3vno0"]
 [ext_resource type="Texture2D" uid="uid://bs37ieabggvk2" path="res://UI/Stop.tres" id="1_anr6t"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://dw08nlypn12a4" path="res://UI/Inventory/InventoryItem_Module.tscn" id="13_ydbff"]
 [ext_resource type="Theme" uid="uid://dt5m7cx6h7lam" path="res://UI/GameOver.tres" id="14_ousqf"]
 [ext_resource type="Texture2D" uid="uid://cs1neednfxbpe" path="res://UI/Generic/T_TextButton.png" id="14_viuft"]
+[ext_resource type="Resource" uid="uid://n0kcky3mpl8q" path="res://UI/Glyphs/SpriteLookup.tres" id="14_ydbff"]
 [ext_resource type="Script" uid="uid://bxvxv7t1wcksh" path="res://UI/TurretStats/TurretStat.cs" id="15_j7wgf"]
 [ext_resource type="Texture2D" uid="uid://dvm15nkgk7e1q" path="res://UI/TurretStats/Damage.tres" id="16_rv6h5"]
 [ext_resource type="Script" uid="uid://7lqnwi2j1ptp" path="res://UI/Shop/GenerateShopSelection.cs" id="17_1a54g"]
@@ -158,6 +159,7 @@ _defaultModuleButton = ExtResource("13_ydbff")
 SelectionGenerator = NodePath("../Selection")
 _powercellCount = NodePath("../GameStats/Powercells/Text (TMP)")
 _expensiveButtonOverlay = NodePath("Crack")
+GlyphsLookup = ExtResource("14_ydbff")
 
 [node name="Text (TMP)" type="Label" parent="ShopButton"]
 layout_mode = 1
@@ -802,6 +804,10 @@ alignment = 1
 
 [node name="Card_Turret" parent="Selection/SelectionCards" instance=ExtResource("1_iukjl")]
 layout_mode = 2
+
+[node name="TypePanel" parent="Selection/SelectionCards/Card_Turret" index="0"]
+offset_top = 0.0
+offset_bottom = 20.0
 
 [node name="Card_Module" parent="Selection/SelectionCards" instance=ExtResource("2_wvkwj")]
 layout_mode = 2
