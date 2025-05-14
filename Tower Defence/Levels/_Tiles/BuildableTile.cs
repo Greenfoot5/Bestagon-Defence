@@ -73,7 +73,7 @@ namespace Levels._Nodes
         /// <param name="blueprint">The blueprint of the turret to build</param>
         public void LoadTurret(TurretBlueprint blueprint)
         {
-            var newTurret = (Turret)blueprint.prefab.Instantiate();
+            var newTurret = (Turret)blueprint.Prefab.Instantiate();
             AddChild(newTurret);
             newTurret.Name = "_" + newTurret.Name;
             Turret = newTurret;
@@ -105,20 +105,20 @@ namespace Levels._Nodes
         {
             // Spawn the turret and set the turret and blueprint
             Vector2 nodePosition = Position;
-            var newTurret = blueprint.prefab.Instantiate<Turret>();
+            var newTurret = blueprint.Prefab.Instantiate<Turret>();
             newTurret.Position = nodePosition;
             newTurret.Name = "_" + newTurret.Name;
             Turret = newTurret;
             TurretBlueprint = blueprint;
-            newTurret.displayName = blueprint.displayName;
+            newTurret.displayName = blueprint.DisplayName;
         
-            foreach (ModuleChainHandler handler in blueprint.moduleHandlers)
+            foreach (ModuleChainHandler handler in blueprint.ModuleHandlers)
             {
                 newTurret.AddModule(handler);
             }
         
             // Spawn the build effect and destroy after
-            var effect = (Node2D)blueprint.buildEffect.Instantiate();
+            var effect = (Node2D)blueprint.BuildEffect.Instantiate();
             effect.Position = Position;
             effect.Name = "_" + effect.Name;
             // TODO - free after correct time

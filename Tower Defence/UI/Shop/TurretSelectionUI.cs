@@ -97,29 +97,29 @@ namespace UI.Shop
             _turretBlueprint = turret;
             
             // Turret text
-            displayName.Text = turret.displayName;
-            tagline.Text = turret.tagline;
+            displayName.Text = turret.DisplayName;
+            tagline.Text = turret.Tagline;
             
             // Icon and Glyph
-            icon.Texture = turret.shopIcon;
+            icon.Texture = turret.ShopIcon;
             // glyph.Texture = turret.glyph.glyph;
             // glyph.SelfModulate = turret.glyph.body;
             
             // Turret stats
             // TODO - Get stats
-            var turretPrefab = turret.prefab; //.GetComponent<Turret>();
+            var turretPrefab = turret.Prefab; //.GetComponent<Turret>();
             // damage.SetData(turretPrefab.damage);
             // rate.SetData(turretPrefab.fireRate);
             // range.SetData(turretPrefab.range);
             
             // Turret's Modules
-            if (turret.moduleHandlers.Count == 0)
+            if (turret.ModuleHandlers.Count == 0)
             {
                 modulesSection.Visible = false;
             }
             else
             {
-                foreach (ModuleChainHandler handler in turret.moduleHandlers) {
+                foreach (ModuleChainHandler handler in turret.ModuleHandlers) {
                     var mod = moduleUI.Instantiate<TurretModulesIcon>();
                     // TODO - Set Parent
                     mod.GlobalPosition = modulesSection.GlobalPosition;
@@ -129,14 +129,14 @@ namespace UI.Shop
             }
 
             // Colors
-            tagline.SelfModulate = turret.accent;
-            modulesTitle.SelfModulate = turret.accent;
+            tagline.SelfModulate = turret.Accent;
+            modulesTitle.SelfModulate = turret.Accent;
             // bg.color = turret.accent;
-            modulesBg.SelfModulate = turret.accent * new Color(1, 1, 1, .16f);
+            modulesBg.SelfModulate = turret.Accent * new Color(1, 1, 1, .16f);
 
-            damage.SetColor(turret.accent);
-            rate.SetColor(turret.accent);
-            range.SetColor(turret.accent);
+            damage.SetColor(turret.Accent);
+            rate.SetColor(turret.Accent);
+            range.SetColor(turret.Accent);
             
             // Adds the click event to the card
             bg.Pressed += () => { MakeSelection(shop); };
