@@ -31,17 +31,11 @@ public partial class TurretInfo : Control
     [ExportGroup("Turret Inventory")]
     [Export]
     private Control turretInventoryPage;
-        
-    /// <summary>
-    /// The text to display for the title
-    /// </summary>
-    [Export]
-    private string turretInventoryTitle;
     /// <summary>
     /// The button to open the turret inventory
     /// </summary>
     [Export]
-    private Button turretInventoryButton;
+    private Container turretInventoryContent;
         
     /// <summary>
     /// The inventory to show/hide for the modules
@@ -124,6 +118,12 @@ public partial class TurretInfo : Control
     /// </summary>
     [Export]
     private string rotateText;
+
+    public override void _Ready()
+    {
+        BuildableTile.OnTileSelected += SetTarget;
+        Shop.Shop.OnPickTurret += AddTurret;
+    }
         
     /// <summary>
     /// Called when selecting a new node
@@ -162,15 +162,6 @@ public partial class TurretInfo : Control
         //     OpenModuleInventory();
         // else
         OpenTurretInfo();
-    }
-        
-    /// <summary>
-    /// Gets the turret the NodeUI is targeting
-    /// </summary>
-    /// <returns>The turret the NodeUI is targeting</returns>
-    public GodotObject GetTurret()
-    {
-        return _target != null ? _target.Turret : null;
     }
         
     /// <summary>
@@ -266,8 +257,7 @@ public partial class TurretInfo : Control
     public void DisplayTurretInventory()
     {
         BuildableTile.SelectedTile = null;
-        Shuw();
-        inventoryTitle.Text = turretInventoryTitle;
+        // Shuw();
         turretInventoryPage.Visible = true;
         moduleInventoryPage.Visible = false;
         turretInfoPage.Visible = false;
@@ -333,7 +323,7 @@ public partial class TurretInfo : Control
         turretInventoryPage.Visible = false;
         moduleInventoryPage.Visible = false;
         turretInfoButton.Visible = true;
-        turretInventoryButton.Visible = false;
+        // turretInventoryButton.Visible = false;
 
         // TODO - Was GettingComponent<Button>, does still work?
         turretInfoButton.SelfModulate = _target.TurretBlueprint.Accent;
@@ -347,7 +337,7 @@ public partial class TurretInfo : Control
         turretInfoPage.Visible = false;
         turretInventoryPage.Visible = false;
         moduleInventoryPage.Visible = false;
-        turretInventoryButton.Visible = true;
+        // turretInventoryButton.Visible = true;
         turretInfoButton.Visible = false;
             
         _target = null;
@@ -363,5 +353,10 @@ public partial class TurretInfo : Control
         // var rt = (RectTransform)transform;
         // rt.anchorMin = new Vector2(0f, rt.anchorMin.Y);
         // rt.anchorMax = new Vector2(0.25f, rt.anchorMax.Y);
+    }
+
+    private void AddTurret(TurretInventoryItem blueprint)
+    {
+        turretInventoryContent.AddChild(blueprint);
     }
 }

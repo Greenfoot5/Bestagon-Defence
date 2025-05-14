@@ -89,6 +89,11 @@ namespace UI.Shop
         /// The previous state of the random before the current selection
         /// </summary>
         public static Tuple<int, int> OldState;
+        
+        public delegate void PickTurret(TurretInventoryItem blueprint);
+        public static event PickTurret OnPickTurret;
+        public delegate void PickModule(ModuleInventoryItem handler);
+        public static event PickModule OnPickModule;
 
         /// <summary>
         /// Initialises values and set's starting prices
@@ -138,6 +143,7 @@ namespace UI.Shop
             
             SelectionGenerator.AddTurretType(turret.GetSubtype());
             GameManager.TurretInventory.Add(turret);
+            OnPickTurret?.Invoke(turretButton);
         }
 
         /// <summary>
@@ -163,6 +169,7 @@ namespace UI.Shop
             };
 
             GameManager.ModuleInventory.Add(module);
+            OnPickModule?.Invoke(moduleButton);
         }
 
         /// <summary>

@@ -191,11 +191,13 @@ grow_vertical = 2
 texture = ExtResource("10_p77s1")
 expand_mode = 1
 
-[node name="Inventory" type="Control" parent="."]
+[node name="Inventory" type="Control" parent="." node_paths=PackedStringArray("turretInventoryPage", "turretInventoryContent")]
 layout_mode = 1
 anchor_right = 0.2
 anchor_bottom = 1.0
 script = ExtResource("13_moy2t")
+turretInventoryPage = NodePath("Turrets")
+turretInventoryContent = NodePath("Turrets/Viewport/Content")
 
 [node name="Turrets" type="Panel" parent="Inventory"]
 layout_mode = 1

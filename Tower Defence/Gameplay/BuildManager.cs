@@ -20,7 +20,7 @@ namespace Gameplay
         /// The current range preview
         /// </summary>
         [Export]
-        public Node2D currentPreview;
+        public Node2D CurrentPreview;
         
         private static TurretInventoryItem _buildingButton;
         
@@ -62,11 +62,11 @@ namespace Gameplay
         public void SelectTurretToBuild(TurretInventoryItem buttonToDelete)
         {
             _buildingButton = buttonToDelete;
-            currentPreview = (Node2D)rangePreview.Instantiate();
+            CurrentPreview = (Node2D)rangePreview.Instantiate();
             // TODO - GetComponent
             // float range = turret.prefab.GetComponent<Turret>().range.GetStat();
             float range = 5;
-            currentPreview.Scale = new Vector2(range * 2, range * 2);
+            CurrentPreview.Scale = new Vector2(range * 2, range * 2);
             // currentPreview.GetComponent<SpriteRenderer>().color = turret.accent;
         }
         
@@ -75,7 +75,7 @@ namespace Gameplay
         /// </summary>
         public void BuiltTurret()
         {
-            currentPreview.QueueFree();
+            CurrentPreview.QueueFree();
             _buildingButton.QueueFree();
             GameManager.TurretInventory.Remove(_buildingButton.TurretBlueprint);
         }
