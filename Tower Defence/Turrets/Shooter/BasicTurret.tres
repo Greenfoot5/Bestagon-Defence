@@ -6,8 +6,9 @@
 
 [resource]
 script = ExtResource("2_xifxa")
-shopIcon = ExtResource("3_xxhcl")
-displayName = "Shooter"
-tagline = "the original"
-accent = Color(0.12549, 0.811765, 0.537255, 1)
-prefab = ExtResource("1_oq8wh")
+ShopIcon = ExtResource("3_xxhcl")
+DisplayName = "Shooter"
+Tagline = "the original"
+Accent = Color(0.12549, 0.811765, 0.537255, 1)
+Prefab = ExtResource("1_oq8wh")
+ModuleHandlers = []

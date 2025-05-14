@@ -31,6 +31,17 @@ public partial class TypeSpriteLookup : Resource
         typeof(Shooter),
         typeof(Smasher),
     ];
+    
+    private static readonly List<StringName> Names =
+    [
+        nameof(Turret), // Represents no specific turret type
+        nameof(Choker),
+        nameof(Gunner),
+        nameof(Lancer),
+        nameof(Laser),
+        nameof(Shooter),
+        nameof(Smasher),
+    ];
 
     /// <summary>
     /// The list of TurretGlyphs to use
@@ -50,7 +61,7 @@ public partial class TypeSpriteLookup : Resource
     {
         return Types;
     }
-        
+    
     /// <summary>
     /// Gets the glyph for a specific turret type
     /// </summary>
@@ -68,6 +79,27 @@ public partial class TypeSpriteLookup : Resource
             
             GD.PushError("Cant find sprite of type " + t);
             return _sprites[0];
+
+        }
+    }
+    
+    /// <summary>
+    /// Gets the Type for a given string (must match type name exactly)
+    /// </summary>
+    /// <param name="t">The string to match for</param>
+    /// <returns>The string's Type</returns>
+    public static Type GetTypeFromString(string t)
+    {
+        try
+        {
+            return Types[Names.IndexOf(t)]; 
+        }
+        catch (Exception ex)
+        {
+            if (ex is not IndexOutOfRangeException && ex is not ArgumentOutOfRangeException) throw;
+            
+            GD.PushError("Cant find sprite of type " + t);
+            return Types[0];
 
         }
     }

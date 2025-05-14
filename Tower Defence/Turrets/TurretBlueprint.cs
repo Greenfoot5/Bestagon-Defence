@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using Abstract;
 using Abstract.Data;
 using Godot;
@@ -60,9 +61,26 @@ public partial class TurretBlueprint : Resource, ISubtypeable
     [Export]
     public PackedScene BuildEffect;
 
+#nullable enable
     public Type GetSubtype()
     {
-        // TODO - Confirm this actually returns turret type, not just Node2D
-        return Prefab.GetType();
+        SceneState state = Prefab.GetState();
+        int scriptIdx = -1;
+        for (var i = 0; i < state.GetNodePropertyCount(0); i++)
+        {
+            if (state.GetNodePropertyName(0, i) == "script")
+            {
+                scriptIdx = i;
+                break;
+            }
+        }
+        
+        var script = (Script?)state.GetNodePropertyValue(0, scriptIdx);
+        if (script is not null && script.GetClass() == "CSharpScript")
+        {
+            // TODO - Better to map with full ResourcePath?
+            return TypeSpriteLookup.GetTypeFromString(script.ResourcePath.GetFile().Replace("." + script.ResourcePath.GetExtension(), ""));
+        }
+        return TypeSpriteLookup.GetTypeFromString(null);
     }
 }
