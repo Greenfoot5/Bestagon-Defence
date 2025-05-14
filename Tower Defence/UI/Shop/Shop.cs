@@ -136,7 +136,6 @@ namespace UI.Shop
             turretButton.Name = "_" + turretButton.Name;
             turretButton.Init(turret);
             
-            // TODO - Check GetType()
             SelectionGenerator.AddTurretType(turret.GetSubtype());
             GameManager.TurretInventory.Add(turret);
         }

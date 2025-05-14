@@ -745,7 +745,7 @@ text = "Main Menu"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Selection" type="Panel" parent="." node_paths=PackedStringArray("_shop", "_lockButton", "_lockedButton")]
+[node name="Selection" type="Panel" parent="." node_paths=PackedStringArray("_shop", "_selectionParent", "_lockButton", "_lockedButton")]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -759,6 +759,7 @@ _moduleSelectionUI = ExtResource("2_wvkwj")
 _lifeSelectionUI = ExtResource("3_pmuhg")
 _hiddenSelectionUI = ExtResource("4_q3du4")
 _shop = NodePath("../ShopButton")
+_selectionParent = NodePath("SelectionCards")
 _lockButton = NodePath("Options/Lock")
 _lockedButton = NodePath("Options/Locked")
 
@@ -804,10 +805,6 @@ alignment = 1
 
 [node name="Card_Turret" parent="Selection/SelectionCards" instance=ExtResource("1_iukjl")]
 layout_mode = 2
-
-[node name="TypePanel" parent="Selection/SelectionCards/Card_Turret" index="0"]
-offset_top = 0.0
-offset_bottom = 20.0
 
 [node name="Card_Module" parent="Selection/SelectionCards" instance=ExtResource("2_wvkwj")]
 layout_mode = 2

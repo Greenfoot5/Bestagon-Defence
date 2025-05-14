@@ -43,7 +43,10 @@ public partial class GenerateShopSelection : Control
     private ShopData _shopData;
     [Export]
     private Shop _shop;
-        
+
+    [Export]
+    private Node _selectionParent;
+
     /// <summary>
     /// The turrets already purchased
     /// </summary>
@@ -85,9 +88,9 @@ public partial class GenerateShopSelection : Control
             _hiddenChoices = [];
 
         // Destroy the previous selection
-        for (int i = GetChildCount() - 1; i >= 0; i--)
+        for (int i = _selectionParent.GetChildCount() - 1; i >= 0; i--)
         {
-            GetChild(i).QueueFree();
+            _selectionParent.GetChild(i).QueueFree();
         }
             
         int selectionCount = _shop.HasPlayerMadePurchase() ? _shopData.SelectionChoices : _shopData.InitialChoices;
@@ -199,7 +202,7 @@ public partial class GenerateShopSelection : Control
     {
         // Create the ui as a child
         var lifeUI = _lifeSelectionUI.Instantiate<LifeSelectionUI>();
-        AddChild(lifeUI);
+        _selectionParent.AddChild(lifeUI);
         lifeUI.Name = "_" + lifeUI.Name;
         lifeUI.Init(_shopData.LifeCount, _shop);
         return lifeUI;
@@ -213,7 +216,7 @@ public partial class GenerateShopSelection : Control
     {
         // Create the ui as a child
         var moduleUI = _moduleSelectionUI.Instantiate<ModuleSelectionUI>();
-        AddChild(moduleUI);
+        _selectionParent.AddChild(moduleUI);
         moduleUI.Name = "_" + moduleUI.Name;
         moduleUI.Init(handler, _shop);
         return moduleUI;
@@ -225,10 +228,9 @@ public partial class GenerateShopSelection : Control
     /// <param name="turret">The turret the player can pick</param>
     private TurretSelectionUI GenerateTurretUI(TurretBlueprint turret)
     {
-        // TODO - Does return correct type?
         turret.Glyph = _shop.GlyphsLookup.GetForType(turret.GetSubtype());
         var turretUI = _turretSelectionUI.Instantiate<TurretSelectionUI>();
-        AddChild(turretUI);
+        _selectionParent.AddChild(turretUI);
         turretUI.Name = "_" + turretUI.Name;
         turretUI.Init(turret, _shop);
         return turretUI;
@@ -238,7 +240,7 @@ public partial class GenerateShopSelection : Control
     {
         _hiddenChoices.Add(new Tuple<Object, int>(choice, selectionIndex));
         Node hiddenUI = _hiddenSelectionUI.Instantiate();
-        AddChild(hiddenUI);
+        _selectionParent.AddChild(hiddenUI);
         hiddenUI.Name = "_" + hiddenUI.Name;
     }
 
