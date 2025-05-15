@@ -9,12 +9,11 @@ namespace Abstract.Attributes;
 [Tool]
 public partial class AttributeModifier : Resource
 {
-    [Export]
     public Variant Uid { get; set; }
     [Export]
-    public float Value { get; set; }
+    public float Value { get; private set; }
     [Export]
-    public Operation Op { get; set; }
+    public Operation Op { get; private set; }
 
     public AttributeModifier()
     {

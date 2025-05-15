@@ -108,7 +108,7 @@ namespace Turrets.Gunner
                 _fireRateIncrease -= Stats[AttributeType.SpinCooldown].Value;
             }
             
-            Stats[AttributeType.SpinIncrease]["this"].Value = _fireRateIncrease - 1;
+            Stats[AttributeType.SpinIncrease].Add("this", new AttributeModifier(_fireRateIncrease - 1, Operation.Multiplicative));
 
             // Update the stats of the turret if it's selected
             if (BuildableTile.SelectedTile == GetParent())
