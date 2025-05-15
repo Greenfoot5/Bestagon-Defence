@@ -101,9 +101,9 @@ public partial class TurretInventoryItem : Control
             
         // Turret stats
         var turretPrefab = turret.Prefab.Instantiate<Turret>();
-        damage.SetData(turretPrefab.Stats[AttributeType.Damage].Value);
-        rate.SetData(turretPrefab.Stats[AttributeType.FireRate].Value);
-        range.SetData(turretPrefab.Stats[AttributeType.Range].Value);
+        damage.SetData(turretPrefab.Stats[AttributeType.Damage]);
+        rate.SetData(turretPrefab.Stats[AttributeType.FireRate]);
+        range.SetData(turretPrefab.Stats[AttributeType.Range]);
         turretPrefab.QueueFree();
             
         // Colors
