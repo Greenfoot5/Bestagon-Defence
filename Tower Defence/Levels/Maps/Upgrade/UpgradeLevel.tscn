@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://dxeskbdbxmflu"]
+[gd_scene load_steps=24 format=4 uid="uid://dxeskbdbxmflu"]
 
 [ext_resource type="TileSet" uid="uid://cqec5gsl2jrtp" path="res://Levels/_Tiles/PathTiles.tres" id="1_dbecs"]
 [ext_resource type="PackedScene" uid="uid://bl5bfgnh4ruki" path="res://Levels/_Tiles/Tile_Buildable.tscn" id="2_jq068"]
@@ -13,7 +13,6 @@
 [ext_resource type="Script" uid="uid://c25tsq6de7eu3" path="res://Gameplay/BuildManager.cs" id="13_dbecs"]
 [ext_resource type="Script" uid="uid://b7c7g8jqgu062" path="res://Gameplay/GameStats.cs" id="13_p388s"]
 [ext_resource type="Script" uid="uid://ci5f1fooga4hq" path="res://Gameplay/GameManager.cs" id="14_dbecs"]
-[ext_resource type="Script" uid="uid://c4c4ep5oo8o2m" path="res://Gameplay/Camera/CameraController.cs" id="14_h5o5v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dbecs"]
 bg_color = Color(0.101961, 0.113725, 0.188235, 1)
@@ -84,6 +83,7 @@ anchor_right = 6.0
 anchor_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_dbecs")
 
 [node name="_Managers\'" type="Node" parent="."]
@@ -111,11 +111,17 @@ position = Vector2(1, 0)
 scale = Vector2(0.1, 0.1)
 tile_map_data = PackedByteArray("AAD1//r/AQAAAAAAAAD2//v/AAAAAAAAAAD3//v/AAAAAAAAAAD4//v/AAAAAAAAAAD5//v/AAAAAAAAAAD6//z/AAAAAAAAAAD7//v/AAAAAAAAAAD8//z/AAAAAAAAAAD8//3/AAAAAAAAAAD7//3/AAAAAAAAAAD7//7/AAAAAAAAAAD8////AAAAAAAAAAD9//7/AAAAAAAAAAD+//7/AAAAAAAAAAD///7/AAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAMAAAAAAAAAAAACAAMAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAADAAAAAAAAAAAAAAACAAAAAAAAAAAAAAABAAAAAAAAAAAAAAD//wEAAAAAAAAAAAD+/wIAAAAAAAAAAAD9/wIAAAAAAAAAAAD8/wIAAAAAAAAAAAD7/wEAAAAAAAAAAAD6/wEAAAAAAAAAAAD5/wEAAAAAAAAAAAD4/wIAAAAAAAAAAAD4/wMAAAAAAAAAAAD4/wQAAAAAAAAAAAD5/wQAAgAAAAAAAAA=")
 tile_set = ExtResource("1_dbecs")
+occlusion_enabled = false
+collision_enabled = false
+navigation_enabled = false
 
 [node name="BuildableGrid" type="TileMapLayer" parent="Map"]
 scale = Vector2(0.1, 0.1)
 tile_map_data = PackedByteArray("AAD4//z/AQAAAAAAAQD5//z/AQAAAAAAAQD6//3/AQAAAAAAAQD6//v/AQAAAAAAAQD7//z/AQAAAAAAAQD8//7/AQAAAAAAAQD9//3/AQAAAAAAAQD9//z/AQAAAAAAAQAAAP7/AQAAAAAAAQABAP//AQAAAAAAAQABAAEAAQAAAAAAAQACAAIAAQAAAAAAAQADAAEAAQAAAAAAAQD//wIAAQAAAAAAAQAAAAQAAQAAAAAAAQABAAQAAQAAAAAAAQACAAQAAQAAAAAAAQAFAAIAAQAAAAAAAQAGAAIAAQAAAAAAAQAFAAAAAQAAAAAAAQACAP7/AQAAAAAAAQAEAP7/AQAAAAAAAQD8/wQAAQAAAAAAAQD9/wQAAQAAAAAAAQD+/wQAAQAAAAAAAQD+/wUAAQAAAAAAAQD8/wUAAQAAAAAAAQD7/wMAAQAAAAAAAQD5/wIAAQAAAAAAAQD+/wAAAQAAAAAAAQD7////AQAAAAAAAQD8/wAAAQAAAAAAAQD7/wAAAQAAAAAAAQD9/wEAAQAAAAAAAQD4/wEAAQAAAAAAAQD5////AQAAAAAAAQD4//7/AQAAAAAAAQD2//7/AQAAAAAAAQD2/wEAAQAAAAAAAQDz//z/AQAAAAAAAQACAPz/AQAAAAAAAQAAAPr/AQAAAAAAAQDz/wAAAQAAAAAAAQD0////AQAAAAAAAQD1/wQAAQAAAAAAAQA=")
 tile_set = SubResource("TileSet_uqua4")
+occlusion_enabled = false
+collision_enabled = false
+navigation_enabled = false
 
 [node name="SpawnPoint" type="Node2D" parent="Map" node_paths=PackedStringArray("_countdown")]
 position = Vector2(-405, -225)
@@ -190,6 +196,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
 [node name="WaveCountdown" type="Timer" parent="UI"]
 wait_time = 5.0
@@ -200,10 +207,7 @@ WaveData = ExtResource("9_h5o5v")
 
 [node name="ScreenCanvas" parent="UI" instance=ExtResource("11_ml50w")]
 layout_mode = 1
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(576, 324)
-script = ExtResource("14_h5o5v")
+mouse_filter = 1
 
 [connection signal="pressed" from="UI/ScreenCanvas/ShopButton" to="UI/ScreenCanvas/ShopButton" method="ShowFirstItem"]
 

@@ -65,6 +65,10 @@ namespace Levels._Nodes
         {
             if (_initialTurret != null)
                 LoadTurret(_initialTurret);
+            
+            InputEvent += OnMouseDown;
+            MouseEntered += OnMouseEnter;
+            MouseExited += OnMouseExit;
         }
         
         /// <summary>
@@ -106,7 +110,6 @@ namespace Levels._Nodes
             // Spawn the turret and set the turret and blueprint
             Vector2 nodePosition = Position;
             var newTurret = blueprint.Prefab.Instantiate<Turret>();
-            newTurret.Position = nodePosition;
             newTurret.Name = "_" + newTurret.Name;
             Turret = newTurret;
             TurretBlueprint = blueprint;
@@ -116,13 +119,15 @@ namespace Levels._Nodes
             {
                 newTurret.AddModule(handler);
             }
+            
+            AddChild(newTurret);
         
             // Spawn the build effect and destroy after
-            var effect = (Node2D)blueprint.BuildEffect.Instantiate();
-            effect.Position = Position;
-            effect.Name = "_" + effect.Name;
+            // var effect = (Node2D)blueprint.BuildEffect.Instantiate();
+            // effect.Position = Position;
+            // effect.Name = "_" + effect.Name;
             // TODO - free after correct time
-            GetTree().CreateTimer(2).Timeout += () => { effect.QueueFree(); };
+            // GetTree().CreateTimer(2).Timeout += () => { effect.QueueFree(); };
         }
     
         /// <summary>
@@ -181,12 +186,13 @@ namespace Levels._Nodes
             SelectedTile = null;
         }
 
-        private void OnMouseDown(Viewport viewport, InputEvent @event, int shapeIndex)
+        private void OnMouseDown(Node viewport, InputEvent @event, long shapeIndex)
         {
             switch (@event)
             {
                 case InputEventMouseButton mouseEvent:
                 {
+                    GD.Print("Mouse Down");
                     if ((mouseEvent.ButtonMask & MouseButtonMask.Left) != 0)
                         HandlePointerInteract();
                     break;
@@ -244,8 +250,8 @@ namespace Levels._Nodes
         {
             if (Turret != null)
             {
-                UpdateModules();
-                _modulesDisplay.Visible = true;
+                // UpdateModules();
+                // _modulesDisplay.Visible = true;
             }
             
             // Make sure the player is trying to build
@@ -266,7 +272,7 @@ namespace Levels._Nodes
         {
             if (Turret != null)
             {
-                _modulesDisplay.Visible = false;
+                // _modulesDisplay.Visible = false;
             }
             
             Modulate = _defaultColour;
