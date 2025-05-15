@@ -87,7 +87,7 @@ namespace Turrets
             // If the turret is not aggressively retargeting, check if the target is still in range
             if (!_aggressiveRetargeting && IsInstanceValid(TargetEnemy))
             {
-                float distanceToEnemy = Position.DistanceSquaredTo(TargetEnemy.Position);
+                float distanceToEnemy = GlobalPosition.DistanceSquaredTo(TargetEnemy.GlobalPosition);
                 if (distanceToEnemy <= Stats[AttributeType.Range].Value * Stats[AttributeType.Range].Value)
                     return;
             }
@@ -125,7 +125,7 @@ namespace Turrets
                 {
                     case TargetingMethod.Closest:
                         // Find if the enemy is closer than our current most valuable
-                        float squaredDistanceToEnemy = Position.DistanceSquaredTo(TargetEnemy.Position);
+                        float squaredDistanceToEnemy = GlobalPosition.DistanceSquaredTo(TargetEnemy.Position);
                         if (squaredDistanceToEnemy < currentValue)
                         {
                             currentValue = squaredDistanceToEnemy;
@@ -203,11 +203,11 @@ namespace Turrets
         {
             if (!IsInstanceValid(TargetEnemy)) return;
             
-            float rotationAngleNeed = PartToRotate.GetAngleTo(TargetEnemy.Position) + float.Pi / 2;
+            float rotationAngleNeed = PartToRotate.GetAngleTo(TargetEnemy.GlobalPosition) + float.Pi / 2;
             
             double zAngle = Mathf.Clamp(rotationAngleNeed, -Stats[AttributeType.RotationSpeed].Value * delta,
                 Stats[AttributeType.RotationSpeed].Value * delta);
-            PartToRotate.Rotation += (float)zAngle;
+            PartToRotate.GlobalRotation += (float)zAngle;
         }
 
         /// <summary>
