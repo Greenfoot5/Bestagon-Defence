@@ -167,7 +167,6 @@ public partial class SurgeModule : Module
                 case Smasher:
                     turret.Stats[AttributeType.FireRate].Add(GetSceneUniqueId() + "SURGE", _surgeSmasherFireRateChange);
                     turret.Stats[AttributeType.Range].Add(GetSceneUniqueId() + "SURGE", _surgeSmasherRangeChange);
-                    turret.UpdateRange();
                     break;
             }
             if (BuildableTile.SelectedTile == turret.GetParent()) BuildableTile.SelectedTile = BuildableTile.SelectedTile;
@@ -198,7 +197,6 @@ public partial class SurgeModule : Module
                 case Smasher:
                     turret.Stats[AttributeType.FireRate].Add(GetSceneUniqueId() + "SURGE", new AttributeModifier(0f));
                     turret.Stats[AttributeType.Range].Add(GetSceneUniqueId() + "SURGE", new AttributeModifier(0f));
-                    turret.UpdateRange();
                     break;
             }
             if (BuildableTile.SelectedTile == turret.GetParent()) BuildableTile.SelectedTile = BuildableTile.SelectedTile;

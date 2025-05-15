@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bf14d8qox8yy5"]
+[gd_scene load_steps=36 format=3 uid="uid://bf14d8qox8yy5"]
 
 [ext_resource type="Script" uid="uid://b1y7106ggbj46" path="res://UI/SpeedControls.cs" id="1_3vno0"]
 [ext_resource type="Texture2D" uid="uid://bs37ieabggvk2" path="res://UI/Stop.tres" id="1_anr6t"]
@@ -30,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://dvm15nkgk7e1q" path="res://UI/TurretStats/Damage.tres" id="16_rv6h5"]
 [ext_resource type="Script" uid="uid://7lqnwi2j1ptp" path="res://UI/Shop/GenerateShopSelection.cs" id="17_1a54g"]
 [ext_resource type="Script" uid="uid://bumr2t4lefwce" path="res://UI/TriangleLayout.cs" id="17_rv6h5"]
+[ext_resource type="PackedScene" uid="uid://ccppuoth5cgn0" path="res://UI/Modules/ModuleIcon.tscn" id="18_lv0it"]
 [ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/White_Rectangle.png" id="21_ousqf"]
 [ext_resource type="Texture2D" uid="uid://b4f8iscba8vxk" path="res://Enemies/Bosses/T_Square_Red.png" id="23_4jhpk"]
 
@@ -191,7 +192,7 @@ grow_vertical = 2
 texture = ExtResource("10_p77s1")
 expand_mode = 1
 
-[node name="Inventory" type="Control" parent="." node_paths=PackedStringArray("turretInventoryPage", "turretInventoryContent", "moduleInventoryPage", "turretInfoPage", "inventoryTitle", "damage", "rate", "range", "cycleTargetingButton")]
+[node name="Inventory" type="Control" parent="." node_paths=PackedStringArray("turretInventoryPage", "turretInventoryContent", "moduleInventoryPage", "turretInfoPage", "inventoryTitle", "damage", "rate", "range", "modules", "cycleTargetingButton")]
 layout_mode = 1
 anchor_right = 0.2
 anchor_bottom = 1.0
@@ -204,6 +205,8 @@ inventoryTitle = NodePath("TurretInfo/Label")
 damage = NodePath("TurretInfo/Stats/Damage")
 rate = NodePath("TurretInfo/Stats/Rate")
 range = NodePath("TurretInfo/Stats/Range")
+modules = NodePath("TurretInfo/Modules/Layout")
+moduleIconPrefab = ExtResource("18_lv0it")
 cycleTargetingButton = NodePath("TurretInfo/TargetingRotateButton")
 
 [node name="Turrets" type="Panel" parent="Inventory"]

@@ -125,13 +125,13 @@ public partial class TurretInfo : Control
     /// <param name="tile">The new node to display UI for</param>
     public void SetTarget(BuildableTile tile)
     {
-        _target = tile;
-
-        if (_target == null)
+        if (tile == null || _target == tile)
         {
             return;
         }
-            
+        
+        _target = tile;
+        
         // Display the radius of the turret
         _target.Turret.Selected();
 
@@ -244,11 +244,8 @@ public partial class TurretInfo : Control
         // modules.AddChild(addModule);
         // addModule.Pressed += OpenModuleInventory;
             
-        modules.GetChild<TriangleLayout>(0).SetLayoutHorizontal();
-        modules.GetChild<TriangleLayout>(0).SetLayoutVertical();
-            
-        // Display the radius of the turret
-        _target.Turret.UpdateRange();
+        // modules.GetChild<TriangleLayout>(0).SetLayoutHorizontal();
+        // modules.GetChild<TriangleLayout>(0).SetLayoutVertical();
     }
         
     public void DisplayTurretInventory()

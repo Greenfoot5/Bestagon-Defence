@@ -21,6 +21,8 @@ public partial class Attribute : Resource
     private float _value;
     public float Value => CalculateValue(Base, _modifiers);
 
+    public float Modifier => CalculateMod(_modifiers);
+
     [Export]
     public float Min { get; set; } = -Mathf.Inf;
     [Export]
@@ -105,6 +107,69 @@ public partial class Attribute : Resource
     private float CalculateValue(float start, Godot.Collections.Dictionary<Variant, AttributeModifier> modifiers)
     {
         float val = start;
+        float additive = 1;
+        float multiplicative = 1;
+        float min = Min;
+        float addiMin = 1;
+        float multMin = 1;
+        float max = Max;
+        float addiMax = 1;
+        float multMax = 1;
+        foreach (AttributeModifier mod in modifiers.Values)
+        {
+            switch (mod.Op)
+            {
+                case Operation.Add:
+                    val += mod.Value;
+                    break;
+                case Operation.Additive:
+                    additive += mod.Value;
+                    break;
+                case Operation.Multiplicative:
+                    multiplicative += mod.Value;
+                    break;
+                case Operation.OneMinusMultiplicative:
+                    multiplicative += 1 - mod.Value;
+                    break;
+                case Operation.AddMin:
+                    min += mod.Value;
+                    break;
+                case Operation.AdditiveMin:
+                    addiMin += mod.Value;
+                    break;
+                case Operation.MultiplicativeMin:
+                    multMin += mod.Value;
+                    break;
+                case Operation.AddMax:
+                    max += mod.Value;
+                    break;
+                case Operation.AdditiveMax:
+                    addiMax += mod.Value;
+                    break;
+                case Operation.MultiplicativeMax:
+                    multMax += mod.Value;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(modifiers), message:"Invalid modifier found: " + mod.Value);
+            }
+        }
+    
+        val *= additive * multiplicative;
+        min *= addiMin * multMin;
+        max *= addiMax * multMax;
+        
+        if (val < min)
+            return min;
+
+        if (val > max)
+            return max;
+        
+        return val;
+    }
+
+    private float CalculateMod(Godot.Collections.Dictionary<Variant, AttributeModifier> modifiers)
+    {
+        float val = 1;
         float additive = 1;
         float multiplicative = 1;
         float min = Min;

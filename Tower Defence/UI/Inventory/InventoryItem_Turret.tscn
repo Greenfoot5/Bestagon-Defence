@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cn8o5altl8rd7"]
+[gd_scene load_steps=9 format=3 uid="uid://cn8o5altl8rd7"]
 
 [ext_resource type="PackedScene" uid="uid://q4vdeurrxpak" path="res://UI/Glyphs/TurretGlyph.tscn" id="1_23x3u"]
 [ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/White_Rectangle.png" id="1_dxegx"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ccppuoth5cgn0" path="res://UI/Modules/ModuleIcon.tscn" id="3_aa1p0"]
 [ext_resource type="Script" uid="uid://bxvxv7t1wcksh" path="res://UI/TurretStats/TurretStat.cs" id="3_dxegx"]
 [ext_resource type="Texture2D" uid="uid://dvm15nkgk7e1q" path="res://UI/TurretStats/Damage.tres" id="4_pdqgl"]
+[ext_resource type="Texture2D" uid="uid://b8u4lxh7hopcg" path="res://UI/TurretStats/FireRate.tres" id="8_aa1p0"]
 
 [node name="InventoryItem_Turret" type="TextureButton" node_paths=PackedStringArray("displayName", "icon", "glyph", "noneText", "modulesLayout", "damage", "rate", "range", "modulesBg")]
 self_modulate = Color(1, 1, 1, 0.25)
@@ -114,7 +115,7 @@ text = NodePath("Data")
 [node name="Icon" type="TextureRect" parent="Stats/Rate"]
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("4_pdqgl")
+texture = ExtResource("8_aa1p0")
 expand_mode = 1
 stretch_mode = 5
 

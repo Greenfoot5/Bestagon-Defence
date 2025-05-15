@@ -33,7 +33,8 @@ namespace Turrets
         {
             RangeDisplay.Visible = false;
             RangeDisplay.ProcessMode = ProcessModeEnum.Disabled;
-            UpdateRange();
+            Stats[AttributeType.Range].AttributeUpdated += UpdateRange;
+            UpdateRange(Stats[AttributeType.Range]);
         }
 
         protected void Update()
@@ -53,8 +54,10 @@ namespace Turrets
         /// <summary>
         /// Update the range shader's size
         /// </summary>
-        public virtual void UpdateRange()
+        public virtual void UpdateRange(Attribute attribute)
         {
+            Range.Scale = new Vector2(6 * attribute.Modifier, 6 * attribute.Modifier);
+            
             // Update the range shader's size
             // Vector2 localScale = GetScale();
             // RangeDisplay.Scale = new Vector2(
@@ -71,20 +74,8 @@ namespace Turrets
         public override bool AddModule(ModuleChainHandler handler)
         {
             bool value = base.AddModule(handler);
-
-            UpdateRange();
-            return value;
-        }
-        
-        /// <summary>
-        /// Removes a module from the turret
-        /// </summary>
-        /// <param name="handler">The handler of the module to remove</param>
-        protected override void RemoveModule(ModuleChainHandler handler)
-        {
-            base.RemoveModule(handler);
             
-            UpdateRange();
+            return value;
         }
         
         /// <summary>
@@ -92,7 +83,6 @@ namespace Turrets
         /// </summary>
         public override void Selected()
         {
-            UpdateRange();
             RangeDisplay.Visible = true;
             RangeDisplay.ProcessMode = ProcessModeEnum.Inherit;
         }
