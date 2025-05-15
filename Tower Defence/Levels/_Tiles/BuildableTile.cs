@@ -117,6 +117,8 @@ namespace Levels._Nodes
             }
             
             _rend.AddChild(newTurret);
+            BuildManager.TurretBuilt();
+            OnTileSelected?.Invoke(this);
         }
 
         /// <summary>
@@ -237,8 +239,6 @@ namespace Levels._Nodes
 
             // Construct a turret
             BuildTurret(BuildManager.GetTurretToBuild());
-            BuildManager.TurretBuilt();
-            OnTileSelected?.Invoke(this);
         }
         
         /// <summary>
