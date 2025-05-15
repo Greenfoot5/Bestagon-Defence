@@ -51,7 +51,6 @@ namespace Gameplay
         public override void _Ready()
         {
             OnBlueprintSelected += SelectTurretToBuild;
-            OnTurretBuilt += TurretBuilt;
             BuildableTile.OnTileSelected += SelectTile;
         }
 
