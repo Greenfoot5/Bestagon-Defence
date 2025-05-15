@@ -96,7 +96,7 @@ namespace Turrets
             else if (UseLocation)
                 SeekTarget(TargetLocation, false, delta);
             else
-                SeekTarget(Target.Position, true, delta);
+                SeekTarget(Target.GlobalPosition, true, delta);
         }
 
         /// <summary>
@@ -108,13 +108,13 @@ namespace Turrets
         private void SeekTarget(Vector2 location, bool isEnemy, double delta)
         {
             // Get the direction of the target, and the distance to move this frame
-            Vector2 position = Position;
+            Vector2 position = GlobalPosition;
             var distanceThisFrame = (float)(Stats[AttributeType.Speed].Value * delta);
             
             // Move bullet towards target
-            Position = Position.MoveToward(location, distanceThisFrame);
+            GlobalPosition = GlobalPosition.MoveToward(location, distanceThisFrame);
             
-            Vector2 difference = location - Position;
+            Vector2 difference = location - GlobalPosition;
             const float targetSize = 0.25f;
             // Has the bullet "hit" the target?
             if (difference.LengthSquared() <= targetSize * targetSize)
@@ -124,7 +124,7 @@ namespace Turrets
             }
             
             // Rotate to target
-            Rotation = (location - position).Normalized().Angle();
+            GlobalRotation = (location - position).Normalized().Angle();
         }
 
         /// <summary>
@@ -192,8 +192,9 @@ namespace Turrets
                 
                 var effect = _explodeEffect.Instantiate<Node2D>();
                 effect.Name = "_" + effect.Name;
-                effect.Position = Position;
-                effect.Rotation = Rotation;
+                effect.GlobalPosition = GlobalPosition;
+                effect.GlobalRotation = GlobalRotation;
+                GetTree().GetRoot().AddChild(effect);
 
                 GetTree().CreateTimer(1).Timeout += () => { effect.QueueFree(); };
                 
