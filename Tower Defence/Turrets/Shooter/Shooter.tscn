@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://y3feukxp7bde"]
+[gd_scene load_steps=15 format=3 uid="uid://y3feukxp7bde"]
 
 [ext_resource type="Script" uid="uid://bd5mf64k00upw" path="res://Turrets/Shooter/Shooter.cs" id="1_1gplr"]
 [ext_resource type="PackedScene" uid="uid://b07wmtlp10ngi" path="res://Turrets/Shooter/ShooterPellet.tscn" id="2_lixi6"]
+[ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/AttributeModifier.cs" id="3_te6x7"]
 [ext_resource type="Script" uid="uid://blnrq5atpcclw" path="res://Abstract/Attributes/Attribute.cs" id="4_82dt4"]
 [ext_resource type="Script" uid="uid://c80di1i4n41ig" path="res://Abstract/Attributes/Attributes.cs" id="5_rwy8f"]
 [ext_resource type="PackedScene" uid="uid://br5mievu4lflw" path="res://Turrets/Range.tscn" id="6_iurs4"]
@@ -12,7 +13,7 @@
 script = ExtResource("4_82dt4")
 Name = 2
 Base = 650.0
-_modifiers = {}
+_modifiers = Dictionary[Variant, ExtResource("3_te6x7")]({})
 Min = inf_neg
 Max = inf
 metadata/_custom_type_script = "uid://blnrq5atpcclw"
@@ -21,7 +22,7 @@ metadata/_custom_type_script = "uid://blnrq5atpcclw"
 script = ExtResource("4_82dt4")
 Name = 3
 Base = 0.7
-_modifiers = {}
+_modifiers = Dictionary[Variant, ExtResource("3_te6x7")]({})
 Min = inf_neg
 Max = inf
 metadata/_custom_type_script = "uid://blnrq5atpcclw"
@@ -30,7 +31,7 @@ metadata/_custom_type_script = "uid://blnrq5atpcclw"
 script = ExtResource("4_82dt4")
 Name = 13
 Base = 105.0
-_modifiers = {}
+_modifiers = Dictionary[Variant, ExtResource("3_te6x7")]({})
 Min = inf_neg
 Max = inf
 metadata/_custom_type_script = "uid://blnrq5atpcclw"
@@ -39,7 +40,7 @@ metadata/_custom_type_script = "uid://blnrq5atpcclw"
 script = ExtResource("4_82dt4")
 Name = 14
 Base = 2.3
-_modifiers = {}
+_modifiers = Dictionary[Variant, ExtResource("3_te6x7")]({})
 Min = inf_neg
 Max = inf
 metadata/_custom_type_script = "uid://blnrq5atpcclw"
@@ -59,24 +60,10 @@ _attributes = {
 script = ExtResource("1_1gplr")
 bulletPrefab = ExtResource("2_lixi6")
 FirePoint = NodePath("Turret/Fire Point")
-ShapeCast = NodePath("Range/ShapeCast2D")
+ShapeCast = NodePath("Turret/Range/ShapeCast2D")
 PartToRotate = NodePath("Turret")
-Range = NodePath("Range")
+Range = NodePath("Turret/Range")
 Stats = SubResource("Resource_dpruv")
-
-[node name="Range" parent="." instance=ExtResource("6_iurs4")]
-collision_layer = 0
-collision_mask = 2
-input_pickable = false
-monitorable = false
-
-[node name="ShapeCast2D" type="ShapeCast2D" parent="Range"]
-rotation = -3.14159
-shape = SubResource("SeparationRayShape2D_te6x7")
-target_position = Vector2(0, 200)
-collision_mask = 2
-collide_with_areas = true
-collide_with_bodies = false
 
 [node name="Base" type="Sprite2D" parent="."]
 texture = ExtResource("7_00hsh")
@@ -91,4 +78,18 @@ position = Vector2(0, -200)
 position = Vector2(0, 0.54)
 scale = Vector2(0.5, 0.5)
 
-[editable path="Range"]
+[node name="Range" parent="Turret" instance=ExtResource("6_iurs4")]
+collision_layer = 0
+collision_mask = 2
+input_pickable = false
+monitorable = false
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="Turret/Range"]
+rotation = -3.14159
+shape = SubResource("SeparationRayShape2D_te6x7")
+target_position = Vector2(0, 200)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[editable path="Turret/Range"]
