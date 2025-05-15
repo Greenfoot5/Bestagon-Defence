@@ -28,7 +28,7 @@ namespace Turrets
         /// What TargetingMethod the turret uses to pick its next target
         /// </summary>
         [Export]
-        public TargetingMethod TargetPriorityMethod = TargetingMethod.Closest;
+        public TargetingMethod TargetPriorityMethod = TargetingMethod.First;
         /// <summary>
         /// If the turret should always be searching for the best target (according to it's TargetingMethod)
         /// </summary>
