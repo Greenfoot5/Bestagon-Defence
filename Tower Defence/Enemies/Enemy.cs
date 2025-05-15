@@ -66,8 +66,9 @@ namespace Enemies
 
         public override void _Process(double delta)
         {
+            // TODO - Better backwards
             // If the enemy is moving backwards
-            if (Stats.Attributes[AttributeType.Speed].GetTrueValue() < 0)
+            if (Stats.Attributes[AttributeType.Speed].Value < 0)
             {
                 MoveBackwards();
                 return;

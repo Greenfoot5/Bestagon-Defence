@@ -13,38 +13,48 @@ public partial class Attribute : Resource
 
     [Export]
     public AttributeType Name;
+
+    private float _base;
     [Export]
-    public float Base;
+    public float Base
+    {
+        get => _base;
+        private set
+        {
+            _base = value;
+            UpdateValue();
+        }
+    }
+
     [Export]
     private Godot.Collections.Dictionary<Variant, AttributeModifier> _modifiers = new();
-    
-    private float _value;
-    public float Value => CalculateValue(Base, _modifiers);
+
+    public float Value { get; private set; }
 
     public float Modifier => CalculateMod(_modifiers);
 
     [Export]
-    public float Min { get; set; } = -Mathf.Inf;
+    public float Min { get; private set; } = -Mathf.Inf;
     [Export]
-    public float Max { get; set; } = Mathf.Inf;
+    public float Max { get; private set; } = Mathf.Inf;
     
     [Signal]
-    public delegate void AttributeUpdatedEventHandler(float newValue);
+    public delegate void AttributeUpdatedEventHandler(Attribute attribute);
 
     public Attribute()
     {
         Name = AttributeType.Nil;
-        Base = 1;
-        _value = 1;
+        Base = 1f;
+        UpdateValue();
     }
     
     public Attribute(AttributeType attributeType, float @base, float min = -Mathf.Inf, float max = Mathf.Inf)
     {
         Name = attributeType;
         Base = @base;
-        _value = @base;
         Min = min;
         Max = max;
+        UpdateValue();
     }
     
     public Attribute(Attribute attribute)
@@ -52,17 +62,33 @@ public partial class Attribute : Resource
         Name = attribute.Name;
         Base = attribute.Base;
         _modifiers = attribute._modifiers.Duplicate(true);
-        _value = attribute.Value;
+        Min = attribute.Min;
+        Max = attribute.Max;
+        UpdateValue();
     }
 
-    /// <summary>
-    /// Gets the value without min/max checks
-    /// Also ignores any global modifiers
-    /// </summary>
-    /// <returns>The current unrestricted attribute value</returns>
-    public float GetTrueValue()
+    public void CopyFrom(Attribute attribute)
     {
-        return _value;
+        if (attribute.Name != Name)
+        {
+            GD.PushError("Attempted to copy from different attribute type!");
+            return;
+        }
+
+        Base = attribute.Base;
+        _modifiers = attribute._modifiers.Duplicate(true);
+        Min = attribute.Min;
+        Max = attribute.Max;
+        UpdateValue();
+    }
+
+    private void UpdateValue()
+    {
+        float newVal = CalculateValue(Base, _modifiers);
+        
+        if (!(Math.Abs(newVal - Value) > Tolerance)) return;
+        
+        Value = newVal;
     }
     
     public AttributeModifier this[Variant key] => _modifiers.TryGetValue(key, out AttributeModifier item) ? item : new AttributeModifier();
@@ -73,23 +99,18 @@ public partial class Attribute : Resource
     {
         mod.Uid = key;
         _modifiers[key] = mod;
-        float newVal = CalculateValue(Base, _modifiers);
-        
-        if (!(Math.Abs(newVal - _value) > Tolerance)) return;
-        
-        _value = newVal;
-        EmitSignal(SignalName.AttributeUpdated, _value);
+        UpdateValue();
+        // Value = newVal;
+        EmitSignal(SignalName.AttributeUpdated, this);
     }
 
     public bool Remove(Variant key)
     {
         bool result = _modifiers.Remove(key);
-        float newVal = CalculateValue(Base, _modifiers);
+        UpdateValue();
         
-        if (!(Math.Abs(newVal - _value) > Tolerance)) return result;
-        
-        _value = newVal;
-        EmitSignal(SignalName.AttributeUpdated, _value);
+        // Value = newVal;
+        EmitSignal(SignalName.AttributeUpdated, this);
         
         return result;
     }
