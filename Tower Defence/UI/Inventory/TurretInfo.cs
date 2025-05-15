@@ -131,6 +131,7 @@ public partial class TurretInfo : Control
     /// <param name="tile">The new node to display UI for</param>
     public void SetTarget(BuildableTile tile)
     {
+        return;
         _target = tile;
             
         // Display the radius of the turret
