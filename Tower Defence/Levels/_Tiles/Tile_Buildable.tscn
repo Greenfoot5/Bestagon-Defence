@@ -1,11 +1,49 @@
-[gd_scene load_steps=3 format=3 uid="uid://bl5bfgnh4ruki"]
+[gd_scene load_steps=12 format=3 uid="uid://bl5bfgnh4ruki"]
 
 [ext_resource type="Script" uid="uid://fuhxgp2k2mrl" path="res://Levels/_Tiles/BuildableTile.cs" id="1_2xiig"]
+[ext_resource type="Texture2D" uid="uid://dfou8de5o51ab" path="res://Gameplay/T_DeathByte.png" id="3_4r5gx"]
+[ext_resource type="AnimationLibrary" uid="uid://dp1n4dksjun2d" path="res://Levels/_Tiles/BuildableTile.res" id="3_hn5bj"]
 [ext_resource type="Texture2D" uid="uid://jjvkculthe4o" path="res://_WIP/Art/node.png" id="3_tublc"]
 
-[node name="Node_Buildable" type="Area2D"]
+[sub_resource type="CurveTexture" id="CurveTexture_tpqal"]
+
+[sub_resource type="Curve" id="Curve_d5oo8"]
+_data = [Vector2(0, 1), 0.0, -1.4, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_q58t8"]
+curve = SubResource("Curve_d5oo8")
+
+[sub_resource type="Curve" id="Curve_7je2g"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.4, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ajc01"]
+curve = SubResource("Curve_7je2g")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hn5bj"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 200.0
+direction = Vector3(0, 0, 0)
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = 360.0
+angular_velocity_curve = SubResource("CurveTexture_tpqal")
+radial_velocity_min = 1250.0
+radial_velocity_max = 2000.0
+radial_velocity_curve = SubResource("CurveTexture_q58t8")
+gravity = Vector3(0, 0, 0)
+scale_min = 0.4
+scale_max = 0.4
+scale_curve = SubResource("CurveTexture_ajc01")
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4r5gx"]
+
+[node name="Node_Buildable" type="Area2D" node_paths=PackedStringArray("_rend", "_animator")]
 script = ExtResource("1_2xiig")
 HoverColour = Color(0.698039, 0.698039, 0.698039, 1)
+_rend = NodePath("Renderer")
+_animator = NodePath("AnimationPlayer")
 
 [node name="Hitbox" type="CollisionPolygon2D" parent="."]
 rotation = 1.5708
@@ -15,6 +53,20 @@ polygon = PackedVector2Array(0, -5, 4.35, -2.5, 4.35, 2.5, 0, 5, -4.35, 2.5, -4.
 [node name="Renderer" type="Sprite2D" parent="."]
 texture = ExtResource("3_tublc")
 
-[connection signal="input_event" from="." to="." method="OnMouseDown"]
-[connection signal="mouse_entered" from="." to="." method="OnMouseEnter"]
-[connection signal="mouse_exited" from="." to="." method="OnMouseExit"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Renderer"]
+z_index = 5
+emitting = false
+amount = 30
+texture = ExtResource("3_4r5gx")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+visibility_rect = Rect2(-1034.01, -1038.26, 2095.66, 2044.45)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_hn5bj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_4r5gx"),
+&"BuildableTile": ExtResource("3_hn5bj")
+}

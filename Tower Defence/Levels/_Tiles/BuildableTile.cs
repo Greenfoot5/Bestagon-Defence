@@ -42,6 +42,8 @@ namespace Levels._Nodes
         
         [Export]
         private Sprite2D _rend;
+        [Export]
+        private AnimationPlayer _animator;
 
         // Pointer handling
         private bool _isHolding;
@@ -101,33 +103,30 @@ namespace Levels._Nodes
             return hasAppliedModule;
         }
 
+        private void BuildBlueprint()
+        {
+            // Spawn the turret and set the turret and blueprint
+            var newTurret = TurretBlueprint.Prefab.Instantiate<Turret>();
+            newTurret.Name = "_" + newTurret.Name;
+            Turret = newTurret;
+            newTurret.displayName = TurretBlueprint.DisplayName;
+        
+            foreach (ModuleChainHandler handler in TurretBlueprint.ModuleHandlers)
+            {
+                newTurret.AddModule(handler);
+            }
+            
+            _rend.AddChild(newTurret);
+        }
+
         /// <summary>
         /// Places the turret on the node
         /// </summary>
         /// <param name="blueprint">The blueprint of the turret to build</param>
         private void BuildTurret(TurretBlueprint blueprint)
         {
-            // Spawn the turret and set the turret and blueprint
-            Vector2 nodePosition = Position;
-            var newTurret = blueprint.Prefab.Instantiate<Turret>();
-            newTurret.Name = "_" + newTurret.Name;
-            Turret = newTurret;
             TurretBlueprint = blueprint;
-            newTurret.displayName = blueprint.DisplayName;
-        
-            foreach (ModuleChainHandler handler in blueprint.ModuleHandlers)
-            {
-                newTurret.AddModule(handler);
-            }
-            
-            AddChild(newTurret);
-        
-            // Spawn the build effect and destroy after
-            // var effect = (Node2D)blueprint.BuildEffect.Instantiate();
-            // effect.Position = Position;
-            // effect.Name = "_" + effect.Name;
-            // TODO - free after correct time
-            // GetTree().CreateTimer(2).Timeout += () => { effect.QueueFree(); };
+            _animator.Play("BuildableTile/Build");
         }
     
         /// <summary>
@@ -192,7 +191,6 @@ namespace Levels._Nodes
             {
                 case InputEventMouseButton mouseEvent:
                 {
-                    GD.Print("Mouse Down");
                     if ((mouseEvent.ButtonMask & MouseButtonMask.Left) != 0)
                         HandlePointerInteract();
                     break;
@@ -248,6 +246,7 @@ namespace Levels._Nodes
         /// </summary>
         private void OnMouseEnter()
         {
+            _animator.Queue(new StringName("BuildableTile/OnMouseEnter"));
             if (Turret != null)
             {
                 // UpdateModules();
@@ -259,7 +258,7 @@ namespace Levels._Nodes
             {
                 return;
             }
-            Modulate = HoverColour;
+            SelfModulate = HoverColour;
             // TODO - Move Module preview
             // BuildManager.instance.currentPreview.Position = Position;
             // BuildManager.instance.currentPreview.Visible = true;
@@ -270,12 +269,12 @@ namespace Levels._Nodes
         /// </summary>
         private void OnMouseExit()
         {
+            _animator.Queue(new StringName("BuildableTile/OnMouseExit"));
             if (Turret != null)
             {
                 // _modulesDisplay.Visible = false;
             }
-            
-            Modulate = _defaultColour;
+            SelfModulate = _defaultColour;
             // TODO - Disable Module Preview
             // if (BuildManager.instance.currentPreview != null)
             //     BuildManager.instance.currentPreview.Visible = false;
@@ -298,12 +297,6 @@ namespace Levels._Nodes
                 moduleIcon.Position = _modulesDisplay.Position;
                 moduleIcon.Name = "_" + moduleIcon.Name;
                 moduleIcon.SetData(handle);
-                foreach (Node node in moduleIcon.GetChildren())
-                {
-                    // TODO - Is disabling raycastTarget needed?
-                    // if (node is Sprite2D image)
-                    //     image.raycastTarget = false;
-                }
             }
 
             _modulesDisplay.SetLayoutHorizontal();
