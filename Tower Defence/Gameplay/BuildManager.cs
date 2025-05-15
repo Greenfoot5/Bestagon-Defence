@@ -61,11 +61,11 @@ namespace Gameplay
         public void SelectTurretToBuild(TurretInventoryItem buttonToDelete)
         {
             _buildingButton = buttonToDelete;
-            CurrentPreview = (Node2D)rangePreview.Instantiate();
+            // CurrentPreview = (Node2D)rangePreview.Instantiate();
             // TODO - GetComponent
             // float range = turret.prefab.GetComponent<Turret>().range.GetStat();
-            float range = 5;
-            CurrentPreview.Scale = new Vector2(range * 2, range * 2);
+            // float range = 5;
+            // CurrentPreview.Scale = new Vector2(range * 2, range * 2);
             // currentPreview.GetComponent<SpriteRenderer>().color = turret.accent;
         }
         
