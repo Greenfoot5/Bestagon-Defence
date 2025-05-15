@@ -1,6 +1,7 @@
 using System;
 using Abstract.Attributes;
 using Abstract.Data;
+using Gameplay;
 using Godot;
 using Levels._Nodes;
 using Turrets;
@@ -113,10 +114,14 @@ public partial class TurretInfo : Control
     [Export]
     private BaseButton cycleTargetingButton;
 
+    private Node inventoryButtonSelected;
+
     public override void _Ready()
     {
         BuildableTile.OnTileSelected += SetTarget;
         Shop.Shop.OnPickTurret += AddTurret;
+        BuildManager.OnBlueprintSelected += SelectBlueprint;
+        BuildManager.OnTurretBuilt += BuiltTurret;
     }
         
     /// <summary>
@@ -127,6 +132,8 @@ public partial class TurretInfo : Control
     {
         if (tile == null || _target == tile)
         {
+            _target?.Turret.Deselected();
+            DisplayTurretInventory();
             return;
         }
         
@@ -250,7 +257,6 @@ public partial class TurretInfo : Control
         
     public void DisplayTurretInventory()
     {
-        BuildableTile.SelectedTile = null;
         // Shuw();
         turretInventoryPage.Visible = true;
         moduleInventoryPage.Visible = false;
@@ -295,8 +301,7 @@ public partial class TurretInfo : Control
                 item.Disabled = true;
             }
         }
-            
-        Shuw();
+        
         inventoryTitle.Text = moduleInventoryTitle;
         moduleInventoryPage.Visible = true;
         turretInventoryPage.Visible = false;
@@ -310,8 +315,7 @@ public partial class TurretInfo : Control
             BuildableTile.SelectedTile = null;
             return;
         }
-            
-        Shuw();
+        
         inventoryTitle.Text = _target.TurretBlueprint.DisplayName;
         turretInfoPage.Visible = true;
         turretInventoryPage.Visible = false;
@@ -325,31 +329,18 @@ public partial class TurretInfo : Control
         UpdateModules();
     }
 
-    public void Close()
-    {
-        turretInfoPage.Visible = false;
-        turretInventoryPage.Visible = false;
-        moduleInventoryPage.Visible = false;
-        // turretInventoryButton.Visible = true;
-        turretInfoButton.Visible = false;
-            
-        _target = null;
-            
-        // TODO - Anchor
-        // var rt = (RectTransform)transform;
-        // rt.anchorMin = new Vector2(-0.25f, rt.anchorMin.Y);
-        // rt.anchorMax = new Vector2(0f, rt.anchorMax.Y);
-    }
-
-    private void Shuw()
-    {
-        // var rt = (RectTransform)transform;
-        // rt.anchorMin = new Vector2(0f, rt.anchorMin.Y);
-        // rt.anchorMax = new Vector2(0.25f, rt.anchorMax.Y);
-    }
-
     private void AddTurret(TurretInventoryItem blueprint)
     {
         turretInventoryContent.AddChild(blueprint);
+    }
+
+    private void SelectBlueprint(TurretInventoryItem item)
+    {
+        inventoryButtonSelected = item;
+    }
+
+    private void BuiltTurret()
+    {
+        inventoryButtonSelected.QueueFree();
     }
 }

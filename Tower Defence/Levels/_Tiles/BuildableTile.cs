@@ -228,8 +228,14 @@ namespace Levels._Nodes
                 SelectedTile = this;
                 return;
             }
-            // If the player is clicking an empty node
-
+            
+            // If the player is clicking on the same node
+            if (SelectedTile == this)
+            {
+                SelectedTile = null;
+                return;
+            }
+            
             // Player doesn't have a build button selected
             if (!BuildManager.HasTurretToBuild)
             {
