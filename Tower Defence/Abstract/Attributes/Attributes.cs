@@ -12,7 +12,7 @@ public partial class Attributes : Resource
     private Godot.Collections.Dictionary<AttributeType, Attribute> _attributes;
     private Godot.Collections.Dictionary<AttributeType, Attribute> _defaults = new()
     {
-        [AttributeType.KnockbackDuration] = new Attribute(0.2f)
+        [AttributeType.KnockbackDuration] = new Attribute(AttributeType.KnockbackDuration, 0.2f)
     };
     
     public ICollection<AttributeType> Keys => _attributes.Keys;

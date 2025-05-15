@@ -22,8 +22,8 @@ namespace Turrets
 
         protected Turret()
         {
-            Stats[AttributeType.Range] = new Attribute(2.5f, min:0f);
-            Stats[AttributeType.FireRate] = new Attribute(1f, min:0f);
+            Stats[AttributeType.Range] = new Attribute(AttributeType.Range, 2.5f, min:0f);
+            Stats[AttributeType.FireRate] = new Attribute(AttributeType.FireRate, 1f, min:0f);
         }
         
         /// <summary>

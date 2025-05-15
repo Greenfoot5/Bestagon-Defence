@@ -60,7 +60,7 @@ namespace Turrets
 
         protected DynamicTurret()
         {
-            Stats[AttributeType.RotationSpeed] = new Attribute(3f, min:0f);
+            Stats[AttributeType.RotationSpeed] = new Attribute(AttributeType.RotationSpeed, 3f, min:0f);
         }
         
         /// <summary>

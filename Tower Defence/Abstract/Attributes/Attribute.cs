@@ -36,14 +36,6 @@ public partial class Attribute : Resource
         _value = 1;
     }
     
-    public Attribute(float @base, float min = -Mathf.Inf, float max = Mathf.Inf)
-    {
-        Base = @base;
-        _value = @base;
-        Min = min;
-        Max = max;
-    }
-    
     public Attribute(AttributeType attributeType, float @base, float min = -Mathf.Inf, float max = Mathf.Inf)
     {
         Name = attributeType;

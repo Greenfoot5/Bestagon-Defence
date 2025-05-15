@@ -28,8 +28,8 @@ namespace Turrets.Laser
 
         public Laser()
         {
-            Stats[AttributeType.LaserDuration] = new Attribute(1f);
-            Stats[AttributeType.LaserCooldown] = new Attribute(1f);
+            Stats[AttributeType.LaserDuration] = new Attribute(AttributeType.LaserDuration, 1f);
+            Stats[AttributeType.LaserCooldown] = new Attribute(AttributeType.LaserCooldown, 1f);
         }
 
         /// <summary>

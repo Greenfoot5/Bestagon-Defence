@@ -26,9 +26,9 @@ namespace Turrets.Gunner
 
         public Gunner()
         {
-            Stats[AttributeType.SpinMultiplier] = new Attribute(1.1f);
-            Stats[AttributeType.SpinCooldown] = new Attribute(1.08f);
-            Stats[AttributeType.SpinIncrease] = new Attribute(_fireRateIncrease, min: 1f);
+            Stats[AttributeType.SpinMultiplier] = new Attribute(AttributeType.SpinMultiplier, 1.1f);
+            Stats[AttributeType.SpinCooldown] = new Attribute(AttributeType.SpinCooldown, 1.08f);
+            Stats[AttributeType.SpinIncrease] = new Attribute(AttributeType.SpinIncrease, _fireRateIncrease, min: 1f);
         }
 
         /// <summary>

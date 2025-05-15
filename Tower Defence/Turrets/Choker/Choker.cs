@@ -22,8 +22,8 @@ namespace Turrets.Choker
 
         public Choker()
         {
-            Stats[AttributeType.PartSpread] = new Attribute(0.5f, min: 0f);
-            Stats[AttributeType.PartCount] = new Attribute(10f, min: 0f);
+            Stats[AttributeType.PartSpread] = new Attribute(AttributeType.PartSpread, 0.5f, min: 0f);
+            Stats[AttributeType.PartCount] = new Attribute(AttributeType.PartCount, 10f, min: 0f);
         }
 
         /// <summary>

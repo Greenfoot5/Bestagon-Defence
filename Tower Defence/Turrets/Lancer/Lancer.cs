@@ -49,7 +49,7 @@ namespace Turrets.Lancer
 
         public Lancer()
         {
-            Stats[AttributeType.BulletRange] = new Attribute(3f);
+            Stats[AttributeType.BulletRange] = new Attribute(AttributeType.BulletRange, 3f);
         }
 
         /// <summary>

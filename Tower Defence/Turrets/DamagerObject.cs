@@ -12,7 +12,7 @@ namespace Turrets
         [Export]
         public Attributes Stats = new(
             new Godot.Collections.Dictionary<AttributeType, Attribute> { 
-                [AttributeType.Damage] = new(100f, min:0f),
+                [AttributeType.Damage] = new(AttributeType.Damage, 100f, min:0f),
             });
         
         // TODO - Check tag system
