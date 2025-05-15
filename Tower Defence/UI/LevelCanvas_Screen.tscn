@@ -191,13 +191,20 @@ grow_vertical = 2
 texture = ExtResource("10_p77s1")
 expand_mode = 1
 
-[node name="Inventory" type="Control" parent="." node_paths=PackedStringArray("turretInventoryPage", "turretInventoryContent")]
+[node name="Inventory" type="Control" parent="." node_paths=PackedStringArray("turretInventoryPage", "turretInventoryContent", "moduleInventoryPage", "turretInfoPage", "inventoryTitle", "damage", "rate", "range", "cycleTargetingButton")]
 layout_mode = 1
 anchor_right = 0.2
 anchor_bottom = 1.0
 script = ExtResource("13_moy2t")
 turretInventoryPage = NodePath("Turrets")
 turretInventoryContent = NodePath("Turrets/Viewport/Content")
+moduleInventoryPage = NodePath("Modules")
+turretInfoPage = NodePath("TurretInfo")
+inventoryTitle = NodePath("TurretInfo/Label")
+damage = NodePath("TurretInfo/Stats/Damage")
+rate = NodePath("TurretInfo/Stats/Rate")
+range = NodePath("TurretInfo/Stats/Range")
+cycleTargetingButton = NodePath("TurretInfo/TargetingRotateButton")
 
 [node name="Turrets" type="Panel" parent="Inventory"]
 layout_mode = 1
@@ -356,7 +363,7 @@ stretch_mode = 5
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-text = "200"
+text = "50"
 vertical_alignment = 1
 
 [node name="Rate" type="HSplitContainer" parent="Inventory/TurretInfo/Stats" node_paths=PackedStringArray("icon", "text")]
@@ -380,7 +387,7 @@ stretch_mode = 5
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-text = "1.25"
+text = "0.9"
 vertical_alignment = 1
 
 [node name="Range" type="HSplitContainer" parent="Inventory/TurretInfo/Stats" node_paths=PackedStringArray("icon", "text")]
@@ -404,7 +411,7 @@ stretch_mode = 5
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-text = "2.5"
+text = "5"
 vertical_alignment = 1
 
 [node name="ModulesTitle" type="Label" parent="Inventory/TurretInfo"]

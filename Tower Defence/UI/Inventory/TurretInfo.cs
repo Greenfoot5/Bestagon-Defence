@@ -19,11 +19,6 @@ public partial class TurretInfo : Control
     /// </summary>
     [Export]
     private Shop.Shop shop;
-    /// <summary>
-    /// The title for the inventory
-    /// </summary>
-    [Export]
-    private Label inventoryTitle;
         
     /// <summary>
     /// The inventory show/hide for the turrets
@@ -71,6 +66,11 @@ public partial class TurretInfo : Control
     [Export]
     private Control turretInfoPage;
     /// <summary>
+    /// The label for the turret name
+    /// </summary>
+    [Export]
+    private Label inventoryTitle;
+    /// <summary>
     /// The button to add more modules
     /// </summary>
     [Export]
@@ -98,7 +98,7 @@ public partial class TurretInfo : Control
     /// </summary>
     [ExportSubgroup("Modules")]
     [Export]
-    private BuildableTile modules;
+    private Node modules;
     /// <summary>
     /// The prefab of a module icon to instantiate to display the turret's modules
     /// </summary>
@@ -111,13 +111,7 @@ public partial class TurretInfo : Control
     /// </summary>
     [ExportGroup("Buttons")]
     [Export]
-    private Button cycleTargetingButton;
-        
-    /// <summary>
-    /// The text to display on the rotation button
-    /// </summary>
-    [Export]
-    private string rotateText;
+    private BaseButton cycleTargetingButton;
 
     public override void _Ready()
     {
@@ -131,8 +125,12 @@ public partial class TurretInfo : Control
     /// <param name="tile">The new node to display UI for</param>
     public void SetTarget(BuildableTile tile)
     {
-        return;
         _target = tile;
+
+        if (_target == null)
+        {
+            return;
+        }
             
         // Display the radius of the turret
         _target.Turret.Selected();
@@ -141,15 +139,14 @@ public partial class TurretInfo : Control
         if (_target.Turret is DynamicTurret dynamicTurret)
         {
             cycleTargetingButton.Visible = true;
-            cycleTargetingButton.Text = "<b>Targeting:</b>\n" + 
-                                        dynamicTurret.TargetPriorityMethod;
+            cycleTargetingButton.GetChild<Label>(0).Text = "Targeting:\n" + dynamicTurret.TargetPriorityMethod;
             // TODO - Clear all other listeners
             cycleTargetingButton.Pressed += CycleTargeting;
         }
         else if (_target.Turret is Lancer)
         {
             cycleTargetingButton.Visible = true;
-            cycleTargetingButton.Text = rotateText;
+            cycleTargetingButton.GetChild<Label>(0).Text = "Rotate";
             // cycleTargetingButton.Pressed += () => RemoveAllListeners();
             cycleTargetingButton.Pressed += RotateLancer;
         }
@@ -176,8 +173,7 @@ public partial class TurretInfo : Control
         dynamic.TargetPriorityMethod = (DynamicTurret.TargetingMethod)( (currentMethod + 1) % types.Length);
             
         // Update our button text
-        cycleTargetingButton.GetChild<Label>(0).Text = "<b>Targeting:</b>\n" +
-                                                       dynamic.TargetPriorityMethod;
+        cycleTargetingButton.GetChild<Label>(0).Text = "Targeting:\n" + dynamic.TargetPriorityMethod;
     }
         
     /// <summary>
@@ -186,7 +182,7 @@ public partial class TurretInfo : Control
     public void UpdateStats()
     {
         if (_target?.Turret is null) return;
-        var turret = _target.Turret;
+        Turret turret = _target.Turret;
         // Stats
         damage.SetData(turret.Stats[AttributeType.Damage]);
         rate.SetData(turret.Stats[AttributeType.FireRate]);
@@ -244,9 +240,9 @@ public partial class TurretInfo : Control
             // }
         }
             
-        Button addModule = addModuleButton.Instantiate<Button>();
-        modules.AddChild(addModule);
-        addModule.Pressed += OpenModuleInventory;
+        // Button addModule = addModuleButton.Instantiate<Button>();
+        // modules.AddChild(addModule);
+        // addModule.Pressed += OpenModuleInventory;
             
         modules.GetChild<TriangleLayout>(0).SetLayoutHorizontal();
         modules.GetChild<TriangleLayout>(0).SetLayoutVertical();
@@ -323,11 +319,10 @@ public partial class TurretInfo : Control
         turretInfoPage.Visible = true;
         turretInventoryPage.Visible = false;
         moduleInventoryPage.Visible = false;
-        turretInfoButton.Visible = true;
         // turretInventoryButton.Visible = false;
 
         // TODO - Was GettingComponent<Button>, does still work?
-        turretInfoButton.SelfModulate = _target.TurretBlueprint.Accent;
+        // turretInfoButton.SelfModulate = _target.TurretBlueprint.Accent;
             
         UpdateStats();
         UpdateModules();
