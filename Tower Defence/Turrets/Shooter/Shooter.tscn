@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://y3feukxp7bde"]
+[gd_scene load_steps=19 format=3 uid="uid://y3feukxp7bde"]
 
 [ext_resource type="Script" uid="uid://bd5mf64k00upw" path="res://Turrets/Shooter/Shooter.cs" id="1_1gplr"]
 [ext_resource type="PackedScene" uid="uid://b07wmtlp10ngi" path="res://Turrets/Shooter/ShooterPellet.tscn" id="2_lixi6"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://br5mievu4lflw" path="res://Turrets/Range.tscn" id="6_iurs4"]
 [ext_resource type="Texture2D" uid="uid://d26aqj2odl383" path="res://Turrets/Shooter/T_ShooterBase_Dark.png" id="7_00hsh"]
 [ext_resource type="Texture2D" uid="uid://bqr2h4s8oo5pk" path="res://Turrets/Shooter/T_ShooterTurret.png" id="8_t32vb"]
+[ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/White_Rectangle.png" id="10_wl632"]
+[ext_resource type="Shader" uid="uid://bjciwmxveqxrx" path="res://MaterialLibrary/Range/Range.gdshader" id="10_wrkjf"]
 
 [sub_resource type="Resource" id="Resource_bs4ev"]
 script = ExtResource("4_82dt4")
@@ -54,14 +56,27 @@ _attributes = {
 14: SubResource("Resource_cdwey")
 }
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wl632"]
+particle_flag_disable_z = true
+direction = Vector3(0, 5, 0)
+gravity = Vector3(0, 0, 0)
+
 [sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_te6x7"]
 
-[node name="Shooter" type="Node2D" node_paths=PackedStringArray("FirePoint", "ShapeCast", "PartToRotate", "Range")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ldkt0"]
+shader = ExtResource("10_wrkjf")
+shader_parameter/circle_color = Color(1, 1, 1, 0)
+shader_parameter/glow_color = Color(1, 1, 1, 1)
+shader_parameter/glow_radius = 2.0
+shader_parameter/glow_size = 1.6
+
+[node name="Shooter" type="Node2D" node_paths=PackedStringArray("FirePoint", "ShapeCast", "PartToRotate", "RangeDisplay", "Range")]
 script = ExtResource("1_1gplr")
 bulletPrefab = ExtResource("2_lixi6")
 FirePoint = NodePath("Turret/Fire Point")
 ShapeCast = NodePath("Turret/Range/ShapeCast2D")
 PartToRotate = NodePath("Turret")
+RangeDisplay = NodePath("Range")
 Range = NodePath("Turret/Range")
 Stats = SubResource("Resource_dpruv")
 
@@ -74,9 +89,11 @@ texture = ExtResource("8_t32vb")
 [node name="Fire Point" type="Node2D" parent="Turret"]
 position = Vector2(0, -200)
 
-[node name="ShooterMuzzle" type="Node2D" parent="Turret"]
-position = Vector2(0, 0.54)
-scale = Vector2(0.5, 0.5)
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Turret/Fire Point"]
+emitting = false
+texture = ExtResource("10_wl632")
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_wl632")
 
 [node name="Range" parent="Turret" instance=ExtResource("6_iurs4")]
 collision_layer = 0
@@ -91,5 +108,11 @@ target_position = Vector2(0, 200)
 collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="Range" type="Sprite2D" parent="."]
+self_modulate = Color(0.156863, 0.752941, 0.45098, 1)
+material = SubResource("ShaderMaterial_ldkt0")
+scale = Vector2(2.4, 2.4)
+texture = ExtResource("10_wl632")
 
 [editable path="Turret/Range"]

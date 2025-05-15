@@ -31,8 +31,8 @@ namespace Turrets
         /// </summary>
         public override void _Ready()
         {
-            // RangeDisplay.Visible = false;
-            // RangeDisplay.ProcessMode = ProcessModeEnum.Disabled;
+            RangeDisplay.Visible = false;
+            RangeDisplay.ProcessMode = ProcessModeEnum.Disabled;
             UpdateRange();
         }
 
@@ -93,8 +93,8 @@ namespace Turrets
         public override void Selected()
         {
             UpdateRange();
-            // RangeDisplay.Visible = true;
-            // RangeDisplay.ProcessMode = ProcessModeEnum.Inherit;
+            RangeDisplay.Visible = true;
+            RangeDisplay.ProcessMode = ProcessModeEnum.Inherit;
         }
         
         /// <summary>
@@ -102,8 +102,8 @@ namespace Turrets
         /// </summary>
         public override void Deselected()
         {
-            // RangeDisplay.Visible = false;
-            // RangeDisplay.ProcessMode = ProcessModeEnum.Disabled;
+            RangeDisplay.Visible = false;
+            RangeDisplay.ProcessMode = ProcessModeEnum.Disabled;
         }
     }
 }
