@@ -37,3 +37,10 @@ pointing/emulate_touch_from_mouse=true
 [rendering]
 
 renderer/rendering_method="mobile"
+
+[shader_globals]
+
+UNSCALED_TIME={
+"type": "float",
+"value": 0.0
+}

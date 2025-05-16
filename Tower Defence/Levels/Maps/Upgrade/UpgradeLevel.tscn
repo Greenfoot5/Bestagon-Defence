@@ -1,6 +1,7 @@
-[gd_scene load_steps=24 format=4 uid="uid://dxeskbdbxmflu"]
+[gd_scene load_steps=26 format=4 uid="uid://dxeskbdbxmflu"]
 
 [ext_resource type="TileSet" uid="uid://cqec5gsl2jrtp" path="res://Levels/_Tiles/PathTiles.tres" id="1_dbecs"]
+[ext_resource type="Shader" uid="uid://ci85qadqdqbak" path="res://MaterialLibrary/Hexagons/Background.gdshader" id="1_h5o5v"]
 [ext_resource type="PackedScene" uid="uid://bl5bfgnh4ruki" path="res://Levels/_Tiles/Tile_Buildable.tscn" id="2_jq068"]
 [ext_resource type="Script" uid="uid://ifi3my065eu" path="res://Gameplay/Waves/WaveSpawner.cs" id="3_o3dn4"]
 [ext_resource type="Resource" uid="uid://bm67ol4yudaf4" path="res://Enemies/Pawns/BasicEnemyStats.tres" id="7_pse8l"]
@@ -14,8 +15,20 @@
 [ext_resource type="Script" uid="uid://b7c7g8jqgu062" path="res://Gameplay/GameStats.cs" id="13_p388s"]
 [ext_resource type="Script" uid="uid://ci5f1fooga4hq" path="res://Gameplay/GameManager.cs" id="14_dbecs"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dbecs"]
-bg_color = Color(0.101961, 0.113725, 0.188235, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dbecs"]
+shader = ExtResource("1_h5o5v")
+shader_parameter/offset_uv = Vector2(0, 0)
+shader_parameter/hexagon_scale = 150.0
+shader_parameter/overlay_strength = 0.25
+shader_parameter/hex_opacity = 1.0
+shader_parameter/glow_intensity = 0.0
+shader_parameter/glow_clamp = 1.0
+shader_parameter/glow_opacity = 0.5
+shader_parameter/luminance_shift_speed = 0.5
+shader_parameter/scroll_speed = 0.001
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jq068"]
+bg_color = Color(0.1026, 0.114253, 0.19, 1)
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_4pwqs"]
 resource_name = "buildable"
@@ -76,6 +89,7 @@ metadata/_custom_type_script = "uid://bgfugrs685jpk"
 [node name="Upgrade" type="Node"]
 
 [node name="Panel" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_dbecs")
 anchors_preset = -1
 anchor_left = -5.0
 anchor_top = -5.0
@@ -84,7 +98,7 @@ anchor_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_dbecs")
+theme_override_styles/panel = SubResource("StyleBoxFlat_jq068")
 
 [node name="_Managers\'" type="Node" parent="."]
 

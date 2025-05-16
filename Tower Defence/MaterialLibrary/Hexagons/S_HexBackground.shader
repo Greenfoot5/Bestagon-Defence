@@ -119,9 +119,7 @@ Shader "Custom/Hexagon/Background"
              */
             float rand2d( const in float2 n )
             {
-            
 	            return frac( sin( dot( n, float2( 12.9898, 4.1414 ) ) ) * 43758.5453 );
-                
             }
 
             /**
@@ -140,7 +138,6 @@ Shader "Custom/Hexagon/Background"
 		            lerp( rand2d( ip + float2(0.0,1.0) ),rand2d( ip + float2(1.0,1.0) ), u.x ),
                     u.y );
 	            return res*res;
-                
             }
             // --- 2D NOISE
             
@@ -231,7 +228,6 @@ Shader "Custom/Hexagon/Background"
              */
             fixed4 frag ( v2f i ) : SV_Target
             {
-            
                 // offset
                 i.uv += _OffsetUV;
             

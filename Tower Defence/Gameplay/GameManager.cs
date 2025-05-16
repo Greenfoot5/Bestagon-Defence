@@ -83,6 +83,9 @@ namespace Gameplay
         /// </summary>
         public override void _Process(double delta)
         {
+            // TODO - Move somewhere better
+            RenderingServer.GlobalShaderParameterSet("UNSCALED_TIME", Time.GetTicksMsec() / 1000.0);
+            
             if (isGameOver)
             {
                 return;
