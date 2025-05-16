@@ -7,8 +7,6 @@ using Godot;
 using Levels.Maps;
 using Turrets;
 
-using Object = object;
-
 namespace UI.Shop;
 
 public enum HiddenMode
@@ -64,7 +62,7 @@ public partial class GenerateShopSelection : Control
     private BaseButton _lockedButton;
     private bool _isLocked;
 
-    private List<Tuple<Object, int>> _hiddenChoices;
+    private List<Tuple<object, int>> _hiddenChoices;
     private double _openTimeScale;
     
     /// <summary>
@@ -236,9 +234,9 @@ public partial class GenerateShopSelection : Control
         return turretUI;
     }
 
-    private void GenerateHiddenUI(Object choice, int selectionIndex)
+    private void GenerateHiddenUI(object choice, int selectionIndex)
     {
-        _hiddenChoices.Add(new Tuple<Object, int>(choice, selectionIndex));
+        _hiddenChoices.Add(new Tuple<object, int>(choice, selectionIndex));
         Node hiddenUI = _hiddenSelectionUI.Instantiate();
         _selectionParent.AddChild(hiddenUI);
         hiddenUI.Name = "_" + hiddenUI.Name;
