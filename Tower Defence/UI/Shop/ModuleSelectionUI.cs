@@ -17,7 +17,6 @@ namespace UI.Shop
         /// <summary>
         /// The module to display on the card
         /// </summary>
-        [Export]
         private ModuleChainHandler handler;
         
         /// <summary>
