@@ -1,16 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://bxr1qd0pjiu10"]
+[gd_scene load_steps=6 format=3 uid="uid://bxr1qd0pjiu10"]
 
+[ext_resource type="Script" uid="uid://bovddoe2w43nu" path="res://UI/Shop/ModuleSelectionUI.cs" id="1_efey1"]
 [ext_resource type="Texture2D" uid="uid://bgwjkwx6n6xlm" path="res://UI/Generic/T_Head_Steep.png" id="1_mfdy0"]
 [ext_resource type="PackedScene" uid="uid://ccppuoth5cgn0" path="res://UI/Modules/ModuleIcon.tscn" id="1_w7h7o"]
 [ext_resource type="Texture2D" uid="uid://dvr7ad4u6su16" path="res://Modules/Instakill/skull.png" id="2_efey1"]
+[ext_resource type="PackedScene" uid="uid://q4vdeurrxpak" path="res://UI/Glyphs/TurretGlyph.tscn" id="2_uatrp"]
 
-[node name="Card_Module" type="Panel"]
+[node name="Card_Module" type="Panel" node_paths=PackedStringArray("displayName", "tagline", "icon", "effect", "applicableGlyphs")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
+script = ExtResource("1_efey1")
+displayName = NodePath("Button/Name")
+tagline = NodePath("Button/Tagline")
+icon = NodePath("Button/Icon")
+effect = NodePath("Button/Effect")
+glyphScene = ExtResource("2_uatrp")
+applicableGlyphs = NodePath("Button/Applicable")
 
 [node name="TypePanel" type="NinePatchRect" parent="."]
 layout_mode = 1
