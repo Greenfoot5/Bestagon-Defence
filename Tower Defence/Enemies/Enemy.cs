@@ -203,7 +203,9 @@ namespace Enemies
                 return;
             _isDead = true;
             
+            // TODO - Death Bits
             // DeathBitManager.DropEnergy(Position, Stats.DeathMoney);
+            GameStats.Energy += Stats.DeathMoney;
 
             OnDeath?.Invoke();
             OnEnemyDeath?.Invoke();
