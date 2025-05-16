@@ -51,7 +51,7 @@ public partial class WeightedCurveList : Resource
     /// <returns>The WeightedList for a specific time</returns>
     public WeightedList ToWeightedList(float time)
     {
-        var weightedList = new WeightedList();
+        var weightedList = new WeightedList(strain);
         
         for (var i = 0; i < Size; i++)
         {
