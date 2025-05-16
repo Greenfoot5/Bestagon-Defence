@@ -11,16 +11,13 @@ namespace UI.Shop
         /// <summary>
         /// The amount of lives to grant
         /// </summary>
-        [Export]
         private int _count;
         
-        // TODO - Hexagons
-        // [Export]
         /// <summary>
         /// The hexagons background of the card (the card's background shader)
-        // </summary>
-        // [Export]
-        // private Hexagons bg;
+        /// </summary>
+        [Export]
+        private BaseButton button;
         
         /// <summary>
         /// The label contains the card description
@@ -47,14 +44,18 @@ namespace UI.Shop
             
             // When the card is clicked, the game picks the module
             // bg.GetComponent<Button>().onClick.AddListener(MakeSelection);
+            button.Pressed += () => { MakeSelection(shop); };
         }
 
         /// <summary>
         /// Called when the player clicks on the card.
         /// </summary>
-        private void MakeSelection ()
+        private void MakeSelection(Shop shop)
         {
             GameStats.Lives += _count;
+            shop.SelectionGenerator.GenerateSelection();
+            shop.SelectionGenerator.Resume();
+            shop.SelectionGenerator.Unlock();
             GameStats.Powercells -= 1;
         }
     }
