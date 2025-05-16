@@ -69,7 +69,7 @@ public partial class ShopData : Resource
     public DuplicateTypes ModuleDuplicateCheck = DuplicateTypes.ByType;
 
     /// <summary>
-    /// How initial selections should be granted
+    /// How many initial selections should be granted
     /// </summary>
     [ExportGroup("Selection Counts")]
     [Export]
