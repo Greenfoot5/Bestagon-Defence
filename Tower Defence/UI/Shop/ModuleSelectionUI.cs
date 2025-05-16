@@ -54,7 +54,7 @@ namespace UI.Shop
         /// The generic glyph PackedScene to use to display applicable turrets
         /// </summary>
         [Export]
-        private PackedScene glyphPrefab;
+        private PackedScene glyphScene;
         /// <summary>
         /// The parent for the module's turret glyphs
         /// </summary>
@@ -87,7 +87,7 @@ namespace UI.Shop
             foreach (Type turretType in module.GetValidTypes())
             {
                 TurretGlyph glyphRes = shop.GlyphsLookup.GetForType(turretType);
-                Node glyph = glyphPrefab.Instantiate();
+                Node glyph = glyphScene.Instantiate();
                 applicableGlyphs.AddChild(glyph);
                 glyph.Name = "_" + glyph.Name;
                 // glyph.Find("Body").GetComponent<HexagonSprite>().color = glyphSo.body;
