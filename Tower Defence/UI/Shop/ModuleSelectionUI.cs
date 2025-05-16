@@ -89,9 +89,9 @@ namespace UI.Shop
                 Node glyph = glyphScene.Instantiate();
                 applicableGlyphs.AddChild(glyph);
                 glyph.Name = "_" + glyph.Name;
-                // glyph.Find("Body").GetComponent<HexagonSprite>().color = glyphSo.body;
-                // glyph.Find("Shade").GetComponent<HexagonSprite>().color = glyphSo.shade;
-                glyph.GetNode<Sprite2D>("Glyph").Texture = glyphRes.Glyph;
+                glyph.GetNode<CanvasItem>("Body").SelfModulate = glyphRes.Body;
+                glyph.GetNode<CanvasItem>("Shade").SelfModulate = glyphRes.Shade;
+                glyph.GetNode<TextureRect>("Glyph").Texture = glyphRes.Glyph;
             }
             
             // When the card is clicked, the game picks the module
