@@ -126,8 +126,8 @@ namespace Gameplay
             var droppedEnergy = 0;
             foreach (DeathEnergy particle in DeathBitManager.Particles)
             {
-                if (!particle.IsAnimating)
-                    droppedEnergy += particle.Value;
+                // if (!particle.IsAnimating)
+                droppedEnergy += particle.Value;
             }
             
             saveData.Energy = GameStats.Energy + droppedEnergy;

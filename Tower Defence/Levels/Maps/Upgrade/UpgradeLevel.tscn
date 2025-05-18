@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://dxeskbdbxmflu"]
+[gd_scene load_steps=30 format=4 uid="uid://dxeskbdbxmflu"]
 
 [ext_resource type="TileSet" uid="uid://cqec5gsl2jrtp" path="res://Levels/_Tiles/PathTiles.tres" id="1_dbecs"]
 [ext_resource type="Shader" uid="uid://ci85qadqdqbak" path="res://MaterialLibrary/Hexagons/Background.gdshader" id="1_h5o5v"]
@@ -11,9 +11,13 @@
 [ext_resource type="Script" uid="uid://bgfugrs685jpk" path="res://Gameplay/Waves/Wave.cs" id="9_niq5q"]
 [ext_resource type="PackedScene" uid="uid://n7yy8bgppstk" path="res://Levels/_Tiles/Waypoint.tscn" id="10_4ignw"]
 [ext_resource type="PackedScene" uid="uid://bf14d8qox8yy5" path="res://UI/LevelCanvas_Screen.tscn" id="11_ml50w"]
+[ext_resource type="Script" uid="uid://cas78tmpkacie" path="res://Gameplay/DeathBitManager.cs" id="12_o3dn4"]
 [ext_resource type="Script" uid="uid://c25tsq6de7eu3" path="res://Gameplay/BuildManager.cs" id="13_dbecs"]
 [ext_resource type="Script" uid="uid://b7c7g8jqgu062" path="res://Gameplay/GameStats.cs" id="13_p388s"]
+[ext_resource type="Texture2D" uid="uid://ce7fss2iwkhkl" path="res://Gameplay/T_DeathBit.png" id="13_sxdqs"]
+[ext_resource type="Texture2D" uid="uid://dfou8de5o51ab" path="res://Gameplay/T_DeathByte.png" id="14_8tbnj"]
 [ext_resource type="Script" uid="uid://ci5f1fooga4hq" path="res://Gameplay/GameManager.cs" id="14_dbecs"]
+[ext_resource type="Texture2D" uid="uid://cflrqd6yow3sl" path="res://Gameplay/T_DeathNibble.png" id="14_sxdqs"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dbecs"]
 shader = ExtResource("1_h5o5v")
@@ -113,10 +117,6 @@ script = ExtResource("14_dbecs")
 shop = NodePath("../../UI/ScreenCanvas/ShopButton")
 livesText = NodePath("../../UI/ScreenCanvas/GameStats/Lives/Text (TMP)")
 
-[node name="DeathBitManager" type="Node3D" parent="_Managers\'"]
-
-[node name="DeathBitManager" type="Node" parent="_Managers\'/DeathBitManager"]
-
 [node name="Map" type="Node2D" parent="."]
 position = Vector2(576, 324)
 
@@ -202,6 +202,13 @@ position = Vector2(122.313, 433.5)
 
 [node name="Waypoint (20)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
 position = Vector2(158.313, 457.5)
+
+[node name="DeathBitManager" type="Node2D" parent="Map"]
+position = Vector2(-576, -324)
+script = ExtResource("12_o3dn4")
+_bit = ExtResource("13_sxdqs")
+_nibble = ExtResource("14_sxdqs")
+_byte = ExtResource("14_8tbnj")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3

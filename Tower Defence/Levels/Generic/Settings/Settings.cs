@@ -68,7 +68,7 @@ namespace Levels.Generic.Settings
 
         private void EnergyDropsToggled(bool status)
         {
-            DeathBitManager.dropsEnergy = status;
+            DeathBitManager.DropsEnergy = status;
             SaveJsonData(this);
         }
 
@@ -98,7 +98,7 @@ namespace Levels.Generic.Settings
         public void PopulateSaveData(SaveSettings saveData)
         {
             // saveData.Locale = LocalizationSettings.SelectedLocale;
-            saveData.HasEnergyPickup = DeathBitManager.dropsEnergy;
+            saveData.HasEnergyPickup = DeathBitManager.DropsEnergy;
         }
         
         /// <summary>
@@ -116,7 +116,7 @@ namespace Levels.Generic.Settings
         public void LoadFromSaveData(SaveSettings saveData)
         {
             // LocalizationSettings.SelectedLocale = saveData.Locale;
-            DeathBitManager.dropsEnergy = saveData.HasEnergyPickup;
+            DeathBitManager.DropsEnergy = saveData.HasEnergyPickup;
         }
 
         public void PrivacyPolicy()
