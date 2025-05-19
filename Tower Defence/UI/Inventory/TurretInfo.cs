@@ -40,22 +40,12 @@ public partial class TurretInfo : Control
     [Export]
     private Control moduleInventoryPage;
     /// <summary>
-    /// The text to display for the title
-    /// </summary>
-    [Export]
-    private string moduleInventoryTitle;
-    /// <summary>
-    /// The button to open the turret inventory
-    /// </summary>
-    [Export]
-    private Button turretInfoButton;
-    /// <summary>
     /// The button list
     /// </summary>
     [Export]
-    private BuildableTile moduleInventoryContent;
+    private Node moduleInventoryContent;
     /// <summary>
-    /// The colour to set the bg when disabled")]
+    /// The colour to set the bg when disabled
     /// </summary>
     [Export]
     private Color moduleDisabledColor;
@@ -120,6 +110,7 @@ public partial class TurretInfo : Control
     {
         BuildableTile.OnTileSelected += SetTarget;
         Shop.Shop.OnPickTurret += AddTurret;
+        Shop.Shop.OnPickModule += AddModule;
         BuildManager.OnBlueprintSelected += SelectBlueprint;
         BuildManager.OnTurretBuilt += BuiltTurret;
     }
@@ -148,14 +139,14 @@ public partial class TurretInfo : Control
             cycleTargetingButton.Visible = true;
             cycleTargetingButton.GetChild<Label>(0).Text = "Targeting:\n" + dynamicTurret.TargetPriorityMethod;
             // TODO - Clear all other listeners
-            cycleTargetingButton.Pressed += CycleTargeting;
+            // cycleTargetingButton.Pressed += CycleTargeting;
         }
         else if (_target.Turret is Lancer)
         {
             cycleTargetingButton.Visible = true;
             cycleTargetingButton.GetChild<Label>(0).Text = "Rotate";
             // cycleTargetingButton.Pressed += () => RemoveAllListeners();
-            cycleTargetingButton.Pressed += RotateLancer;
+            // cycleTargetingButton.Pressed += RotateLancer;
         }
         else
         {
@@ -242,9 +233,9 @@ public partial class TurretInfo : Control
             icon.SetData(handle);
         }
             
-        // Button addModule = addModuleButton.Instantiate<Button>();
-        // modules.AddChild(addModule);
-        // addModule.Pressed += OpenModuleInventory;
+        var addModule = addModuleButton.Instantiate<BaseButton>();
+        modules.AddChild(addModule);
+        addModule.Pressed += DisplayModuleInventory;
             
         // modules.GetChild<TriangleLayout>(0).SetLayoutHorizontal();
         // modules.GetChild<TriangleLayout>(0).SetLayoutVertical();
@@ -275,10 +266,10 @@ public partial class TurretInfo : Control
             BuildableTile.SelectedTile = null;
             return;
         }
-        OpenModuleInventory();
+        DisplayModuleInventory();
     }
 
-    public void OpenModuleInventory()
+    public void DisplayModuleInventory()
     {
         foreach (Node child in moduleInventoryContent.GetChildren())
         {
@@ -297,7 +288,6 @@ public partial class TurretInfo : Control
             }
         }
         
-        inventoryTitle.Text = moduleInventoryTitle;
         moduleInventoryPage.Visible = true;
         turretInventoryPage.Visible = false;
         turretInfoPage.Visible = false;
@@ -327,6 +317,11 @@ public partial class TurretInfo : Control
     private void AddTurret(TurretInventoryItem blueprint)
     {
         turretInventoryContent.AddChild(blueprint);
+    }
+    
+    private void AddModule(ModuleInventoryItem item)
+    {
+        moduleInventoryContent.AddChild(item);
     }
 
     private void SelectBlueprint(TurretInventoryItem item)

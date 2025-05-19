@@ -266,7 +266,7 @@ namespace Turrets
             
             _hitEnemies.Add(col.GetInstanceId());
 
-            if (Target != null && Target.GetInstanceId() == col.GetInstanceId())
+            if (IsInstanceValid(enemy) && Target.GetInstanceId() == col.GetInstanceId())
             {
                 HitTarget(true, enemy);
                 return;

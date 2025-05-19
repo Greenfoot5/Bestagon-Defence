@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://c71j6e3spysut"]
+
+[ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/White_Rectangle.png" id="1_duixc"]
+[ext_resource type="Script" uid="uid://bggcwhcehi21t" path="res://UI/centre_pivot.gd" id="2_b4aud"]
+[ext_resource type="Texture2D" uid="uid://bpjbykp6vxfg3" path="res://_WIP/Art/Plus.png" id="3_sb6ke"]
+
+[node name="Add" type="Button"]
+custom_minimum_size = Vector2(60, 60)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BackShadow" type="TextureRect" parent="."]
+self_modulate = Color(0, 0, 0, 0.28)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.15
+anchor_right = 0.85
+anchor_bottom = 0.85
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.785398
+pivot_offset = Vector2(72.45, 21)
+texture = ExtResource("1_duixc")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("2_b4aud")
+
+[node name="BackOutline" type="TextureRect" parent="."]
+self_modulate = Color(0.278431, 0.278431, 0.34902, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.22
+anchor_top = 0.22
+anchor_right = 0.78
+anchor_bottom = 0.78
+rotation = 0.785398
+pivot_offset = Vector2(57.96, 16.8)
+texture = ExtResource("1_duixc")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("2_b4aud")
+
+[node name="Icon" type="TextureRect" parent="."]
+self_modulate = Color(0, 0, 0, 0.35)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.3
+anchor_right = 0.7
+anchor_bottom = 0.7
+pivot_offset = Vector2(41.4, 12)
+texture = ExtResource("3_sb6ke")
+expand_mode = 1
+stretch_mode = 5

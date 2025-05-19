@@ -29,9 +29,9 @@
 [ext_resource type="Script" uid="uid://bxvxv7t1wcksh" path="res://UI/TurretStats/TurretStat.cs" id="15_j7wgf"]
 [ext_resource type="Texture2D" uid="uid://dvm15nkgk7e1q" path="res://UI/TurretStats/Damage.tres" id="16_rv6h5"]
 [ext_resource type="Script" uid="uid://7lqnwi2j1ptp" path="res://UI/Shop/GenerateShopSelection.cs" id="17_1a54g"]
-[ext_resource type="Script" uid="uid://bumr2t4lefwce" path="res://UI/TriangleLayout.cs" id="17_rv6h5"]
 [ext_resource type="PackedScene" uid="uid://ccppuoth5cgn0" path="res://UI/Modules/ModuleIcon.tscn" id="18_lv0it"]
 [ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/White_Rectangle.png" id="21_ousqf"]
+[ext_resource type="PackedScene" uid="uid://c71j6e3spysut" path="res://UI/Inventory/AddModule.tscn" id="22_lv0it"]
 [ext_resource type="Texture2D" uid="uid://b4f8iscba8vxk" path="res://Enemies/Bosses/T_Square_Red.png" id="23_4jhpk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n4ahf"]
@@ -192,7 +192,7 @@ grow_vertical = 2
 texture = ExtResource("10_p77s1")
 expand_mode = 1
 
-[node name="Inventory" type="Control" parent="." node_paths=PackedStringArray("turretInventoryPage", "turretInventoryContent", "moduleInventoryPage", "turretInfoPage", "inventoryTitle", "damage", "rate", "range", "modules", "cycleTargetingButton")]
+[node name="Inventory" type="Control" parent="." node_paths=PackedStringArray("turretInventoryPage", "turretInventoryContent", "moduleInventoryPage", "moduleInventoryContent", "turretInfoPage", "inventoryTitle", "damage", "rate", "range", "modules", "cycleTargetingButton")]
 layout_mode = 1
 anchor_right = 0.2
 anchor_bottom = 1.0
@@ -200,8 +200,11 @@ script = ExtResource("13_moy2t")
 turretInventoryPage = NodePath("Turrets")
 turretInventoryContent = NodePath("Turrets/Viewport/Content")
 moduleInventoryPage = NodePath("Modules")
+moduleInventoryContent = NodePath("Modules/Viewport/Content")
+moduleDisabledColor = Color(1, 0, 0, 0.5)
 turretInfoPage = NodePath("TurretInfo")
 inventoryTitle = NodePath("TurretInfo/Label")
+addModuleButton = ExtResource("22_lv0it")
 damage = NodePath("TurretInfo/Stats/Damage")
 rate = NodePath("TurretInfo/Stats/Rate")
 range = NodePath("TurretInfo/Stats/Range")
@@ -437,10 +440,13 @@ anchor_top = 0.25
 anchor_right = 0.95
 anchor_bottom = 0.75
 
-[node name="Layout" type="Container" parent="Inventory/TurretInfo/Modules"]
+[node name="Layout" type="FlowContainer" parent="Inventory/TurretInfo/Modules"]
 layout_mode = 2
-script = ExtResource("17_rv6h5")
-metadata/_custom_type_script = "uid://bumr2t4lefwce"
+alignment = 2
+last_wrap_alignment = 3
+
+[node name="Add" parent="Inventory/TurretInfo/Modules/Layout" instance=ExtResource("22_lv0it")]
+layout_mode = 2
 
 [node name="TargetingRotateButton" type="TextureButton" parent="Inventory/TurretInfo"]
 layout_mode = 1
