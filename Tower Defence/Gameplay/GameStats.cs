@@ -105,12 +105,6 @@ namespace Gameplay
                 Shop.Random = new Squirrel3(_randomSeed);
                 Energy = StartEnergy;
             }
-
-            // Controls
-            // controls = new GameControls();
-            // controls.Enable();
-            // TODO - EnhancedTouchSupport?
-            // EnhancedTouchSupport.Enable();
         }
 
         /// <summary>

@@ -49,14 +49,6 @@ namespace Gameplay
 
         public static readonly List<TurretBlueprint> TurretInventory = [];
         public static readonly List<ModuleChainHandler> ModuleInventory = [];
-        
-        // TODO - No idea what Unity thing this is
-        // [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-        private static void Init()
-        {
-            TurretInventory.Clear();
-            ModuleInventory.Clear();
-        }
 
         private void Awake()
         {
@@ -157,7 +149,7 @@ namespace Gameplay
                 Turret turret = tile.Turret;
                 List<string> names = [];
                 List<int> tiers = [];
-                foreach (ModuleChainHandler handler in turret.moduleHandlers)
+                foreach (ModuleChainHandler handler in turret.ModuleHandlers)
                 {
                     names.Add(handler.GetChain().GetName());
                     tiers.Add(handler.GetTier());

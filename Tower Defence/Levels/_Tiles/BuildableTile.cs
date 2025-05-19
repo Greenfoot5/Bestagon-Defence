@@ -296,7 +296,7 @@ namespace Levels._Nodes
                 _modulesDisplay.GetChild(i).QueueFree();
             
             // Add each Module as an icon
-            foreach (ModuleChainHandler handle in Turret.moduleHandlers)
+            foreach (ModuleChainHandler handle in Turret.ModuleHandlers)
             {
                 var moduleIcon = _moduleIconPrefab.Instantiate<ModuleIcon>();
                 _modulesDisplay.AddChild(moduleIcon);

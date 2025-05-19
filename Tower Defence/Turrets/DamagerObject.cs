@@ -15,18 +15,11 @@ namespace Turrets
                 [AttributeType.Damage] = new(AttributeType.Damage, 100f, min:0f),
             });
         
-        // TODO - Check tag system
-        /// <summary>
-        /// Specifies what the damager can hit
-        /// </summary>
-        [Export]
-        public string enemyTag = "Enemy";
-        
         /// <summary>
         /// Which modules the turret has applied
         /// </summary>
         // TODO - Likely need a tool to manage this
-        public List<ModuleChainHandler> moduleHandlers = new();
+        public List<ModuleChainHandler> ModuleHandlers = [];
         
         // Events
         public delegate void AttackEvent(Damager damager);
@@ -84,7 +77,7 @@ namespace Turrets
             // Then if there is a module of the same type but different tier,
             // it cannot be upgraded
             if (handler.GetChain().Unique && 
-                (moduleHandlers.Any(x => x.GetModule().GetType() == handler.GetModule().GetType() &&
+                (ModuleHandlers.Any(x => x.GetModule().GetType() == handler.GetModule().GetType() &&
                                          !handler.CanUpgrade(x.GetTier()))))
             {
                 return false;
@@ -92,7 +85,7 @@ namespace Turrets
 
             handler = CalculateUpgrades(handler);
             // TODO - Duplicate handler
-            moduleHandlers.Add(handler);
+            ModuleHandlers.Add(handler);
             handler.GetModule().AddModule(this);
             
             return true;
@@ -104,7 +97,7 @@ namespace Turrets
         /// <param name="handler">The handler of the module to remove</param>
         protected virtual void RemoveModule(ModuleChainHandler handler)
         {
-            moduleHandlers.Remove(handler);
+            ModuleHandlers.Remove(handler);
             handler.GetModule().RemoveModule(this);
         }
         
@@ -115,12 +108,12 @@ namespace Turrets
         private ModuleChainHandler CalculateUpgrades(ModuleChainHandler handler)
         {
             var i = 0;
-            while (i < moduleHandlers.Count)
+            while (i < ModuleHandlers.Count)
             {
-                bool canUpgrade = handler.Upgrade(moduleHandlers[i]);
+                bool canUpgrade = handler.Upgrade(ModuleHandlers[i]);
                 if (canUpgrade)
                 {
-                    RemoveModule(moduleHandlers[i]);
+                    RemoveModule(ModuleHandlers[i]);
                     handler = CalculateUpgrades(handler);
                     break;
                 }

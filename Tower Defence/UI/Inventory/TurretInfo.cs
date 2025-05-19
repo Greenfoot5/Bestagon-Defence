@@ -234,17 +234,12 @@ public partial class TurretInfo : Control
             modules.GetChild(i).QueueFree();
             
         // Add each Module as an icon
-        foreach (ModuleChainHandler handle in _target.Turret.moduleHandlers)
+        foreach (ModuleChainHandler handle in _target.Turret.ModuleHandlers)
         {
             var icon = moduleIconPrefab.Instantiate<ModuleIcon>();
             modules.AddChild(icon);
             icon.Name = "_" + icon.Name;
             icon.SetData(handle);
-            // TODO - Is disabling raycast target needed?
-            // foreach (Image image in icon.GetComponentsInChildren<Image>())
-            // {
-            //     image.raycastTarget = false;
-            // }
         }
             
         // Button addModule = addModuleButton.Instantiate<Button>();

@@ -55,8 +55,6 @@ namespace UI.Inventory
         /// <summary>
         /// The list of types the turret has
         /// </summary>
-        // TODO - Export
-        // [Export]
         public Type[] TurretTypes;
         /// <summary>
         /// The original accent colour
@@ -90,6 +88,7 @@ namespace UI.Inventory
                 Node glyph = glyphPrefab.Instantiate();
                 applicableGlyphs.AddChild(glyph);
                 glyph.Name = "_" + glyph.Name;
+                // TODO - Glyph
                 // glyph.Find("Body").GetComponent<HexagonSprite>().color = glyphSo.body;
                 // glyph.Find("Shade").GetComponent<HexagonSprite>().color = glyphSo.shade;
                 glyph.GetNode<Sprite2D>("Glyph").Texture = glyphRes.Glyph;

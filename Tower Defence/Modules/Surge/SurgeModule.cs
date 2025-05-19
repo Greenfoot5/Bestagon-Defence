@@ -115,7 +115,7 @@ public partial class SurgeModule : Module
     {
         if (damager is not Turret turret) return;
         // LINQ to get the turret tier
-        int tier = damager.moduleHandlers.Where(handler => handler.GetModule().GetType() == typeof(SurgeModule)).Select(handler => handler.GetTier()).FirstOrDefault();
+        int tier = damager.ModuleHandlers.Where(handler => handler.GetModule().GetType() == typeof(SurgeModule)).Select(handler => handler.GetTier()).FirstOrDefault();
             
         turret.Stats[AttributeType.FireRate].Add(GetSceneUniqueId() + "SurgeCooldown", _fireRateChange);
         turret.Stats[AttributeType.Damage].Add(GetSceneUniqueId() + "SurgeCooldown", _damageChange);
@@ -146,7 +146,7 @@ public partial class SurgeModule : Module
         // Wait the cooldown
         // yield return new WaitForSeconds(cooldown);
             
-        while (turret != null && turret.moduleHandlers.Any(module => module.GetModule().GetType() == typeof(SurgeModule) && module.GetTier() == tier))
+        while (turret != null && turret.ModuleHandlers.Any(module => module.GetModule().GetType() == typeof(SurgeModule) && module.GetTier() == tier))
         {
             // SURGE!
             turret.Stats[AttributeType.FireRate].Add(GetSceneUniqueId() + "SurgeCooldown", new AttributeModifier(0f));
