@@ -45,7 +45,7 @@ public partial class Attribute : Resource
     {
         Name = AttributeType.Nil;
         _base = 1f;
-        UpdateValue();
+        CallDeferred("UpdateValue");
     }
     
     public Attribute(AttributeType attributeType, float @base, float min = -Mathf.Inf, float max = Mathf.Inf)
@@ -54,7 +54,7 @@ public partial class Attribute : Resource
         _base = @base;
         Min = min;
         Max = max;
-        UpdateValue();
+        CallDeferred("UpdateValue");
     }
     
     public Attribute(Attribute attribute)
@@ -64,7 +64,7 @@ public partial class Attribute : Resource
         _modifiers = attribute._modifiers.Duplicate(true);
         Min = attribute.Min;
         Max = attribute.Max;
-        UpdateValue();
+        CallDeferred("UpdateValue");
     }
 
     public void CopyFrom(Attribute attribute)

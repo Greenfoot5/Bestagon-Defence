@@ -14,8 +14,8 @@ namespace Turrets
         public Attributes Stats = new(
             new Godot.Collections.Dictionary<AttributeType, Attribute> { 
                 [AttributeType.Speed] = new(AttributeType.Speed, 30f),
-                [AttributeType.ExplosionRadius] = new(AttributeType.ExplosionRadius, 0f, min:0f),
-                [AttributeType.Knockback] = new(AttributeType.Knockback, 0f, min:0f),
+                [AttributeType.ExplosionRadius] = new(AttributeType.ExplosionRadius, 1f, min:0f),
+                [AttributeType.Knockback] = new(AttributeType.Knockback, 1f, min:0f),
                 [AttributeType.Damage] = new(AttributeType.Damage, 5f),
             });
 
@@ -31,7 +31,7 @@ namespace Turrets
         /// Hits all enemies on path
         /// </summary>
         [ExportGroup("Types")]
-        // TODO - Implement isEtheral
+        // TODO - Implement isEthereal
         [Export]
         public bool IsEthereal;
         /// <summary>

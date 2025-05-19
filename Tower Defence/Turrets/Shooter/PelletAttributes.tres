@@ -14,9 +14,8 @@ Max = inf
 
 [sub_resource type="Resource" id="Resource_6jclm"]
 script = ExtResource("2_gonbf")
-Uid = null
 Value = -1.0
-Op = 1
+Op = 4
 metadata/_custom_type_script = "uid://be3vaboc8v6w0"
 
 [sub_resource type="Resource" id="Resource_2xtjl"]
@@ -31,9 +30,8 @@ Max = inf
 
 [sub_resource type="Resource" id="Resource_gonbf"]
 script = ExtResource("2_gonbf")
-Uid = null
 Value = -1.0
-Op = 1
+Op = 4
 metadata/_custom_type_script = "uid://be3vaboc8v6w0"
 
 [sub_resource type="Resource" id="Resource_6i7dt"]
