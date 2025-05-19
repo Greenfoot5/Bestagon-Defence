@@ -185,7 +185,7 @@ namespace Gameplay.Waves
             spawnedEnemy.Position = Position;
             spawnedEnemy.Rotation = Rotation;
             spawnedEnemy.Name = "_" + spawnedEnemy.Name;
-            spawnedEnemy.points = _points;
+            spawnedEnemy.Points = _points;
         
             // Apply scaling
             spawnedEnemy.Stats.Attributes[AttributeType.MaxHealth].Add("SpawnerScaling",

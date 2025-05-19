@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Numerics;
+using Enemies;
 using Godot;
 using Vector2 = Godot.Vector2;
 
@@ -37,20 +38,6 @@ namespace Gameplay
         /// </summary>
         [Export]
         private Texture2D _byte;
-        
-        // TODO - Don't do this
-        /// <summary>
-        /// The Texture2D to spawn for a bit
-        /// </summary>
-        private static Texture2D _bitS;
-        /// <summary>
-        /// The Texture2D to spawn for a bit
-        /// </summary>
-        private static Texture2D _nibbleS;
-        /// <summary>
-        /// The Texture2D to spawn for a byte
-        /// </summary>
-        private static Texture2D _byteS;
 
         internal static readonly List<DeathEnergy> Particles = [];
 
@@ -64,35 +51,33 @@ namespace Gameplay
 
         public override void _Ready()
         {
-            _bitS = _bit;
-            _nibbleS = _nibble;
-            _byteS = _byte;
             Particles.Clear();
 
             GameStats.OnRoundProgress += CleanMap;
+            Enemy.OnEnemyDeath += DropEnergy;
         }
 
-        private void OnDestroy()
+        public override void _ExitTree()
         {
             GameStats.OnRoundProgress -= CleanMap;
         }
 
-        public static void DropEnergy(Vector2 position, int value)
+        private void DropEnergy(Enemy enemy)
         {
             if (!DropsEnergy)
             {
-                GameStats.Energy += value;
+                GameStats.Energy += enemy.Stats.DeathMoney;
                 return;
             }
             
-            int valueLeft = value;
+            int valueLeft = enemy.Stats.DeathMoney;
 
             while (valueLeft > 0)
             {
                 int particleValue = Rng.Next(1, Math.Min(4, valueLeft));
                 
-                Vector2 placePos = position + new Vector2(Variance * Rng.NextSingle() - HalfVariance, Variance * Rng.NextSingle() - HalfVariance);
-                Texture2D spawnTexture = particleValue >= ByteValue ? _byteS : particleValue >= NibbleValue ? _nibbleS : _bitS;
+                Vector2 placePos = enemy.Position + new Vector2(Variance * Rng.NextSingle() - HalfVariance, Variance * Rng.NextSingle() - HalfVariance);
+                Texture2D spawnTexture = particleValue >= ByteValue ? _byte : particleValue >= NibbleValue ? _nibble : _bit;
                 float scaleMultiplier = particleValue >= ByteValue ? ByteScale : particleValue >= NibbleValue ? NibbleScale : BitScale;
                 
                 Particles.Add(new DeathEnergy(placePos, GameStats.Rounds, Vector2.One * scaleMultiplier, particleValue, spawnTexture));
@@ -119,25 +104,24 @@ namespace Gameplay
         {
             if (@event is InputEventMouseMotion mouseMotion)
             {
-                for (var i = 0; i < Particles.Count; i++)
+                foreach (DeathEnergy t in Particles)
                 {
-                    DeathEnergy particle = Particles[i];
-                    if ((mouseMotion.GlobalPosition.DistanceSquaredTo(particle.Position)) < CatchRadius * CatchRadius)
+                    if ((mouseMotion.GlobalPosition.DistanceSquaredTo(t.Position)) < CatchRadius * CatchRadius)
                     {
-                        GameStats.Energy += Particles[i].Value;
-                        Particles[i].Collect();
+                        GameStats.Energy += t.Value;
+                        t.Collect();
                     }
                 }
             }
         }
 
-        private void CleanMap()
+        private static void CleanMap()
         {
-            for (var i=0; i < Particles.Count; ++i)
+            foreach (DeathEnergy t in Particles)
             {
-                if (Particles[i].StartTime <= GameStats.Rounds - 3)
+                if (t.StartTime <= GameStats.Rounds - 3)
                 {
-                    Particles[i].Collect();
+                    t.Collect();
                 }
             }
         }

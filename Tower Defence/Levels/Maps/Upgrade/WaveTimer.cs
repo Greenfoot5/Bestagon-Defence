@@ -13,7 +13,7 @@ public partial class WaveTimer : Timer
         Enemy.OnEnemyDeath += TryStart;
     }
 
-    private void TryStart()
+    private void TryStart(Enemy _)
     {
         if (WaveSpawner.EnemiesAlive <= 0 && WaveSpawner.SpawnerState == WaveSpawner.State.Waiting)
         {

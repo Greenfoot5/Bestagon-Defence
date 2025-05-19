@@ -74,7 +74,7 @@ namespace _WIP.Abilities.PositiveAbilities
                     // yield return new WaitForSeconds(spawnTimer);
                     var enemy = (Enemy)spawn.Instantiate();
                     enemy.Position = pos;
-                    enemy.waypointIndex = enemy.waypointIndex;
+                    enemy.WaypointIndex = enemy.WaypointIndex;
                 }
 
                 WaveSpawner.EnemiesAlive += 1;

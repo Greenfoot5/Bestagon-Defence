@@ -155,7 +155,7 @@ namespace Turrets
                         break;
                     case TargetingMethod.First:
                         // Find if the enemy has the most map progress than our current most valuable
-                        float mapProgress = enemy.mapProgress;
+                        float mapProgress = enemy.MapProgress;
                         if (mapProgress > currentValue)
                         {
                             currentValue = mapProgress;
@@ -165,7 +165,7 @@ namespace Turrets
                         break;
                     case TargetingMethod.Last:
                         // Find if the enemy has the lease map progress than our current most valuable
-                        float pathProgress = enemy.mapProgress;
+                        float pathProgress = enemy.MapProgress;
                         if (pathProgress < currentValue)
                         {
                             currentValue = pathProgress;

@@ -26,7 +26,7 @@ namespace Enemies
         [Export]
         public ProgressBar RightBar;
         [Export]
-        public Sprite2D sprite;
+        public Sprite2D Sprite;
 
         /// <summary>
         /// The root game object to rotate to change the enemy's looking direction
@@ -39,21 +39,23 @@ namespace Enemies
         /// The next position the enemy moves towards
         /// </summary>
         [ExportGroup("Movement")]
-        public Vector2[] points;
-        public int pathIndex;
-        public int waypointIndex;
+        public Vector2[] Points;
+        private int _pathIndex;
+        public int WaypointIndex;
         
         /// <summary>
         /// How many waypoints the enemy has passed, and the percentage to the next one
         /// </summary>
-        public float mapProgress;
+        public float MapProgress;
         private float _maxDistance;
 
         // If the enemy has died
         private bool _isDead;
         public delegate void DeathEvent();
         public event DeathEvent OnDeath;
-        public static event DeathEvent OnEnemyDeath;
+
+        public delegate void EnemyDeathEvent(Enemy enemy);
+        public static event EnemyDeathEvent OnEnemyDeath;
         
         /// <summary>
         /// Initialises relevant variables
@@ -61,7 +63,7 @@ namespace Enemies
         public override void _Ready()
         {
             Health = Stats.Attributes[AttributeType.MaxHealth].Value;
-            sprite.Texture = Stats.sprite;
+            Sprite.Texture = Stats.sprite;
         }
 
         public override void _Process(double delta)
@@ -76,7 +78,7 @@ namespace Enemies
             
             // Get the direction of the target, and the distance to move this frame
             Vector2 position = GlobalPosition;
-            Vector2 location = points[waypointIndex];
+            Vector2 location = Points[WaypointIndex];
             var distanceThisFrame = (float)(Stats.Attributes[AttributeType.Speed].Value * delta);
 
             GlobalPosition = position.MoveToward(location, distanceThisFrame);
@@ -90,8 +92,8 @@ namespace Enemies
             }
             else
             {
-                float sqrDistance = (Position - points[waypointIndex]).LengthSquared();
-                mapProgress = waypointIndex + 1 - (sqrDistance / (_maxDistance * _maxDistance));
+                float sqrDistance = (Position - Points[WaypointIndex]).LengthSquared();
+                MapProgress = WaypointIndex + 1 - (sqrDistance / (_maxDistance * _maxDistance));
             }
 
             if (Stats.DoesRotation) { }
@@ -106,16 +108,16 @@ namespace Enemies
         private void GetNextWaypoint()
         {
             // If the enemy has reached the end, destroy
-            if (waypointIndex >= points.Length - 1)
+            if (WaypointIndex >= Points.Length - 1)
             {
                 FinishPath();
                 return;
             }
         
             // Get the next waypoint
-            waypointIndex++;
-            mapProgress = waypointIndex;
-            _maxDistance = Position.DistanceTo(points[waypointIndex]);
+            WaypointIndex++;
+            MapProgress = WaypointIndex;
+            _maxDistance = Position.DistanceTo(Points[WaypointIndex]);
         }
         
         /// <summary>
@@ -124,24 +126,24 @@ namespace Enemies
         private void MoveBackwards()
         {
             // If the enemy has reached the start, we can't go backwards further
-            if (waypointIndex - 1 < 0)
+            if (WaypointIndex - 1 < 0)
             {
                 return;
             }
                 
             // Get the direction and move in that direction
-            Vector2 dir = points[waypointIndex - 1] - Position;
+            Vector2 dir = Points[WaypointIndex - 1] - Position;
             // TODO - Perform translation in godot
             // transform.Translate(dir.normalized * (Mathf.Abs(_enemy.speed.GetTrueStat()) * delta), Space.World);
-            mapProgress = waypointIndex - (Stats.DistanceToWaypoint / _maxDistance);
+            MapProgress = WaypointIndex - (Stats.DistanceToWaypoint / _maxDistance);
         
             // If the enemy hasn't reached the previous waypoint, there's no point knocking it back further
-            if (!(Position.DistanceTo(points[waypointIndex - 1]) <= Stats.DistanceToWaypoint)) return;
+            if (!(Position.DistanceTo(Points[WaypointIndex - 1]) <= Stats.DistanceToWaypoint)) return;
 
             // Get the next waypoint
-            waypointIndex--;
-            mapProgress = waypointIndex;
-            _maxDistance = points[waypointIndex].DistanceTo(points[waypointIndex + 1]);
+            WaypointIndex--;
+            MapProgress = WaypointIndex;
+            _maxDistance = Points[WaypointIndex].DistanceTo(Points[WaypointIndex + 1]);
         }
         
         /// <summary>
@@ -156,7 +158,7 @@ namespace Enemies
                 return;
             }
             
-            Vector2 v = points[waypointIndex] - Position;
+            Vector2 v = Points[WaypointIndex] - Position;
             Vector2 w = turretLocation - Position;
             float multiplier = v.Normalized().Dot(w.Normalized());
             
@@ -202,12 +204,9 @@ namespace Enemies
             if (_isDead)
                 return;
             _isDead = true;
-            
-            // TODO - Death Bits
-            DeathBitManager.DropEnergy(GlobalPosition, Stats.DeathMoney);
 
             OnDeath?.Invoke();
-            OnEnemyDeath?.Invoke();
+            OnEnemyDeath?.Invoke(this);
 
             // Spawn death effect
             // var effect = (Node2D) Stats.DeathEffect.Instantiate();
