@@ -8,7 +8,7 @@ namespace Turrets
     /// <summary>
     /// The bullet shot from a turret
     /// </summary>
-    public partial class Bullet : Area2D
+    public partial class Bullet : Node2D
     {
         [Export]
         public Attributes Stats = new(
@@ -23,6 +23,9 @@ namespace Turrets
         public Enemy Target;
         public Vector2 TargetLocation;
         public bool UseLocation;
+
+        [Export]
+        private Area2D area;
         
         /// <summary>
         /// Hits all enemies on path
@@ -48,6 +51,27 @@ namespace Turrets
         /// </summary>
         [Export]
         private PackedScene _explodeEffect;
+        
+        /// <summary>
+        /// The trail
+        /// </summary>
+        [ExportGroup("Trail")]
+        [Export]
+        private Line2D _line;
+        /// <summary>
+        /// How many points there should be
+        /// </summary>
+        [Export]
+        private int maxPoints = 5;
+        /// <summary>
+        /// How far apart the points should be
+        /// </summary>
+        [Export]
+        private float pointSpacing = 20;
+        /// <summary>
+        /// Current distance from last point
+        /// </summary>
+        private float distance;
         /// <summary>
         /// Explosion collision shape
         /// </summary>
@@ -94,6 +118,25 @@ namespace Turrets
                 SeekTarget(TargetLocation, false, delta);
             else
                 SeekTarget(Target.GlobalPosition, true, delta);
+
+            if (_line.GetPointCount() > 0)
+            {
+                Vector2 lastPoint = ToGlobal(_line.GetPointPosition(_line.GetPointCount() - 1));
+                float additional = area.GlobalPosition.DistanceTo(lastPoint);
+                distance += additional;
+            }
+            else
+            {
+                distance = pointSpacing;
+            }
+
+            if (distance >= pointSpacing)
+            {
+                _line.AddPoint(ToLocal(area.GlobalPosition));
+                distance = 0.0f;
+                if (_line.GetPointCount() > maxPoints)
+                    _line.RemovePoint(0);
+            }
         }
 
         /// <summary>
@@ -105,11 +148,10 @@ namespace Turrets
         private void SeekTarget(Vector2 location, bool isEnemy, double delta)
         {
             // Get the direction of the target, and the distance to move this frame
-            Vector2 position = GlobalPosition;
             var distanceThisFrame = (float)(Stats[AttributeType.Speed].Value * delta);
             
             // Move bullet towards target
-            GlobalPosition = GlobalPosition.MoveToward(location, distanceThisFrame);
+            area.GlobalPosition = area.GlobalPosition.MoveToward(location, distanceThisFrame);
             
             Vector2 difference = location - GlobalPosition;
             const float targetSize = 0.25f;
@@ -121,7 +163,7 @@ namespace Turrets
             }
             
             // Rotate to target
-            GlobalRotation = (location - position).Normalized().Angle();
+            area.GlobalRotation = (location - area.GlobalPosition).Normalized().Angle();
         }
 
         /// <summary>
@@ -205,9 +247,9 @@ namespace Turrets
             // ((CircleShape2D)explodeArea.Shape).Radius *= Stats[AttributeType.ExplosionRadius].Value;
 
             // Gets all the enemies in the AoE and calls Damage on them
-            foreach (Area2D area in GetOverlappingAreas())
+            foreach (Area2D a in area.GetOverlappingAreas())
             {
-                var enemy = (Enemy)area;
+                var enemy = (Enemy)a;
                 Damage(enemy);
             }
         }
