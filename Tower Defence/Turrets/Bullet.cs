@@ -25,8 +25,7 @@ namespace Turrets
         public Enemy Target;
         public Vector2 TargetLocation;
         public bool UseLocation;
-
-        // TODO - Convert to Enum?
+        
         /// <summary>
         /// Hits all enemies on path
         /// </summary>
