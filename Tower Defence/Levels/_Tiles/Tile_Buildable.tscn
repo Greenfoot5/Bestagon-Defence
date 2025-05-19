@@ -1,11 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://bl5bfgnh4ruki"]
+[gd_scene load_steps=13 format=3 uid="uid://bl5bfgnh4ruki"]
 
 [ext_resource type="Script" uid="uid://fuhxgp2k2mrl" path="res://Levels/_Tiles/BuildableTile.cs" id="1_2xiig"]
-[ext_resource type="Texture2D" uid="uid://dfou8de5o51ab" path="res://Gameplay/T_DeathByte.png" id="3_4r5gx"]
+[ext_resource type="Texture2D" uid="uid://ce7fss2iwkhkl" path="res://Gameplay/T_DeathBit.png" id="3_4r5gx"]
 [ext_resource type="AnimationLibrary" uid="uid://dp1n4dksjun2d" path="res://Levels/_Tiles/BuildableTile.res" id="3_hn5bj"]
 [ext_resource type="Texture2D" uid="uid://jjvkculthe4o" path="res://_WIP/Art/node.png" id="3_tublc"]
 
+[sub_resource type="Curve" id="Curve_tpqal"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="CurveTexture" id="CurveTexture_tpqal"]
+curve = SubResource("Curve_tpqal")
 
 [sub_resource type="Curve" id="Curve_d5oo8"]
 _data = [Vector2(0, 1), 0.0, -1.4, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -51,6 +57,7 @@ scale = Vector2(48, 48)
 polygon = PackedVector2Array(0, -5, 4.35, -2.5, 4.35, 2.5, 0, 5, -4.35, 2.5, -4.35, -2.5)
 
 [node name="Renderer" type="Sprite2D" parent="."]
+position = Vector2(0, -20)
 texture = ExtResource("3_tublc")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Renderer"]
