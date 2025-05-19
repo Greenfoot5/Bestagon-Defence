@@ -18,9 +18,7 @@ namespace Turrets
                 [AttributeType.Knockback] = new(AttributeType.Knockback, 1f, min:0f),
                 [AttributeType.Damage] = new(AttributeType.Damage, 5f),
             });
-
         
-        [Export]
         public Turret Source;
         public Enemy Target;
         public Vector2 TargetLocation;
