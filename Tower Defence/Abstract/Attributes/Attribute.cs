@@ -128,6 +128,7 @@ public partial class Attribute : Resource
     private float CalculateValue(float start, Godot.Collections.Dictionary<Variant, AttributeModifier> modifiers)
     {
         float val = start;
+        float addAfter = 0;
         float additive = 1;
         float multiplicative = 1;
         float min = Min;
@@ -151,6 +152,9 @@ public partial class Attribute : Resource
                     break;
                 case Operation.OneMinusMultiplicative:
                     multiplicative += 1 - mod.Value;
+                    break;
+                case Operation.AddAfter:
+                    addAfter += mod.Value;
                     break;
                 case Operation.AddMin:
                     min += mod.Value;
@@ -178,6 +182,7 @@ public partial class Attribute : Resource
         val *= additive * multiplicative;
         min *= addiMin * multMin;
         max *= addiMax * multMax;
+        val += addAfter;
         
         if (val < min)
             return min;
@@ -191,6 +196,7 @@ public partial class Attribute : Resource
     private float CalculateMod(Godot.Collections.Dictionary<Variant, AttributeModifier> modifiers)
     {
         float val = 1;
+        float after = 0;
         float additive = 1;
         float multiplicative = 1;
         float min = Min;
@@ -214,6 +220,9 @@ public partial class Attribute : Resource
                     break;
                 case Operation.OneMinusMultiplicative:
                     multiplicative += 1 - mod.Value;
+                    break;
+                case Operation.AddAfter:
+                    after += mod.Value;
                     break;
                 case Operation.AddMin:
                     min += mod.Value;
@@ -241,6 +250,7 @@ public partial class Attribute : Resource
         val *= additive * multiplicative;
         min *= addiMin * multMin;
         max *= addiMax * multMax;
+        val += after;
         
         if (val < min)
             return min;

@@ -56,6 +56,10 @@ public enum Operation
     /// </summary>
     OneMinusMultiplicative,
     /// <summary>
+    /// Base * Additive * Multiplicative + AddAfter
+    /// </summary>
+    AddAfter,
+    /// <summary>
     /// Adds to the attribute's minimum
     /// To take away, use a negative value
     /// </summary>
