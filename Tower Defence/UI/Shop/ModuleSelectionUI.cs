@@ -21,10 +21,9 @@ namespace UI.Shop
         
         /// <summary>
         /// The hexagons background of the card
-        // </summary>
-        // TODO - Hexagons
-        // [Export]
-        // private Hexagons bg;
+        /// </summary>
+        [Export]
+        private BaseButton button;
         
         /// <summary>
         /// The label to display name of the module
@@ -95,7 +94,7 @@ namespace UI.Shop
             }
             
             // When the card is clicked, the game picks the module
-            // bg.GetComponent<Button>().onClick.AddListener(delegate { MakeSelection(shop); });
+            button.Pressed += () => { MakeSelection(shop); };
         }
 
         /// <summary>

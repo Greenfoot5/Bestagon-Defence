@@ -91,7 +91,7 @@ namespace UI.Inventory
                 // TODO - Glyph
                 // glyph.Find("Body").GetComponent<HexagonSprite>().color = glyphSo.body;
                 // glyph.Find("Shade").GetComponent<HexagonSprite>().color = glyphSo.shade;
-                glyph.GetNode<Sprite2D>("Glyph").Texture = glyphRes.Glyph;
+                glyph.GetNode<TextureRect>("Glyph").Texture = glyphRes.Glyph;
             }
 
             TurretTypes = module.GetModule().GetValidTypes();
