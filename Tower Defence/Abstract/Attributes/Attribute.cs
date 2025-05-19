@@ -44,14 +44,14 @@ public partial class Attribute : Resource
     public Attribute()
     {
         Name = AttributeType.Nil;
-        Base = 1f;
+        _base = 1f;
         UpdateValue();
     }
     
     public Attribute(AttributeType attributeType, float @base, float min = -Mathf.Inf, float max = Mathf.Inf)
     {
         Name = attributeType;
-        Base = @base;
+        _base = @base;
         Min = min;
         Max = max;
         UpdateValue();
@@ -60,7 +60,7 @@ public partial class Attribute : Resource
     public Attribute(Attribute attribute)
     {
         Name = attribute.Name;
-        Base = attribute.Base;
+        _base = attribute.Base;
         _modifiers = attribute._modifiers.Duplicate(true);
         Min = attribute.Min;
         Max = attribute.Max;
@@ -75,7 +75,7 @@ public partial class Attribute : Resource
             return;
         }
 
-        Base = attribute.Base;
+        _base = attribute.Base;
         _modifiers = attribute._modifiers.Duplicate(true);
         Min = attribute.Min;
         Max = attribute.Max;
