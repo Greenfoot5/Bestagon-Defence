@@ -42,12 +42,6 @@ namespace Gameplay
         internal static readonly List<DeathEnergy> Particles = [];
 
         private const float CatchRadius = 50f;
-        
-        // [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-        private static void Init()
-        {
-            Particles.Clear();
-        }
 
         public override void _Ready()
         {
@@ -76,7 +70,7 @@ namespace Gameplay
             {
                 int particleValue = Rng.Next(1, Math.Min(4, valueLeft));
                 
-                Vector2 placePos = enemy.Position + new Vector2(Variance * Rng.NextSingle() - HalfVariance, Variance * Rng.NextSingle() - HalfVariance);
+                Vector2 placePos = enemy.GlobalPosition + new Vector2(Variance * Rng.NextSingle() - HalfVariance, Variance * Rng.NextSingle() - HalfVariance);
                 Texture2D spawnTexture = particleValue >= ByteValue ? _byte : particleValue >= NibbleValue ? _nibble : _bit;
                 float scaleMultiplier = particleValue >= ByteValue ? ByteScale : particleValue >= NibbleValue ? NibbleScale : BitScale;
                 
