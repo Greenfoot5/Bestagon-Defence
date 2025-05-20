@@ -36,7 +36,7 @@ namespace Turrets.Laser
         /// Fires the laser if the turret have a target and are looking at them.
         /// Otherwise rotate to target if there is one.
         /// </summary>
-        public override void _Process(double delta)
+        public override void _PhysicsProcess(double delta)
         {
             durationCountdown -= delta;
             

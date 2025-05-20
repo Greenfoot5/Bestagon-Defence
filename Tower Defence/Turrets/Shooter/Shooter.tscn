@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://y3feukxp7bde"]
+[gd_scene load_steps=18 format=3 uid="uid://y3feukxp7bde"]
 
 [ext_resource type="Script" uid="uid://bd5mf64k00upw" path="res://Turrets/Shooter/Shooter.cs" id="1_1gplr"]
 [ext_resource type="PackedScene" uid="uid://b07wmtlp10ngi" path="res://Turrets/Shooter/ShooterPellet.tscn" id="2_lixi6"]
@@ -61,8 +61,6 @@ particle_flag_disable_z = true
 direction = Vector3(0, 5, 0)
 gravity = Vector3(0, 0, 0)
 
-[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_te6x7"]
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ldkt0"]
 shader = ExtResource("10_wrkjf")
 shader_parameter/circle_color = Color(1, 1, 1, 0)
@@ -70,11 +68,10 @@ shader_parameter/glow_color = Color(1, 1, 1, 1)
 shader_parameter/glow_radius = 2.0
 shader_parameter/glow_size = 1.6
 
-[node name="Shooter" type="Node2D" node_paths=PackedStringArray("FirePoint", "ShapeCast", "PartToRotate", "RangeDisplay", "Range")]
+[node name="Shooter" type="Node2D" node_paths=PackedStringArray("FirePoint", "PartToRotate", "RangeDisplay", "Range")]
 script = ExtResource("1_1gplr")
 bulletPrefab = ExtResource("2_lixi6")
 FirePoint = NodePath("Turret/Fire Point")
-ShapeCast = NodePath("Turret/Range/ShapeCast2D")
 PartToRotate = NodePath("Turret")
 RangeDisplay = NodePath("Turret/Range/Range")
 Range = NodePath("Turret/Range")
@@ -101,9 +98,8 @@ collision_mask = 2
 input_pickable = false
 monitorable = false
 
-[node name="ShapeCast2D" type="ShapeCast2D" parent="Turret/Range"]
+[node name="ShapeCast2D" type="RayCast2D" parent="Turret/Range"]
 rotation = -3.14159
-shape = SubResource("SeparationRayShape2D_te6x7")
 target_position = Vector2(0, 200)
 collision_mask = 2
 collide_with_areas = true

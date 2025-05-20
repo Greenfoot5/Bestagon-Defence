@@ -30,7 +30,7 @@ namespace Turrets.Hunter
         /// Rotates towards the target if the turret have one.
         /// Shoots if the turret is looking towards the target
         /// </summary>
-        public override void _Process(double delta)
+        public override void _PhysicsProcess(double delta)
         {
             base._Process(delta);
         

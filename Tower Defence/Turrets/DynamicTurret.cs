@@ -50,7 +50,7 @@ namespace Turrets
         /// The raycast to check if looking at enemy
         /// </summary>
         [Export]
-        protected ShapeCast2D ShapeCast;
+        protected RayCast2D Ray;
         
         /// <summary>
         /// The transform to perform any rotations on
@@ -218,17 +218,21 @@ namespace Turrets
         protected bool IsLookingAtTarget()
         {
             if (TargetEnemy == null) return false;
-            
-            // Setup the raycast
-            for (var i = 0; i < ShapeCast.GetCollisionCount(); i++)
+
+            while (Ray.GetCollider() != null)
             {
-                var collider = (Enemy)ShapeCast.GetCollider(i);
-                if (collider == TargetEnemy)
+                var enemy = (Enemy)Ray.GetCollider();
+                if (enemy == TargetEnemy)
                 {
+                    Ray.ClearExceptions();
                     return true;
                 }
+                
+                Ray.AddException(enemy);
+                Ray.ForceRaycastUpdate();
             }
-
+            
+            Ray.ClearExceptions();
             return false;
         }
     }
