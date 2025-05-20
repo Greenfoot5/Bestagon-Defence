@@ -1,0 +1,126 @@
+[gd_scene load_steps=19 format=3 uid="uid://dpuxc7mfhytlw"]
+
+[ext_resource type="Script" uid="uid://dx57iyb5nvgwg" path="res://Turrets/Hunter/Hunter.cs" id="1_ts1m3"]
+[ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/AttributeModifier.cs" id="3_x0av5"]
+[ext_resource type="Script" uid="uid://blnrq5atpcclw" path="res://Abstract/Attributes/Attribute.cs" id="4_whm3w"]
+[ext_resource type="Script" uid="uid://c80di1i4n41ig" path="res://Abstract/Attributes/Attributes.cs" id="5_uf6gp"]
+[ext_resource type="Texture2D" uid="uid://bmjp15oecmtur" path="res://Turrets/Hunter/T_HunterBase_Dark.png" id="6_yv6ch"]
+[ext_resource type="Texture2D" uid="uid://cyia2gs2h7ktd" path="res://Turrets/Hunter/T_Hunter.png" id="7_mjoli"]
+[ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/White_Rectangle.png" id="8_pnu4x"]
+[ext_resource type="Shader" uid="uid://bjciwmxveqxrx" path="res://MaterialLibrary/Range/Range.gdshader" id="10_3sfys"]
+
+[sub_resource type="Resource" id="Resource_nhn4y"]
+script = ExtResource("4_whm3w")
+Name = 2
+Base = 2000.0
+_modifiers = Dictionary[Variant, ExtResource("3_x0av5")]({})
+Min = 0.0
+Max = inf
+
+[sub_resource type="Resource" id="Resource_yv6ch"]
+script = ExtResource("4_whm3w")
+Name = 3
+Base = 0.4
+_modifiers = Dictionary[Variant, ExtResource("3_x0av5")]({})
+Min = inf_neg
+Max = inf
+metadata/_custom_type_script = "uid://blnrq5atpcclw"
+
+[sub_resource type="Resource" id="Resource_mjoli"]
+script = ExtResource("4_whm3w")
+Name = 13
+Base = 2100.0
+_modifiers = Dictionary[Variant, ExtResource("3_x0av5")]({})
+Min = inf_neg
+Max = inf
+metadata/_custom_type_script = "uid://blnrq5atpcclw"
+
+[sub_resource type="Resource" id="Resource_xwmrl"]
+script = ExtResource("4_whm3w")
+Name = 14
+Base = 5.0
+_modifiers = Dictionary[Variant, ExtResource("3_x0av5")]({})
+Min = inf_neg
+Max = inf
+metadata/_custom_type_script = "uid://blnrq5atpcclw"
+
+[sub_resource type="Resource" id="Resource_ts1m3"]
+script = ExtResource("5_uf6gp")
+_attributes = {
+2: SubResource("Resource_nhn4y"),
+3: SubResource("Resource_yv6ch"),
+13: SubResource("Resource_mjoli"),
+14: SubResource("Resource_xwmrl")
+}
+
+[sub_resource type="Curve" id="Curve_k1h6c"]
+_data = [Vector2(0, 0.01), 0.0, 0.99, 0, 1, Vector2(1, 1), 0.99, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_nhn4y"]
+colors = PackedColorArray(0.467, 0.376, 0.651, 1, 0.298, 0.247, 0.451, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nhn4y"]
+radius = 600.0
+
+[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_te6x7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ldkt0"]
+shader = ExtResource("10_3sfys")
+shader_parameter/circle_color = Color(1, 1, 1, 0)
+shader_parameter/glow_color = Color(1, 1, 1, 1)
+shader_parameter/glow_radius = 2.0
+shader_parameter/glow_size = 1.6
+
+[node name="Hunter" type="Node2D" node_paths=PackedStringArray("line", "FirePoint", "ShapeCast", "PartToRotate", "RangeDisplay", "Range")]
+script = ExtResource("1_ts1m3")
+line = NodePath("Turret/Fire Point/Line2D")
+TargetPriorityMethod = 2
+FirePoint = NodePath("Turret/Fire Point")
+ShapeCast = NodePath("Turret/Range/ShapeCast2D")
+PartToRotate = NodePath("Turret")
+RangeDisplay = NodePath("Turret/Range/Range")
+Range = NodePath("Turret/Range")
+Stats = SubResource("Resource_ts1m3")
+
+[node name="Base" type="Sprite2D" parent="."]
+texture = ExtResource("6_yv6ch")
+
+[node name="Turret" type="Sprite2D" parent="."]
+texture = ExtResource("7_mjoli")
+
+[node name="Fire Point" type="Node2D" parent="Turret"]
+position = Vector2(0, -100)
+
+[node name="Line2D" type="Line2D" parent="Turret/Fire Point"]
+visibility_layer = 4
+z_as_relative = false
+points = PackedVector2Array(0, 0, 0, -2000)
+width = 300.0
+width_curve = SubResource("Curve_k1h6c")
+gradient = SubResource("Gradient_nhn4y")
+texture_mode = 2
+
+[node name="Range" type="Area2D" parent="Turret"]
+scale = Vector2(6, 6)
+collision_layer = 0
+collision_mask = 2
+input_pickable = false
+monitorable = false
+
+[node name="SpriteRenderer" type="CollisionShape2D" parent="Turret/Range"]
+shape = SubResource("CircleShape2D_nhn4y")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="Turret/Range"]
+rotation = -3.14159
+shape = SubResource("SeparationRayShape2D_te6x7")
+target_position = Vector2(0, 600)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Range" type="Sprite2D" parent="Turret/Range"]
+self_modulate = Color(0.360784, 0.321569, 0.556863, 1)
+material = SubResource("ShaderMaterial_ldkt0")
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("8_pnu4x")

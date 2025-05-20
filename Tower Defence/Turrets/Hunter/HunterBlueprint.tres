@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="TurretBlueprint" load_steps=5 format=3 uid="uid://57ssw6sspepb"]
+
+[ext_resource type="Script" uid="uid://ufdo2vxockv6" path="res://Abstract/Data/ModuleChainHandler.cs" id="1_lto7y"]
+[ext_resource type="Script" uid="uid://md2drvi4felr" path="res://Turrets/TurretBlueprint.cs" id="2_peinc"]
+[ext_resource type="PackedScene" uid="uid://dpuxc7mfhytlw" path="res://Turrets/Hunter/Hunter.tscn" id="2_vmpui"]
+[ext_resource type="Texture2D" uid="uid://cyia2gs2h7ktd" path="res://Turrets/Hunter/T_Hunter.png" id="3_te815"]
+
+[resource]
+script = ExtResource("2_peinc")
+ShopIcon = ExtResource("3_te815")
+DisplayName = "Hunter"
+Tagline = "Careful Aim"
+Accent = Color(0.360784, 0.321569, 0.556863, 1)
+Prefab = ExtResource("2_vmpui")
+ModuleHandlers = Array[ExtResource("1_lto7y")]([])
+metadata/_custom_type_script = "uid://md2drvi4felr"

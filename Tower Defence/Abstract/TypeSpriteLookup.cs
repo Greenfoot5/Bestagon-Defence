@@ -5,6 +5,7 @@ using Godot.Collections;
 using Turrets;
 using Turrets.Choker;
 using Turrets.Gunner;
+using Turrets.Hunter;
 using Turrets.Lancer;
 using Turrets.Laser;
 using Turrets.Shooter;
@@ -26,6 +27,7 @@ public partial class TypeSpriteLookup : Resource
         typeof(Turret), // Represents no specific turret type
         typeof(Choker),
         typeof(Gunner),
+        typeof(Hunter),
         typeof(Lancer),
         typeof(Laser),
         typeof(Shooter),
@@ -37,6 +39,7 @@ public partial class TypeSpriteLookup : Resource
         nameof(Turret), // Represents no specific turret type
         nameof(Choker),
         nameof(Gunner),
+        nameof(Hunter),
         nameof(Lancer),
         nameof(Laser),
         nameof(Shooter),
