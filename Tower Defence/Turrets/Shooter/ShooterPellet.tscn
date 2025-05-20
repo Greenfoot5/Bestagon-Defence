@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://cmcb6mh82k7y5" path="res://Turrets/Shooter/PelletAttributes.tres" id="2_p5xc8"]
 
 [sub_resource type="Curve" id="Curve_p5xc8"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_p5xc8"]
@@ -23,7 +23,6 @@ pointSpacing = 5.0
 
 [node name="Line2D" type="Line2D" parent="."]
 points = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-width = 7.0
 width_curve = SubResource("Curve_p5xc8")
 default_color = Color(0.160784, 0.752941, 0.45098, 1)
 gradient = SubResource("Gradient_p5xc8")
