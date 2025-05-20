@@ -159,9 +159,9 @@ namespace Turrets
             Vector2 difference = location - Area.GlobalPosition;
             const float targetSize = 0.25f;
             // Has the bullet "hit" the target?
-            if (difference.LengthSquared() <= targetSize * targetSize)
+            if (!isEnemy && difference.LengthSquared() <= targetSize * targetSize)
             {
-                HitTarget(isEnemy); 
+                HitTarget(false); 
             }
         }
         
