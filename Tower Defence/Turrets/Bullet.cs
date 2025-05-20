@@ -14,6 +14,7 @@ namespace Turrets
         public Attributes Stats = new(
             new Godot.Collections.Dictionary<AttributeType, Attribute> { 
                 [AttributeType.Speed] = new(AttributeType.Speed, 30f),
+                [AttributeType.RotationSpeed] = new(AttributeType.RotationSpeed, 2.3f),
                 [AttributeType.ExplosionRadius] = new(AttributeType.ExplosionRadius, 1f, min:0f),
                 [AttributeType.Knockback] = new(AttributeType.Knockback, 1f, min:0f),
                 [AttributeType.Damage] = new(AttributeType.Damage, 5f),
@@ -25,7 +26,7 @@ namespace Turrets
         public bool UseLocation;
 
         [Export]
-        private Area2D area;
+        public Area2D Area;
         
         /// <summary>
         /// Hits all enemies on path
@@ -122,7 +123,7 @@ namespace Turrets
             if (_line.GetPointCount() > 0)
             {
                 Vector2 lastPoint = ToGlobal(_line.GetPointPosition(_line.GetPointCount() - 1));
-                float additional = area.GlobalPosition.DistanceTo(lastPoint);
+                float additional = Area.GlobalPosition.DistanceTo(lastPoint);
                 distance += additional;
             }
             else
@@ -132,7 +133,7 @@ namespace Turrets
 
             if (distance >= pointSpacing)
             {
-                _line.AddPoint(ToLocal(area.GlobalPosition));
+                _line.AddPoint(ToLocal(Area.GlobalPosition));
                 distance = 0.0f;
                 if (_line.GetPointCount() > maxPoints)
                     _line.RemovePoint(0);
@@ -147,23 +148,33 @@ namespace Turrets
         /// <param name="delta">The length of the frame</param>
         private void SeekTarget(Vector2 location, bool isEnemy, double delta)
         {
+            LookAtTarget(location, delta);
+            
             // Get the direction of the target, and the distance to move this frame
             var distanceThisFrame = (float)(Stats[AttributeType.Speed].Value * delta);
             
             // Move bullet towards target
-            area.GlobalPosition = area.GlobalPosition.MoveToward(location, distanceThisFrame);
+            Area.GlobalPosition -= new Vector2(distanceThisFrame * Mathf.Sin(-Area.GlobalRotation), distanceThisFrame * Mathf.Cos(Area.GlobalRotation));
             
-            Vector2 difference = location - GlobalPosition;
+            Vector2 difference = location - Area.GlobalPosition;
             const float targetSize = 0.25f;
             // Has the bullet "hit" the target?
             if (difference.LengthSquared() <= targetSize * targetSize)
             {
                 HitTarget(isEnemy); 
-                return;
             }
+        }
+        
+        /// <summary>
+        /// Rotates the bullet towards our target
+        /// </summary>
+        private void LookAtTarget(Vector2 location, double delta)
+        {
+            float rotationAngleNeed = Area.GetAngleTo(location) + float.Pi / 2;
             
-            // Rotate to target
-            area.GlobalRotation = (location - area.GlobalPosition).Normalized().Angle();
+            double zAngle = Mathf.Clamp(rotationAngleNeed, -Stats[AttributeType.RotationSpeed].Value * delta,
+                Stats[AttributeType.RotationSpeed].Value * delta);
+            Area.GlobalRotation += (float)zAngle;
         }
 
         /// <summary>
@@ -247,7 +258,7 @@ namespace Turrets
             // ((CircleShape2D)explodeArea.Shape).Radius *= Stats[AttributeType.ExplosionRadius].Value;
 
             // Gets all the enemies in the AoE and calls Damage on them
-            foreach (Area2D a in area.GetOverlappingAreas())
+            foreach (Area2D a in Area.GetOverlappingAreas())
             {
                 var enemy = (Enemy)a;
                 Damage(enemy);

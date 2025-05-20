@@ -5,7 +5,6 @@
 [ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/AttributeModifier.cs" id="3_te6x7"]
 [ext_resource type="Script" uid="uid://blnrq5atpcclw" path="res://Abstract/Attributes/Attribute.cs" id="4_82dt4"]
 [ext_resource type="Script" uid="uid://c80di1i4n41ig" path="res://Abstract/Attributes/Attributes.cs" id="5_rwy8f"]
-[ext_resource type="PackedScene" uid="uid://br5mievu4lflw" path="res://Turrets/Range.tscn" id="6_iurs4"]
 [ext_resource type="Texture2D" uid="uid://d26aqj2odl383" path="res://Turrets/Shooter/T_ShooterBase_Dark.png" id="7_00hsh"]
 [ext_resource type="Texture2D" uid="uid://bqr2h4s8oo5pk" path="res://Turrets/Shooter/T_ShooterTurret.png" id="8_t32vb"]
 [ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/White_Rectangle.png" id="10_wl632"]
@@ -61,6 +60,9 @@ particle_flag_disable_z = true
 direction = Vector3(0, 5, 0)
 gravity = Vector3(0, 0, 0)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_6qncp"]
+radius = 200.0
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ldkt0"]
 shader = ExtResource("10_wrkjf")
 shader_parameter/circle_color = Color(1, 1, 1, 0)
@@ -68,12 +70,13 @@ shader_parameter/glow_color = Color(1, 1, 1, 1)
 shader_parameter/glow_radius = 2.0
 shader_parameter/glow_size = 1.6
 
-[node name="Shooter" type="Node2D" node_paths=PackedStringArray("FirePoint", "PartToRotate", "RangeDisplay", "Range")]
+[node name="Shooter" type="Node2D" node_paths=PackedStringArray("FirePoint", "Ray", "PartToRotate", "RangeDisplay", "Range")]
 script = ExtResource("1_1gplr")
 bulletPrefab = ExtResource("2_lixi6")
 FirePoint = NodePath("Turret/Fire Point")
+Ray = NodePath("Turret/Range/Ray")
 PartToRotate = NodePath("Turret")
-RangeDisplay = NodePath("Turret/Range/Range")
+RangeDisplay = NodePath("Turret/Range/Render")
 Range = NodePath("Turret/Range")
 Stats = SubResource("Resource_dpruv")
 
@@ -92,23 +95,25 @@ texture = ExtResource("10_wl632")
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_wl632")
 
-[node name="Range" parent="Turret" instance=ExtResource("6_iurs4")]
+[node name="Range" type="Area2D" parent="Turret"]
+scale = Vector2(6, 6)
 collision_layer = 0
 collision_mask = 2
 input_pickable = false
 monitorable = false
 
-[node name="ShapeCast2D" type="RayCast2D" parent="Turret/Range"]
+[node name="CollisionShape" type="CollisionShape2D" parent="Turret/Range"]
+shape = SubResource("CircleShape2D_6qncp")
+
+[node name="Ray" type="RayCast2D" parent="Turret/Range"]
 rotation = -3.14159
 target_position = Vector2(0, 200)
 collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="Range" type="Sprite2D" parent="Turret/Range"]
+[node name="Render" type="Sprite2D" parent="Turret/Range"]
 self_modulate = Color(0.156863, 0.752941, 0.45098, 1)
 material = SubResource("ShaderMaterial_ldkt0")
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("10_wl632")
-
-[editable path="Turret/Range"]

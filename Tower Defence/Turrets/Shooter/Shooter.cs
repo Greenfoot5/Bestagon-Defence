@@ -67,6 +67,7 @@ namespace Turrets.Shooter
             var bullet = (Bullet)bulletPrefab.Instantiate();
             bullet.Stats[AttributeType.Damage] = Stats[AttributeType.Damage];
             bullet.GlobalPosition = FirePoint.GlobalPosition;
+            bullet.Area.Rotation = PartToRotate.Rotation;
             bullet.Name = "_" + bullet.Name;
             bullet.Seek(TargetEnemy, this);
             GetTree().Root.AddChild(bullet);

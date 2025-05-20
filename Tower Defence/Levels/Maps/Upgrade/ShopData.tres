@@ -1,7 +1,6 @@
-[gd_resource type="Resource" script_class="ShopData" load_steps=17 format=3 uid="uid://b6vw6l67k0fne"]
+[gd_resource type="Resource" script_class="ShopData" load_steps=16 format=3 uid="uid://b6vw6l67k0fne"]
 
 [ext_resource type="Resource" uid="uid://d373knvixoopr" path="res://Turrets/Shooter/BasicTurret.tres" id="1_d4njv"]
-[ext_resource type="Resource" uid="uid://57ssw6sspepb" path="res://Turrets/Hunter/HunterBlueprint.tres" id="1_jbv3k"]
 [ext_resource type="Script" uid="uid://by85y3cqstj04" path="res://Abstract/Data/WeightedList.cs" id="1_ps0rn"]
 [ext_resource type="Script" uid="uid://c02jid8ovdi0j" path="res://Abstract/Data/WeightedCurveList.cs" id="2_d4njv"]
 [ext_resource type="Resource" uid="uid://cx2i8uqbstjqg" path="res://Modules/Damage/Damage.tres" id="3_ksl2g"]
@@ -12,7 +11,7 @@
 script = ExtResource("1_ps0rn")
 Strain = 0
 Count = 1
-list_0/Blueprint = ExtResource("1_jbv3k")
+list_0/Blueprint = ExtResource("1_d4njv")
 list_0/Weight = 1.0
 
 [sub_resource type="Curve" id="Curve_d4njv"]
@@ -58,7 +57,7 @@ list_0/Curve = SubResource("Curve_m084i")
 [resource]
 script = ExtResource("4_jbv3k")
 InitialTurretSelection = SubResource("Resource_ps0rn")
-InitialDuplicateCheck = 0
+InitialDuplicateCheck = 1
 TurretOptionWeight = SubResource("Curve_ksl2g")
 ModuleOptionWeight = SubResource("Curve_7d5lu")
 LifeOptionWeight = SubResource("Curve_d4njv")
