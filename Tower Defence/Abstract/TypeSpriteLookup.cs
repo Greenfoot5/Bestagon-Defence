@@ -8,6 +8,7 @@ using Turrets.Gunner;
 using Turrets.Hunter;
 using Turrets.Lancer;
 using Turrets.Laser;
+using Turrets.Seeker;
 using Turrets.Shooter;
 using Turrets.Smasher;
 using UI.Glyphs;
@@ -30,6 +31,7 @@ public partial class TypeSpriteLookup : Resource
         typeof(Hunter),
         typeof(Lancer),
         typeof(Laser),
+        typeof(Seeker),
         typeof(Shooter),
         typeof(Smasher),
     ];
@@ -42,6 +44,7 @@ public partial class TypeSpriteLookup : Resource
         nameof(Hunter),
         nameof(Lancer),
         nameof(Laser),
+        nameof(Seeker),
         nameof(Shooter),
         nameof(Smasher),
     ];
@@ -131,6 +134,8 @@ public partial class TypeSpriteLookup : Resource
         var propertyName = property.ToString();
         for (var i = 0; i < Types.Count; i++)
         {
+            if (Types[i] == null)
+                return default;
             if (Types[i].Name == propertyName)
             {
                 return _sprites[i];

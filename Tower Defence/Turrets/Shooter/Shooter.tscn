@@ -30,7 +30,7 @@ metadata/_custom_type_script = "uid://blnrq5atpcclw"
 
 [sub_resource type="Resource" id="Resource_ird8n"]
 script = ExtResource("4_82dt4")
-Name = 13
+Name = 14
 Base = 105.0
 _modifiers = Dictionary[Variant, ExtResource("3_te6x7")]({})
 Min = inf_neg
@@ -39,7 +39,7 @@ metadata/_custom_type_script = "uid://blnrq5atpcclw"
 
 [sub_resource type="Resource" id="Resource_cdwey"]
 script = ExtResource("4_82dt4")
-Name = 14
+Name = 15
 Base = 2.3
 _modifiers = Dictionary[Variant, ExtResource("3_te6x7")]({})
 Min = inf_neg
@@ -51,8 +51,8 @@ script = ExtResource("5_rwy8f")
 _attributes = {
 2: SubResource("Resource_bs4ev"),
 3: SubResource("Resource_l2lx8"),
-13: SubResource("Resource_ird8n"),
-14: SubResource("Resource_cdwey")
+14: SubResource("Resource_ird8n"),
+15: SubResource("Resource_cdwey")
 }
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wl632"]

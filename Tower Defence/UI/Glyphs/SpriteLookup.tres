@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TypeSpriteLookup" load_steps=19 format=3 uid="uid://n0kcky3mpl8q"]
+[gd_resource type="Resource" script_class="TypeSpriteLookup" load_steps=21 format=3 uid="uid://n0kcky3mpl8q"]
 
 [ext_resource type="Script" uid="uid://dw73r34mdjcgj" path="res://Abstract/TypeSpriteLookup.cs" id="1_lvwce"]
 [ext_resource type="Texture2D" uid="uid://ck8qfb3vnn670" path="res://UI/Glyphs/Any.tres" id="1_unu14"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://g3f5rnqin2jp" path="res://UI/Glyphs/Laser.tres" id="5_q1ckl"]
 [ext_resource type="Texture2D" uid="uid://c1px3poumr7i6" path="res://UI/Glyphs/Shooter.tres" id="6_cndl1"]
 [ext_resource type="Texture2D" uid="uid://b6a5tjvgjvvc0" path="res://UI/Glyphs/Smasher.tres" id="7_3hlsn"]
+[ext_resource type="Texture2D" uid="uid://ptcg5iqgu3wq" path="res://UI/Glyphs/T_Seeker.png" id="7_v1bek"]
 
 [sub_resource type="Resource" id="Resource_lcq5x"]
 script = ExtResource("2_djc47")
@@ -46,6 +47,13 @@ Body = Color(0.133333, 0.756863, 0.843137, 1)
 Shade = Color(0, 0, 0, 0.25)
 metadata/_custom_type_script = "uid://c51bg7vils860"
 
+[sub_resource type="Resource" id="Resource_q1ckl"]
+script = ExtResource("2_djc47")
+Glyph = ExtResource("7_v1bek")
+Body = Color(0.901961, 0.0823529, 0.913725, 1)
+Shade = Color(0, 0, 0, 0.25)
+metadata/_custom_type_script = "uid://c51bg7vils860"
+
 [sub_resource type="Resource" id="Resource_2h48r"]
 script = ExtResource("2_djc47")
 Glyph = ExtResource("6_cndl1")
@@ -75,6 +83,7 @@ Gunner = SubResource("Resource_w8nu2")
 Hunter = SubResource("Resource_v1bek")
 Lancer = SubResource("Resource_cl63i")
 Laser = SubResource("Resource_33q0u")
+Seeker = SubResource("Resource_q1ckl")
 Shooter = SubResource("Resource_2h48r")
 Smasher = SubResource("Resource_6hara")
 metadata/_custom_type_script = "uid://dw73r34mdjcgj"

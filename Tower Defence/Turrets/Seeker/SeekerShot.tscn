@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://buwanh0vaniqf"]
+
+[ext_resource type="Texture2D" uid="uid://cm4do2j657ivs" path="res://Turrets/Seeker/T_SeekerShot.png" id="1_047q5"]
+[ext_resource type="Script" uid="uid://clabi5uqoc4ij" path="res://Turrets/Seeker/SeekerShot.cs" id="1_hwxr7"]
+[ext_resource type="Resource" uid="uid://cucb2b71sa7e0" path="res://Turrets/Seeker/SeekerAttributes.tres" id="2_hwxr7"]
+
+[sub_resource type="Curve" id="Curve_ll47g"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_hwxr7"]
+colors = PackedColorArray(0.67451, 0.0627451, 0.686275, 0, 0.901961, 0.0823529, 0.913725, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cvmof"]
+radius = 120.0
+
+[node name="SeekerShot" type="Node2D" node_paths=PackedStringArray("Area", "_line")]
+script = ExtResource("1_hwxr7")
+Stats = ExtResource("2_hwxr7")
+Area = NodePath("Area")
+_line = NodePath("Line2D")
+maxPoints = 6
+
+[node name="Line2D" type="Line2D" parent="."]
+width_curve = SubResource("Curve_ll47g")
+default_color = Color(0.901961, 0.0823529, 0.913725, 1)
+gradient = SubResource("Gradient_hwxr7")
+
+[node name="Area" type="Area2D" parent="."]
+scale = Vector2(0.05, 0.05)
+collision_layer = 0
+collision_mask = 2
+
+[node name="Sprite" type="Sprite2D" parent="Area"]
+self_modulate = Color(0.901961, 0.0823529, 0.913725, 1)
+texture = ExtResource("1_047q5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+shape = SubResource("CircleShape2D_cvmof")

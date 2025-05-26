@@ -152,6 +152,8 @@ namespace Turrets
             
             // Get the direction of the target, and the distance to move this frame
             var distanceThisFrame = (float)(Stats[AttributeType.Speed].Value * delta);
+            GD.Print(Stats[AttributeType.Speed].Value + " * " + delta + " = " + distanceThisFrame);
+            GD.Print(distanceThisFrame);
             
             // Move bullet towards target
             Area.GlobalPosition -= new Vector2(distanceThisFrame * Mathf.Sin(-Area.GlobalRotation), distanceThisFrame * Mathf.Cos(Area.GlobalRotation));
@@ -180,7 +182,7 @@ namespace Turrets
         /// <summary>
         /// Called when the bullet hits the target
         /// </summary>
-        private void HitTarget(bool isEnemy, Enemy enemy = null)
+        protected virtual void HitTarget(bool isEnemy, Enemy enemy = null)
         {
             enemy ??= Target;
             
@@ -216,7 +218,7 @@ namespace Turrets
         /// Used to deal damage to a single enemy
         /// </summary>
         /// <param name="enemy">The enemy to deal damage to</param>
-        private void Damage(Enemy enemy)
+        protected void Damage(Enemy enemy)
         {
             if (enemy == null) return;
             
@@ -234,7 +236,7 @@ namespace Turrets
         /// <summary>
         /// Used to deal damage to multiple enemies
         /// </summary>
-        private void Explode()
+        protected void Explode()
         {
             if (_explodeEffect is not null)
             {
