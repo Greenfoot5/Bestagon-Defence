@@ -29,7 +29,6 @@ public partial class Seeker : DynamicTurret
         if (!IsLookingAtTarget())
         {
             FireCountdown -= delta;
-            GD.Print("Not looking!");
             return;
         }
             
@@ -45,7 +44,6 @@ public partial class Seeker : DynamicTurret
     
     protected override void Attack()
     {
-        GD.Print("Attack");
         // TODO - Attack effect
         // attackEffect.SetFloat("zRotation", -firePoint.Rotation.eulerAngles.z);
         // attackEffect.Play();

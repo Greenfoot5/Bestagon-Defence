@@ -152,8 +152,6 @@ namespace Turrets
             
             // Get the direction of the target, and the distance to move this frame
             var distanceThisFrame = (float)(Stats[AttributeType.Speed].Value * delta);
-            GD.Print(Stats[AttributeType.Speed].Value + " * " + delta + " = " + distanceThisFrame);
-            GD.Print(distanceThisFrame);
             
             // Move bullet towards target
             Area.GlobalPosition -= new Vector2(distanceThisFrame * Mathf.Sin(-Area.GlobalRotation), distanceThisFrame * Mathf.Cos(Area.GlobalRotation));
