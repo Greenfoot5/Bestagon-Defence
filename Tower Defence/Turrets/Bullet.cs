@@ -124,6 +124,9 @@ namespace Turrets
             else
                 SeekTarget(Target.GlobalPosition, true, delta);
 
+            if (!IsInstanceValid(Line))
+                return;
+
             if (Line.GetPointCount() > 0)
             {
                 Vector2 lastPoint = ToGlobal(Line.GetPointPosition(Line.GetPointCount() - 1));
