@@ -78,8 +78,7 @@ namespace Turrets
         /// </summary>
         // [Export]
         // private CollisionShape2D explodeArea;
-        
-        private readonly List<ulong> _hitEnemies = [];
+        protected readonly List<ulong> HitEnemies = [];
         
         /// <summary>
         /// Sets the new transform the bullet shoot go towards
@@ -192,6 +191,8 @@ namespace Turrets
             // effect.Rotation = Rotation;
             //
             // GetTree().CreateTimer(2).Timeout += () => { effect.QueueFree(); };
+            
+            GD.Print("Bullet Hit!");
 
             if (isEnemy)
             {
@@ -269,13 +270,13 @@ namespace Turrets
         /// Deals damage to hit enemies the first time when the bullet should
         /// </summary>
         /// <param name="col">The collider that was touched</param>
-        private void OnAreaEntered(Area2D col)
+        protected void OnAreaEntered(Area2D col)
         {
             if (col is not Enemy enemy) return;
 
-            if (_hitEnemies.Contains(col.GetInstanceId())) return;
+            if (HitEnemies.Contains(col.GetInstanceId())) return;
             
-            _hitEnemies.Add(col.GetInstanceId());
+            HitEnemies.Add(col.GetInstanceId());
 
             if (IsInstanceValid(enemy) && Target.GetInstanceId() == col.GetInstanceId())
             {

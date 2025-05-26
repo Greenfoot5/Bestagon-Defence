@@ -3,6 +3,8 @@ using Enemies;
 using Godot;
 using Turrets;
 
+namespace Turrets.Seeker;
+
 public partial class SeekerShot : Bullet
 {
     /// <summary>
@@ -37,5 +39,28 @@ public partial class SeekerShot : Bullet
 
         // Destroy so the bullet only hits the target once
         // QueueFree();
+    }
+    
+    /// <summary>
+    /// Deals damage to hit enemies the first time when the bullet should
+    /// </summary>
+    /// <param name="col">The collider that was touched</param>
+    protected new void OnAreaEntered(Area2D col)
+    {
+        if (col is not Enemy enemy) return;
+
+        if (IsInstanceValid(enemy) && Target.GetInstanceId() == col.GetInstanceId())
+        {
+            HitTarget(true, enemy);
+            return;
+        }
+
+        if (IsEthereal)
+        {
+            if (!WillHitFirst)
+                Damage(Target);
+            else
+                HitTarget(true, enemy);
+        }
     }
 }

@@ -30,6 +30,8 @@ gradient = SubResource("Gradient_hwxr7")
 scale = Vector2(0.05, 0.05)
 collision_layer = 0
 collision_mask = 2
+input_pickable = false
+monitorable = false
 
 [node name="Sprite" type="Sprite2D" parent="Area"]
 self_modulate = Color(0.901961, 0.0823529, 0.913725, 1)
@@ -37,3 +39,5 @@ texture = ExtResource("1_047q5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
 shape = SubResource("CircleShape2D_cvmof")
+
+[connection signal="area_entered" from="Area" to="." method="OnAreaEntered"]
