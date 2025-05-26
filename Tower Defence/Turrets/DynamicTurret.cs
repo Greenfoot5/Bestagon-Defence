@@ -29,16 +29,15 @@ namespace Turrets
         /// </summary>
         [Export]
         public TargetingMethod TargetPriorityMethod = TargetingMethod.First;
-        /// <summary>
-        /// If the turret should always be searching for the best target (according to it's TargetingMethod)
-        /// </summary>
-        [Export]
-        private bool _aggressiveRetargeting;
         
         /// <summary>
         /// The enemy script of the current target
         /// </summary>
         protected Enemy TargetEnemy;
+        
+        public delegate void NewTargetEvent(Enemy newTarget);
+
+        public event NewTargetEvent OnNewTarget;
 
         /// <summary>
         /// The transform to attack from (i.e. for bullets)
@@ -85,7 +84,7 @@ namespace Turrets
         private void UpdateTarget()
         {
             // If the turret is not aggressively retargeting, check if the target is still in range
-            if (!_aggressiveRetargeting && IsInstanceValid(TargetEnemy))
+            if (IsInstanceValid(TargetEnemy))
             {
                 float distanceToEnemy = GlobalPosition.DistanceSquaredTo(TargetEnemy.GlobalPosition);
                 if (distanceToEnemy <= Stats[AttributeType.Range].Value * Stats[AttributeType.Range].Value)
@@ -194,6 +193,8 @@ namespace Turrets
                 TargetEnemy.OnDeath -= UpdateTarget;
                 TargetEnemy = null;
             }
+            
+            OnNewTarget?.Invoke(TargetEnemy);
         }
         
         /// <summary>

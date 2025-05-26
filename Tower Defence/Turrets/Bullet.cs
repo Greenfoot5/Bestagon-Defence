@@ -58,7 +58,7 @@ namespace Turrets
         /// </summary>
         [ExportGroup("Trail")]
         [Export]
-        private Line2D _line;
+        protected Line2D Line;
         /// <summary>
         /// How many points there should be
         /// </summary>
@@ -112,16 +112,21 @@ namespace Turrets
         public override void _Process(double delta)
         {
             // Check the bullet still have a target to move towards
-            if ((!IsInstanceValid(Target)) && !UseLocation)
+            if (!IsInstanceValid(Target) && !UseLocation)
+            {
+                GD.Print("Freeing as can't find target");
                 QueueFree();
-            else if (UseLocation)
+                return;
+            }
+            
+            if (UseLocation)
                 SeekTarget(TargetLocation, false, delta);
             else
                 SeekTarget(Target.GlobalPosition, true, delta);
 
-            if (_line.GetPointCount() > 0)
+            if (Line.GetPointCount() > 0)
             {
-                Vector2 lastPoint = ToGlobal(_line.GetPointPosition(_line.GetPointCount() - 1));
+                Vector2 lastPoint = ToGlobal(Line.GetPointPosition(Line.GetPointCount() - 1));
                 float additional = Area.GlobalPosition.DistanceTo(lastPoint);
                 distance += additional;
             }
@@ -132,10 +137,10 @@ namespace Turrets
 
             if (distance >= pointSpacing)
             {
-                _line.AddPoint(ToLocal(Area.GlobalPosition));
+                Line.AddPoint(ToLocal(Area.GlobalPosition));
                 distance = 0.0f;
-                if (_line.GetPointCount() > maxPoints)
-                    _line.RemovePoint(0);
+                if (Line.GetPointCount() > maxPoints)
+                    Line.RemovePoint(0);
             }
         }
 
@@ -270,7 +275,7 @@ namespace Turrets
         /// Deals damage to hit enemies the first time when the bullet should
         /// </summary>
         /// <param name="col">The collider that was touched</param>
-        protected void OnAreaEntered(Area2D col)
+        private void OnAreaEntered(Area2D col)
         {
             if (col is not Enemy enemy) return;
 

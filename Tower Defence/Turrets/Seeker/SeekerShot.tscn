@@ -14,11 +14,11 @@ colors = PackedColorArray(0.67451, 0.0627451, 0.686275, 0, 0.901961, 0.0823529, 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cvmof"]
 radius = 120.0
 
-[node name="SeekerShot" type="Node2D" node_paths=PackedStringArray("Area", "_line")]
+[node name="SeekerShot" type="Node2D" node_paths=PackedStringArray("Area", "Line")]
 script = ExtResource("1_hwxr7")
 Stats = ExtResource("2_hwxr7")
 Area = NodePath("Area")
-_line = NodePath("Line2D")
+Line = NodePath("Line2D")
 maxPoints = 6
 
 [node name="Line2D" type="Line2D" parent="."]

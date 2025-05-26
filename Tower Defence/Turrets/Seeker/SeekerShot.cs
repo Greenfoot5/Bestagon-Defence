@@ -1,12 +1,58 @@
 using Abstract.Attributes;
 using Enemies;
 using Godot;
-using Turrets;
 
 namespace Turrets.Seeker;
 
 public partial class SeekerShot : Bullet
 {
+    private ulong startTime;
+    private ulong deathTime;
+
+    public override void _Ready()
+    {
+        base._Ready();
+
+        startTime = Time.GetTicksMsec();
+        
+        ((DynamicTurret)Source).OnNewTarget += UpdateTarget;
+        TargetLocation = Source.GlobalPosition;
+    }
+
+    /// <summary>
+    /// Moves the bullet towards the target and check if it hits
+    /// </summary>
+    public override void _Process(double delta)
+    {
+        if (startTime + Stats[AttributeType.Lifetime].Value * 1000 < Time.GetTicksMsec())
+        {
+            Die();
+            return;
+        }
+
+        if (!IsInstanceValid(Target) && !UseLocation)
+            UpdateTarget(null);
+        
+        base._Process(delta);
+    }
+
+    public override void _ExitTree()
+    {
+        ((DynamicTurret)Source).OnNewTarget -= UpdateTarget;
+    }
+
+    private void UpdateTarget(Enemy target)
+    {
+        if (target == null)
+        {
+            UseLocation = true;
+            return;
+        }
+
+        UseLocation = false;
+        Target = target;
+    }
+    
     /// <summary>
     /// Called when the bullet hits the target
     /// </summary>
@@ -45,11 +91,11 @@ public partial class SeekerShot : Bullet
     /// Deals damage to hit enemies the first time when the bullet should
     /// </summary>
     /// <param name="col">The collider that was touched</param>
-    protected new void OnAreaEntered(Area2D col)
+    private void OnAreaEntered(Area2D col)
     {
         if (col is not Enemy enemy) return;
 
-        if (IsInstanceValid(enemy) && Target.GetInstanceId() == col.GetInstanceId())
+        if (IsInstanceValid(enemy) && IsInstanceValid(Target) && Target.GetInstanceId() == col.GetInstanceId())
         {
             HitTarget(true, enemy);
             return;
@@ -61,6 +107,22 @@ public partial class SeekerShot : Bullet
                 Damage(Target);
             else
                 HitTarget(true, enemy);
+        }
+    }
+
+    private void Die()
+    {
+        Area.Visible = false;
+        Area.Monitoring = false;
+        
+        if (deathTime + 50 < Time.GetTicksMsec())
+        {
+            deathTime = Time.GetTicksMsec();
+            Line.RemovePoint(0);
+            if (Line.Points.Length <= 0)
+            {
+                QueueFree();
+            }
         }
     }
 }
