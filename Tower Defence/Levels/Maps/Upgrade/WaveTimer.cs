@@ -21,7 +21,6 @@ public partial class WaveTimer : Timer
             
             // Increment Wave
             GameStats.Rounds++;
-            GD.Print("Next wave is round " + GameStats.Rounds);
         }
     }
 }

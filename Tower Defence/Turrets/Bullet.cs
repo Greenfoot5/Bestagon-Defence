@@ -114,7 +114,6 @@ namespace Turrets
             // Check the bullet still have a target to move towards
             if (!IsInstanceValid(Target) && !UseLocation)
             {
-                GD.Print("Freeing as can't find target");
                 QueueFree();
                 return;
             }
@@ -199,8 +198,6 @@ namespace Turrets
             // effect.Rotation = Rotation;
             //
             // GetTree().CreateTimer(2).Timeout += () => { effect.QueueFree(); };
-            
-            GD.Print("Bullet Hit!");
 
             if (isEnemy)
             {

@@ -88,17 +88,13 @@ public partial class WeightedList : Resource
             
         foreach (T pick in previousPicks)
         {
-            GD.Print(pick.ToString());
             switch (duplicateType)
             {
                 case DuplicateTypes.ByName:
                     for (var k = 0; k < items.Count; k++)
                     {
                         if (items.GetItemAsResource(k).ToString() == pick.ToString())
-                        {
-                            GD.Print("Removing by name " + items.GetItemAsResource(k));
                             items.RemoveAt(k);
-                        }
                     }
 
                     break;

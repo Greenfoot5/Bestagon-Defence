@@ -146,7 +146,6 @@ public partial class GenerateShopSelection : Control
     {
         // Grants a turret option
         var turrets = new WeightedList(_shopData.InitialTurretSelection);
-        GD.Print(turrets.Count);
         turrets.RemoveUnweighted();
         TurretBlueprint selected = turrets.GetRandomItem(duplicateType: _shopData.InitialDuplicateCheck,
             previousPicks: selectedTurrets.Take(selectionIndex).ToArray(), rng: Shop.Random);
