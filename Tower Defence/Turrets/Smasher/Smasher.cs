@@ -45,7 +45,7 @@ namespace Turrets.Smasher
             FireCountdown -= delta;
         }
 
-        public override void UpdateRange(Attribute attribute)
+        protected override void UpdateRange(Attribute attribute)
         {
             // Update the effect radius
             // smashEffect.SetFloat("size", range.GetStat() * (7f/3f));

@@ -31,7 +31,7 @@ metadata/_custom_type_script = "uid://blnrq5atpcclw"
 [sub_resource type="Resource" id="Resource_ird8n"]
 script = ExtResource("4_82dt4")
 Name = 14
-Base = 105.0
+Base = 6.0
 _modifiers = Dictionary[Variant, ExtResource("3_te6x7")]({})
 Min = inf_neg
 Max = inf
@@ -81,9 +81,11 @@ Range = NodePath("Turret/Range")
 Stats = SubResource("Resource_dpruv")
 
 [node name="Base" type="Sprite2D" parent="."]
+position = Vector2(0.5, -2)
 texture = ExtResource("7_00hsh")
 
 [node name="Turret" type="Sprite2D" parent="."]
+position = Vector2(0.5, -2)
 texture = ExtResource("8_t32vb")
 
 [node name="Fire Point" type="Node2D" parent="Turret"]

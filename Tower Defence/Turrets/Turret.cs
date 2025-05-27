@@ -34,8 +34,13 @@ namespace Turrets
         {
             RangeDisplay.Visible = false;
             RangeDisplay.ProcessMode = ProcessModeEnum.Disabled;
-            Stats[AttributeType.Range].AttributeUpdated += UpdateRange;
+            Stats[AttributeType.Range].OnAttributeUpdated += UpdateRange;
             UpdateRange(Stats[AttributeType.Range]);
+        }
+
+        public override void _ExitTree()
+        {
+            Stats[AttributeType.Range].OnAttributeUpdated -= UpdateRange;
         }
 
         protected void Update()
@@ -55,16 +60,9 @@ namespace Turrets
         /// <summary>
         /// Update the range shader's size
         /// </summary>
-        public virtual void UpdateRange(Attribute attribute)
+        protected virtual void UpdateRange(Attribute attribute)
         {
-            Range.Scale = new Vector2(6 * attribute.Modifier, 6 * attribute.Modifier);
-            
-            // Update the range shader's size
-            // Vector2 localScale = GetScale();
-            // RangeDisplay.Scale = new Vector2(
-            //     Stats[AttributeType.Range].Value / localScale.X * 2,
-            //     Stats[AttributeType.Range].Value / localScale.Y * 2);
-            // ((CircleShape2D)((CollisionShape2D)Range.GetChild(0)).Shape).Radius = Stats[AttributeType.Range].Value;
+            Range.Scale = new Vector2(attribute.Value, attribute.Value);
         }
         
         /// <summary>

@@ -39,7 +39,7 @@ public partial class Attribute : Resource
     public float Max { get; private set; } = Mathf.Inf;
     
     [Signal]
-    public delegate void AttributeUpdatedEventHandler(Attribute attribute);
+    public delegate void OnAttributeUpdatedEventHandler(Attribute attribute);
 
     public Attribute()
     {
@@ -101,7 +101,7 @@ public partial class Attribute : Resource
         _modifiers[key] = mod;
         UpdateValue();
         // Value = newVal;
-        EmitSignal(SignalName.AttributeUpdated, this);
+        EmitSignal(SignalName.OnAttributeUpdated, this);
     }
 
     public bool Remove(Variant key)
@@ -110,7 +110,7 @@ public partial class Attribute : Resource
         UpdateValue();
         
         // Value = newVal;
-        EmitSignal(SignalName.AttributeUpdated, this);
+        EmitSignal(SignalName.OnAttributeUpdated, this);
         
         return result;
     }

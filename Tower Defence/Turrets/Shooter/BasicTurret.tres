@@ -1,15 +1,15 @@
 [gd_resource type="Resource" script_class="TurretBlueprint" load_steps=5 format=3 uid="uid://d373knvixoopr"]
 
 [ext_resource type="Script" uid="uid://ufdo2vxockv6" path="res://Abstract/Data/ModuleChainHandler.cs" id="1_h7tit"]
-[ext_resource type="PackedScene" uid="uid://drpqer5xenoqe" path="res://Turrets/Choker/Choker_Turret.tscn" id="2_h7tit"]
+[ext_resource type="PackedScene" uid="uid://y3feukxp7bde" path="res://Turrets/Shooter/Shooter.tscn" id="2_h7tit"]
 [ext_resource type="Script" uid="uid://md2drvi4felr" path="res://Turrets/TurretBlueprint.cs" id="2_xifxa"]
-[ext_resource type="Texture2D" uid="uid://cyk5d1emrkk38" path="res://Turrets/Seeker/T_Seeker.png" id="3_h7tit"]
+[ext_resource type="Texture2D" uid="uid://bqr2h4s8oo5pk" path="res://Turrets/Shooter/T_ShooterTurret.png" id="3_xxhcl"]
 
 [resource]
 script = ExtResource("2_xifxa")
-ShopIcon = ExtResource("3_h7tit")
-DisplayName = "Seeker"
-Tagline = "homing in"
-Accent = Color(0.901961, 0.0823529, 0.913725, 1)
+ShopIcon = ExtResource("3_xxhcl")
+DisplayName = "Shooter"
+Tagline = "the original"
+Accent = Color(0.121569, 0.803922, 0.537255, 1)
 Prefab = ExtResource("2_h7tit")
 ModuleHandlers = Array[ExtResource("1_h7tit")]([])
