@@ -50,7 +50,6 @@ namespace Turrets.Choker
                 return;
             }
             
-            
             if (FireCountdown <= 0)
             {
                 FireCountdown = 1 / Stats[AttributeType.FireRate].Value;
@@ -74,18 +73,19 @@ namespace Turrets.Choker
             for (var i = 0; i < count; i++)
             {
                 var bullet = _bulletPrefab.Instantiate<Bullet>();
-                bullet.Position = FirePoint.Position;
-                bullet.Rotation = FirePoint.Rotation;
+                bullet.GlobalPosition = FirePoint.GlobalPosition;
                 bullet.Name = "_" + bullet.Name;
-                
-                // TODO - Angles
-                // float bulletAngle = firePoint.eulerAngles.z + Random.Range(partSpread.GetStat() / -2, partSpread.GetStat() / 2);
-                // bullet.eulerAngles = new Vector2(0, 0, bulletAngle);
 
-                // float radian = (bulletAngle + 90) * Mathf.Deg2Rad;
-                // var bulletDirection = new Vector2(Mathf.Cos(radian), Mathf.Sin(radian));
+                float bulletAngle = FirePoint.GlobalRotation + (float)GD.RandRange(Stats[AttributeType.PartSpread].Value / -2, Stats[AttributeType.PartSpread].Value / 2);
+                bullet.GlobalRotation = bulletAngle;
+                
+                var bulletDirection = new Vector2(Mathf.Cos(bulletAngle), Mathf.Sin(bulletAngle));
                 //bullet.position = 
-                // bullet.Seek((Vector2)firePoint.Position + bulletDirection * range.GetStat(), this);
+                bullet.Seek(FirePoint.GlobalPosition + bulletDirection * Stats[AttributeType.Range].Value, this);
+                // TODO - Fix range
+                GD.Print(bulletDirection * Stats[AttributeType.Range].Value);
+                
+                GetTree().Root.AddChild(bullet);
                 Shoot(bullet);
             }
             

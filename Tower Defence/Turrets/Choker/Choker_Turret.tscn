@@ -1,24 +1,73 @@
-[gd_scene load_steps=2 format=3 uid="uid://drpqer5xenoqe"]
+[gd_scene load_steps=11 format=3 uid="uid://drpqer5xenoqe"]
 
-[ext_resource type="PackedScene" uid="uid://bireyhlc5x7r6" path="res://Turrets/Range.prefab.tscn" id="1_4sjs1"]
+[ext_resource type="Script" uid="uid://dycu2ga13dqvr" path="res://Turrets/Choker/Choker.cs" id="1_b5b4v"]
+[ext_resource type="PackedScene" uid="uid://hqx2w2q8weko" path="res://Turrets/Choker/ChokerPart.tscn" id="2_cmg0a"]
+[ext_resource type="Resource" uid="uid://ds7rijmb4ir08" path="res://Turrets/Choker/ChokerAttributes.tres" id="3_b5b4v"]
+[ext_resource type="Texture2D" uid="uid://bjyssfen4qovd" path="res://Turrets/Choker/T_ChokerBase_Dark.png" id="4_rt7kr"]
+[ext_resource type="Texture2D" uid="uid://dkg7vvoia8bv3" path="res://Turrets/Choker/T_ChokerTurret.png" id="5_cpm3m"]
+[ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/White_Rectangle.png" id="6_sf515"]
+[ext_resource type="Shader" uid="uid://bjciwmxveqxrx" path="res://MaterialLibrary/Range/Range.gdshader" id="7_2bbfs"]
 
-[node name="Choker_Turret" type="Node3D"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5wtme"]
+particle_flag_disable_z = true
+direction = Vector3(0, 5, 0)
+gravity = Vector3(0, 0, 0)
 
-[node name="MonoBehaviour" type="Node" parent="."]
+[sub_resource type="CircleShape2D" id="CircleShape2D_c8ed1"]
+radius = 200.0
 
-[node name="Turret" type="Node3D" parent="."]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 1, 0, 0, 0)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0xeio"]
+shader = ExtResource("7_2bbfs")
+shader_parameter/circle_color = Color(1, 1, 1, 0)
+shader_parameter/glow_color = Color(1, 1, 1, 1)
+shader_parameter/glow_radius = 2.0
+shader_parameter/glow_size = 1.6
 
-[node name="SpriteRenderer" type="Node" parent="Turret"]
+[node name="Choker" type="Node2D" node_paths=PackedStringArray("FirePoint", "Ray", "PartToRotate", "RangeDisplay", "Range")]
+script = ExtResource("1_b5b4v")
+_bulletPrefab = ExtResource("2_cmg0a")
+FirePoint = NodePath("Turret/Fire Point")
+Ray = NodePath("Turret/Range/Ray")
+PartToRotate = NodePath("Turret")
+RangeDisplay = NodePath("Turret/Range/Render")
+Range = NodePath("Turret/Range")
+Stats = ExtResource("3_b5b4v")
 
-[node name="Fire Point" type="Node3D" parent="Turret"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+[node name="Base" type="Sprite2D" parent="."]
+texture = ExtResource("4_rt7kr")
 
-[node name="Range" parent="." instance=ExtResource("1_4sjs1")]
-scale = Vector2(2, 2)
+[node name="Turret" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("5_cpm3m")
 
-[node name="Base" type="Node3D" parent="."]
+[node name="Fire Point" type="Node2D" parent="Turret"]
+position = Vector2(0, -200)
 
-[node name="SpriteRenderer" type="Node" parent="Base"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Turret/Fire Point"]
+emitting = false
+texture = ExtResource("6_sf515")
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_5wtme")
 
-[editable path="Range"]
+[node name="Range" type="Area2D" parent="Turret"]
+scale = Vector2(6, 6)
+collision_layer = 0
+collision_mask = 2
+input_pickable = false
+monitorable = false
+
+[node name="CollisionShape" type="CollisionShape2D" parent="Turret/Range"]
+shape = SubResource("CircleShape2D_c8ed1")
+
+[node name="Ray" type="RayCast2D" parent="Turret/Range"]
+rotation = -3.14159
+target_position = Vector2(0, 200)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Render" type="Sprite2D" parent="Turret/Range"]
+self_modulate = Color(0.964706, 0.392157, 0.215686, 1)
+material = SubResource("ShaderMaterial_0xeio")
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_sf515")
