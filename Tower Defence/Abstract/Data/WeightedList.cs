@@ -55,9 +55,9 @@ public partial class WeightedList : Resource
     public WeightedList(WeightedList list)
     {
         Count = list.Count;
-        blueprints = list.blueprints;
-        handlers = list.handlers;
-        weights = list.weights;
+        blueprints = new Array<TurretBlueprint>(list.blueprints);
+        handlers = new Array<ModuleChainHandler>(list.handlers);
+        weights = new Array<float>(list.weights);
         strain = list.strain;
     }
 
@@ -88,13 +88,17 @@ public partial class WeightedList : Resource
             
         foreach (T pick in previousPicks)
         {
+            GD.Print(pick.ToString());
             switch (duplicateType)
             {
                 case DuplicateTypes.ByName:
                     for (var k = 0; k < items.Count; k++)
                     {
                         if (items.GetItemAsResource(k).ToString() == pick.ToString())
+                        {
+                            GD.Print("Removing by name " + items.GetItemAsResource(k));
                             items.RemoveAt(k);
+                        }
                     }
 
                     break;
@@ -141,8 +145,8 @@ public partial class WeightedList : Resource
             {
                 return strain switch
                 {
-                    Strain.TurretBlueprint => blueprints[j] as T,
-                    Strain.ModuleChainHandler => handlers[j] as T,
+                    Strain.TurretBlueprint => items.blueprints[j] as T,
+                    Strain.ModuleChainHandler => items.handlers[j] as T,
                     _ => null
                 };
             }

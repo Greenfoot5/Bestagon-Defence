@@ -16,7 +16,7 @@ metadata/_custom_type_script = "uid://blnrq5atpcclw"
 [sub_resource type="Resource" id="Resource_xud0f"]
 script = ExtResource("2_xud0f")
 Name = 3
-Base = 0.3
+Base = 1.0
 _modifiers = Dictionary[Variant, ExtResource("1_elgs1")]({})
 Min = inf_neg
 Max = inf

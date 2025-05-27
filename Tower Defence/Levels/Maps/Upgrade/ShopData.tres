@@ -1,18 +1,24 @@
-[gd_resource type="Resource" script_class="ShopData" load_steps=16 format=3 uid="uid://b6vw6l67k0fne"]
+[gd_resource type="Resource" script_class="ShopData" load_steps=18 format=3 uid="uid://b6vw6l67k0fne"]
 
 [ext_resource type="Resource" uid="uid://d373knvixoopr" path="res://Turrets/Shooter/BasicTurret.tres" id="1_d4njv"]
 [ext_resource type="Script" uid="uid://by85y3cqstj04" path="res://Abstract/Data/WeightedList.cs" id="1_ps0rn"]
 [ext_resource type="Script" uid="uid://c02jid8ovdi0j" path="res://Abstract/Data/WeightedCurveList.cs" id="2_d4njv"]
+[ext_resource type="Resource" uid="uid://57ssw6sspepb" path="res://Turrets/Hunter/HunterBlueprint.tres" id="2_jbv3k"]
 [ext_resource type="Resource" uid="uid://cx2i8uqbstjqg" path="res://Modules/Damage/Damage.tres" id="3_ksl2g"]
+[ext_resource type="Resource" uid="uid://bhxj4rww74nee" path="res://Turrets/Seeker/SeekerBasic.tres" id="3_m084i"]
 [ext_resource type="Script" uid="uid://5mfid57rp3et" path="res://Levels/Maps/ShopData.cs" id="4_jbv3k"]
 [ext_resource type="Script" uid="uid://ufdo2vxockv6" path="res://Abstract/Data/ModuleChainHandler.cs" id="4_m084i"]
 
 [sub_resource type="Resource" id="Resource_ps0rn"]
 script = ExtResource("1_ps0rn")
 Strain = 0
-Count = 1
+Count = 3
 list_0/Blueprint = ExtResource("1_d4njv")
 list_0/Weight = 1.0
+list_1/Blueprint = ExtResource("2_jbv3k")
+list_1/Weight = 1.0
+list_2/Blueprint = ExtResource("3_m084i")
+list_2/Weight = 1.0
 
 [sub_resource type="Curve" id="Curve_d4njv"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
@@ -67,7 +73,7 @@ TurretDuplicateCheck = 1
 ModuleHandlers = SubResource("Resource_d4njv")
 ModuleDuplicateCheck = 2
 InitialSelectionCount = 1
-InitialChoices = 1
+InitialChoices = 3
 SelectionChoices = 1
 HiddenMode = 0
 HiddenChoices = 0
