@@ -124,6 +124,7 @@ public partial class TurretInfo : Control
         if (tile == null || _target == tile)
         {
             _target?.Turret.Deselected();
+            _target = null;
             DisplayTurretInventory();
             return;
         }
