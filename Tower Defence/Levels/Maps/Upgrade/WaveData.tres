@@ -4,12 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://dof5pvxvtw0bh" path="res://Enemies/Pawns/Enemy.tscn" id="1_re8jd"]
 
 [sub_resource type="Curve" id="Curve_re8jd"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
-point_count = 1
+_limits = [1.0, 3.0, 0.0, 105.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(15, 1), 0.0, 0.00711972, 0, 0, Vector2(29.4775, 1.10163), 0.00798392, 0.0196898, 0, 0, Vector2(75, 2), 0.03, 0.03, 0, 0, Vector2(105, 3), 0.0335929, 0.0, 0, 0]
+point_count = 5
 
 [sub_resource type="Curve" id="Curve_b6iep"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
-point_count = 1
+_limits = [0.0, 15000.0, 0.0, 200.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(15, 1), 0.0, 0.0, 0, 0, Vector2(30, 5), 0.0, 0.0, 0, 0, Vector2(45, 23), 0.0, 0.0, 0, 0, Vector2(60, 100), 0.0, 0.0, 0, 0, Vector2(75, 250), 0.0, 0.0, 0, 0, Vector2(90, 550), 0.0, 0.0, 0, 0, Vector2(105, 1000), 0.0, 0.0, 0, 0, Vector2(120, 1600), 0.0, 0.0, 0, 0, Vector2(135, 2400), 0.0, 0.0, 0, 0, Vector2(150, 3500), 0.0, 0.0, 0, 0, Vector2(165, 5000), 0.0, 0.0, 0, 0, Vector2(180, 7500), 0.0, 0.0, 0, 0, Vector2(200, 15000), 0.0, 0.0, 0, 0]
+point_count = 14
 
 [resource]
 script = ExtResource("1_ait8m")
