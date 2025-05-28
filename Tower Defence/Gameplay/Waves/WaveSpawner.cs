@@ -1,4 +1,4 @@
-﻿using System.Threading;
+using System.Threading;
 using Abstract.Attributes;
 using Abstract.Saving;
 using Enemies;

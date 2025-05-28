@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d3r255yshmkbg" path="res://Enemies/Enemy.cs" id="1_jqv6l"]
 [ext_resource type="Texture2D" uid="uid://knixu5x6g42p" path="res://Enemies/Pawns/T_Circled_Orange.png" id="2_urepl"]
-[ext_resource type="Resource" uid="uid://bm67ol4yudaf4" path="res://Enemies/Pawns/BasicEnemyStats.tres" id="2_yeg32"]
+[ext_resource type="Resource" uid="uid://bm67ol4yudaf4" path="res://Enemies/Pawns/BasicStats.tres" id="2_yeg32"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_juylw"]
 radius = 130.0
