@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=9 format=3 uid="uid://bj1pimwe22bbi"]
+
+[ext_resource type="Script" uid="uid://blnrq5atpcclw" path="res://Abstract/Attributes/Attribute.cs" id="1_hgsbj"]
+[ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/AttributeModifier.cs" id="2_83ngy"]
+[ext_resource type="Script" uid="uid://c80di1i4n41ig" path="res://Abstract/Attributes/Attributes.cs" id="3_irdmg"]
+[ext_resource type="Script" uid="uid://b2pbxe1edwcmn" path="res://Enemies/EnemyStats.cs" id="4_o2yh2"]
+[ext_resource type="Texture2D" uid="uid://p8pqdf8gpdq2" path="res://Enemies/Pawns/T_TracerEvolved_Red.png" id="5_hgsbj"]
+
+[sub_resource type="Resource" id="Resource_30ann"]
+script = ExtResource("1_hgsbj")
+Name = 11
+Base = 175.0
+_modifiers = Dictionary[Variant, ExtResource("2_83ngy")]({})
+Min = inf_neg
+Max = inf
+metadata/_custom_type_script = "uid://blnrq5atpcclw"
+
+[sub_resource type="Resource" id="Resource_bl6ue"]
+script = ExtResource("1_hgsbj")
+Name = 17
+Base = 200.0
+_modifiers = Dictionary[Variant, ExtResource("2_83ngy")]({})
+Min = 30.0
+Max = inf
+metadata/_custom_type_script = "uid://blnrq5atpcclw"
+
+[sub_resource type="Resource" id="Resource_uaite"]
+script = ExtResource("3_irdmg")
+_attributes = Dictionary[int, ExtResource("1_hgsbj")]({
+11: SubResource("Resource_30ann"),
+17: SubResource("Resource_bl6ue")
+})
+
+[resource]
+script = ExtResource("4_o2yh2")
+Attributes = SubResource("Resource_uaite")
+sprite = ExtResource("5_hgsbj")
+DeathMoney = 3
+DeathLives = 1
+EndPathMoney = 7
+IsBoss = false
+DoesRotation = true
+HitboxSize = 0.25
+DistanceToWaypoint = 0.05
+metadata/_custom_type_script = "uid://b2pbxe1edwcmn"
