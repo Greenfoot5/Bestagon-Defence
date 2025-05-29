@@ -21,8 +21,9 @@ list_2/Blueprint = ExtResource("3_m084i")
 list_2/Weight = 1.0
 
 [sub_resource type="Curve" id="Curve_d4njv"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
-point_count = 1
+_limits = [0.0, 1.0, 0.0, 20.0]
+_data = [Vector2(14, 0), 0.0, 0.0, 0, 0, Vector2(20, 0.75), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="Curve" id="Curve_jbv3k"]
 _data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
@@ -42,12 +43,14 @@ list_0/Handler = SubResource("Resource_xt8uj")
 list_0/Curve = SubResource("Curve_jbv3k")
 
 [sub_resource type="Curve" id="Curve_7d5lu"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 1]
-point_count = 1
+_limits = [0.0, 5.0, 0.0, 20.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(5, 1), 0.0, 0.0, 0, 0, Vector2(10, 1), 0.0, 0.0, 0, 0, Vector2(20, 4.5), 0.0, 0.0, 0, 1]
+point_count = 4
 
 [sub_resource type="Curve" id="Curve_ksl2g"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0]
-point_count = 1
+_limits = [0.0, 5.0, 0.0, 20.0]
+_data = [Vector2(0, 4), 0.0, 0.0, 0, 0, Vector2(5, 2.5), -0.17519, -0.17519, 0, 0, Vector2(20, 1), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="Curve" id="Curve_m084i"]
 _data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
