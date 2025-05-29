@@ -6,18 +6,10 @@
 [ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/AttributeModifier.cs" id="3_5436f"]
 [ext_resource type="Script" uid="uid://c80di1i4n41ig" path="res://Abstract/Attributes/Attributes.cs" id="4_emdjg"]
 
-[sub_resource type="Resource" id="Resource_jks4p"]
+[sub_resource type="Resource" id="Resource_bg1x1"]
 script = ExtResource("2_cnrae")
-Name = 17
-Base = 30.0
-_modifiers = Dictionary[Variant, ExtResource("3_5436f")]({})
-Min = inf_neg
-Max = inf
-
-[sub_resource type="Resource" id="Resource_k1nf5"]
-script = ExtResource("2_cnrae")
-Name = 15
-Base = 1.0
+Name = 2
+Base = 5.0
 _modifiers = Dictionary[Variant, ExtResource("3_5436f")]({})
 Min = inf_neg
 Max = inf
@@ -38,10 +30,18 @@ _modifiers = Dictionary[Variant, ExtResource("3_5436f")]({})
 Min = 0.0
 Max = inf
 
-[sub_resource type="Resource" id="Resource_bg1x1"]
+[sub_resource type="Resource" id="Resource_k1nf5"]
 script = ExtResource("2_cnrae")
-Name = 2
-Base = 5.0
+Name = 15
+Base = 1.0
+_modifiers = Dictionary[Variant, ExtResource("3_5436f")]({})
+Min = inf_neg
+Max = inf
+
+[sub_resource type="Resource" id="Resource_jks4p"]
+script = ExtResource("2_cnrae")
+Name = 17
+Base = 30.0
 _modifiers = Dictionary[Variant, ExtResource("3_5436f")]({})
 Min = inf_neg
 Max = inf

@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://piplrc6lu1y5"]
-
-[ext_resource type="Script" uid="uid://c4c4ep5oo8o2m" path="res://Gameplay/Camera/CameraController.cs" id="1_r4qad"]
-
-[node name="MainCamera" type="Camera2D"]
-script = ExtResource("1_r4qad")

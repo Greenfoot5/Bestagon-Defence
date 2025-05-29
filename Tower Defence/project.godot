@@ -16,6 +16,11 @@ config/features=PackedStringArray("4.4", "C#", "Mobile")
 config/icon="uid://ca082btq55qao"
 config/save_version=""
 
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
 [dotnet]
 
 project/assembly_name="Bestagon Defense"

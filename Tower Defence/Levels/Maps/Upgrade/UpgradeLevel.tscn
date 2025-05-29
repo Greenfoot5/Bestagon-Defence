@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=4 uid="uid://dxeskbdbxmflu"]
+[gd_scene load_steps=92 format=4 uid="uid://dxeskbdbxmflu"]
 
 [ext_resource type="TileSet" uid="uid://cqec5gsl2jrtp" path="res://Levels/_Tiles/PathTiles.tres" id="1_dbecs"]
 [ext_resource type="Shader" uid="uid://ci85qadqdqbak" path="res://MaterialLibrary/Hexagons/Background.gdshader" id="1_h5o5v"]
@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://cflrqd6yow3sl" path="res://Gameplay/T_DeathNibble.png" id="14_sxdqs"]
 [ext_resource type="Resource" uid="uid://dyxwk08l0hs8j" path="res://Enemies/Pawns/ToughEvolvedStats.tres" id="15_niq5q"]
 [ext_resource type="Resource" uid="uid://bw4ao6bhc5ewm" path="res://Enemies/Bosses/Squared.tres" id="16_4ignw"]
+[ext_resource type="Script" uid="uid://c4c4ep5oo8o2m" path="res://Gameplay/Camera/CameraController.cs" id="22_ml50w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dbecs"]
 shader = ExtResource("1_h5o5v")
@@ -483,6 +484,16 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_jq068")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = -1000
+limit_top = -500
+limit_right = 2100
+limit_bottom = 1100
+limit_smoothed = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
+script = ExtResource("22_ml50w")
+
 [node name="_Managers\'" type="Node" parent="."]
 
 [node name="GameStats" type="Node" parent="_Managers\'"]
@@ -493,11 +504,10 @@ script = ExtResource("13_dbecs")
 
 [node name="GameManager" type="Node" parent="_Managers\'" node_paths=PackedStringArray("shop", "livesText")]
 script = ExtResource("14_dbecs")
-shop = NodePath("../../UI/ScreenCanvas/ShopButton")
-livesText = NodePath("../../UI/ScreenCanvas/GameStats/Lives/Text (TMP)")
+shop = NodePath("../../CanvasLayer/UI/ScreenCanvas/ShopButton")
+livesText = NodePath("../../CanvasLayer/UI/ScreenCanvas/GameStats/Lives/Text (TMP)")
 
 [node name="Map" type="Node2D" parent="."]
-position = Vector2(576, 324)
 
 [node name="PathGrid" type="TileMapLayer" parent="Map"]
 position = Vector2(1, 0)
@@ -520,7 +530,7 @@ navigation_enabled = false
 position = Vector2(-405, -225)
 script = ExtResource("3_o3dn4")
 _waves = [SubResource("Resource_7j0gl"), SubResource("Resource_tpvnd"), SubResource("Resource_cqc0v"), SubResource("Resource_niq5q"), SubResource("Resource_ogs00"), SubResource("Resource_pk038"), SubResource("Resource_mweev"), SubResource("Resource_7rx82"), SubResource("Resource_o5bsi"), SubResource("Resource_4yoli"), SubResource("Resource_osjoh"), SubResource("Resource_y21q5"), SubResource("Resource_157cj"), SubResource("Resource_b88u8"), SubResource("Resource_s5oa5")]
-_countdown = NodePath("../../UI/WaveCountdown")
+_countdown = NodePath("../../CanvasLayer/UI/WaveCountdown")
 
 [node name="Waypoint (1)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
 position = Vector2(80, 45)
@@ -589,27 +599,41 @@ _bit = ExtResource("13_sxdqs")
 _nibble = ExtResource("14_sxdqs")
 _byte = ExtResource("14_8tbnj")
 
-[node name="UI" type="Control" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 mouse_filter = 1
 
-[node name="WaveCountdown" type="Timer" parent="UI"]
+[node name="WaveCountdown" type="Timer" parent="CanvasLayer/UI"]
 wait_time = 5.0
 one_shot = true
 autostart = true
 script = ExtResource("8_a02h1")
 WaveData = ExtResource("9_h5o5v")
 
-[node name="ScreenCanvas" parent="UI" instance=ExtResource("11_ml50w")]
+[node name="ScreenCanvas" parent="CanvasLayer/UI" instance=ExtResource("11_ml50w")]
 layout_mode = 1
 mouse_filter = 1
 
-[connection signal="pressed" from="UI/ScreenCanvas/ShopButton" to="UI/ScreenCanvas/ShopButton" method="ShowFirstItem"]
+[node name="BackShadow" parent="CanvasLayer/UI/ScreenCanvas/Selection/SelectionCards/Card_Module/Button/Icon" index="0"]
+pivot_offset = Vector2(187.6, 41.6561)
+
+[node name="BackOutline" parent="CanvasLayer/UI/ScreenCanvas/Selection/SelectionCards/Card_Module/Button/Icon" index="1"]
+pivot_offset = Vector2(150.08, 33.3249)
+
+[node name="Icon" parent="CanvasLayer/UI/ScreenCanvas/Selection/SelectionCards/Card_Module/Button/Icon" index="2"]
+pivot_offset = Vector2(128.64, 28.5642)
+
+[connection signal="pressed" from="CanvasLayer/UI/ScreenCanvas/ShopButton" to="CanvasLayer/UI/ScreenCanvas/ShopButton" method="ShowFirstItem"]
 
 [editable path="Map/SpawnPoint/Waypoint (1)"]
 [editable path="Map/SpawnPoint/Waypoint (2)"]
@@ -631,9 +655,9 @@ mouse_filter = 1
 [editable path="Map/SpawnPoint/Waypoint (18)"]
 [editable path="Map/SpawnPoint/Waypoint (19)"]
 [editable path="Map/SpawnPoint/Waypoint (20)"]
-[editable path="UI/ScreenCanvas"]
-[editable path="UI/ScreenCanvas/Selection/SelectionCards/Card_Turret"]
-[editable path="UI/ScreenCanvas/Selection/SelectionCards/Card_Module"]
-[editable path="UI/ScreenCanvas/Selection/SelectionCards/Card_Module/Button/Icon"]
-[editable path="UI/ScreenCanvas/Selection/SelectionCards/Card_Life"]
-[editable path="UI/ScreenCanvas/Selection/SelectionCards/Card_Hidden"]
+[editable path="CanvasLayer/UI/ScreenCanvas"]
+[editable path="CanvasLayer/UI/ScreenCanvas/Selection/SelectionCards/Card_Turret"]
+[editable path="CanvasLayer/UI/ScreenCanvas/Selection/SelectionCards/Card_Module"]
+[editable path="CanvasLayer/UI/ScreenCanvas/Selection/SelectionCards/Card_Module/Button/Icon"]
+[editable path="CanvasLayer/UI/ScreenCanvas/Selection/SelectionCards/Card_Life"]
+[editable path="CanvasLayer/UI/ScreenCanvas/Selection/SelectionCards/Card_Hidden"]
