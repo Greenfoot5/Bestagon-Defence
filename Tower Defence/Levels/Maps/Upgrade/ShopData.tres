@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ShopData" load_steps=18 format=3 uid="uid://b6vw6l67k0fne"]
+[gd_resource type="Resource" script_class="ShopData" load_steps=20 format=3 uid="uid://b6vw6l67k0fne"]
 
 [ext_resource type="Resource" uid="uid://d373knvixoopr" path="res://Turrets/Shooter/BasicTurret.tres" id="1_d4njv"]
 [ext_resource type="Script" uid="uid://by85y3cqstj04" path="res://Abstract/Data/WeightedList.cs" id="1_ps0rn"]
@@ -56,12 +56,24 @@ point_count = 3
 _data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
 point_count = 2
 
+[sub_resource type="Curve" id="Curve_xt8uj"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_42cso"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
+point_count = 2
+
 [sub_resource type="Resource" id="Resource_jbv3k"]
 script = ExtResource("2_d4njv")
 Strain = 0
-Size = 1
+Size = 3
 list_0/Blueprint = ExtResource("1_d4njv")
 list_0/Curve = SubResource("Curve_m084i")
+list_1/Blueprint = ExtResource("2_jbv3k")
+list_1/Curve = SubResource("Curve_xt8uj")
+list_2/Blueprint = ExtResource("3_m084i")
+list_2/Curve = SubResource("Curve_42cso")
 
 [resource]
 script = ExtResource("4_jbv3k")
@@ -77,7 +89,7 @@ ModuleHandlers = SubResource("Resource_d4njv")
 ModuleDuplicateCheck = 2
 InitialSelectionCount = 1
 InitialChoices = 3
-SelectionChoices = 1
+SelectionChoices = 3
 HiddenMode = 0
 HiddenChoices = 0
 HiddenChance = 0.0
