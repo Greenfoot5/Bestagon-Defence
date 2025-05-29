@@ -38,9 +38,13 @@ metadata/_custom_type_script = "uid://ufdo2vxockv6"
 [sub_resource type="Resource" id="Resource_d4njv"]
 script = ExtResource("2_d4njv")
 Strain = 1
-Size = 1
+Size = 3
 list_0/Handler = SubResource("Resource_xt8uj")
 list_0/Curve = SubResource("Curve_jbv3k")
+list_1/Handler = SubResource("Resource_xt8uj")
+list_1/Curve = SubResource("Curve_jbv3k")
+list_2/Handler = SubResource("Resource_xt8uj")
+list_2/Curve = SubResource("Curve_jbv3k")
 
 [sub_resource type="Curve" id="Curve_7d5lu"]
 _limits = [0.0, 5.0, 0.0, 20.0]
