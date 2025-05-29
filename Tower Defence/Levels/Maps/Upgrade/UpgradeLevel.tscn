@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=4 uid="uid://dxeskbdbxmflu"]
+[gd_scene load_steps=90 format=4 uid="uid://dxeskbdbxmflu"]
 
 [ext_resource type="TileSet" uid="uid://cqec5gsl2jrtp" path="res://Levels/_Tiles/PathTiles.tres" id="1_dbecs"]
 [ext_resource type="Shader" uid="uid://ci85qadqdqbak" path="res://MaterialLibrary/Hexagons/Background.gdshader" id="1_h5o5v"]
@@ -427,10 +427,44 @@ enemySets = Array[Object]([SubResource("Resource_p388s"), SubResource("Resource_
 setDelays = PackedFloat32Array(0, 1, 0, 0, 1, 0)
 metadata/_custom_type_script = "uid://bgfugrs685jpk"
 
+[sub_resource type="Resource" id="Resource_i7rii"]
+script = ExtResource("8_72yxd")
+enemy = ExtResource("11_yrqfs")
+count = 6
+rate = 0.2
+metadata/_custom_type_script = "uid://bmxuh31stih5j"
+
+[sub_resource type="Resource" id="Resource_3rryj"]
+script = ExtResource("8_72yxd")
+enemy = ExtResource("15_niq5q")
+count = 5
+rate = 0.2
+metadata/_custom_type_script = "uid://bmxuh31stih5j"
+
+[sub_resource type="Resource" id="Resource_bx7ms"]
+script = ExtResource("8_72yxd")
+count = 1
+rate = 0.5
+metadata/_custom_type_script = "uid://bmxuh31stih5j"
+
+[sub_resource type="Resource" id="Resource_mws23"]
+script = ExtResource("8_72yxd")
+enemy = ExtResource("11_yrqfs")
+count = 6
+rate = 0.2
+metadata/_custom_type_script = "uid://bmxuh31stih5j"
+
+[sub_resource type="Resource" id="Resource_0dhcj"]
+script = ExtResource("8_72yxd")
+enemy = ExtResource("13_pse8l")
+count = 10
+rate = 0.1
+metadata/_custom_type_script = "uid://bmxuh31stih5j"
+
 [sub_resource type="Resource" id="Resource_s5oa5"]
 script = ExtResource("9_niq5q")
-enemySets = Array[Object]([])
-setDelays = PackedFloat32Array()
+enemySets = Array[Object]([SubResource("Resource_i7rii"), SubResource("Resource_3rryj"), SubResource("Resource_bx7ms"), SubResource("Resource_mws23"), SubResource("Resource_0dhcj")])
+setDelays = PackedFloat32Array(3, 0.1, 1, 1)
 metadata/_custom_type_script = "uid://bgfugrs685jpk"
 
 [node name="Upgrade" type="Node"]
