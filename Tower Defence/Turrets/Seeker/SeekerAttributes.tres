@@ -22,6 +22,15 @@ Min = inf_neg
 Max = inf
 metadata/_custom_type_script = "uid://blnrq5atpcclw"
 
+[sub_resource type="Resource" id="Resource_o5pex"]
+script = ExtResource("2_xud0f")
+Name = 10
+Base = 15.0
+_modifiers = Dictionary[Variant, ExtResource("1_elgs1")]({})
+Min = inf_neg
+Max = inf
+metadata/_custom_type_script = "uid://blnrq5atpcclw"
+
 [sub_resource type="Resource" id="Resource_y83xu"]
 script = ExtResource("2_xud0f")
 Name = 15
@@ -35,15 +44,6 @@ metadata/_custom_type_script = "uid://blnrq5atpcclw"
 script = ExtResource("2_xud0f")
 Name = 17
 Base = 120.0
-_modifiers = Dictionary[Variant, ExtResource("1_elgs1")]({})
-Min = inf_neg
-Max = inf
-metadata/_custom_type_script = "uid://blnrq5atpcclw"
-
-[sub_resource type="Resource" id="Resource_o5pex"]
-script = ExtResource("2_xud0f")
-Name = 10
-Base = 15.0
 _modifiers = Dictionary[Variant, ExtResource("1_elgs1")]({})
 Min = inf_neg
 Max = inf
