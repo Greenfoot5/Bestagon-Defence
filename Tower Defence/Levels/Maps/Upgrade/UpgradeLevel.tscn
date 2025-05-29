@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=4 uid="uid://dxeskbdbxmflu"]
+[gd_scene load_steps=91 format=4 uid="uid://dxeskbdbxmflu"]
 
 [ext_resource type="TileSet" uid="uid://cqec5gsl2jrtp" path="res://Levels/_Tiles/PathTiles.tres" id="1_dbecs"]
 [ext_resource type="Shader" uid="uid://ci85qadqdqbak" path="res://MaterialLibrary/Hexagons/Background.gdshader" id="1_h5o5v"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" uid="uid://ci5f1fooga4hq" path="res://Gameplay/GameManager.cs" id="14_dbecs"]
 [ext_resource type="Texture2D" uid="uid://cflrqd6yow3sl" path="res://Gameplay/T_DeathNibble.png" id="14_sxdqs"]
 [ext_resource type="Resource" uid="uid://dyxwk08l0hs8j" path="res://Enemies/Pawns/ToughEvolvedStats.tres" id="15_niq5q"]
+[ext_resource type="Resource" uid="uid://bw4ao6bhc5ewm" path="res://Enemies/Bosses/Squared.tres" id="16_4ignw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dbecs"]
 shader = ExtResource("1_h5o5v")
@@ -443,6 +444,7 @@ metadata/_custom_type_script = "uid://bmxuh31stih5j"
 
 [sub_resource type="Resource" id="Resource_bx7ms"]
 script = ExtResource("8_72yxd")
+enemy = ExtResource("16_4ignw")
 count = 1
 rate = 0.5
 metadata/_custom_type_script = "uid://bmxuh31stih5j"
