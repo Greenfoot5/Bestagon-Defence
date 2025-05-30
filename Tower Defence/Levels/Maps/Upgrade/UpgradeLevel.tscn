@@ -503,8 +503,9 @@ script = ExtResource("13_p388s")
 [node name="BuildManager" type="Node" parent="_Managers\'"]
 script = ExtResource("13_dbecs")
 
-[node name="GameManager" type="Node" parent="_Managers\'" node_paths=PackedStringArray("shop", "livesText")]
+[node name="GameManager" type="Node" parent="_Managers\'" node_paths=PackedStringArray("GameOverUI", "shop", "livesText")]
 script = ExtResource("14_dbecs")
+GameOverUI = NodePath("../../CanvasLayer/UI/ScreenCanvas/GameOverUI")
 shop = NodePath("../../CanvasLayer/UI/ScreenCanvas/ShopButton")
 livesText = NodePath("../../CanvasLayer/UI/ScreenCanvas/GameStats/Lives/Text (TMP)")
 

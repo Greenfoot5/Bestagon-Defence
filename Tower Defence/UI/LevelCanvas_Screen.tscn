@@ -520,7 +520,7 @@ text = "Close"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GameOverUI" type="Panel" parent="."]
+[node name="GameOverUI" type="Panel" parent="." node_paths=PackedStringArray("roundsText")]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -529,6 +529,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("12_7gih3")
+roundsText = NodePath("WavesSpawned/WavesCount")
 
 [node name="GameOverText" type="TextureRect" parent="GameOverUI"]
 self_modulate = Color(0.882353, 0.117647, 0.368627, 1)
@@ -569,6 +570,7 @@ anchor_top = 0.2
 anchor_right = 0.8
 anchor_bottom = 0.2
 offset_bottom = 141.0
+dragging_enabled = false
 
 [node name="WavesCount" type="Label" parent="GameOverUI/WavesSpawned"]
 layout_mode = 2
@@ -781,7 +783,7 @@ _selectionParent = NodePath("SelectionCards")
 _lockButton = NodePath("Options/Lock")
 _lockedButton = NodePath("Options/Locked")
 
-[node name="GameOverText" type="TextureRect" parent="Selection"]
+[node name="PausedText" type="TextureRect" parent="Selection"]
 self_modulate = Color(0.207843, 0.537255, 0.94902, 1)
 layout_mode = 1
 anchors_preset = -1
@@ -792,7 +794,7 @@ offset_bottom = 70.0
 texture = ExtResource("14_viuft")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="Selection/GameOverText"]
+[node name="Label" type="Label" parent="Selection/PausedText"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
