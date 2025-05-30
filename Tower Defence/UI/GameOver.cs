@@ -22,7 +22,7 @@ namespace UI
 
         public override void _ExitTree()
         {
-            VisibilityChanged += OnEnable;
+            VisibilityChanged -= OnEnable;
         }
         
         /// <summary>
