@@ -113,7 +113,9 @@ namespace UI
         /// </summary>
         public void Retry()
         {
+            GD.Print("Restarting...");
             GameStats.ClearStats();
+            GetTree().ChangeSceneToFile(GetSceneFilePath());
             // TODO - SceneManager
             // SaveManager.ClearSave(SceneManager.GetActiveScene().Name);
             // TransitionManager.Instance.LoadScene(SceneManager.GetActiveScene().Name);

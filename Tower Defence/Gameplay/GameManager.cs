@@ -65,6 +65,7 @@ namespace Gameplay
         public override void _Ready()
         {
             isGameOver = false;
+            Engine.TimeScale = 1;
             
             GameStats.OnLoseLife += UpdateLives;
             GameStats.OnGameOver += EndGame;
@@ -80,9 +81,10 @@ namespace Gameplay
             RenderingServer.GlobalShaderParameterSet("UNSCALED_TIME", Time.GetTicksMsec() / 1000.0);
         }
 
-        private void OnDestroy()
+        public override void _ExitTree()
         {
             GameStats.OnLoseLife -= UpdateLives;
+            GameStats.OnGameOver -= EndGame;
         }
     
         /// <summary>

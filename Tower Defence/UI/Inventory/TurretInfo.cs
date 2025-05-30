@@ -114,6 +114,15 @@ public partial class TurretInfo : Control
         BuildManager.OnBlueprintSelected += SelectBlueprint;
         BuildManager.OnTurretBuilt += BuiltTurret;
     }
+
+    public override void _ExitTree()
+    {
+        BuildableTile.OnTileSelected -= SetTarget;
+        Shop.Shop.OnPickTurret -= AddTurret;
+        Shop.Shop.OnPickModule -= AddModule;
+        BuildManager.OnBlueprintSelected -= SelectBlueprint;
+        BuildManager.OnTurretBuilt -= BuiltTurret;
+    }
         
     /// <summary>
     /// Called when selecting a new node

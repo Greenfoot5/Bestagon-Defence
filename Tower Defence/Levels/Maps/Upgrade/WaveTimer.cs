@@ -13,6 +13,11 @@ public partial class WaveTimer : Timer
         WaveSpawner.OnEnemyDied += TryStart;
     }
 
+    public override void _ExitTree()
+    {
+        WaveSpawner.OnEnemyDied -= TryStart;
+    }
+
     private void TryStart()
     {
         if (WaveSpawner.EnemiesAlive <= 0 && WaveSpawner.SpawnerState == WaveSpawner.State.Waiting)
