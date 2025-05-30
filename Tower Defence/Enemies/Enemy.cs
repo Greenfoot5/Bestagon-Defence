@@ -54,8 +54,8 @@ namespace Enemies
         public delegate void DeathEvent();
         public event DeathEvent OnDeath;
 
-        public delegate void EnemyDeathEvent(Enemy enemy);
-        public static event EnemyDeathEvent OnEnemyDeath;
+        public delegate void EnemyKilledEvent(Enemy enemy);
+        public static event EnemyKilledEvent OnEnemyKilled;
         
         /// <summary>
         /// Initialises relevant variables
@@ -206,7 +206,7 @@ namespace Enemies
             _isDead = true;
 
             OnDeath?.Invoke();
-            OnEnemyDeath?.Invoke(this);
+            OnEnemyKilled?.Invoke(this);
 
             // Spawn death effect
             // var effect = (Node2D) Stats.DeathEffect.Instantiate();
@@ -226,6 +226,8 @@ namespace Enemies
             // Let our other systems know the enemy reached the end
             GameStats.Lives -= Stats.DeathLives;
             GameStats.Energy += Stats.EndPathMoney;
+
+            OnDeath?.Invoke();
         
             QueueFree();
         }

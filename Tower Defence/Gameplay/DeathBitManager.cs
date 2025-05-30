@@ -48,7 +48,7 @@ namespace Gameplay
             Particles.Clear();
 
             GameStats.OnRoundProgress += CleanMap;
-            Enemy.OnEnemyDeath += DropEnergy;
+            Enemy.OnEnemyKilled += DropEnergy;
         }
 
         public override void _ExitTree()

@@ -10,10 +10,10 @@ public partial class WaveTimer : Timer
     
     public override void _Ready()
     {
-        Enemy.OnEnemyDeath += TryStart;
+        WaveSpawner.OnEnemyDied += TryStart;
     }
 
-    private void TryStart(Enemy _)
+    private void TryStart()
     {
         if (WaveSpawner.EnemiesAlive <= 0 && WaveSpawner.SpawnerState == WaveSpawner.State.Waiting)
         {

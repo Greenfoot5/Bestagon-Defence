@@ -26,11 +26,22 @@ namespace Gameplay.Waves
         /// </summary>
         public static State SpawnerState = State.Waiting;
         private static int _activeSpawners;
-        
+
+        private static int _enemiesAlive;
         /// <summary>
         /// How many enemies are still alive in the level
         /// </summary>
-        public static int EnemiesAlive;
+        public static int EnemiesAlive
+        {
+            get => _enemiesAlive;
+            set
+            {
+                _enemiesAlive = value;
+                OnEnemyDied?.Invoke();
+            }
+        }
+        public delegate void EnemyDied();
+        public static event EnemyDied OnEnemyDied;
         
         private WaveData _waveData;
         private Timer _spawnTimer;
