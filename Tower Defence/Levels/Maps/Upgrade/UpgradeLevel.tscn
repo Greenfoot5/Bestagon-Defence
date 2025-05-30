@@ -485,14 +485,15 @@ mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_jq068")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-limit_left = -1000
-limit_top = -500
-limit_right = 2100
-limit_bottom = 1100
-limit_smoothed = true
+limit_left = -2500
+limit_top = -1500
+limit_right = 2500
+limit_bottom = 1500
 editor_draw_limits = true
-editor_draw_drag_margin = true
 script = ExtResource("22_ml50w")
+keyboardPanSpeed = 500.0
+minZoom = 0.3
+maxZoom = 3.0
 
 [node name="_Managers\'" type="Node" parent="."]
 
@@ -593,7 +594,6 @@ position = Vector2(122.313, 433.5)
 position = Vector2(158.313, 457.5)
 
 [node name="DeathBitManager" type="Node2D" parent="Map"]
-position = Vector2(-576, -324)
 script = ExtResource("12_o3dn4")
 _bit = ExtResource("13_sxdqs")
 _nibble = ExtResource("14_sxdqs")

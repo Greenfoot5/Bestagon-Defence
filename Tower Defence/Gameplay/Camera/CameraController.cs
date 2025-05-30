@@ -28,38 +28,33 @@ namespace Gameplay.Camera
         /// </summary>
         [Export]
         private float zoomInfluence = 3f;
-        /// <summary>
-        /// The minimum position the camera can reach
-        /// </summary>
-        [Export]
-        private Vector2 minPos = new(0, 0);
-        /// <summary>
-        /// The maximum position of the camera
-        /// </summary>
-        [Export]
-        private Vector2 maxPos = new(0, 0);
     
         /// <summary>
-        /// Multiplier for mouse scroll speed
+        /// Multiplier for keyboard scroll speed
         /// </summary>
         [ExportGroup("Zoom")]
         [Export]
-        private float scrollSpeed = 10f;
+        private float keyboardZoomSpeed = 1f;
+        /// <summary>
+        /// Multiplier for mouse scroll speed
+        /// </summary>
+        [Export]
+        private float mouseScrollSpeed = 10f;
         /// <summary>
         /// Multiplier for the pinch zoom speed
         /// </summary>
         [Export]
         private float pinchSpeed = 1f;
         /// <summary>
-        /// The minimum Orthographic size that can be reached (maximum zoom)
+        /// The minimum zoom size that can be reached
         /// </summary>
         [Export]
-        private float minOrthSize = 3;
+        private float minZoom = 3;
         /// <summary>
-        /// The maximum Orthographic size that can be reached (minimum zoom)
+        /// The maximum zoom size that can be reached
         /// </summary>
         [Export]
-        private float maxOrthSize = 9;
+        private float maxZoom = 9;
 
         // Input System
         // TODO - Input System
@@ -76,23 +71,28 @@ namespace Gameplay.Camera
             touchSensitivity /= 180;
         }
 
-        /// <summary>
-        /// Gets the camera movement speed based on player input
-        /// </summary>
-        /// <returns>The speed the camera should move in the next frame, may be 0</returns>
-        private Vector2 Move()
+        public override void _PhysicsProcess(double delta)
         {
-            // if (_moveCamera.activeControl == null)
-            // {
-            //     return new Vector2();
-            // }
+            var fDelta = (float)delta;
+            
+            Move(fDelta);
+            ZoomProcess(fDelta);
+        }
 
-            // Keyboard Input
-            // if (_moveCamera.activeControl.device == Keyboard.current)
-            // {
-            //     return _moveCamera.ReadValue<Vector2>() * (keyboardPanSpeed * delta);
-            // }
-
+        /// <summary>
+        /// Handles the camera movement
+        /// </summary>
+        private void Move(float delta)
+        {
+            if (Input.IsActionPressed("ui_left"))
+                Position -= new Vector2(keyboardPanSpeed * delta, 0);
+            if (Input.IsActionPressed("ui_right"))
+                Position += new Vector2(keyboardPanSpeed * delta, 0);
+            if  (Input.IsActionPressed("ui_up"))
+                Position -= new Vector2(0, keyboardPanSpeed * delta);
+            if (Input.IsActionPressed("ui_down"))
+                Position += new Vector2(0, keyboardPanSpeed * delta);
+            
             // Mouse Input
             // if (_moveCamera.activeControl.device == Pointer.current)
             // {
@@ -104,8 +104,20 @@ namespace Gameplay.Camera
             // {
             //     return _moveCamera.ReadValue<Vector2>() * touchSensitivity;
             // }
+        }
 
-            return new Vector2();
+        /// <summary>
+        /// Handles zooming of the camera
+        /// </summary>
+        /// <param name="delta"></param>
+        private void ZoomProcess(float delta)
+        {
+            if (Input.IsActionPressed("zoom_in"))
+                Zoom *= new Vector2(1 + keyboardZoomSpeed * delta, 1 + keyboardZoomSpeed * delta);
+            if (Input.IsActionPressed("zoom_out"))
+                Zoom *= new Vector2(1 - keyboardZoomSpeed * delta, 1 - keyboardZoomSpeed * delta);
+            
+            Zoom = Zoom.Clamp(minZoom, maxZoom);
         }
     
         /// <summary>
@@ -136,41 +148,6 @@ namespace Gameplay.Camera
             // return (touchDeltaMag - prevTouchDeltaMag) * pinchSpeed;
             return 0;
 
-        }
-    
-        // TODO - Figure out how to actually use Camera2D
-        /// <summary>
-        /// Called every frame. Moves camera and zooms camera
-        /// </summary>
-        public override void _Process(double delta)
-        {
-            // Disable panning if the game is over
-            if (GameManager.isGameOver)
-            {
-                Enabled = false;
-                return;
-            }
-        
-            // TODO - Check if the game actually need to call them.
-            Vector2 panSpeed = Move();
-            float zoomSpeed = Scroll();
-
-            // Gets the current camera transform
-            Vector2 transformPosition = Position;
-            // float orthSize = _camera.orthographicSize;
-
-            // Moves the camera
-            // TODO - Orth
-            // panSpeed *= orthSize / zoomInfluence;
-            float newPositionX = Mathf.Clamp(transformPosition.X + panSpeed.X, minPos.X, maxPos.X);
-            float newPositionY = Mathf.Clamp(transformPosition.Y + panSpeed.Y, minPos.Y, maxPos.Y);
-            // TODO - Translate
-            // transform.Translate(new Vector2(newPositionX, newPositionY, transformPosition.z) - transformPosition, Space.World);
-
-            // Implement scrolling by changing the Orthographic Size on the camera
-            // orthSize -= zoomSpeed * delta;
-            // orthSize = Mathf.Clamp(orthSize, minOrthSize, maxOrthSize);
-            // _camera.orthographicSize = orthSize;
         }
     }
 }
