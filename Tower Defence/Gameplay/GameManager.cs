@@ -67,6 +67,7 @@ namespace Gameplay
             isGameOver = false;
             
             GameStats.OnLoseLife += UpdateLives;
+            GameStats.OnGameOver += EndGame;
             UpdateLives();
         }
     
@@ -77,16 +78,6 @@ namespace Gameplay
         {
             // TODO - Move somewhere better
             RenderingServer.GlobalShaderParameterSet("UNSCALED_TIME", Time.GetTicksMsec() / 1000.0);
-            
-            if (isGameOver)
-            {
-                return;
-            }
-        
-            if (GameStats.Lives <= 0)
-            {
-                EndGame();
-            }
         }
 
         private void OnDestroy()
@@ -102,8 +93,8 @@ namespace Gameplay
         {
             isGameOver = true;
 
-            GameOverUI.ProcessMode = ProcessModeEnum.Disabled;
-            GameOverUI.Visible = false;
+            GameOverUI.ProcessMode = ProcessModeEnum.Always;
+            GameOverUI.Visible = true;
             shop.ProcessMode = ProcessModeEnum.Disabled;
             shop.Visible = false;
 

@@ -14,11 +14,21 @@ namespace UI
         /// </summary>
         [Export]
         private Label roundsText;
+
+        public override void _EnterTree()
+        {
+            VisibilityChanged += OnEnable;
+        }
+
+        public override void _ExitTree()
+        {
+            VisibilityChanged += OnEnable;
+        }
         
         /// <summary>
         /// Sets the player's score display when enabled
         /// </summary>
-        public void OnEnable()
+        private void OnEnable()
         {
             roundsText.Text = GameStats.Rounds.ToString();
         }
@@ -31,6 +41,8 @@ namespace UI
             // TODO - Player Prefs & Scene Manager
             // PlayerPrefs.SetInt("LoadingLevel", 0);
             // TransitionManager.Instance.LoadScene(SceneManager.GetActiveScene().Name);
+            GameStats.ClearStats();
+            GetTree().ReloadCurrentScene();
         }
         
         /// <summary>
