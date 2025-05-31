@@ -53,13 +53,6 @@ _attributes = {
 14: SubResource("Resource_xwmrl")
 }
 
-[sub_resource type="Curve" id="Curve_k1h6c"]
-_data = [Vector2(0, 0.01), 0.0, 0.99, 0, 1, Vector2(1, 1), 0.99, 0.0, 1, 0]
-point_count = 2
-
-[sub_resource type="Gradient" id="Gradient_nhn4y"]
-colors = PackedColorArray(0.467, 0.376, 0.651, 1, 0.298, 0.247, 0.451, 0.5)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_nhn4y"]
 radius = 600.0
 
@@ -70,55 +63,64 @@ shader_parameter/glow_color = Color(1, 1, 1, 1)
 shader_parameter/glow_radius = 2.0
 shader_parameter/glow_size = 1.6
 
+[sub_resource type="Curve" id="Curve_k1h6c"]
+_data = [Vector2(0, 0.01), 0.0, 0.99, 0, 1, Vector2(1, 1), 0.99, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_nhn4y"]
+colors = PackedColorArray(0.467, 0.376, 0.651, 1, 0.298, 0.247, 0.451, 0.5)
+
 [node name="Hunter" type="Node2D" node_paths=PackedStringArray("line", "FirePoint", "Ray", "PartToRotate", "RangeDisplay", "Range")]
 script = ExtResource("1_ts1m3")
-line = NodePath("Turret/Fire Point/Line2D")
+line = NodePath("PartToRotate/Turret/Fire Point/Line2D")
 TargetPriorityMethod = 2
-FirePoint = NodePath("Turret/Fire Point")
-Ray = NodePath("Turret/Range/RayCast2D")
-PartToRotate = NodePath("Turret")
-RangeDisplay = NodePath("Turret/Range/Range")
-Range = NodePath("Turret/Range")
+FirePoint = NodePath("PartToRotate/Turret/Fire Point")
+Ray = NodePath("PartToRotate/Range/RayCast2D")
+PartToRotate = NodePath("PartToRotate/Turret")
+RangeDisplay = NodePath("PartToRotate/Range/Range")
+Range = NodePath("PartToRotate/Range")
 Stats = SubResource("Resource_ts1m3")
 
 [node name="Base" type="Sprite2D" parent="."]
 texture = ExtResource("6_yv6ch")
 
-[node name="Turret" type="Sprite2D" parent="."]
-z_index = 10
-texture = ExtResource("7_mjoli")
+[node name="PartToRotate" type="Node2D" parent="."]
+rotation = -1.5708
 
-[node name="Fire Point" type="Node2D" parent="Turret"]
-position = Vector2(0, -100)
-
-[node name="Line2D" type="Line2D" parent="Turret/Fire Point"]
-z_index = 5
-z_as_relative = false
-points = PackedVector2Array(0, 0, 0, -2000)
-width = 300.0
-width_curve = SubResource("Curve_k1h6c")
-gradient = SubResource("Gradient_nhn4y")
-texture_mode = 2
-
-[node name="Range" type="Area2D" parent="Turret"]
+[node name="Range" type="Area2D" parent="PartToRotate"]
 scale = Vector2(6, 6)
 collision_layer = 0
 collision_mask = 2
 input_pickable = false
 monitorable = false
 
-[node name="SpriteRenderer" type="CollisionShape2D" parent="Turret/Range"]
+[node name="SpriteRenderer" type="CollisionShape2D" parent="PartToRotate/Range"]
 shape = SubResource("CircleShape2D_nhn4y")
 
-[node name="Range" type="Sprite2D" parent="Turret/Range"]
+[node name="Range" type="Sprite2D" parent="PartToRotate/Range"]
 self_modulate = Color(0.360784, 0.321569, 0.556863, 1)
 material = SubResource("ShaderMaterial_ldkt0")
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("8_pnu4x")
 
-[node name="RayCast2D" type="RayCast2D" parent="Turret/Range"]
-rotation = 3.14159
-target_position = Vector2(0, 600)
+[node name="RayCast2D" type="RayCast2D" parent="PartToRotate/Range"]
+target_position = Vector2(600, 0)
 collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="Turret" type="Sprite2D" parent="PartToRotate"]
+z_index = 10
+rotation = 1.5708
+texture = ExtResource("7_mjoli")
+
+[node name="Fire Point" type="Node2D" parent="PartToRotate/Turret"]
+position = Vector2(0, -100)
+
+[node name="Line2D" type="Line2D" parent="PartToRotate/Turret/Fire Point"]
+z_index = 5
+z_as_relative = false
+width = 300.0
+width_curve = SubResource("Curve_k1h6c")
+gradient = SubResource("Gradient_nhn4y")
+texture_mode = 2

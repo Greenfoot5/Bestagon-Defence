@@ -73,48 +73,52 @@ shader_parameter/glow_size = 1.6
 [node name="Shooter" type="Node2D" node_paths=PackedStringArray("FirePoint", "Ray", "PartToRotate", "RangeDisplay", "Range")]
 script = ExtResource("1_1gplr")
 bulletPrefab = ExtResource("2_lixi6")
-FirePoint = NodePath("Turret/Fire Point")
-Ray = NodePath("Turret/Range/Ray")
-PartToRotate = NodePath("Turret")
-RangeDisplay = NodePath("Turret/Range/Render")
-Range = NodePath("Turret/Range")
+FirePoint = NodePath("PartToRotate/Turret/Fire Point")
+Ray = NodePath("PartToRotate/Range/Ray")
+PartToRotate = NodePath("PartToRotate")
+RangeDisplay = NodePath("PartToRotate/Range/Render")
+Range = NodePath("PartToRotate/Range")
 Stats = SubResource("Resource_dpruv")
 
 [node name="Base" type="Sprite2D" parent="."]
 position = Vector2(0.5, -2)
 texture = ExtResource("7_00hsh")
 
-[node name="Turret" type="Sprite2D" parent="."]
+[node name="PartToRotate" type="Node2D" parent="."]
+rotation = -1.5708
+
+[node name="Turret" type="Sprite2D" parent="PartToRotate"]
 position = Vector2(0.5, -2)
+rotation = 1.5708
 texture = ExtResource("8_t32vb")
 
-[node name="Fire Point" type="Node2D" parent="Turret"]
+[node name="Fire Point" type="Node2D" parent="PartToRotate/Turret"]
 position = Vector2(0, -200)
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Turret/Fire Point"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="PartToRotate/Turret/Fire Point"]
 emitting = false
 texture = ExtResource("10_wl632")
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_wl632")
 
-[node name="Range" type="Area2D" parent="Turret"]
+[node name="Range" type="Area2D" parent="PartToRotate"]
+position = Vector2(0.5, -2)
 scale = Vector2(6, 6)
 collision_layer = 0
 collision_mask = 2
 input_pickable = false
 monitorable = false
 
-[node name="CollisionShape" type="CollisionShape2D" parent="Turret/Range"]
+[node name="CollisionShape" type="CollisionShape2D" parent="PartToRotate/Range"]
 shape = SubResource("CircleShape2D_6qncp")
 
-[node name="Ray" type="RayCast2D" parent="Turret/Range"]
-rotation = -3.14159
-target_position = Vector2(0, 200)
+[node name="Ray" type="RayCast2D" parent="PartToRotate/Range"]
+target_position = Vector2(200, 0)
 collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="Render" type="Sprite2D" parent="Turret/Range"]
+[node name="Render" type="Sprite2D" parent="PartToRotate/Range"]
 self_modulate = Color(0.156863, 0.752941, 0.45098, 1)
 material = SubResource("ShaderMaterial_ldkt0")
 scale = Vector2(0.4, 0.4)

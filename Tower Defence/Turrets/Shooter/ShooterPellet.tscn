@@ -14,10 +14,11 @@ colors = PackedColorArray(0.096, 0.4, 0.2936, 0, 0.117647, 0.784314, 0.521569, 1
 [sub_resource type="CircleShape2D" id="CircleShape2D_wr7bq"]
 radius = 200.0
 
-[node name="ShooterPellet" type="Node2D" node_paths=PackedStringArray("Area")]
+[node name="ShooterPellet" type="Node2D" node_paths=PackedStringArray("Area", "Line")]
 script = ExtResource("1_ilsky")
 Stats = ExtResource("2_p5xc8")
 Area = NodePath("Area")
+Line = NodePath("Line2D")
 pointSpacing = 5.0
 
 [node name="Line2D" type="Line2D" parent="."]

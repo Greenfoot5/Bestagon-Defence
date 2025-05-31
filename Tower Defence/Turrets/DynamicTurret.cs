@@ -23,6 +23,8 @@ namespace Turrets
         
         // How long between each target update
         private const float UpdateTargetTimer = 0.5f;
+        // 90° - Rotation offset so positive y is up
+        private const float RotOffset = float.Pi / 2;
         
         /// <summary>
         /// What TargetingMethod the turret uses to pick its next target
@@ -204,11 +206,11 @@ namespace Turrets
         {
             if (!IsInstanceValid(TargetEnemy)) return;
             
-            float rotationAngleNeed = PartToRotate.GetAngleTo(TargetEnemy.GlobalPosition) + float.Pi / 2;
-            
+            float rotationAngleNeed = PartToRotate.GetAngleTo(TargetEnemy.GlobalPosition);
+
             double zAngle = Mathf.Clamp(rotationAngleNeed, -Stats[AttributeType.RotationSpeed].Value * delta,
                 Stats[AttributeType.RotationSpeed].Value * delta);
-            PartToRotate.GlobalRotation += (float)zAngle;
+            PartToRotate.Rotation += (float)zAngle;
         }
 
         /// <summary>
