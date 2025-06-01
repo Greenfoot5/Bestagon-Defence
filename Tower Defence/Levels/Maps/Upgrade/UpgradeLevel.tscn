@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=4 uid="uid://dxeskbdbxmflu"]
+[gd_scene load_steps=95 format=4 uid="uid://dxeskbdbxmflu"]
 
 [ext_resource type="TileSet" uid="uid://cqec5gsl2jrtp" path="res://Levels/_Tiles/PathTiles.tres" id="1_dbecs"]
 [ext_resource type="Shader" uid="uid://ci85qadqdqbak" path="res://MaterialLibrary/Hexagons/Background.gdshader" id="1_h5o5v"]
@@ -25,6 +25,8 @@
 [ext_resource type="Resource" uid="uid://dyxwk08l0hs8j" path="res://Enemies/Pawns/ToughEvolvedStats.tres" id="15_niq5q"]
 [ext_resource type="Resource" uid="uid://bw4ao6bhc5ewm" path="res://Enemies/Bosses/Squared.tres" id="16_4ignw"]
 [ext_resource type="Script" uid="uid://c4c4ep5oo8o2m" path="res://Gameplay/Camera/CameraController.cs" id="22_ml50w"]
+[ext_resource type="Shader" uid="uid://px34nxwos4w0" path="res://Portal.gdshader" id="23_p388s"]
+[ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/White_Rectangle.png" id="24_b88u8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dbecs"]
 shader = ExtResource("1_h5o5v")
@@ -470,6 +472,20 @@ enemySets = Array[Object]([SubResource("Resource_i7rii"), SubResource("Resource_
 setDelays = PackedFloat32Array(3, 0.1, 1, 1)
 metadata/_custom_type_script = "uid://bgfugrs685jpk"
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nt6x0"]
+shader = ExtResource("23_p388s")
+shader_parameter/col_distance_scale = 5.0
+shader_parameter/col_near = Color(0, 1, 0, 1)
+shader_parameter/col_far = Color(0, 0, 0, 1)
+shader_parameter/emission_boost = 1.0
+shader_parameter/sphere_radius = 0.15
+shader_parameter/noise_scale = 3.2
+shader_parameter/detail = 6
+shader_parameter/rough = 0.5
+shader_parameter/inflate = 0.1
+shader_parameter/smooth_fac = 0.5
+shader_parameter/step_mult = 0.1
+
 [node name="Upgrade" type="Node"]
 
 [node name="Panel" type="Panel" parent="."]
@@ -599,6 +615,12 @@ script = ExtResource("12_o3dn4")
 _bit = ExtResource("13_sxdqs")
 _nibble = ExtResource("14_sxdqs")
 _byte = ExtResource("14_8tbnj")
+
+[node name="Shader" type="Sprite2D" parent="Map"]
+material = SubResource("ShaderMaterial_nt6x0")
+position = Vector2(-247, 232)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("24_b88u8")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
