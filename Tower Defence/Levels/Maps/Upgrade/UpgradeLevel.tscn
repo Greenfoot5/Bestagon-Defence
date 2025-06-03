@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=4 uid="uid://dxeskbdbxmflu"]
+[gd_scene load_steps=96 format=4 uid="uid://dxeskbdbxmflu"]
 
 [ext_resource type="TileSet" uid="uid://cqec5gsl2jrtp" path="res://Levels/_Tiles/PathTiles.tres" id="1_dbecs"]
 [ext_resource type="Shader" uid="uid://ci85qadqdqbak" path="res://MaterialLibrary/Hexagons/Background.gdshader" id="1_h5o5v"]
@@ -472,18 +472,34 @@ enemySets = Array[Object]([SubResource("Resource_i7rii"), SubResource("Resource_
 setDelays = PackedFloat32Array(3, 0.1, 1, 1)
 metadata/_custom_type_script = "uid://bgfugrs685jpk"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nt6x0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p388s"]
 shader = ExtResource("23_p388s")
-shader_parameter/col_distance_scale = 10.0
-shader_parameter/col_near = Color(1, 0, 0.142984, 1)
-shader_parameter/col_far = Color(0.027784, 0.0402433, 0.255608, 1)
+shader_parameter/animate_direction = Vector2(1, 1)
+shader_parameter/col_distance_scale = 12.0
+shader_parameter/col_near = Color(0.24, 0.324, 0.96, 1)
+shader_parameter/col_far = Color(0.055, 0.0075, 0.15, 1)
 shader_parameter/emission_boost = 1.0
-shader_parameter/sphere_radius = 0.15
-shader_parameter/noise_scale = 3.2
-shader_parameter/detail = 6
+shader_parameter/sphere_radius = 0.1
+shader_parameter/noise_scale = 2.5
+shader_parameter/detail = 5
 shader_parameter/rough = 0.5
 shader_parameter/inflate = 0.1
-shader_parameter/smooth_fac = 0.5
+shader_parameter/smooth_fac = 0.6
+shader_parameter/step_mult = 0.05
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nt6x0"]
+shader = ExtResource("23_p388s")
+shader_parameter/animate_direction = Vector2(1, 0.5)
+shader_parameter/col_distance_scale = 12.0
+shader_parameter/col_near = Color(1, 0, 0.142984, 1)
+shader_parameter/col_far = Color(0.02, 0.0289999, 0.2, 1)
+shader_parameter/emission_boost = 1.0
+shader_parameter/sphere_radius = 0.1
+shader_parameter/noise_scale = 2.5
+shader_parameter/detail = 5
+shader_parameter/rough = 0.5
+shader_parameter/inflate = 0.1
+shader_parameter/smooth_fac = 0.6
 shader_parameter/step_mult = 0.05
 
 [node name="Upgrade" type="Node"]
@@ -530,7 +546,7 @@ livesText = NodePath("../../CanvasLayer/UI/ScreenCanvas/GameStats/Lives/Text (TM
 [node name="PathGrid" type="TileMapLayer" parent="Map"]
 position = Vector2(1, 0)
 scale = Vector2(0.1, 0.1)
-tile_map_data = PackedByteArray("AAD1//r/AQAAAAAAAAD2//v/AAAAAAAAAAD3//v/AAAAAAAAAAD4//v/AAAAAAAAAAD5//v/AAAAAAAAAAD6//z/AAAAAAAAAAD7//v/AAAAAAAAAAD8//z/AAAAAAAAAAD8//3/AAAAAAAAAAD7//3/AAAAAAAAAAD7//7/AAAAAAAAAAD8////AAAAAAAAAAD9//7/AAAAAAAAAAD+//7/AAAAAAAAAAD///7/AAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAMAAAAAAAAAAAACAAMAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAADAAAAAAAAAAAAAAACAAAAAAAAAAAAAAABAAAAAAAAAAAAAAD//wEAAAAAAAAAAAD+/wIAAAAAAAAAAAD9/wIAAAAAAAAAAAD8/wIAAAAAAAAAAAD7/wEAAAAAAAAAAAD6/wEAAAAAAAAAAAD5/wEAAAAAAAAAAAD4/wIAAAAAAAAAAAD4/wMAAAAAAAAAAAD4/wQAAAAAAAAAAAD5/wQAAgAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD2//v/AAAAAAAAAAD3//v/AAAAAAAAAAD4//v/AAAAAAAAAAD5//v/AAAAAAAAAAD6//z/AAAAAAAAAAD7//v/AAAAAAAAAAD8//z/AAAAAAAAAAD8//3/AAAAAAAAAAD7//3/AAAAAAAAAAD7//7/AAAAAAAAAAD8////AAAAAAAAAAD9//7/AAAAAAAAAAD+//7/AAAAAAAAAAD///7/AAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAMAAAAAAAAAAAACAAMAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAADAAAAAAAAAAAAAAACAAAAAAAAAAAAAAABAAAAAAAAAAAAAAD//wEAAAAAAAAAAAD+/wIAAAAAAAAAAAD9/wIAAAAAAAAAAAD8/wIAAAAAAAAAAAD7/wEAAAAAAAAAAAD6/wEAAAAAAAAAAAD5/wEAAAAAAAAAAAD4/wIAAAAAAAAAAAD4/wMAAAAAAAAAAAD4/wQAAAAAAAAAAAA=")
 tile_set = ExtResource("1_dbecs")
 occlusion_enabled = false
 collision_enabled = false
@@ -616,9 +632,15 @@ _bit = ExtResource("13_sxdqs")
 _nibble = ExtResource("14_sxdqs")
 _byte = ExtResource("14_8tbnj")
 
-[node name="Shader" type="Sprite2D" parent="Map"]
-material = SubResource("ShaderMaterial_nt6x0")
+[node name="Exit" type="Sprite2D" parent="Map"]
+material = SubResource("ShaderMaterial_p388s")
 position = Vector2(-247, 232)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("24_b88u8")
+
+[node name="Start" type="Sprite2D" parent="Map"]
+material = SubResource("ShaderMaterial_nt6x0")
+position = Vector2(-410, -229)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("24_b88u8")
 
