@@ -4,6 +4,8 @@ shader_type canvas_item;
 
 global uniform float UNSCALED_TIME;
 
+uniform vec2 animate_direction = vec2(1,1);
+
 group_uniforms Colour;
 uniform float col_distance_scale = 5.;
 uniform vec3 col_near : source_color = vec3(1);
@@ -37,7 +39,7 @@ float sdf_map(in vec2 pos, in vec2 uv) {
     // Movement
     vec2 noise_offset = vec2(TIME * .1);
 
-    pos = pos * noise_scale + noise_offset;
+    pos = pos * noise_scale + noise_offset * animate_direction;
 
     sphere_dist = sdFbm(pos, detail, rough, inflate, smooth_fac, sphere_dist);
 
