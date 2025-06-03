@@ -25,7 +25,7 @@
 [ext_resource type="Resource" uid="uid://dyxwk08l0hs8j" path="res://Enemies/Pawns/ToughEvolvedStats.tres" id="15_niq5q"]
 [ext_resource type="Resource" uid="uid://bw4ao6bhc5ewm" path="res://Enemies/Bosses/Squared.tres" id="16_4ignw"]
 [ext_resource type="Script" uid="uid://c4c4ep5oo8o2m" path="res://Gameplay/Camera/CameraController.cs" id="22_ml50w"]
-[ext_resource type="Shader" uid="uid://px34nxwos4w0" path="res://Portal.gdshader" id="23_p388s"]
+[ext_resource type="Shader" uid="uid://px34nxwos4w0" path="res://MaterialLibrary/Portal.gdshader" id="23_p388s"]
 [ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/White_Rectangle.png" id="24_b88u8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dbecs"]
