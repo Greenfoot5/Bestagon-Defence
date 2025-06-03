@@ -107,7 +107,7 @@ float sdf_map(vec3 pos) {
 	
 	vec3 noise_offset = vec3(0.0, -TIME * 0.1, 0.0);
 	
-	//pos = y_rot(pos.y * 10.0) * pos;
+	pos = y_rot(pos.y * 10.0) * pos;
 	
 	pos = pos * noise_scale + noise_offset;
 	

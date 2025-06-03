@@ -18,17 +18,36 @@ float smax( float a, float b, float k )
     return max(a, b) + h*h*0.25/k;
 }
 
+// https://www.youtube.com/watch?v=LWFzPP8ZbdU
+float hash(in vec2 pos, in vec2 seed)
+{
+    const int Noise1 = int(0xb5297a4d);
+    const int Noise2 = int(0x68e31da4);
+    const int Noise3 = int(0x1b56c4e9);
+    const int BigPrime = int(198491317);
+    const int Cap = 2139095039;
+
+    int n = int(floor(pos.x)) + (BigPrime * int(floor(pos.y)));
+    int s = int(floor(seed.x)) + (BigPrime * int(floor(seed.y)));
+
+    n *= Noise1;
+    n += s;
+    n ^= n >> 8;
+    n += Noise2;
+    n ^= n << 8;
+    n *= Noise3;
+    n ^= n >> 8;
+    float rng = float(n % Cap);
+    return rng / float(Cap);
+}
+
 // https://iquilezles.org/www/articles/fbmsdf/fbmsdf.htm
 /**
  * Random circle
  */
 float circ( in vec2 i, vec2 f, in vec2 c )
 {
-    // random radius at grid vertex i+c (please replace this hash by
-    // something better if you plan to use this for a real application)
-    vec2  p = 17.0*fract( (i+c)*0.3183099+vec2(0.17,0.11) );
-    float w = fract( p.x*p.y*(p.x+p.y) );
-    float r = 0.7*w*w;
+    float r = 0.5*hash(i+c, vec2(0.2,1));
     // distance to circle at grid vertex i+c
     return length(f-c) - r;
 }

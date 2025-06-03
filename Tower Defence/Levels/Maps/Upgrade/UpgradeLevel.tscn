@@ -474,9 +474,9 @@ metadata/_custom_type_script = "uid://bgfugrs685jpk"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nt6x0"]
 shader = ExtResource("23_p388s")
-shader_parameter/col_distance_scale = 5.0
-shader_parameter/col_near = Color(0, 1, 0, 1)
-shader_parameter/col_far = Color(0, 0, 0, 1)
+shader_parameter/col_distance_scale = 10.0
+shader_parameter/col_near = Color(1, 0, 0.142984, 1)
+shader_parameter/col_far = Color(0.027784, 0.0402433, 0.255608, 1)
 shader_parameter/emission_boost = 1.0
 shader_parameter/sphere_radius = 0.15
 shader_parameter/noise_scale = 3.2
@@ -484,7 +484,7 @@ shader_parameter/detail = 6
 shader_parameter/rough = 0.5
 shader_parameter/inflate = 0.1
 shader_parameter/smooth_fac = 0.5
-shader_parameter/step_mult = 0.1
+shader_parameter/step_mult = 0.05
 
 [node name="Upgrade" type="Node"]
 
