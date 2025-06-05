@@ -75,15 +75,12 @@ namespace Turrets.Choker
                 var bullet = _bulletPrefab.Instantiate<Bullet>();
                 bullet.GlobalPosition = FirePoint.GlobalPosition;
                 bullet.Name = "_" + bullet.Name;
-
+                
                 float bulletAngle = FirePoint.GlobalRotation + (float)GD.RandRange(Stats[AttributeType.PartSpread].Value / -2, Stats[AttributeType.PartSpread].Value / 2);
                 bullet.GlobalRotation = bulletAngle;
                 
-                var bulletDirection = new Vector2(Mathf.Cos(bulletAngle), Mathf.Sin(bulletAngle));
-                //bullet.position = 
-                bullet.Seek(FirePoint.GlobalPosition + bulletDirection * Stats[AttributeType.Range].Value, this);
-                // TODO - Fix range
-                GD.Print(bulletDirection * Stats[AttributeType.Range].Value);
+                var bulletDirection = new Vector2(Mathf.Sin(bulletAngle), -Mathf.Cos(bulletAngle));
+                bullet.Seek(FirePoint.GlobalPosition + bulletDirection * Stats[AttributeType.Range].Value * 20, this);
                 
                 GetTree().Root.AddChild(bullet);
                 Shoot(bullet);
