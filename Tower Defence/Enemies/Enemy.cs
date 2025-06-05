@@ -11,7 +11,7 @@ namespace Enemies
     {
         [Export]
         public EnemyStats EnemyStats = new();
-        private Attributes Stats;
+        private Attributes _stats;
         
         public float Health { get; private set; }
 
@@ -63,8 +63,8 @@ namespace Enemies
         /// </summary>
         public override void _Ready()
         {
-            Stats = new Attributes(EnemyStats.Attributes);
-            Health = Stats[AttributeType.MaxHealth].Value;
+            _stats = new Attributes(EnemyStats.Attributes);
+            Health = _stats[AttributeType.MaxHealth].Value;
             Sprite.Texture = EnemyStats.sprite;
         }
 
@@ -72,7 +72,7 @@ namespace Enemies
         {
             // TODO - Better backwards
             // If the enemy is moving backwards
-            if (Stats[AttributeType.Speed].Value < 0)
+            if (_stats[AttributeType.Speed].Value < 0)
             {
                 MoveBackwards();
                 return;
@@ -81,7 +81,7 @@ namespace Enemies
             // Get the direction of the target, and the distance to move this frame
             Vector2 position = GlobalPosition;
             Vector2 location = Points[WaypointIndex];
-            var distanceThisFrame = (float)(Stats[AttributeType.Speed].Value * delta);
+            var distanceThisFrame = (float)(_stats[AttributeType.Speed].Value * delta);
 
             GlobalPosition = position.MoveToward(location, distanceThisFrame);
             
@@ -156,7 +156,7 @@ namespace Enemies
         public void TakeKnockback(float amount, Vector2 turretLocation)
         {
             GD.Print("Took Knockback");
-            if (Stats[AttributeType.KnockbackResistance].Value >= 1)
+            if (_stats[AttributeType.KnockbackResistance].Value >= 1)
             {
                 return;
             }
@@ -167,11 +167,11 @@ namespace Enemies
             
             // Actually deal knockback
             // Multiply by -1 to knock backwards
-            float knockback = amount * (1 - Stats[AttributeType.KnockbackResistance].Value) * multiplier * -1;
+            float knockback = amount * (1 - _stats[AttributeType.KnockbackResistance].Value) * multiplier * -1;
             Variant uid = GD.Randi();
-            Stats[AttributeType.Speed].Add(uid, new AttributeModifier(knockback, Operation.Multiplicative));
+            _stats[AttributeType.Speed].Add(uid, new AttributeModifier(knockback, Operation.Multiplicative));
 
-            GetTree().CreateTimer(Stats[AttributeType.KnockbackDuration].Value).Timeout += () => { Stats[AttributeType.Speed].Remove(uid); };
+            GetTree().CreateTimer(_stats[AttributeType.KnockbackDuration].Value).Timeout += () => { _stats[AttributeType.Speed].Remove(uid); };
         }
     
         /// <summary>
@@ -185,15 +185,15 @@ namespace Enemies
             // Edit the health
             Health -= amount;
 
-            LeftBar.Value = Health / Stats[AttributeType.MaxHealth].Value;
-            RightBar.Value = Health / Stats[AttributeType.MaxHealth].Value;
+            LeftBar.Value = Health / _stats[AttributeType.MaxHealth].Value;
+            RightBar.Value = Health / _stats[AttributeType.MaxHealth].Value;
 
             if (Health <= 0)
             {
                 Die();
-            } else if (Health > Stats[AttributeType.MaxHealth].Value)
+            } else if (Health > _stats[AttributeType.MaxHealth].Value)
             {
-                Health = Stats[AttributeType.MaxHealth].Value;
+                Health = _stats[AttributeType.MaxHealth].Value;
             }
         }
 

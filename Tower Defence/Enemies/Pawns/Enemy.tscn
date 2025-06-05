@@ -1,7 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dof5pvxvtw0bh"]
+[gd_scene load_steps=6 format=3 uid="uid://dof5pvxvtw0bh"]
 
 [ext_resource type="Script" uid="uid://d3r255yshmkbg" path="res://Enemies/Enemy.cs" id="1_jqv6l"]
 [ext_resource type="Texture2D" uid="uid://knixu5x6g42p" path="res://Enemies/Pawns/T_Circled_Orange.png" id="2_urepl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jqv6l"]
+bg_color = Color(0.882353, 0.117647, 0.368627, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_urepl"]
+bg_color = Color(0.882353, 0.117647, 0.368627, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_juylw"]
 radius = 130.0
@@ -24,7 +30,9 @@ texture = ExtResource("2_urepl")
 offset_top = 150.0
 offset_right = 150.0
 offset_bottom = 175.0
-value = 100.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_jqv6l")
+max_value = 1.0
+value = 1.0
 show_percentage = false
 
 [node name="HealthRight" type="ProgressBar" parent="."]
@@ -32,7 +40,9 @@ offset_top = 150.0
 offset_right = 150.0
 offset_bottom = 175.0
 scale = Vector2(-1, 1)
-value = 100.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_urepl")
+max_value = 1.0
+value = 1.0
 show_percentage = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
