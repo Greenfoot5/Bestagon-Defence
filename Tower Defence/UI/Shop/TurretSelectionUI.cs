@@ -102,8 +102,8 @@ namespace UI.Shop
             
             // Icon and Glyph
             icon.Texture = turret.ShopIcon;
-            // glyph.Texture = turret.glyph.glyph;
-            // glyph.SelfModulate = turret.glyph.body;
+            glyph.Texture = turret.Glyph.Glyph;
+            glyph.SelfModulate = turret.Glyph.Body;
             
             // Turret stats
             // TODO - Get stats
