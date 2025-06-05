@@ -33,7 +33,7 @@ Max = inf
 [sub_resource type="Resource" id="Resource_k1nf5"]
 script = ExtResource("2_cnrae")
 Name = 15
-Base = 0.0
+Base = 20.0
 _modifiers = Dictionary[Variant, ExtResource("3_5436f")]({})
 Min = inf_neg
 Max = inf
