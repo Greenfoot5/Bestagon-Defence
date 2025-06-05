@@ -9,7 +9,7 @@
 [sub_resource type="Resource" id="Resource_bg1x1"]
 script = ExtResource("2_cnrae")
 Name = 2
-Base = 5.0
+Base = 45.0
 _modifiers = Dictionary[Variant, ExtResource("3_5436f")]({})
 Min = inf_neg
 Max = inf
@@ -33,7 +33,7 @@ Max = inf
 [sub_resource type="Resource" id="Resource_k1nf5"]
 script = ExtResource("2_cnrae")
 Name = 15
-Base = 1.0
+Base = 0.0
 _modifiers = Dictionary[Variant, ExtResource("3_5436f")]({})
 Min = inf_neg
 Max = inf
@@ -41,7 +41,7 @@ Max = inf
 [sub_resource type="Resource" id="Resource_jks4p"]
 script = ExtResource("2_cnrae")
 Name = 17
-Base = 30.0
+Base = 240.0
 _modifiers = Dictionary[Variant, ExtResource("3_5436f")]({})
 Min = inf_neg
 Max = inf
@@ -63,6 +63,7 @@ radius = 150.0
 script = ExtResource("1_81c6j")
 Stats = SubResource("Resource_ahd52")
 Area = NodePath("Area")
+WillHitFirst = true
 
 [node name="Area" type="Area2D" parent="."]
 scale = Vector2(0.03, -0.03)
