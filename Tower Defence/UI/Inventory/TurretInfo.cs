@@ -222,7 +222,7 @@ public partial class TurretInfo : Control
     /// </summary>
     private void RotateLancer()
     {
-        ((Lancer)_target.Turret).partToRotate.Rotate(-60);
+        ((Lancer)_target.Turret).PartToRotate.Rotate(-60);
     }
         
     /// <summary>

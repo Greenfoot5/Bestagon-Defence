@@ -1,29 +1,124 @@
-[gd_scene load_steps=2 format=3 uid="uid://ck86cv1u6vg41"]
+[gd_scene load_steps=18 format=3 uid="uid://ck86cv1u6vg41"]
 
-[ext_resource type="PackedScene" uid="uid://bireyhlc5x7r6" path="res://Turrets/Range.prefab.tscn" id="1_kcgoe"]
+[ext_resource type="Texture2D" uid="uid://0grw2ifoyo1m" path="res://Turrets/Lancer/T_LancerBase_Dark.png" id="1_uv4cp"]
+[ext_resource type="Script" uid="uid://dyw33oyw6jc3p" path="res://Turrets/Lancer/Lancer.cs" id="1_va0kf"]
+[ext_resource type="Script" uid="uid://blnrq5atpcclw" path="res://Abstract/Attributes/Attribute.cs" id="2_4bem7"]
+[ext_resource type="PackedScene" uid="uid://r3ph8plamg5o" path="res://Turrets/Lancer/LancerShot.tscn" id="2_b8h1m"]
+[ext_resource type="Texture2D" uid="uid://83hots02i356" path="res://Turrets/Lancer/T_LancerTurret.png" id="2_qdb7w"]
+[ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/White_Rectangle.png" id="3_8u0jo"]
+[ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/AttributeModifier.cs" id="3_b8h1m"]
+[ext_resource type="Shader" uid="uid://bjciwmxveqxrx" path="res://MaterialLibrary/Range/Range.gdshader" id="4_3m18b"]
+[ext_resource type="Script" uid="uid://c80di1i4n41ig" path="res://Abstract/Attributes/Attributes.cs" id="4_ecy8x"]
 
-[node name="Lancer" type="Node3D"]
+[sub_resource type="Resource" id="Resource_g2s4s"]
+script = ExtResource("2_4bem7")
+Name = 2
+Base = 160.0
+_modifiers = Dictionary[Variant, ExtResource("3_b8h1m")]({})
+Min = 0.0
+Max = inf
 
-[node name="MonoBehaviour" type="Node" parent="."]
+[sub_resource type="Resource" id="Resource_4bem7"]
+script = ExtResource("2_4bem7")
+Name = 14
+Base = 5.0
+_modifiers = Dictionary[Variant, ExtResource("3_b8h1m")]({})
+Min = inf_neg
+Max = inf
+metadata/_custom_type_script = "uid://blnrq5atpcclw"
 
-[node name="Turret" type="Node3D" parent="."]
+[sub_resource type="Resource" id="Resource_b8h1m"]
+script = ExtResource("2_4bem7")
+Name = 1
+Base = 7.0
+_modifiers = Dictionary[Variant, ExtResource("3_b8h1m")]({})
+Min = inf_neg
+Max = inf
+metadata/_custom_type_script = "uid://blnrq5atpcclw"
 
-[node name="SpriteRenderer" type="Node" parent="Turret"]
+[sub_resource type="Resource" id="Resource_ecy8x"]
+script = ExtResource("2_4bem7")
+Name = 3
+Base = 0.35
+_modifiers = Dictionary[Variant, ExtResource("3_b8h1m")]({})
+Min = inf_neg
+Max = inf
+metadata/_custom_type_script = "uid://blnrq5atpcclw"
 
-[node name="Fire Point" type="Node3D" parent="Turret"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+[sub_resource type="Resource" id="Resource_j350u"]
+script = ExtResource("4_ecy8x")
+_attributes = Dictionary[int, ExtResource("2_4bem7")]({
+1: SubResource("Resource_b8h1m"),
+2: SubResource("Resource_g2s4s"),
+3: SubResource("Resource_ecy8x"),
+14: SubResource("Resource_4bem7")
+})
 
-[node name="ShooterShoot" type="Node3D" parent="Turret/Fire Point"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_va0kf"]
+particle_flag_disable_z = true
+direction = Vector3(0, 5, 0)
+gravity = Vector3(0, 0, 0)
 
-[node name="VisualEffect" type="Node" parent="Turret/Fire Point/ShooterShoot"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_4bem7"]
+radius = 200.0
 
-[node name="VFXRenderer" type="Node" parent="Turret/Fire Point/ShooterShoot"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b8h1m"]
+shader = ExtResource("4_3m18b")
+shader_parameter/circle_color = Color(1, 1, 1, 0)
+shader_parameter/glow_color = Color(1, 1, 1, 1)
+shader_parameter/glow_radius = 2.0
+shader_parameter/glow_size = 1.6
 
-[node name="Range" parent="." instance=ExtResource("1_kcgoe")]
-scale = Vector2(4, 4)
+[node name="Lancer" type="Node2D" node_paths=PackedStringArray("_ray", "firePoint", "PartToRotate", "RangeDisplay", "Range")]
+script = ExtResource("1_va0kf")
+bulletPrefab = ExtResource("2_b8h1m")
+_ray = NodePath("PartToRotate/Range/Ray")
+firePoint = NodePath("PartToRotate/Turret/Fire Point")
+PartToRotate = NodePath("PartToRotate")
+RangeDisplay = NodePath("PartToRotate/Range/Render")
+Range = NodePath("PartToRotate/Range")
+Stats = SubResource("Resource_j350u")
 
-[node name="Base" type="Node3D" parent="."]
+[node name="Base" type="Sprite2D" parent="."]
+position = Vector2(0.5, -2)
+texture = ExtResource("1_uv4cp")
 
-[node name="SpriteRenderer" type="Node" parent="Base"]
+[node name="PartToRotate" type="Node2D" parent="."]
+rotation = -1.5708
 
-[editable path="Range"]
+[node name="Turret" type="Sprite2D" parent="PartToRotate"]
+position = Vector2(0.5, -2)
+rotation = 1.5708
+texture = ExtResource("2_qdb7w")
+
+[node name="Fire Point" type="Node2D" parent="PartToRotate/Turret"]
+position = Vector2(0, -200)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="PartToRotate/Turret/Fire Point"]
+emitting = false
+texture = ExtResource("3_8u0jo")
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_va0kf")
+
+[node name="Range" type="Area2D" parent="PartToRotate"]
+position = Vector2(0.5, -2)
+scale = Vector2(6, 6)
+collision_layer = 0
+collision_mask = 2
+input_pickable = false
+monitorable = false
+
+[node name="CollisionShape" type="CollisionShape2D" parent="PartToRotate/Range"]
+shape = SubResource("CircleShape2D_4bem7")
+
+[node name="Ray" type="RayCast2D" parent="PartToRotate/Range"]
+target_position = Vector2(200, 0)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Render" type="Sprite2D" parent="PartToRotate/Range"]
+self_modulate = Color(0.282353, 0.34902, 0.894118, 1)
+material = SubResource("ShaderMaterial_b8h1m")
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_8u0jo")

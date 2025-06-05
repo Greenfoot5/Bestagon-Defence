@@ -24,7 +24,7 @@ Min = 20.0
 Max = inf
 metadata/_custom_type_script = "uid://blnrq5atpcclw"
 
-[sub_resource type="Resource" id="Resource_uaite"]
+[sub_resource type="Resource" id="Resource_0rpmv"]
 script = ExtResource("3_30ann")
 _attributes = Dictionary[int, ExtResource("1_rkc3p")]({
 11: SubResource("Resource_30ann"),
@@ -33,7 +33,7 @@ _attributes = Dictionary[int, ExtResource("1_rkc3p")]({
 
 [resource]
 script = ExtResource("4_y6lh5")
-Attributes = SubResource("Resource_uaite")
+Attributes = SubResource("Resource_0rpmv")
 sprite = ExtResource("4_rkc3p")
 DeathMoney = 7
 DeathLives = 1
