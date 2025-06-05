@@ -26,7 +26,7 @@ namespace Turrets.Shooter
         /// </summary>
         public override void _PhysicsProcess(double delta)
         {
-            base._Process(delta);
+            base._PhysicsProcess(delta);
             
             // Don't do anything if the turret doesn't have a target
             if (TargetEnemy is null)

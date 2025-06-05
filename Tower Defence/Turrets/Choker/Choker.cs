@@ -32,7 +32,7 @@ namespace Turrets.Choker
         /// </summary>
         public override void _PhysicsProcess(double delta)
         {
-            Update();
+            base._PhysicsProcess(delta);
             
             // Don't do anything if the turret doesn't have a target
             if (TargetEnemy is null)

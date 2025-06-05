@@ -43,7 +43,7 @@ namespace Turrets
             Stats[AttributeType.Range].OnAttributeUpdated -= UpdateRange;
         }
 
-        protected void Update()
+        public override void _PhysicsProcess(double delta)
         {
             // If there's no fire rate, the turret shouldn't do anything
             if (Stats[AttributeType.FireRate].Value <= 0)

@@ -43,7 +43,7 @@ namespace Turrets.Hunter
         /// </summary>
         public override void _PhysicsProcess(double delta)
         {
-            base._Process(delta);
+            base._PhysicsProcess(delta);
         
             // Rotates the turret each frame
             LookAtTarget(delta);
