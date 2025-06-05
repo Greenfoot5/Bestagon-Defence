@@ -79,7 +79,19 @@ namespace Turrets
         // [Export]
         // private CollisionShape2D explodeArea;
         protected readonly List<ulong> HitEnemies = [];
-        
+
+        public override void _Ready()
+        {
+            base._Ready();
+            
+            Area.AreaEntered += OnAreaEntered;
+        }
+
+        public override void _ExitTree()
+        {
+            Area.AreaEntered -= OnAreaEntered;
+        }
+
         /// <summary>
         /// Sets the new transform the bullet shoot go towards
         /// </summary>
@@ -283,13 +295,13 @@ namespace Turrets
             
             HitEnemies.Add(col.GetInstanceId());
 
-            if (IsInstanceValid(enemy) && Target.GetInstanceId() == col.GetInstanceId())
+            if (IsInstanceValid(enemy) && !UseLocation && Target.GetInstanceId() == col.GetInstanceId())
             {
                 HitTarget(true, enemy);
                 return;
             }
 
-            if (IsEthereal)
+            if (IsEthereal || UseLocation)
             {
                 if (!WillHitFirst)
                     Damage(Target);
