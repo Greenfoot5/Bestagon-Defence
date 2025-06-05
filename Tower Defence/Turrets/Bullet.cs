@@ -312,7 +312,7 @@ public partial class Bullet : Node2D
         if (IsEthereal || UseLocation)
         {
             if (!WillHitFirst)
-                Damage(Target);
+                Damage(enemy);
             else
                 HitTarget(true, enemy);
         }
