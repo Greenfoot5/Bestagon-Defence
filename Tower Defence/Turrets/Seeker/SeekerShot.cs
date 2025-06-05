@@ -7,7 +7,6 @@ namespace Turrets.Seeker;
 public partial class SeekerShot : Bullet
 {
     private ulong startTime;
-    private ulong deathTime;
 
     public override void _Ready()
     {
@@ -107,22 +106,6 @@ public partial class SeekerShot : Bullet
                 Damage(Target);
             else
                 HitTarget(true, enemy);
-        }
-    }
-
-    private void Die()
-    {
-        Area.Visible = false;
-        Area.Monitoring = false;
-        
-        if (deathTime + 50 < Time.GetTicksMsec())
-        {
-            deathTime = Time.GetTicksMsec();
-            Line.RemovePoint(0);
-            if (Line.Points.Length <= 0)
-            {
-                QueueFree();
-            }
         }
     }
 }
