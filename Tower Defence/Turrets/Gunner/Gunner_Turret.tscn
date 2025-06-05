@@ -14,7 +14,7 @@
 script = ExtResource("3_3r6fm")
 Name = 2
 Base = 80.0
-_modifiers = {}
+_modifiers = Dictionary[Variant, ExtResource("4_xuf6c")]({})
 Min = 0.0
 Max = inf
 
@@ -45,19 +45,19 @@ Min = inf_neg
 Max = inf
 metadata/_custom_type_script = "uid://blnrq5atpcclw"
 
-[sub_resource type="Resource" id="Resource_ckg1w"]
+[sub_resource type="Resource" id="Resource_h1kq3"]
 script = ExtResource("3_3r6fm")
-Name = 19
-Base = 1.3
+Name = 18
+Base = 1.2
 _modifiers = Dictionary[Variant, ExtResource("4_xuf6c")]({})
 Min = inf_neg
 Max = inf
 metadata/_custom_type_script = "uid://blnrq5atpcclw"
 
-[sub_resource type="Resource" id="Resource_h1kq3"]
+[sub_resource type="Resource" id="Resource_ckg1w"]
 script = ExtResource("3_3r6fm")
-Name = 18
-Base = 1.2
+Name = 19
+Base = 1.3
 _modifiers = Dictionary[Variant, ExtResource("4_xuf6c")]({})
 Min = inf_neg
 Max = inf

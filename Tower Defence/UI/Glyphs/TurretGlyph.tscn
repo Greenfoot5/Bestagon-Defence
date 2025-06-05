@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://q4vdeurrxpak"]
+[gd_scene load_steps=5 format=3 uid="uid://q4vdeurrxpak"]
 
 [ext_resource type="Texture2D" uid="uid://of1ow1ab3ea" path="res://_WIP/Art/White_Hexagon-no_outline.png" id="1_7gtba"]
+[ext_resource type="Script" uid="uid://cb81fku6t7mus" path="res://UI/Glyphs/GlyphUI.cs" id="2_gsvym"]
 [ext_resource type="Script" uid="uid://bggcwhcehi21t" path="res://UI/centre_pivot.gd" id="2_xh5bh"]
 [ext_resource type="Texture2D" uid="uid://c1px3poumr7i6" path="res://UI/Glyphs/Shooter.tres" id="3_xh5bh"]
 
-[node name="TurretGlyph" type="TextureRect"]
+[node name="TurretGlyph" type="TextureRect" node_paths=PackedStringArray("Glyph", "Body", "Shade")]
 self_modulate = Color(0, 0, 0, 0.25)
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,7 +19,10 @@ size_flags_vertical = 3
 texture = ExtResource("1_7gtba")
 expand_mode = 3
 stretch_mode = 5
-script = ExtResource("2_xh5bh")
+script = ExtResource("2_gsvym")
+Glyph = NodePath("Glyph")
+Body = NodePath("Body")
+Shade = NodePath("Shade")
 
 [node name="Body" type="TextureRect" parent="."]
 self_modulate = Color(0.12549, 0.811765, 0.537255, 1)

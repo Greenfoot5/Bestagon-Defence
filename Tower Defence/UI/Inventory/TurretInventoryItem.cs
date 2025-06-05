@@ -3,6 +3,7 @@ using Abstract.Data;
 using Gameplay;
 using Godot;
 using Turrets;
+using UI.Glyphs;
 using UI.Modules;
 using UI.TurretStats;
 
@@ -27,7 +28,7 @@ public partial class TurretInventoryItem : Control
     /// The Sprite2D to place the turret's glyph
     /// </summary>
     [Export]
-    private TextureRect glyph;
+    private GlyphUI glyph;
     // <summary>
     // The body colour of the turret's glyph
     // </summary>
@@ -96,8 +97,7 @@ public partial class TurretInventoryItem : Control
             
         // Icon and Glyph
         icon.Texture = turret.ShopIcon;
-        glyph.Texture = turret.Glyph.Glyph;
-        // glyphBody.color = turret.glyph.body;
+        glyph.FromResource(turret.Glyph);
             
         // Turret stats
         var turretPrefab = turret.Prefab.Instantiate<Turret>();
