@@ -517,6 +517,7 @@ mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_jq068")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(-200, 0)
 limit_left = -2500
 limit_top = -1500
 limit_right = 2500

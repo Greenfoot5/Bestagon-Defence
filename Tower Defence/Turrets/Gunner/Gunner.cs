@@ -28,7 +28,6 @@ namespace Turrets.Gunner
         {
             Stats[AttributeType.SpinMultiplier] = new Attribute(AttributeType.SpinMultiplier, 1.1f);
             Stats[AttributeType.SpinCooldown] = new Attribute(AttributeType.SpinCooldown, 1.08f);
-            Stats[AttributeType.SpinIncrease] = new Attribute(AttributeType.SpinIncrease, _fireRateIncrease, min: 1f);
         }
 
         /// <summary>
@@ -107,8 +106,11 @@ namespace Turrets.Gunner
             {
                 _fireRateIncrease -= Stats[AttributeType.SpinCooldown].Value;
             }
+
+            _fireRateIncrease = Mathf.Clamp(_fireRateIncrease, 0f, 6f);
             
-            Stats[AttributeType.SpinIncrease].Add("this", new AttributeModifier(_fireRateIncrease - 1, Operation.Multiplicative));
+            Stats[AttributeType.FireRate].Add("this", new AttributeModifier(_fireRateIncrease - 1, Operation.Multiplicative));
+            GD.Print(Stats[AttributeType.FireRate]);
 
             // Update the stats of the turret if it's selected
             if (BuildableTile.SelectedTile == GetParent())
@@ -122,16 +124,17 @@ namespace Turrets.Gunner
         /// </summary>
         protected override void Attack()
         {
-            // attackEffect.Play();
             // Creates the bullet
-            var bullet = _bulletPrefab.Instantiate<Bullet>();
-            bullet.Position = FirePoint.Position;
-            bullet.Rotation = FirePoint.Rotation;
+            var bullet = (Bullet)_bulletPrefab.Instantiate();
+            bullet.Stats[AttributeType.Damage] = Stats[AttributeType.Damage];
+            bullet.GlobalPosition = FirePoint.GlobalPosition;
+            bullet.Area.Rotation = FirePoint.GlobalRotation;
             bullet.Name = "_" + bullet.Name;
             bullet.Seek(TargetEnemy, this);
-            
-            base.Attack(this);
+            GetTree().Root.AddChild(bullet);
             Shoot(bullet);
+
+            base.Attack(this);
         }
     }
 }

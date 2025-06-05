@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ShopData" load_steps=21 format=3 uid="uid://b6vw6l67k0fne"]
+[gd_resource type="Resource" script_class="ShopData" load_steps=22 format=3 uid="uid://b6vw6l67k0fne"]
 
 [ext_resource type="Resource" uid="uid://d373knvixoopr" path="res://Turrets/Shooter/BasicTurret.tres" id="1_d4njv"]
 [ext_resource type="Script" uid="uid://by85y3cqstj04" path="res://Abstract/Data/WeightedList.cs" id="1_ps0rn"]
@@ -9,11 +9,12 @@
 [ext_resource type="Script" uid="uid://5mfid57rp3et" path="res://Levels/Maps/ShopData.cs" id="4_jbv3k"]
 [ext_resource type="Script" uid="uid://ufdo2vxockv6" path="res://Abstract/Data/ModuleChainHandler.cs" id="4_m084i"]
 [ext_resource type="Resource" uid="uid://booj5s0lfehrd" path="res://Turrets/Choker/Choker_Basic.tres" id="4_xt8uj"]
+[ext_resource type="Resource" uid="uid://bb3tga4g0q5r0" path="res://Turrets/Gunner/Gunner_Basic.tres" id="5_42cso"]
 
 [sub_resource type="Resource" id="Resource_ps0rn"]
 script = ExtResource("1_ps0rn")
 Strain = 0
-Count = 4
+Count = 5
 list_0/Blueprint = ExtResource("1_d4njv")
 list_0/Weight = 1.0
 list_1/Blueprint = ExtResource("2_jbv3k")
@@ -22,6 +23,8 @@ list_2/Blueprint = ExtResource("3_m084i")
 list_2/Weight = 1.0
 list_3/Blueprint = ExtResource("4_xt8uj")
 list_3/Weight = 1.0
+list_4/Blueprint = ExtResource("5_42cso")
+list_4/Weight = 1.0
 
 [sub_resource type="Curve" id="Curve_d4njv"]
 _limits = [0.0, 1.0, 0.0, 20.0]
