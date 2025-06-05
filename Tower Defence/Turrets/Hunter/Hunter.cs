@@ -12,7 +12,18 @@ namespace Turrets.Hunter
         /// The bullet prefab to spawn each attack
         /// </summary>
         [Export]
-        private Line2D line;
+        private Line2D scopeLine;
+        
+        /// <summary>
+        /// The line to use to "shoot the shot"
+        /// </summary>
+        [Export]
+        private Line2D shotLine;
+        /// <summary>
+        /// The animation player for the shot line
+        /// </summary>
+        [Export]
+        private AnimationPlayer shotAnimator;
 
         /// <summary>
         /// The effect to fire when the bullet is shot
@@ -57,17 +68,17 @@ namespace Turrets.Hunter
 
         private void UpdateLine()
         {
-            line.RemovePoint(1);
-            line.AddPoint(new Vector2(0, -TargetEnemy.GlobalPosition.DistanceTo(GlobalPosition) / GlobalScale.Y));
+            scopeLine.RemovePoint(1);
+            scopeLine.AddPoint(new Vector2(0, -TargetEnemy.GlobalPosition.DistanceTo(GlobalPosition) / GlobalScale.Y));
             var widthMult = (float)(FireCountdown / (1f / Stats[AttributeType.FireRate].Value));
-            line.WidthCurve.SetPointValue(1, (1f - line.WidthCurve.Sample(0)) * widthMult);
+            scopeLine.WidthCurve.SetPointValue(1, (1f - scopeLine.WidthCurve.Sample(0)) * widthMult);
         }
 
         private void ClearLine()
         {
-            line.ClearPoints();
-            line.AddPoint(new Vector2(0, 0));
-            line.AddPoint(new Vector2(0, 0));
+            scopeLine.ClearPoints();
+            scopeLine.AddPoint(new Vector2(0, 0));
+            scopeLine.AddPoint(new Vector2(0, 0));
         }
 
         /// <summary>
@@ -75,9 +86,11 @@ namespace Turrets.Hunter
         /// </summary>
         protected override void Attack()
         {
-            // TODO - Attack effect
-            // attackEffect.SetFloat("zRotation", -firePoint.Rotation.eulerAngles.z);
-            // attackEffect.Play();
+            // Attack effect
+            shotLine.ClearPoints();
+            shotLine.AddPoint(ToLocal(TargetEnemy.GlobalPosition));
+            shotLine.AddPoint(ToLocal(FirePoint.GlobalPosition));
+            shotAnimator.Queue("Shot");
             
             TargetEnemy.TakeDamage(Stats[AttributeType.Damage].Value, this);
 

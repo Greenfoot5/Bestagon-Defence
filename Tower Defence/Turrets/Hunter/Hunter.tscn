@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dpuxc7mfhytlw"]
+[gd_scene load_steps=20 format=3 uid="uid://dpuxc7mfhytlw"]
 
 [ext_resource type="Script" uid="uid://dx57iyb5nvgwg" path="res://Turrets/Hunter/Hunter.cs" id="1_ts1m3"]
 [ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/AttributeModifier.cs" id="3_x0av5"]
@@ -26,19 +26,19 @@ Min = inf_neg
 Max = inf
 metadata/_custom_type_script = "uid://blnrq5atpcclw"
 
-[sub_resource type="Resource" id="Resource_mjoli"]
+[sub_resource type="Resource" id="Resource_xwmrl"]
 script = ExtResource("4_whm3w")
-Name = 13
-Base = 2100.0
+Name = 14
+Base = 20.0
 _modifiers = Dictionary[Variant, ExtResource("3_x0av5")]({})
 Min = inf_neg
 Max = inf
 metadata/_custom_type_script = "uid://blnrq5atpcclw"
 
-[sub_resource type="Resource" id="Resource_xwmrl"]
+[sub_resource type="Resource" id="Resource_mjoli"]
 script = ExtResource("4_whm3w")
-Name = 14
-Base = 20.0
+Name = 15
+Base = 2.0
 _modifiers = Dictionary[Variant, ExtResource("3_x0av5")]({})
 Min = inf_neg
 Max = inf
@@ -49,8 +49,60 @@ script = ExtResource("5_uf6gp")
 _attributes = {
 2: SubResource("Resource_nhn4y"),
 3: SubResource("Resource_yv6ch"),
-13: SubResource("Resource_mjoli"),
-14: SubResource("Resource_xwmrl")
+14: SubResource("Resource_xwmrl"),
+15: SubResource("Resource_mjoli")
+}
+
+[sub_resource type="Animation" id="Animation_nhn4y"]
+resource_name = "Shot"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1.5, -0.0005, 0, 0.5, 0, 1, -0.0005, 0, 0.0005, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1.5, -0.0005, 0, 0.5, 0, 1, -0.0005, 0, 0.0005, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:self_modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1.5, -0.0005, 0, 0.5, 0, 1, -0.0005, 0, 0.0005, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:self_modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.0005, 0, 0.5, 0, 0, -0.0005, 0, 0.0005, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yv6ch"]
+_data = {
+&"Shot": SubResource("Animation_nhn4y")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nhn4y"]
@@ -70,19 +122,35 @@ point_count = 2
 [sub_resource type="Gradient" id="Gradient_nhn4y"]
 colors = PackedColorArray(0.467, 0.376, 0.651, 1, 0.298, 0.247, 0.451, 0.5)
 
-[node name="Hunter" type="Node2D" node_paths=PackedStringArray("line", "FirePoint", "Ray", "PartToRotate", "RangeDisplay", "Range")]
+[node name="Hunter" type="Node2D" node_paths=PackedStringArray("scopeLine", "shotLine", "shotAnimator", "FirePoint", "Ray", "PartToRotate", "RangeDisplay", "Range")]
 script = ExtResource("1_ts1m3")
-line = NodePath("PartToRotate/Turret/Fire Point/Line2D")
+scopeLine = NodePath("PartToRotate/Turret/Fire Point/Aim")
+shotLine = NodePath("Shot")
+shotAnimator = NodePath("Shot/AnimationPlayer")
 TargetPriorityMethod = 2
 FirePoint = NodePath("PartToRotate/Turret/Fire Point")
 Ray = NodePath("PartToRotate/Range/RayCast2D")
-PartToRotate = NodePath("PartToRotate/Turret")
+PartToRotate = NodePath("PartToRotate")
 RangeDisplay = NodePath("PartToRotate/Range/Range")
 Range = NodePath("PartToRotate/Range")
 Stats = SubResource("Resource_ts1m3")
 
 [node name="Base" type="Sprite2D" parent="."]
 texture = ExtResource("6_yv6ch")
+
+[node name="Shot" type="Line2D" parent="."]
+self_modulate = Color(1.5, 1.5, 1.5, 1)
+z_index = 5
+z_as_relative = false
+width = 50.0
+default_color = Color(0.466667, 0.376471, 0.65098, 1)
+texture_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Shot"]
+reset_on_save = false
+libraries = {
+&"": SubResource("AnimationLibrary_yv6ch")
+}
 
 [node name="PartToRotate" type="Node2D" parent="."]
 rotation = -1.5708
@@ -117,7 +185,7 @@ texture = ExtResource("7_mjoli")
 [node name="Fire Point" type="Node2D" parent="PartToRotate/Turret"]
 position = Vector2(0, -100)
 
-[node name="Line2D" type="Line2D" parent="PartToRotate/Turret/Fire Point"]
+[node name="Aim" type="Line2D" parent="PartToRotate/Turret/Fire Point"]
 z_index = 5
 z_as_relative = false
 width = 300.0
