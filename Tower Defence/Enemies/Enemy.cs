@@ -155,7 +155,6 @@ namespace Enemies
         /// <param name="turretLocation">The location of the turret</param>
         public void TakeKnockback(float amount, Vector2 turretLocation)
         {
-            GD.Print("Took Knockback");
             if (_stats[AttributeType.KnockbackResistance].Value >= 1)
             {
                 return;
