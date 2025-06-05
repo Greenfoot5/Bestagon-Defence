@@ -73,31 +73,31 @@ namespace Abstract
             Target = target;
             ticksLeft = tickCount;
             
-            if (Target.Stats.UniqueEffects.Contains(effectType))
+            if (Target.EnemyStats.UniqueEffects.Contains(effectType))
                 return false;
 
-            if (Target.Stats.ActiveEffects.ContainsKey(effectType))
+            if (Target.EnemyStats.ActiveEffects.ContainsKey(effectType))
             {
-                if (Target.Stats.ActiveEffects[effectType].tier > tier && !Target.Stats.ActiveEffects[effectType].isCancelled)
+                if (Target.EnemyStats.ActiveEffects[effectType].tier > tier && !Target.EnemyStats.ActiveEffects[effectType].isCancelled)
                 {
                     return false;
                 }
 
-                if (Target.Stats.ActiveEffects[effectType].tier == tier)
+                if (Target.EnemyStats.ActiveEffects[effectType].tier == tier)
                 {
-                    Target.Stats.ActiveEffects[effectType].ticksLeft = tickCount;
-                    Target.Stats.ActiveEffects[effectType]._durationLeft = 0f;
+                    Target.EnemyStats.ActiveEffects[effectType].ticksLeft = tickCount;
+                    Target.EnemyStats.ActiveEffects[effectType]._durationLeft = 0f;
                     return false;
                 }
 
-                if (Target.Stats.ActiveEffects[effectType].tier < tier)
+                if (Target.EnemyStats.ActiveEffects[effectType].tier < tier)
                 {
-                    Target.Stats.ActiveEffects[effectType].isCancelled = true;
-                    Target.Stats.ActiveEffects.Remove(effectType);
+                    Target.EnemyStats.ActiveEffects[effectType].isCancelled = true;
+                    Target.EnemyStats.ActiveEffects.Remove(effectType);
                 }
             }
             
-            Target.Stats.ActiveEffects.Add(effectType, this);
+            Target.EnemyStats.ActiveEffects.Add(effectType, this);
             Target.OnDeath += CancelFromDeath;
 
             return true;
@@ -105,7 +105,7 @@ namespace Abstract
 
         protected virtual void Remove()
         {
-            Target.Stats.ActiveEffects.Remove(effectType);
+            Target.EnemyStats.ActiveEffects.Remove(effectType);
             Target.OnDeath -= CancelFromDeath;
         }
 

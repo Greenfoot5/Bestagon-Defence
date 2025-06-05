@@ -42,7 +42,7 @@ namespace _WIP.Abilities.PositiveAbilities
             // Heal the target
             if (isPercentage)
             {
-                enemy.TakeDamage(enemy.Stats.Attributes[AttributeType.MaxHealth].Value * healPercentage, this);
+                enemy.TakeDamage(enemy.EnemyStats.Attributes[AttributeType.MaxHealth].Value * healPercentage, this);
             }
             else
             {

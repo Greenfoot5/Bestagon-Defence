@@ -19,7 +19,7 @@ public partial class SlowEnemyEffect : EnemyEffect
         if (!base.Apply(target))
             return false;
             
-        Target.Stats.Attributes[AttributeType.Speed].Add(Name, _slowPercentage);
+        Target.EnemyStats.Attributes[AttributeType.Speed].Add(Name, _slowPercentage);
 
         return true;
     }
@@ -28,7 +28,7 @@ public partial class SlowEnemyEffect : EnemyEffect
     {
         base.Remove();
 
-        Target.Stats.Attributes[AttributeType.Speed].Remove(Name);
+        Target.EnemyStats.Attributes[AttributeType.Speed].Remove(Name);
     }
 
     protected override void DoEffect() { }

@@ -60,11 +60,11 @@ namespace Gameplay
         {
             if (!DropsEnergy)
             {
-                GameStats.Energy += enemy.Stats.DeathMoney;
+                GameStats.Energy += enemy.EnemyStats.DeathMoney;
                 return;
             }
             
-            int valueLeft = enemy.Stats.DeathMoney;
+            int valueLeft = enemy.EnemyStats.DeathMoney;
 
             while (valueLeft > 0)
             {

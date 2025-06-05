@@ -192,14 +192,14 @@ namespace Gameplay.Waves
             
             // Spawn Enemy
             var spawnedEnemy = (Enemy) _waveData.Enemy.Instantiate();
-            spawnedEnemy.Stats = stats;
+            spawnedEnemy.EnemyStats = stats;
             spawnedEnemy.Position = Position;
             spawnedEnemy.Rotation = Rotation;
             spawnedEnemy.Name = "_" + spawnedEnemy.Name;
             spawnedEnemy.Points = _points;
         
             // Apply scaling
-            spawnedEnemy.Stats.Attributes[AttributeType.MaxHealth].Add("SpawnerScaling",
+            spawnedEnemy.EnemyStats.Attributes[AttributeType.MaxHealth].Add("SpawnerScaling",
                 new AttributeModifier(_waveData.Health.Sample(_setIndex + 1), Operation.Multiplicative));
             // spawnedEnemy.TakeDamage(spawnedEnemy.Stats.Attributes[AttributeType.MaxHealth].Value, this);
             

@@ -10,7 +10,8 @@ namespace Enemies
     public partial class Enemy : Area2D
     {
         [Export]
-        public EnemyStats Stats = new();
+        public EnemyStats EnemyStats = new();
+        private Attributes Stats;
         
         public float Health { get; private set; }
 
@@ -62,15 +63,16 @@ namespace Enemies
         /// </summary>
         public override void _Ready()
         {
-            Health = Stats.Attributes[AttributeType.MaxHealth].Value;
-            Sprite.Texture = Stats.sprite;
+            Stats = new Attributes(EnemyStats.Attributes);
+            Health = Stats[AttributeType.MaxHealth].Value;
+            Sprite.Texture = EnemyStats.sprite;
         }
 
         public override void _Process(double delta)
         {
             // TODO - Better backwards
             // If the enemy is moving backwards
-            if (Stats.Attributes[AttributeType.Speed].Value < 0)
+            if (Stats[AttributeType.Speed].Value < 0)
             {
                 MoveBackwards();
                 return;
@@ -79,14 +81,14 @@ namespace Enemies
             // Get the direction of the target, and the distance to move this frame
             Vector2 position = GlobalPosition;
             Vector2 location = Points[WaypointIndex];
-            var distanceThisFrame = (float)(Stats.Attributes[AttributeType.Speed].Value * delta);
+            var distanceThisFrame = (float)(Stats[AttributeType.Speed].Value * delta);
 
             GlobalPosition = position.MoveToward(location, distanceThisFrame);
             
             Vector2 difference = location - position; // Distance & direction to next target
 
             // If within this frame the enemy will pass the waypoint, it's a guaranteed hit
-            if (difference.LengthSquared() <= Stats.DistanceToWaypoint * Stats.DistanceToWaypoint)
+            if (difference.LengthSquared() <= EnemyStats.DistanceToWaypoint * EnemyStats.DistanceToWaypoint)
             {
                 GetNextWaypoint();
             }
@@ -96,7 +98,7 @@ namespace Enemies
                 MapProgress = WaypointIndex + 1 - (sqrDistance / (_maxDistance * _maxDistance));
             }
 
-            if (Stats.DoesRotation) { }
+            if (EnemyStats.DoesRotation) { }
             // Attempt at rotation
             // TODO - Transform.up
             // _enemy.RotationRoot.transform.up = (location - position).normalized;
@@ -135,10 +137,10 @@ namespace Enemies
             Vector2 dir = Points[WaypointIndex - 1] - Position;
             // TODO - Perform translation in godot
             // transform.Translate(dir.normalized * (Mathf.Abs(_enemy.speed.GetTrueStat()) * delta), Space.World);
-            MapProgress = WaypointIndex - (Stats.DistanceToWaypoint / _maxDistance);
+            MapProgress = WaypointIndex - (EnemyStats.DistanceToWaypoint / _maxDistance);
         
             // If the enemy hasn't reached the previous waypoint, there's no point knocking it back further
-            if (!(Position.DistanceTo(Points[WaypointIndex - 1]) <= Stats.DistanceToWaypoint)) return;
+            if (!(Position.DistanceTo(Points[WaypointIndex - 1]) <= EnemyStats.DistanceToWaypoint)) return;
 
             // Get the next waypoint
             WaypointIndex--;
@@ -153,7 +155,8 @@ namespace Enemies
         /// <param name="turretLocation">The location of the turret</param>
         public void TakeKnockback(float amount, Vector2 turretLocation)
         {
-            if (Stats.Attributes[AttributeType.KnockbackResistance].Value <= 0)
+            GD.Print("Took Knockback");
+            if (Stats[AttributeType.KnockbackResistance].Value >= 1)
             {
                 return;
             }
@@ -164,11 +167,11 @@ namespace Enemies
             
             // Actually deal knockback
             // Multiply by -1 to knock backwards
-            float knockback = amount * Stats.Attributes[AttributeType.KnockbackResistance].Value * multiplier * -1;
+            float knockback = amount * (1 - Stats[AttributeType.KnockbackResistance].Value) * multiplier * -1;
             Variant uid = GD.Randi();
-            Stats.Attributes[AttributeType.Speed].Add(uid, new AttributeModifier(knockback, Operation.Multiplicative));
+            Stats[AttributeType.Speed].Add(uid, new AttributeModifier(knockback, Operation.Multiplicative));
 
-            GetTree().CreateTimer(Stats.Attributes[AttributeType.KnockbackDuration].Value).Timeout += () => { Stats.Attributes[AttributeType.Speed].Remove(uid); };
+            GetTree().CreateTimer(Stats[AttributeType.KnockbackDuration].Value).Timeout += () => { Stats[AttributeType.Speed].Remove(uid); };
         }
     
         /// <summary>
@@ -182,15 +185,15 @@ namespace Enemies
             // Edit the health
             Health -= amount;
 
-            LeftBar.Value = Health / Stats.Attributes[AttributeType.MaxHealth].Value;
-            RightBar.Value = Health / Stats.Attributes[AttributeType.MaxHealth].Value;
+            LeftBar.Value = Health / Stats[AttributeType.MaxHealth].Value;
+            RightBar.Value = Health / Stats[AttributeType.MaxHealth].Value;
 
             if (Health <= 0)
             {
                 Die();
-            } else if (Health > Stats.Attributes[AttributeType.MaxHealth].Value)
+            } else if (Health > Stats[AttributeType.MaxHealth].Value)
             {
-                Health = Stats.Attributes[AttributeType.MaxHealth].Value;
+                Health = Stats[AttributeType.MaxHealth].Value;
             }
         }
 
@@ -224,8 +227,8 @@ namespace Enemies
         private void FinishPath()
         {
             // Let our other systems know the enemy reached the end
-            GameStats.Lives -= Stats.DeathLives;
-            GameStats.Energy += Stats.EndPathMoney;
+            GameStats.Lives -= EnemyStats.DeathLives;
+            GameStats.Energy += EnemyStats.EndPathMoney;
 
             OnDeath?.Invoke();
         
