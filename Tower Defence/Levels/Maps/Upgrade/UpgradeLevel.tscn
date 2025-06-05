@@ -472,12 +472,12 @@ enemySets = Array[Object]([SubResource("Resource_i7rii"), SubResource("Resource_
 setDelays = PackedFloat32Array(3, 0.1, 1, 1)
 metadata/_custom_type_script = "uid://bgfugrs685jpk"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_p388s"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nt6x0"]
 shader = ExtResource("23_p388s")
-shader_parameter/animate_direction = Vector2(1, 1)
+shader_parameter/animate_direction = Vector2(1, 0.5)
 shader_parameter/col_distance_scale = 12.0
-shader_parameter/col_near = Color(0.24, 0.324, 0.96, 1)
-shader_parameter/col_far = Color(0.055, 0.0075, 0.15, 1)
+shader_parameter/col_near = Color(1, 0, 0.142984, 1)
+shader_parameter/col_far = Color(0.02, 0.0289999, 0.2, 1)
 shader_parameter/emission_boost = 1.0
 shader_parameter/sphere_radius = 0.1
 shader_parameter/noise_scale = 2.5
@@ -487,12 +487,12 @@ shader_parameter/inflate = 0.1
 shader_parameter/smooth_fac = 0.6
 shader_parameter/step_mult = 0.05
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nt6x0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p388s"]
 shader = ExtResource("23_p388s")
-shader_parameter/animate_direction = Vector2(1, 0.5)
+shader_parameter/animate_direction = Vector2(1, 1)
 shader_parameter/col_distance_scale = 12.0
-shader_parameter/col_near = Color(1, 0, 0.142984, 1)
-shader_parameter/col_far = Color(0.02, 0.0289999, 0.2, 1)
+shader_parameter/col_near = Color(0.24, 0.324, 0.96, 1)
+shader_parameter/col_far = Color(0.055, 0.0075, 0.15, 1)
 shader_parameter/emission_boost = 1.0
 shader_parameter/sphere_radius = 0.1
 shader_parameter/noise_scale = 2.5
@@ -566,62 +566,67 @@ script = ExtResource("3_o3dn4")
 _waves = [SubResource("Resource_7j0gl"), SubResource("Resource_tpvnd"), SubResource("Resource_cqc0v"), SubResource("Resource_niq5q"), SubResource("Resource_ogs00"), SubResource("Resource_pk038"), SubResource("Resource_mweev"), SubResource("Resource_7rx82"), SubResource("Resource_o5bsi"), SubResource("Resource_4yoli"), SubResource("Resource_osjoh"), SubResource("Resource_y21q5"), SubResource("Resource_157cj"), SubResource("Resource_b88u8"), SubResource("Resource_s5oa5")]
 _countdown = NodePath("../../CanvasLayer/UI/WaveCountdown")
 
+[node name="Start" type="Sprite2D" parent="Map/SpawnPoint"]
+material = SubResource("ShaderMaterial_nt6x0")
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("24_b88u8")
+
 [node name="Waypoint (1)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
-position = Vector2(80, 45)
+position = Vector2(76, 42)
 
 [node name="Waypoint (2)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
-position = Vector2(120, 20)
+position = Vector2(116, 19)
 
 [node name="Waypoint (3)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
-position = Vector2(200, 70)
+position = Vector2(196, 65)
 
 [node name="Waypoint (4)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
-position = Vector2(240, 45)
+position = Vector2(235, 42)
 
 [node name="Waypoint (5)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
-position = Vector2(280, 70)
+position = Vector2(275, 65)
 
 [node name="Waypoint (6)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
-position = Vector2(280, 115)
+position = Vector2(275, 111)
 
 [node name="Waypoint (7)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
-position = Vector2(237.313, 134.5)
+position = Vector2(235, 133)
 
 [node name="Waypoint (8)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
-position = Vector2(240.313, 186.5)
+position = Vector2(235, 180)
 
 [node name="Waypoint (9)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
-position = Vector2(281.313, 208.5)
+position = Vector2(275, 203)
 
 [node name="Waypoint (10)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
-position = Vector2(358.313, 161.5)
+position = Vector2(354, 157)
 
 [node name="Waypoint (11)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
-position = Vector2(439.313, 202.5)
+position = Vector2(433, 203)
 
 [node name="Waypoint (12)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
-position = Vector2(440.313, 391.5)
+position = Vector2(433, 386)
 
 [node name="Waypoint (13)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
-position = Vector2(476.313, 412.5)
+position = Vector2(473, 408)
 
 [node name="Waypoint (14)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
-position = Vector2(634.313, 319.5)
+position = Vector2(631, 318)
 
 [node name="Waypoint (15)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
-position = Vector2(516.313, 248.5)
+position = Vector2(512, 248)
 
 [node name="Waypoint (16)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
-position = Vector2(314.313, 361.5)
+position = Vector2(314, 363)
 
 [node name="Waypoint (17)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
-position = Vector2(199.313, 297.5)
+position = Vector2(195, 294)
 
 [node name="Waypoint (18)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
-position = Vector2(122.313, 337.5)
+position = Vector2(116, 340)
 
 [node name="Waypoint (19)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
-position = Vector2(122.313, 433.5)
+position = Vector2(116, 432)
 
 [node name="Waypoint (20)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
 position = Vector2(158.313, 457.5)
@@ -635,12 +640,6 @@ _byte = ExtResource("14_8tbnj")
 [node name="Exit" type="Sprite2D" parent="Map"]
 material = SubResource("ShaderMaterial_p388s")
 position = Vector2(-247, 232)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("24_b88u8")
-
-[node name="Start" type="Sprite2D" parent="Map"]
-material = SubResource("ShaderMaterial_nt6x0")
-position = Vector2(-410, -229)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("24_b88u8")
 
