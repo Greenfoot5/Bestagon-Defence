@@ -26,6 +26,11 @@ public partial class Attributes : Resource
     {
         _attributes = attributes;
     }
+    
+    public Attributes(Attributes attributes)
+    {
+        _attributes = new Godot.Collections.Dictionary<AttributeType, Attribute>(attributes._attributes);
+    }
 
     public Attribute this[AttributeType key]
     {
