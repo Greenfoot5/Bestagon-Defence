@@ -45,9 +45,9 @@ public partial class Attributes : Resource
 
         set
         {
-            if (_attributes.TryGetValue(key, out Attribute attribute))
+            if (_attributes.TryGetValue(key, out Attribute _))
             {
-                _attributes[key].CopyFrom(attribute);
+                _attributes[key].CopyFrom(value);
                 return;
             }
 
