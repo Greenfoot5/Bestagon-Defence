@@ -5,27 +5,25 @@ public enum AttributeType
     /// <summary>
     /// Will modify nothing
     /// </summary>
-    Nil,
+    Nil, // = 0
     
     BulletRange,
     Damage,
     FireRate,
     ExplosionRadius,
-    Knockback,
+    Knockback, // = 5
     KnockbackDuration,
     KnockbackResistance,
     LaserDuration,
     LaserCooldown,
-    Lifetime,
+    Lifetime, // = 10
     MaxHealth,
     PartCount,
     PartSpread,
     Range,
-    RotationSpeed,
+    RotationSpeed, // = 15
     SeekerCount,
     Speed,
     SpinCooldown,
-    SpinIncrease,
     SpinMultiplier,
-    SpinMultiplierCap,
 }
