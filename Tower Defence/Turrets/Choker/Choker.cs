@@ -53,7 +53,7 @@ namespace Turrets.Choker
             if (FireCountdown <= 0)
             {
                 FireCountdown = 1 / Stats[AttributeType.FireRate].Value;
-                Attack();
+                Attack((float) delta);
             }
             
             FireCountdown -= delta;
@@ -62,7 +62,7 @@ namespace Turrets.Choker
         /// <summary>
         /// Create the bullet and give it a target
         /// </summary>
-        protected override void Attack()
+        protected override void Attack(float delta)
         {
             //attackEffect?.Play();
 

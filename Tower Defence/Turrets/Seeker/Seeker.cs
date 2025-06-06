@@ -36,13 +36,13 @@ public partial class Seeker : DynamicTurret
         if (FireCountdown <= 0)
         {
             FireCountdown = 1 / Stats[AttributeType.FireRate].Value;
-            Attack();
+            Attack((float) delta);
         }
             
         FireCountdown -= delta;
     }
     
-    protected override void Attack()
+    protected override void Attack(float delta)
     {
         // TODO - Attack effect
         // attackEffect.SetFloat("zRotation", -firePoint.Rotation.eulerAngles.z);

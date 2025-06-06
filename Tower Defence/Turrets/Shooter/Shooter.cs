@@ -48,7 +48,7 @@ namespace Turrets.Shooter
             if (FireCountdown <= 0)
             {
                 FireCountdown = 1 / Stats[AttributeType.FireRate].Value;
-                Attack();
+                Attack((float) delta);
             }
             
             FireCountdown -= delta;
@@ -57,7 +57,7 @@ namespace Turrets.Shooter
         /// <summary>
         /// Create the bullet and give it a target
         /// </summary>
-        protected override void Attack()
+        protected override void Attack(float delta)
         {
             // TODO - Attack effect
             // attackEffect.SetFloat("zRotation", -firePoint.Rotation.eulerAngles.z);

@@ -83,7 +83,7 @@ namespace Turrets.Laser
         /// Fires the laser towards the enemy and deals damage
         /// </summary>
         // TODO - Animate the laser slightly (make it pulse)
-        protected override void Attack()
+        protected override void Attack(float delta)
         {
             Vector2 triangleCentre = Position;
             

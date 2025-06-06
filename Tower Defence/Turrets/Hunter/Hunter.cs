@@ -62,7 +62,7 @@ namespace Turrets.Hunter
             if (FireCountdown <= 0)
             {
                 FireCountdown = 1 / Stats[AttributeType.FireRate].Value;
-                Attack();
+                Attack((float) delta);
             }
         }
 
@@ -84,7 +84,7 @@ namespace Turrets.Hunter
         /// <summary>
         /// Create the bullet and give it a target
         /// </summary>
-        protected override void Attack()
+        protected override void Attack(float delta)
         {
             // Attack effect
             shotLine.ClearPoints();

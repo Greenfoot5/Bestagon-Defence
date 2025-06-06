@@ -30,7 +30,7 @@ namespace Turrets
         public event ShootEvent OnShoot;
         public event HitEvent OnHit;
 
-        protected abstract void Attack();
+        protected abstract void Attack(float delta);
 
         /// <summary>
         /// Turret types will override this as attack type will be different for each turret

@@ -57,7 +57,7 @@ namespace Turrets.Lancer
             if (FireCountdown <= 0)
             {
                 FireCountdown = 1 / Stats[AttributeType.FireRate].Value;
-                Attack();
+                Attack((float) delta);
             }
             
             FireCountdown -= delta;
@@ -66,7 +66,7 @@ namespace Turrets.Lancer
         /// <summary>
         /// Deals damage to all enemies in range
         /// </summary>
-        protected override void Attack()
+        protected override void Attack(float delta)
         {
             // attackEffect.Play();
             // Creates the bullet

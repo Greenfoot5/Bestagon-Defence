@@ -85,7 +85,7 @@ namespace Turrets.Gunner
                 
                 FireCountdown = 1 / Stats[AttributeType.FireRate].Value;
                 
-                Attack();
+                Attack((float) delta);
             }
 
             FireCountdown -= delta;
@@ -121,7 +121,7 @@ namespace Turrets.Gunner
         /// <summary>
         /// Create the bullet and give it a target
         /// </summary>
-        protected override void Attack()
+        protected override void Attack(float delta)
         {
             // Creates the bullet
             var bullet = (Bullet)_bulletPrefab.Instantiate();
