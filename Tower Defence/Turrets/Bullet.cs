@@ -321,7 +321,7 @@ public partial class Bullet : Node2D
     protected void Die()
     {
         Area.Visible = false;
-        Area.Monitoring = false;
+        Area.SetDeferred("monitoring", false);
         isDead = true;
         
         if (deathTime + 50 < Time.GetTicksMsec())
