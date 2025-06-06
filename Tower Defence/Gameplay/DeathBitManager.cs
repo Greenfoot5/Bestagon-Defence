@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Numerics;
 using Enemies;
 using Godot;
 using Vector2 = Godot.Vector2;
@@ -100,7 +99,7 @@ namespace Gameplay
             {
                 foreach (DeathEnergy t in Particles)
                 {
-                    if ((mouseMotion.GlobalPosition.DistanceSquaredTo(t.Position)) < CatchRadius * CatchRadius)
+                    if ((mouseMotion.Position.DistanceSquaredTo(t.Position)) < CatchRadius * CatchRadius)
                     {
                         GameStats.Energy += t.Value;
                         t.Collect();
