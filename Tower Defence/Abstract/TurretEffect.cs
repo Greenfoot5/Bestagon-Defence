@@ -2,47 +2,46 @@ using System.Collections;
 using Godot;
 using Turrets;
 
-namespace Abstract
+namespace Abstract;
+
+// TODO - Setup loop with Timer
+public abstract partial class TurretEffect : Resource
 {
-    // TODO - Setup loop with Timer
-    public abstract partial class TurretEffect : Resource
+    public int tickCount;
+    public int tickDuration;
+    public int ticksLeft;
+    public int tier;
+    public bool isCancelled;
+
+    protected Turret Target;
+
+    public TurretEffect(Turret target)
     {
-        public int tickCount;
-        public int tickDuration;
-        public int ticksLeft;
-        public int tier;
-        public bool isCancelled;
+        Target = target;
+    }
 
-        protected Turret Target;
+    public TurretEffect()
+    {
+        Target = null;
+    }
 
-        public TurretEffect(Turret target)
-        {
-            Target = target;
-        }
+    public abstract void Apply();
+    public abstract void Remove();
+    public abstract void DoEffect();
 
-        public TurretEffect()
-        {
-            Target = null;
-        }
-
-        public abstract void Apply();
-        public abstract void Remove();
-        public abstract void DoEffect();
-
-        public IEnumerator Tick()
-        {
-            if (isCancelled)
-                yield break;
+    public IEnumerator Tick()
+    {
+        if (isCancelled)
+            yield break;
             
-            //yield return new WaitForSeconds(tickDuration);
-            ticksLeft--;
+        //yield return new WaitForSeconds(tickDuration);
+        ticksLeft--;
 
-            DoEffect();
+        DoEffect();
 
-            if (ticksLeft <= 0)
-            {
-                Remove();
-            }
+        if (ticksLeft <= 0)
+        {
+            Remove();
         }
     }
 }

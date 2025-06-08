@@ -1,7 +1,8 @@
-using Enemies;
 using Gameplay;
 using Gameplay.Waves;
 using Godot;
+
+namespace Levels.Maps.Upgrade;
 
 public partial class WaveTimer : Timer
 {

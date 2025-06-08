@@ -1,16 +1,15 @@
 using Godot;
 
-namespace Gameplay.Waves
+namespace Gameplay.Waves;
+
+/// <summary>
+/// A group of Enemy Sets that represents a full wave
+/// </summary>
+[GlobalClass]
+public partial class Wave : Resource
 {
-    /// <summary>
-    /// A group of Enemy Sets that represents a full wave
-    /// </summary>
-    [GlobalClass]
-    public partial class Wave : Resource
-    {
-        [Export]
-        public EnemySet[] enemySets;
-        [Export]
-        public float[] setDelays;
-    }
+    [Export]
+    public EnemySet[] EnemySets;
+    [Export]
+    public float[] SetDelays;
 }

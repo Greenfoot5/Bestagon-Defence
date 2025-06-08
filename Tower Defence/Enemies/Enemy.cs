@@ -2,236 +2,235 @@
 using Gameplay;
 using Godot;
 
-namespace Enemies
+namespace Enemies;
+
+/// <summary>
+/// The base skeleton for the enemy, holding its stats and abilities
+/// </summary>
+public partial class Enemy : Area2D
 {
+    [Export]
+    public EnemyStats EnemyStats = new();
+    private Attributes _stats;
+        
+    public float Health { get; private set; }
+
     /// <summary>
-    /// The base skeleton for the enemy, holding its stats and abilities
+    /// The left health bar
     /// </summary>
-    public partial class Enemy : Area2D
+    [ExportGroup("Visuals")]
+    [Export]
+    public ProgressBar LeftBar;
+    /// <summary>
+    /// The right health bar
+    /// </summary>
+    [Export]
+    public ProgressBar RightBar;
+    [Export]
+    public Sprite2D Sprite;
+
+    /// <summary>
+    /// The root game object to rotate to change the enemy's looking direction
+    /// </summary>
+    [ExportGroup("Other")]
+    [Export]
+    public Node2D RotationRoot;
+        
+    /// <summary>
+    /// The next position the enemy moves towards
+    /// </summary>
+    [ExportGroup("Movement")]
+    public Vector2[] Points;
+    private int _pathIndex;
+    public int WaypointIndex;
+        
+    /// <summary>
+    /// How many waypoints the enemy has passed, and the percentage to the next one
+    /// </summary>
+    public float MapProgress;
+    private float _maxDistance;
+
+    // If the enemy has died
+    private bool _isDead;
+    public delegate void DeathEvent();
+    public event DeathEvent OnDeath;
+
+    public delegate void EnemyKilledEvent(Enemy enemy);
+    public static event EnemyKilledEvent OnEnemyKilled;
+        
+    /// <summary>
+    /// Initialises relevant variables
+    /// </summary>
+    public override void _Ready()
     {
-        [Export]
-        public EnemyStats EnemyStats = new();
-        private Attributes _stats;
-        
-        public float Health { get; private set; }
+        _stats = new Attributes(EnemyStats.Attributes);
+        Health = _stats[AttributeType.MaxHealth].Value;
+        Sprite.Texture = EnemyStats.Sprite;
+    }
 
-        /// <summary>
-        /// The left health bar
-        /// </summary>
-        [ExportGroup("Visuals")]
-        [Export]
-        public ProgressBar LeftBar;
-        /// <summary>
-        /// The right health bar
-        /// </summary>
-        [Export]
-        public ProgressBar RightBar;
-        [Export]
-        public Sprite2D Sprite;
-
-        /// <summary>
-        /// The root game object to rotate to change the enemy's looking direction
-        /// </summary>
-        [ExportGroup("Other")]
-        [Export]
-        public Node2D RotationRoot;
-        
-        /// <summary>
-        /// The next position the enemy moves towards
-        /// </summary>
-        [ExportGroup("Movement")]
-        public Vector2[] Points;
-        private int _pathIndex;
-        public int WaypointIndex;
-        
-        /// <summary>
-        /// How many waypoints the enemy has passed, and the percentage to the next one
-        /// </summary>
-        public float MapProgress;
-        private float _maxDistance;
-
-        // If the enemy has died
-        private bool _isDead;
-        public delegate void DeathEvent();
-        public event DeathEvent OnDeath;
-
-        public delegate void EnemyKilledEvent(Enemy enemy);
-        public static event EnemyKilledEvent OnEnemyKilled;
-        
-        /// <summary>
-        /// Initialises relevant variables
-        /// </summary>
-        public override void _Ready()
+    public override void _Process(double delta)
+    {
+        // TODO - Better backwards
+        // If the enemy is moving backwards
+        if (_stats[AttributeType.Speed].Value < 0)
         {
-            _stats = new Attributes(EnemyStats.Attributes);
-            Health = _stats[AttributeType.MaxHealth].Value;
-            Sprite.Texture = EnemyStats.sprite;
+            MoveBackwards();
+            return;
         }
-
-        public override void _Process(double delta)
-        {
-            // TODO - Better backwards
-            // If the enemy is moving backwards
-            if (_stats[AttributeType.Speed].Value < 0)
-            {
-                MoveBackwards();
-                return;
-            }
             
-            // Get the direction of the target, and the distance to move this frame
-            Vector2 position = GlobalPosition;
-            Vector2 location = Points[WaypointIndex];
-            var distanceThisFrame = (float)(_stats[AttributeType.Speed].Value * delta);
+        // Get the direction of the target, and the distance to move this frame
+        Vector2 position = GlobalPosition;
+        Vector2 location = Points[WaypointIndex];
+        var distanceThisFrame = (float)(_stats[AttributeType.Speed].Value * delta);
 
-            GlobalPosition = position.MoveToward(location, distanceThisFrame);
+        GlobalPosition = position.MoveToward(location, distanceThisFrame);
             
-            Vector2 difference = location - position; // Distance & direction to next target
+        Vector2 difference = location - position; // Distance & direction to next target
 
-            // If within this frame the enemy will pass the waypoint, it's a guaranteed hit
-            if (difference.LengthSquared() <= EnemyStats.DistanceToWaypoint * EnemyStats.DistanceToWaypoint)
-            {
-                GetNextWaypoint();
-            }
-            else
-            {
-                float sqrDistance = (Position - Points[WaypointIndex]).LengthSquared();
-                MapProgress = WaypointIndex + 1 - (sqrDistance / (_maxDistance * _maxDistance));
-            }
+        // If within this frame the enemy will pass the waypoint, it's a guaranteed hit
+        if (difference.LengthSquared() <= EnemyStats.DistanceToWaypoint * EnemyStats.DistanceToWaypoint)
+        {
+            GetNextWaypoint();
+        }
+        else
+        {
+            float sqrDistance = (Position - Points[WaypointIndex]).LengthSquared();
+            MapProgress = WaypointIndex + 1 - (sqrDistance / (_maxDistance * _maxDistance));
+        }
 
-            if (EnemyStats.DoesRotation) { }
-            // Attempt at rotation
-            // TODO - Transform.up
-            // _enemy.RotationRoot.transform.up = (location - position).normalized;
+        if (EnemyStats.DoesRotation) { }
+        // Attempt at rotation
+        // TODO - Transform.up
+        // _enemy.RotationRoot.transform.up = (location - position).normalized;
+    }
+        
+    /// <summary>
+    /// Gets the next waypoint in the waypoints array
+    /// </summary>
+    private void GetNextWaypoint()
+    {
+        // If the enemy has reached the end, destroy
+        if (WaypointIndex >= Points.Length - 1)
+        {
+            FinishPath();
+            return;
         }
         
-        /// <summary>
-        /// Gets the next waypoint in the waypoints array
-        /// </summary>
-        private void GetNextWaypoint()
-        {
-            // If the enemy has reached the end, destroy
-            if (WaypointIndex >= Points.Length - 1)
-            {
-                FinishPath();
-                return;
-            }
+        // Get the next waypoint
+        WaypointIndex++;
+        MapProgress = WaypointIndex;
+        _maxDistance = Position.DistanceTo(Points[WaypointIndex]);
+    }
         
-            // Get the next waypoint
-            WaypointIndex++;
-            MapProgress = WaypointIndex;
-            _maxDistance = Position.DistanceTo(Points[WaypointIndex]);
+    /// <summary>
+    /// Moves the enemy backwards along the path.
+    /// </summary>
+    private void MoveBackwards()
+    {
+        // If the enemy has reached the start, we can't go backwards further
+        if (WaypointIndex - 1 < 0)
+        {
+            return;
         }
-        
-        /// <summary>
-        /// Moves the enemy backwards along the path.
-        /// </summary>
-        private void MoveBackwards()
-        {
-            // If the enemy has reached the start, we can't go backwards further
-            if (WaypointIndex - 1 < 0)
-            {
-                return;
-            }
                 
-            // Get the direction and move in that direction
-            Vector2 dir = Points[WaypointIndex - 1] - Position;
-            // TODO - Perform translation in godot
-            // transform.Translate(dir.normalized * (Mathf.Abs(_enemy.speed.GetTrueStat()) * delta), Space.World);
-            MapProgress = WaypointIndex - (EnemyStats.DistanceToWaypoint / _maxDistance);
+        // Get the direction and move in that direction
+        Vector2 dir = Points[WaypointIndex - 1] - Position;
+        // TODO - Perform translation in godot
+        // transform.Translate(dir.normalized * (Mathf.Abs(_enemy.speed.GetTrueStat()) * delta), Space.World);
+        MapProgress = WaypointIndex - (EnemyStats.DistanceToWaypoint / _maxDistance);
         
-            // If the enemy hasn't reached the previous waypoint, there's no point knocking it back further
-            if (!(Position.DistanceTo(Points[WaypointIndex - 1]) <= EnemyStats.DistanceToWaypoint)) return;
+        // If the enemy hasn't reached the previous waypoint, there's no point knocking it back further
+        if (!(Position.DistanceTo(Points[WaypointIndex - 1]) <= EnemyStats.DistanceToWaypoint)) return;
 
-            // Get the next waypoint
-            WaypointIndex--;
-            MapProgress = WaypointIndex;
-            _maxDistance = Points[WaypointIndex].DistanceTo(Points[WaypointIndex + 1]);
-        }
+        // Get the next waypoint
+        WaypointIndex--;
+        MapProgress = WaypointIndex;
+        _maxDistance = Points[WaypointIndex].DistanceTo(Points[WaypointIndex + 1]);
+    }
         
-        /// <summary>
-        /// Called when a turret wants to deal knockback to an enemy
-        /// </summary>
-        /// <param name="amount">The amount of knockback to deal</param>
-        /// <param name="turretLocation">The location of the turret</param>
-        public void TakeKnockback(float amount, Vector2 turretLocation)
+    /// <summary>
+    /// Called when a turret wants to deal knockback to an enemy
+    /// </summary>
+    /// <param name="amount">The amount of knockback to deal</param>
+    /// <param name="turretLocation">The location of the turret</param>
+    public void TakeKnockback(float amount, Vector2 turretLocation)
+    {
+        if (_stats[AttributeType.KnockbackResistance].Value >= 1)
         {
-            if (_stats[AttributeType.KnockbackResistance].Value >= 1)
-            {
-                return;
-            }
-            
-            Vector2 v = Points[WaypointIndex] - Position;
-            Vector2 w = turretLocation - Position;
-            float multiplier = v.Normalized().Dot(w.Normalized());
-            
-            // Actually deal knockback
-            // Multiply by -1 to knock backwards
-            float knockback = amount * (1 - _stats[AttributeType.KnockbackResistance].Value) * multiplier * -1;
-            Variant uid = GD.Randi();
-            _stats[AttributeType.Speed].Add(uid, new AttributeModifier(knockback, Operation.Multiplicative));
-
-            GetTree().CreateTimer(_stats[AttributeType.KnockbackDuration].Value).Timeout += () => { _stats[AttributeType.Speed].Remove(uid); };
+            return;
         }
+            
+        Vector2 v = Points[WaypointIndex] - Position;
+        Vector2 w = turretLocation - Position;
+        float multiplier = v.Normalized().Dot(w.Normalized());
+            
+        // Actually deal knockback
+        // Multiply by -1 to knock backwards
+        float knockback = amount * (1 - _stats[AttributeType.KnockbackResistance].Value) * multiplier * -1;
+        Variant uid = GD.Randi();
+        _stats[AttributeType.Speed].Add(uid, new AttributeModifier(knockback, Operation.Multiplicative));
+
+        GetTree().CreateTimer(_stats[AttributeType.KnockbackDuration].Value).Timeout += () => { _stats[AttributeType.Speed].Remove(uid); };
+    }
     
-        /// <summary>
-        /// Called whenever the enemy takes damage.
-        /// This activates any ability with the OnDamage trigger
-        /// </summary>
-        /// <param name="amount">The amount of damage to deal</param>
-        /// <param name="source">The GodotObject that hurt the enemy</param>
-        public void TakeDamage(float amount, GodotObject source)
+    /// <summary>
+    /// Called whenever the enemy takes damage.
+    /// This activates any ability with the OnDamage trigger
+    /// </summary>
+    /// <param name="amount">The amount of damage to deal</param>
+    /// <param name="source">The GodotObject that hurt the enemy</param>
+    public void TakeDamage(float amount, GodotObject source)
+    {
+        // Edit the health
+        Health -= amount;
+
+        LeftBar.Value = Health / _stats[AttributeType.MaxHealth].Value;
+        RightBar.Value = Health / _stats[AttributeType.MaxHealth].Value;
+
+        if (Health <= 0)
         {
-            // Edit the health
-            Health -= amount;
-
-            LeftBar.Value = Health / _stats[AttributeType.MaxHealth].Value;
-            RightBar.Value = Health / _stats[AttributeType.MaxHealth].Value;
-
-            if (Health <= 0)
-            {
-                Die();
-            } else if (Health > _stats[AttributeType.MaxHealth].Value)
-            {
-                Health = _stats[AttributeType.MaxHealth].Value;
-            }
+            Die();
+        } else if (Health > _stats[AttributeType.MaxHealth].Value)
+        {
+            Health = _stats[AttributeType.MaxHealth].Value;
         }
+    }
 
-        /// <summary>
-        /// Called when the enemy dies
-        /// allows the game to clean up anything when removing the GodotObject
-        /// </summary>
-        private void Die()
-        {
-            // Make sure we're not already dead.
-            if (_isDead)
-                return;
-            _isDead = true;
+    /// <summary>
+    /// Called when the enemy dies
+    /// allows the game to clean up anything when removing the GodotObject
+    /// </summary>
+    private void Die()
+    {
+        // Make sure we're not already dead.
+        if (_isDead)
+            return;
+        _isDead = true;
 
-            OnDeath?.Invoke();
-            OnEnemyKilled?.Invoke(this);
+        OnDeath?.Invoke();
+        OnEnemyKilled?.Invoke(this);
 
-            // Spawn death effect
-            // var effect = (Node2D) Stats.DeathEffect.Instantiate();
-            // effect.Position = Position;
-            // effect.Name = "_" + effect.Name;
-            // GetTree().CreateTimer(5).Timeout += () => effect.QueueFree();
+        // Spawn death effect
+        // var effect = (Node2D) Stats.DeathEffect.Instantiate();
+        // effect.Position = Position;
+        // effect.Name = "_" + effect.Name;
+        // GetTree().CreateTimer(5).Timeout += () => effect.QueueFree();
             
-            Free();
-        }
+        Free();
+    }
 
-        /// <summary>
-        /// Called when the enemy reaches the end of the map's path
-        /// Activates any finishPath abilities
-        /// </summary>
-        private void FinishPath()
-        {
-            // Let our other systems know the enemy reached the end
-            GameStats.Lives -= EnemyStats.DeathLives;
-            GameStats.Energy += EnemyStats.EndPathMoney;
+    /// <summary>
+    /// Called when the enemy reaches the end of the map's path
+    /// Activates any finishPath abilities
+    /// </summary>
+    private void FinishPath()
+    {
+        // Let our other systems know the enemy reached the end
+        GameStats.Lives -= EnemyStats.DeathLives;
+        GameStats.Energy += EnemyStats.EndPathMoney;
 
-            OnDeath?.Invoke();
+        OnDeath?.Invoke();
         
-            QueueFree();
-        }
+        QueueFree();
     }
 }

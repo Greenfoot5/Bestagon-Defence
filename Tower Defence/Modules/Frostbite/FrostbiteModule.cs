@@ -8,7 +8,6 @@ using Turrets.Gunner;
 using Turrets.Lancer;
 using Turrets.Shooter;
 
-
 namespace Modules.Frostbite;
 
 /// <summary>

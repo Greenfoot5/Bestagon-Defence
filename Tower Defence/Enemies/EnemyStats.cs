@@ -3,6 +3,8 @@ using Abstract;
 using Abstract.Attributes;
 using Godot;
 
+namespace Enemies;
+
 [GlobalClass]
 public partial class EnemyStats : Resource
 {
@@ -15,7 +17,7 @@ public partial class EnemyStats : Resource
 
     [ExportGroup("Visuals")]
     [Export]
-    public Texture2D sprite;
+    public Texture2D Sprite;
     
     /// <summary>
     /// The amount of money to grant the player when the enemy is killed

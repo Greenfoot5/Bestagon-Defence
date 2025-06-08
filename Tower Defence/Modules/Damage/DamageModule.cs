@@ -3,7 +3,6 @@ using Abstract.Attributes;
 using Godot;
 using Turrets;
 
-
 namespace Modules.Damage;
 
 /// <summary>

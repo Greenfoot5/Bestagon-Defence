@@ -1,98 +1,96 @@
 using Abstract.Attributes;
 using Abstract.Data;
 using Godot;
-using Levels._Nodes;
 
-namespace Turrets
+namespace Turrets;
+
+public abstract partial class Turret : Damager
 {
-    public abstract partial class Turret : Damager
+    /// <summary>
+    /// The shader that displays the turret's range when clicked
+    /// </summary>
+    [Export]
+    public Node2D RangeDisplay;
+    [Export]
+    public Area2D Range;
+        
+    /// <summary>
+    /// How long left until the next attack
+    /// </summary>
+    [Export]
+    public double FireCountdown;
+
+    protected Turret()
     {
-        /// <summary>
-        /// The shader that displays the turret's range when clicked
-        /// </summary>
-        [Export]
-        public Node2D RangeDisplay;
-        [Export]
-        public Area2D Range;
+        Stats[AttributeType.Range] = new Attribute(AttributeType.Range, 2.5f, min:0f);
+        Stats[AttributeType.FireRate] = new Attribute(AttributeType.FireRate, 1f, min:0f);
+    }
         
-        /// <summary>
-        /// How long left until the next attack
-        /// </summary>
-        [Export]
-        public double FireCountdown;
+    /// <summary>
+    /// Stops the range displaying
+    /// </summary>
+    public override void _Ready()
+    {
+        RangeDisplay.Visible = false;
+        RangeDisplay.ProcessMode = ProcessModeEnum.Disabled;
+        Stats[AttributeType.Range].OnAttributeUpdated += UpdateRange;
+        UpdateRange(Stats[AttributeType.Range]);
+    }
 
-        protected Turret()
+    public override void _ExitTree()
+    {
+        Stats[AttributeType.Range].OnAttributeUpdated -= UpdateRange;
+    }
+
+    public override void _PhysicsProcess(double delta)
+    {
+        // If there's no fire rate, the turret shouldn't do anything
+        if (Stats[AttributeType.FireRate].Value <= 0)
         {
-            Stats[AttributeType.Range] = new Attribute(AttributeType.Range, 2.5f, min:0f);
-            Stats[AttributeType.FireRate] = new Attribute(AttributeType.FireRate, 1f, min:0f);
-        }
-        
-        /// <summary>
-        /// Stops the range displaying
-        /// </summary>
-        public override void _Ready()
-        {
-            RangeDisplay.Visible = false;
-            RangeDisplay.ProcessMode = ProcessModeEnum.Disabled;
-            Stats[AttributeType.Range].OnAttributeUpdated += UpdateRange;
-            UpdateRange(Stats[AttributeType.Range]);
+            return;
         }
 
-        public override void _ExitTree()
+        if (FireCountdown > 1 / Stats[AttributeType.FireRate].Value)
         {
-            Stats[AttributeType.Range].OnAttributeUpdated -= UpdateRange;
+            FireCountdown = 1 / Stats[AttributeType.FireRate].Value;
         }
-
-        public override void _PhysicsProcess(double delta)
-        {
-            // If there's no fire rate, the turret shouldn't do anything
-            if (Stats[AttributeType.FireRate].Value <= 0)
-            {
-                return;
-            }
-
-            if (FireCountdown > 1 / Stats[AttributeType.FireRate].Value)
-            {
-                FireCountdown = 1 / Stats[AttributeType.FireRate].Value;
-            }
-        }
+    }
         
-        /// <summary>
-        /// Update the range shader's size
-        /// </summary>
-        protected virtual void UpdateRange(Attribute attribute)
-        {
-            Range.Scale = new Vector2(attribute.Value, attribute.Value);
-        }
+    /// <summary>
+    /// Update the range shader's size
+    /// </summary>
+    protected virtual void UpdateRange(Attribute attribute)
+    {
+        Range.Scale = new Vector2(attribute.Value, attribute.Value);
+    }
         
-        /// <summary>
-        /// Adds Modules to our turret after checking they're valid.
-        /// </summary>
-        /// <param name="handler">The ModuleChainHandler to apply to the turret</param>
-        /// <returns>true If the Module was applied successfully</returns>
-        public override bool AddModule(ModuleChainHandler handler)
-        {
-            bool value = base.AddModule(handler);
+    /// <summary>
+    /// Adds Modules to our turret after checking they're valid.
+    /// </summary>
+    /// <param name="handler">The ModuleChainHandler to apply to the turret</param>
+    /// <returns>true If the Module was applied successfully</returns>
+    public override bool AddModule(ModuleChainHandler handler)
+    {
+        bool value = base.AddModule(handler);
             
-            return value;
-        }
+        return value;
+    }
         
-        /// <summary>
-        /// Called when the turret is selected, displays the turret's range
-        /// </summary>
-        public override void Selected()
-        {
-            RangeDisplay.Visible = true;
-            RangeDisplay.ProcessMode = ProcessModeEnum.Inherit;
-        }
+    /// <summary>
+    /// Called when the turret is selected, displays the turret's range
+    /// </summary>
+    public override void Selected()
+    {
+        RangeDisplay.Visible = true;
+        RangeDisplay.ProcessMode = ProcessModeEnum.Inherit;
+    }
         
-        /// <summary>
-        /// Called when the turret is deselected, disables the turret's range view.
-        /// </summary>
-        public override void Deselected()
-        {
-            RangeDisplay.Visible = false;
-            RangeDisplay.ProcessMode = ProcessModeEnum.Disabled;
-        }
+    /// <summary>
+    /// Called when the turret is deselected, disables the turret's range view.
+    /// </summary>
+    public override void Deselected()
+    {
+        RangeDisplay.Visible = false;
+        RangeDisplay.ProcessMode = ProcessModeEnum.Disabled;
     }
 }

@@ -5,123 +5,122 @@ using Abstract.Data;
 using Enemies;
 using Godot;
 
-namespace Turrets
+namespace Turrets;
+
+public abstract partial class Damager : PlacedObject
 {
-    public abstract partial class Damager : PlacedObject
+    [Export]
+    public Attributes Stats = new(
+        new Godot.Collections.Dictionary<AttributeType, Attribute> { 
+            [AttributeType.Damage] = new(AttributeType.Damage, 100f, min:0f),
+        });
+        
+    /// <summary>
+    /// Which modules the turret has applied
+    /// </summary>
+    // TODO - Likely need a tool to manage this
+    public List<ModuleChainHandler> ModuleHandlers = [];
+        
+    // Events
+    public delegate void AttackEvent(Damager damager);
+    public delegate void ShootEvent(Bullet bullet);
+    public delegate void HitEvent(Enemy target, Damager damager, Bullet bullet = null);
+
+    public event AttackEvent OnAttack;
+    public event ShootEvent OnShoot;
+    public event HitEvent OnHit;
+
+    protected abstract void Attack(float delta);
+
+    /// <summary>
+    /// Turret types will override this as attack type will be different for each turret
+    /// </summary>
+    protected void Attack(Damager damager)
     {
-        [Export]
-        public Attributes Stats = new(
-            new Godot.Collections.Dictionary<AttributeType, Attribute> { 
-                [AttributeType.Damage] = new(AttributeType.Damage, 100f, min:0f),
-            });
+        OnAttack?.Invoke(damager);
+    }
         
-        /// <summary>
-        /// Which modules the turret has applied
-        /// </summary>
-        // TODO - Likely need a tool to manage this
-        public List<ModuleChainHandler> ModuleHandlers = [];
-        
-        // Events
-        public delegate void AttackEvent(Damager damager);
-        public delegate void ShootEvent(Bullet bullet);
-        public delegate void HitEvent(Enemy target, Damager damager, Bullet bullet = null);
+    /// <summary>
+    /// Turret types will override this as attack type will be different for each turret
+    /// </summary>
+    protected void Shoot(Bullet bullet)
+    {
+        OnShoot?.Invoke(bullet);
+    }
 
-        public event AttackEvent OnAttack;
-        public event ShootEvent OnShoot;
-        public event HitEvent OnHit;
-
-        protected abstract void Attack(float delta);
-
-        /// <summary>
-        /// Turret types will override this as attack type will be different for each turret
-        /// </summary>
-        protected void Attack(Damager damager)
-        {
-            OnAttack?.Invoke(damager);
-        }
-        
-        /// <summary>
-        /// Turret types will override this as attack type will be different for each turret
-        /// </summary>
-        protected void Shoot(Bullet bullet)
-        {
-            OnShoot?.Invoke(bullet);
-        }
-
-        public void HitMany(IEnumerable<Enemy> targets, Damager damager, Bullet bullet = null)
-        {
-            foreach (Enemy target in targets)
-            {
-                OnHit?.Invoke(target, damager, bullet);
-            }
-        }
-
-        public void Hit(Enemy target, Damager damager, Bullet bullet = null)
+    public void HitMany(IEnumerable<Enemy> targets, Damager damager, Bullet bullet = null)
+    {
+        foreach (Enemy target in targets)
         {
             OnHit?.Invoke(target, damager, bullet);
         }
+    }
+
+    public void Hit(Enemy target, Damager damager, Bullet bullet = null)
+    {
+        OnHit?.Invoke(target, damager, bullet);
+    }
         
-        /// <summary>
-        /// Adds Modules to our turret after checking they're valid.
-        /// </summary>
-        /// <param name="handler">The ModuleChainHandler to apply to the turret</param>
-        /// <returns>true If the Module was applied successfully</returns>
-        public virtual bool AddModule(ModuleChainHandler handler)
+    /// <summary>
+    /// Adds Modules to our turret after checking they're valid.
+    /// </summary>
+    /// <param name="handler">The ModuleChainHandler to apply to the turret</param>
+    /// <returns>true If the Module was applied successfully</returns>
+    public virtual bool AddModule(ModuleChainHandler handler)
+    {
+        if (!handler.ValidModule(this))
         {
-            if (!handler.ValidModule(this))
-            {
-                return false;
-            }
+            return false;
+        }
             
-            // Checks if the module is unique
-            // Then if there is a module of the same type but different tier,
-            // it cannot be upgraded
-            if (handler.GetChain().Unique && 
-                (ModuleHandlers.Any(x => x.GetModule().GetType() == handler.GetModule().GetType() &&
-                                         !handler.CanUpgrade(x.GetTier()))))
-            {
-                return false;
-            }
+        // Checks if the module is unique
+        // Then if there is a module of the same type but different tier,
+        // it cannot be upgraded
+        if (handler.GetChain().Unique && 
+            (ModuleHandlers.Any(x => x.GetModule().GetType() == handler.GetModule().GetType() &&
+                                     !handler.CanUpgrade(x.GetTier()))))
+        {
+            return false;
+        }
 
-            handler = CalculateUpgrades(handler);
-            // TODO - Duplicate handler
-            ModuleHandlers.Add(handler);
-            handler.GetModule().AddModule(this);
+        handler = CalculateUpgrades(handler);
+        // TODO - Duplicate handler
+        ModuleHandlers.Add(handler);
+        handler.GetModule().AddModule(this);
             
-            return true;
-        }
+        return true;
+    }
         
-        /// <summary>
-        /// Removes a module from the turret
-        /// </summary>
-        /// <param name="handler">The handler of the module to remove</param>
-        protected virtual void RemoveModule(ModuleChainHandler handler)
-        {
-            ModuleHandlers.Remove(handler);
-            handler.GetModule().RemoveModule(this);
-        }
+    /// <summary>
+    /// Removes a module from the turret
+    /// </summary>
+    /// <param name="handler">The handler of the module to remove</param>
+    protected virtual void RemoveModule(ModuleChainHandler handler)
+    {
+        ModuleHandlers.Remove(handler);
+        handler.GetModule().RemoveModule(this);
+    }
         
-        /// <summary>
-        /// Performs any module upgrades that are possible with the addition of a new handler
-        /// </summary>
-        /// <param name="handler">The handler to check for upgrades against</param>
-        private ModuleChainHandler CalculateUpgrades(ModuleChainHandler handler)
+    /// <summary>
+    /// Performs any module upgrades that are possible with the addition of a new handler
+    /// </summary>
+    /// <param name="handler">The handler to check for upgrades against</param>
+    private ModuleChainHandler CalculateUpgrades(ModuleChainHandler handler)
+    {
+        var i = 0;
+        while (i < ModuleHandlers.Count)
         {
-            var i = 0;
-            while (i < ModuleHandlers.Count)
+            bool canUpgrade = handler.Upgrade(ModuleHandlers[i]);
+            if (canUpgrade)
             {
-                bool canUpgrade = handler.Upgrade(ModuleHandlers[i]);
-                if (canUpgrade)
-                {
-                    RemoveModule(ModuleHandlers[i]);
-                    handler = CalculateUpgrades(handler);
-                    break;
-                }
-
-                i++;
+                RemoveModule(ModuleHandlers[i]);
+                handler = CalculateUpgrades(handler);
+                break;
             }
 
-            return handler;
+            i++;
         }
+
+        return handler;
     }
 }

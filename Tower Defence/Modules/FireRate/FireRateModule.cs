@@ -8,7 +8,6 @@ using Turrets.Lancer;
 using Turrets.Shooter;
 using Turrets.Smasher;
 
-
 namespace Modules.FireRate;
 
 /// <summary>

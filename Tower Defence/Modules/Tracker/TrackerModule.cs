@@ -7,7 +7,6 @@ using Turrets.Gunner;
 using Turrets.Laser;
 using Turrets.Shooter;
 
-
 namespace Modules.Tracker;
 
 /// <summary>

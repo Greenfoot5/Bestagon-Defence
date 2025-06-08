@@ -2,53 +2,52 @@ using Abstract.Data;
 using Godot;
 using Modules;
 
-namespace UI.Modules
+namespace UI.Modules;
+
+/// <summary>
+/// Updates the module icon with data
+/// </summary>
+public partial class ModuleIcon : Control
 {
     /// <summary>
-    /// Updates the module icon with data
+    /// The Sprite2D to set the icon of
     /// </summary>
-    public partial class ModuleIcon : Control
+    [Export]
+    private TextureRect icon;
+    /// <summary>
+    /// The level text to set as the module's level
+    /// </summary>
+    [Export]
+    private Label text;
+
+    private Module _module;
+        
+    /// <summary>
+    /// Sets the sprite for the module icon
+    /// </summary>
+    /// <param name="sprite"></param>
+    private void SetSprite(Texture2D sprite)
     {
-        /// <summary>
-        /// The Sprite2D to set the icon of
-        /// </summary>
-        [Export]
-        private TextureRect icon;
-        /// <summary>
-        /// The level text to set as the module's level
-        /// </summary>
-        [Export]
-        private Label text;
+        icon.Texture = sprite;
+    }
 
-        private Module _module;
+    /// <summary>
+    /// Sets all values for the module icon
+    /// </summary>
+    /// <param name="handler">The module chain handler to display the icon for</param>
+    public void SetData(ModuleChainHandler handler)
+    {
+        _module = handler.GetModule();
+        SetSprite(handler.GetChain().Icon);
+        text.Text = handler.GetTierDisplay();
+    }
         
-        /// <summary>
-        /// Sets the sprite for the module icon
-        /// </summary>
-        /// <param name="sprite"></param>
-        private void SetSprite(Texture2D sprite)
-        {
-            icon.Texture = sprite;
-        }
-
-        /// <summary>
-        /// Sets all values for the module icon
-        /// </summary>
-        /// <param name="handler">The module chain handler to display the icon for</param>
-        public void SetData(ModuleChainHandler handler)
-        {
-            _module = handler.GetModule();
-            SetSprite(handler.GetChain().Icon);
-            text.Text = handler.GetTierDisplay();
-        }
-        
-        /// <summary>
-        /// Gets the module the icon is for
-        /// </summary>
-        /// <returns>The module the icon represents</returns>
-        public Module GetModule()
-        {
-            return _module;
-        }
+    /// <summary>
+    /// Gets the module the icon is for
+    /// </summary>
+    /// <returns>The module the icon represents</returns>
+    public Module GetModule()
+    {
+        return _module;
     }
 }

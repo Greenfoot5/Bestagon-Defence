@@ -7,7 +7,6 @@ using Turrets.Lancer;
 using Turrets.Laser;
 using Turrets.Shooter;
 
-
 namespace Modules.Sniper;
 
 /// <summary>
