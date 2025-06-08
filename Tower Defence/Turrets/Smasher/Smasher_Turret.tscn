@@ -1,0 +1,33 @@
+[gd_scene load_steps=8 format=3 uid="uid://caolu26tbgyo"]
+
+[ext_resource type="Script" uid="uid://dwn13ff4ypt7u" path="res://Turrets/Smasher/Smasher.cs" id="1_cw8bm"]
+[ext_resource type="Script" uid="uid://blnrq5atpcclw" path="res://Abstract/Attributes/Attribute.cs" id="2_7o62l"]
+[ext_resource type="Script" uid="uid://c80di1i4n41ig" path="res://Abstract/Attributes/Attributes.cs" id="3_txyjc"]
+[ext_resource type="Texture2D" uid="uid://cpgjg5rdh0dvx" path="res://Turrets/Smasher/T_SmasherBase_Dark.png" id="4_e1dd3"]
+[ext_resource type="Texture2D" uid="uid://bt5a1igm4cq5n" path="res://Turrets/Smasher/T_SmasherTurret.png" id="5_lhpa0"]
+
+[sub_resource type="Resource" id="Resource_jmhuk"]
+script = ExtResource("2_7o62l")
+Name = 2
+Base = 100.0
+_modifiers = {}
+Min = 0.0
+Max = inf
+
+[sub_resource type="Resource" id="Resource_hwmo5"]
+script = ExtResource("3_txyjc")
+_attributes = {
+2: SubResource("Resource_jmhuk")
+}
+
+[node name="Smasher" type="Node2D"]
+script = ExtResource("1_cw8bm")
+Stats = SubResource("Resource_hwmo5")
+
+[node name="Base" type="Sprite2D" parent="."]
+texture = ExtResource("4_e1dd3")
+
+[node name="Turret" type="Sprite2D" parent="."]
+texture = ExtResource("5_lhpa0")
+
+[node name="SmasherSmash" type="GPUParticles2D" parent="."]
