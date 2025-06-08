@@ -30,7 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://dvm15nkgk7e1q" path="res://UI/TurretStats/Damage.tres" id="16_rv6h5"]
 [ext_resource type="Script" uid="uid://7lqnwi2j1ptp" path="res://UI/Shop/GenerateShopSelection.cs" id="17_1a54g"]
 [ext_resource type="PackedScene" uid="uid://ccppuoth5cgn0" path="res://UI/Modules/ModuleIcon.tscn" id="18_lv0it"]
-[ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/White_Rectangle.png" id="21_ousqf"]
+[ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/White_Rectangle_x1000.png" id="21_ousqf"]
 [ext_resource type="PackedScene" uid="uid://c71j6e3spysut" path="res://UI/Inventory/AddModule.tscn" id="22_lv0it"]
 [ext_resource type="Texture2D" uid="uid://b4f8iscba8vxk" path="res://Enemies/Bosses/T_Square_Red.png" id="23_4jhpk"]
 

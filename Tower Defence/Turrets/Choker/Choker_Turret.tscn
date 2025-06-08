@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://ds7rijmb4ir08" path="res://Turrets/Choker/ChokerAttributes.tres" id="3_b5b4v"]
 [ext_resource type="Texture2D" uid="uid://bjyssfen4qovd" path="res://Turrets/Choker/T_ChokerBase_Dark.png" id="4_rt7kr"]
 [ext_resource type="Texture2D" uid="uid://dkg7vvoia8bv3" path="res://Turrets/Choker/T_ChokerTurret.png" id="5_cpm3m"]
-[ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/White_Rectangle.png" id="6_sf515"]
+[ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/White_Rectangle_x1000.png" id="6_sf515"]
 [ext_resource type="Shader" uid="uid://bjciwmxveqxrx" path="res://MaterialLibrary/Range/Range.gdshader" id="7_2bbfs"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5wtme"]

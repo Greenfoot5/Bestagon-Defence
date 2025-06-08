@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://c80di1i4n41ig" path="res://Abstract/Attributes/Attributes.cs" id="5_uf6gp"]
 [ext_resource type="Texture2D" uid="uid://bmjp15oecmtur" path="res://Turrets/Hunter/T_HunterBase_Dark.png" id="6_yv6ch"]
 [ext_resource type="Texture2D" uid="uid://cyia2gs2h7ktd" path="res://Turrets/Hunter/T_Hunter.png" id="7_mjoli"]
-[ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/White_Rectangle.png" id="8_pnu4x"]
+[ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/White_Rectangle_x1000.png" id="8_pnu4x"]
 [ext_resource type="Shader" uid="uid://bjciwmxveqxrx" path="res://MaterialLibrary/Range/Range.gdshader" id="10_3sfys"]
 
 [sub_resource type="Resource" id="Resource_nhn4y"]

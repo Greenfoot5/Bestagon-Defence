@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=4 uid="uid://dxeskbdbxmflu"]
+[gd_scene load_steps=97 format=4 uid="uid://dxeskbdbxmflu"]
 
 [ext_resource type="TileSet" uid="uid://cqec5gsl2jrtp" path="res://Levels/_Tiles/PathTiles.tres" id="1_dbecs"]
 [ext_resource type="Shader" uid="uid://ci85qadqdqbak" path="res://MaterialLibrary/Hexagons/Background.gdshader" id="1_h5o5v"]
@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://bm67ol4yudaf4" path="res://Enemies/Pawns/BasicStats.tres" id="7_pse8l"]
 [ext_resource type="Script" uid="uid://bmxuh31stih5j" path="res://Gameplay/Waves/EnemySet.cs" id="8_72yxd"]
 [ext_resource type="Script" uid="uid://cpv5idbjts0wp" path="res://Levels/Maps/Upgrade/WaveTimer.cs" id="8_a02h1"]
+[ext_resource type="Texture2D" uid="uid://pvwicmk1suqa" path="res://_WIP/Art/White_Rectangle_x100.png" id="9_b88u8"]
 [ext_resource type="Resource" uid="uid://dv2epgpot8n1v" path="res://Levels/Maps/Upgrade/WaveData.tres" id="9_h5o5v"]
 [ext_resource type="Script" uid="uid://bgfugrs685jpk" path="res://Gameplay/Waves/Wave.cs" id="9_niq5q"]
 [ext_resource type="PackedScene" uid="uid://n7yy8bgppstk" path="res://Levels/_Tiles/Waypoint.tscn" id="10_4ignw"]
@@ -26,7 +27,7 @@
 [ext_resource type="Resource" uid="uid://bw4ao6bhc5ewm" path="res://Enemies/Bosses/Squared.tres" id="16_4ignw"]
 [ext_resource type="Script" uid="uid://c4c4ep5oo8o2m" path="res://Gameplay/Camera/CameraController.cs" id="22_ml50w"]
 [ext_resource type="Shader" uid="uid://px34nxwos4w0" path="res://MaterialLibrary/Portal.gdshader" id="23_p388s"]
-[ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/White_Rectangle.png" id="24_b88u8"]
+[ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/White_Rectangle_x1000.png" id="24_b88u8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dbecs"]
 shader = ExtResource("1_h5o5v")
@@ -52,6 +53,21 @@ tile_shape = 3
 tile_offset_axis = 1
 tile_size = Vector2i(528, 458)
 sources/1 = SubResource("TileSetScenesCollectionSource_4pwqs")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nt6x0"]
+shader = ExtResource("23_p388s")
+shader_parameter/animate_direction = Vector2(1, 0.5)
+shader_parameter/col_distance_scale = 12.0
+shader_parameter/col_near = Color(1, 0, 0.142984, 1)
+shader_parameter/col_far = Color(0.02, 0.0289999, 0.2, 1)
+shader_parameter/emission_boost = 1.0
+shader_parameter/sphere_radius = 0.1
+shader_parameter/noise_scale = 2.5
+shader_parameter/detail = 5
+shader_parameter/rough = 0.5
+shader_parameter/inflate = 0.1
+shader_parameter/smooth_fac = 0.6
+shader_parameter/step_mult = 0.05
 
 [sub_resource type="Resource" id="Resource_kj4gn"]
 script = ExtResource("8_72yxd")
@@ -472,21 +488,6 @@ enemySets = Array[Object]([SubResource("Resource_i7rii"), SubResource("Resource_
 setDelays = PackedFloat32Array(3, 0.1, 1, 1)
 metadata/_custom_type_script = "uid://bgfugrs685jpk"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nt6x0"]
-shader = ExtResource("23_p388s")
-shader_parameter/animate_direction = Vector2(1, 0.5)
-shader_parameter/col_distance_scale = 12.0
-shader_parameter/col_near = Color(1, 0, 0.142984, 1)
-shader_parameter/col_far = Color(0.02, 0.0289999, 0.2, 1)
-shader_parameter/emission_boost = 1.0
-shader_parameter/sphere_radius = 0.1
-shader_parameter/noise_scale = 2.5
-shader_parameter/detail = 5
-shader_parameter/rough = 0.5
-shader_parameter/inflate = 0.1
-shader_parameter/smooth_fac = 0.6
-shader_parameter/step_mult = 0.05
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p388s"]
 shader = ExtResource("23_p388s")
 shader_parameter/animate_direction = Vector2(1, 1)
@@ -561,16 +562,14 @@ occlusion_enabled = false
 collision_enabled = false
 navigation_enabled = false
 
-[node name="SpawnPoint" type="Node2D" parent="Map" node_paths=PackedStringArray("_countdown")]
+[node name="SpawnPoint" type="Sprite2D" parent="Map" node_paths=PackedStringArray("_countdown")]
+material = SubResource("ShaderMaterial_nt6x0")
 position = Vector2(-405, -225)
+texture = ExtResource("9_b88u8")
+region_rect = Rect2(414, 439, 164, 145)
 script = ExtResource("3_o3dn4")
 _waves = [SubResource("Resource_7j0gl"), SubResource("Resource_tpvnd"), SubResource("Resource_cqc0v"), SubResource("Resource_niq5q"), SubResource("Resource_ogs00"), SubResource("Resource_pk038"), SubResource("Resource_mweev"), SubResource("Resource_7rx82"), SubResource("Resource_o5bsi"), SubResource("Resource_4yoli"), SubResource("Resource_osjoh"), SubResource("Resource_y21q5"), SubResource("Resource_157cj"), SubResource("Resource_b88u8"), SubResource("Resource_s5oa5")]
 _countdown = NodePath("../../CanvasLayer/UI/WaveCountdown")
-
-[node name="Start" type="Sprite2D" parent="Map/SpawnPoint"]
-material = SubResource("ShaderMaterial_nt6x0")
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("24_b88u8")
 
 [node name="Waypoint (1)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
 position = Vector2(76, 42)
