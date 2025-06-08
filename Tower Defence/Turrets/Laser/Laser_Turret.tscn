@@ -135,6 +135,7 @@ collide_with_areas = true
 collide_with_bodies = false
 
 [node name="Aim" type="Line2D" parent="PartToRotate/Range"]
+visible = false
 z_index = 5
 z_as_relative = false
 material = SubResource("ShaderMaterial_ec27n")

@@ -12,12 +12,6 @@ namespace Turrets.Laser
     {
         [Export]
         private Line2D line;
-        // Lasers
-        // <summary>
-        // The line renderer that displays the laser
-        // </summary>
-        // [Export]
-        // private LineRenderer lineRenderer;
         // [Export]
         // <summary>
         // The particle effect that's spawned at the end of the laser's line
@@ -25,9 +19,9 @@ namespace Turrets.Laser
         // private ParticleSystem impactEffect;
 
         /// <summary> How long left until the next attack </summary>
-        public double DurationCountdown;
+        private double _durationCountdown;
         /// <summary> How long left until the next attack </summary>
-        public double CooldownCountdown;
+        private double _cooldownCountdown;
 
         public Laser()
         {
@@ -41,11 +35,11 @@ namespace Turrets.Laser
         /// </summary>
         public override void _PhysicsProcess(double delta)
         {
-            DurationCountdown -= delta;
+            _durationCountdown -= delta;
             
-            if (CooldownCountdown >= 0 && DurationCountdown <= 0)
+            if (_cooldownCountdown >= 0 && _durationCountdown <= 0)
             {
-                CooldownCountdown -= delta;
+                _cooldownCountdown -= delta;
 
                 if (TargetEnemy is not null)
                     LookAtTarget(delta);
@@ -66,12 +60,12 @@ namespace Turrets.Laser
             LookAtTarget(delta);
             
             // One of the two laser timers expired
-            if (DurationCountdown <= 0)
+            if (_durationCountdown <= 0)
             {
                 if (IsLookingAtTarget())
                 {
-                    DurationCountdown = Stats[AttributeType.LaserDuration].Value;
-                    CooldownCountdown = Stats[AttributeType.LaserCooldown].Value;
+                    _durationCountdown = Stats[AttributeType.LaserDuration].Value;
+                    _cooldownCountdown = Stats[AttributeType.LaserCooldown].Value;
                 }
 
                 return;
@@ -83,16 +77,8 @@ namespace Turrets.Laser
         /// <summary>
         /// Fires the laser towards the enemy and deals damage
         /// </summary>
-        // TODO - Animate the laser slightly (make it pulse)
         protected override void Attack(float delta)
         {
-            // Get all enemies the laser hits
-            // var results = new List<Collider2D>();
-            // Physics2D.OverlapCapsule(direction/2 + triangleCentre, new Vector2(lineRenderer.endWidth, range.GetStat()), 
-                // CapsuleDirection2D.Vertical, transform.Rotation.Y, new ContactFilter2D().NoFilter(), results);
-            // List<Enemy> enemies = results.Select(result => result.transform.GetComponent<Enemy>()).ToList();
-            // enemies.RemoveAll(x => x == null);
-
             var enemies = new List<Enemy>();
 
             while (Ray.GetCollider() != null)
