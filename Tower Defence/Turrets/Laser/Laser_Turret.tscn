@@ -18,24 +18,6 @@ _modifiers = {}
 Min = 0.0
 Max = inf
 
-[sub_resource type="Resource" id="Resource_8xsm8"]
-script = ExtResource("2_ec27n")
-Name = 14
-Base = 7.0
-_modifiers = Dictionary[Variant, ExtResource("3_q7n3u")]({})
-Min = inf_neg
-Max = inf
-metadata/_custom_type_script = "uid://blnrq5atpcclw"
-
-[sub_resource type="Resource" id="Resource_ngxo1"]
-script = ExtResource("2_ec27n")
-Name = 15
-Base = 2.3
-_modifiers = Dictionary[Variant, ExtResource("3_q7n3u")]({})
-Min = inf_neg
-Max = inf
-metadata/_custom_type_script = "uid://blnrq5atpcclw"
-
 [sub_resource type="Resource" id="Resource_2gh6t"]
 script = ExtResource("2_ec27n")
 Name = 8
@@ -49,6 +31,24 @@ metadata/_custom_type_script = "uid://blnrq5atpcclw"
 script = ExtResource("2_ec27n")
 Name = 9
 Base = 1.0
+_modifiers = Dictionary[Variant, ExtResource("3_q7n3u")]({})
+Min = inf_neg
+Max = inf
+metadata/_custom_type_script = "uid://blnrq5atpcclw"
+
+[sub_resource type="Resource" id="Resource_8xsm8"]
+script = ExtResource("2_ec27n")
+Name = 14
+Base = 7.0
+_modifiers = Dictionary[Variant, ExtResource("3_q7n3u")]({})
+Min = inf_neg
+Max = inf
+metadata/_custom_type_script = "uid://blnrq5atpcclw"
+
+[sub_resource type="Resource" id="Resource_ngxo1"]
+script = ExtResource("2_ec27n")
+Name = 15
+Base = 2.3
 _modifiers = Dictionary[Variant, ExtResource("3_q7n3u")]({})
 Min = inf_neg
 Max = inf
@@ -97,10 +97,9 @@ shader_parameter/noise_scale = Vector2(1, 1)
 offsets = PackedFloat32Array(0.00342466, 1)
 colors = PackedColorArray(0.129412, 0.756863, 0.843137, 1, 0.129412, 0.756863, 0.843137, 0.501961)
 
-[node name="Laser_Turret" type="Node2D" node_paths=PackedStringArray("line", "FirePoint", "Ray", "PartToRotate", "RangeDisplay", "Range")]
+[node name="Laser_Turret" type="Node2D" node_paths=PackedStringArray("line", "Ray", "PartToRotate", "RangeDisplay", "Range")]
 script = ExtResource("1_y5wnw")
 line = NodePath("PartToRotate/Range/Aim")
-FirePoint = NodePath("")
 Ray = NodePath("PartToRotate/Range/RayCast2D")
 PartToRotate = NodePath("PartToRotate")
 RangeDisplay = NodePath("PartToRotate/Range/Range")

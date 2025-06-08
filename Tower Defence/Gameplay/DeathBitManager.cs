@@ -99,7 +99,7 @@ namespace Gameplay
             {
                 foreach (DeathEnergy t in Particles)
                 {
-                    if ((mouseMotion.Position.DistanceSquaredTo(t.Position)) < CatchRadius * CatchRadius)
+                    if ((GetGlobalMousePosition().DistanceSquaredTo(t.Position)) < CatchRadius * CatchRadius)
                     {
                         GameStats.Energy += t.Value;
                         t.Collect();
