@@ -1,86 +1,79 @@
 ﻿using Abstract.Attributes;
+using Enemies;
 using Godot;
 
-namespace Turrets.Smasher
+namespace Turrets.Smasher;
+
+/// <summary>
+/// Extends Turret to add smashing functionality
+/// </summary>
+public partial class Smasher : Turret
 {
     /// <summary>
-    /// Extends Turret to add smashing functionality
+    /// The effect to play when the smasher attacks
     /// </summary>
-    // TODO - Find and hit targets
-    public partial class Smasher : Turret
+    [Export]
+    private GpuParticles2D smashEffect;
+
+    /// <summary>
+    /// Check for new enemies in radius and attacks if there are.
+    /// </summary>
+    public override void _PhysicsProcess(double delta)
     {
-        /// <summary>
-        /// The effect to play when the smasher attacks
-        /// </summary>
-        [Export]
-        private GpuParticles2D smashEffect;
+        base._PhysicsProcess(delta);
 
-        /// <summary>
-        /// Check for new enemies in radius and attacks if there are.
-        /// </summary>
-        public override void _Process(double delta)
+        if (!Range.HasOverlappingAreas())
         {
-            base._Process(delta);
-            
-            // Don't do anything if no enemy is in range
-            // Collider2D[] results = Physics2D.OverlapCircleAll(Position, range.GetStat());
-            // if (!results.Any(x => 
-            //         x != null && x.CompareTag(enemyTag)))
-            // {
-            //     fireCountdown -= delta;
-            //     return;
-            // }
-            
-            // If our attack is off cooldown
-            if (FireCountdown <= 0 && Stats[AttributeType.FireRate].Value != 0)
-            {
-                FireCountdown = 1 / Stats[AttributeType.FireRate].Value;
-                Attack((float) delta);
-            }
-            
             FireCountdown -= delta;
+            return;
         }
+            
+        // If our attack is off cooldown
+        if (FireCountdown <= 0 && Stats[AttributeType.FireRate].Value != 0)
+        {
+            FireCountdown = 1 / Stats[AttributeType.FireRate].Value;
+            Attack((float) delta);
+        }
+            
+        FireCountdown -= delta;
+    }
 
-        protected override void UpdateRange(Attribute attribute)
-        {
-            base.UpdateRange(attribute);
+    protected override void UpdateRange(Attribute attribute)
+    {
+        base.UpdateRange(attribute);
             
-            // Update the smash effect size
-            float scale = Stats[AttributeType.Range].Value * 0.05f;
-            ((ParticleProcessMaterial)smashEffect.ProcessMaterial).Scale = new Vector2(scale, scale);
-        }
+        // Update the smash effect size
+        float scale = Stats[AttributeType.Range].Value * 0.05f;
+        ((ParticleProcessMaterial)smashEffect.ProcessMaterial).Scale = new Vector2(scale, scale);
+    }
         
-        /// <summary>
-        /// Deals damage to all enemies in range
-        /// </summary>
-        protected override void Attack(float delta)
+    /// <summary>
+    /// Deals damage to all enemies in range
+    /// </summary>
+    protected override void Attack(float delta)
+    {
+        smashEffect.Emitting = true;
+            
+        base.Attack(this);
+            
+        foreach (Area2D area in Range.GetOverlappingAreas())
         {
-            smashEffect.Emitting = true;
-            
-            base.Attack(this);
-            
-            // Gets all the enemies in the AoE and calls Damage on them
-            // ReSharper disable once Unity.PreferNonAllocApi
-            // Collider2D[] results = Physics2D.OverlapCircleAll(Position, range.GetStat());
-            
-            // foreach (Collider2D collider2d in results)
-            // {
-            //     if (!collider2d.CompareTag(enemyTag)) continue;
-            //     
-            //     var enemy = collider2d.GetComponent<Enemy>();
-            //     
-            //     // Take damage depending on how close the enemy is to the turret's centre
-            //     Vector2 position = Position;
-            //     float distance = 1 - (position - collider2d.ClosestPoint(position)).sqrMagnitude /
-            //         (range.GetTrueStat() * range.GetTrueStat()) + 0.25f;
-            //     float damagePercentage = Mathf.Clamp(distance, 0.2f, 1f);
-            //     
-            //     // Only deal damage if it will actually damage the enemy
-            //     if (!(damagePercentage > 0)) continue;
-            //     
-            //     Hit(enemy, this);
-            //     enemy.TakeDamage(damage.GetTrueStat() * damagePercentage, this);
-            // }
+            if (area is not Enemy enemy) return;
+                
+            // Take damage depending on how close the enemy is to the turret's centre
+            float distance = GlobalPosition.DistanceSquaredTo(area.GlobalPosition);
+            // Magic scale
+            distance /= 20 * 20;
+            distance /= Stats[AttributeType.Range].Value * Stats[AttributeType.Range].Value;
+
+            float damagePercentage = (1 - distance) + 0.5f;
+                
+            // We want to deal *some* damage to every enemy, and not too much
+            damagePercentage = Mathf.Clamp(damagePercentage, 0.2f, 1f);
+                     
+            Hit(enemy, this);
+            GD.Print(Stats[AttributeType.Damage].Value * damagePercentage);
+            enemy.TakeDamage(Stats[AttributeType.Damage].Value * damagePercentage, this);
         }
     }
 }

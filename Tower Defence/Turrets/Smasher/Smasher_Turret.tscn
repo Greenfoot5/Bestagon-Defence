@@ -13,7 +13,7 @@
 [sub_resource type="Resource" id="Resource_jmhuk"]
 script = ExtResource("2_tcgds")
 Name = 2
-Base = 105.0
+Base = 145.0
 _modifiers = {}
 Min = 0.0
 Max = inf
