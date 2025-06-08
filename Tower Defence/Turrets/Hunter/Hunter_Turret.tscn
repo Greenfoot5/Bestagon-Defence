@@ -1,51 +1,51 @@
 [gd_scene load_steps=20 format=3 uid="uid://dpuxc7mfhytlw"]
 
-[ext_resource type="Script" uid="uid://dx57iyb5nvgwg" path="res://Turrets/Hunter/Hunter.cs" id="1_ts1m3"]
-[ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/AttributeModifier.cs" id="3_x0av5"]
-[ext_resource type="Script" uid="uid://blnrq5atpcclw" path="res://Abstract/Attributes/Attribute.cs" id="4_whm3w"]
-[ext_resource type="Script" uid="uid://c80di1i4n41ig" path="res://Abstract/Attributes/Attributes.cs" id="5_uf6gp"]
-[ext_resource type="Texture2D" uid="uid://bmjp15oecmtur" path="res://Turrets/Hunter/T_HunterBase_Dark.png" id="6_yv6ch"]
-[ext_resource type="Texture2D" uid="uid://cyia2gs2h7ktd" path="res://Turrets/Hunter/T_Hunter.png" id="7_mjoli"]
-[ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/White_Rectangle_x1000.png" id="8_pnu4x"]
-[ext_resource type="Shader" uid="uid://bjciwmxveqxrx" path="res://MaterialLibrary/Range/Range.gdshader" id="10_3sfys"]
+[ext_resource type="Script" uid="uid://dx57iyb5nvgwg" path="res://Turrets/Hunter/Hunter.cs" id="1_iwr4r"]
+[ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/AttributeModifier.cs" id="2_nye1k"]
+[ext_resource type="Script" uid="uid://blnrq5atpcclw" path="res://Abstract/Attributes/Attribute.cs" id="3_dhfuu"]
+[ext_resource type="Script" uid="uid://c80di1i4n41ig" path="res://Abstract/Attributes/Attributes.cs" id="4_gcote"]
+[ext_resource type="Texture2D" uid="uid://bmjp15oecmtur" path="res://Turrets/Hunter/T_HunterBase_Dark.png" id="5_j5jru"]
+[ext_resource type="Texture2D" uid="uid://cyia2gs2h7ktd" path="res://Turrets/Hunter/T_Hunter.png" id="6_7if64"]
+[ext_resource type="Shader" uid="uid://bjciwmxveqxrx" path="res://MaterialLibrary/Range/Range.gdshader" id="7_7src7"]
+[ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/White_Rectangle_x1000.png" id="8_dy3ac"]
 
 [sub_resource type="Resource" id="Resource_nhn4y"]
-script = ExtResource("4_whm3w")
+script = ExtResource("3_dhfuu")
 Name = 2
 Base = 2000.0
-_modifiers = Dictionary[Variant, ExtResource("3_x0av5")]({})
+_modifiers = Dictionary[Variant, ExtResource("2_nye1k")]({})
 Min = 0.0
 Max = inf
 
 [sub_resource type="Resource" id="Resource_yv6ch"]
-script = ExtResource("4_whm3w")
+script = ExtResource("3_dhfuu")
 Name = 3
 Base = 0.4
-_modifiers = Dictionary[Variant, ExtResource("3_x0av5")]({})
+_modifiers = Dictionary[Variant, ExtResource("2_nye1k")]({})
 Min = inf_neg
 Max = inf
 metadata/_custom_type_script = "uid://blnrq5atpcclw"
 
 [sub_resource type="Resource" id="Resource_xwmrl"]
-script = ExtResource("4_whm3w")
+script = ExtResource("3_dhfuu")
 Name = 14
 Base = 20.0
-_modifiers = Dictionary[Variant, ExtResource("3_x0av5")]({})
+_modifiers = Dictionary[Variant, ExtResource("2_nye1k")]({})
 Min = inf_neg
 Max = inf
 metadata/_custom_type_script = "uid://blnrq5atpcclw"
 
 [sub_resource type="Resource" id="Resource_mjoli"]
-script = ExtResource("4_whm3w")
+script = ExtResource("3_dhfuu")
 Name = 15
 Base = 2.0
-_modifiers = Dictionary[Variant, ExtResource("3_x0av5")]({})
+_modifiers = Dictionary[Variant, ExtResource("2_nye1k")]({})
 Min = inf_neg
 Max = inf
 metadata/_custom_type_script = "uid://blnrq5atpcclw"
 
 [sub_resource type="Resource" id="Resource_ts1m3"]
-script = ExtResource("5_uf6gp")
+script = ExtResource("4_gcote")
 _attributes = {
 2: SubResource("Resource_nhn4y"),
 3: SubResource("Resource_yv6ch"),
@@ -116,14 +116,14 @@ colors = PackedColorArray(0.467, 0.376, 0.651, 1, 0.298, 0.247, 0.451, 0.5)
 radius = 600.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ldkt0"]
-shader = ExtResource("10_3sfys")
+shader = ExtResource("7_7src7")
 shader_parameter/circle_color = Color(1, 1, 1, 0)
 shader_parameter/glow_color = Color(1, 1, 1, 1)
 shader_parameter/glow_radius = 2.0
 shader_parameter/glow_size = 1.6
 
 [node name="Hunter" type="Node2D" node_paths=PackedStringArray("scopeLine", "shotLine", "shotAnimator", "FirePoint", "Ray", "PartToRotate", "RangeDisplay", "Range")]
-script = ExtResource("1_ts1m3")
+script = ExtResource("1_iwr4r")
 scopeLine = NodePath("PartToRotate/Turret/Fire Point/Aim")
 shotLine = NodePath("Shot")
 shotAnimator = NodePath("Shot/AnimationPlayer")
@@ -136,7 +136,7 @@ Range = NodePath("PartToRotate/Range")
 Stats = SubResource("Resource_ts1m3")
 
 [node name="Base" type="Sprite2D" parent="."]
-texture = ExtResource("6_yv6ch")
+texture = ExtResource("5_j5jru")
 
 [node name="Shot" type="Line2D" parent="."]
 self_modulate = Color(1.5, 1.5, 1.5, 1)
@@ -158,7 +158,7 @@ rotation = -1.5708
 [node name="Turret" type="Sprite2D" parent="PartToRotate"]
 z_index = 10
 rotation = 1.5708
-texture = ExtResource("7_mjoli")
+texture = ExtResource("6_7if64")
 
 [node name="Fire Point" type="Node2D" parent="PartToRotate/Turret"]
 position = Vector2(0, -100)
@@ -185,7 +185,7 @@ shape = SubResource("CircleShape2D_nhn4y")
 self_modulate = Color(0.360784, 0.321569, 0.556863, 1)
 material = SubResource("ShaderMaterial_ldkt0")
 scale = Vector2(1.2, 1.2)
-texture = ExtResource("8_pnu4x")
+texture = ExtResource("8_dy3ac")
 
 [node name="RayCast2D" type="RayCast2D" parent="PartToRotate/Range"]
 target_position = Vector2(600, 0)

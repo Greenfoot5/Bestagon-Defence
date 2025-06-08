@@ -11,13 +11,9 @@ namespace Turrets.Smasher
     {
         /// <summary>
         /// The effect to play when the smasher attacks
-        // </summary>
-        // TODO - Smasher hit effect
-        // [Export]
-        /// <summary>
-        /// The effect to play when the smasher attacks")]
-        // [Export]
-        // private VisualEffect smashEffect;
+        /// </summary>
+        [Export]
+        private GpuParticles2D smashEffect;
 
         /// <summary>
         /// Check for new enemies in radius and attacks if there are.
@@ -47,13 +43,11 @@ namespace Turrets.Smasher
 
         protected override void UpdateRange(Attribute attribute)
         {
-            // Update the effect radius
-            // smashEffect.SetFloat("size", range.GetStat() * (7f/3f));
-            // Update the range shader's size
-            Vector2 localScale = Scale;
-            RangeDisplay.Scale = new Vector2(
-                Stats[AttributeType.Range].Value / localScale.X * 2,
-                Stats[AttributeType.Range].Value / localScale.Y * 2);
+            base.UpdateRange(attribute);
+            
+            // Update the smash effect size
+            float scale = Stats[AttributeType.Range].Value * 0.05f;
+            ((ParticleProcessMaterial)smashEffect.ProcessMaterial).Scale = new Vector2(scale, scale);
         }
         
         /// <summary>
@@ -61,7 +55,7 @@ namespace Turrets.Smasher
         /// </summary>
         protected override void Attack(float delta)
         {
-            // smashEffect.Play();
+            smashEffect.Emitting = true;
             
             base.Attack(this);
             
