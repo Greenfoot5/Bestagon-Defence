@@ -105,6 +105,13 @@ _data = {
 &"Shot": SubResource("Animation_nhn4y")
 }
 
+[sub_resource type="Curve" id="Curve_k1h6c"]
+_data = [Vector2(0, 0.01), 0.0, 0.99, 0, 1, Vector2(1, 1), 0.99, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_nhn4y"]
+colors = PackedColorArray(0.467, 0.376, 0.651, 1, 0.298, 0.247, 0.451, 0.5)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_nhn4y"]
 radius = 600.0
 
@@ -114,13 +121,6 @@ shader_parameter/circle_color = Color(1, 1, 1, 0)
 shader_parameter/glow_color = Color(1, 1, 1, 1)
 shader_parameter/glow_radius = 2.0
 shader_parameter/glow_size = 1.6
-
-[sub_resource type="Curve" id="Curve_k1h6c"]
-_data = [Vector2(0, 0.01), 0.0, 0.99, 0, 1, Vector2(1, 1), 0.99, 0.0, 1, 0]
-point_count = 2
-
-[sub_resource type="Gradient" id="Gradient_nhn4y"]
-colors = PackedColorArray(0.467, 0.376, 0.651, 1, 0.298, 0.247, 0.451, 0.5)
 
 [node name="Hunter" type="Node2D" node_paths=PackedStringArray("scopeLine", "shotLine", "shotAnimator", "FirePoint", "Ray", "PartToRotate", "RangeDisplay", "Range")]
 script = ExtResource("1_ts1m3")
@@ -155,6 +155,22 @@ libraries = {
 [node name="PartToRotate" type="Node2D" parent="."]
 rotation = -1.5708
 
+[node name="Turret" type="Sprite2D" parent="PartToRotate"]
+z_index = 10
+rotation = 1.5708
+texture = ExtResource("7_mjoli")
+
+[node name="Fire Point" type="Node2D" parent="PartToRotate/Turret"]
+position = Vector2(0, -100)
+
+[node name="Aim" type="Line2D" parent="PartToRotate/Turret/Fire Point"]
+z_index = 5
+z_as_relative = false
+width = 300.0
+width_curve = SubResource("Curve_k1h6c")
+gradient = SubResource("Gradient_nhn4y")
+texture_mode = 2
+
 [node name="Range" type="Area2D" parent="PartToRotate"]
 scale = Vector2(6, 6)
 collision_layer = 0
@@ -176,19 +192,3 @@ target_position = Vector2(600, 0)
 collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
-
-[node name="Turret" type="Sprite2D" parent="PartToRotate"]
-z_index = 10
-rotation = 1.5708
-texture = ExtResource("7_mjoli")
-
-[node name="Fire Point" type="Node2D" parent="PartToRotate/Turret"]
-position = Vector2(0, -100)
-
-[node name="Aim" type="Line2D" parent="PartToRotate/Turret/Fire Point"]
-z_index = 5
-z_as_relative = false
-width = 300.0
-width_curve = SubResource("Curve_k1h6c")
-gradient = SubResource("Gradient_nhn4y")
-texture_mode = 2

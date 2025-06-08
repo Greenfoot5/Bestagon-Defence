@@ -106,7 +106,6 @@ texture = ExtResource("1_jo57k")
 rotation = -1.5708
 
 [node name="Turret" type="Sprite2D" parent="PartToRotate"]
-position = Vector2(0.5, -2)
 rotation = 1.5708
 texture = ExtResource("2_0v5et")
 
@@ -120,7 +119,6 @@ one_shot = true
 process_material = SubResource("ParticleProcessMaterial_gs86s")
 
 [node name="Range" type="Area2D" parent="PartToRotate"]
-position = Vector2(0.5, -2)
 scale = Vector2(6, 6)
 collision_layer = 0
 collision_mask = 2

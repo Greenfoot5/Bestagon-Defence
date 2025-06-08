@@ -81,14 +81,12 @@ Range = NodePath("PartToRotate/Range")
 Stats = SubResource("Resource_dpruv")
 
 [node name="Base" type="Sprite2D" parent="."]
-position = Vector2(0.5, -2)
 texture = ExtResource("7_00hsh")
 
 [node name="PartToRotate" type="Node2D" parent="."]
 rotation = -1.5708
 
 [node name="Turret" type="Sprite2D" parent="PartToRotate"]
-position = Vector2(0.5, -2)
 rotation = 1.5708
 texture = ExtResource("8_t32vb")
 
@@ -102,7 +100,6 @@ one_shot = true
 process_material = SubResource("ParticleProcessMaterial_wl632")
 
 [node name="Range" type="Area2D" parent="PartToRotate"]
-position = Vector2(0.5, -2)
 scale = Vector2(6, 6)
 collision_layer = 0
 collision_mask = 2

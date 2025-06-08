@@ -10,23 +10,6 @@
 [ext_resource type="Shader" uid="uid://bjciwmxveqxrx" path="res://MaterialLibrary/Range/Range.gdshader" id="4_3m18b"]
 [ext_resource type="Script" uid="uid://c80di1i4n41ig" path="res://Abstract/Attributes/Attributes.cs" id="4_ecy8x"]
 
-[sub_resource type="Resource" id="Resource_g2s4s"]
-script = ExtResource("2_4bem7")
-Name = 2
-Base = 160.0
-_modifiers = Dictionary[Variant, ExtResource("3_b8h1m")]({})
-Min = 0.0
-Max = inf
-
-[sub_resource type="Resource" id="Resource_4bem7"]
-script = ExtResource("2_4bem7")
-Name = 14
-Base = 5.0
-_modifiers = Dictionary[Variant, ExtResource("3_b8h1m")]({})
-Min = inf_neg
-Max = inf
-metadata/_custom_type_script = "uid://blnrq5atpcclw"
-
 [sub_resource type="Resource" id="Resource_b8h1m"]
 script = ExtResource("2_4bem7")
 Name = 1
@@ -36,10 +19,27 @@ Min = inf_neg
 Max = inf
 metadata/_custom_type_script = "uid://blnrq5atpcclw"
 
+[sub_resource type="Resource" id="Resource_g2s4s"]
+script = ExtResource("2_4bem7")
+Name = 2
+Base = 160.0
+_modifiers = Dictionary[Variant, ExtResource("3_b8h1m")]({})
+Min = 0.0
+Max = inf
+
 [sub_resource type="Resource" id="Resource_ecy8x"]
 script = ExtResource("2_4bem7")
 Name = 3
 Base = 0.35
+_modifiers = Dictionary[Variant, ExtResource("3_b8h1m")]({})
+Min = inf_neg
+Max = inf
+metadata/_custom_type_script = "uid://blnrq5atpcclw"
+
+[sub_resource type="Resource" id="Resource_4bem7"]
+script = ExtResource("2_4bem7")
+Name = 14
+Base = 5.0
 _modifiers = Dictionary[Variant, ExtResource("3_b8h1m")]({})
 Min = inf_neg
 Max = inf
@@ -80,14 +80,12 @@ Range = NodePath("PartToRotate/Range")
 Stats = SubResource("Resource_j350u")
 
 [node name="Base" type="Sprite2D" parent="."]
-position = Vector2(0.5, -2)
 texture = ExtResource("1_uv4cp")
 
 [node name="PartToRotate" type="Node2D" parent="."]
 rotation = -1.5708
 
 [node name="Turret" type="Sprite2D" parent="PartToRotate"]
-position = Vector2(0.5, -2)
 rotation = 1.5708
 texture = ExtResource("2_qdb7w")
 
@@ -101,7 +99,6 @@ one_shot = true
 process_material = SubResource("ParticleProcessMaterial_va0kf")
 
 [node name="Range" type="Area2D" parent="PartToRotate"]
-position = Vector2(0.5, -2)
 scale = Vector2(6, 6)
 collision_layer = 0
 collision_mask = 2
