@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
-using Abstract.Data;
-using Abstract.Saving;
+using BestagonDefense.Abstract.Data;
+using BestagonDefense.Abstract.Drawables;
+using BestagonDefense.Abstract.Saving;
+using BestagonDefense.Levels._Tiles;
+using BestagonDefense.Turrets;
+using BestagonDefense.UI.Shop;
 using Godot;
-using Levels._Nodes;
-using Turrets;
-using UI.Shop;
 
-namespace Gameplay;
+namespace BestagonDefense.Gameplay;
 
 /// <summary>
 /// Manages the current game's state

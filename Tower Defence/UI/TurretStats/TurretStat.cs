@@ -1,6 +1,6 @@
 using Godot;
 
-namespace UI.TurretStats;
+namespace BestagonDefense.UI.TurretStats;
 
 /// <summary>
 /// Displays a single stat on a turret's shop card

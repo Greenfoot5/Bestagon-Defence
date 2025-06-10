@@ -1,13 +1,13 @@
-using Abstract.Attributes;
-using Abstract.Data;
-using Gameplay;
+using BestagonDefense.Abstract.Attributes;
+using BestagonDefense.Abstract.Data;
+using BestagonDefense.Gameplay;
+using BestagonDefense.Turrets;
+using BestagonDefense.UI.Glyphs;
+using BestagonDefense.UI.Modules;
+using BestagonDefense.UI.TurretStats;
 using Godot;
-using Turrets;
-using UI.Glyphs;
-using UI.Modules;
-using UI.TurretStats;
 
-namespace UI.Inventory;
+namespace BestagonDefense.UI.Inventory;
 
 public partial class TurretInventoryItem : Control
 {

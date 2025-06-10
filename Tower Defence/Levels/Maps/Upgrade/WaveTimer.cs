@@ -1,8 +1,8 @@
-using Gameplay;
-using Gameplay.Waves;
+using BestagonDefense.Gameplay;
+using BestagonDefense.Gameplay.Waves;
 using Godot;
 
-namespace Levels.Maps.Upgrade;
+namespace BestagonDefense.Levels.Maps.Upgrade;
 
 public partial class WaveTimer : Timer
 {

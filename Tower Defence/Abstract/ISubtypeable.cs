@@ -1,6 +1,6 @@
 using System;
 
-namespace Abstract;
+namespace BestagonDefense.Abstract;
 
 public interface ISubtypeable
 {

@@ -1,9 +1,9 @@
-using Abstract;
-using Abstract.Attributes;
-using Enemies;
+using BestagonDefense.Abstract;
+using BestagonDefense.Abstract.Attributes;
+using BestagonDefense.Enemies;
 using Godot;
 
-namespace Modules.Slow;
+namespace BestagonDefense.Modules.Slow;
 
 [GlobalClass]
 public partial class SlowEnemyEffect : EnemyEffect

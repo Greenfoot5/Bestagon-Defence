@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
-using Abstract.Attributes;
-using Abstract.Data;
-using Enemies;
+using BestagonDefense.Abstract.Attributes;
+using BestagonDefense.Abstract.Data;
+using BestagonDefense.Enemies;
 using Godot;
 
-namespace Turrets;
+namespace BestagonDefense.Turrets;
 
 public abstract partial class Damager : PlacedObject
 {

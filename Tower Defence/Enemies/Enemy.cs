@@ -1,8 +1,8 @@
-﻿using Abstract.Attributes;
-using Gameplay;
+﻿using BestagonDefense.Abstract.Attributes;
+using BestagonDefense.Gameplay;
 using Godot;
 
-namespace Enemies;
+namespace BestagonDefense.Enemies;
 
 /// <summary>
 /// The base skeleton for the enemy, holding its stats and abilities

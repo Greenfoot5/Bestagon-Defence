@@ -1,19 +1,18 @@
 using System;
 using System.Collections.Generic;
+using BestagonDefense.Turrets;
+using BestagonDefense.Turrets.Choker;
+using BestagonDefense.Turrets.Gunner;
+using BestagonDefense.Turrets.Hunter;
+using BestagonDefense.Turrets.Lancer;
+using BestagonDefense.Turrets.Laser;
+using BestagonDefense.Turrets.Seeker;
+using BestagonDefense.Turrets.Smasher;
+using BestagonDefense.UI.Glyphs;
 using Godot;
 using Godot.Collections;
-using Turrets;
-using Turrets.Choker;
-using Turrets.Gunner;
-using Turrets.Hunter;
-using Turrets.Lancer;
-using Turrets.Laser;
-using Turrets.Seeker;
-using Turrets.Shooter;
-using Turrets.Smasher;
-using UI.Glyphs;
 
-namespace Abstract;
+namespace BestagonDefense.Abstract;
 
 /// <summary>
 /// A class to reference between turret types and turret glyphs

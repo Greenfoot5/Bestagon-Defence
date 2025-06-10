@@ -1,9 +1,9 @@
 using System;
-using Abstract.Attributes;
+using BestagonDefense.Abstract.Attributes;
+using BestagonDefense.Turrets;
 using Godot;
-using Turrets;
 
-namespace Modules.Damage;
+namespace BestagonDefense.Modules.Damage;
 
 /// <summary>
 /// Extends the Module class to create a Damage upgrade

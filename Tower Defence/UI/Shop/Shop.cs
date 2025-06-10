@@ -1,14 +1,14 @@
 ﻿using System;
-using Abstract;
-using Abstract.Data;
-using Gameplay;
+using BestagonDefense.Abstract;
+using BestagonDefense.Abstract.Data;
+using BestagonDefense.Gameplay;
+using BestagonDefense.Levels._Tiles;
+using BestagonDefense.Levels.Maps;
+using BestagonDefense.Turrets;
+using BestagonDefense.UI.Inventory;
 using Godot;
-using Levels._Nodes;
-using Levels.Maps;
-using Turrets;
-using UI.Inventory;
 
-namespace UI.Shop;
+namespace BestagonDefense.UI.Shop;
 
 /// <summary>
 /// Handles the shop and inventory of the player

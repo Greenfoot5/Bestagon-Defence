@@ -1,8 +1,8 @@
-using Abstract.Data;
+using BestagonDefense.Abstract.Data;
+using BestagonDefense.Modules;
 using Godot;
-using Modules;
 
-namespace UI.Modules;
+namespace BestagonDefense.UI.Modules;
 
 /// <summary>
 /// Updates the module icon with data

@@ -1,6 +1,6 @@
 using Godot;
 
-namespace Abstract.Attributes;
+namespace BestagonDefense.Abstract.Attributes;
 
 /// <summary>
 /// A value modifier to an attribute

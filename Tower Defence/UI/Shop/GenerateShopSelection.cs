@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Abstract.Data;
-using Gameplay;
+using BestagonDefense.Abstract.Data;
+using BestagonDefense.Gameplay;
+using BestagonDefense.Levels.Maps;
+using BestagonDefense.Turrets;
 using Godot;
-using Levels.Maps;
-using Turrets;
 
-namespace UI.Shop;
+namespace BestagonDefense.UI.Shop;
 
 public enum HiddenMode
 {

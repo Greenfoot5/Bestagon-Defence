@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using Abstract;
-using Abstract.Attributes;
+using BestagonDefense.Abstract;
+using BestagonDefense.Abstract.Attributes;
 using Godot;
 
-namespace Enemies;
+namespace BestagonDefense.Enemies;
 
 [GlobalClass]
 public partial class EnemyStats : Resource

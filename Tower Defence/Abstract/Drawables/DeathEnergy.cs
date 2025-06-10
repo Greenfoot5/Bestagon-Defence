@@ -1,6 +1,6 @@
 using Godot;
 
-namespace Gameplay;
+namespace BestagonDefense.Abstract.Drawables;
 
 public class DeathEnergy : Drawable
 {

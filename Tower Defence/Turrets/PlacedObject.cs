@@ -1,6 +1,6 @@
 using Godot;
 
-namespace Turrets;
+namespace BestagonDefense.Turrets;
 
 public abstract partial class PlacedObject : Node2D
 {

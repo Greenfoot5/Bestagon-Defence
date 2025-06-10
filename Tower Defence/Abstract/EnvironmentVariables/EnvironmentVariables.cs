@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Godot;
 
-namespace Abstract.EnvironmentVariables;
+namespace BestagonDefense.Abstract.EnvironmentVariables;
 
 /// <summary>
 /// An SO that allows us to easily store and reference some environment variables

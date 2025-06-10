@@ -1,11 +1,11 @@
-﻿using Abstract.Data;
-using Gameplay;
+﻿using BestagonDefense.Abstract.Data;
+using BestagonDefense.Gameplay;
+using BestagonDefense.Turrets;
+using BestagonDefense.UI;
+using BestagonDefense.UI.Modules;
 using Godot;
-using Turrets;
-using UI;
-using UI.Modules;
 
-namespace Levels._Nodes;
+namespace BestagonDefense.Levels._Tiles;
 
 /// <summary>
 /// Manages all data and actions for a single node on a level map

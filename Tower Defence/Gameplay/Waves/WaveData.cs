@@ -1,6 +1,6 @@
 using Godot;
 
-namespace Gameplay.Waves;
+namespace BestagonDefense.Gameplay.Waves;
 
 [GlobalClass]
 public partial class WaveData : Resource

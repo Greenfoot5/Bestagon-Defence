@@ -1,12 +1,12 @@
 using System.Threading;
-using Abstract.Attributes;
-using Abstract.Saving;
-using Enemies;
+using BestagonDefense.Abstract.Attributes;
+using BestagonDefense.Abstract.Saving;
+using BestagonDefense.Enemies;
+using BestagonDefense.Levels.Maps.Upgrade;
 using Godot;
-using Levels.Maps.Upgrade;
 using Timer = Godot.Timer;
 
-namespace Gameplay.Waves;
+namespace BestagonDefense.Gameplay.Waves;
 
 /// <summary>
 /// Handles the current wave and spawning of enemies

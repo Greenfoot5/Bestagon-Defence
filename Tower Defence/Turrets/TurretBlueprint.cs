@@ -1,12 +1,11 @@
-﻿
-using System;
-using Abstract;
-using Abstract.Data;
+﻿using System;
+using BestagonDefense.Abstract;
+using BestagonDefense.Abstract.Data;
+using BestagonDefense.UI.Glyphs;
 using Godot;
 using Godot.Collections;
-using UI.Glyphs;
 
-namespace Turrets;
+namespace BestagonDefense.Turrets;
 
 /// <summary>
 /// Allows us to save turret data in an so without creating a prefab per turret

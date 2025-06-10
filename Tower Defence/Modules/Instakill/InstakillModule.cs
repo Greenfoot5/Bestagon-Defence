@@ -1,14 +1,13 @@
 using System;
-using Abstract.Attributes;
-using Enemies;
+using BestagonDefense.Abstract.Attributes;
+using BestagonDefense.Enemies;
+using BestagonDefense.Turrets;
+using BestagonDefense.Turrets.Gunner;
+using BestagonDefense.Turrets.Lancer;
+using BestagonDefense.Turrets.Smasher;
 using Godot;
-using Turrets;
-using Turrets.Gunner;
-using Turrets.Lancer;
-using Turrets.Shooter;
-using Turrets.Smasher;
 
-namespace Modules.Instakill;
+namespace BestagonDefense.Modules.Instakill;
 
 /// <summary>
 /// Chance to instakill an enemy

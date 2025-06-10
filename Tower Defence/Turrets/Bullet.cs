@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Abstract.Attributes;
-using Enemies;
+using BestagonDefense.Abstract.Attributes;
+using BestagonDefense.Enemies;
 using Godot;
 
-namespace Turrets;
+namespace BestagonDefense.Turrets;
 
 /// <summary>
 /// The bullet shot from a turret

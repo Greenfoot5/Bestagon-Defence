@@ -1,9 +1,9 @@
 using System;
+using BestagonDefense.Modules;
+using BestagonDefense.Turrets;
 using Godot;
-using Modules;
-using Turrets;
 
-namespace Abstract.Data;
+namespace BestagonDefense.Abstract.Data;
 
 /// <summary>
 /// A handle between a ModuleChain (Resource) and a GodotObject

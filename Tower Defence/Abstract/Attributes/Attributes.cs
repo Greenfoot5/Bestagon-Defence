@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Godot;
 
-namespace Abstract.Attributes;
+namespace BestagonDefense.Abstract.Attributes;
 
 [GlobalClass]
 public partial class Attributes : Resource

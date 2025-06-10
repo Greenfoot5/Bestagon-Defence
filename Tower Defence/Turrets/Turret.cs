@@ -1,8 +1,8 @@
-using Abstract.Attributes;
-using Abstract.Data;
+using BestagonDefense.Abstract.Attributes;
+using BestagonDefense.Abstract.Data;
 using Godot;
 
-namespace Turrets;
+namespace BestagonDefense.Turrets;
 
 public abstract partial class Turret : Damager
 {

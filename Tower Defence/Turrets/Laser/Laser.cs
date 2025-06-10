@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Abstract.Attributes;
-using Enemies;
+using BestagonDefense.Abstract.Attributes;
+using BestagonDefense.Enemies;
 using Godot;
 
-namespace Turrets.Laser;
+namespace BestagonDefense.Turrets.Laser;
 
 /// <summary>
 /// Extends DynamicTurret to add Laser functionality

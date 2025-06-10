@@ -1,6 +1,6 @@
 ﻿using Godot;
 
-namespace Gameplay.Camera;
+namespace BestagonDefense.Gameplay.Camera;
 
 /// <summary>
 /// Allows the player to move the camera during gameplay

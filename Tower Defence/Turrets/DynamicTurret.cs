@@ -1,11 +1,11 @@
 using System;
 using System.Linq;
-using Abstract.Attributes;
-using Enemies;
+using BestagonDefense.Abstract.Attributes;
+using BestagonDefense.Enemies;
 using Godot;
-using Attribute = Abstract.Attributes.Attribute;
+using Attribute = BestagonDefense.Abstract.Attributes.Attribute;
 
-namespace Turrets;
+namespace BestagonDefense.Turrets;
 
 public abstract partial class DynamicTurret : Turret
 {

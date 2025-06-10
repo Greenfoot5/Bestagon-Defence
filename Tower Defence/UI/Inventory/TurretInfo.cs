@@ -1,15 +1,15 @@
 using System;
-using Abstract.Attributes;
-using Abstract.Data;
-using Gameplay;
+using BestagonDefense.Abstract.Attributes;
+using BestagonDefense.Abstract.Data;
+using BestagonDefense.Gameplay;
+using BestagonDefense.Levels._Tiles;
+using BestagonDefense.Turrets;
+using BestagonDefense.Turrets.Lancer;
+using BestagonDefense.UI.Modules;
+using BestagonDefense.UI.TurretStats;
 using Godot;
-using Levels._Nodes;
-using Turrets;
-using Turrets.Lancer;
-using UI.Modules;
-using UI.TurretStats;
 
-namespace UI.Inventory;
+namespace BestagonDefense.UI.Inventory;
 
 public partial class TurretInfo : Control
 {
@@ -19,7 +19,7 @@ public partial class TurretInfo : Control
     /// The Shop component of the scene
     /// </summary>
     [Export]
-    private Shop.Shop shop;
+    private global::BestagonDefense.UI.Shop.Shop shop;
         
     /// <summary>
     /// The inventory show/hide for the turrets
@@ -109,8 +109,8 @@ public partial class TurretInfo : Control
     public override void _Ready()
     {
         BuildableTile.OnTileSelected += SetTarget;
-        Shop.Shop.OnPickTurret += AddTurret;
-        Shop.Shop.OnPickModule += AddModule;
+        global::BestagonDefense.UI.Shop.Shop.OnPickTurret += AddTurret;
+        global::BestagonDefense.UI.Shop.Shop.OnPickModule += AddModule;
         BuildManager.OnBlueprintSelected += SelectBlueprint;
         BuildManager.OnTurretBuilt += BuiltTurret;
     }
@@ -118,8 +118,8 @@ public partial class TurretInfo : Control
     public override void _ExitTree()
     {
         BuildableTile.OnTileSelected -= SetTarget;
-        Shop.Shop.OnPickTurret -= AddTurret;
-        Shop.Shop.OnPickModule -= AddModule;
+        global::BestagonDefense.UI.Shop.Shop.OnPickTurret -= AddTurret;
+        global::BestagonDefense.UI.Shop.Shop.OnPickModule -= AddModule;
         BuildManager.OnBlueprintSelected -= SelectBlueprint;
         BuildManager.OnTurretBuilt -= BuiltTurret;
     }

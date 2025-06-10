@@ -1,12 +1,12 @@
 using System;
-using Abstract;
-using Abstract.Data;
+using BestagonDefense.Abstract;
+using BestagonDefense.Abstract.Data;
+using BestagonDefense.Turrets;
+using BestagonDefense.UI.Glyphs;
+using BestagonDefense.UI.Modules;
 using Godot;
-using Turrets;
-using UI.Glyphs;
-using UI.Modules;
 
-namespace UI.Inventory;
+namespace BestagonDefense.UI.Inventory;
 
 public partial class ModuleInventoryItem : Button
 {

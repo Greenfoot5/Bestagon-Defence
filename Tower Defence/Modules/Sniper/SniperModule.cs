@@ -1,13 +1,12 @@
 using System;
-using Abstract.Attributes;
+using BestagonDefense.Abstract.Attributes;
+using BestagonDefense.Turrets;
+using BestagonDefense.Turrets.Choker;
+using BestagonDefense.Turrets.Lancer;
+using BestagonDefense.Turrets.Laser;
 using Godot;
-using Turrets;
-using Turrets.Choker;
-using Turrets.Lancer;
-using Turrets.Laser;
-using Turrets.Shooter;
 
-namespace Modules.Sniper;
+namespace BestagonDefense.Modules.Sniper;
 
 /// <summary>
 /// Extends the Module class to create a Sniper upgrade

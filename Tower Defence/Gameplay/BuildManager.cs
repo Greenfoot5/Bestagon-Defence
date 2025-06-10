@@ -1,9 +1,9 @@
-﻿using Godot;
-using Levels._Nodes;
-using Turrets;
-using UI.Inventory;
+﻿using BestagonDefense.Levels._Tiles;
+using BestagonDefense.Turrets;
+using BestagonDefense.UI.Inventory;
+using Godot;
 
-namespace Gameplay;
+namespace BestagonDefense.Gameplay;
 
 /// <summary>
 /// Handles all tasks related to building turrets and selecting nodes

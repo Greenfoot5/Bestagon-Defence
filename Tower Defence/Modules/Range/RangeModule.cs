@@ -1,10 +1,10 @@
 using System;
-using Abstract.Attributes;
+using BestagonDefense.Abstract.Attributes;
+using BestagonDefense.Turrets;
+using BestagonDefense.Turrets.Lancer;
 using Godot;
-using Turrets;
-using Turrets.Lancer;
 
-namespace Modules.Range;
+namespace BestagonDefense.Modules.Range;
 
 /// <summary>
 /// Increases the range of a turret

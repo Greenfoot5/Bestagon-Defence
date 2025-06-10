@@ -1,10 +1,10 @@
-using Abstract.Data;
-using Gameplay;
+using BestagonDefense.Abstract.Data;
+using BestagonDefense.Gameplay;
+using BestagonDefense.Turrets;
+using BestagonDefense.UI.TurretStats;
 using Godot;
-using Turrets;
-using UI.TurretStats;
 
-namespace UI.Shop;
+namespace BestagonDefense.UI.Shop;
 
 /// <summary>
 /// Displays the data for a turret shop card

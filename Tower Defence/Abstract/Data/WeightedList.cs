@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using BestagonDefense.Turrets;
 using Godot;
 using Godot.Collections;
-using Turrets;
 
-namespace Abstract.Data;
+namespace BestagonDefense.Abstract.Data;
 
 /// <summary>
 /// A way to disable duplicates in random selections

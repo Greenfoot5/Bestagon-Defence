@@ -1,12 +1,12 @@
 using System;
-using Abstract.Data;
-using Gameplay;
+using BestagonDefense.Abstract.Data;
+using BestagonDefense.Gameplay;
+using BestagonDefense.Modules;
+using BestagonDefense.UI.Glyphs;
+using BestagonDefense.UI.Modules;
 using Godot;
-using Modules;
-using UI.Glyphs;
-using UI.Modules;
 
-namespace UI.Shop;
+namespace BestagonDefense.UI.Shop;
 
 /// <summary>
 /// Displays a shop card for a Module

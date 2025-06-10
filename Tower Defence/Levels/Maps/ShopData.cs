@@ -1,8 +1,8 @@
-using Abstract.Data;
+using BestagonDefense.Abstract.Data;
+using BestagonDefense.UI.Shop;
 using Godot;
-using UI.Shop;
 
-namespace Levels.Maps;
+namespace BestagonDefense.Levels.Maps;
 
 /// <summary>
 /// Allows us to save data to allow levels to be different

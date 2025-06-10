@@ -1,6 +1,6 @@
 using Godot;
 
-namespace Abstract.Saving;
+namespace BestagonDefense.Abstract.Saving;
 
 /// <summary>
 /// Represents the settings data

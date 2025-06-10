@@ -1,7 +1,7 @@
-using Enemies;
+using BestagonDefense.Enemies;
 using Godot;
 
-namespace Gameplay.Waves;
+namespace BestagonDefense.Gameplay.Waves;
 
 /// <summary>
 /// A set of a single enemy type making up part of a wave

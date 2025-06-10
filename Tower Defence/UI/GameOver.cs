@@ -1,8 +1,8 @@
-﻿using Gameplay;
+﻿using BestagonDefense.Gameplay;
+using BestagonDefense.UI.Transition;
 using Godot;
-using UI.Transition;
 
-namespace UI;
+namespace BestagonDefense.UI;
 
 /// <summary>
 /// A UI handler for the GameOver UI in a level

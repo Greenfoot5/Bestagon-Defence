@@ -1,9 +1,9 @@
-﻿using Abstract.Data;
+﻿using BestagonDefense.Abstract.Data;
+using BestagonDefense.UI.Shop;
 using Godot;
-using UI.Shop;
 using Environment = System.Environment;
 
-namespace Gameplay;
+namespace BestagonDefense.Gameplay;
 
 /// <summary>
 /// Holds the stats for the current game

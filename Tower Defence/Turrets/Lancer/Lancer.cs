@@ -1,7 +1,7 @@
-using Abstract.Attributes;
+using BestagonDefense.Abstract.Attributes;
 using Godot;
 
-namespace Turrets.Lancer;
+namespace BestagonDefense.Turrets.Lancer;
 
 /// <summary>
 /// Extends Turret to add lancing functionality

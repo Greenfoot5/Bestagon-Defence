@@ -1,7 +1,7 @@
 using Godot;
 using Vector2 = Godot.Vector2;
 
-namespace Gameplay;
+namespace BestagonDefense.Abstract.Drawables;
 
 /// <summary>
 /// Represents a "thing" we can draw without depending on a node

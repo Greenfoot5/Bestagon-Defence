@@ -1,6 +1,6 @@
 using Godot;
 
-namespace Gameplay.Waves;
+namespace BestagonDefense.Gameplay.Waves;
 
 /// <summary>
 /// A group of Enemy Sets that represents a full wave

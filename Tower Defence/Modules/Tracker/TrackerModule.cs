@@ -1,13 +1,12 @@
 using System;
-using Abstract.Attributes;
+using BestagonDefense.Abstract.Attributes;
+using BestagonDefense.Turrets;
+using BestagonDefense.Turrets.Choker;
+using BestagonDefense.Turrets.Gunner;
+using BestagonDefense.Turrets.Laser;
 using Godot;
-using Turrets;
-using Turrets.Choker;
-using Turrets.Gunner;
-using Turrets.Laser;
-using Turrets.Shooter;
 
-namespace Modules.Tracker;
+namespace BestagonDefense.Modules.Tracker;
 
 /// <summary>
 /// Increases the rotation speed of a dynamic turret

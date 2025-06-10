@@ -1,9 +1,9 @@
 using System;
 using System.Linq;
+using BestagonDefense.Turrets;
 using Godot;
-using Turrets;
 
-namespace Modules;
+namespace BestagonDefense.Modules;
 
 /// <summary>
 /// A base abstract class to create a turret module from.

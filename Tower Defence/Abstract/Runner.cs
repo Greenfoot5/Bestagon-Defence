@@ -1,6 +1,6 @@
 using System.Collections;
 
-namespace Abstract;
+namespace BestagonDefense.Abstract;
 
 /// <summary>
 /// Allows us to start coroutines outside MonoBehaviours

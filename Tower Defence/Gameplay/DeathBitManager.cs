@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
-using Enemies;
+using BestagonDefense.Abstract.Drawables;
+using BestagonDefense.Enemies;
 using Godot;
 using Vector2 = Godot.Vector2;
 
-namespace Gameplay;
+namespace BestagonDefense.Gameplay;
 
 public partial class DeathBitManager: Node2D
 {

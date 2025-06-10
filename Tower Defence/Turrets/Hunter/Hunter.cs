@@ -1,7 +1,7 @@
-using Abstract.Attributes;
+using BestagonDefense.Abstract.Attributes;
 using Godot;
 
-namespace Turrets.Hunter;
+namespace BestagonDefense.Turrets.Hunter;
 
 /// <summary>
 /// Extends DynamicTurret to add Shooting functionality.

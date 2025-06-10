@@ -1,9 +1,9 @@
 using System;
+using BestagonDefense.Turrets;
 using Godot;
 using Godot.Collections;
-using Turrets;
 
-namespace Abstract.Data;
+namespace BestagonDefense.Abstract.Data;
 
 /// <summary>
 /// A list of items and their weight.

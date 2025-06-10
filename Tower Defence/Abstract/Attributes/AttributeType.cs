@@ -1,4 +1,4 @@
-namespace Abstract.Attributes;
+namespace BestagonDefense.Abstract.Attributes;
 
 public enum AttributeType
 {

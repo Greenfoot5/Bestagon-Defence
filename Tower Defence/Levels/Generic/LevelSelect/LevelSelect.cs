@@ -1,11 +1,8 @@
-using System.Collections.Generic;
-using System.Diagnostics;
-using Abstract.Saving;
+using BestagonDefense.Abstract.Saving;
+using BestagonDefense.UI.Transition;
 using Godot;
-using UI.Inventory;
-using UI.Transition;
 
-namespace Levels.Generic.LevelSelect;
+namespace BestagonDefense.Levels.Generic.LevelSelect;
 
 /// <summary>
 /// Handles any UI actions on the level select screen

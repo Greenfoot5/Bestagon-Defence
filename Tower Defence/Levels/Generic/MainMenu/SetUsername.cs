@@ -1,6 +1,6 @@
 using Godot;
 
-namespace Levels.Generic.MainMenu;
+namespace BestagonDefense.Levels.Generic.MainMenu;
 
 /// <summary>
 /// Handles asking the player to input a username if they don't have one already

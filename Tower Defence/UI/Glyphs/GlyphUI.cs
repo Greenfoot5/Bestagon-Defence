@@ -1,6 +1,6 @@
 using Godot;
 
-namespace UI.Glyphs;
+namespace BestagonDefense.UI.Glyphs;
 
 public partial class GlyphUI : TextureRect
 {

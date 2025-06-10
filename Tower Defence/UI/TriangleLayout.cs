@@ -1,6 +1,6 @@
 using Godot;
 
-namespace UI;
+namespace BestagonDefense.UI;
 
 /// <summary>
 /// A UI layout that forms a triangle with its elements

@@ -1,8 +1,8 @@
-﻿using Abstract.Attributes;
-using Enemies;
+﻿using BestagonDefense.Abstract.Attributes;
+using BestagonDefense.Enemies;
 using Godot;
 
-namespace Turrets.Smasher;
+namespace BestagonDefense.Turrets.Smasher;
 
 /// <summary>
 /// Extends Turret to add smashing functionality

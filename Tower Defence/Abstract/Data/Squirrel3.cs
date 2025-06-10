@@ -2,7 +2,7 @@ using System;
 using Godot;
 using Environment = System.Environment;
 
-namespace Abstract.Data;
+namespace BestagonDefense.Abstract.Data;
 
 /// <summary>
 /// Random generator from https://www.Youtube.com/watch?v=LWFzPP8ZbdU

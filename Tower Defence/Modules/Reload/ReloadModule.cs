@@ -1,13 +1,12 @@
 using System;
-using Abstract.Attributes;
+using BestagonDefense.Abstract.Attributes;
+using BestagonDefense.Turrets;
+using BestagonDefense.Turrets.Choker;
+using BestagonDefense.Turrets.Gunner;
+using BestagonDefense.Turrets.Lancer;
 using Godot;
-using Turrets;
-using Turrets.Choker;
-using Turrets.Gunner;
-using Turrets.Lancer;
-using Turrets.Shooter;
 
-namespace Modules.Reload;
+namespace BestagonDefense.Modules.Reload;
 
 /// <summary>
 /// Chance to attack again

@@ -1,7 +1,7 @@
-using Enemies;
+using BestagonDefense.Enemies;
 using Godot;
 
-namespace Abstract;
+namespace BestagonDefense.Abstract;
 
 // TODO - Setup with timer
 public abstract partial class EnemyEffect : Node

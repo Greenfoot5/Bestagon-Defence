@@ -1,13 +1,12 @@
 using System;
-using Abstract.Attributes;
+using BestagonDefense.Abstract.Attributes;
+using BestagonDefense.Turrets;
+using BestagonDefense.Turrets.Choker;
+using BestagonDefense.Turrets.Gunner;
+using BestagonDefense.Turrets.Smasher;
 using Godot;
-using Turrets;
-using Turrets.Choker;
-using Turrets.Gunner;
-using Turrets.Shooter;
-using Turrets.Smasher;
 
-namespace Modules.Bombs;
+namespace BestagonDefense.Modules.Bombs;
 
 /// <summary>
 /// Extends the Module class to create a BombBullet upgrade

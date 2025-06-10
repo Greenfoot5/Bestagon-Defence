@@ -1,8 +1,8 @@
-using Abstract.Attributes;
-using Enemies;
+using BestagonDefense.Abstract.Attributes;
+using BestagonDefense.Enemies;
 using Godot;
 
-namespace Turrets.Seeker;
+namespace BestagonDefense.Turrets.Seeker;
 
 public partial class SeekerShot : Bullet
 {

@@ -1,8 +1,8 @@
 using System.Collections;
+using BestagonDefense.Turrets;
 using Godot;
-using Turrets;
 
-namespace Abstract;
+namespace BestagonDefense.Abstract;
 
 // TODO - Setup loop with Timer
 public abstract partial class TurretEffect : Resource

@@ -1,17 +1,16 @@
 using System;
 using System.Collections;
 using System.Linq;
-using Abstract;
-using Abstract.Attributes;
+using BestagonDefense.Abstract;
+using BestagonDefense.Abstract.Attributes;
+using BestagonDefense.Levels._Tiles;
+using BestagonDefense.Turrets;
+using BestagonDefense.Turrets.Choker;
+using BestagonDefense.Turrets.Lancer;
+using BestagonDefense.Turrets.Smasher;
 using Godot;
-using Levels._Nodes;
-using Turrets;
-using Turrets.Choker;
-using Turrets.Lancer;
-using Turrets.Shooter;
-using Turrets.Smasher;
 
-namespace Modules.Surge;
+namespace BestagonDefense.Modules.Surge;
 
 /// <summary>
 /// Grants a temporary fire rate increase to a turret

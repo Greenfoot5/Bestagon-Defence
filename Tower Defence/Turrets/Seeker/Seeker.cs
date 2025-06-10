@@ -1,7 +1,7 @@
-using Abstract.Attributes;
+using BestagonDefense.Abstract.Attributes;
 using Godot;
 
-namespace Turrets.Seeker;
+namespace BestagonDefense.Turrets.Seeker;
 
 public partial class Seeker : DynamicTurret
 {

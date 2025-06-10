@@ -1,7 +1,7 @@
-using Gameplay;
+using BestagonDefense.Gameplay;
 using Godot;
 
-namespace UI.Shop;
+namespace BestagonDefense.UI.Shop;
 
 /// <summary>
 /// Displays a shop card for a Module
