@@ -2,10 +2,9 @@
 
 Guidelines to generate consistency with project layout, naming and coding style.
 
-You can view the most up to date version here: https://greenfoot5.notion.site/Style-Guide-6c0d5813c8684ee49339614d467bcd91.
-If you notice any inconsistencies with this version and the one linked, please contact us.
-
 ## 1. Project Structure
+
+#### ⚠️ NOTE - Under Review
 
 The directory structure style of a project should be considered law. Asset naming conventions and content directory structure go hand in hand, and a violation of either causes unneeded chaos.
 
@@ -17,7 +16,7 @@ In this style, we will be using a structure that relies more on filtering and se
 Assets
     _WIP
         (Work in progress assets, all prefixed with `_` for quick and easy access when referencing mid-development)
-    Abstract 
+    Abstract
         Data
             (Place for `WeightedItem.cs`, `UpgradableStat.cs`, etc.)
         EnvironmentVariables
@@ -158,7 +157,8 @@ Map - (Only in levels)
 
 ## 2. Scripts
 
-This section will focus on C# classes and their internals. When possible, style rules conform to Microsoft’s C# standard.
+This section will focus on C# classes and their internals.
+When possible, style rules conform to [Godot's C# Style Guide](https://docs.godotengine.org/en/stable/tutorials/scripting/c_sharp/c_sharp_style_guide.html)
 
 ### 2.1 Class Organisation Source files should contain only one public type, although multiple internal classes are allowed.
 
@@ -169,74 +169,89 @@ Organise namespaces with a clearly defined structure,
 Class members should be ordered logically, and grouped into sections, with spaces between each section
 
 ```csharp
-namespace Scripts.Character
+namespace Scripts.Character;
+
+/// <summary>
+/// Brief summary of what the class does
+/// </summary>
+public class Account
 {
+    // Fields
+    public static decimal Reserves;
+
     /// <summary>
-    /// Brief summary of what the class does
+    /// Public variables set in the Inspector, should have a XML comment
     /// </summary>
-    public class Account
+    [Export]
+    [Tooltip("Public variables set in the Inspector, should have a Tooltip")]
+    public string BankName;
+    public const string ShippingType = "DropShip";
+
+    private float _timeToDie;
+    
+    // Properties
+    public string Number {get; set;}
+    public DateTime DateOpened {get; set;}
+    public DateTime DateClosed {get; set;}
+    public decimal Balance {get; set;}
+
+    /// <summary>
+    /// Startup method
+    /// </summary>
+    public void _Ready()
     {
-        // Fields
-        public static decimal Reserves;
+        // ...
+    }
 
-        [Tooltip("Public variables set in the Inspector, should have a Tooltip")]
-        public string BankName;
-        public const string ShippingType = "DropShip";
-
-        private float _timeToDie;
-        
-        // Properties
-        public string Number {get; set;}
-        public DateTime DateOpened {get; set;}
-        public DateTime DateClosed {get; set;}
-        public decimal Balance {get; set;}
-
-        // Life Cycle
-        public void Awake()
-        {
-            // ...
-        }
-
-        // Public methods
-        public void AddObjectToBank()
-        {
-            // ...
-        }
+    /// <summary>
+    /// Adds an object to the bank
+    /// </summary>
+    public void AddObjectToBank()
+    {
+        // ...
     }
 }
 ```
 
 #### 2.1.1 Namespace
 
-Use a namespace to ensure your scoping of classes/enum/interface/etc won’t conflict with existing ones from other namespaces or the global namespace. The project should at minimum use the projects name for the Namespace to prevent conflicts with any imported Third Party assets.
+Use a namespace to ensure your scoping of classes/enum/interface/etc won’t conflict with existing ones from other namespaces or the global namespace.
+The project should at minimum use the projects name for the Namespace to prevent conflicts with any imported Third Party assets.
+
+Namespaces should be set for the file scope.
 
 #### 2.1.2 All functions should have a summary
 
-It should describe what the function does, but not how (as the how isn’t relevant). Parameters and return types (except `IEnumerator`) should all be commented.
+It should describe what the function does, but not how (as the how isn’t relevant).
+Parameters and return types should all be commented.
 
 ```csharp
 /// <summary>
 /// Fire a gun
 /// </summary>
-/// <param name="trigger">The game object that shot the gun</param>
+/// <param name="trigger">The node that shot the gun</param>
 /// <returns>The bullet shot from the gun</returns>
-public GameObject Fire(GameObject trigger)
+public Node2D Fire(Node2D trigger)
 {
     // Fire the gun.
 }
 ```
 
-#### 2.1.3 Headers
+#### 2.1.3 Export Groups
 
-If a class has only a small number of variables, Foldout Groups are not required.
+If a class has only a small number of variables, Export Groups are not required.
 
-If a class has a moderate amount of variables (5-10), all Serializable variables should have a non-default Header assigned. A common category is `Config`.
+If a class has a moderate amount of variables (5-10), consider splitting some (or all) into Export Groups.
+A common category is `Config`.
 
-To create a header, use the `[Header("<name>")]` attribute.
+To create an Export Group, use the `[ExportGroup("<name>")]` attribute.
+
+[More info can be found in the C# Export documentation](https://docs.godotengine.org/en/stable/tutorials/scripting/c_sharp/c_sharp_exports.html#grouping-exports)
 
 #### 2.1.4 Commenting
 
-Comments should be used to describe intention, algorithmic overview, and/or logical flow. It would be ideal if from reading the comments alone someone other than the author could understand a function’s intended behaviour and general operation.
+Comments should be used to describe intention, algorithmic overview, and/or logical flow.
+It would be ideal if from reading the comments alone someone other than the author could understand a function’s intended behaviour and general operation.
 
 #### 2.1.5 Comment Style
 
@@ -270,12 +285,18 @@ Example: `Console.In.Read(myChar, 0, 1);`
 - Do not use a space after the parenthesis and function arguments.
 - Do not use spaces between a function name and parenthesis.
 - Do not use spaces inside brackets.
+  - Do use a space inside in-line `{ }` when empty
 
 ### 2.2 Compiling
 
-All scripts should compile with zero warnings and zero errors. You should fix script warnings and errors immediately as they can quickly cascade into very scary unexpected behaviour.
+All scripts should compile with zero warnings and zero errors.
+You should fix script warnings and errors immediately as they can quickly cascade into very scary unexpected behaviour.
 
-Do *not* submit broken scripts to source control. If you must store them on source control, shelve them instead.
+Try to avoid submitting broken scripts to source control.
+Ideally the project should be compilable at any commit.
+Exceptions exist, for example large refactors may be unsuitable to place into one commit, but they are rare.
+
+Working scripts with warnings can be committed, but they should be fixed at a later date (prior to a merge).
 
 ### 2.3 Variables
 
@@ -310,7 +331,8 @@ Consider a Class called `PlayerCharacter`.
 - `CharacterSkills`
 - `ChosenCharacterSkin`
 
-All of these variables are named redundantly. It is implied that the variable is representative of the `PlayerCharacter` it belongs to because it is `PlayerCharacter` that is defining these variables.
+All of these variables are named redundantly.
+It is implied that the variable is representative of the `PlayerCharacter` it belongs to because it is `PlayerCharacter` that is defining these variables.
 
 **Good**
 
@@ -323,15 +345,17 @@ All of these variables are named redundantly. It is implied that the variable is
 
 #### 2.3.2 Variable Access Level
 
-In C#, variables have a concept of access level. Public means any code outside the class can access the variable. Protected means only the class and any child classes can access this variable internally. Private means only this class and no child classes can access this variable. Variables should only be made public if necessary.
-
-Prefer to use the attribute `[SerializeField]` instead of making a variable public.
+In C#, variables have a concept of access level.
+Public means any code outside the class can access the variable.
+Protected means only the class and any child classes can access this variable internally.
+Private means only this class and no child classes can access this variable.
+Variables should only be made public if necessary.
 
 #### 2.3.4 Local Variables
 
 Local variables should use camelCase.
 
-Implicitly Typed Local Variables
+###### Implicitly Typed Local Variables
 
 Use implicit typing for local variables when the type of the variable is obvious from the right side of the assignment, or when the precise type is not important.
 
@@ -343,7 +367,7 @@ var var3 = Convert.ToInt32(Console.ReadLine());
 for (var i = 0; i < bountyHunterFleets.Length; ++i) {};
 ```
 
-Do not use var when the type is not apparent from the right side of the assignment. Example
+Do not use var when the type is not apparent from the right side of the assignment. Example:
 
 ```csharp
 int var4 = ExampleClass.ResultSoFar();
@@ -353,19 +377,22 @@ int var4 = ExampleClass.ResultSoFar();
 
 Private variables should have a prefix with am underscore `_myVariable` and use camelCase.
 
-#### 2.3.5 Tooltips
+#### 2.3.5 Comments
 
-All Serializable variables should have a description in their `[Tooltip]` fields that explains how changing this value affects the behaviour of the script.
+All Exported variables should have an XML style comment that explains how changing this value affects the behaviour of the script.
+
+Non-Exported variables may also be commented, and where purpose is unclear, add a comment.
 
 #### 2.3.6 Variable Slider And Value Ranges
 
 All Serializable variables should make use of slider and value ranges if there is ever a value that a variable should *not* be set to.
 
-Example: A script that generates fence posts might have an editable variable named `PostsCount` and a value of -1 would not make any sense. Use the range fields `[Range(min, max)]` to mark 0 as a minimum.
+Example: A script that generates fence posts might have an editable variable named `PostsCount` and a value of -1 would not make any sense. Use the range fields `[Export(PropertyHint.Range, "min,max,")]` to mark 0 as a minimum.
 
 If an editable variable is used in a Construction Script, it should have a reasonable Slider Range defined so that someone can not accidentally assign it a large value that could crash the editor.
 
-A Value Range only needs to be defined if the bounds of a value are known. While a Slider Range prevents accidental large number inputs, an undefined Value Range allows a user to specify a value outside the Slider Range that may be considered ‘dangerous’ but still valid.
+A Value Range only needs to be defined if the bounds of a value are known.
+While a Slider Range prevents accidental large number inputs, an undefined Value Range allows a user to specify a value outside the Slider Range that may be considered ‘dangerous’ but still valid.
 
 #### 2.3.7 Booleans
 
@@ -375,7 +402,9 @@ A Value Range only needs to be defined if the bounds of a value are known. While
 
 #### 2.3.8 Enums
 
-Enums use PascalCase and use singular names for enums and their values. Exception: bit field enums should be plural. Enums can be placed outside the class space to provide global access.
+Enums use PascalCase and use singular names for enums and their values.
+Exception: bit field enums should be plural.
+Enums can be placed outside the class space to provide global access.
 
 Example:
 
@@ -409,11 +438,14 @@ Interfaces are led with a capital `I` then followed with PascalCase.
 
 ### 2.4 Functions, Events, and Event Dispatchers
 
-This section describes how you should author functions, events, and event dispatchers. Everything that applies to functions also applies to events, unless otherwise noted.
+This section describes how you should author functions, events, and event dispatchers.
+Everything that applies to functions also applies to events, unless otherwise noted.
 
 #### 2.4.1 Function Naming
 
-The naming of functions, events, and event dispatchers is critically important. Based on the name alone, certain assumptions can be made about functions. For example:
+The naming of functions, events, and event dispatchers is critically important.
+Based on the name alone, certain assumptions can be made about functions.
+For example:
 
 - Is it a pure function?
 - Is it fetching state information?
@@ -424,7 +456,10 @@ These questions and more can all be answered when functions are named appropriat
 
 #### 2.4.2 All Functions Should Be Verbs
 
-All functions and events perform some form of action, whether it’s getting info, calculating data, or causing something to explode. Therefore, all functions should start with verbs. They should be worded in the present tense whenever possible. They should also have some context as to what they are doing.
+All functions and events perform some form of action, whether it’s getting info, calculating data, or causing something to explode.
+Therefore, all functions should start with verbs.
+They should be worded in the present tense whenever possible.
+They should also have some context as to what they are doing.
 
 Good examples:
 
@@ -449,7 +484,8 @@ Bad examples:
 
 #### 2.4.3 Functions Returning Bool Should Ask Questions
 
-When writing a function that does not change the state of or modify any object and is purely for getting information, state, or computing a yes/no value, it should ask a question. This should also follow [the verb rule](about:blank#function-verbrule).
+When writing a function that does not change the state of or modify any object and is purely for getting information, state, or computing a yes/no value, it should ask a question.
+This should also follow [the verb rule](about:blank#function-verbrule).
 
 This is extremely important as if a question is not asked, it may be assumed that the function performs an action and is returning whether that action succeeded.
 
@@ -491,29 +527,54 @@ Bad examples:
 - `OnData`
 - `OnTarget`
 
-## 3. Asset Naming Conventions
+## 3. Resource Naming Conventions
 
-Naming conventions should be treated as law. A project that conforms to a naming convention is able to have its assets managed, searched, parsed, and maintained with incredible ease.
+Naming conventions should be treated as law.
+A project that conforms to a naming convention is able to have its resources managed, searched, parsed, and maintained with incredible ease.
 
-Most things are prefixed with the prefix generally being an acronym of the asset type followed by an underscore.
+Most things are prefixed with the prefix generally being an acronym of the resource type followed by an underscore.
 
-**Assets use [PascalCase](about:blank#cases)**
+### 3.1 Case
 
-### 3.1 Base Asset Name - `Prefix_BaseAssetName_Variant_Suffix`
+As the project deals with mainly C#, and it was originally a Unity project, by default resources & nodes should follow PascalCase.
+This differs from Godot's suggestions.
+However, there are some exceptions:
 
-All assets should have a *Base Asset Name*. A Base Asset Name represents a logical grouping of related assets. Any asset that is part of this logical group should follow the the standard of `Prefix_BaseAssetName_Variant_Suffix`.
+#### 3.1.1 GDScript
 
-Keeping the pattern `Prefix_BaseAssetName_Variant_Suffix` in mind and using common sense is generally enough to warrant good asset names. Here are some detailed rules regarding each element.
+GDScript files should follow [GDScript style guidelines](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_styleguide.html), including for file name.
+
+##### 3.1.2 Godot Files
+
+Godot specific files/folders (e.g. `addons/`, `export_presets.cfg`, `.gdignore`). Where functionality would break without using the correct name, you can ignore file name conventions here.
+
+### 3.2 Base Asset Name - `Prefix_BaseAssetName_Variant_Suffix`
+
+#### ⚠️ NOTE - Under Review
+
+All assets should have a *Base Asset Name*.
+A Base Asset Name represents a logical grouping of related assets.
+Any asset that is part of this logical group should follow the standard of `Prefix_BaseAssetName_Variant_Suffix`.
+
+Keeping the pattern `Prefix_BaseAssetName_Variant_Suffix` in mind and using common sense is generally enough to warrant good asset names.
+Here are some detailed rules regarding each element.
 
 `Prefix` and `Suffix` are to be determined by the asset type through the following [Asset Name Modifier](about:blank#asset-name-modifiers) table.
 
-`BaseAssetName` should be determined by short and easily recognisable name related to the context of this group of assets. For example, if you had a character named Bob, all of Bob’s assets would have the `BaseAssetName` of `Bob`.
+`BaseAssetName` should be determined by short and easily recognisable name related to the context of this group of assets.
+For example, if you had a character named Bob, all of Bob’s assets would have the `BaseAssetName` of `Bob`.
 
-For unique and specific variations of assets, `Variant` is either a short and easily recognisable name that represents logical grouping of assets that are a subset of an asset’s base name. For example, if Bob had multiple skins these skins should still use `Bob` as the `BaseAssetName` but include a recognisable `Variant`. An ‘Evil’ skin would be referred to as `Bob_Evil` and a ‘Retro’ skin would be referred to as `Bob_Retro`.
+For unique and specific variations of assets, `Variant` is either a short and easily recognisable name that represents logical grouping of assets that are a subset of an asset’s base name.
+For example, if Bob had multiple skins these skins should still use `Bob` as the `BaseAssetName` but include a recognisable `Variant`.
+An ‘Evil’ skin would be referred to as `Bob_Evil` and a ‘Retro’ skin would be referred to as `Bob_Retro`.
 
-For unique but generic variations of assets, `Variant` is a two digit number starting at `01`. For example, if you have an environment artist generating nondescript rocks, they would be named `Rock_01`, `Rock_02`, `Rock_03`, etc. Except for rare exceptions, you should never require a three digit variant number. If you have more than 100 assets, you should consider organising them with different base names or using multiple variant names.
+For unique but generic variations of assets, `Variant` is a two-digit number starting at `01`.
+For example, if you have an environment artist generating nondescript rocks, they would be named `Rock_01`, `Rock_02`, `Rock_03`, etc.
+Except for rare exceptions, you should never require a three digit variant number.
+If you have more than 100 assets, you should consider organising them with different base names or using multiple variant names.
 
-Depending on how your asset variants are made, you can chain together variant names. For example, if you are creating flooring assets for an Arch Viz project you should use the base name `Flooring` with chained variants such as `Flooring_Marble_01`, `Flooring_Maple_01`, `Flooring_Tile_Squares_01`.
+Depending on how your asset variants are made, you can chain together variant names.
+For example, if you are creating flooring assets for an Arch Viz project you should use the base name `Flooring` with chained variants such as `Flooring_Marble_01`, `Flooring_Maple_01`, `Flooring_Tile_Squares_01`.
 
 Character Example
 
@@ -535,33 +596,11 @@ Prop Examples
 | Material                 | M_Rock       |
 | Material Instance (Snow) | MI_Rock_Snow |
 
-### 3.2 Asset Name Modifiers
-
-When naming an asset use these tables to determine the prefix and suffix to use with an asset’s [Base Asset Name](about:blank#base-asset-name).
-
-| Asset Type                           | Prefix | Suffix        | Notes |
-|--------------------------------------|--------|---------------|-------|
-| Texture                              | T_     |               |       |
-| Shader                               | S_     |               |       |
-| Material                             | M_     |               |       |
-| Font                                 | Font_  |               |       |
-| Animation Clip                       | A_     |               |       |
-| Animation Controller                 | AC_    |               |       |
-| Particle System                      | PS_    |               |       |
-| Level Data                           | LD_    |               |       |
-| Curved Variable (used in level data) | LDV_   | _\<levelname> |       |
-
 ## 4. Asset Workflows
 
-This section describes best practices for creating and importing assets usable in Unity.
+This section describes best practices for creating and importing assets usable in Godot.
 
 ### 4.1 Textures
 
 - They are a power of two (For example, 512 x 512 or 256 x 1024).
 - Use Texture Atlases wherever possible.
-
-### 4.2 Audio
-
-Only import uncompressed audio files in to Unity using WAV or AIFF formats.
-
-Great guide on [Unity Audio Import Optimization](https://www.gamasutra.com/blogs/ZanderHulme/20190107/333794/Unity_Audio_Import_Optimisation__getting_more_BAM_for_your_RAM.php)
