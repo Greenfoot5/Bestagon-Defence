@@ -550,8 +550,6 @@ Godot specific files/folders (e.g. `addons/`, `export_presets.cfg`, `.gdignore`)
 
 ### 3.2 Base Asset Name - `Prefix_BaseAssetName_Variant_Suffix`
 
-#### ⚠️ NOTE - Under Review
-
 All assets should have a *Base Asset Name*.
 A Base Asset Name represents a logical grouping of related assets.
 Any asset that is part of this logical group should follow the standard of `Prefix_BaseAssetName_Variant_Suffix`.
@@ -576,15 +574,17 @@ If you have more than 100 assets, you should consider organising them with diffe
 Depending on how your asset variants are made, you can chain together variant names.
 For example, if you are creating flooring assets for an Arch Viz project you should use the base name `Flooring` with chained variants such as `Flooring_Marble_01`, `Flooring_Maple_01`, `Flooring_Tile_Squares_01`.
 
-Character Example
+Turret Example (`Shooter` in this example)
 
-| Asset Type               | Asset Name   |
-|--------------------------|--------------|
-| Skeletal Mesh            | SK_Bom       |
-| Material                 | M_Bom        |
-| Texture (Diffuse/Albedo) | T_Bob_D      |
-| Texture (Normal)         | T_Bob_N      |
-| Texture (Evil Diffuse)   | T_Bob_Evil_D |
+| Asset Type                        | Asset Name                    |
+|-----------------------------------|-------------------------------|
+| Shooter Script                    | Shooter.cs                    |
+| Shooter Packed Scene              | Turret_Shooter.tscn           |
+| Shooter Bullet Packed Scene       | Shooter_Pellet.tscn           |
+| Turret Blueprint (Base Variant)   | Shooter_Basic.tres            |
+| Turret Blueprint (Named `Killer`) | Shooter_Killer.tres           |
+| Turret Image                      | T_Turret_Shooter.png          |
+| Shooter Bullet Attributes         | Attributes_ShooterPellet.tres |
 
 Prop Examples
 
@@ -595,6 +595,17 @@ Prop Examples
 | Static Mesh (03)         | SM_Rock_03   |
 | Material                 | M_Rock       |
 | Material Instance (Snow) | MI_Rock_Snow |
+
+### 3.2 Asset Name Modifiers
+
+When naming an asset use these tables to determine the prefix and suffix to use with an asset’s [Base Asset Name](about:blank#base-asset-name).
+
+| Asset Type                           | Prefix | Suffix        | Notes |
+|--------------------------------------|--------|---------------|-------|
+| Texture                              | T_     |               |       |
+| Shader                               | S_     |               |       |
+| Material                             | M_     |               |       |
+| Font                                 | Font_  |               |       |
 
 ## 4. Asset Workflows
 
