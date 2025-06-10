@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqr2h4s8oo5pk"
-path.s3tc="res://.godot/imported/T_ShooterTurret.png-5a5b10ffa2affa597579c8b85abcb7a2.s3tc.ctex"
+uid="uid://d26aqj2odl383"
+path.s3tc="res://.godot/imported/T_TurretBase_ShooterDark.png-fbf9509b61aaf4225ddbb0969797bf2e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Turrets/Shooter/T_ShooterTurret.png"
-dest_files=["res://.godot/imported/T_ShooterTurret.png-5a5b10ffa2affa597579c8b85abcb7a2.s3tc.ctex"]
+source_file="res://Turrets/Shooter/T_TurretBase_ShooterDark.png"
+dest_files=["res://.godot/imported/T_TurretBase_ShooterDark.png-fbf9509b61aaf4225ddbb0969797bf2e.s3tc.ctex"]
 
 [params]
 

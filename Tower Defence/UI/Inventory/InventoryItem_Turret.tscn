@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://q4vdeurrxpak" path="res://UI/Glyphs/TurretGlyph.tscn" id="1_23x3u"]
 [ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/White_Rectangle_x1000.png" id="1_dxegx"]
 [ext_resource type="Script" uid="uid://bl4fl6wqlfqa7" path="res://UI/Inventory/TurretInventoryItem.cs" id="2_1ivu0"]
-[ext_resource type="Texture2D" uid="uid://bqr2h4s8oo5pk" path="res://Turrets/Shooter/T_ShooterTurret.png" id="2_pm2s8"]
+[ext_resource type="Texture2D" uid="uid://bqr2h4s8oo5pk" path="res://Turrets/Shooter/T_Turret_Shooter.png" id="2_pm2s8"]
 [ext_resource type="PackedScene" uid="uid://ccppuoth5cgn0" path="res://UI/Modules/ModuleIcon.tscn" id="3_aa1p0"]
 [ext_resource type="Script" uid="uid://bxvxv7t1wcksh" path="res://UI/TurretStats/TurretStat.cs" id="3_dxegx"]
 [ext_resource type="Texture2D" uid="uid://dvm15nkgk7e1q" path="res://UI/TurretStats/Damage.tres" id="4_pdqgl"]

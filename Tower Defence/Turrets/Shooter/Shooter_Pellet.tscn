@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://b07wmtlp10ngi"]
 
 [ext_resource type="Script" uid="uid://drvqbyytx8ijt" path="res://Turrets/Bullet.cs" id="1_ilsky"]
-[ext_resource type="Texture2D" uid="uid://dqdclyaiummnh" path="res://Turrets/Shooter/T_ShooterBase_Light.png" id="2_lndna"]
-[ext_resource type="Resource" uid="uid://cmcb6mh82k7y5" path="res://Turrets/Shooter/PelletAttributes.tres" id="2_p5xc8"]
+[ext_resource type="Texture2D" uid="uid://dqdclyaiummnh" path="res://Turrets/Shooter/T_TurretBase_ShooterLight.png" id="2_lndna"]
+[ext_resource type="Resource" uid="uid://cmcb6mh82k7y5" path="res://Turrets/Shooter/Attributes_ShooterPellet.tres" id="2_p5xc8"]
 
 [sub_resource type="Curve" id="Curve_p5xc8"]
 _data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
