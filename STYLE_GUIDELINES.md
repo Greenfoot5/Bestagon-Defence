@@ -4,11 +4,10 @@ Guidelines to generate consistency with project layout, naming and coding style.
 
 ## 1. Project Structure
 
-#### ⚠️ NOTE - Under Review
+The directory structure style of a project should be considered law.
+Asset naming conventions and content directory structure go hand in hand, and a violation of either causes unneeded chaos.
 
-The directory structure style of a project should be considered law. Asset naming conventions and content directory structure go hand in hand, and a violation of either causes unneeded chaos.
-
-In this style, we will be using a structure that relies more on filtering and search abilities of the Project Window for those working with assets to find assets of a specific type instead of another common structure that groups asset types with folders.
+In this style, we will be using a structure that relies more on search abilities of the FileSystem Dock for those working with Resources to find Resources of a specific type instead of another common structure that groups asset types with folders.
 
 > Using a prefix naming convention, using folders to contain assets of similar types such as Meshes, Textures, and Materials is a redundant practice as asset types are already both sorted by prefix as well as able to be filtered in the content browser.
 
@@ -16,36 +15,31 @@ In this style, we will be using a structure that relies more on filtering and se
 Assets
     _WIP
         (Work in progress assets, all prefixed with `_` for quick and easy access when referencing mid-development)
+    addons
+        (Any 3rd party libraries used across the project go here, if they're used in only one specific place, they should go there)
     Abstract
+        Attributes
         Data
-            (Place for `WeightedItem.cs`, `UpgradableStat.cs`, etc.)
+            (Place for abstracted data containers, i.e. WeightedList.cs)
+        Drawables
         EnvironmentVariables
+        Saving
         (Random stuff that cannot be categorised. Such as `Runner.cs`)
-    Editor - Anything that changes how something is displayed in the editor.
-        Gizmos
-            (Editor gizmos)
-        PropertyDrawers
-            (Custom property drawers)
-        Turrets
-        (Anything else that doesn’t fit into a subfolder)
     Enemies
         Pawns - Non-boss enemies.
-            FastEnemy
-                (Art, custom MBs, particle effects, animations, etc. for FastEnemy would go here)
+            (Art, custom MBs, particle effects, animations, etc. for Enemies would go here)
         Bosses 
-            BlueBoss
-                (Art, custom MBs, particle effects, animations, etc. for BlueBoss would go here)
+            (Art, custom MBs, particle effects, animations, etc. for Bosses would go here)
         *Generic assets would go here.*
     Gameplay
-        Controls
+        Camera
             (Camera controller would be here)
-            (Player controls would also be here)
         Waves
             (Everything wave spawning related goes here)
         (All remaining managers)
     Levels - Scene files and other level specific items.
-        _Nodes
-            (All MonoBehaviours and prefabs that make the levels would be here)
+        _Tiles
+            (All Scripts and PackedScenes that make the levels would be here)
         Generic - Non-game levels.
             LevelSelect
                 Leaderboards
@@ -53,27 +47,24 @@ Assets
             Menu
                 Login
                 (Everything related to the main menu)
+            Settings
         Maps
             Hexagon
                 (The level itself, level data, level image, maybe some level specific stuff)
             Loop
             ...
-    MaterialLibrary - Material and Shader files.
+    MaterialLibrary - Material and Shader files that are used in several places.
         Hexagons
         Range
         (Anything that doesn’t fit into a subfolder)
     Modules - Each Module has a subfolder.
+        _NeedsRebalance
+            (Modules that were made, but are awaiting a significant rebalance before they can be used again)
         Bomb
             (Everything about the bomb module, maybe even custom particle effects for it or something)
         Damage
         …
         (Generic stuff for modules goes here)
-    Plugins
-        Android
-        DiscordGameSDK
-        (Plugins here…)
-    TextMesh Pro
-        (This is for TextMesh Pro)
     Turrets - Each turret has a subfolder for its files and blueprints.
         Shooter
             (Everything about the Shooter)
@@ -96,35 +87,31 @@ The reasons for this structure are listed in the following sub-sections.
 - Only use alphanumeric characters
 - No Empty Folders There simply shouldn’t be any empty folders. They clutter the content browser.
 
-### 1.2 All Scene files belong in the `Assets/Level` folder.
-
-Being able to tell someone to open a specific map without having to explain where it is is a great time saver and general ‘quality of life’ improvement.
-
-### 1.3 Don’t name folders `Assets` or `AssetTypes`
+### 1.2 Don’t name folders `Assets` or `AssetTypes`
 
 - Creating a folder named `Assets` is redundant. All assets are assets.
-- Creating a folder named `Meshes`, `Textures`, or `Materials` is redundant. All asset names are named with their asset type in mind. These folders offer only redundant information and the use of these folders can easily be replaced with the robust and easy to use filtering system the Content Browser provides.
-    
-    Want to view only static mesh in `Environment/Rocks/`? Simply turn on the Static Mesh filter. If all assets are named correctly, they will also be sorted in alphabetical order regardless of prefixes. Want to view both static meshes and skeletal meshes? Simply turn on both filters. this eliminates the need to potentially have to `Control-Click` select two folders in the Content Browser’s tree view.
+- Creating a folder named `Meshes`, `Textures`, or `Materials` is redundant. All asset names are named with their asset type in mind. These folders offer only redundant information and the use of these folders can easily be replaced with the resource naming below.
     
     > This also extends the full path name of an asset for very little benefit. The `SM_` prefix for a static mesh is only three characters, whereas `Meshes/` is seven characters.
     
     Not doing this also prevents the inevitability of someone putting a static mesh or a texture in a `Materials` folder.
-    
 
-### 1.4 Very Large Asset Sets Get Their Own Folder Layout
+### 1.3 Very Large Asset Sets Get Their Own Folder Layout
 
-This can be seen as a pseudo-exception to [1.3](https://www.notion.so/Style-Guide-6b4ece8ba14a496e9bbefde32b745c1e).
+This can be seen as a pseudo-exception to 1.2.
 
-There are certain asset types that have a huge volume of related files where each asset has a unique purpose. The two most common are Animation and Audio assets. If you find yourself having 15+ of these assets that belong together, they should be together.
+There are certain asset types that have a huge volume of related files where each asset has a unique purpose.
+The two most common are Animation and Audio assets.
+If you find yourself having 15+ of these assets that belong together, they should be together.
 
 For example, animations that are shared across multiple characters should lay in `Characters/Common/Animations` and may have sub-folders such as `Locomotion` or `Cinematic`.
 
-> This does not apply to assets like textures and materials. It is common for a Rocks folder to have a large amount of textures if there are a large amount of rocks, however these textures are generally only related to a few specific rocks and should be named appropriately. Even if these textures are part of a Material Library.
+> This does not apply to assets like textures and materials. It is common for a Rocks folder to have a large amount of textures if there are a large amount of rocks, however these textures are generally only related to a few specific rocks and should be named appropriately.
+> Even if these textures are part of a Material Library.
 
 ### 1.5 `MaterialLibrary`
 
-If your project makes use of master materials, layered materials, or any form of reusable materials or textures that do not belong to any subset of assets, these assets should be located in `Assets/MaterialLibrary`.
+If your project makes use of master materials, layered materials, or any form of reusable materials or textures that do not belong to any subset of assets, these assets should be located in `res://MaterialLibrary/`.
 
 This way all ‘global’ materials have a place to live and are easily located.
 
@@ -135,6 +122,8 @@ The `MaterialLibrary` doesn’t have to consist of purely materials. Shared util
 Any testing or debug materials should be within `MaterialLibrary/Debug`. This allows debug materials to be easily stripped from a project before shipping and makes it incredibly apparent if production assets are using them if reference errors are shown.
 
 ### 1.6 Scene Structure
+
+#### ⚠️ NOTE - Under Review
 
 Next to the project’s hierarchy, there’s also scene hierarchy. As before, we’ll present you a template. You can adjust it to your needs. Use named empty game objects as scene folders.
 
