@@ -123,26 +123,9 @@ Any testing or debug materials should be within `MaterialLibrary/Debug`. This al
 
 ### 1.6 Scene Structure
 
-#### ⚠️ NOTE - Under Review
-
-Next to the project’s hierarchy, there’s also scene hierarchy. As before, we’ll present you a template. You can adjust it to your needs. Use named empty game objects as scene folders.
-
+```csharp
+// TODO - Update once more scenes have been made
 ```
-@System - Game essentials, shared between scenes
-@Management - game logic, local the the scene (nothing to render in there)
-@UI
-    Screen
-    World
-Camera
-Map - (Only in levels)
-    Nodes
-    Path
-    Waypoints
-```
-
-- All empty objects should be located at `0, 0, 0` with default rotation and scale.
-- For empty objects that are only containers for scripts, use `@` as prefix – e.g. `@Cheats`
-- When you’re instantiating an object in runtime, make sure to prefix it with `_` – do not pollute the root of your hierarchy or you will find it difficult to navigate through it.
 
 ## 2. Scripts
 
