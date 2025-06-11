@@ -572,14 +572,16 @@ Prop Examples
 
 When naming an asset use these tables to determine the prefix and suffix to use with an asset’s [Base Asset Name](about:blank#base-asset-name).
 
-| Asset Type    | Prefix | Suffix | Notes |
-|---------------|--------|--------|-------|
-| Texture       | T_     |        |       |
-| Atlas Texture | TA_    |        |       |
-| Shader        | S_     |        |       |
-| Material      | M_     |        |       |
-| Font          | Font_  |        |       |
-| Theme         | Theme_ |        |       |
+| Asset Type            | Prefix | Suffix   | Notes |
+|-----------------------|--------|----------|-------|
+| Texture               | T_     |          |       |
+| Atlas Texture         | TA_    |          |       |
+| Shader                | S_     |          |       |
+| Material              | M_     |          |       |
+| Font                  | Font_  |          |       |
+| Theme                 | Theme_ |          |       |
+| Module Tier Resource  | M_     | T\<tier> |       |
+| Module Chain Resource | MC_    |          |       |
 
 ## 4. Asset Workflows
 
