@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://bdydqkl64rvep" path="res://Turrets/Laser/Laser.cs" id="1_y5wnw"]
 [ext_resource type="Script" uid="uid://blnrq5atpcclw" path="res://Abstract/Attributes/Attribute.cs" id="2_ec27n"]
-[ext_resource type="Shader" uid="uid://5k2issx1tj2b" path="res://Turrets/Laser/EnergyBeams.gdshader" id="2_tu3av"]
+[ext_resource type="Shader" uid="uid://5k2issx1tj2b" path="res://Turrets/Laser/S_EnergyBeams.gdshader" id="2_tu3av"]
 [ext_resource type="Script" uid="uid://c80di1i4n41ig" path="res://Abstract/Attributes/Attributes.cs" id="3_21t83"]
 [ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/AttributeModifier.cs" id="3_q7n3u"]
 [ext_resource type="Shader" uid="uid://bjciwmxveqxrx" path="res://MaterialLibrary/Range/Range.gdshader" id="3_y5wnw"]
 [ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/White_Rectangle_x1000.png" id="4_ec27n"]
-[ext_resource type="Texture2D" uid="uid://dwa5otvetx465" path="res://Turrets/Laser/T_LaserBase_Dark.png" id="4_q7n3u"]
-[ext_resource type="Texture2D" uid="uid://bfdptuac2xjp" path="res://Turrets/Laser/T_LaserTurret.png" id="7_8xsm8"]
+[ext_resource type="Texture2D" uid="uid://dwa5otvetx465" path="res://Turrets/Laser/T_TurretBase_LightDark.png" id="4_q7n3u"]
+[ext_resource type="Texture2D" uid="uid://bfdptuac2xjp" path="res://Turrets/Laser/T_Turret_Laser.png" id="7_8xsm8"]
 
 [sub_resource type="Resource" id="Resource_3wqlj"]
 script = ExtResource("2_ec27n")

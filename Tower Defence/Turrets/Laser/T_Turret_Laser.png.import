@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwa5otvetx465"
-path.s3tc="res://.godot/imported/T_LaserBase_Dark.png-c2cdd2a44f04b90426acf8c64de2d453.s3tc.ctex"
+uid="uid://bfdptuac2xjp"
+path.s3tc="res://.godot/imported/T_Turret_Laser.png-f260cb8959b83a33e13cea19d1f6fbc2.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Turrets/Laser/T_LaserBase_Dark.png"
-dest_files=["res://.godot/imported/T_LaserBase_Dark.png-c2cdd2a44f04b90426acf8c64de2d453.s3tc.ctex"]
+source_file="res://Turrets/Laser/T_Turret_Laser.png"
+dest_files=["res://.godot/imported/T_Turret_Laser.png-f260cb8959b83a33e13cea19d1f6fbc2.s3tc.ctex"]
 
 [params]
 
