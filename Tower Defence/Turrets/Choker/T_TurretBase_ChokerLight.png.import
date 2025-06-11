@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dewta3rd8r6ut"
-path.s3tc="res://.godot/imported/T_GunnerTurret.png-03bb542f20db3c33a8993ebd7134ea72.s3tc.ctex"
+uid="uid://da20un4c2laxi"
+path.s3tc="res://.godot/imported/T_TurretBase_ChokerLight.png-bc5619ac8a3fc2e05254a742909adbd2.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Turrets/Gunner/T_GunnerTurret.png"
-dest_files=["res://.godot/imported/T_GunnerTurret.png-03bb542f20db3c33a8993ebd7134ea72.s3tc.ctex"]
+source_file="res://Turrets/Choker/T_TurretBase_ChokerLight.png"
+dest_files=["res://.godot/imported/T_TurretBase_ChokerLight.png-bc5619ac8a3fc2e05254a742909adbd2.s3tc.ctex"]
 
 [params]
 

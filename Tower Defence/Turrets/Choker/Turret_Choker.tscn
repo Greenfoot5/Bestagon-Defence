@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://drpqer5xenoqe"]
 
 [ext_resource type="Script" uid="uid://dycu2ga13dqvr" path="res://Turrets/Choker/Choker.cs" id="1_b5b4v"]
-[ext_resource type="PackedScene" uid="uid://hqx2w2q8weko" path="res://Turrets/Choker/ChokerPart.tscn" id="2_cmg0a"]
-[ext_resource type="Resource" uid="uid://ds7rijmb4ir08" path="res://Turrets/Choker/ChokerAttributes.tres" id="3_b5b4v"]
-[ext_resource type="Texture2D" uid="uid://bjyssfen4qovd" path="res://Turrets/Choker/T_ChokerBase_Dark.png" id="4_rt7kr"]
-[ext_resource type="Texture2D" uid="uid://dkg7vvoia8bv3" path="res://Turrets/Choker/T_ChokerTurret.png" id="5_cpm3m"]
+[ext_resource type="PackedScene" uid="uid://hqx2w2q8weko" path="res://Turrets/Choker/Choker_Part.tscn" id="2_cmg0a"]
+[ext_resource type="Resource" uid="uid://ds7rijmb4ir08" path="res://Turrets/Choker/Attributes_Choker.tres" id="3_b5b4v"]
+[ext_resource type="Texture2D" uid="uid://bjyssfen4qovd" path="res://Turrets/Choker/T_TurretBase_ChokerDark.png" id="4_rt7kr"]
+[ext_resource type="Texture2D" uid="uid://dkg7vvoia8bv3" path="res://Turrets/Choker/T_Turret_Choker.png" id="5_cpm3m"]
 [ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/White_Rectangle_x1000.png" id="6_sf515"]
 [ext_resource type="Shader" uid="uid://bjciwmxveqxrx" path="res://MaterialLibrary/Range/Range.gdshader" id="7_2bbfs"]
 

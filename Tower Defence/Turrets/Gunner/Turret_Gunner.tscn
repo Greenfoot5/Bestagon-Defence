@@ -1,9 +1,9 @@
 [gd_scene load_steps=20 format=3 uid="uid://mltdln2bc7hj"]
 
 [ext_resource type="Script" uid="uid://b4v8oviw1mkla" path="res://Turrets/Gunner/Gunner.cs" id="1_gs86s"]
-[ext_resource type="Texture2D" uid="uid://bu5ymwlmvorko" path="res://Turrets/Gunner/T_GunnerBase_Dark.png" id="1_jo57k"]
-[ext_resource type="Texture2D" uid="uid://dewta3rd8r6ut" path="res://Turrets/Gunner/T_GunnerTurret.png" id="2_0v5et"]
-[ext_resource type="PackedScene" uid="uid://dwk4c35d40rf" path="res://Turrets/Gunner/GunnerPellet.tscn" id="2_xuf6c"]
+[ext_resource type="Texture2D" uid="uid://bu5ymwlmvorko" path="res://Turrets/Gunner/T_TurretBase_GunnerDark.png" id="1_jo57k"]
+[ext_resource type="Texture2D" uid="uid://dewta3rd8r6ut" path="res://Turrets/Gunner/T_Turret_Gunner.png" id="2_0v5et"]
+[ext_resource type="PackedScene" uid="uid://dwk4c35d40rf" path="res://Turrets/Gunner/Gunner_Pellet.tscn" id="2_xuf6c"]
 [ext_resource type="Script" uid="uid://blnrq5atpcclw" path="res://Abstract/Attributes/Attribute.cs" id="3_3r6fm"]
 [ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/White_Rectangle_x1000.png" id="3_l5cxh"]
 [ext_resource type="Script" uid="uid://c80di1i4n41ig" path="res://Abstract/Attributes/Attributes.cs" id="4_de50l"]

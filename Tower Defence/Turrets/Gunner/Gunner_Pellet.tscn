@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://dwk4c35d40rf"]
 
 [ext_resource type="Script" uid="uid://drvqbyytx8ijt" path="res://Turrets/Bullet.cs" id="1_haeq8"]
-[ext_resource type="Texture2D" uid="uid://b32y8keo4wjjo" path="res://Turrets/Gunner/T_GunnerBase_Light.png" id="1_oa8tp"]
+[ext_resource type="Texture2D" uid="uid://b32y8keo4wjjo" path="res://Turrets/Gunner/T_TurretBase_GunnerLight.png" id="1_oa8tp"]
 [ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/AttributeModifier.cs" id="2_17ky5"]
 [ext_resource type="Script" uid="uid://blnrq5atpcclw" path="res://Abstract/Attributes/Attribute.cs" id="2_kuuri"]
 [ext_resource type="Script" uid="uid://c80di1i4n41ig" path="res://Abstract/Attributes/Attributes.cs" id="3_17ky5"]

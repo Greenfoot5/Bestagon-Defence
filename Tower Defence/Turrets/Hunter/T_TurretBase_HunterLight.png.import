@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmjp15oecmtur"
-path="res://.godot/imported/T_HunterBase_Dark.png-0a48b225e3fc3c49d08b568ffe73d853.ctex"
+uid="uid://br27hiw3mptcs"
+path="res://.godot/imported/T_TurretBase_HunterLight.png-361dfcd8fd3a0f517f6cd9ecfaf8b353.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Turrets/Hunter/T_HunterBase_Dark.png"
-dest_files=["res://.godot/imported/T_HunterBase_Dark.png-0a48b225e3fc3c49d08b568ffe73d853.ctex"]
+source_file="res://Turrets/Hunter/T_TurretBase_HunterLight.png"
+dest_files=["res://.godot/imported/T_TurretBase_HunterLight.png-361dfcd8fd3a0f517f6cd9ecfaf8b353.ctex"]
 
 [params]
 
