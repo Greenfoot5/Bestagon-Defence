@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TurretBlueprint" load_steps=5 format=3 uid="uid://d373knvixoopr"]
+[gd_resource type="Resource" script_class="TurretBlueprint" load_steps=5 format=3 uid="uid://bjiq0f4ix8kym"]
 
 [ext_resource type="Script" uid="uid://ufdo2vxockv6" path="res://Abstract/Data/ModuleChainHandler.cs" id="1_h7tit"]
 [ext_resource type="PackedScene" uid="uid://y3feukxp7bde" path="res://Turrets/Shooter/Turret_Shooter.tscn" id="2_h7tit"]

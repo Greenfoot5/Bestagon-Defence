@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ShopData" load_steps=25 format=3 uid="uid://b6vw6l67k0fne"]
 
-[ext_resource type="Resource" uid="uid://d373knvixoopr" path="res://Turrets/Shooter/Shooter_Basic.tres" id="1_d4njv"]
+[ext_resource type="Resource" path="res://Turrets/Shooter/Shooter_Basic.tres" id="1_d4njv"]
 [ext_resource type="Script" uid="uid://by85y3cqstj04" path="res://Abstract/Data/WeightedList.cs" id="1_ps0rn"]
 [ext_resource type="Script" uid="uid://c02jid8ovdi0j" path="res://Abstract/Data/WeightedCurveList.cs" id="2_d4njv"]
 [ext_resource type="Resource" uid="uid://57ssw6sspepb" path="res://Turrets/Hunter/HunterBlueprint.tres" id="2_jbv3k"]

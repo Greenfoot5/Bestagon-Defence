@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://cpj1f8162nio" path="res://UI/Shop/Card_Turret_ModuleIcon.tscn" id="2_pittc"]
 [ext_resource type="PackedScene" uid="uid://4yuj26qwmq5v" path="res://UI/Shop/Card_Top.tscn" id="3_pittc"]
 [ext_resource type="Texture2D" uid="uid://bqr2h4s8oo5pk" path="res://Turrets/Shooter/T_Turret_Shooter.png" id="3_xtsia"]
-[ext_resource type="Texture2D" uid="uid://c1px3poumr7i6" path="res://UI/Glyphs/Shooter.tres" id="4_mkcs1"]
+[ext_resource type="Texture2D" uid="uid://c1px3poumr7i6" path="res://UI/Glyphs/TA_Glyph_Shooter.tres" id="4_mkcs1"]
 [ext_resource type="Script" uid="uid://bxvxv7t1wcksh" path="res://UI/TurretStats/TurretStat.cs" id="5_xtsia"]
-[ext_resource type="Texture2D" uid="uid://dvm15nkgk7e1q" path="res://UI/TurretStats/Damage.tres" id="6_3q6l4"]
+[ext_resource type="Texture2D" uid="uid://dvm15nkgk7e1q" path="res://UI/TurretStats/TA_Damage.tres" id="6_3q6l4"]
 
 [node name="Card_Turret" type="Panel" node_paths=PackedStringArray("displayName", "tagline", "icon", "glyph", "modulesSection", "modulesLayout", "damage", "rate", "range", "bg", "modulesBg", "modulesTitle")]
 anchors_preset = 15
