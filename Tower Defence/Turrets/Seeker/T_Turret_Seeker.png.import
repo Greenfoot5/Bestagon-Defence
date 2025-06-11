@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cyk5d1emrkk38"
-path="res://.godot/imported/T_Seeker.png-f53ff98a4531353f6720a7097509ba7b.ctex"
+path="res://.godot/imported/T_Turret_Seeker.png-ac3e854609bca27847efcee4ac90453d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Turrets/Seeker/T_Seeker.png"
-dest_files=["res://.godot/imported/T_Seeker.png-f53ff98a4531353f6720a7097509ba7b.ctex"]
+source_file="res://Turrets/Seeker/T_Turret_Seeker.png"
+dest_files=["res://.godot/imported/T_Turret_Seeker.png-ac3e854609bca27847efcee4ac90453d.ctex"]
 
 [params]
 

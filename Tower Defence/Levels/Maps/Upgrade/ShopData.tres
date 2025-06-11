@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="ShopData" load_steps=25 format=3 uid="uid://b6vw6l67k0fne"]
 
-[ext_resource type="Resource" path="res://Turrets/Shooter/Shooter_Basic.tres" id="1_d4njv"]
+[ext_resource type="Resource" uid="uid://bjiq0f4ix8kym" path="res://Turrets/Shooter/Shooter_Basic.tres" id="1_d4njv"]
 [ext_resource type="Script" uid="uid://by85y3cqstj04" path="res://Abstract/Data/WeightedList.cs" id="1_ps0rn"]
 [ext_resource type="Script" uid="uid://c02jid8ovdi0j" path="res://Abstract/Data/WeightedCurveList.cs" id="2_d4njv"]
 [ext_resource type="Resource" uid="uid://57ssw6sspepb" path="res://Turrets/Hunter/HunterBlueprint.tres" id="2_jbv3k"]
 [ext_resource type="Resource" uid="uid://cx2i8uqbstjqg" path="res://Modules/Damage/Damage.tres" id="3_ksl2g"]
-[ext_resource type="Resource" uid="uid://bhxj4rww74nee" path="res://Turrets/Seeker/SeekerBasic.tres" id="3_m084i"]
+[ext_resource type="Resource" uid="uid://bhxj4rww74nee" path="res://Turrets/Seeker/Seeker_Basic.tres" id="3_m084i"]
 [ext_resource type="Script" uid="uid://5mfid57rp3et" path="res://Levels/Maps/ShopData.cs" id="4_jbv3k"]
 [ext_resource type="Script" uid="uid://ufdo2vxockv6" path="res://Abstract/Data/ModuleChainHandler.cs" id="4_m084i"]
 [ext_resource type="Resource" uid="uid://booj5s0lfehrd" path="res://Turrets/Choker/Choker_Basic.tres" id="4_xt8uj"]

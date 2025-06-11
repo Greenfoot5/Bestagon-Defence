@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdodns4hoyf8u"
-path="res://.godot/imported/T_SeekerBase_Dark.png-ec5b824f7d701e37ac5a1d732233a189.ctex"
+uid="uid://8ofql8abp2ax"
+path="res://.godot/imported/T_TurretBase_SeekerLight.png-b192a3e636faa898cbe97f72bacba50e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Turrets/Seeker/T_SeekerBase_Dark.png"
-dest_files=["res://.godot/imported/T_SeekerBase_Dark.png-ec5b824f7d701e37ac5a1d732233a189.ctex"]
+source_file="res://Turrets/Seeker/T_TurretBase_SeekerLight.png"
+dest_files=["res://.godot/imported/T_TurretBase_SeekerLight.png-b192a3e636faa898cbe97f72bacba50e.ctex"]
 
 [params]
 

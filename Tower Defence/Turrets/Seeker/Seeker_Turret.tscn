@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://y410f7lh1hj7"]
 
 [ext_resource type="Script" uid="uid://dta0q34sbc2sf" path="res://Turrets/Seeker/Seeker.cs" id="1_s6ie5"]
-[ext_resource type="PackedScene" uid="uid://buwanh0vaniqf" path="res://Turrets/Seeker/SeekerShot.tscn" id="2_8jhoo"]
-[ext_resource type="Texture2D" uid="uid://cdodns4hoyf8u" path="res://Turrets/Seeker/T_SeekerBase_Dark.png" id="2_ykbrl"]
-[ext_resource type="Resource" uid="uid://cucb2b71sa7e0" path="res://Turrets/Seeker/SeekerAttributes.tres" id="3_eew7b"]
-[ext_resource type="Texture2D" uid="uid://cyk5d1emrkk38" path="res://Turrets/Seeker/T_Seeker.png" id="3_g087p"]
+[ext_resource type="PackedScene" uid="uid://buwanh0vaniqf" path="res://Turrets/Seeker/Seeker_Shot.tscn" id="2_8jhoo"]
+[ext_resource type="Texture2D" uid="uid://cdodns4hoyf8u" path="res://Turrets/Seeker/T_TurretBase_SeekerDark.png" id="2_ykbrl"]
+[ext_resource type="Resource" uid="uid://cucb2b71sa7e0" path="res://Turrets/Seeker/Attributes_Seeker.tres" id="3_eew7b"]
+[ext_resource type="Texture2D" uid="uid://cyk5d1emrkk38" path="res://Turrets/Seeker/T_Turret_Seeker.png" id="3_g087p"]
 [ext_resource type="Shader" uid="uid://bjciwmxveqxrx" path="res://MaterialLibrary/Range/Range.gdshader" id="4_eew7b"]
 [ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/White_Rectangle_x1000.png" id="5_8jhoo"]
 
