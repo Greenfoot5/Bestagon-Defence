@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://r3ph8plamg5o"]
 
 [ext_resource type="Script" uid="uid://drvqbyytx8ijt" path="res://Turrets/Bullet.cs" id="1_54gm6"]
-[ext_resource type="Texture2D" uid="uid://bl5etw01vs7qi" path="res://Turrets/Lancer/T_LancerBullet.png" id="1_qvrnb"]
+[ext_resource type="Texture2D" uid="uid://bl5etw01vs7qi" path="res://Turrets/Lancer/T_Lancer_Bullet.png" id="1_qvrnb"]
 [ext_resource type="Script" uid="uid://blnrq5atpcclw" path="res://Abstract/Attributes/Attribute.cs" id="2_7s277"]
 [ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/AttributeModifier.cs" id="3_mqebf"]
 [ext_resource type="Script" uid="uid://c80di1i4n41ig" path="res://Abstract/Attributes/Attributes.cs" id="4_s0200"]

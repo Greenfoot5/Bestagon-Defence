@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://83hots02i356"
-path.s3tc="res://.godot/imported/T_LancerTurret.png-c50bc4a3fa44461352f2f9780da96e08.s3tc.ctex"
+uid="uid://bl5etw01vs7qi"
+path.s3tc="res://.godot/imported/T_Lancer_Bullet.png-aa7e949cbc1c2612b31bdd7210d551db.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Turrets/Lancer/T_LancerTurret.png"
-dest_files=["res://.godot/imported/T_LancerTurret.png-c50bc4a3fa44461352f2f9780da96e08.s3tc.ctex"]
+source_file="res://Turrets/Lancer/T_Lancer_Bullet.png"
+dest_files=["res://.godot/imported/T_Lancer_Bullet.png-aa7e949cbc1c2612b31bdd7210d551db.s3tc.ctex"]
 
 [params]
 

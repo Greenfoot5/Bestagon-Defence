@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://buwanh0vaniqf"]
 
-[ext_resource type="Texture2D" uid="uid://cm4do2j657ivs" path="res://Turrets/Seeker/T_SeekerShot.png" id="1_047q5"]
+[ext_resource type="Texture2D" uid="uid://cm4do2j657ivs" path="res://Turrets/Seeker/T_Seeker_Shot.png" id="1_047q5"]
 [ext_resource type="Script" uid="uid://clabi5uqoc4ij" path="res://Turrets/Seeker/SeekerShot.cs" id="1_hwxr7"]
 [ext_resource type="Resource" uid="uid://cucb2b71sa7e0" path="res://Turrets/Seeker/Attributes_Seeker.tres" id="2_hwxr7"]
 
