@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="ModuleChain" load_steps=5 format=3 uid="uid://cx2i8uqbstjqg"]
 
 [ext_resource type="Script" uid="uid://05pfhoqbexkq" path="res://Modules/ModuleChain.cs" id="1_8jytx"]
-[ext_resource type="Resource" uid="uid://037yst8p03wk" path="res://Modules/Damage/DamageT1.tres" id="1_wvrlx"]
-[ext_resource type="Texture2D" uid="uid://ccyakwyjs0yuh" path="res://Modules/Damage/DamageTexture.tres" id="1_yx8t3"]
-[ext_resource type="Resource" uid="uid://btfj1ks12bjsb" path="res://Modules/Damage/DamageT2.tres" id="3_nm4jt"]
+[ext_resource type="Resource" uid="uid://037yst8p03wk" path="res://Modules/Damage/M_DamageT1.tres" id="1_wvrlx"]
+[ext_resource type="Texture2D" uid="uid://ccyakwyjs0yuh" path="res://Modules/Damage/TA_Damage.tres" id="1_yx8t3"]
+[ext_resource type="Resource" uid="uid://btfj1ks12bjsb" path="res://Modules/Damage/M_DamageT2.tres" id="3_nm4jt"]
 
 [resource]
 script = ExtResource("1_8jytx")

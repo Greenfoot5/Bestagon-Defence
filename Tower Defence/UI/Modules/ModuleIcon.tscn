@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://qda78uqa18i1" path="res://UI/Modules/ModuleIcon.cs" id="1_3po1c"]
 [ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/White_Rectangle_x1000.png" id="2_indtd"]
 [ext_resource type="Script" uid="uid://bggcwhcehi21t" path="res://UI/centre_pivot.gd" id="3_nplle"]
-[ext_resource type="Texture2D" uid="uid://bxa53twnv3u5s" path="res://Modules/Slow/Slow.tres" id="4_m8sfd"]
+[ext_resource type="Texture2D" uid="uid://bxa53twnv3u5s" path="res://Modules/Slow/T_Slow.tres" id="4_m8sfd"]
 [ext_resource type="FontFile" uid="uid://1ojapw2lf2sh" path="res://UI/Fonts/Font_NikkyouSans.ttf" id="5_by0k1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_by0k1"]
