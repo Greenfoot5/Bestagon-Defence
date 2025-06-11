@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://djwme6ksjci6r" path="res://UI/Shop/LifeSelectionUI.cs" id="1_3nyof"]
 [ext_resource type="Texture2D" uid="uid://bgwjkwx6n6xlm" path="res://UI/Generic/T_Head_Steep.png" id="1_5y04b"]
-[ext_resource type="Texture2D" uid="uid://y6de65v2e3no" path="res://UI/Generic/Currency.png" id="2_5y04b"]
+[ext_resource type="Texture2D" uid="uid://y6de65v2e3no" path="res://UI/Generic/T_Currency.png" id="2_5y04b"]
 [ext_resource type="Texture2D" uid="uid://dffr5m7238dqf" path="res://UI/Generic/T_Life_Large.png" id="3_d05cp"]
 
 [node name="Card_Life" type="Panel" node_paths=PackedStringArray("button", "effect")]

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cq6e6glu7lt0i"
-path.s3tc="res://.godot/imported/Besatgon-wordmark-white.png-d6c731b7c93d3c426c5521bb0bbe77bf.s3tc.ctex"
+path.s3tc="res://.godot/imported/Bestagon_Wordmark_White.png-6c17d8fe0d4f909c572fc285f448a0a4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://UI/Branding/Besatgon-wordmark-white.png"
-dest_files=["res://.godot/imported/Besatgon-wordmark-white.png-d6c731b7c93d3c426c5521bb0bbe77bf.s3tc.ctex"]
+source_file="res://UI/Branding/Bestagon_Wordmark_White.png"
+dest_files=["res://.godot/imported/Bestagon_Wordmark_White.png-6c17d8fe0d4f909c572fc285f448a0a4.s3tc.ctex"]
 
 [params]
 

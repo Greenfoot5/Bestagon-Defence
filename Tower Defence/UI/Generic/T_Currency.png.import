@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://y6de65v2e3no"
-path.s3tc="res://.godot/imported/Currency.png-e5c12dcaca9d2382dccf09c2c9794024.s3tc.ctex"
+path.s3tc="res://.godot/imported/T_Currency.png-dddf8b646dd42d54c081a1669235fb3c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://UI/Generic/Currency.png"
-dest_files=["res://.godot/imported/Currency.png-e5c12dcaca9d2382dccf09c2c9794024.s3tc.ctex"]
+source_file="res://UI/Generic/T_Currency.png"
+dest_files=["res://.godot/imported/T_Currency.png-dddf8b646dd42d54c081a1669235fb3c.s3tc.ctex"]
 
 [params]
 
