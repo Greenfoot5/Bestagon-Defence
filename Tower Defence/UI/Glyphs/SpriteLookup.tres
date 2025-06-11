@@ -1,76 +1,76 @@
 [gd_resource type="Resource" script_class="TypeSpriteLookup" load_steps=21 format=3 uid="uid://n0kcky3mpl8q"]
 
 [ext_resource type="Script" uid="uid://dw73r34mdjcgj" path="res://Abstract/TypeSpriteLookup.cs" id="1_lvwce"]
-[ext_resource type="Texture2D" uid="uid://ck8qfb3vnn670" path="res://UI/Glyphs/Any.tres" id="1_unu14"]
-[ext_resource type="Texture2D" uid="uid://br37km3cwmor1" path="res://UI/Glyphs/Choker.tres" id="1_usrek"]
+[ext_resource type="Texture2D" uid="uid://dygt1lyjkksen" path="res://UI/Glyphs/TA_Glyph_Choker.tres" id="1_v1bek"]
 [ext_resource type="Script" uid="uid://c51bg7vils860" path="res://UI/Glyphs/TurretGlyph.cs" id="2_djc47"]
-[ext_resource type="Texture2D" uid="uid://btxqimrikf78w" path="res://UI/Glyphs/Gunner.tres" id="3_xbxry"]
-[ext_resource type="Texture2D" uid="uid://7d5is2r7a2uf" path="res://UI/Glyphs/Lancer.tres" id="4_v1bek"]
-[ext_resource type="Texture2D" uid="uid://bfyerreld5pmr" path="res://UI/Glyphs/T_Hunter.png" id="4_xbxry"]
-[ext_resource type="Texture2D" uid="uid://g3f5rnqin2jp" path="res://UI/Glyphs/Laser.tres" id="5_q1ckl"]
-[ext_resource type="Texture2D" uid="uid://c1px3poumr7i6" path="res://UI/Glyphs/Shooter.tres" id="6_cndl1"]
-[ext_resource type="Texture2D" uid="uid://b6a5tjvgjvvc0" path="res://UI/Glyphs/Smasher.tres" id="7_3hlsn"]
-[ext_resource type="Texture2D" uid="uid://ptcg5iqgu3wq" path="res://UI/Glyphs/T_Seeker.png" id="7_v1bek"]
+[ext_resource type="Texture2D" uid="uid://ds3if4pij6hq2" path="res://UI/Glyphs/TA_Glyph_Gunner.tres" id="3_q1ckl"]
+[ext_resource type="Texture2D" uid="uid://btwr6fic1scxn" path="res://UI/Glyphs/TA_Glyph_Hunter.tres" id="4_cndl1"]
+[ext_resource type="Texture2D" uid="uid://bfkf40iwqhf87" path="res://UI/Glyphs/TA_Glyph_Lancer.tres" id="5_3hlsn"]
+[ext_resource type="Texture2D" uid="uid://3xm2iugw0lv0" path="res://UI/Glyphs/TA_Glyph_Laser.tres" id="6_lcq5x"]
+[ext_resource type="Texture2D" uid="uid://bl74fr8ygswr7" path="res://UI/Glyphs/TA_Glyph_Seeker.tres" id="7_w8nu2"]
+[ext_resource type="Texture2D" uid="uid://dtayrsmp5a1y1" path="res://UI/Glyphs/TA_Glyph_Shooter.tres" id="8_cl63i"]
+[ext_resource type="Texture2D" uid="uid://dyny7famaj7j3" path="res://UI/Glyphs/TA_Glyph_Smasher.tres" id="9_33q0u"]
+[ext_resource type="Texture2D" uid="uid://ck8qfb3vnn670" path="res://UI/Glyphs/TA_Glyph_Any.tres" id="10_2h48r"]
 
 [sub_resource type="Resource" id="Resource_lcq5x"]
 script = ExtResource("2_djc47")
-Glyph = ExtResource("1_usrek")
+Glyph = ExtResource("1_v1bek")
 Body = Color(0.976471, 0.396078, 0.223529, 1)
 Shade = Color(0, 0, 0, 0.25)
 metadata/_custom_type_script = "uid://c51bg7vils860"
 
 [sub_resource type="Resource" id="Resource_w8nu2"]
 script = ExtResource("2_djc47")
-Glyph = ExtResource("3_xbxry")
+Glyph = ExtResource("3_q1ckl")
 Body = Color(0.588235, 0.219608, 0.94902, 1)
 Shade = Color(0, 0, 0, 0.25)
 metadata/_custom_type_script = "uid://c51bg7vils860"
 
 [sub_resource type="Resource" id="Resource_v1bek"]
 script = ExtResource("2_djc47")
-Glyph = ExtResource("4_xbxry")
+Glyph = ExtResource("4_cndl1")
 Body = Color(0.235294, 0.211765, 0.364706, 1)
 Shade = Color(0, 0, 0, 0.25)
 metadata/_custom_type_script = "uid://c51bg7vils860"
 
 [sub_resource type="Resource" id="Resource_cl63i"]
 script = ExtResource("2_djc47")
-Glyph = ExtResource("4_v1bek")
+Glyph = ExtResource("5_3hlsn")
 Body = Color(0.203922, 0.266667, 0.670588, 1)
 Shade = Color(0, 0, 0, 0.25)
 metadata/_custom_type_script = "uid://c51bg7vils860"
 
 [sub_resource type="Resource" id="Resource_33q0u"]
 script = ExtResource("2_djc47")
-Glyph = ExtResource("5_q1ckl")
+Glyph = ExtResource("6_lcq5x")
 Body = Color(0.133333, 0.756863, 0.843137, 1)
 Shade = Color(0, 0, 0, 0.25)
 metadata/_custom_type_script = "uid://c51bg7vils860"
 
 [sub_resource type="Resource" id="Resource_q1ckl"]
 script = ExtResource("2_djc47")
-Glyph = ExtResource("7_v1bek")
+Glyph = ExtResource("7_w8nu2")
 Body = Color(0.901961, 0.0823529, 0.913725, 1)
 Shade = Color(0, 0, 0, 0.25)
 metadata/_custom_type_script = "uid://c51bg7vils860"
 
 [sub_resource type="Resource" id="Resource_2h48r"]
 script = ExtResource("2_djc47")
-Glyph = ExtResource("6_cndl1")
+Glyph = ExtResource("8_cl63i")
 Body = Color(0.121569, 0.811765, 0.537255, 1)
 Shade = Color(0, 0, 0, 0.25)
 metadata/_custom_type_script = "uid://c51bg7vils860"
 
 [sub_resource type="Resource" id="Resource_6hara"]
 script = ExtResource("2_djc47")
-Glyph = ExtResource("7_3hlsn")
+Glyph = ExtResource("9_33q0u")
 Body = Color(0.882353, 0.117647, 0.368627, 1)
 Shade = Color(0, 0, 0, 0.25)
 metadata/_custom_type_script = "uid://c51bg7vils860"
 
 [sub_resource type="Resource" id="Resource_r70qi"]
 script = ExtResource("2_djc47")
-Glyph = ExtResource("1_unu14")
+Glyph = ExtResource("10_2h48r")
 Body = Color(0.6, 0.6, 0.6, 100)
 Shade = Color(0, 0, 0, 0.25)
 metadata/_custom_type_script = "uid://c51bg7vils860"
