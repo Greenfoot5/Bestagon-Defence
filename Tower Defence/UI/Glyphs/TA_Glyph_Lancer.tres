@@ -1,7 +1,7 @@
 [gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://bfkf40iwqhf87"]
 
-[ext_resource type="Texture2D" uid="uid://cv1r4abdxn7ny" path="res://UI/Glyphs/T_Glyphs.png" id="1_h3u3r"]
+[ext_resource type="Texture2D" uid="uid://dl54ch5xggu2r" path="res://UI/Glyphs/T_Glyphs.svg" id="1_h3u3r"]
 
 [resource]
 atlas = ExtResource("1_h3u3r")
-region = Rect2(149, 86, 70, 80)
+region = Rect2(140, 81, 66, 76)
