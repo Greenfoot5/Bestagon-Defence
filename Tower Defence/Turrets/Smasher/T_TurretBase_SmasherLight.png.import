@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bt5a1igm4cq5n"
-path.s3tc="res://.godot/imported/T_SmasherTurret.png-c5a97e060c9305dab7846153734a2d76.s3tc.ctex"
+uid="uid://dk4fly2qxejul"
+path.s3tc="res://.godot/imported/T_TurretBase_SmasherLight.png-b5222f53cb3543bd2463a868a4f5b5cf.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Turrets/Smasher/T_SmasherTurret.png"
-dest_files=["res://.godot/imported/T_SmasherTurret.png-c5a97e060c9305dab7846153734a2d76.s3tc.ctex"]
+source_file="res://Turrets/Smasher/T_TurretBase_SmasherLight.png"
+dest_files=["res://.godot/imported/T_TurretBase_SmasherLight.png-b5222f53cb3543bd2463a868a4f5b5cf.s3tc.ctex"]
 
 [params]
 
