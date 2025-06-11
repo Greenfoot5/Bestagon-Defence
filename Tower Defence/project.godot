@@ -27,7 +27,7 @@ project/assembly_name="Bestagon Defense"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/godot_plushie_viewport_pet/plugin.cfg")
 
 [input]
 
