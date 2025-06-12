@@ -13,14 +13,20 @@ namespace BestagonDefense.Abstract.Data;
 [Tool]
 public partial class WeightedCurveList : Resource
 {
+    /// <summary>
+    /// The type of the WeightedCurveList
+    /// </summary>
+    private Strain strain;
+    
+    // Data Containers
     private Array<TurretBlueprint> blueprints = [];
     private Array<ModuleChainHandler> handlers = [];
     private Array<Curve> curves = [];
     
-    private Strain strain;
-    
     private int _size;
-    
+    /// <summary>
+    /// The Size of the List
+    /// </summary>
     public int Size
     {
         get => _size;
@@ -34,11 +40,18 @@ public partial class WeightedCurveList : Resource
         }
     }
     
+    /// <summary>
+    /// Creates a WeightedCurveList of the specified strain
+    /// </summary>
+    /// <param name="strain">The strain of the WCL</param>
     public WeightedCurveList(Strain strain)
     {
         this.strain = strain;
     }
 
+    /// <summary>
+    /// Creates a WCL of strain TurretBlueprint
+    /// </summary>
     public WeightedCurveList()
     {
         strain = Strain.TurretBlueprint;
@@ -62,8 +75,13 @@ public partial class WeightedCurveList : Resource
         return weightedList;
     }
     
+    /// <summary>
+    /// Gets the property list to display in the editor
+    /// </summary>
+    /// <returns>An array of properties to display and how</returns>
     public override Array<Dictionary> _GetPropertyList()
     {
+        // Base List properties
         Array<Dictionary> properties =
         [
             new()
@@ -84,26 +102,35 @@ public partial class WeightedCurveList : Resource
             }
         ];
 
+        // List Data
         for (var i = 0; i < _size; i++)
         {
-            if (strain == Strain.TurretBlueprint)
-                properties.Add(new Dictionary()
-                {
-                    { "name", $"list_{i}/Blueprint" },
-                    { "type", (int)Variant.Type.Object },
-                    { "hint", (int)PropertyHint.ResourceType },
-                    { "hint_string", nameof(TurretBlueprint) },
-                    { "usage", (int)PropertyUsageFlags.Editor + (int)PropertyUsageFlags.Storage }
-                });
-            else if (strain == Strain.ModuleChainHandler)
-                properties.Add(new Dictionary()
-                {
-                    { "name", $"list_{i}/Handler" },
-                    { "type", (int)Variant.Type.Object },
-                    { "hint", (int)PropertyHint.ResourceType },
-                    { "hint_string", nameof(ModuleChainHandler) },
-                    { "usage", (int)PropertyUsageFlags.Editor + (int)PropertyUsageFlags.Storage }
-                });
+            switch (strain)
+            {
+                case Strain.TurretBlueprint:
+                    properties.Add(new Dictionary()
+                    {
+                        { "name", $"list_{i}/Blueprint" },
+                        { "type", (int)Variant.Type.Object },
+                        { "hint", (int)PropertyHint.ResourceType },
+                        { "hint_string", nameof(TurretBlueprint) },
+                        { "usage", (int)PropertyUsageFlags.Editor + (int)PropertyUsageFlags.Storage }
+                    });
+                    break;
+                case Strain.ModuleChainHandler:
+                    properties.Add(new Dictionary()
+                    {
+                        { "name", $"list_{i}/Handler" },
+                        { "type", (int)Variant.Type.Object },
+                        { "hint", (int)PropertyHint.ResourceType },
+                        { "hint_string", nameof(ModuleChainHandler) },
+                        { "usage", (int)PropertyUsageFlags.Editor + (int)PropertyUsageFlags.Storage }
+                    });
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
             properties.Add(new Dictionary()
             {
                 { "name", $"list_{i}/Curve" },
@@ -117,6 +144,11 @@ public partial class WeightedCurveList : Resource
         return properties;
     }
     
+    /// <summary>
+    /// Gets the value for a given property
+    /// </summary>
+    /// <param name="property">The property to get the data for</param>
+    /// <returns>The data for that property (if it exists)</returns>
     public override Variant _Get(StringName property)
     {
         var propertyName = property.ToString();
@@ -148,6 +180,12 @@ public partial class WeightedCurveList : Resource
         return default;
     }
 
+    /// <summary>
+    /// Sets the value for a given property
+    /// </summary>
+    /// <param name="property">The property to update</param>
+    /// <param name="value">The new value of the property</param>
+    /// <returns>true if the value was updated</returns>
     public override bool _Set(StringName property, Variant value)
     {
         var propertyName = property.ToString();

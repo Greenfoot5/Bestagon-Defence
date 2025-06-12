@@ -10,19 +10,18 @@ namespace BestagonDefense.Abstract.Data;
 /// As a Resource cannot be instantiated, it cannot store the tier variable
 /// Also handles a few other useful things
 /// </summary>
-[Serializable]
 [Tool]
 [GlobalClass]
-public partial class ModuleChainHandler : Resource, IEquatable<ModuleChainHandler>, ISubtypeable
+public partial class ModuleChainHandler : Resource, IEquatable<ModuleChainHandler>, ISubtypable
 {
     // The display levels of the modules
     private static readonly string[] Levels =
-    {
+    [
         "-", "I", "II", "III", "IV", "V",
         "VI", "VII", "VIII", "IX", "X",
         "XI", "XII", "XIII", "XIV", "XV",
         "XVI", "XVII", "XVIII", "XIX", "XX"
-    };
+    ];
         
     /// <summary>
     /// The module chain to handle
@@ -35,12 +34,20 @@ public partial class ModuleChainHandler : Resource, IEquatable<ModuleChainHandle
     [Export]
     private int tier;
 
+    /// <summary>
+    /// Creates a new ModuleChainHandler with the specified values
+    /// </summary>
+    /// <param name="chain">The ModuleChain to use in the handler</param>
+    /// <param name="tier">The tier of the ModuleChain the handler represents</param>
     public ModuleChainHandler(ModuleChain chain, int tier)
     {
         this.chain = chain;
         this.tier = tier;
     }
 
+    /// <summary>
+    /// Creates an empty ModuleChainHandler
+    /// </summary>
     public ModuleChainHandler()
     {
         tier = 1;
@@ -63,10 +70,10 @@ public partial class ModuleChainHandler : Resource, IEquatable<ModuleChainHandle
     }
 
     /// <summary>
-    /// Checks if the module can be upgraded from it's current tier
+    /// Checks if the module can be upgraded from its current tier
     /// </summary>
     /// <param name="otherTier">The tier of the other module this module is trying to upgrade with</param>
-    /// <returns></returns>
+    /// <returns>If the module can be upgraded</returns>
     public bool CanUpgrade(int otherTier)
     {
         return otherTier == tier && chain.CanUpgrade(otherTier);
@@ -122,32 +129,59 @@ public partial class ModuleChainHandler : Resource, IEquatable<ModuleChainHandle
     {
         return chain.DisplayName + " " + GetTierDisplay();
     }
-        
+    
+    /// <summary>
+    /// Checks if the Damager is of a valid type for the Module
+    /// </summary>
+    /// <param name="damager">The Damager to check for</param>
+    /// <returns>True if the Module can be applied to the Damager</returns>
     public bool ValidModule(Damager damager)
     {
         return chain.GetModule(tier).ValidModule(damager);
     }
 
+    /// <summary>
+    /// Checks if another ModuleChainHandler is the same as this
+    /// </summary>
+    /// <param name="other">The handler to check against</param>
+    /// <returns>true if the handlers have the same chain at the same tier</returns>
     public bool Equals(ModuleChainHandler other)
     {
-        return Equals(chain, other.chain) && tier == other.tier;
+        return other != null && Equals(chain, other.chain) && tier == other.tier;
     }
 
+    /// <summary>
+    /// Checks if an object is the same as this ModuleChainHandler
+    /// </summary>
+    /// <param name="obj">The object to check against</param>
+    /// <returns>true if both are handlers and the handlers are equal</returns>
     public override bool Equals(object obj)
     {
         return obj is ModuleChainHandler other && Equals(other);
     }
 
+    /// <summary>
+    /// Hashes the current state of the ModuleChainHandler
+    /// </summary>
+    /// <returns>A hash of the object's current state</returns>
     public override int GetHashCode()
     {
         return HashCode.Combine(chain, tier);
     }
 
+    /// <summary>
+    /// Converts the chain to a readable string
+    /// </summary>
+    /// <returns>A readable string with the handler's tier</returns>
     public override string ToString()
     {
         return GetModule().GetName() + " (" + GetTierDisplay() + ")";
     }
-        
+    
+    /// <summary>
+    /// Get the handler's module type
+    /// </summary>
+    /// <returns>The Type of the handler's module chain module</returns>
     public Type GetSubtype()
     {
         return GetModule().GetType();

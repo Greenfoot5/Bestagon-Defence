@@ -12,7 +12,7 @@ namespace BestagonDefense.Turrets;
 /// </summary>
 [GlobalClass]
 [Tool]
-public partial class TurretBlueprint : Resource, ISubtypeable
+public partial class TurretBlueprint : Resource, ISubtypable
 {
     /// <summary>
     /// The icon that appears on the selection card
