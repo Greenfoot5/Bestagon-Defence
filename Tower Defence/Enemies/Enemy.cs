@@ -9,12 +9,12 @@ namespace BestagonDefense.Enemies;
 /// </summary>
 public partial class Enemy : Area2D
 {
+    /// <summary>
+    /// The EnemyStats data container for the Enemy
+    /// </summary>
     [Export]
     public EnemyStats EnemyStats = new();
-    private Attributes _stats;
-        
-    public float Health { get; private set; }
-
+    
     /// <summary>
     /// The left health bar
     /// </summary>
@@ -28,18 +28,27 @@ public partial class Enemy : Area2D
     public ProgressBar RightBar;
     [Export]
     public Sprite2D Sprite;
-
+    
     /// <summary>
     /// The root game object to rotate to change the enemy's looking direction
     /// </summary>
     [ExportGroup("Other")]
     [Export]
     public Node2D RotationRoot;
+    
+    /// <summary>
+    /// Holds the current Attributes for the Enemy
+    /// </summary>
+    private Attributes _stats;
+    
+    /// <summary>
+    /// The current health of the enemy
+    /// </summary>
+    public float Health { get; private set; }
         
     /// <summary>
     /// The next position the enemy moves towards
     /// </summary>
-    [ExportGroup("Movement")]
     public Vector2[] Points;
     private int _pathIndex;
     public int WaypointIndex;
@@ -54,7 +63,7 @@ public partial class Enemy : Area2D
     private bool _isDead;
     public delegate void DeathEvent();
     public event DeathEvent OnDeath;
-
+    
     public delegate void EnemyKilledEvent(Enemy enemy);
     public static event EnemyKilledEvent OnEnemyKilled;
         
@@ -68,10 +77,14 @@ public partial class Enemy : Area2D
         Sprite.Texture = EnemyStats.Sprite;
     }
 
-    public override void _Process(double delta)
+    /// <summary>
+    /// Moves the enemy and updates it's goals
+    /// </summary>
+    /// <param name="delta">The time in seconds since the last frame</param>
+    public override void _PhysicsProcess(double delta)
     {
-        // TODO - Better backwards
         // If the enemy is moving backwards
+        // TODO - Better backwards
         if (_stats[AttributeType.Speed].Value < 0)
         {
             MoveBackwards();
@@ -85,12 +98,14 @@ public partial class Enemy : Area2D
 
         GlobalPosition = position.MoveToward(location, distanceThisFrame);
             
-        Vector2 difference = location - position; // Distance & direction to next target
+        // Distance & direction to next target
+        Vector2 difference = location - position;
 
         // If within this frame the enemy will pass the waypoint, it's a guaranteed hit
         if (difference.LengthSquared() <= EnemyStats.DistanceToWaypoint * EnemyStats.DistanceToWaypoint)
         {
-            GetNextWaypoint();
+            // We don't move past the waypoint in case of extreme lag, it would feel unfair for a player to lose due to this
+            TargetNextWaypoint();
         }
         else
         {
@@ -98,16 +113,14 @@ public partial class Enemy : Area2D
             MapProgress = WaypointIndex + 1 - (sqrDistance / (_maxDistance * _maxDistance));
         }
 
+        // TODO - Rotate Enemy
         if (EnemyStats.DoesRotation) { }
-        // Attempt at rotation
-        // TODO - Transform.up
-        // _enemy.RotationRoot.transform.up = (location - position).normalized;
     }
         
     /// <summary>
-    /// Gets the next waypoint in the waypoints array
+    /// Updates target to the next waypoint
     /// </summary>
-    private void GetNextWaypoint()
+    private void TargetNextWaypoint()
     {
         // If the enemy has reached the end, destroy
         if (WaypointIndex >= Points.Length - 1)
@@ -135,8 +148,8 @@ public partial class Enemy : Area2D
                 
         // Get the direction and move in that direction
         Vector2 dir = Points[WaypointIndex - 1] - Position;
-        // TODO - Perform translation in godot
         // transform.Translate(dir.normalized * (Mathf.Abs(_enemy.speed.GetTrueStat()) * delta), Space.World);
+        // TODO - Perform translation in godot
         MapProgress = WaypointIndex - (EnemyStats.DistanceToWaypoint / _maxDistance);
         
         // If the enemy hasn't reached the previous waypoint, there's no point knocking it back further
