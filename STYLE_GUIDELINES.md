@@ -169,6 +169,14 @@ public class Account
     // Signals/Events
     [Signal]
     public delegate void OnSignalEventHandler();
+    
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    public Account()
+    {
+        // ...
+    }
 
     /// <summary>
     /// Startup method
