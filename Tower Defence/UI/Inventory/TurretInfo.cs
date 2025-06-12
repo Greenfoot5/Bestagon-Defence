@@ -208,15 +208,7 @@ public partial class TurretInfo : Control
         UpdateStats();
         UpdateModules();
     }
-        
-    /// <summary>
-    /// Sells the turret
-    /// </summary>
-    public void SellTurret()
-    {
-        _target.SellTurret(shop.GetSellAmount());
-    }
-        
+    
     /// <summary>
     /// Rotates Lancer Turret
     /// </summary>
