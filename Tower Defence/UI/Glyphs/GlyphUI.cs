@@ -2,6 +2,9 @@ using Godot;
 
 namespace BestagonDefense.UI.Glyphs;
 
+/// <summary>
+/// Node of a Glyph
+/// </summary>
 public partial class GlyphUI : TextureRect
 {
     /// <summary>
@@ -20,6 +23,10 @@ public partial class GlyphUI : TextureRect
     [Export]
     public TextureRect Shade;
 
+    /// <summary>
+    /// Populates the UI values from a TurretGlyph resource
+    /// </summary>
+    /// <param name="res">The TurretGlyph data to use</param>
     public void FromResource(TurretGlyph res)
     {
         Glyph.Texture = res.Glyph;

@@ -9,16 +9,22 @@ using Godot;
 
 namespace BestagonDefense.UI.Inventory;
 
+/// <summary>
+/// A turret blueprint UI in the turret inventory
+/// </summary>
 public partial class TurretInventoryItem : Control
 {
+    /// <summary>
+    /// The blueprint the UI displays for
+    /// </summary>
     public TurretBlueprint TurretBlueprint { get; private set; }
-
+    
     /// <summary>
     /// The TMP text to display the turret's display name
     /// </summary>
     [Export]
     private Label displayName;
-        
+    
     /// <summary>
     /// The Sprite2D to place the turret's icon
     /// </summary>
@@ -35,7 +41,7 @@ public partial class TurretInventoryItem : Control
     // [Export]
     // TODO - HexagonSprite
     // private HexagonSprite glyphBody;
-        
+    
     /// <summary>
     /// The none text of modules to disable if the turret has any modules
     /// </summary>
@@ -52,7 +58,7 @@ public partial class TurretInventoryItem : Control
     /// </summary>
     [Export]
     private PackedScene moduleUI;
-        
+    
     /// <summary>
     /// The TurretStat used to display the damage
     /// </summary>
@@ -69,20 +75,19 @@ public partial class TurretInventoryItem : Control
     /// </summary>
     [Export]
     private TurretStat range;
-        
+    
+    /// <summary>
+    /// The background Image of the modules section
+    /// </summary>
     [ExportGroup("Colors")]
+    [Export]
+    private Panel modulesBg;
     // <summary>
     // The Hexagons shader background of the card
     // </summary>
     // [Export]
     // TODO - GlowBox
     // private GlowBox bg;
-        
-    /// <summary>
-    /// The background Image of the modules section
-    /// </summary>
-    [Export]
-    private Panel modulesBg;
 
     /// <summary>
     /// Creates and setups the Selection UI.
@@ -115,15 +120,14 @@ public partial class TurretInventoryItem : Control
         range.SetColor(turret.Accent);
             
         // Turret's Modules
-        if (turret.ModuleHandlers.Count != 0)
-        {
-            noneText.Visible = false;
-            foreach (ModuleChainHandler handler in turret.ModuleHandlers) {
-                var mod = moduleUI.Instantiate<ModuleIcon>();
-                modulesLayout.AddChild(mod);
-                mod.Name = "_" + mod.Name;
-                mod.SetData(handler);
-            }
+        if (turret.ModuleHandlers.Count == 0) return;
+        
+        noneText.Visible = false;
+        foreach (ModuleChainHandler handler in turret.ModuleHandlers) {
+            var mod = moduleUI.Instantiate<ModuleIcon>();
+            modulesLayout.AddChild(mod);
+            mod.Name = "_" + mod.Name;
+            mod.SetData(handler);
         }
     }
 
@@ -131,7 +135,7 @@ public partial class TurretInventoryItem : Control
     /// Called when a player clicks the card,
     /// selecting it and closing the shop
     /// </summary>
-    public void Select()
+    private void Select()
     {
         BuildManager.SelectBlueprint(this);
     }

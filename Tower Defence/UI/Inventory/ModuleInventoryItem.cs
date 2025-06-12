@@ -8,10 +8,11 @@ using Godot;
 
 namespace BestagonDefense.UI.Inventory;
 
+/// <summary>
+/// The UI for a module in the inventory
+/// </summary>
 public partial class ModuleInventoryItem : Button
 {
-    private ModuleChainHandler _module;
-        
     /// <summary>
     /// The TMP text to display the module's display name
     /// </summary>
@@ -22,25 +23,25 @@ public partial class ModuleInventoryItem : Button
     /// </summary>
     [Export]
     private Label effectText;
-        
+    
     /// <summary>
     /// The ModuleIcon for the module card
     /// </summary>
     [Export]
     private ModuleIcon icon;
-        
+    
+    /// <summary>
+    /// The background Image of the modules section
+    /// </summary>
     [ExportGroup("Colors")]
+    [Export]
+    public Button modulesBg;
     // <summary>
     // The Hexagons shader background of the card")]
     // [Export]
     // TODO - GlowBox
     // public GlowBox bg;
-    /// <summary>
-    /// The background Image of the modules section
-    /// </summary>
-    [Export]
-    public Button modulesBg;
-        
+    
     /// <summary>
     /// The generic glyph prefab to use to display the applicable turrets
     /// </summary>
@@ -51,7 +52,7 @@ public partial class ModuleInventoryItem : Button
     /// </summary>
     [Export]
     private Node applicableGlyphs;
-        
+    
     /// <summary>
     /// The list of types the turret has
     /// </summary>
@@ -59,7 +60,9 @@ public partial class ModuleInventoryItem : Button
     /// <summary>
     /// The original accent colour
     /// </summary>
-    public Color accent;
+    public Color Accent;
+    
+    private ModuleChainHandler _module;
 
     /// <summary>
     /// Creates and setups the Selection UI.
@@ -79,7 +82,7 @@ public partial class ModuleInventoryItem : Button
 
         // Colors
         // bg.color = module.GetChain().accentColor;
-        accent = module.GetChain().AccentColor;
+        Accent = module.GetChain().AccentColor;
         modulesBg.SelfModulate = module.GetChain().AccentColor * new Color(1, 1, 1, .16f);
             
         foreach (Type turretType in module.GetModule().GetValidTypes())
@@ -97,6 +100,11 @@ public partial class ModuleInventoryItem : Button
         TurretTypes = module.GetModule().GetValidTypes();
     }
 
+    /// <summary>
+    /// Checks if the damager is valid for the module
+    /// </summary>
+    /// <param name="damager">The damager to check for</param>
+    /// <returns>true if the module can be applied to the damager</returns>
     public bool IsValid(Damager damager)
     {
         return _module.ValidModule(damager);

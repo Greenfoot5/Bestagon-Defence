@@ -5,7 +5,7 @@ using Godot;
 namespace BestagonDefense.UI.Modules;
 
 /// <summary>
-/// Updates the module icon with data
+/// A UI element for a Icon for a Module
 /// </summary>
 public partial class ModuleIcon : Control
 {
