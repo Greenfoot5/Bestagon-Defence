@@ -14,6 +14,11 @@ public partial class SlowEnemyEffect : EnemyEffect
     [Export]
     private Modifier _slowPercentage;
 
+    /// <summary>
+    /// Applies the slow effect to the target
+    /// </summary>
+    /// <param name="target">The target to slow</param>
+    /// <returns>false if it failed to apply</returns>
     public override bool Apply(Enemy target)
     {
         if (!base.Apply(target))
@@ -24,6 +29,9 @@ public partial class SlowEnemyEffect : EnemyEffect
         return true;
     }
 
+    /// <summary>
+    /// Removes the slow effect from the target
+    /// </summary>
     protected override void Remove()
     {
         base.Remove();
@@ -31,5 +39,8 @@ public partial class SlowEnemyEffect : EnemyEffect
         Target.EnemyStats.Attributes[AttributeType.Speed].Remove(Name);
     }
 
+    /// <summary>
+    /// Does nothing (would perform the effect of the slow
+    /// </summary>
     protected override void DoEffect() { }
 }

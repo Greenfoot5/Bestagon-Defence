@@ -30,11 +30,19 @@ public partial class InstakillModule : Module
     [Export]
     private PackedScene _instakillEffect;
 
+    /// <summary>
+    /// Handles applying the effects of the module on the damager
+    /// </summary>
+    /// <param name="damager">The damager to add the module to</param>
     public override void AddModule(Damager damager)
     {
         damager.OnHit += OnHit;
     }
 
+    /// <summary>
+    /// Handles removing the effects of the module on the damager
+    /// </summary>
+    /// <param name="damager">The damager to remove the module from</param>
     public override void RemoveModule(Damager damager)
     {
         damager.OnHit -= OnHit;

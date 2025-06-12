@@ -23,6 +23,9 @@ public abstract partial class Module : Resource
     [Export]
     public bool IsUpgradableTo = true;
 
+    /// <summary>
+    /// The Types the module can be applied to
+    /// </summary>
     protected abstract Type[] ValidTypes { get; }
 
     /// <summary>

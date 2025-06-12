@@ -104,11 +104,19 @@ public partial class ReloadModule : Module
     [Export]
     private Modifier _chokerPartCountChange;
 
+    /// <summary>
+    /// Handles applying the effects of the module on the damager
+    /// </summary>
+    /// <param name="damager">The damager to remove the module from</param>
     public override void AddModule(Damager damager)
     {
         damager.OnAttack += OnAttack;
     }
 
+    /// <summary>
+    /// Handles removing the effects of the module on the damager
+    /// </summary>
+    /// <param name="damager">The damager to remove the module from</param>
     public override void RemoveModule(Damager damager)
     {
         damager.OnAttack -= OnAttack;

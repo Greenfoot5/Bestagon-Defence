@@ -121,6 +121,10 @@ public partial class SurgeModule : Module
         Runner.Run(Surge(turret, tier));
     }
 
+    /// <summary>
+    /// Handles removing the effects of surge on the damager
+    /// </summary>
+    /// <param name="damager">The damager to remove the module from</param>
     // TODO - What if removed while surging?
     public override void RemoveModule(Damager damager)
     {
