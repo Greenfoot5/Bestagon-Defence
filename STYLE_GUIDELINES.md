@@ -577,7 +577,7 @@ When naming an asset use these tables to determine the prefix and suffix to use 
 | Texture               | T_     |          |       |
 | Atlas Texture         | TA_    |          |       |
 | Shader                | S_     |          |       |
-| Material              | M_     |          |       |
+| Material              | Mat_   |          |       |
 | Font                  | Font_  |          |       |
 | Theme                 | Theme_ |          |       |
 | Module Tier Resource  | M_     | T\<tier> |       |
