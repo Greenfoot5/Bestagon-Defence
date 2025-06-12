@@ -84,7 +84,7 @@ public partial class DeathBitManager: Node2D
         var dFloat = (float)delta;
         for (var i = 0; i < Particles.Count; i++)
         {
-            if (!Particles[i].Update(dFloat))
+            if (!Particles[i]._Process(dFloat))
             {
                 Particles.RemoveAt(i);
                 i--;
