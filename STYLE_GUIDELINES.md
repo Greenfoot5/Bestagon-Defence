@@ -150,15 +150,14 @@ public class Account
 {
     // Fields
     public static decimal Reserves;
+    public const string ShippingType = "DropShip";
 
     /// <summary>
     /// Public variables set in the Inspector, should have a XML comment
     /// </summary>
     [Export]
-    [Tooltip("Public variables set in the Inspector, should have a Tooltip")]
     public string BankName;
-    public const string ShippingType = "DropShip";
-
+    
     private float _timeToDie;
     
     // Properties
@@ -166,6 +165,10 @@ public class Account
     public DateTime DateOpened {get; set;}
     public DateTime DateClosed {get; set;}
     public decimal Balance {get; set;}
+    
+    // Signals/Events
+    [Signal]
+    public delegate void OnSignalEventHandler();
 
     /// <summary>
     /// Startup method
