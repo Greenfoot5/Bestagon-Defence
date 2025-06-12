@@ -1,38 +1,4 @@
-using Godot;
-
 namespace BestagonDefense.Abstract.Attributes;
-
-/// <summary>
-/// A value modifier to an attribute
-/// </summary>
-[GlobalClass]
-[Tool]
-public partial class AttributeModifier : Resource
-{
-    public Variant Uid { get; set; }
-    [Export]
-    public float Value { get; private set; }
-    [Export]
-    public Operation Op { get; private set; }
-
-    public AttributeModifier()
-    {
-        Value = 0;
-        Op = Operation.Additive;
-    }
-    
-    public AttributeModifier(float value)
-    {
-        Op = Operation.Additive;
-        Value = value;
-    }
-
-    public AttributeModifier(float value, Operation op)
-    {
-        Op = op;
-        Value = value;
-    }
-}
 
 /// <summary>
 /// Different methods of modifying an attribute
@@ -59,6 +25,7 @@ public enum Operation
     /// Base * Additive * Multiplicative + AddAfter
     /// </summary>
     AddAfter,
+    
     /// <summary>
     /// Adds to the attribute's minimum
     /// To take away, use a negative value
@@ -72,6 +39,7 @@ public enum Operation
     /// AttributeMin * ModifierValueOne * ModifierValueTwo
     /// </summary>
     MultiplicativeMin,
+    
     /// <summary>
     /// Adds to the attribute's maximum value
     /// To take away, use a negative value

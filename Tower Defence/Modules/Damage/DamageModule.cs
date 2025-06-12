@@ -18,7 +18,7 @@ public partial class DamageModule : Module
     /// What percentage to modify the damage by
     /// </summary>
     [Export]
-    private AttributeModifier percentageChange;
+    private Modifier percentageChange;
         
     /// <summary>
     /// Increases the damage for a turret

@@ -22,98 +22,98 @@ public partial class SniperModule : Module
     /// </summary>
     [ExportGroup("Shooter")]
     [Export]
-    private AttributeModifier _shooterRangeChange;
+    private Modifier _shooterRangeChange;
     /// <summary>
     /// Additive percentage modifier to shooter's damage
     /// </summary>
     [Export]
-    private AttributeModifier _shooterDamageChange;
+    private Modifier _shooterDamageChange;
     /// <summary>
     /// Additive percentage modifier to shooter's fire rate
     /// </summary>
     [Export]
-    private AttributeModifier _shooterFireRateChange;
+    private Modifier _shooterFireRateChange;
     /// <summary>
     /// Additive percentage modifier to bullet speed
     /// </summary>
     [Export]
-    private AttributeModifier _shooterBulletSpeedChange;
+    private Modifier _shooterBulletSpeedChange;
     /// <summary>
     /// Additive percentage modifier to bullet knockback
     /// </summary>
     [Export]
-    private AttributeModifier _shooterBulletKnockbackChange;
+    private Modifier _shooterBulletKnockbackChange;
         
     /// <summary>
     /// Additive percentage modifier to lancer's range
     /// </summary>
     [ExportGroup("Lancer")]
     [Export]
-    private AttributeModifier _lancerRangeChange;
+    private Modifier _lancerRangeChange;
     /// <summary>
     /// Additive percentage modifier to lancer's damage
     /// </summary>
     [Export]
-    private AttributeModifier _lancerDamageChange;
+    private Modifier _lancerDamageChange;
     /// <summary>
     /// Additive percentage modifier to lancer's fire rate
     /// </summary>
     [Export]
-    private AttributeModifier _lancerFireRateChange;
+    private Modifier _lancerFireRateChange;
     /// <summary>
     /// Additive percentage modifier to lancer's arrow range
     /// </summary>
     [Export]
-    private AttributeModifier _lancerArrowRangeChange;
+    private Modifier _lancerArrowRangeChange;
     /// <summary>
     /// Additive percentage modifier to lancer's arrow speed
     /// </summary>
     [Export]
-    private AttributeModifier _lancerArrowSpeedChange;
+    private Modifier _lancerArrowSpeedChange;
     /// <summary>
     /// Additive percentage modifier to lancer's arrow knockback
     /// </summary>
     [Export]
-    private AttributeModifier _lancerArrowKnockbackChange;
+    private Modifier _lancerArrowKnockbackChange;
         
     /// <summary>
     /// Additive percentage modifier to laser's range
     /// </summary>
     [ExportGroup("Laser")]
     [Export]
-    private AttributeModifier _laserRangeChange;
+    private Modifier _laserRangeChange;
     /// <summary>
     /// Additive percentage modifier to laser's damage
     /// </summary>
     [Export]
-    private AttributeModifier _laserDamageChange;
+    private Modifier _laserDamageChange;
     /// <summary>
     /// Multiplicative percentage modifier to laser's laser duration
     /// </summary>
     [Export]
-    private AttributeModifier _laserLaserDuration = new(0f, Operation.Multiplicative);
+    private Modifier _laserLaserDuration = new(0f, Operation.Multiplicative);
         
     /// <summary>
     /// Additive percentage modifier to choker's range
     /// </summary>
     [ExportGroup("Choker")]
     [Export]
-    private AttributeModifier _chokerRangeChange;
+    private Modifier _chokerRangeChange;
     /// <summary>
     /// Additive percentage modifier to choker's damage
     /// </summary>
     [Export]
-    private AttributeModifier _chokerDamageChange;
+    private Modifier _chokerDamageChange;
     /// <summary>
     /// Additive percentage modifier to choker's fire rate
     /// </summary>
     [Export]
-    private AttributeModifier _chokerFireRateChange;
+    private Modifier _chokerFireRateChange;
     /// <summary>
     /// Multiplicative percentage modifier to choker's part spread
     /// </summary>
     [Export]
-    private AttributeModifier _chokerPartSpreadChange = new(0f, Operation.Multiplicative);
+    private Modifier _chokerPartSpreadChange = new(0f, Operation.Multiplicative);
         
     /// <summary>
     /// Modifies a turret's stats

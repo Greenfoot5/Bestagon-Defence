@@ -31,7 +31,7 @@ public partial class SlowModule : Module
     /// Multiplicative percentage modifier to damage
     /// </summary>
     [Export]
-    private AttributeModifier _damageChange;
+    private Modifier _damageChange;
 
     /// <summary>
     /// Modifies the stats of the turret when applied

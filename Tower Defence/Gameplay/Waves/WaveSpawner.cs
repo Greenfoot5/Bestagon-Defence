@@ -201,7 +201,7 @@ public partial class WaveSpawner : Node2D
         
         // Apply scaling
         spawnedEnemy.EnemyStats.Attributes[AttributeType.MaxHealth].Add("SpawnerScaling",
-            new AttributeModifier(_waveData.Health.Sample(_setIndex + 1), Operation.Multiplicative));
+            new Modifier(_waveData.Health.Sample(_setIndex + 1), Operation.Multiplicative));
         // spawnedEnemy.TakeDamage(spawnedEnemy.Stats.Attributes[AttributeType.MaxHealth].Value, this);
             
         spawnedEnemy.OnDeath += () => { EnemiesAlive--; };

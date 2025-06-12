@@ -20,12 +20,12 @@ public partial class TrackerModule : Module
     /// The percentage to modify the rotation speed of the turret by
     /// </summary>
     [Export]
-    private AttributeModifier _rotationSpeedPercentageChange = new();
+    private Modifier _rotationSpeedPercentageChange = new();
     /// <summary>
     /// The percentage to modify the damage of the turret by
     /// </summary>
     [Export]
-    private AttributeModifier _damagePercentageChange = new();
+    private Modifier _damagePercentageChange = new();
         
     /// <summary>
     /// Increases the rotation speed of a turret

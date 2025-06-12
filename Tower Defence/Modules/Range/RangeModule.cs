@@ -19,7 +19,7 @@ public partial class RangeModule : Module
     /// The percentage to modify the range of the turret by
     /// </summary>
     [Export]
-    private AttributeModifier _percentageChange;
+    private Modifier _percentageChange;
         
     /// <summary>
     /// Increases the range of a turret

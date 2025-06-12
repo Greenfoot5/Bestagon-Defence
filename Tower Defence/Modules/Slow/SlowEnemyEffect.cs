@@ -12,7 +12,7 @@ public partial class SlowEnemyEffect : EnemyEffect
     /// Multiplicative percentage modifier enemy's speed
     /// </summary>
     [Export]
-    private AttributeModifier _slowPercentage;
+    private Modifier _slowPercentage;
 
     public override bool Apply(Enemy target)
     {

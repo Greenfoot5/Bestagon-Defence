@@ -48,24 +48,24 @@ public partial class SurgeModule : Module
     /// </summary>
     [Export]
     [ExportGroup("Shooter Surging")]
-    private AttributeModifier _surgeShooterFireRateChange;
+    private Modifier _surgeShooterFireRateChange;
     /// <summary>
     /// Multiplicative percentage modifier to shooter's damage when surging
     /// </summary>
     [Export]
-    private AttributeModifier _surgeShooterDamageChange;
+    private Modifier _surgeShooterDamageChange;
         
     /// <summary>
     /// Multiplicative percentage modifier to smasher's fire rate when surging
     /// </summary>
     [ExportGroup("Smasher Surging")]
     [Export]
-    private AttributeModifier _surgeSmasherFireRateChange;
+    private Modifier _surgeSmasherFireRateChange;
     /// <summary>
     /// Multiplicative percentage modifier to smasher's range when surging
     /// </summary>
     [Export]
-    private AttributeModifier _surgeSmasherRangeChange;
+    private Modifier _surgeSmasherRangeChange;
         
         
     /// <summary>
@@ -73,37 +73,37 @@ public partial class SurgeModule : Module
     /// </summary>
     [ExportGroup("Lancer Surging")]
     [Export]
-    private AttributeModifier _surgeLancerFireRateChange;
+    private Modifier _surgeLancerFireRateChange;
     // TODO - Get this to work
     /// <summary>
     /// Multiplicative percentage modifier to lancer's arrow knockback when surging
     /// </summary>
     [Export]
-    private AttributeModifier _surgeLancerKnockbackChange;
+    private Modifier _surgeLancerKnockbackChange;
         
     /// <summary>
     /// Multiplicative percentage modifier to choker's fire rate when surging
     /// </summary>
     [ExportGroup("Choker Surging")]
     [Export]
-    private AttributeModifier _surgeChokerFireRateChange;
+    private Modifier _surgeChokerFireRateChange;
     /// <summary>
     /// Multiplicative percentage modifier to choker's part count when surging
     /// </summary>
     [Export]
-    private AttributeModifier _surgeChokerPartCountChange;
+    private Modifier _surgeChokerPartCountChange;
         
     /// <summary>
     /// Multiplicative percentage modifier to part fire rate
     /// </summary>
     [ExportGroup("Cooldown effect")]
     [Export]
-    private AttributeModifier _fireRateChange;
+    private Modifier _fireRateChange;
     /// <summary>
     /// Multiplicative percentage modifier to part damage
     /// </summary>
     [Export]
-    private AttributeModifier _damageChange;
+    private Modifier _damageChange;
 
     /// <summary>
     /// Begins the surge effect on the turret
@@ -147,8 +147,8 @@ public partial class SurgeModule : Module
         while (turret != null && turret.ModuleHandlers.Any(module => module.GetModule().GetType() == typeof(SurgeModule) && module.GetTier() == tier))
         {
             // SURGE!
-            turret.Stats[AttributeType.FireRate].Add(GetSceneUniqueId() + "SurgeCooldown", new AttributeModifier(0f));
-            turret.Stats[AttributeType.Damage].Add(GetSceneUniqueId() + "SurgeCooldown", new AttributeModifier(0f));
+            turret.Stats[AttributeType.FireRate].Add(GetSceneUniqueId() + "SurgeCooldown", new Modifier(0f));
+            turret.Stats[AttributeType.Damage].Add(GetSceneUniqueId() + "SurgeCooldown", new Modifier(0f));
             switch (turret)
             {
                 case Choker:
@@ -182,19 +182,19 @@ public partial class SurgeModule : Module
             switch (turret)
             {
                 case Choker:
-                    turret.Stats[AttributeType.FireRate].Add(GetSceneUniqueId() + "SURGE", new AttributeModifier(0f));
-                    turret.Stats[AttributeType.PartCount].Add(GetSceneUniqueId() + "SURGE", new AttributeModifier(0f));
+                    turret.Stats[AttributeType.FireRate].Add(GetSceneUniqueId() + "SURGE", new Modifier(0f));
+                    turret.Stats[AttributeType.PartCount].Add(GetSceneUniqueId() + "SURGE", new Modifier(0f));
                     break;
                 case Lancer:
-                    turret.Stats[AttributeType.FireRate].Add(GetSceneUniqueId() + "SURGE", new AttributeModifier(0f));
+                    turret.Stats[AttributeType.FireRate].Add(GetSceneUniqueId() + "SURGE", new Modifier(0f));
                     break;
                 case Shooter:
-                    turret.Stats[AttributeType.FireRate].Add(GetSceneUniqueId() + "SURGE", new AttributeModifier(0f));
-                    turret.Stats[AttributeType.Damage].Add(GetSceneUniqueId() + "SURGE", new AttributeModifier(0f));
+                    turret.Stats[AttributeType.FireRate].Add(GetSceneUniqueId() + "SURGE", new Modifier(0f));
+                    turret.Stats[AttributeType.Damage].Add(GetSceneUniqueId() + "SURGE", new Modifier(0f));
                     break;
                 case Smasher:
-                    turret.Stats[AttributeType.FireRate].Add(GetSceneUniqueId() + "SURGE", new AttributeModifier(0f));
-                    turret.Stats[AttributeType.Range].Add(GetSceneUniqueId() + "SURGE", new AttributeModifier(0f));
+                    turret.Stats[AttributeType.FireRate].Add(GetSceneUniqueId() + "SURGE", new Modifier(0f));
+                    turret.Stats[AttributeType.Range].Add(GetSceneUniqueId() + "SURGE", new Modifier(0f));
                     break;
             }
             if (BuildableTile.SelectedTile == turret.GetParent()) BuildableTile.SelectedTile = BuildableTile.SelectedTile;

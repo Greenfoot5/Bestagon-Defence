@@ -24,7 +24,7 @@ public partial class FireRateModule : Module
     /// If it's a gunner turret, the percentage to modify the fire rate cap, spin cooldown and spin multiplier
     /// </summary>
     [Export]
-    private AttributeModifier _percentageChange;
+    private Modifier _percentageChange;
         
     /// <summary>
     /// Increases the fire rate of a turret
@@ -39,7 +39,7 @@ public partial class FireRateModule : Module
                 gunner.Stats[AttributeType.SpinCooldown].Add(GetSceneUniqueId(), _percentageChange);
                 gunner.Stats[AttributeType.SpinMultiplier].Add(GetSceneUniqueId(), _percentageChange);
                 gunner.Stats[AttributeType.FireRate].Add(GetSceneUniqueId() + Operation.AddMax, 
-                    new AttributeModifier(_percentageChange.Value, Operation.AddMax));
+                    new Modifier(_percentageChange.Value, Operation.AddMax));
                 break;
             case Turret turret:
                 turret.Stats[AttributeType.FireRate].Add(GetSceneUniqueId(), _percentageChange);

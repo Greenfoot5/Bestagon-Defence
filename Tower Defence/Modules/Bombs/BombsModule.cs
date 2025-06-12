@@ -28,58 +28,58 @@ public partial class BombsModule : Module
     /// </summary>
     [ExportGroup("Choker")]
     [Export]
-    private AttributeModifier _chokerExplosionRadiusChange;
+    private Modifier _chokerExplosionRadiusChange;
     /// <summary>
     /// Multiplicative percentage modifier to part count
     /// </summary>
     [Export]
-    private AttributeModifier _chokerBulletCountChange;
+    private Modifier _chokerBulletCountChange;
     /// <summary>
     /// Additive percentage modifier to choker damage
     /// </summary>
     [Export]
-    private AttributeModifier _chokerDamageChange;
+    private Modifier _chokerDamageChange;
         
     /// <summary>
     /// Additive percentage modifier to pellet explosion radius
     /// </summary>
     [ExportGroup("Gunner")]
     [Export]
-    private AttributeModifier _gunnerExplosionRadiusChange;
+    private Modifier _gunnerExplosionRadiusChange;
     /// <summary>
     /// Additive percentage modifier to gunner damage
     /// </summary>
     [Export]
-    private AttributeModifier _gunnerDamageChange;
+    private Modifier _gunnerDamageChange;
         
     /// <summary>
     /// Additive percentage modifier to bullet explosion radius
     /// </summary>
     [ExportGroup("Shooter")]
     [Export]
-    private AttributeModifier _shooterExplosionRadiusChange;
+    private Modifier _shooterExplosionRadiusChange;
     /// <summary>
     /// Additive percentage modifier to bullet speed
     /// </summary>
     [Export]
-    private AttributeModifier _shooterBulletSpeedChange;
+    private Modifier _shooterBulletSpeedChange;
     /// <summary>
     /// Additive percentage modifier to shooter damage
     /// </summary>
     [Export]
-    private AttributeModifier _shooterDamageChange;
+    private Modifier _shooterDamageChange;
         
     /// <summary>
     /// The percentage to modify the damage of smasher by
     /// </summary>
     [ExportGroup("Smasher")]
     [Export]
-    private AttributeModifier _smasherDamageChange;
+    private Modifier _smasherDamageChange;
     /// <summary>
     /// The percentage to modify the range of smasher by
     /// </summary>
     [Export]
-    private AttributeModifier _smasherRangeChange;
+    private Modifier _smasherRangeChange;
         
     /// <summary>
     /// Changes the turret's stats when added

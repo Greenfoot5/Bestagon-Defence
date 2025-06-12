@@ -109,7 +109,7 @@ public partial class Gunner : DynamicTurret
 
         _fireRateIncrease = Mathf.Clamp(_fireRateIncrease, 0f, 6f);
             
-        Stats[AttributeType.FireRate].Add("this", new AttributeModifier(_fireRateIncrease - 1, Operation.Multiplicative));
+        Stats[AttributeType.FireRate].Add("this", new Modifier(_fireRateIncrease - 1, Operation.Multiplicative));
 
         // Update the stats of the turret if it's selected
         if (BuildableTile.SelectedTile == GetParent())

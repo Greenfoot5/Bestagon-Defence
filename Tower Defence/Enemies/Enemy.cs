@@ -168,7 +168,7 @@ public partial class Enemy : Area2D
         // Multiply by -1 to knock backwards
         float knockback = amount * (1 - _stats[AttributeType.KnockbackResistance].Value) * multiplier * -1;
         Variant uid = GD.Randi();
-        _stats[AttributeType.Speed].Add(uid, new AttributeModifier(knockback, Operation.Multiplicative));
+        _stats[AttributeType.Speed].Add(uid, new Modifier(knockback, Operation.Multiplicative));
 
         GetTree().CreateTimer(_stats[AttributeType.KnockbackDuration].Value).Timeout += () => { _stats[AttributeType.Speed].Remove(uid); };
     }

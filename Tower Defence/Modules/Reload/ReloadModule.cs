@@ -21,88 +21,88 @@ public partial class ReloadModule : Module
     /// Multiplicative percentage modifier to shooter's damage
     /// </summary>
     [Export]
-    private AttributeModifier _shooterDamageChange = new(0f, Operation.Multiplicative);
+    private Modifier _shooterDamageChange = new(0f, Operation.Multiplicative);
     /// <summary>
     /// Additive percentage modifier to shooter's fire rate
     /// </summary>
     [Export]
-    private AttributeModifier _shooterFireRateChange;
+    private Modifier _shooterFireRateChange;
     /// <summary>
     /// Additive percentage modifier to shooter's rotation speed
     /// </summary>
     [Export]
-    private AttributeModifier _shooterRotationSpeedChange;
+    private Modifier _shooterRotationSpeedChange;
         
     /// <summary>
     /// Additive percentage modifier to lancer's range
     /// </summary>
     [ExportGroup("Lancer")]
     [Export]
-    private AttributeModifier _lancerRangeChange;
+    private Modifier _lancerRangeChange;
     /// <summary>
     /// Additive percentage modifier to lancer's damage
     /// </summary>
     [Export]
-    private AttributeModifier _lancerDamageChange;
+    private Modifier _lancerDamageChange;
     /// <summary>
     /// Additive percentage modifier to lancer's fire rate
     /// </summary>
     [Export]
-    private AttributeModifier _lancerFireRateChange;
+    private Modifier _lancerFireRateChange;
     /// <summary>
     /// Additive percentage modifier to lancer's arrow range
     /// </summary>
     [Export]
-    private AttributeModifier _lancerArrowRangeChange;
+    private Modifier _lancerArrowRangeChange;
     /// <summary>
     /// Additive percentage modifier to lancer's arrow speed
     /// </summary>
     [Export]
-    private AttributeModifier _lancerArrowSpeedChange;
+    private Modifier _lancerArrowSpeedChange;
     /// <summary>
     /// Additive percentage modifier to lancer's arrow knockback
     /// </summary>
     [Export]
-    private AttributeModifier _lancerArrowKnockbackChange;
+    private Modifier _lancerArrowKnockbackChange;
         
     /// <summary>
     /// Additive percentage modifier to smasher's range
     /// </summary>
     [ExportGroup("Laser")]
     [Export]
-    private AttributeModifier _smasherRangeChange;
+    private Modifier _smasherRangeChange;
     /// <summary>
     /// Additive percentage modifier to smasher's damage
     /// </summary>
     [Export]
-    private AttributeModifier _smasherDamageChange;
+    private Modifier _smasherDamageChange;
         
     /// <summary>
     /// Additive percentage modifier to choker's range
     /// </summary>
     [ExportGroup("Choker")]
     [Export]
-    private AttributeModifier _chokerRangeChange;
+    private Modifier _chokerRangeChange;
     /// <summary>
     /// Multiplicative percentage modifier to choker's damage
     /// </summary>
     [Export]
-    private AttributeModifier _chokerDamageChange = new(0f, Operation.Multiplicative);
+    private Modifier _chokerDamageChange = new(0f, Operation.Multiplicative);
     /// <summary>
     /// Additive percentage modifier to choker's fire rate
     /// </summary>
     [Export]
-    private AttributeModifier _chokerFireRateChange;
+    private Modifier _chokerFireRateChange;
     /// <summary>
     /// Additive percentage modifier to choker's part spread
     /// </summary>
     [Export]
-    private AttributeModifier _chokerPartSpreadChange;
+    private Modifier _chokerPartSpreadChange;
     /// <summary>
     /// Additive percentage modifier to choker's part spread
     /// </summary>
     [Export]
-    private AttributeModifier _chokerPartCountChange;
+    private Modifier _chokerPartCountChange;
 
     public override void AddModule(Damager damager)
     {
