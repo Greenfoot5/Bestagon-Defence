@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bjyssfen4qovd" path="res://Turrets/Choker/T_TurretBase_ChokerDark.png" id="4_rt7kr"]
 [ext_resource type="Texture2D" uid="uid://dkg7vvoia8bv3" path="res://Turrets/Choker/T_Turret_Choker.png" id="5_cpm3m"]
 [ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/White_Rectangle_x1000.png" id="6_sf515"]
-[ext_resource type="Shader" uid="uid://bjciwmxveqxrx" path="res://MaterialLibrary/Range/Range.gdshader" id="7_2bbfs"]
+[ext_resource type="Shader" uid="uid://bjciwmxveqxrx" path="res://MaterialLibrary/Range/T_Range.gdshader" id="7_2bbfs"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5wtme"]
 particle_flag_disable_z = true

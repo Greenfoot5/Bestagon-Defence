@@ -1,7 +1,7 @@
 [gd_scene load_steps=42 format=4 uid="uid://dxeskbdbxmflu"]
 
 [ext_resource type="TileSet" uid="uid://cqec5gsl2jrtp" path="res://Levels/_Tiles/PathTiles.tres" id="1_dbecs"]
-[ext_resource type="Shader" uid="uid://ci85qadqdqbak" path="res://MaterialLibrary/Hexagons/Background.gdshader" id="1_h5o5v"]
+[ext_resource type="Shader" uid="uid://ci85qadqdqbak" path="res://MaterialLibrary/Hexagons/S_Background.gdshader" id="1_h5o5v"]
 [ext_resource type="PackedScene" uid="uid://bl5bfgnh4ruki" path="res://Levels/_Tiles/Tile_Buildable.tscn" id="2_jq068"]
 [ext_resource type="Script" uid="uid://ifi3my065eu" path="res://Gameplay/Waves/WaveSpawner.cs" id="3_o3dn4"]
 [ext_resource type="Script" uid="uid://cpv5idbjts0wp" path="res://Levels/Maps/Upgrade/WaveTimer.cs" id="8_a02h1"]
