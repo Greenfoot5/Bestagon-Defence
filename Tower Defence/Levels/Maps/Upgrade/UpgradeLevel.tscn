@@ -18,7 +18,7 @@
 [ext_resource type="Script" uid="uid://ci5f1fooga4hq" path="res://Gameplay/GameManager.cs" id="14_dbecs"]
 [ext_resource type="Texture2D" uid="uid://cflrqd6yow3sl" path="res://Gameplay/T_DeathNibble.png" id="14_sxdqs"]
 [ext_resource type="Script" uid="uid://c4c4ep5oo8o2m" path="res://Gameplay/Camera/CameraController.cs" id="22_ml50w"]
-[ext_resource type="Shader" uid="uid://px34nxwos4w0" path="res://MaterialLibrary/Portal.gdshader" id="23_p388s"]
+[ext_resource type="Shader" uid="uid://px34nxwos4w0" path="res://MaterialLibrary/S_Portal.gdshader" id="23_p388s"]
 [ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/White_Rectangle_x1000.png" id="24_b88u8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dbecs"]
