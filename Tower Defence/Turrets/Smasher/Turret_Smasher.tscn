@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bt5a1igm4cq5n" path="res://Turrets/Smasher/T_Turret_Smasher.png" id="5_kygrp"]
 [ext_resource type="Texture2D" uid="uid://bn3lpp2td3oth" path="res://Turrets/Smasher/T_Ring.png" id="6_vl2vt"]
 [ext_resource type="Shader" uid="uid://bjciwmxveqxrx" path="res://MaterialLibrary/Range/T_Range.gdshader" id="7_e4kd2"]
-[ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/White_Rectangle_x1000.png" id="8_3d8vd"]
+[ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/T_Rectangle_Whitex1000.png" id="8_3d8vd"]
 
 [sub_resource type="Resource" id="Resource_jmhuk"]
 script = ExtResource("2_tcgds")

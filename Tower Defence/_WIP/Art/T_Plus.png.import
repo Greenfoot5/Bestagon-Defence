@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blh5nfim1a5f8"
-path.s3tc="res://.godot/imported/Red_Hexagon.png-a45889576696eb4e3c8a1c3a788b418a.s3tc.ctex"
+uid="uid://bpjbykp6vxfg3"
+path.s3tc="res://.godot/imported/T_Plus.png-a1c23873e51aef14276b1dad8fcd42db.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://_WIP/Art/Red_Hexagon.png"
-dest_files=["res://.godot/imported/Red_Hexagon.png-a45889576696eb4e3c8a1c3a788b418a.s3tc.ctex"]
+source_file="res://_WIP/Art/T_Plus.png"
+dest_files=["res://.godot/imported/T_Plus.png-a1c23873e51aef14276b1dad8fcd42db.s3tc.ctex"]
 
 [params]
 

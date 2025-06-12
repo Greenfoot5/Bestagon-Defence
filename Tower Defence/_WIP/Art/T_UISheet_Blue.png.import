@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvfhidwx55ko8"
-path.s3tc="res://.godot/imported/Screenshot 2022-08-27 at 14.24.44.png-2a683a52353669890587abe0222efa3a.s3tc.ctex"
+uid="uid://byqpohhde3tnr"
+path.s3tc="res://.godot/imported/T_UISheet_Blue.png-140a846a59ba0612d41c9296626d70f2.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://_WIP/Art/Screenshot 2022-08-27 at 14.24.44.png"
-dest_files=["res://.godot/imported/Screenshot 2022-08-27 at 14.24.44.png-2a683a52353669890587abe0222efa3a.s3tc.ctex"]
+source_file="res://_WIP/Art/T_UISheet_Blue.png"
+dest_files=["res://.godot/imported/T_UISheet_Blue.png-140a846a59ba0612d41c9296626d70f2.s3tc.ctex"]
 
 [params]
 

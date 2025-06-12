@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ct4jbl6x6twt0"
-path.s3tc="res://.godot/imported/White_Hexagon.png-4992e0f4c2586a93df2f569209dabf28.s3tc.ctex"
+uid="uid://ndlud0pb2300"
+path.s3tc="res://.godot/imported/T_Hexagon_DarkGrey.png-3b244633d77780e271800b65b247b1c8.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://_WIP/Art/White_Hexagon.png"
-dest_files=["res://.godot/imported/White_Hexagon.png-4992e0f4c2586a93df2f569209dabf28.s3tc.ctex"]
+source_file="res://_WIP/Art/T_Hexagon_DarkGrey.png"
+dest_files=["res://.godot/imported/T_Hexagon_DarkGrey.png-3b244633d77780e271800b65b247b1c8.s3tc.ctex"]
 
 [params]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://doc4h2edfm6e5"]
 
-[ext_resource type="Texture2D" uid="uid://clh6px2ep770r" path="res://_WIP/Art/path.png" id="1_1y55i"]
+[ext_resource type="Texture2D" uid="uid://clh6px2ep770r" path="res://Levels/_Tiles/T_Tile_Path.png" id="1_1y55i"]
 
 [node name="Node_Path" type="Sprite2D"]
 scale = Vector2(0.1, 0.1)

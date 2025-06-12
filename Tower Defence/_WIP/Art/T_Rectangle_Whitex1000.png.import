@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2n15v7sc7mlb"
-path.s3tc="res://.godot/imported/Screenshot 2022-08-30 at 20.07.33.png-3213581a5372cd1b5300c7831da8e680.s3tc.ctex"
+uid="uid://rmg52olxgkfm"
+path.s3tc="res://.godot/imported/T_Rectangle_Whitex1000.png-6ef1bc73b4ae5f2927b65a25e7d29965.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://_WIP/Art/Screenshot 2022-08-30 at 20.07.33.png"
-dest_files=["res://.godot/imported/Screenshot 2022-08-30 at 20.07.33.png-3213581a5372cd1b5300c7831da8e680.s3tc.ctex"]
+source_file="res://_WIP/Art/T_Rectangle_Whitex1000.png"
+dest_files=["res://.godot/imported/T_Rectangle_Whitex1000.png-6ef1bc73b4ae5f2927b65a25e7d29965.s3tc.ctex"]
 
 [params]
 

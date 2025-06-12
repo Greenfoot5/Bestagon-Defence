@@ -2,22 +2,23 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://of1ow1ab3ea"
-path="res://.godot/imported/White_Hexagon-no_outline.png-e2d31c5712cdfd20c77df4f300679720.ctex"
+uid="uid://ct4jbl6x6twt0"
+path.s3tc="res://.godot/imported/T_Hexagon_White.png-13c80be72b945abaab9b50c6db35e658.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://_WIP/Art/White_Hexagon-no_outline.png"
-dest_files=["res://.godot/imported/White_Hexagon-no_outline.png-e2d31c5712cdfd20c77df4f300679720.ctex"]
+source_file="res://_WIP/Art/T_Hexagon_White.png"
+dest_files=["res://.godot/imported/T_Hexagon_White.png-13c80be72b945abaab9b50c6db35e658.s3tc.ctex"]
 
 [params]
 
-compress/mode=1
+compress/mode=2
 compress/high_quality=false
-compress/lossy_quality=0.2
+compress/lossy_quality=0.5
 compress/hdr_compression=1
 compress/normal_map=2
 compress/channel_pack=0

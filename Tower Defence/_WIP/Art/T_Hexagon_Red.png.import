@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jjvkculthe4o"
-path.s3tc="res://.godot/imported/node.png-9d361ed66b07b347d27bb3b604ba3eb3.s3tc.ctex"
+uid="uid://blh5nfim1a5f8"
+path.s3tc="res://.godot/imported/T_Hexagon_Red.png-09f519b7fa2d3ffca208c0ff1c3c15db.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://_WIP/Art/node.png"
-dest_files=["res://.godot/imported/node.png-9d361ed66b07b347d27bb3b604ba3eb3.s3tc.ctex"]
+source_file="res://_WIP/Art/T_Hexagon_Red.png"
+dest_files=["res://.godot/imported/T_Hexagon_Red.png-09f519b7fa2d3ffca208c0ff1c3c15db.s3tc.ctex"]
 
 [params]
 
@@ -22,7 +22,7 @@ compress/lossy_quality=0.5
 compress/hdr_compression=1
 compress/normal_map=2
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=1
 roughness/src_normal=""

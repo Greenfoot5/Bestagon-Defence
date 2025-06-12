@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://s4nbo8vvgfrs"
-path.s3tc="res://.godot/imported/Screenshot 2022-08-27 at 14.26.37.png-6d8908ad0f4dae8b4d49e1b5c55bb7a7.s3tc.ctex"
+uid="uid://d0u45dj0t2hka"
+path.s3tc="res://.godot/imported/T_Tile_End.png-fc2291f15b23839d7381df343fb119fe.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://_WIP/Art/Screenshot 2022-08-27 at 14.26.37.png"
-dest_files=["res://.godot/imported/Screenshot 2022-08-27 at 14.26.37.png-6d8908ad0f4dae8b4d49e1b5c55bb7a7.s3tc.ctex"]
+source_file="res://Levels/_Tiles/T_Tile_End.png"
+dest_files=["res://.godot/imported/T_Tile_End.png-fc2291f15b23839d7381df343fb119fe.s3tc.ctex"]
 
 [params]
 

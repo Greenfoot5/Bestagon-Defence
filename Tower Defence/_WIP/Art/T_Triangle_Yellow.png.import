@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4t3wyjt0dae6"
-path.s3tc="res://.godot/imported/Green_Hexagon.png-5b0bcced92f07d642ba9435edc35d9c4.s3tc.ctex"
+uid="uid://dktdijxf3j78e"
+path.s3tc="res://.godot/imported/T_Triangle_Yellow.png-8dc550cfed04d3de739e15d828d9f2bf.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://_WIP/Art/Green_Hexagon.png"
-dest_files=["res://.godot/imported/Green_Hexagon.png-5b0bcced92f07d642ba9435edc35d9c4.s3tc.ctex"]
+source_file="res://_WIP/Art/T_Triangle_Yellow.png"
+dest_files=["res://.godot/imported/T_Triangle_Yellow.png-8dc550cfed04d3de739e15d828d9f2bf.s3tc.ctex"]
 
 [params]
 

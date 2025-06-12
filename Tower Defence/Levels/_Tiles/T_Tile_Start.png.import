@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ndlud0pb2300"
-path.s3tc="res://.godot/imported/Dark_Grey_Hexagon.png-0e68b4588d641f6b5521fe069dea7709.s3tc.ctex"
+uid="uid://d1qo5etsblcq1"
+path.s3tc="res://.godot/imported/T_Tile_Start.png-8a9ec129175918ea41ce6f46bc5a21a4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://_WIP/Art/Dark_Grey_Hexagon.png"
-dest_files=["res://.godot/imported/Dark_Grey_Hexagon.png-0e68b4588d641f6b5521fe069dea7709.s3tc.ctex"]
+source_file="res://Levels/_Tiles/T_Tile_Start.png"
+dest_files=["res://.godot/imported/T_Tile_Start.png-8a9ec129175918ea41ce6f46bc5a21a4.s3tc.ctex"]
 
 [params]
 

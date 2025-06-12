@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8f7d4n04py7o"
-path.s3tc="res://.godot/imported/Orange_Triangle.png-9fb1642da30a01574b4c0dd1089e4eef.s3tc.ctex"
+uid="uid://pvwicmk1suqa"
+path.s3tc="res://.godot/imported/T_Rectangle_Whitex100.png-2fcd27057c30ada5eed5e300705c70d6.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://_WIP/Art/Orange_Triangle.png"
-dest_files=["res://.godot/imported/Orange_Triangle.png-9fb1642da30a01574b4c0dd1089e4eef.s3tc.ctex"]
+source_file="res://_WIP/Art/T_Rectangle_Whitex100.png"
+dest_files=["res://.godot/imported/T_Rectangle_Whitex100.png-2fcd27057c30ada5eed5e300705c70d6.s3tc.ctex"]
 
 [params]
 

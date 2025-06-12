@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://cucb2b71sa7e0" path="res://Turrets/Seeker/Attributes_Seeker.tres" id="3_eew7b"]
 [ext_resource type="Texture2D" uid="uid://cyk5d1emrkk38" path="res://Turrets/Seeker/T_Turret_Seeker.png" id="3_g087p"]
 [ext_resource type="Shader" uid="uid://bjciwmxveqxrx" path="res://MaterialLibrary/Range/T_Range.gdshader" id="4_eew7b"]
-[ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/White_Rectangle_x1000.png" id="5_8jhoo"]
+[ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/T_Rectangle_Whitex1000.png" id="5_8jhoo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_053vb"]
 radius = 600.0

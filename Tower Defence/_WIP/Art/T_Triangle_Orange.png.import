@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byqpohhde3tnr"
-path.s3tc="res://.godot/imported/blueSheet.png-a00c177da73c0395369b24736eeb3152.s3tc.ctex"
+uid="uid://c8f7d4n04py7o"
+path.s3tc="res://.godot/imported/T_Triangle_Orange.png-a35948a6036ad6aac2a63df51d897da3.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://_WIP/Art/blueSheet.png"
-dest_files=["res://.godot/imported/blueSheet.png-a00c177da73c0395369b24736eeb3152.s3tc.ctex"]
+source_file="res://_WIP/Art/T_Triangle_Orange.png"
+dest_files=["res://.godot/imported/T_Triangle_Orange.png-a35948a6036ad6aac2a63df51d897da3.s3tc.ctex"]
 
 [params]
 

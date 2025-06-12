@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://v5esvnjrt2h1"
-path.s3tc="res://.godot/imported/greySheet.png-b4ef72dc51cac5bf90ae7b59fe56edd2.s3tc.ctex"
+path.s3tc="res://.godot/imported/T_UISheet_Grey.png-916cbf65c5ca0ba3657108b4d35d853f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://_WIP/Art/greySheet.png"
-dest_files=["res://.godot/imported/greySheet.png-b4ef72dc51cac5bf90ae7b59fe56edd2.s3tc.ctex"]
+source_file="res://_WIP/Art/T_UISheet_Grey.png"
+dest_files=["res://.godot/imported/T_UISheet_Grey.png-916cbf65c5ca0ba3657108b4d35d853f.s3tc.ctex"]
 
 [params]
 

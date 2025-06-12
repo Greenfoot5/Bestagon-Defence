@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ocbahaa8qxon"
-path.s3tc="res://.godot/imported/Light_Green_Hexagon.png-0c13be4af98da90ba82d43fea6d14d4f.s3tc.ctex"
+uid="uid://clh6px2ep770r"
+path.s3tc="res://.godot/imported/T_Tile_Path.png-0079f49a1f8c47158220ef00d0362334.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://_WIP/Art/Light_Green_Hexagon.png"
-dest_files=["res://.godot/imported/Light_Green_Hexagon.png-0c13be4af98da90ba82d43fea6d14d4f.s3tc.ctex"]
+source_file="res://Levels/_Tiles/T_Tile_Path.png"
+dest_files=["res://.godot/imported/T_Tile_Path.png-0079f49a1f8c47158220ef00d0362334.s3tc.ctex"]
 
 [params]
 

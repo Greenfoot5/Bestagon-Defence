@@ -2,23 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://doe0ui4egyv04"
-path.s3tc="res://.godot/imported/Screenshot 2022-08-27 at 14.25.56.png-3348767ab530acb8e9808592f574aa6d.s3tc.ctex"
+uid="uid://of1ow1ab3ea"
+path="res://.godot/imported/T_Hexagon_WhiteNoOutline.png-b7d131af77d39407a898ba0502d1f374.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://_WIP/Art/Screenshot 2022-08-27 at 14.25.56.png"
-dest_files=["res://.godot/imported/Screenshot 2022-08-27 at 14.25.56.png-3348767ab530acb8e9808592f574aa6d.s3tc.ctex"]
+source_file="res://_WIP/Art/T_Hexagon_WhiteNoOutline.png"
+dest_files=["res://.godot/imported/T_Hexagon_WhiteNoOutline.png-b7d131af77d39407a898ba0502d1f374.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=1
 compress/high_quality=false
-compress/lossy_quality=0.5
+compress/lossy_quality=0.2
 compress/hdr_compression=1
 compress/normal_map=2
 compress/channel_pack=0
