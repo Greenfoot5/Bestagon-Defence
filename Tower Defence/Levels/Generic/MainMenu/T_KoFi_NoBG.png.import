@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gid2cgm1lxio"
-path.s3tc="res://.godot/imported/notion-logo-no-background.png-353a3f111c01f719fddd03e9305ebc3c.s3tc.ctex"
+uid="uid://ckj6jecwq0e0i"
+path.s3tc="res://.godot/imported/T_KoFi_NoBG.png-a8c5ab8a4103878e9dd37d353eaf629c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Levels/Generic/MainMenu/notion-logo-no-background.png"
-dest_files=["res://.godot/imported/notion-logo-no-background.png-353a3f111c01f719fddd03e9305ebc3c.s3tc.ctex"]
+source_file="res://Levels/Generic/MainMenu/T_KoFi_NoBG.png"
+dest_files=["res://.godot/imported/T_KoFi_NoBG.png-a8c5ab8a4103878e9dd37d353eaf629c.s3tc.ctex"]
 
 [params]
 

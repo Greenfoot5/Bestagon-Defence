@@ -16,7 +16,7 @@
 [ext_resource type="FontFile" uid="uid://bfgualfwa123d" path="res://UI/Fonts/Font_Futured.TTF" id="9_uty7o"]
 [ext_resource type="Script" uid="uid://bevj0p44t6evb" path="res://UI/Shop/Shop.cs" id="10_c6d5p"]
 [ext_resource type="Texture2D" uid="uid://c3ik8e3iy56ad" path="res://UI/Shop/T_Crack.png" id="10_p77s1"]
-[ext_resource type="Resource" uid="uid://b6vw6l67k0fne" path="res://Levels/Maps/Upgrade/ShopData.tres" id="11_y5qnb"]
+[ext_resource type="Resource" uid="uid://b6vw6l67k0fne" path="res://Levels/Maps/Upgrade/ShopData_Upgrade.tres" id="11_y5qnb"]
 [ext_resource type="Script" uid="uid://v4ltgl8pqv47" path="res://UI/GameOver.cs" id="12_7gih3"]
 [ext_resource type="Texture2D" uid="uid://bjiiej5uob71f" path="res://UI/T_Bar.png" id="12_p77s1"]
 [ext_resource type="PackedScene" uid="uid://cn8o5altl8rd7" path="res://UI/Inventory/InventoryItem_Turret.tscn" id="12_us81v"]

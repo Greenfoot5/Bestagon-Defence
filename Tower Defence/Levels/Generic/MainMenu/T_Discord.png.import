@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckj6jecwq0e0i"
-path.s3tc="res://.godot/imported/Ko-fi_Icon_RGB_stroke.png-e3af957a76e34cc2ac0de607ea26fd47.s3tc.ctex"
+uid="uid://cbrbmoxt3cee4"
+path.s3tc="res://.godot/imported/T_Discord.png-0ef09722399a7b56431929bd756a8664.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Levels/Generic/MainMenu/Ko-fi_Icon_RGB_stroke.png"
-dest_files=["res://.godot/imported/Ko-fi_Icon_RGB_stroke.png-e3af957a76e34cc2ac0de607ea26fd47.s3tc.ctex"]
+source_file="res://Levels/Generic/MainMenu/T_Discord.png"
+dest_files=["res://.godot/imported/T_Discord.png-0ef09722399a7b56431929bd756a8664.s3tc.ctex"]
 
 [params]
 

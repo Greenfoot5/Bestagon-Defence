@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxxoosjv56bly"
-path.s3tc="res://.godot/imported/kofilogo_bluebg.png-6704209abfd5238b979f7b408cca2a49.s3tc.ctex"
+uid="uid://gid2cgm1lxio"
+path.s3tc="res://.godot/imported/T_Notion.png-d6a17f6149822aaf1e0dfb520f6ea4f6.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Levels/Generic/MainMenu/kofilogo_bluebg.png"
-dest_files=["res://.godot/imported/kofilogo_bluebg.png-6704209abfd5238b979f7b408cca2a49.s3tc.ctex"]
+source_file="res://Levels/Generic/MainMenu/T_Notion.png"
+dest_files=["res://.godot/imported/T_Notion.png-d6a17f6149822aaf1e0dfb520f6ea4f6.s3tc.ctex"]
 
 [params]
 

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbrbmoxt3cee4"
-path.s3tc="res://.godot/imported/discord-mark-blue.png-657aa2497e44bf573e0bfb7429b179e0.s3tc.ctex"
+uid="uid://cw4oso4m5tiv3"
+path.s3tc="res://.godot/imported/T_Github_White.png-c94f909a2009774ebff809f972bced56.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Levels/Generic/MainMenu/discord-mark-blue.png"
-dest_files=["res://.godot/imported/discord-mark-blue.png-657aa2497e44bf573e0bfb7429b179e0.s3tc.ctex"]
+source_file="res://Levels/Generic/MainMenu/T_Github_White.png"
+dest_files=["res://.godot/imported/T_Github_White.png-c94f909a2009774ebff809f972bced56.s3tc.ctex"]
 
 [params]
 

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw4oso4m5tiv3"
-path.s3tc="res://.godot/imported/github-mark-white.png-62d35d1c5c6e86f8d62a756dceb640fd.s3tc.ctex"
+uid="uid://bxxoosjv56bly"
+path.s3tc="res://.godot/imported/T_KoFi_Blue.png-3ecf3210518e4b0b8d63deda19b284f7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Levels/Generic/MainMenu/github-mark-white.png"
-dest_files=["res://.godot/imported/github-mark-white.png-62d35d1c5c6e86f8d62a756dceb640fd.s3tc.ctex"]
+source_file="res://Levels/Generic/MainMenu/T_KoFi_Blue.png"
+dest_files=["res://.godot/imported/T_KoFi_Blue.png-3ecf3210518e4b0b8d63deda19b284f7.s3tc.ctex"]
 
 [params]
 
