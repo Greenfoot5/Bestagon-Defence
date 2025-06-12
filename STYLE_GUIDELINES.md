@@ -207,6 +207,9 @@ Namespaces should be set for the file scope.
 
 It should describe what the function does, but not how (as the how isn’t relevant).
 Parameters and return types should all be commented.
+This includes overriden functions, as you're doing something different inside the function.
+
+This rule avoids any arguments over should/shouldn't a function be commented as best practice is generally comment "if it needs it."
 
 ```csharp
 /// <summary>
