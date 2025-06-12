@@ -26,10 +26,8 @@ public partial class Hunter : DynamicTurret
     private AnimationPlayer shotAnimator;
 
     /// <summary>
-    /// The effect to fire when the bullet is shot
+    /// Clears the line in case it was set in the editor
     /// </summary>
-    // [Export]
-    // private VisualEffect attackEffect;
     public override void _Ready()
     {
         base._Ready();
@@ -39,7 +37,8 @@ public partial class Hunter : DynamicTurret
 
     /// <summary>
     /// Rotates towards the target if the turret have one.
-    /// Shoots if the turret is looking towards the target
+    /// Scopes in on a target
+    /// Attacks target once it has scoped in enough
     /// </summary>
     public override void _PhysicsProcess(double delta)
     {
@@ -66,6 +65,9 @@ public partial class Hunter : DynamicTurret
         }
     }
 
+    /// <summary>
+    /// Updates the Scope Line2D points
+    /// </summary>
     private void UpdateLine()
     {
         scopeLine.RemovePoint(1);
@@ -74,6 +76,9 @@ public partial class Hunter : DynamicTurret
         scopeLine.WidthCurve.SetPointValue(1, (1f - scopeLine.WidthCurve.Sample(0)) * widthMult);
     }
 
+    /// <summary>
+    /// Clears the scope Line2D points
+    /// </summary>
     private void ClearLine()
     {
         scopeLine.ClearPoints();
@@ -82,8 +87,9 @@ public partial class Hunter : DynamicTurret
     }
 
     /// <summary>
-    /// Create the bullet and give it a target
+    /// Perform an attack on the target
     /// </summary>
+    /// <param name="delta">The time since last frame (in seconds)</param>
     protected override void Attack(float delta)
     {
         // Attack effect

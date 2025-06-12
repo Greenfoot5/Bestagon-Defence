@@ -61,6 +61,10 @@ public partial class TurretBlueprint : Resource, ISubtypable
     public PackedScene BuildEffect;
 
 #nullable enable
+    /// <summary>
+    /// Gets the Type of the turret the blueprint is of
+    /// </summary>
+    /// <returns>The Type of the turret</returns>
     public Type GetSubtype()
     {
         SceneState state = Prefab.GetState();

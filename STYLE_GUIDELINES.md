@@ -138,7 +138,8 @@ Source files should be given the name of the public class in the file.
 
 Organise namespaces with a clearly defined structure,
 
-Class members should be ordered logically, and grouped into sections, with spaces between each section
+Class members should be ordered logically, and grouped into sections, with spaces between each section.
+Variables can be grouped both generally in the following order, but may also be grouped further within an `[ExportGroup]` grouping both private, public, properties etc.
 
 ```csharp
 namespace Scripts.Character;
@@ -151,10 +152,17 @@ public class Account
     // Fields
     public static decimal Reserves;
     public const string ShippingType = "DropShip";
+    
+    /// <summary>
+    /// Place Attributes at the top of Exported variables
+    /// </summary>
+    [Export]
+    public Attributes Stats = new Attributes();
 
     /// <summary>
     /// Public variables set in the Inspector, should have a XML comment
     /// </summary>
+    [ExportGroup("Bank Details")] 
     [Export]
     public string BankName;
     
@@ -248,7 +256,7 @@ It would be ideal if from reading the comments alone someone other than the auth
 - Begin comment text with an uppercase letter.
 - Insert one space between the comment delimiter `//` and the comment text, as shown in the following example.
 
-The `//` (two slashes) style of comment tags should be used in most situations. Where ever possible, place comments above the code instead of beside it. Here is an example:
+The `//` (two slashes) style of comment tags should be used in most situations. Whenever possible, place comments above the code instead of beside it. Here is an example:
 
 ```csharp
 // Sample comment above a variable.

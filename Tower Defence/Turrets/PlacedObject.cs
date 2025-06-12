@@ -8,7 +8,7 @@ public abstract partial class PlacedObject : Node2D
     /// <summary>
     /// The display name of the object
     /// </summary>
-    public string displayName;
+    public string DisplayName;
 
     /// <summary>
     /// Called when the object is selected

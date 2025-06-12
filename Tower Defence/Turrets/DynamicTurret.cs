@@ -23,9 +23,7 @@ public abstract partial class DynamicTurret : Turret
         
     // How long between each target update
     private const float UpdateTargetTimer = 0.5f;
-    // 90° - Rotation offset so positive y is up
-    private const float RotOffset = float.Pi / 2;
-        
+
     /// <summary>
     /// What TargetingMethod the turret uses to pick its next target
     /// </summary>
@@ -59,6 +57,9 @@ public abstract partial class DynamicTurret : Turret
     [Export]
     public Node2D PartToRotate;
 
+    /// <summary>
+    /// Creates a new DynamicTurret
+    /// </summary>
     protected DynamicTurret()
     {
         Stats[AttributeType.RotationSpeed] = new Attribute(AttributeType.RotationSpeed, 3f, min:0f);

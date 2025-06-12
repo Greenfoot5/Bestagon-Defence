@@ -5,11 +5,10 @@ using Godot;
 namespace BestagonDefense.Turrets.Gunner;
 
 /// <summary>
-/// Extends DynamicTurret to add Shooting functionality.
+/// Extends DynamicTurret to add Gunning functionality.
 /// </summary>
 public partial class Gunner : DynamicTurret
 {
-    // Bullets
     /// <summary>
     /// The bullet prefab to spawn each attack
     /// </summary>
@@ -24,6 +23,9 @@ public partial class Gunner : DynamicTurret
     // Spin up stats
     private float _fireRateIncrease = 1f;
 
+    /// <summary>
+    /// Creates a new Gunner
+    /// </summary>
     public Gunner()
     {
         Stats[AttributeType.SpinMultiplier] = new Attribute(AttributeType.SpinMultiplier, 1.1f);
@@ -119,8 +121,9 @@ public partial class Gunner : DynamicTurret
     }
 
     /// <summary>
-    /// Create the bullet and give it a target
+    /// Creates a bullet and give it a target
     /// </summary>
+    /// <param name="delta">The time since last frame (in seconds)</param>
     protected override void Attack(float delta)
     {
         // Creates the bullet

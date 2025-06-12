@@ -20,6 +20,9 @@ public abstract partial class Turret : Damager
     [Export]
     public double FireCountdown;
 
+    /// <summary>
+    /// Creates a new Turret
+    /// </summary>
     protected Turret()
     {
         Stats[AttributeType.Range] = new Attribute(AttributeType.Range, 2.5f, min:0f);
@@ -37,11 +40,19 @@ public abstract partial class Turret : Damager
         UpdateRange(Stats[AttributeType.Range]);
     }
 
+    /// <summary>
+    /// Handles removing listeners when leaving the tree
+    /// </summary>
     public override void _ExitTree()
     {
+        base._ExitTree();
         Stats[AttributeType.Range].OnAttributeUpdated -= UpdateRange;
     }
 
+    /// <summary>
+    /// Handles updating the fire countdown
+    /// </summary>
+    /// <param name="delta">Time since last frame (in seconds)</param>
     public override void _PhysicsProcess(double delta)
     {
         // If there's no fire rate, the turret shouldn't do anything

@@ -3,8 +3,14 @@ using Godot;
 
 namespace BestagonDefense.Turrets.Seeker;
 
+/// <summary>
+/// Extends dynamic turret to add Seeking functionality
+/// </summary>
 public partial class Seeker : DynamicTurret
 {
+    /// <summary>
+    /// The seeker shot to spawn
+    /// </summary>
     [Export]
     private PackedScene shot;
     
@@ -42,6 +48,10 @@ public partial class Seeker : DynamicTurret
         FireCountdown -= delta;
     }
     
+    /// <summary>
+    /// Spawns a new seeker
+    /// </summary>
+    /// <param name="delta">The time since the last frame</param>
     protected override void Attack(float delta)
     {
         // TODO - Attack effect

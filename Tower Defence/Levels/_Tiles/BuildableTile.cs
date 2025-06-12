@@ -124,7 +124,7 @@ public partial class BuildableTile : Area2D
         var newTurret = TurretBlueprint.Prefab.Instantiate<Turret>();
         newTurret.Name = "_" + newTurret.Name;
         Turret = newTurret;
-        newTurret.displayName = TurretBlueprint.DisplayName;
+        newTurret.DisplayName = TurretBlueprint.DisplayName;
         
         foreach (ModuleChainHandler handler in TurretBlueprint.ModuleHandlers)
         {

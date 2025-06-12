@@ -8,6 +8,9 @@ public partial class SeekerShot : Bullet
 {
     private ulong startTime;
 
+    /// <summary>
+    /// Handles creating the events
+    /// </summary>
     public override void _Ready()
     {
         base._Ready();
@@ -16,6 +19,14 @@ public partial class SeekerShot : Bullet
         
         ((DynamicTurret)Source).OnNewTarget += UpdateTarget;
         TargetLocation = Source.GlobalPosition;
+    }
+    
+    /// <summary>
+    /// Handles event cleanup
+    /// </summary>
+    public override void _ExitTree()
+    {
+        ((DynamicTurret)Source).OnNewTarget -= UpdateTarget;
     }
 
     /// <summary>
@@ -35,11 +46,10 @@ public partial class SeekerShot : Bullet
         base._Process(delta);
     }
 
-    public override void _ExitTree()
-    {
-        ((DynamicTurret)Source).OnNewTarget -= UpdateTarget;
-    }
-
+    /// <summary>
+    /// Updates the seeker shot's target
+    /// </summary>
+    /// <param name="target">The new target</param>
     private void UpdateTarget(Enemy target)
     {
         if (target == null)
@@ -81,9 +91,6 @@ public partial class SeekerShot : Bullet
             if (Stats[AttributeType.ExplosionRadius].Value > 0f)
                 Explode();
         }
-
-        // Destroy so the bullet only hits the target once
-        // QueueFree();
     }
     
     /// <summary>

@@ -38,6 +38,10 @@ public partial class Smasher : Turret
         FireCountdown -= delta;
     }
 
+    /// <summary>
+    /// Updates the size of the range and attack effect
+    /// </summary>
+    /// <param name="attribute">The attribute to update with</param>
     protected override void UpdateRange(Attribute attribute)
     {
         base.UpdateRange(attribute);
@@ -50,6 +54,7 @@ public partial class Smasher : Turret
     /// <summary>
     /// Deals damage to all enemies in range
     /// </summary>
+    /// <param name="delta">The time since last frame (in seconds)</param>
     protected override void Attack(float delta)
     {
         smashEffect.Emitting = true;
@@ -72,7 +77,6 @@ public partial class Smasher : Turret
             damagePercentage = Mathf.Clamp(damagePercentage, 0.2f, 1f);
                      
             Hit(enemy, this);
-            GD.Print(Stats[AttributeType.Damage].Value * damagePercentage);
             enemy.TakeDamage(Stats[AttributeType.Damage].Value * damagePercentage, this);
         }
     }
