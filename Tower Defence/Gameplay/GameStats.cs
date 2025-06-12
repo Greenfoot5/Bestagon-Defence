@@ -79,8 +79,7 @@ public partial class GameStats : Node
     {
         _lives = lives;
     }
-
-    // public static GameControls controls;
+    
     private static int _randomSeed;
 
     // Events

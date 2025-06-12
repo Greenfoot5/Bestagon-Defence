@@ -1,8 +1,6 @@
-using BestagonDefense.Gameplay;
-using BestagonDefense.Gameplay.Waves;
 using Godot;
 
-namespace BestagonDefense.Levels.Maps.Upgrade;
+namespace BestagonDefense.Gameplay.Waves;
 
 public partial class WaveTimer : Timer
 {
@@ -21,7 +19,7 @@ public partial class WaveTimer : Timer
 
     private void TryStart()
     {
-        if (WaveSpawner.EnemiesAlive <= 0 && WaveSpawner.SpawnerState == WaveSpawner.State.Waiting)
+        if (WaveSpawner.EnemiesAlive <= 0 && WaveSpawner.SpawnerState == SpawnerState.Waiting)
         {
             Start(WaveData.TimeBetweenWaves);
             

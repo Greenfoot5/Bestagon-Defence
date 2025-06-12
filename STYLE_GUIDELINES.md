@@ -167,8 +167,11 @@ public class Account
     public decimal Balance {get; set;}
     
     // Signals/Events
+    public delegate void ObjectAdded();
+    public static event ObjectedAdded OnObjectAdded;
+    
     [Signal]
-    public delegate void OnSignalEventHandler();
+    public delegate void OnAccountClosed();
     
     /// <summary>
     /// Constructor

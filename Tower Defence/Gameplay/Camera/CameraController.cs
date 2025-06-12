@@ -71,6 +71,10 @@ public partial class CameraController : Camera2D
         touchSensitivity /= 180;
     }
 
+    /// <summary>
+    /// Manages Camera movement
+    /// </summary>
+    /// <param name="delta">Time in seconds since last frame</param>
     public override void _PhysicsProcess(double delta)
     {
         var fDelta = (float)delta;
@@ -92,13 +96,17 @@ public partial class CameraController : Camera2D
             Position -= new Vector2(0, keyboardPanSpeed * delta);
         if (Input.IsActionPressed("ui_down"))
             Position += new Vector2(0, keyboardPanSpeed * delta);
-            
+        
+        // TODO - Move camera my mouse
+        
         // Mouse Input
         // if (_moveCamera.activeControl.device == Pointer.current)
         // {
         //     return _moveCamera.ReadValue<Vector2>() * mouseSensitivity;
         // }
 
+        // TODO - Allow touch camera movement
+        
         // Mobile Input
         // if (_moveCamera.activeControl.device == Touchscreen.current)
         // {
@@ -109,7 +117,7 @@ public partial class CameraController : Camera2D
     /// <summary>
     /// Handles zooming of the camera
     /// </summary>
-    /// <param name="delta"></param>
+    /// <param name="delta">Time in seconds since last frame</param>
     private void ZoomProcess(float delta)
     {
         if (Input.IsActionPressed("zoom_in"))

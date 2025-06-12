@@ -10,19 +10,20 @@ namespace BestagonDefense.Gameplay;
 /// </summary>
 public partial class BuildManager : Node
 {
+    private static TurretInventoryItem _buildingButton;
+    
     /// <summary>
     /// The scene to use when displaying potential range when building
     /// </summary>
     // [Export]
-    private PackedScene rangePreview;
+    // TODO - Add range preview back again
+    private Node2D rangePreview;
     /// <summary>
     /// The current range preview
     /// </summary>
     [Export]
     public Node2D CurrentPreview;
-        
-    private static TurretInventoryItem _buildingButton;
-        
+    
     /// <summary>
     /// If the player is currently building or not
     /// </summary>
@@ -39,6 +40,9 @@ public partial class BuildManager : Node
     public static event TurretBuiltEvent OnTurretBuilt;
     public delegate void TurretBuiltEvent();
 
+    /// <summary>
+    /// Fires OnTurretBuilt event
+    /// </summary>
     public static void TurretBuilt()
     {
         OnTurretBuilt?.Invoke();

@@ -8,8 +8,15 @@ namespace BestagonDefense.Gameplay.Waves;
 [GlobalClass]
 public partial class Wave : Resource
 {
+    /// <summary>
+    /// The enemy sets to spawn in the wave
+    /// </summary>
     [Export]
     public EnemySet[] EnemySets;
+    /// <summary>
+    /// The delays between each set
+    /// Length should be 1 less than EnemySets
+    /// </summary>
     [Export]
     public float[] SetDelays;
 }

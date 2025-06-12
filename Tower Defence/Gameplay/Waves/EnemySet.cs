@@ -9,10 +9,19 @@ namespace BestagonDefense.Gameplay.Waves;
 [GlobalClass]
 public partial class EnemySet : Resource
 {
+    /// <summary>
+    /// The enemy to spawn
+    /// </summary>
     [Export]
     public EnemyStats Enemy;
+    /// <summary>
+    /// How many to spawn
+    /// </summary>
     [Export]
     public int Count;
+    /// <summary>
+    /// The delay (in seconds) between each enemy in this set
+    /// </summary>
     [Export]
     public float Rate;
 }

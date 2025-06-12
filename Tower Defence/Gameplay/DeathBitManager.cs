@@ -43,6 +43,9 @@ public partial class DeathBitManager: Node2D
 
     private const float CatchRadius = 50f;
 
+    /// <summary>
+    /// Initialise the Manager
+    /// </summary>
     public override void _Ready()
     {
         Particles.Clear();
@@ -51,11 +54,19 @@ public partial class DeathBitManager: Node2D
         Enemy.OnEnemyKilled += DropEnergy;
     }
 
+    /// <summary>
+    /// Removes listeners when removed
+    /// </summary>
     public override void _ExitTree()
     {
         GameStats.OnRoundProgress -= CleanMap;
+        Enemy.OnEnemyKilled -= DropEnergy;
     }
 
+    /// <summary>
+    /// Creates new drop(s)
+    /// </summary>
+    /// <param name="enemy">The enemy to drop energy for</param>
     private void DropEnergy(Enemy enemy)
     {
         if (!DropsEnergy)
@@ -79,6 +90,10 @@ public partial class DeathBitManager: Node2D
         }
     }
 
+    /// <summary>
+    /// Removes any particles that need removing and redraws
+    /// </summary>
+    /// <param name="delta">Time in seconds since last framw</param>
     public override void _PhysicsProcess(double delta)
     {
         var dFloat = (float)delta;
@@ -94,9 +109,13 @@ public partial class DeathBitManager: Node2D
         QueueRedraw();
     }
 
+    /// <summary>
+    /// Handles input events for collecting energy
+    /// </summary>
+    /// <param name="event">An input event</param>
     public override void _Input(InputEvent @event)
     {
-        if (@event is InputEventMouseMotion mouseMotion)
+        if (@event is InputEventMouseMotion)
         {
             foreach (DeathEnergy t in Particles)
             {
@@ -109,6 +128,9 @@ public partial class DeathBitManager: Node2D
         }
     }
 
+    /// <summary>
+    /// Collects any drops that have been on the map too long
+    /// </summary>
     private static void CleanMap()
     {
         foreach (DeathEnergy t in Particles)
@@ -120,6 +142,9 @@ public partial class DeathBitManager: Node2D
         }
     }
 
+    /// <summary>
+    /// Draws all particles
+    /// </summary>
     public override void _Draw()
     {
         foreach (DeathEnergy particle in Particles)
