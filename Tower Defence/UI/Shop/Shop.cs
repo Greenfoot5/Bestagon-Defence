@@ -15,8 +15,12 @@ namespace BestagonDefense.UI.Shop;
 /// </summary>
 public partial class Shop : BaseButton
 {
-    private ModuleChainHandler _selectedHandler;
-        
+    public static Squirrel3 Random;
+    /// <summary>
+    /// The previous state of the random before the current selection
+    /// </summary>
+    public static Tuple<int, int> OldState;
+    
     /// <summary>
     /// The data to use for the shop
     /// </summary>
@@ -53,10 +57,6 @@ public partial class Shop : BaseButton
     [Export]
     public GenerateShopSelection SelectionGenerator;
 
-    private int _nextCost;
-        
-    public int TotalCellsCollected;
-
     /// <summary>
     /// Current count of powercells
     /// </summary>
@@ -82,12 +82,11 @@ public partial class Shop : BaseButton
     /// </summary>
     [Export]
     public TypeSpriteLookup GlyphsLookup;
-
-    public static Squirrel3 Random;
-    /// <summary>
-    /// The previous state of the random before the current selection
-    /// </summary>
-    public static Tuple<int, int> OldState;
+    
+    private ModuleChainHandler _selectedHandler;
+    private int _nextCost;
+    
+    public int TotalCellsCollected;
         
     public delegate void PickTurret(TurretInventoryItem blueprint);
     public static event PickTurret OnPickTurret;
@@ -109,6 +108,9 @@ public partial class Shop : BaseButton
         UpdateBuyButton();
     }
 
+    /// <summary>
+    /// Removes listeners when exiting the tree
+    /// </summary>
     public override void _ExitTree()
     {
         GameStats.OnGainEnergy -= CalculateCells;
@@ -180,16 +182,9 @@ public partial class Shop : BaseButton
         return TotalCellsCollected - GameStats.Powercells >= ShopData.InitialSelectionCount;
     }
 
-    public int GetSellPercentage()
-    {
-        return (int)(ShopData.SellPercentage * 100);
-    }
-
-    public int GetSellAmount()
-    {
-        return (int)(ShopData.SellPercentage * _nextCost);
-    }
-
+    /// <summary>
+    /// Calculates how many cells the player should have
+    /// </summary>
     private void CalculateCells()
     {
         var energyToSubtract = 0;
@@ -206,6 +201,9 @@ public partial class Shop : BaseButton
         UpdateBuyButton();
     }
 
+    /// <summary>
+    /// Updates the BuyButton state
+    /// </summary>
     private void UpdateBuyButton()
     {
         if (GameStats.Powercells > 0)
@@ -222,6 +220,9 @@ public partial class Shop : BaseButton
         UpdateEnergyCount();
     }
 
+    /// <summary>
+    /// Updates the powercell count
+    /// </summary>
     private void UpdateEnergyCount()
     {
         _powercellCount.Text = GameStats.Powercells.ToString();
@@ -231,7 +232,7 @@ public partial class Shop : BaseButton
     /// <summary>
     /// To make sure the expression evaluator is doing the right thing each time, there's a function.
     /// </summary>
-    public int GetEnergyCost()
+    private int GetEnergyCost()
     {
         var expression = new Expression();
         expression.Parse(ShopData.SelectionCostFormula, ["x"]);

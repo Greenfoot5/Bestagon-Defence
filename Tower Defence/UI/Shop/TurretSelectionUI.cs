@@ -91,7 +91,7 @@ public partial class TurretSelectionUI : Control
     /// Creates and setups the Selection UI.
     /// </summary>
     /// <param name="turret">The turret the option selects</param>
-    /// <param name="shop">The Shop (allows the game to select the turret when the player clicks the panel)</param>
+    /// <param name="shop">The shop that created this item</param>
     public void Init(TurretBlueprint turret, Shop shop)
     {
         _turretBlueprint = turret;
@@ -146,7 +146,7 @@ public partial class TurretSelectionUI : Control
     /// Called when a player clicks the card,
     /// selecting it and closing the shop
     /// </summary>
-    /// <param name="shop"></param>
+    /// <param name="shop">The shop that created the item</param>
     private void MakeSelection(Shop shop)
     {
         shop.SpawnNewTurret(_turretBlueprint);
