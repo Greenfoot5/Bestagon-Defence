@@ -15,11 +15,17 @@ public partial class GameOver : Control
     [Export]
     private Label roundsText;
 
+    /// <summary>
+    /// Initialises the listeners
+    /// </summary>
     public override void _EnterTree()
     {
         VisibilityChanged += OnEnable;
     }
 
+    /// <summary>
+    /// Removes the listeners when destroyed
+    /// </summary>
     public override void _ExitTree()
     {
         VisibilityChanged -= OnEnable;

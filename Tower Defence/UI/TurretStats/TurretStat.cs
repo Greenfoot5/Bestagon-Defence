@@ -30,7 +30,7 @@ public partial class TurretStat : Control
     /// <summary>
     /// Sets the text's content for the stat
     /// </summary>
-    /// <param name="data"></param>
+    /// <param name="data">The stat value as a string</param>
     private void SetData(string data)
     {
         text.Text = data;
