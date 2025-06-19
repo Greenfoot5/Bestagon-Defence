@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Attributes" load_steps=10 format=3 uid="uid://ds7rijmb4ir08"]
 
-[ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/AttributeModifier.cs" id="1_1nrke"]
+[ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/Modifier.cs" id="1_1nrke"]
 [ext_resource type="Script" uid="uid://blnrq5atpcclw" path="res://Abstract/Attributes/Attribute.cs" id="2_8mc4x"]
 [ext_resource type="Script" uid="uid://c80di1i4n41ig" path="res://Abstract/Attributes/Attributes.cs" id="3_bwqee"]
 
