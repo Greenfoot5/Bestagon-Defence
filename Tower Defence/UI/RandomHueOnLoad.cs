@@ -1,6 +1,6 @@
 using Godot;
 
-namespace UI;
+namespace BestagonDefense.UI;
 
 /// <summary>
 /// Allows a piece of text to have a random hue when loading the scene

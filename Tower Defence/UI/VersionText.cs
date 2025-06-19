@@ -1,7 +1,7 @@
 using System.Text;
 using Godot;
 
-namespace UI;
+namespace BestagonDefense.UI;
 
 /// <summary>
 /// Displays the version text so the player can know what version they're on

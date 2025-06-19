@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace Abstract;
+namespace BestagonDefense.Abstract;
 
 /// <summary>
 /// Global generic utilities

@@ -1,6 +1,6 @@
 using Godot;
 
-namespace Modules;
+namespace BestagonDefense.Modules;
 
 /// <summary>
 /// A chain of modules, allowing traversal up or down the chain

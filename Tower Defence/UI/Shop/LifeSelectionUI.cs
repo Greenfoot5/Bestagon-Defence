@@ -1,10 +1,10 @@
-using Gameplay;
+using BestagonDefense.Gameplay;
 using Godot;
 
-namespace UI.Shop;
+namespace BestagonDefense.UI.Shop;
 
 /// <summary>
-/// Displays a shop card for a Module
+/// Displays a shop card for a Life
 /// </summary>
 public partial class LifeSelectionUI : Control
 {
@@ -14,7 +14,7 @@ public partial class LifeSelectionUI : Control
     private int _count;
         
     /// <summary>
-    /// The hexagons background of the card (the card's background shader)
+    /// The button that "picks" this option
     /// </summary>
     [Export]
     private BaseButton button;

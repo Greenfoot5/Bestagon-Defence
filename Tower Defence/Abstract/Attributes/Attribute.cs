@@ -1,9 +1,11 @@
 using System;
-using System.Collections.Generic;
 using Godot;
 
-namespace Abstract.Attributes;
+namespace BestagonDefense.Abstract.Attributes;
 
+/// <summary>
+/// Container for a stat that can be modified through modifiers
+/// </summary>
 [GlobalClass]
 public partial class Attribute : Resource
 {
@@ -11,10 +13,16 @@ public partial class Attribute : Resource
     private const int LargeValue = 50;
     private const float Tolerance = 0.001f;
 
+    /// <summary>
+    /// Name of the attribute, should be the same as the Attribute's key
+    /// </summary>
     [Export]
     public AttributeType Name;
 
     private float _base;
+    /// <summary>
+    /// Base value for the attribute prior to any modifiers applied
+    /// </summary>
     [Export]
     public float Base
     {
@@ -26,21 +34,42 @@ public partial class Attribute : Resource
         }
     }
 
+    /// <summary>
+    /// The modifiers applied to the attribute
+    /// </summary>
     [Export]
-    private Godot.Collections.Dictionary<Variant, AttributeModifier> _modifiers = new();
+    private Godot.Collections.Dictionary<Variant, Modifier> _modifiers = new();
 
+    /// <summary>
+    /// The current value of the attribute after modifiers have been applied
+    /// </summary>
     public float Value { get; private set; }
 
-    public float Modifier => CalculateMod(_modifiers);
-
+    /// <summary>
+    /// The minimum possible value for the attribute
+    /// </summary>
     [Export]
     public float Min { get; private set; } = -Mathf.Inf;
+    /// <summary>
+    /// The maximum possible value for the attribute
+    /// </summary>
     [Export]
     public float Max { get; private set; } = Mathf.Inf;
     
+    /// <summary>
+    /// The value of all the modifiers applied to the value
+    /// </summary>
+    private float Modifier => CalculateMod();
+    
+    /// <summary>
+    /// Triggers when the value of the attribute is updated
+    /// </summary>
     [Signal]
     public delegate void OnAttributeUpdatedEventHandler(Attribute attribute);
 
+    /// <summary>
+    /// Creates a new attribute
+    /// </summary>
     public Attribute()
     {
         Name = AttributeType.Nil;
@@ -48,6 +77,13 @@ public partial class Attribute : Resource
         CallDeferred("UpdateValue");
     }
     
+    /// <summary>
+    /// Creates a new attribute and fills in starting variables
+    /// </summary>
+    /// <param name="attributeType">The type of attribute</param>
+    /// <param name="base">The base value of the attribute</param>
+    /// <param name="min">The minimum value of the attribute</param>
+    /// <param name="max">The maximum value of the attribute</param>
     public Attribute(AttributeType attributeType, float @base, float min = -Mathf.Inf, float max = Mathf.Inf)
     {
         Name = attributeType;
@@ -57,6 +93,10 @@ public partial class Attribute : Resource
         CallDeferred("UpdateValue");
     }
     
+    /// <summary>
+    /// Creates a clone of the attribute
+    /// </summary>
+    /// <param name="attribute">The attribute to clone</param>
     public Attribute(Attribute attribute)
     {
         Name = attribute.Name;
@@ -67,6 +107,10 @@ public partial class Attribute : Resource
         CallDeferred("UpdateValue");
     }
 
+    /// <summary>
+    /// Copies the data from another attribute
+    /// </summary>
+    /// <param name="attribute">The attribute to copy</param>
     public void CopyFrom(Attribute attribute)
     {
         if (attribute.Name != Name)
@@ -82,52 +126,73 @@ public partial class Attribute : Resource
         UpdateValue();
     }
 
+    /// <summary>
+    /// Updates the value of the attribute if it's different
+    /// </summary>
     private void UpdateValue()
     {
-        float newVal = CalculateValue(Base, _modifiers);
+        float newVal = CalculateValue();
         
         if (!(Math.Abs(newVal - Value) > Tolerance)) return;
         
         Value = newVal;
     }
-    
-    public AttributeModifier this[Variant key] => _modifiers.TryGetValue(key, out AttributeModifier item) ? item : new AttributeModifier();
-    
-    public ICollection<Variant> Keys => _modifiers.Keys;
 
-    public void Add(Variant key, AttributeModifier mod)
+    /// <summary>
+    /// Adds a new or updates an existing modifier to the attribute
+    /// </summary>
+    /// <param name="key">The key for the modifier, if it already exists, updates the AttributeModifier</param>
+    /// <param name="mod">The AttributeModifier to apply to the attribute</param>
+    public void Add(Variant key, Modifier mod)
     {
         mod.Uid = key;
         _modifiers[key] = mod;
         UpdateValue();
-        // Value = newVal;
+        
         EmitSignal(SignalName.OnAttributeUpdated, this);
     }
 
+    /// <summary>
+    /// Removes a modifier from the attribute
+    /// </summary>
+    /// <param name="key">The key of the modifier to remove</param>
+    /// <returns></returns>
     public bool Remove(Variant key)
     {
         bool result = _modifiers.Remove(key);
         UpdateValue();
         
-        // Value = newVal;
         EmitSignal(SignalName.OnAttributeUpdated, this);
-        
         return result;
     }
 
+    /// <summary>
+    /// Checks if the attribute already contains a modifier with this key
+    /// </summary>
+    /// <param name="key">The key to check against</param>
+    /// <returns>`true` if a modifier is applied to the attribute with this key</returns>
     public bool Contains(Variant key)
     {
         return _modifiers.ContainsKey(key);
     }
     
+    /// <summary>
+    /// Converts the value of the attribute for easy display
+    /// </summary>
+    /// <returns>A formatted string of the attribute value</returns>
     public override string ToString()
     {
         return Value > LargeValue ? $"{Value:#,##0.#}" : $"{Value:#0.0#}";
     }
     
-    private float CalculateValue(float start, Godot.Collections.Dictionary<Variant, AttributeModifier> modifiers)
+    /// <summary>
+    /// Calculates a value of the attribute from a given base value
+    /// </summary>
+    /// <returns>The value of the attribute</returns>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown if a modifier has an invalid operation</exception>
+    private float CalculateValue()
     {
-        float val = start;
+        float val = Base;
         float addAfter = 0;
         float additive = 1;
         float multiplicative = 1;
@@ -137,7 +202,7 @@ public partial class Attribute : Resource
         float max = Max;
         float addiMax = 1;
         float multMax = 1;
-        foreach (AttributeModifier mod in modifiers.Values)
+        foreach (Modifier mod in _modifiers.Values)
         {
             switch (mod.Op)
             {
@@ -175,7 +240,7 @@ public partial class Attribute : Resource
                     multMax += mod.Value;
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(modifiers), message:"Invalid modifier found: " + mod.Value);
+                    throw new ArgumentOutOfRangeException(nameof(_modifiers), message:"Invalid modifier found: " + mod.Value);
             }
         }
     
@@ -193,7 +258,12 @@ public partial class Attribute : Resource
         return val;
     }
 
-    private float CalculateMod(Godot.Collections.Dictionary<Variant, AttributeModifier> modifiers)
+    /// <summary>
+    /// Calculates the value of the attribute's modifiers
+    /// </summary>
+    /// <returns>The value of the attribute's modifiers</returns>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown if a modifier has an invalid operation</exception>
+    private float CalculateMod()
     {
         float val = 1;
         float after = 0;
@@ -205,7 +275,7 @@ public partial class Attribute : Resource
         float max = Max;
         float addiMax = 1;
         float multMax = 1;
-        foreach (AttributeModifier mod in modifiers.Values)
+        foreach (Modifier mod in _modifiers.Values)
         {
             switch (mod.Op)
             {
@@ -243,7 +313,7 @@ public partial class Attribute : Resource
                     multMax += mod.Value;
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(modifiers), message:"Invalid modifier found: " + mod.Value);
+                    throw new ArgumentOutOfRangeException(nameof(_modifiers), message:"Invalid modifier found: " + mod.Value);
             }
         }
     

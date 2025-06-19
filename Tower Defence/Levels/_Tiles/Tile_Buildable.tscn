@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://fuhxgp2k2mrl" path="res://Levels/_Tiles/BuildableTile.cs" id="1_2xiig"]
 [ext_resource type="Texture2D" uid="uid://ce7fss2iwkhkl" path="res://Gameplay/T_DeathBit.png" id="3_4r5gx"]
 [ext_resource type="AnimationLibrary" uid="uid://dp1n4dksjun2d" path="res://Levels/_Tiles/BuildableTile.res" id="3_hn5bj"]
-[ext_resource type="Texture2D" uid="uid://jjvkculthe4o" path="res://_WIP/Art/node.png" id="3_tublc"]
+[ext_resource type="Texture2D" uid="uid://jjvkculthe4o" path="res://Levels/_Tiles/T_Tile_Buildable.png" id="3_tublc"]
 
 [sub_resource type="Curve" id="Curve_tpqal"]
 _limits = [-360.0, 360.0, 0.0, 1.0]

@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
-using Abstract.Attributes;
-using Abstract.Data;
-using Enemies;
+using BestagonDefense.Abstract.Attributes;
+using BestagonDefense.Abstract.Data;
+using BestagonDefense.Enemies;
 using Godot;
 
-namespace Turrets;
+namespace BestagonDefense.Turrets;
 
 public abstract partial class Damager : PlacedObject
 {
@@ -30,6 +30,10 @@ public abstract partial class Damager : PlacedObject
     public event ShootEvent OnShoot;
     public event HitEvent OnHit;
 
+    /// <summary>
+    /// Handles an attack for the object
+    /// </summary>
+    /// <param name="delta">The time since last frame (in seconds)</param>
     protected abstract void Attack(float delta);
 
     /// <summary>
@@ -48,6 +52,12 @@ public abstract partial class Damager : PlacedObject
         OnShoot?.Invoke(bullet);
     }
 
+    /// <summary>
+    /// Perform attack on many targets
+    /// </summary>
+    /// <param name="targets">The targets to hit</param>
+    /// <param name="damager">The object performing the attack</param>
+    /// <param name="bullet">The bullet (if any) that hit</param>
     public void HitMany(IEnumerable<Enemy> targets, Damager damager, Bullet bullet = null)
     {
         foreach (Enemy target in targets)
@@ -56,6 +66,12 @@ public abstract partial class Damager : PlacedObject
         }
     }
 
+    /// <summary>
+    /// Perform an attack on an enemy
+    /// </summary>
+    /// <param name="target">The target to hit</param>
+    /// <param name="damager">The object performing the attack</param>
+    /// <param name="bullet">The bullet (if any) that hit</param>
     public void Hit(Enemy target, Damager damager, Bullet bullet = null)
     {
         OnHit?.Invoke(target, damager, bullet);

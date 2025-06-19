@@ -1,11 +1,11 @@
-﻿using Abstract.Data;
-using Gameplay;
+﻿using BestagonDefense.Abstract.Data;
+using BestagonDefense.Gameplay;
+using BestagonDefense.Turrets;
+using BestagonDefense.UI;
+using BestagonDefense.UI.Modules;
 using Godot;
-using Turrets;
-using UI;
-using UI.Modules;
 
-namespace Levels._Nodes;
+namespace BestagonDefense.Levels._Tiles;
 
 /// <summary>
 /// Manages all data and actions for a single node on a level map
@@ -61,8 +61,10 @@ public partial class BuildableTile : Area2D
 
     public static event SelectTile OnTileSelected;
     public delegate void SelectTile(BuildableTile tile);
-        
-
+    
+    /// <summary>
+    /// Initialises the BuildableTile
+    /// </summary>
     public override void _EnterTree()
     {
         if (_initialTurret != null)
@@ -71,6 +73,16 @@ public partial class BuildableTile : Area2D
         InputEvent += OnMouseDown;
         MouseEntered += OnMouseEnter;
         MouseExited += OnMouseExit;
+    }
+    
+    /// <summary>
+    /// Removes listeners when it leaves the tree
+    /// </summary>
+    public override void _ExitTree()
+    {
+        InputEvent -= OnMouseDown;
+        MouseEntered -= OnMouseEnter;
+        MouseExited -= OnMouseExit;
     }
         
     /// <summary>
@@ -103,13 +115,16 @@ public partial class BuildableTile : Area2D
         return hasAppliedModule;
     }
 
+    /// <summary>
+    /// Instantiate and place the turret on the tile
+    /// </summary>
     private void BuildBlueprint()
     {
         // Spawn the turret and set the turret and blueprint
         var newTurret = TurretBlueprint.Prefab.Instantiate<Turret>();
         newTurret.Name = "_" + newTurret.Name;
         Turret = newTurret;
-        newTurret.displayName = TurretBlueprint.DisplayName;
+        newTurret.DisplayName = TurretBlueprint.DisplayName;
         
         foreach (ModuleChainHandler handler in TurretBlueprint.ModuleHandlers)
         {
@@ -187,6 +202,12 @@ public partial class BuildableTile : Area2D
         SelectedTile = null;
     }
 
+    /// <summary>
+    /// Handles clicking on the turret
+    /// </summary>
+    /// <param name="viewport">The viewport the mouse is in</param>
+    /// <param name="event">The input event that triggered</param>
+    /// <param name="shapeIndex">Child index of the clicked Shape2D</param>
     private void OnMouseDown(Node viewport, InputEvent @event, long shapeIndex)
     {
         switch (@event)

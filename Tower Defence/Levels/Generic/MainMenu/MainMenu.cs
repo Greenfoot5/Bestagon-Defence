@@ -1,7 +1,7 @@
+using BestagonDefense.UI.Transition;
 using Godot;
-using UI.Transition;
 
-namespace Levels.Generic.MainMenu;
+namespace BestagonDefense.Levels.Generic.MainMenu;
 
 /// <summary>
 /// Handles all UI actions for the main menu

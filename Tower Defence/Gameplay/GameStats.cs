@@ -1,9 +1,9 @@
-﻿using Abstract.Data;
+﻿using BestagonDefense.Abstract.Data;
+using BestagonDefense.UI.Shop;
 using Godot;
-using UI.Shop;
 using Environment = System.Environment;
 
-namespace Gameplay;
+namespace BestagonDefense.Gameplay;
 
 /// <summary>
 /// Holds the stats for the current game
@@ -79,8 +79,7 @@ public partial class GameStats : Node
     {
         _lives = lives;
     }
-
-    // public static GameControls controls;
+    
     private static int _randomSeed;
 
     // Events

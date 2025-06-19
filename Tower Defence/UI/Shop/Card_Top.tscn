@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://4yuj26qwmq5v"]
 
-[ext_resource type="Texture2D" uid="uid://b7wqxd00mr1jc" path="res://UI/Shop/Card_Top_Panel.tres" id="1_iillt"]
-[ext_resource type="Texture2D" uid="uid://bpbp273ymtpo4" path="res://UI/Shop/Card_Top_Turret.tres" id="2_iillt"]
+[ext_resource type="Texture2D" uid="uid://b7wqxd00mr1jc" path="res://UI/Shop/TA_CardTop_Panel.tres" id="1_iillt"]
+[ext_resource type="Texture2D" uid="uid://bpbp273ymtpo4" path="res://UI/Shop/TA_CardTop_Turret.tres" id="2_iillt"]
 
 [node name="TypePanel" type="NinePatchRect"]
 anchors_preset = 5

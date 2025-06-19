@@ -1,20 +1,23 @@
 ﻿using System.Collections.Generic;
-using Abstract.Data;
-using Abstract.Saving;
+using BestagonDefense.Abstract.Data;
+using BestagonDefense.Abstract.Drawables;
+using BestagonDefense.Abstract.Saving;
+using BestagonDefense.Levels._Tiles;
+using BestagonDefense.Turrets;
+using BestagonDefense.UI.Shop;
 using Godot;
-using Levels._Nodes;
-using Turrets;
-using UI.Shop;
 
-namespace Gameplay;
+namespace BestagonDefense.Gameplay;
 
 /// <summary>
 /// Manages the current game's state
 /// </summary>
 public partial class GameManager : Node, ISaveableLevel
 {
-    // If the game has actually finished yet
-    public static bool isGameOver;
+    /// <summary>
+    /// If the game has actually finished yet
+    /// </summary>
+    public static bool IsGameOver;
         
     /// <summary>
     /// The UI to display when the player loses
@@ -33,8 +36,8 @@ public partial class GameManager : Node, ISaveableLevel
     /// </summary>
     [Export]
     private Label livesText;
-    /// <summary>
-    /// The Progress Graphic for the lives bar
+    // <summary>
+    // The Progress Graphic for the lives bar
     // </summary>
     // TODO - Progress type
     // [Export]
@@ -42,10 +45,10 @@ public partial class GameManager : Node, ISaveableLevel
     private int _startLives;
 
     /// <summary>
-    /// The paret of all the nodes
+    /// The parent of all the nodes
     /// </summary>
     [Export]
-    public Node2D NodeParent;
+    public Node2D BuildableTileParent;
 
     public static readonly List<TurretBlueprint> TurretInventory = [];
     public static readonly List<ModuleChainHandler> ModuleInventory = [];
@@ -64,7 +67,7 @@ public partial class GameManager : Node, ISaveableLevel
     /// </summary>
     public override void _Ready()
     {
-        isGameOver = false;
+        IsGameOver = false;
         Engine.TimeScale = 1;
             
         GameStats.OnLoseLife += UpdateLives;
@@ -93,7 +96,7 @@ public partial class GameManager : Node, ISaveableLevel
     /// </summary>
     private void EndGame()
     {
-        isGameOver = true;
+        IsGameOver = true;
 
         GameOverUI.ProcessMode = ProcessModeEnum.Always;
         GameOverUI.Visible = true;
@@ -130,8 +133,8 @@ public partial class GameManager : Node, ISaveableLevel
         saveData.RandomSeed = Shop.OldState.Item1;
         saveData.ShopRandomN = Shop.OldState.Item2;
 
-        // Node Data
-        foreach (Node node in NodeParent.GetChildren())
+        // Loads Node Data
+        foreach (Node node in BuildableTileParent.GetChildren())
         {
             var tile = (BuildableTile)node;
             if (tile.Turret == null)
@@ -203,7 +206,7 @@ public partial class GameManager : Node, ISaveableLevel
 
         foreach (SaveLevel.NodeData nodeData in saveData.Nodes)
         {
-            foreach (Node node in NodeParent.GetChildren())
+            foreach (Node node in BuildableTileParent.GetChildren())
             {
                 var tile = (BuildableTile)node;
                 if (tile.Name != nodeData.uuid) continue;

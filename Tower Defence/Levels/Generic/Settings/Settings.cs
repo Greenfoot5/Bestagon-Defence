@@ -1,10 +1,10 @@
 using System.Collections;
-using Abstract.Saving;
-using Gameplay;
+using BestagonDefense.Abstract.Saving;
+using BestagonDefense.Gameplay;
+using BestagonDefense.UI.Transition;
 using Godot;
-using UI.Transition;
 
-namespace Levels.Generic.Settings;
+namespace BestagonDefense.Levels.Generic.Settings;
 
 /// <summary>
 /// Handles the saving/loading/changing of settings

@@ -1,10 +1,10 @@
-using Abstract.Attributes;
+using BestagonDefense.Abstract.Attributes;
 using Godot;
 
-namespace Turrets.Lancer;
+namespace BestagonDefense.Turrets.Lancer;
 
 /// <summary>
-/// Extends Turret to add lancing functionality
+/// Extends Turret to add Lancing functionality
 /// </summary>
 public partial class Lancer : Turret
 {
@@ -31,9 +31,13 @@ public partial class Lancer : Turret
     /// <summary>
     /// The part to rotate
     /// </summary>
+    // TODO - Allow rotation
     [Export]
     public Node2D PartToRotate;
 
+    /// <summary>
+    /// Creates a new Lancer
+    /// </summary>
     public Lancer()
     {
         Stats[AttributeType.BulletRange] = new Attribute(AttributeType.BulletRange, 3f);
@@ -64,8 +68,9 @@ public partial class Lancer : Turret
     }
         
     /// <summary>
-    /// Deals damage to all enemies in range
+    /// Fires an arrow in the direction the turret is facing
     /// </summary>
+    /// <param name="delta">The time since last frame (in seconds)</param>
     protected override void Attack(float delta)
     {
         // attackEffect.Play();

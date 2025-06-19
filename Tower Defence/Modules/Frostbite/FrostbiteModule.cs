@@ -1,14 +1,13 @@
 using System;
-using Abstract.Attributes;
-using Enemies;
+using BestagonDefense.Abstract.Attributes;
+using BestagonDefense.Enemies;
+using BestagonDefense.Turrets;
+using BestagonDefense.Turrets.Choker;
+using BestagonDefense.Turrets.Gunner;
+using BestagonDefense.Turrets.Lancer;
 using Godot;
-using Turrets;
-using Turrets.Choker;
-using Turrets.Gunner;
-using Turrets.Lancer;
-using Turrets.Shooter;
 
-namespace Modules.Frostbite;
+namespace BestagonDefense.Modules.Frostbite;
 
 /// <summary>
 /// Extends the Module class to create a Damage upgrade
@@ -23,12 +22,12 @@ public partial class FrostbiteModule : Module
     /// Multiplicative modifier to damage based on seconds left of slow
     /// </summary>
     [Export]
-    private AttributeModifier _damageMultiplier = new(0f, Operation.Multiplicative);
+    private Modifier _damageMultiplier = new(0f, Operation.Multiplicative);
     /// <summary>
     /// Multiplicative percentage modifier to bullet explosion radius
     /// </summary>
     [Export]
-    private AttributeModifier _bulletExplosionRadius = new(0f, Operation.Multiplicative);
+    private Modifier _bulletExplosionRadius = new(0f, Operation.Multiplicative);
     // <summary>
     // Slow effect of any level (used to get effect key)
     // </summary>

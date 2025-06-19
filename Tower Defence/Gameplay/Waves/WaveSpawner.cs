@@ -1,33 +1,26 @@
 using System.Threading;
-using Abstract.Attributes;
-using Abstract.Saving;
-using Enemies;
+using BestagonDefense.Abstract.Attributes;
+using BestagonDefense.Abstract.Saving;
+using BestagonDefense.Enemies;
 using Godot;
-using Levels.Maps.Upgrade;
 using Timer = Godot.Timer;
 
-namespace Gameplay.Waves;
+namespace BestagonDefense.Gameplay.Waves;
 
 /// <summary>
 /// Handles the current wave and spawning of enemies
 /// </summary>
 public partial class WaveSpawner : Node2D
 {
-    public enum State
-    {
-        // Countdown to next spawn
-        Countdown,
-        // Spawning Enemies
-        Spawning,
-        // Waiting for all enemies to die
-        Waiting,
-    }
     /// <summary>
     /// Current stats of all spawners
     /// </summary>
-    public static State SpawnerState = State.Waiting;
+    public static SpawnerState SpawnerState = SpawnerState.Waiting;
+    /// <summary>
+    /// How many spawners are currently still spawning
+    /// </summary>
     private static int _activeSpawners;
-
+    
     private static int _enemiesAlive;
     /// <summary>
     /// How many enemies are still alive in the level
@@ -41,9 +34,20 @@ public partial class WaveSpawner : Node2D
             OnEnemyDied?.Invoke();
         }
     }
-    public delegate void EnemyDied();
-    public static event EnemyDied OnEnemyDied;
-        
+    
+    /// <summary>
+    /// The waves the level will loop through
+    /// </summary>
+    [Export]
+    private Wave[] _waves;
+    
+    /// <summary>
+    /// The countdown for all spawners
+    /// </summary>
+    [ExportGroup("Scene References")]
+    [Export]
+    private WaveTimer _countdown;
+    
     private WaveData _waveData;
     private Timer _spawnTimer;
     private int _waveIndex;
@@ -51,48 +55,41 @@ public partial class WaveSpawner : Node2D
     private int _enemyIndex;
 
     private Vector2[] _points;
+    
+    public delegate void EnemyDied();
+    public static event EnemyDied OnEnemyDied;
         
-    /// <summary>
-    /// The waves the level will loop through
-    /// </summary>
-    [Export]
-    private Wave[] _waves;
-        
-    [ExportGroup("Scene References")]
-    [Export]
-    private WaveTimer _countdown;
-        
-    /// <summary>
-    /// The text to update when the countdown/spawning/enemies
-    /// </summary>
+    // <summary>
+    // The text to update when the countdown/spawning/enemies
+    // </summary>
     // [Export]
     // private Label waveCountdownText;
-    /// <summary>
-    /// The Progress Graphic to display the wave progress
+    // <summary>
+    // The Progress Graphic to display the wave progress
     // </summary>
     // TODO - Allow export
     // [Export]
     // private Progress waveProgress;
-    /// <summary>
-    /// The label to display the current wave
-    /// </summary>
+    // <summary>
+    // The label to display the current wave
+    // </summary>
     // [Export]
     // private Label waveText;
 
-    /// <summary>
-    /// The text to show with the wave count
-    /// </summary>
+    // <summary>
+    // The text to show with the wave count
+    // </summary>
     // [ExportGroup("Localization")]
     // [Export]
     // private string waveCountText;
-    /// <summary>
-    /// The text to show how many enemies are alive
-    /// </summary>
+    // <summary>
+    // The text to show how many enemies are alive
+    // </summary>
     // [Export]
     // private string enemiesAliveText;
-    /// <summary>
-    /// The text to show when more enemies are being spawned
-    /// </summary>
+    // <summary>
+    // The text to show when more enemies are being spawned
+    // </summary>
     // [Export]
     // private string spawningText;
 
@@ -120,7 +117,10 @@ public partial class WaveSpawner : Node2D
         AddChild(_spawnTimer);
     }
 
-    private void OnDestroy()
+    /// <summary>
+    /// Removes event connections when the object is destroyed
+    /// </summary>
+    public override void _ExitTree()
     {
         GameStats.OnRoundProgress -= UpdateWaveText;
     }
@@ -168,7 +168,7 @@ public partial class WaveSpawner : Node2D
                 // This spawner is last to finish
                 if (Interlocked.Decrement(ref _activeSpawners) == 0)
                 {
-                    SpawnerState = State.Waiting;
+                    SpawnerState = SpawnerState.Waiting;
                     _spawnTimer.Stop();
                         
                     return;
@@ -201,7 +201,7 @@ public partial class WaveSpawner : Node2D
         
         // Apply scaling
         spawnedEnemy.EnemyStats.Attributes[AttributeType.MaxHealth].Add("SpawnerScaling",
-            new AttributeModifier(_waveData.Health.Sample(_setIndex + 1), Operation.Multiplicative));
+            new Modifier(_waveData.Health.Sample(_setIndex + 1), Operation.Multiplicative));
         // spawnedEnemy.TakeDamage(spawnedEnemy.Stats.Attributes[AttributeType.MaxHealth].Value, this);
             
         spawnedEnemy.OnDeath += () => { EnemiesAlive--; };
@@ -219,7 +219,10 @@ public partial class WaveSpawner : Node2D
         // TODO - Save level with scene name
         // SaveManager.SaveLevel(level, SceneManager.GetActiveScene().Name);
     }
-
+    
+    /// <summary>
+    /// Updates the wave UI with the current state
+    /// </summary>
     private void UpdateWaveText()
     {
         // waveText.Text = waveCountText + GameStats.Rounds;

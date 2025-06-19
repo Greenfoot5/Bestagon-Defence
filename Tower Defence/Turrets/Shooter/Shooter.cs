@@ -1,7 +1,7 @@
-﻿using Abstract.Attributes;
+﻿using BestagonDefense.Abstract.Attributes;
 using Godot;
 
-namespace Turrets.Shooter;
+namespace BestagonDefense.Turrets;
 
 /// <summary>
 /// Extends DynamicTurret to add Shooting functionality.
@@ -14,9 +14,9 @@ public partial class Shooter : DynamicTurret
     [Export]
     private PackedScene bulletPrefab;
 
-    /// <summary>
-    /// The effect to fire when the bullet is shot
-    /// </summary>
+    // <summary>
+    // The effect to fire when the bullet is shot
+    // </summary>
     // [Export]
     // private VisualEffect attackEffect;
 
@@ -57,6 +57,7 @@ public partial class Shooter : DynamicTurret
     /// <summary>
     /// Create the bullet and give it a target
     /// </summary>
+    /// <param name="delta">The time since last frame (in seconds)</param>
     protected override void Attack(float delta)
     {
         // TODO - Attack effect

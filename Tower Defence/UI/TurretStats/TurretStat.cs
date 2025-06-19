@@ -1,6 +1,6 @@
 using Godot;
 
-namespace UI.TurretStats;
+namespace BestagonDefense.UI.TurretStats;
 
 /// <summary>
 /// Displays a single stat on a turret's shop card
@@ -30,7 +30,7 @@ public partial class TurretStat : Control
     /// <summary>
     /// Sets the text's content for the stat
     /// </summary>
-    /// <param name="data"></param>
+    /// <param name="data">The stat value as a string</param>
     private void SetData(string data)
     {
         text.Text = data;

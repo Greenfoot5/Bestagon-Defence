@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Abstract.Attributes;
-using Enemies;
+using BestagonDefense.Abstract.Attributes;
+using BestagonDefense.Enemies;
 using Godot;
 
-namespace Turrets.Laser;
+namespace BestagonDefense.Turrets.Laser;
 
 /// <summary>
 /// Extends DynamicTurret to add Laser functionality
@@ -12,11 +12,6 @@ public partial class Laser : DynamicTurret
 {
     [Export]
     private Line2D line;
-    // [Export]
-    // <summary>
-    // The particle effect that's spawned at the end of the laser's line
-    // </summary>
-    // private ParticleSystem impactEffect;
 
     /// <summary> How long left until the next attack </summary>
     private double _durationCountdown;
@@ -45,7 +40,6 @@ public partial class Laser : DynamicTurret
                 LookAtTarget(delta);
                 
             line.Visible = false;
-            // impactEffect.Stop();
             return;
         }
             
@@ -77,6 +71,7 @@ public partial class Laser : DynamicTurret
     /// <summary>
     /// Fires the laser towards the enemy and deals damage
     /// </summary>
+    /// <param name="delta">The time since last frame (in seconds)</param>
     protected override void Attack(float delta)
     {
         var enemies = new List<Enemy>();
@@ -106,15 +101,6 @@ public partial class Laser : DynamicTurret
         if (!line.Visible)
         {
             line.Visible = true;
-            // impactEffect.Play();
         }
-
-        // Set impact effect rotation
-        // Transform impactEffectTransform = impactEffect.transform;
-        // var aimDir = (Vector2)((Vector2)firePointPosition - (Vector2)impactEffectTransform.position).normalized;
-        // impactEffectTransform.Rotation = Quaternion.LookRotation(aimDir);
-
-        // Set impact effect position
-        //impactEffectTransform.position = endPosition + aimDir * 0.2f;
     }
 }

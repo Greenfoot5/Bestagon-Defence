@@ -1,14 +1,13 @@
 using System;
-using Abstract.Attributes;
+using BestagonDefense.Abstract.Attributes;
+using BestagonDefense.Turrets;
+using BestagonDefense.Turrets.Choker;
+using BestagonDefense.Turrets.Gunner;
+using BestagonDefense.Turrets.Lancer;
+using BestagonDefense.Turrets.Smasher;
 using Godot;
-using Turrets;
-using Turrets.Choker;
-using Turrets.Gunner;
-using Turrets.Lancer;
-using Turrets.Shooter;
-using Turrets.Smasher;
 
-namespace Modules.FireRate;
+namespace BestagonDefense.Modules.FireRate;
 
 /// <summary>
 /// Increases the fire rate of a turret
@@ -25,7 +24,7 @@ public partial class FireRateModule : Module
     /// If it's a gunner turret, the percentage to modify the fire rate cap, spin cooldown and spin multiplier
     /// </summary>
     [Export]
-    private AttributeModifier _percentageChange;
+    private Modifier _percentageChange;
         
     /// <summary>
     /// Increases the fire rate of a turret
@@ -40,7 +39,7 @@ public partial class FireRateModule : Module
                 gunner.Stats[AttributeType.SpinCooldown].Add(GetSceneUniqueId(), _percentageChange);
                 gunner.Stats[AttributeType.SpinMultiplier].Add(GetSceneUniqueId(), _percentageChange);
                 gunner.Stats[AttributeType.FireRate].Add(GetSceneUniqueId() + Operation.AddMax, 
-                    new AttributeModifier(_percentageChange.Value, Operation.AddMax));
+                    new Modifier(_percentageChange.Value, Operation.AddMax));
                 break;
             case Turret turret:
                 turret.Stats[AttributeType.FireRate].Add(GetSceneUniqueId(), _percentageChange);

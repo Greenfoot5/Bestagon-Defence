@@ -1,28 +1,29 @@
-﻿using Godot;
-using Levels._Nodes;
-using Turrets;
-using UI.Inventory;
+﻿using BestagonDefense.Levels._Tiles;
+using BestagonDefense.Turrets;
+using BestagonDefense.UI.Inventory;
+using Godot;
 
-namespace Gameplay;
+namespace BestagonDefense.Gameplay;
 
 /// <summary>
 /// Handles all tasks related to building turrets and selecting nodes
 /// </summary>
 public partial class BuildManager : Node
 {
+    private static TurretInventoryItem _buildingButton;
+    
     /// <summary>
     /// The scene to use when displaying potential range when building
     /// </summary>
     // [Export]
-    private PackedScene rangePreview;
+    // TODO - Add range preview back again
+    private Node2D rangePreview;
     /// <summary>
     /// The current range preview
     /// </summary>
     [Export]
     public Node2D CurrentPreview;
-        
-    private static TurretInventoryItem _buildingButton;
-        
+    
     /// <summary>
     /// If the player is currently building or not
     /// </summary>
@@ -39,6 +40,9 @@ public partial class BuildManager : Node
     public static event TurretBuiltEvent OnTurretBuilt;
     public delegate void TurretBuiltEvent();
 
+    /// <summary>
+    /// Fires OnTurretBuilt event
+    /// </summary>
     public static void TurretBuilt()
     {
         OnTurretBuilt?.Invoke();

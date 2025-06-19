@@ -1,9 +1,8 @@
 using System;
-using Gameplay;
+using BestagonDefense.Gameplay;
 using Godot;
-using Levels.Generic.LevelSelect;
 
-namespace Abstract.Saving;
+namespace BestagonDefense.Abstract.Saving;
 
 /// <summary>
 /// Handles saving and loading of persistent data,
@@ -124,7 +123,7 @@ public static class SaveManager
         FileManager.LoadFromFile(sceneName + "Save.dat", out string json);
         var sd = new SaveLevel();
 
-        return Saving.SaveLevel.LoadVersion(json) == ProjectSettings.GetSettingWithOverride("application/config/save_version").AsString();
+        return global::BestagonDefense.Abstract.Saving.SaveLevel.LoadVersion(json) == ProjectSettings.GetSettingWithOverride("application/config/save_version").AsString();
     }
 
     public static void ClearSave(string sceneName)

@@ -1,13 +1,19 @@
 using System.Collections.Generic;
-using Abstract;
-using Abstract.Attributes;
+using BestagonDefense.Abstract;
+using BestagonDefense.Abstract.Attributes;
 using Godot;
 
-namespace Enemies;
+namespace BestagonDefense.Enemies;
 
+/// <summary>
+/// Holds the initialisation data for an enemy
+/// </summary>
 [GlobalClass]
 public partial class EnemyStats : Resource
 {
+    /// <summary>
+    /// The starting stats for the Enemy
+    /// </summary>
     [Export]
     public Attributes Attributes = new(
         new Godot.Collections.Dictionary<AttributeType, Attribute> { 
@@ -15,6 +21,9 @@ public partial class EnemyStats : Resource
             [AttributeType.MaxHealth] = new(AttributeType.MaxHealth, 20f),
         });
 
+    /// <summary>
+    /// The sprite used to represent the enemy
+    /// </summary>
     [ExportGroup("Visuals")]
     [Export]
     public Texture2D Sprite;

@@ -1,6 +1,6 @@
-using Levels._Nodes;
+using BestagonDefense.Levels._Tiles;
 
-namespace Abstract.EnvironmentVariables;
+namespace BestagonDefense.Abstract.EnvironmentVariables;
 
 /// <summary>
 /// Sets up the variable in the system environment at the start of the game

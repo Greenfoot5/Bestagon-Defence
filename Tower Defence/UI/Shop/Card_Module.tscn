@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bovddoe2w43nu" path="res://UI/Shop/ModuleSelectionUI.cs" id="1_efey1"]
 [ext_resource type="Texture2D" uid="uid://bgwjkwx6n6xlm" path="res://UI/Generic/T_Head_Steep.png" id="1_mfdy0"]
 [ext_resource type="PackedScene" uid="uid://ccppuoth5cgn0" path="res://UI/Modules/ModuleIcon.tscn" id="1_w7h7o"]
-[ext_resource type="Texture2D" uid="uid://dvr7ad4u6su16" path="res://Modules/Instakill/skull.png" id="2_efey1"]
+[ext_resource type="Texture2D" uid="uid://dvr7ad4u6su16" path="res://Modules/Instakill/T_Instakill_Skull.png" id="2_efey1"]
 [ext_resource type="PackedScene" uid="uid://q4vdeurrxpak" path="res://UI/Glyphs/TurretGlyph.tscn" id="2_uatrp"]
 
 [node name="Card_Module" type="Panel" node_paths=PackedStringArray("button", "displayName", "tagline", "icon", "effect", "applicableGlyphs")]

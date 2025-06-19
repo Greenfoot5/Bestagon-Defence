@@ -1,9 +1,9 @@
 using Godot;
 
-namespace UI.Glyphs;
+namespace BestagonDefense.UI.Glyphs;
 
 /// <summary>
-/// Stores the settings for a glyph
+/// Stores the data for a glyph icon
 /// </summary>
 [GlobalClass]
 [Tool]

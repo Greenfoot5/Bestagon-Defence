@@ -1,15 +1,14 @@
-﻿using Abstract.Attributes;
+﻿using BestagonDefense.Abstract.Attributes;
+using BestagonDefense.Levels._Tiles;
 using Godot;
-using Levels._Nodes;
 
-namespace Turrets.Gunner;
+namespace BestagonDefense.Turrets.Gunner;
 
 /// <summary>
-/// Extends DynamicTurret to add Shooting functionality.
+/// Extends DynamicTurret to add Gunning functionality.
 /// </summary>
 public partial class Gunner : DynamicTurret
 {
-    // Bullets
     /// <summary>
     /// The bullet prefab to spawn each attack
     /// </summary>
@@ -24,6 +23,9 @@ public partial class Gunner : DynamicTurret
     // Spin up stats
     private float _fireRateIncrease = 1f;
 
+    /// <summary>
+    /// Creates a new Gunner
+    /// </summary>
     public Gunner()
     {
         Stats[AttributeType.SpinMultiplier] = new Attribute(AttributeType.SpinMultiplier, 1.1f);
@@ -109,7 +111,7 @@ public partial class Gunner : DynamicTurret
 
         _fireRateIncrease = Mathf.Clamp(_fireRateIncrease, 0f, 6f);
             
-        Stats[AttributeType.FireRate].Add("this", new AttributeModifier(_fireRateIncrease - 1, Operation.Multiplicative));
+        Stats[AttributeType.FireRate].Add("this", new Modifier(_fireRateIncrease - 1, Operation.Multiplicative));
 
         // Update the stats of the turret if it's selected
         if (BuildableTile.SelectedTile == GetParent())
@@ -119,8 +121,9 @@ public partial class Gunner : DynamicTurret
     }
 
     /// <summary>
-    /// Create the bullet and give it a target
+    /// Creates a bullet and give it a target
     /// </summary>
+    /// <param name="delta">The time since last frame (in seconds)</param>
     protected override void Attack(float delta)
     {
         // Creates the bullet

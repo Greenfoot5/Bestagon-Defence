@@ -1,9 +1,9 @@
 using System;
 using System.Linq;
+using BestagonDefense.Turrets;
 using Godot;
-using Turrets;
 
-namespace Modules;
+namespace BestagonDefense.Modules;
 
 /// <summary>
 /// A base abstract class to create a turret module from.
@@ -23,6 +23,9 @@ public abstract partial class Module : Resource
     [Export]
     public bool IsUpgradableTo = true;
 
+    /// <summary>
+    /// The Types the module can be applied to
+    /// </summary>
     protected abstract Type[] ValidTypes { get; }
 
     /// <summary>

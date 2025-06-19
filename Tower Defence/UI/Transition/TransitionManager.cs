@@ -1,7 +1,7 @@
 using System.Collections;
 using Godot;
 
-namespace UI.Transition;
+namespace BestagonDefense.UI.Transition;
 
 /// <summary>
 /// Automatically animates the transition and manages the loading of new scenes

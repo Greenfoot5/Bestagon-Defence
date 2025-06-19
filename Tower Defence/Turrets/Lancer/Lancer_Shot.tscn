@@ -1,0 +1,87 @@
+[gd_scene load_steps=14 format=3 uid="uid://r3ph8plamg5o"]
+
+[ext_resource type="Script" uid="uid://drvqbyytx8ijt" path="res://Turrets/Bullet.cs" id="1_54gm6"]
+[ext_resource type="Texture2D" uid="uid://bl5etw01vs7qi" path="res://Turrets/Lancer/T_Lancer_Bullet.png" id="1_qvrnb"]
+[ext_resource type="Script" uid="uid://blnrq5atpcclw" path="res://Abstract/Attributes/Attribute.cs" id="2_7s277"]
+[ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/AttributeModifier.cs" id="3_mqebf"]
+[ext_resource type="Script" uid="uid://c80di1i4n41ig" path="res://Abstract/Attributes/Attributes.cs" id="4_s0200"]
+
+[sub_resource type="Resource" id="Resource_ivis1"]
+script = ExtResource("2_7s277")
+Name = 17
+Base = 200.0
+_modifiers = Dictionary[Variant, ExtResource("3_mqebf")]({})
+Min = inf_neg
+Max = inf
+
+[sub_resource type="Resource" id="Resource_7h313"]
+script = ExtResource("2_7s277")
+Name = 15
+Base = 20.0
+_modifiers = Dictionary[Variant, ExtResource("3_mqebf")]({})
+Min = inf_neg
+Max = inf
+
+[sub_resource type="Resource" id="Resource_1w15l"]
+script = ExtResource("2_7s277")
+Name = 4
+Base = 1.0
+_modifiers = Dictionary[Variant, ExtResource("3_mqebf")]({})
+Min = 0.0
+Max = inf
+
+[sub_resource type="Resource" id="Resource_6cuqn"]
+script = ExtResource("2_7s277")
+Name = 5
+Base = 69.0
+_modifiers = Dictionary[Variant, ExtResource("3_mqebf")]({})
+Min = 0.0
+Max = inf
+
+[sub_resource type="Resource" id="Resource_cw3cg"]
+script = ExtResource("4_s0200")
+_attributes = Dictionary[int, ExtResource("2_7s277")]({
+4: SubResource("Resource_1w15l"),
+5: SubResource("Resource_6cuqn"),
+15: SubResource("Resource_7h313"),
+17: SubResource("Resource_ivis1")
+})
+
+[sub_resource type="Curve" id="Curve_54gm6"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_6eqwx"]
+colors = PackedColorArray(0.096, 0.4, 0.2936, 0, 0.282353, 0.34902, 0.894118, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p7fas"]
+radius = 70.0
+
+[node name="LancerShot" type="Node2D" node_paths=PackedStringArray("Area", "Line")]
+script = ExtResource("1_54gm6")
+Stats = SubResource("Resource_cw3cg")
+Area = NodePath("Area")
+Line = NodePath("Line2D")
+maxPoints = 15
+pointSpacing = 10.0
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+width = 5.0
+width_curve = SubResource("Curve_54gm6")
+default_color = Color(0.282353, 0.34902, 0.894118, 1)
+gradient = SubResource("Gradient_6eqwx")
+
+[node name="Area" type="Area2D" parent="."]
+scale = Vector2(0.1, 0.1)
+collision_layer = 0
+collision_mask = 2
+input_pickable = false
+monitorable = false
+
+[node name="Sprite" type="Sprite2D" parent="Area"]
+position = Vector2(0, -12)
+texture = ExtResource("1_qvrnb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+shape = SubResource("CircleShape2D_p7fas")

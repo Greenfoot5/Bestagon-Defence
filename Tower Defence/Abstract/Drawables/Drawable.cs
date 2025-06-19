@@ -1,7 +1,7 @@
 using Godot;
 using Vector2 = Godot.Vector2;
 
-namespace Gameplay;
+namespace BestagonDefense.Abstract.Drawables;
 
 /// <summary>
 /// Represents a "thing" we can draw without depending on a node
@@ -19,7 +19,7 @@ public abstract class Drawable
     /// <summary>
     /// When the turret spawned in, 
     /// </summary>
-    public int StartTime;
+    public readonly int StartTime;
     
     // Visuals
     /// <summary>
@@ -29,8 +29,16 @@ public abstract class Drawable
     /// <summary>
     /// The texture to use
     /// </summary>
-    public Texture2D Texture;
+    public readonly Texture2D Texture;
 
+    /// <summary>
+    /// Creates a new drawable
+    /// </summary>
+    /// <param name="position">The position to draw the drawable at</param>
+    /// <param name="rotation">The rotation of the drawable</param>
+    /// <param name="startTime">When the drawable was created</param>
+    /// <param name="scale">How large to draw the drawable</param>
+    /// <param name="texture">The texture to draw with</param>
     protected Drawable(Vector2 position, float rotation, int startTime, Vector2 scale, Texture2D texture)
     {
         Position = position;
@@ -41,9 +49,9 @@ public abstract class Drawable
     }
 
     /// <summary>
-    /// 
+    /// Updates the drawable
     /// </summary>
-    /// <param name="delta"></param>
-    /// <returns></returns>
-    public abstract bool Update(float delta);
+    /// <param name="delta">Time since last frame</param>
+    /// <returns>false if the object should stop being drawn</returns>
+    public abstract bool _Process(float delta);
 }

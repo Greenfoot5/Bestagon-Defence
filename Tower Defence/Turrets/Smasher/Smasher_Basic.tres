@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="TurretBlueprint" load_steps=5 format=3 uid="uid://bsu3c2tww83dl"]
 
 [ext_resource type="Script" uid="uid://ufdo2vxockv6" path="res://Abstract/Data/ModuleChainHandler.cs" id="1_846ee"]
-[ext_resource type="PackedScene" uid="uid://caolu26tbgyo" path="res://Turrets/Smasher/Smasher_Turret.tscn" id="2_43wr2"]
+[ext_resource type="PackedScene" uid="uid://caolu26tbgyo" path="res://Turrets/Smasher/Turret_Smasher.tscn" id="2_43wr2"]
 [ext_resource type="Script" uid="uid://md2drvi4felr" path="res://Turrets/TurretBlueprint.cs" id="2_kbugk"]
-[ext_resource type="Texture2D" uid="uid://bt5a1igm4cq5n" path="res://Turrets/Smasher/T_SmasherTurret.png" id="3_fxvcw"]
+[ext_resource type="Texture2D" uid="uid://bt5a1igm4cq5n" path="res://Turrets/Smasher/T_Turret_Smasher.png" id="3_fxvcw"]
 
 [resource]
 script = ExtResource("2_kbugk")

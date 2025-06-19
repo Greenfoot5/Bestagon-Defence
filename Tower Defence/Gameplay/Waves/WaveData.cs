@@ -1,7 +1,10 @@
 using Godot;
 
-namespace Gameplay.Waves;
+namespace BestagonDefense.Gameplay.Waves;
 
+/// <summary>
+/// Contains the data for waves on a spawner
+/// </summary>
 [GlobalClass]
 public partial class WaveData : Resource
 {

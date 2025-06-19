@@ -1,14 +1,13 @@
 using System;
-using Abstract.Attributes;
-using Enemies;
+using BestagonDefense.Abstract.Attributes;
+using BestagonDefense.Enemies;
+using BestagonDefense.Turrets;
+using BestagonDefense.Turrets.Gunner;
+using BestagonDefense.Turrets.Lancer;
+using BestagonDefense.Turrets.Smasher;
 using Godot;
-using Turrets;
-using Turrets.Gunner;
-using Turrets.Lancer;
-using Turrets.Shooter;
-using Turrets.Smasher;
 
-namespace Modules.Instakill;
+namespace BestagonDefense.Modules.Instakill;
 
 /// <summary>
 /// Chance to instakill an enemy
@@ -31,11 +30,19 @@ public partial class InstakillModule : Module
     [Export]
     private PackedScene _instakillEffect;
 
+    /// <summary>
+    /// Handles applying the effects of the module on the damager
+    /// </summary>
+    /// <param name="damager">The damager to add the module to</param>
     public override void AddModule(Damager damager)
     {
         damager.OnHit += OnHit;
     }
 
+    /// <summary>
+    /// Handles removing the effects of the module on the damager
+    /// </summary>
+    /// <param name="damager">The damager to remove the module from</param>
     public override void RemoveModule(Damager damager)
     {
         damager.OnHit -= OnHit;

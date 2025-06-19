@@ -1,6 +1,6 @@
 using Godot;
 
-namespace Levels.Generic.MainMenu;
+namespace BestagonDefense.Levels.Generic.MainMenu;
 
 /// <summary>
 /// Displays the correct menu when the main menu loads

@@ -2,7 +2,7 @@ using System;
 using Godot;
 using Environment = System.Environment;
 
-namespace Abstract.Data;
+namespace BestagonDefense.Abstract.Data;
 
 /// <summary>
 /// Random generator from https://www.Youtube.com/watch?v=LWFzPP8ZbdU
@@ -14,7 +14,13 @@ public class Squirrel3
     private const uint Noise3 = 0x1b56c4e9;
     private const uint Cap = uint.MaxValue;
 
+    /// <summary>
+    /// Number of randoms generated so far
+    /// </summary>
     private int _n;
+    /// <summary>
+    /// Seed of the generator
+    /// </summary>
     private readonly int _seed;
         
     /// <summary>
@@ -54,7 +60,11 @@ public class Squirrel3
         _seed = seed;
         _n = n;
     }
-        
+    
+    /// <summary>
+    /// Gets the next random float
+    /// </summary>
+    /// <returns>A random float</returns>
     public float Next()
     {
         _n++;
@@ -83,11 +93,21 @@ public class Squirrel3
         return Mathf.Lerp(min, max, Next());
     }
 
+    /// <summary>
+    /// Gets the current state of the random generator
+    /// </summary>
+    /// <returns>A tuple of seed & count of randoms generated</returns>
     public Tuple<int, int> GetState()
     {
         return new Tuple<int, int>(_seed, _n);
     }
 
+    /// <summary>
+    /// Generates a random long
+    /// </summary>
+    /// <param name="n">The count of randoms generated</param>
+    /// <param name="seed">The seed of the generator</param>
+    /// <returns>The random long at `n` for the specified seed</returns>
     private static long Rnd(long n, int seed = 0)
     {
         n *= Noise1;

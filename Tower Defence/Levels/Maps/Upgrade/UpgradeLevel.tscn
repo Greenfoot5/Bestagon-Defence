@@ -1,33 +1,25 @@
-[gd_scene load_steps=97 format=4 uid="uid://dxeskbdbxmflu"]
+[gd_scene load_steps=42 format=4 uid="uid://dxeskbdbxmflu"]
 
 [ext_resource type="TileSet" uid="uid://cqec5gsl2jrtp" path="res://Levels/_Tiles/PathTiles.tres" id="1_dbecs"]
-[ext_resource type="Shader" uid="uid://ci85qadqdqbak" path="res://MaterialLibrary/Hexagons/Background.gdshader" id="1_h5o5v"]
+[ext_resource type="Shader" uid="uid://ci85qadqdqbak" path="res://MaterialLibrary/Hexagons/S_Background.gdshader" id="1_h5o5v"]
 [ext_resource type="PackedScene" uid="uid://bl5bfgnh4ruki" path="res://Levels/_Tiles/Tile_Buildable.tscn" id="2_jq068"]
 [ext_resource type="Script" uid="uid://ifi3my065eu" path="res://Gameplay/Waves/WaveSpawner.cs" id="3_o3dn4"]
-[ext_resource type="Resource" uid="uid://bm67ol4yudaf4" path="res://Enemies/Pawns/BasicStats.tres" id="7_pse8l"]
-[ext_resource type="Script" uid="uid://bmxuh31stih5j" path="res://Gameplay/Waves/EnemySet.cs" id="8_72yxd"]
-[ext_resource type="Script" uid="uid://cpv5idbjts0wp" path="res://Levels/Maps/Upgrade/WaveTimer.cs" id="8_a02h1"]
-[ext_resource type="Texture2D" uid="uid://pvwicmk1suqa" path="res://_WIP/Art/White_Rectangle_x100.png" id="9_b88u8"]
-[ext_resource type="Resource" uid="uid://dv2epgpot8n1v" path="res://Levels/Maps/Upgrade/WaveData.tres" id="9_h5o5v"]
+[ext_resource type="Script" uid="uid://cpv5idbjts0wp" path="res://Gameplay/Waves/WaveTimer.cs" id="8_a02h1"]
+[ext_resource type="Texture2D" uid="uid://pvwicmk1suqa" path="res://_WIP/Art/T_Rectangle_Whitex100.png" id="9_b88u8"]
+[ext_resource type="Resource" uid="uid://dv2epgpot8n1v" path="res://Levels/Maps/Upgrade/WaveData_Upgrade.tres" id="9_h5o5v"]
 [ext_resource type="Script" uid="uid://bgfugrs685jpk" path="res://Gameplay/Waves/Wave.cs" id="9_niq5q"]
 [ext_resource type="PackedScene" uid="uid://n7yy8bgppstk" path="res://Levels/_Tiles/Waypoint.tscn" id="10_4ignw"]
 [ext_resource type="PackedScene" uid="uid://bf14d8qox8yy5" path="res://UI/LevelCanvas_Screen.tscn" id="11_ml50w"]
-[ext_resource type="Resource" uid="uid://t2mqmtya2ymu" path="res://Enemies/Pawns/BasicEvolvedStats.tres" id="11_yrqfs"]
 [ext_resource type="Script" uid="uid://cas78tmpkacie" path="res://Gameplay/DeathBitManager.cs" id="12_o3dn4"]
-[ext_resource type="Resource" uid="uid://d3kxipslnov2k" path="res://Enemies/Pawns/TracerStats.tres" id="12_pse8l"]
 [ext_resource type="Script" uid="uid://c25tsq6de7eu3" path="res://Gameplay/BuildManager.cs" id="13_dbecs"]
 [ext_resource type="Script" uid="uid://b7c7g8jqgu062" path="res://Gameplay/GameStats.cs" id="13_p388s"]
-[ext_resource type="Resource" uid="uid://bj1pimwe22bbi" path="res://Enemies/Pawns/TracerEvolvedStats.tres" id="13_pse8l"]
 [ext_resource type="Texture2D" uid="uid://ce7fss2iwkhkl" path="res://Gameplay/T_DeathBit.png" id="13_sxdqs"]
 [ext_resource type="Texture2D" uid="uid://dfou8de5o51ab" path="res://Gameplay/T_DeathByte.png" id="14_8tbnj"]
-[ext_resource type="Resource" uid="uid://bye1nn35h5ykk" path="res://Enemies/Pawns/ToughStats.tres" id="14_72yxd"]
 [ext_resource type="Script" uid="uid://ci5f1fooga4hq" path="res://Gameplay/GameManager.cs" id="14_dbecs"]
 [ext_resource type="Texture2D" uid="uid://cflrqd6yow3sl" path="res://Gameplay/T_DeathNibble.png" id="14_sxdqs"]
-[ext_resource type="Resource" uid="uid://dyxwk08l0hs8j" path="res://Enemies/Pawns/ToughEvolvedStats.tres" id="15_niq5q"]
-[ext_resource type="Resource" uid="uid://bw4ao6bhc5ewm" path="res://Enemies/Bosses/Squared.tres" id="16_4ignw"]
 [ext_resource type="Script" uid="uid://c4c4ep5oo8o2m" path="res://Gameplay/Camera/CameraController.cs" id="22_ml50w"]
-[ext_resource type="Shader" uid="uid://px34nxwos4w0" path="res://MaterialLibrary/Portal.gdshader" id="23_p388s"]
-[ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/White_Rectangle_x1000.png" id="24_b88u8"]
+[ext_resource type="Shader" uid="uid://px34nxwos4w0" path="res://MaterialLibrary/S_Portal.gdshader" id="23_p388s"]
+[ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/T_Rectangle_Whitex1000.png" id="24_b88u8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dbecs"]
 shader = ExtResource("1_h5o5v")
@@ -69,423 +61,94 @@ shader_parameter/inflate = 0.1
 shader_parameter/smooth_fac = 0.6
 shader_parameter/step_mult = 0.05
 
-[sub_resource type="Resource" id="Resource_kj4gn"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("7_pse8l")
-count = 7
-rate = 0.5
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
-
 [sub_resource type="Resource" id="Resource_7j0gl"]
 script = ExtResource("9_niq5q")
-enemySets = [SubResource("Resource_kj4gn")]
-setDelays = PackedFloat32Array()
+EnemySets = null
+SetDelays = PackedFloat32Array()
 metadata/_custom_type_script = "uid://bgfugrs685jpk"
-
-[sub_resource type="Resource" id="Resource_vfinc"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("7_pse8l")
-count = 4
-rate = 0.5
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
-
-[sub_resource type="Resource" id="Resource_x65do"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("11_yrqfs")
-count = 3
-rate = 0.3
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
 
 [sub_resource type="Resource" id="Resource_tpvnd"]
 script = ExtResource("9_niq5q")
-enemySets = [SubResource("Resource_vfinc"), SubResource("Resource_x65do")]
-setDelays = PackedFloat32Array(0.2)
+EnemySets = null
+SetDelays = PackedFloat32Array()
 metadata/_custom_type_script = "uid://bgfugrs685jpk"
-
-[sub_resource type="Resource" id="Resource_mv5cv"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("12_pse8l")
-count = 5
-rate = 0.2
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
 
 [sub_resource type="Resource" id="Resource_cqc0v"]
 script = ExtResource("9_niq5q")
-enemySets = [SubResource("Resource_mv5cv")]
-setDelays = PackedFloat32Array()
+EnemySets = null
+SetDelays = PackedFloat32Array()
 metadata/_custom_type_script = "uid://bgfugrs685jpk"
-
-[sub_resource type="Resource" id="Resource_yrqfs"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("7_pse8l")
-count = 2
-rate = 0.2
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
-
-[sub_resource type="Resource" id="Resource_pse8l"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("11_yrqfs")
-count = 3
-rate = 0.5
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
-
-[sub_resource type="Resource" id="Resource_72yxd"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("12_pse8l")
-count = 7
-rate = 0.2
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
 
 [sub_resource type="Resource" id="Resource_niq5q"]
 script = ExtResource("9_niq5q")
-enemySets = Array[Object]([SubResource("Resource_yrqfs"), SubResource("Resource_pse8l"), SubResource("Resource_72yxd")])
-setDelays = PackedFloat32Array(0.2, 0.5)
+EnemySets = null
+SetDelays = PackedFloat32Array()
 metadata/_custom_type_script = "uid://bgfugrs685jpk"
-
-[sub_resource type="Resource" id="Resource_4ignw"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("12_pse8l")
-count = 5
-rate = 0.4
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
-
-[sub_resource type="Resource" id="Resource_ml50w"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("13_pse8l")
-count = 10
-rate = 0.1
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
 
 [sub_resource type="Resource" id="Resource_ogs00"]
 script = ExtResource("9_niq5q")
-enemySets = Array[Object]([SubResource("Resource_4ignw"), SubResource("Resource_ml50w")])
-setDelays = PackedFloat32Array(0.8)
+EnemySets = null
+SetDelays = PackedFloat32Array()
 metadata/_custom_type_script = "uid://bgfugrs685jpk"
-
-[sub_resource type="Resource" id="Resource_j601v"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("11_yrqfs")
-count = 6
-rate = 0.5
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
-
-[sub_resource type="Resource" id="Resource_5cueh"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("12_pse8l")
-count = 8
-rate = 0.2
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
-
-[sub_resource type="Resource" id="Resource_ikvq2"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("13_pse8l")
-count = 10
-rate = 0.1
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
-
-[sub_resource type="Resource" id="Resource_u0486"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("14_72yxd")
-count = 1
-rate = 0.7
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
 
 [sub_resource type="Resource" id="Resource_pk038"]
 script = ExtResource("9_niq5q")
-enemySets = Array[Object]([SubResource("Resource_j601v"), SubResource("Resource_5cueh"), SubResource("Resource_ikvq2"), SubResource("Resource_u0486")])
-setDelays = PackedFloat32Array(0.5, 1, 1)
+EnemySets = null
+SetDelays = PackedFloat32Array()
 metadata/_custom_type_script = "uid://bgfugrs685jpk"
-
-[sub_resource type="Resource" id="Resource_tfmya"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("11_yrqfs")
-count = 8
-rate = 0.7
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
-
-[sub_resource type="Resource" id="Resource_wtxii"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("14_72yxd")
-count = 3
-rate = 1.0
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
 
 [sub_resource type="Resource" id="Resource_mweev"]
 script = ExtResource("9_niq5q")
-enemySets = Array[Object]([SubResource("Resource_tfmya"), SubResource("Resource_wtxii")])
-setDelays = PackedFloat32Array(1)
+EnemySets = null
+SetDelays = PackedFloat32Array()
 metadata/_custom_type_script = "uid://bgfugrs685jpk"
-
-[sub_resource type="Resource" id="Resource_08w8q"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("14_72yxd")
-count = 5
-rate = 0.8
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
-
-[sub_resource type="Resource" id="Resource_pc1fx"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("13_pse8l")
-count = 10
-rate = 0.1
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
 
 [sub_resource type="Resource" id="Resource_7rx82"]
 script = ExtResource("9_niq5q")
-enemySets = Array[Object]([SubResource("Resource_08w8q"), SubResource("Resource_pc1fx")])
-setDelays = PackedFloat32Array(1)
+EnemySets = null
+SetDelays = PackedFloat32Array()
 metadata/_custom_type_script = "uid://bgfugrs685jpk"
-
-[sub_resource type="Resource" id="Resource_swssu"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("14_72yxd")
-count = 4
-rate = 0.4
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
-
-[sub_resource type="Resource" id="Resource_7mu5n"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("15_niq5q")
-count = 3
-rate = 1.0
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
-
-[sub_resource type="Resource" id="Resource_7x1em"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("13_pse8l")
-count = 5
-rate = 0.2
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
 
 [sub_resource type="Resource" id="Resource_o5bsi"]
 script = ExtResource("9_niq5q")
-enemySets = Array[Object]([SubResource("Resource_swssu"), SubResource("Resource_7mu5n"), SubResource("Resource_7x1em")])
-setDelays = PackedFloat32Array(1, 0.5)
+EnemySets = null
+SetDelays = PackedFloat32Array()
 metadata/_custom_type_script = "uid://bgfugrs685jpk"
-
-[sub_resource type="Resource" id="Resource_yysd4"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("15_niq5q")
-count = 3
-rate = 0.8
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
-
-[sub_resource type="Resource" id="Resource_50di0"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("13_pse8l")
-count = 12
-rate = 0.2
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
 
 [sub_resource type="Resource" id="Resource_4yoli"]
 script = ExtResource("9_niq5q")
-enemySets = Array[Object]([SubResource("Resource_yysd4"), SubResource("Resource_50di0")])
-setDelays = PackedFloat32Array(0.4)
+EnemySets = null
+SetDelays = PackedFloat32Array()
 metadata/_custom_type_script = "uid://bgfugrs685jpk"
-
-[sub_resource type="Resource" id="Resource_msb3b"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("14_72yxd")
-count = 5
-rate = 0.5
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
-
-[sub_resource type="Resource" id="Resource_yoojw"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("7_pse8l")
-count = 6
-rate = 0.2
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
-
-[sub_resource type="Resource" id="Resource_r828h"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("12_pse8l")
-count = 10
-rate = 0.15
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
-
-[sub_resource type="Resource" id="Resource_8dww8"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("15_niq5q")
-count = 2
-rate = 0.75
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
-
-[sub_resource type="Resource" id="Resource_ywydy"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("11_yrqfs")
-count = 7
-rate = 0.3
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
-
-[sub_resource type="Resource" id="Resource_e56bd"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("13_pse8l")
-count = 8
-rate = 0.25
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
 
 [sub_resource type="Resource" id="Resource_osjoh"]
 script = ExtResource("9_niq5q")
-enemySets = Array[Object]([SubResource("Resource_msb3b"), SubResource("Resource_yoojw"), SubResource("Resource_r828h"), SubResource("Resource_8dww8"), SubResource("Resource_ywydy"), SubResource("Resource_e56bd")])
-setDelays = PackedFloat32Array(0.5, 0.5, 2, 0.5, 0.5)
+EnemySets = null
+SetDelays = PackedFloat32Array()
 metadata/_custom_type_script = "uid://bgfugrs685jpk"
-
-[sub_resource type="Resource" id="Resource_lsfpq"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("14_72yxd")
-count = 5
-rate = 0.5
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
-
-[sub_resource type="Resource" id="Resource_s1w64"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("15_niq5q")
-count = 5
-rate = 0.5
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
-
-[sub_resource type="Resource" id="Resource_tdfn7"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("11_yrqfs")
-count = 12
-rate = 0.4
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
 
 [sub_resource type="Resource" id="Resource_y21q5"]
 script = ExtResource("9_niq5q")
-enemySets = Array[Object]([SubResource("Resource_lsfpq"), SubResource("Resource_s1w64"), SubResource("Resource_tdfn7")])
-setDelays = PackedFloat32Array(0.5, 0.5)
+EnemySets = null
+SetDelays = PackedFloat32Array()
 metadata/_custom_type_script = "uid://bgfugrs685jpk"
-
-[sub_resource type="Resource" id="Resource_qmh44"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("15_niq5q")
-count = 4
-rate = 1.0
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
-
-[sub_resource type="Resource" id="Resource_oao80"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("13_pse8l")
-count = 8
-rate = 0.2
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
-
-[sub_resource type="Resource" id="Resource_32qj0"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("12_pse8l")
-count = 10
-rate = 0.1
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
-
-[sub_resource type="Resource" id="Resource_62fcc"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("13_pse8l")
-count = 12
-rate = 0.1
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
 
 [sub_resource type="Resource" id="Resource_157cj"]
 script = ExtResource("9_niq5q")
-enemySets = Array[Object]([SubResource("Resource_qmh44"), SubResource("Resource_oao80"), SubResource("Resource_32qj0"), SubResource("Resource_62fcc")])
-setDelays = PackedFloat32Array(1, 0.5, 1)
+EnemySets = null
+SetDelays = PackedFloat32Array()
 metadata/_custom_type_script = "uid://bgfugrs685jpk"
-
-[sub_resource type="Resource" id="Resource_p388s"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("15_niq5q")
-count = 5
-rate = 0.5
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
-
-[sub_resource type="Resource" id="Resource_nt6x0"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("13_pse8l")
-count = 10
-rate = 0.1
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
-
-[sub_resource type="Resource" id="Resource_cpysm"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("15_niq5q")
-count = 8
-rate = 0.7
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
-
-[sub_resource type="Resource" id="Resource_q57bs"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("13_pse8l")
-count = 15
-rate = 0.2
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
-
-[sub_resource type="Resource" id="Resource_0sudr"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("11_yrqfs")
-count = 10
-rate = 0.3
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
-
-[sub_resource type="Resource" id="Resource_gg7kg"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("15_niq5q")
-count = 10
-rate = 0.5
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
-
-[sub_resource type="Resource" id="Resource_vul36"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("13_pse8l")
-count = 20
-rate = 0.1
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
 
 [sub_resource type="Resource" id="Resource_b88u8"]
 script = ExtResource("9_niq5q")
-enemySets = Array[Object]([SubResource("Resource_p388s"), SubResource("Resource_nt6x0"), SubResource("Resource_cpysm"), SubResource("Resource_q57bs"), SubResource("Resource_0sudr"), SubResource("Resource_gg7kg"), SubResource("Resource_vul36")])
-setDelays = PackedFloat32Array(0, 1, 0, 0, 1, 0)
+EnemySets = null
+SetDelays = PackedFloat32Array()
 metadata/_custom_type_script = "uid://bgfugrs685jpk"
-
-[sub_resource type="Resource" id="Resource_i7rii"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("11_yrqfs")
-count = 6
-rate = 0.2
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
-
-[sub_resource type="Resource" id="Resource_3rryj"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("15_niq5q")
-count = 5
-rate = 0.2
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
-
-[sub_resource type="Resource" id="Resource_bx7ms"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("16_4ignw")
-count = 1
-rate = 0.5
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
-
-[sub_resource type="Resource" id="Resource_mws23"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("11_yrqfs")
-count = 6
-rate = 0.2
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
-
-[sub_resource type="Resource" id="Resource_0dhcj"]
-script = ExtResource("8_72yxd")
-enemy = ExtResource("13_pse8l")
-count = 10
-rate = 0.1
-metadata/_custom_type_script = "uid://bmxuh31stih5j"
 
 [sub_resource type="Resource" id="Resource_s5oa5"]
 script = ExtResource("9_niq5q")
-enemySets = Array[Object]([SubResource("Resource_i7rii"), SubResource("Resource_3rryj"), SubResource("Resource_bx7ms"), SubResource("Resource_mws23"), SubResource("Resource_0dhcj")])
-setDelays = PackedFloat32Array(3, 0.1, 1, 1)
+EnemySets = null
+SetDelays = PackedFloat32Array()
 metadata/_custom_type_script = "uid://bgfugrs685jpk"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p388s"]
@@ -508,10 +171,14 @@ shader_parameter/step_mult = 0.05
 [node name="Panel" type="Panel" parent="."]
 material = SubResource("ShaderMaterial_dbecs")
 anchors_preset = -1
-anchor_left = -5.0
-anchor_top = -5.0
-anchor_right = 6.0
-anchor_bottom = 6.0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 12.0
+anchor_bottom = 15.0
+offset_left = -6152.0
+offset_top = -6648.0
+offset_right = -6152.0
+offset_bottom = -6648.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1

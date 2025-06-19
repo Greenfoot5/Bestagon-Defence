@@ -1,7 +1,0 @@
-[gd_scene format=3 uid="uid://ko2dvbafmfkv"]
-
-[node name="ShooterExplode" type="Node3D"]
-
-[node name="VisualEffect" type="Node" parent="."]
-
-[node name="VFXRenderer" type="Node" parent="."]

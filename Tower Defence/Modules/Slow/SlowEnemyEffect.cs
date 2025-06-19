@@ -1,9 +1,9 @@
-using Abstract;
-using Abstract.Attributes;
-using Enemies;
+using BestagonDefense.Abstract;
+using BestagonDefense.Abstract.Attributes;
+using BestagonDefense.Enemies;
 using Godot;
 
-namespace Modules.Slow;
+namespace BestagonDefense.Modules.Slow;
 
 [GlobalClass]
 public partial class SlowEnemyEffect : EnemyEffect
@@ -12,8 +12,13 @@ public partial class SlowEnemyEffect : EnemyEffect
     /// Multiplicative percentage modifier enemy's speed
     /// </summary>
     [Export]
-    private AttributeModifier _slowPercentage;
+    private Modifier _slowPercentage;
 
+    /// <summary>
+    /// Applies the slow effect to the target
+    /// </summary>
+    /// <param name="target">The target to slow</param>
+    /// <returns>false if it failed to apply</returns>
     public override bool Apply(Enemy target)
     {
         if (!base.Apply(target))
@@ -24,6 +29,9 @@ public partial class SlowEnemyEffect : EnemyEffect
         return true;
     }
 
+    /// <summary>
+    /// Removes the slow effect from the target
+    /// </summary>
     protected override void Remove()
     {
         base.Remove();
@@ -31,5 +39,8 @@ public partial class SlowEnemyEffect : EnemyEffect
         Target.EnemyStats.Attributes[AttributeType.Speed].Remove(Name);
     }
 
+    /// <summary>
+    /// Does nothing (would perform the effect of the slow
+    /// </summary>
     protected override void DoEffect() { }
 }

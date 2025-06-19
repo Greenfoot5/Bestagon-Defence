@@ -1,7 +1,10 @@
 using Godot;
 
-namespace Gameplay;
+namespace BestagonDefense.Abstract.Drawables;
 
+/// <summary>
+/// A container for a death energy drop
+/// </summary>
 public class DeathEnergy : Drawable
 {
     /// <summary>
@@ -10,18 +13,31 @@ public class DeathEnergy : Drawable
     public int Value { get; private set; }
 
     // Animation
-    public bool _isAnimating;
+    private bool _isAnimating;
     private float _startTime;
     private Vector2 _startScale;
     private float _animationScale;
 
+    /// <summary>
+    /// Creates a new DeathEnergy
+    /// </summary>
+    /// <param name="position">The position to draw</param>
+    /// <param name="spawnWave">Which wave dropped the energy</param>
+    /// <param name="scale">How large to draw the drop</param>
+    /// <param name="value">How much the drop is worth</param>
+    /// <param name="texture">The image to draw for the drop</param>
     public DeathEnergy(Vector2 position, int spawnWave, Vector2 scale, int value, Texture2D texture) 
         : base(position, GD.Randi() % 180, spawnWave, scale, texture)
     {
         Value = value;
     }
 
-    public override bool Update(float delta)
+    /// <summary>
+    /// Updates the draw for the drop
+    /// </summary>
+    /// <param name="delta">How long since the last draw</param>
+    /// <returns>If the drop should continue to be drawn</returns>
+    public override bool _Process(float delta)
     {
         if (!_isAnimating)
             return true;
@@ -32,10 +48,11 @@ public class DeathEnergy : Drawable
         _animationScale = -17f * (x * x) + 6.85f * x + 1;
         Scale = _startScale * Mathf.Max(0f, _animationScale);
         return Scale.X > 0 || Scale.Y > 0;
-
-        //     return Matrix4x4.TRS(Position, _rotation, _scale * Mathf.Max(0f, _animationScale));
     }
-
+    
+    /// <summary>
+    /// Starts animating the drop
+    /// </summary>
     public void Collect()
     {
         if (_isAnimating) return;

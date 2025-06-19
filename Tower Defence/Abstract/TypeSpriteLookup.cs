@@ -1,19 +1,18 @@
 using System;
 using System.Collections.Generic;
+using BestagonDefense.Turrets;
+using BestagonDefense.Turrets.Choker;
+using BestagonDefense.Turrets.Gunner;
+using BestagonDefense.Turrets.Hunter;
+using BestagonDefense.Turrets.Lancer;
+using BestagonDefense.Turrets.Laser;
+using BestagonDefense.Turrets.Seeker;
+using BestagonDefense.Turrets.Smasher;
+using BestagonDefense.UI.Glyphs;
 using Godot;
 using Godot.Collections;
-using Turrets;
-using Turrets.Choker;
-using Turrets.Gunner;
-using Turrets.Hunter;
-using Turrets.Lancer;
-using Turrets.Laser;
-using Turrets.Seeker;
-using Turrets.Shooter;
-using Turrets.Smasher;
-using UI.Glyphs;
 
-namespace Abstract;
+namespace BestagonDefense.Abstract;
 
 /// <summary>
 /// A class to reference between turret types and turret glyphs
@@ -23,6 +22,9 @@ namespace Abstract;
 [Tool]
 public partial class TypeSpriteLookup : Resource
 {
+    /// <summary>
+    /// A list of Types for all the turrets
+    /// </summary>
     private static readonly List<Type> Types =
     [
         typeof(Turret), // Represents no specific turret type
@@ -36,6 +38,9 @@ public partial class TypeSpriteLookup : Resource
         typeof(Smasher),
     ];
     
+    /// <summary>
+    /// A list of StringNames of all the turrets
+    /// </summary>
     private static readonly List<StringName> Names =
     [
         nameof(Turret), // Represents no specific turret type
@@ -54,6 +59,9 @@ public partial class TypeSpriteLookup : Resource
     /// </summary>
     private Array<TurretGlyph> _sprites = [];
 
+    /// <summary>
+    /// Creates a new lookup
+    /// </summary>
     public TypeSpriteLookup()
     {
         _sprites.Resize(Types.Count);
@@ -110,6 +118,10 @@ public partial class TypeSpriteLookup : Resource
         }
     }
     
+    /// <summary>
+    /// Creates a field for each sprite to be set in the editor
+    /// </summary>
+    /// <returns>An array of properties to display and how</returns>
     public override Array<Dictionary> _GetPropertyList()
     {
         Array<Dictionary> properties = [];
@@ -129,6 +141,11 @@ public partial class TypeSpriteLookup : Resource
         return properties;
     }
     
+    /// <summary>
+    /// Gets the texture for a given type for the editor
+    /// </summary>
+    /// <param name="property">The property to get the data for</param>
+    /// <returns>The data for that property (if it exists)</returns>
     public override Variant _Get(StringName property)
     {
         var propertyName = property.ToString();
@@ -144,6 +161,12 @@ public partial class TypeSpriteLookup : Resource
         return default;
     }
 
+    /// <summary>
+    /// Sets the texture for a given type for the editor
+    /// </summary>
+    /// <param name="property">The property to update</param>
+    /// <param name="value">The new value of the property</param>
+    /// <returns>true if the value was updated</returns>
     public override bool _Set(StringName property, Variant value)
     {
         var propertyName = property.ToString();

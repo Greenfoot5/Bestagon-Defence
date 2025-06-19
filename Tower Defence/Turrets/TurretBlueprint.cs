@@ -1,19 +1,18 @@
-﻿
-using System;
-using Abstract;
-using Abstract.Data;
+﻿using System;
+using BestagonDefense.Abstract;
+using BestagonDefense.Abstract.Data;
+using BestagonDefense.UI.Glyphs;
 using Godot;
 using Godot.Collections;
-using UI.Glyphs;
 
-namespace Turrets;
+namespace BestagonDefense.Turrets;
 
 /// <summary>
 /// Allows us to save turret data in an so without creating a prefab per turret
 /// </summary>
 [GlobalClass]
 [Tool]
-public partial class TurretBlueprint : Resource, ISubtypeable
+public partial class TurretBlueprint : Resource, ISubtypable
 {
     /// <summary>
     /// The icon that appears on the selection card
@@ -62,6 +61,10 @@ public partial class TurretBlueprint : Resource, ISubtypeable
     public PackedScene BuildEffect;
 
 #nullable enable
+    /// <summary>
+    /// Gets the Type of the turret the blueprint is of
+    /// </summary>
+    /// <returns>The Type of the turret</returns>
     public Type GetSubtype()
     {
         SceneState state = Prefab.GetState();

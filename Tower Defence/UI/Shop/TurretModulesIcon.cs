@@ -1,8 +1,8 @@
-using Abstract.Data;
+using BestagonDefense.Abstract.Data;
+using BestagonDefense.UI.Modules;
 using Godot;
-using UI.Modules;
 
-namespace UI.Shop;
+namespace BestagonDefense.UI.Shop;
 
 /// <summary>
 /// Sets the module icon for each module in a turret's upgrades on selection

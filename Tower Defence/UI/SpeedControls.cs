@@ -1,9 +1,9 @@
 ﻿using System;
-using Gameplay;
+using BestagonDefense.Gameplay;
+using BestagonDefense.UI.Transition;
 using Godot;
-using UI.Transition;
 
-namespace UI;
+namespace BestagonDefense.UI;
 
 /// <summary>
 /// Handles the pause menu in a level

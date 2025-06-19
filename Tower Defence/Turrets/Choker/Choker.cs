@@ -1,10 +1,10 @@
-﻿using Abstract.Attributes;
+﻿using BestagonDefense.Abstract.Attributes;
 using Godot;
 
-namespace Turrets.Choker;
+namespace BestagonDefense.Turrets.Choker;
 
 /// <summary>
-/// Extends DynamicTurret to add Shooting functionality.
+/// Extends DynamicTurret to add Choking functionality.
 /// </summary>
 public partial class Choker : DynamicTurret
 {
@@ -60,8 +60,9 @@ public partial class Choker : DynamicTurret
     }
 
     /// <summary>
-    /// Create the bullet and give it a target
+    /// Creates a spray of bullets firing in a cone shape
     /// </summary>
+    /// <param name="delta">The time since last frame (in seconds)</param>
     protected override void Attack(float delta)
     {
         //attackEffect?.Play();

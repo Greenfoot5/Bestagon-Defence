@@ -1,0 +1,151 @@
+[gd_scene load_steps=20 format=3 uid="uid://2rggdi5ebxhc"]
+
+[ext_resource type="Script" uid="uid://bdydqkl64rvep" path="res://Turrets/Laser/Laser.cs" id="1_y5wnw"]
+[ext_resource type="Script" uid="uid://blnrq5atpcclw" path="res://Abstract/Attributes/Attribute.cs" id="2_ec27n"]
+[ext_resource type="Shader" uid="uid://5k2issx1tj2b" path="res://Turrets/Laser/S_EnergyBeams.gdshader" id="2_tu3av"]
+[ext_resource type="Script" uid="uid://c80di1i4n41ig" path="res://Abstract/Attributes/Attributes.cs" id="3_21t83"]
+[ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/AttributeModifier.cs" id="3_q7n3u"]
+[ext_resource type="Shader" uid="uid://bjciwmxveqxrx" path="res://MaterialLibrary/Range/T_Range.gdshader" id="3_y5wnw"]
+[ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/T_Rectangle_Whitex1000.png" id="4_ec27n"]
+[ext_resource type="Texture2D" uid="uid://dwa5otvetx465" path="res://Turrets/Laser/T_TurretBase_LightDark.png" id="4_q7n3u"]
+[ext_resource type="Texture2D" uid="uid://bfdptuac2xjp" path="res://Turrets/Laser/T_Turret_Laser.png" id="7_8xsm8"]
+
+[sub_resource type="Resource" id="Resource_3wqlj"]
+script = ExtResource("2_ec27n")
+Name = 2
+Base = 350.0
+_modifiers = {}
+Min = 0.0
+Max = inf
+
+[sub_resource type="Resource" id="Resource_2gh6t"]
+script = ExtResource("2_ec27n")
+Name = 8
+Base = 2.0
+_modifiers = Dictionary[Variant, ExtResource("3_q7n3u")]({})
+Min = inf_neg
+Max = inf
+metadata/_custom_type_script = "uid://blnrq5atpcclw"
+
+[sub_resource type="Resource" id="Resource_21t83"]
+script = ExtResource("2_ec27n")
+Name = 9
+Base = 1.0
+_modifiers = Dictionary[Variant, ExtResource("3_q7n3u")]({})
+Min = inf_neg
+Max = inf
+metadata/_custom_type_script = "uid://blnrq5atpcclw"
+
+[sub_resource type="Resource" id="Resource_8xsm8"]
+script = ExtResource("2_ec27n")
+Name = 14
+Base = 7.0
+_modifiers = Dictionary[Variant, ExtResource("3_q7n3u")]({})
+Min = inf_neg
+Max = inf
+metadata/_custom_type_script = "uid://blnrq5atpcclw"
+
+[sub_resource type="Resource" id="Resource_ngxo1"]
+script = ExtResource("2_ec27n")
+Name = 15
+Base = 2.3
+_modifiers = Dictionary[Variant, ExtResource("3_q7n3u")]({})
+Min = inf_neg
+Max = inf
+metadata/_custom_type_script = "uid://blnrq5atpcclw"
+
+[sub_resource type="Resource" id="Resource_ec27n"]
+script = ExtResource("3_21t83")
+_attributes = {
+2: SubResource("Resource_3wqlj"),
+8: SubResource("Resource_2gh6t"),
+9: SubResource("Resource_21t83"),
+14: SubResource("Resource_8xsm8"),
+15: SubResource("Resource_ngxo1")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8xsm8"]
+radius = 200.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3wqlj"]
+shader = ExtResource("3_y5wnw")
+shader_parameter/circle_color = Color(1, 1, 1, 0)
+shader_parameter/glow_color = Color(1, 1, 1, 1)
+shader_parameter/glow_radius = 2.0
+shader_parameter/glow_size = 1.6
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ec27n"]
+shader = ExtResource("2_tu3av")
+shader_parameter/beams = 2
+shader_parameter/energy = 5.0
+shader_parameter/roughness = 3
+shader_parameter/frequency = 5
+shader_parameter/speed = 1.0
+shader_parameter/thickness = 0.02
+shader_parameter/outline_thickness = 0.05
+shader_parameter/beam_difference = 1.0
+shader_parameter/glow = 0.0
+shader_parameter/outline_glow = 0.0
+shader_parameter/color = Color(0.91, 1, 1, 1)
+shader_parameter/outline_color = Color(0.5, 1, 0.96, 1)
+shader_parameter/progress = 1.0
+shader_parameter/y_offset = 2.375e-08
+shader_parameter/fixed_edge_size = 0.05
+shader_parameter/noise_scale = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_2gh6t"]
+offsets = PackedFloat32Array(0.00342466, 1)
+colors = PackedColorArray(0.129412, 0.756863, 0.843137, 1, 0.129412, 0.756863, 0.843137, 0.501961)
+
+[node name="Laser_Turret" type="Node2D" node_paths=PackedStringArray("line", "Ray", "PartToRotate", "RangeDisplay", "Range")]
+script = ExtResource("1_y5wnw")
+line = NodePath("PartToRotate/Range/Aim")
+Ray = NodePath("PartToRotate/Range/RayCast2D")
+PartToRotate = NodePath("PartToRotate")
+RangeDisplay = NodePath("PartToRotate/Range/Range")
+Range = NodePath("PartToRotate/Range")
+Stats = SubResource("Resource_ec27n")
+
+[node name="Base" type="Sprite2D" parent="."]
+texture = ExtResource("4_q7n3u")
+
+[node name="PartToRotate" type="Node2D" parent="."]
+rotation = -1.5708
+
+[node name="Range" type="Area2D" parent="PartToRotate"]
+scale = Vector2(7, 7)
+collision_layer = 0
+collision_mask = 2
+input_pickable = false
+monitorable = false
+
+[node name="SpriteRenderer" type="CollisionShape2D" parent="PartToRotate/Range"]
+shape = SubResource("CircleShape2D_8xsm8")
+
+[node name="Range" type="Sprite2D" parent="PartToRotate/Range"]
+self_modulate = Color(0.129412, 0.756863, 0.843137, 1)
+material = SubResource("ShaderMaterial_3wqlj")
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_ec27n")
+
+[node name="RayCast2D" type="RayCast2D" parent="PartToRotate/Range"]
+target_position = Vector2(200, 0)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Aim" type="Line2D" parent="PartToRotate/Range"]
+visible = false
+z_index = 5
+z_as_relative = false
+material = SubResource("ShaderMaterial_ec27n")
+points = PackedVector2Array(24, 0, 150, 0)
+width = 100.0
+gradient = SubResource("Gradient_2gh6t")
+texture_mode = 2
+end_cap_mode = 2
+
+[node name="Turret" type="Sprite2D" parent="PartToRotate"]
+z_index = 10
+rotation = 1.5708
+texture = ExtResource("7_8xsm8")

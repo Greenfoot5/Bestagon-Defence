@@ -1,18 +1,18 @@
 ﻿using System.Collections.Generic;
-using Abstract.Attributes;
-using Enemies;
+using BestagonDefense.Abstract.Attributes;
+using BestagonDefense.Enemies;
 using Godot;
 
-namespace Turrets;
+namespace BestagonDefense.Turrets;
 
 /// <summary>
 /// The bullet shot from a turret
 /// </summary>
 public partial class Bullet : Node2D
 {
-    private ulong deathTime;
-    private bool isDead;
-    
+    /// <summary>
+    /// The bullet's stats
+    /// </summary>
     [Export]
     public Attributes Stats = new(
         new Godot.Collections.Dictionary<AttributeType, Attribute> { 
@@ -21,12 +21,10 @@ public partial class Bullet : Node2D
             [AttributeType.ExplosionRadius] = new(AttributeType.ExplosionRadius, 1f, min:0f),
             [AttributeType.Knockback] = new(AttributeType.Knockback, 1f, min:0f),
         });
-        
-    public Turret Source;
-    public Enemy Target;
-    public Vector2 TargetLocation;
-    public bool UseLocation;
-
+    
+    /// <summary>
+    /// The area where the bullet collides with enemies
+    /// </summary>
     [Export]
     public Area2D Area;
         
@@ -34,14 +32,12 @@ public partial class Bullet : Node2D
     /// Hits all enemies on path
     /// </summary>
     [ExportGroup("Types")]
-    // TODO - Implement isEthereal
     [Export]
     public bool IsEthereal;
     /// <summary>
     /// Hits the first enemy it touches, rather than just target
     /// </summary>
     [Export]
-    // TODO - Implement willHitFirst
     public bool WillHitFirst;
     
     /// <summary>
@@ -72,16 +68,33 @@ public partial class Bullet : Node2D
     [Export]
     private float pointSpacing = 20;
     /// <summary>
-    /// Current distance from last point
+    /// Current distance from last line point
     /// </summary>
     private float distance;
+    
+    // <summary>
+    // The explosion Area
+    // </summary>
+    // TODO - Utilise and size the explosion area
+    [ExportGroup("Explosion")]
+    [Export]
+    private Area2D explodeArea;
+    
+    public Turret Source;
+    public Enemy Target;
+    public Vector2 TargetLocation;
+    public bool UseLocation;
+    
     /// <summary>
-    /// Explosion collision shape
+    /// Which enemies have been hit so far, so they don't get hit multiple times
     /// </summary>
-    // [Export]
-    // private CollisionShape2D explodeArea;
-    protected readonly List<ulong> HitEnemies = [];
+    private readonly List<ulong> _hitEnemies = [];
+    private ulong deathTime;
+    private bool isDead;
 
+    /// <summary>
+    /// Creates the bullet
+    /// </summary>
     public override void _Ready()
     {
         base._Ready();
@@ -89,6 +102,9 @@ public partial class Bullet : Node2D
         Area.AreaEntered += OnAreaEntered;
     }
 
+    /// <summary>
+    /// Removes the listeners when the bullet dies
+    /// </summary>
     public override void _ExitTree()
     {
         Area.AreaEntered -= OnAreaEntered;
@@ -299,9 +315,9 @@ public partial class Bullet : Node2D
     {
         if (col is not Enemy enemy) return;
 
-        if (HitEnemies.Contains(col.GetInstanceId())) return;
+        if (_hitEnemies.Contains(col.GetInstanceId())) return;
             
-        HitEnemies.Add(col.GetInstanceId());
+        _hitEnemies.Add(col.GetInstanceId());
 
         if (IsInstanceValid(enemy) && !UseLocation && Target.GetInstanceId() == col.GetInstanceId())
         {
@@ -317,7 +333,10 @@ public partial class Bullet : Node2D
                 HitTarget(true, enemy);
         }
     }
-        
+    
+    /// <summary>
+    /// Handles the bullet ending its life
+    /// </summary>
     protected void Die()
     {
         Area.Visible = false;

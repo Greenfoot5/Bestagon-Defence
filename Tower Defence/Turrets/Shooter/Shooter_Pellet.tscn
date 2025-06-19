@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://b07wmtlp10ngi"]
+
+[ext_resource type="Script" uid="uid://drvqbyytx8ijt" path="res://Turrets/Bullet.cs" id="1_ilsky"]
+[ext_resource type="Texture2D" uid="uid://dqdclyaiummnh" path="res://Turrets/Shooter/T_TurretBase_ShooterLight.png" id="2_lndna"]
+[ext_resource type="Resource" uid="uid://cx80urcq7ywf5" path="res://Turrets/Shooter/Attributes_ShooterPellet.tres" id="2_p5xc8"]
+
+[sub_resource type="Curve" id="Curve_p5xc8"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_p5xc8"]
+colors = PackedColorArray(0.096, 0.4, 0.2936, 0, 0.117647, 0.784314, 0.521569, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wr7bq"]
+radius = 200.0
+
+[node name="ShooterPellet" type="Node2D" node_paths=PackedStringArray("Area", "Line")]
+script = ExtResource("1_ilsky")
+Stats = ExtResource("2_p5xc8")
+Area = NodePath("Area")
+Line = NodePath("Line2D")
+pointSpacing = 5.0
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+width_curve = SubResource("Curve_p5xc8")
+default_color = Color(0.160784, 0.752941, 0.45098, 1)
+gradient = SubResource("Gradient_p5xc8")
+
+[node name="Area" type="Area2D" parent="."]
+scale = Vector2(0.03, -0.03)
+collision_layer = 0
+collision_mask = 2
+input_pickable = false
+monitorable = false
+
+[node name="Sprite" type="Sprite2D" parent="Area"]
+texture = ExtResource("2_lndna")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+shape = SubResource("CircleShape2D_wr7bq")

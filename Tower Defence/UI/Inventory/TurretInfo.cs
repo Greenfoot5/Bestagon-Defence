@@ -1,20 +1,21 @@
 using System;
-using Abstract.Attributes;
-using Abstract.Data;
-using Gameplay;
+using BestagonDefense.Abstract.Attributes;
+using BestagonDefense.Abstract.Data;
+using BestagonDefense.Gameplay;
+using BestagonDefense.Levels._Tiles;
+using BestagonDefense.Turrets;
+using BestagonDefense.Turrets.Lancer;
+using BestagonDefense.UI.Modules;
+using BestagonDefense.UI.TurretStats;
 using Godot;
-using Levels._Nodes;
-using Turrets;
-using Turrets.Lancer;
-using UI.Modules;
-using UI.TurretStats;
 
-namespace UI.Inventory;
+namespace BestagonDefense.UI.Inventory;
 
+/// <summary>
+/// Turret info sidebar in the UI
+/// </summary>
 public partial class TurretInfo : Control
 {
-    private BuildableTile _target;
-
     /// <summary>
     /// The Shop component of the scene
     /// </summary>
@@ -105,30 +106,37 @@ public partial class TurretInfo : Control
     private BaseButton cycleTargetingButton;
 
     private Node inventoryButtonSelected;
+    private BuildableTile _target;
 
+    /// <summary>
+    /// Handles adding listeners to events
+    /// </summary>
     public override void _Ready()
     {
         BuildableTile.OnTileSelected += SetTarget;
         Shop.Shop.OnPickTurret += AddTurret;
         Shop.Shop.OnPickModule += AddModule;
         BuildManager.OnBlueprintSelected += SelectBlueprint;
-        BuildManager.OnTurretBuilt += BuiltTurret;
+        BuildManager.OnTurretBuilt += RemoveSelectedTurretItem;
     }
 
+    /// <summary>
+    /// Removes listeners from events when leaving the tree
+    /// </summary>
     public override void _ExitTree()
     {
         BuildableTile.OnTileSelected -= SetTarget;
         Shop.Shop.OnPickTurret -= AddTurret;
         Shop.Shop.OnPickModule -= AddModule;
         BuildManager.OnBlueprintSelected -= SelectBlueprint;
-        BuildManager.OnTurretBuilt -= BuiltTurret;
+        BuildManager.OnTurretBuilt -= RemoveSelectedTurretItem;
     }
         
     /// <summary>
     /// Called when selecting a new node
     /// </summary>
     /// <param name="tile">The new node to display UI for</param>
-    public void SetTarget(BuildableTile tile)
+    private void SetTarget(BuildableTile tile)
     {
         if (tile == null || _target == tile)
         {
@@ -187,7 +195,7 @@ public partial class TurretInfo : Control
     /// <summary>
     /// Updates the stats display when the turret is selected or upgraded
     /// </summary>
-    public void UpdateStats()
+    private void UpdateStats()
     {
         if (_target?.Turret is null) return;
         Turret turret = _target.Turret;
@@ -203,20 +211,15 @@ public partial class TurretInfo : Control
         range.SetColor(color);
     }
 
-    public void UpdateSelection()
+    /// <summary>
+    /// Updates the UI's values on the current target's info
+    /// </summary>
+    private void UpdateSelection()
     {
         UpdateStats();
         UpdateModules();
     }
-        
-    /// <summary>
-    /// Sells the turret
-    /// </summary>
-    public void SellTurret()
-    {
-        _target.SellTurret(shop.GetSellAmount());
-    }
-        
+    
     /// <summary>
     /// Rotates Lancer Turret
     /// </summary>
@@ -250,15 +253,20 @@ public partial class TurretInfo : Control
         // modules.GetChild<TriangleLayout>(0).SetLayoutHorizontal();
         // modules.GetChild<TriangleLayout>(0).SetLayoutVertical();
     }
-        
+    
+    /// <summary>
+    /// Displays the turret inventory
+    /// </summary>
     public void DisplayTurretInventory()
     {
-        // Shuw();
         turretInventoryPage.Visible = true;
         moduleInventoryPage.Visible = false;
         turretInfoPage.Visible = false;
     }
-        
+    
+    /// <summary>
+    /// Toggles the turret inventory
+    /// </summary>
     public void ToggleTurretInventory()
     {
         if (turretInventoryPage.Visible)
@@ -268,7 +276,10 @@ public partial class TurretInfo : Control
         }
         DisplayTurretInventory();
     }
-
+    
+    /// <summary>
+    /// Toggles the module inventory
+    /// </summary>
     public void ToggleModuleInventory()
     {
         if (moduleInventoryPage.Visible)
@@ -279,6 +290,9 @@ public partial class TurretInfo : Control
         DisplayModuleInventory();
     }
 
+    /// <summary>
+    /// Displays the module inventory
+    /// </summary>
     public void DisplayModuleInventory()
     {
         foreach (Node child in moduleInventoryContent.GetChildren())
@@ -287,7 +301,7 @@ public partial class TurretInfo : Control
             if (_target != null && item != null && item.IsValid(_target.Turret))
             {
                 // item.bg.color = item.accent;
-                item.modulesBg.SelfModulate = item.accent * new Color(1, 1, 1, 0.16f);
+                item.modulesBg.SelfModulate = item.Accent * new Color(1, 1, 1, 0.16f);
                 item.Disabled = false;
             }
             else if (item != null)
@@ -303,6 +317,9 @@ public partial class TurretInfo : Control
         turretInfoPage.Visible = false;
     }
 
+    /// <summary>
+    /// Displays turret info for the target
+    /// </summary>
     public void OpenTurretInfo()
     {
         if (turretInfoPage.Visible)
@@ -324,22 +341,37 @@ public partial class TurretInfo : Control
         UpdateModules();
     }
 
+    /// <summary>
+    /// Adds a TurretInventoryItem to the inventory
+    /// </summary>
+    /// <param name="blueprint">The TurretInventoryItem to add</param>
     private void AddTurret(TurretInventoryItem blueprint)
     {
         turretInventoryContent.AddChild(blueprint);
     }
     
+    /// <summary>
+    /// Adds a ModuleInventoryItem to the inventory
+    /// </summary>
+    /// <param name="item">The ModuleInventoryItem to add</param>
     private void AddModule(ModuleInventoryItem item)
     {
         moduleInventoryContent.AddChild(item);
     }
 
+    /// <summary>
+    /// Selects a TurretInventoryItem in the inventory
+    /// </summary>
+    /// <param name="item">The TurretInventoryItem to select</param>
     private void SelectBlueprint(TurretInventoryItem item)
     {
         inventoryButtonSelected = item;
     }
 
-    private void BuiltTurret()
+    /// <summary>
+    /// Removes the currently selected turret item
+    /// </summary>
+    private void RemoveSelectedTurretItem()
     {
         inventoryButtonSelected.QueueFree();
     }

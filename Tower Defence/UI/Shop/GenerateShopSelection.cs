@@ -1,47 +1,46 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Abstract.Data;
-using Gameplay;
+using BestagonDefense.Abstract.Data;
+using BestagonDefense.Gameplay;
+using BestagonDefense.Levels.Maps;
+using BestagonDefense.Turrets;
 using Godot;
-using Levels.Maps;
-using Turrets;
 
-namespace UI.Shop;
+namespace BestagonDefense.UI.Shop;
 
-public enum HiddenMode
-{
-    Disabled,
-    Count,
-    Chance
-}
-    
 public partial class GenerateShopSelection : Control
 {
     /// <summary>
-    /// The game object for a turret selection card
+    /// The PackedScene for a turret selection card
     /// </summary>
     [Export]
     private PackedScene _turretSelectionUI;
     /// <summary>
-    /// The game object for a module selection card
+    /// The PackedScene for a module selection card
     /// </summary>
     [Export]
     private PackedScene _moduleSelectionUI;
     /// <summary>
-    /// The game object for a life selection card
+    /// The PackedScene for a life selection card
     /// </summary>
     [Export]
     private PackedScene _lifeSelectionUI;
     /// <summary>
-    /// The game object for a hidden selection card
+    /// The PackedScene for a hidden selection card
     /// </summary>
     [Export]
     private PackedScene _hiddenSelectionUI;
     private ShopData _shopData;
+    /// <summary>
+    /// The Shop in the level
+    /// </summary>
     [Export]
     private Shop _shop;
 
+    /// <summary>
+    /// The parent node to display the selection under
+    /// </summary>
     [Export]
     private Node _selectionParent;
 
@@ -51,12 +50,12 @@ public partial class GenerateShopSelection : Control
     private readonly List<Type> _turretTypes = [typeof(Turret)];
 
     /// <summary>
-    /// The button to show when unlocked
+    /// The button to show when options aren't locked
     /// </summary>
     [Export]
     private BaseButton _lockButton;
     /// <summary>
-    /// The status to show when locked
+    /// The button to show when options are locked
     /// </summary>
     [Export]
     private BaseButton _lockedButton;
@@ -142,6 +141,12 @@ public partial class GenerateShopSelection : Control
         }
     }
 
+    /// <summary>
+    /// Creates an initial turret option card
+    /// </summary>
+    /// <param name="selectionIndex">The item index in the options</param>
+    /// <param name="selectedTurrets">Which turret options have already been created</param>
+    /// <returns>The Blueprint of the created card</returns>
     private TurretBlueprint GenerateInitialItem(int selectionIndex, ICollection<TurretBlueprint> selectedTurrets)
     {
         // Grants a turret option
@@ -156,6 +161,12 @@ public partial class GenerateShopSelection : Control
         return selected;
     }
 
+    /// <summary>
+    /// Creates a turret option card
+    /// </summary>
+    /// <param name="selectionIndex">The item index in the options</param>
+    /// <param name="selectedTurrets">Which turret options have already been created</param>
+    /// <returns>The Blueprint of the created card</returns>
     private TurretBlueprint GenerateTurretItem(int selectionIndex, ICollection<TurretBlueprint> selectedTurrets)
     {
         // Grants a turret option
@@ -170,7 +181,13 @@ public partial class GenerateShopSelection : Control
 
         return selected;
     }
-        
+    
+    /// <summary>
+    /// Creates a module option card
+    /// </summary>
+    /// <param name="selectionIndex">The item index in the options</param>
+    /// <param name="selectedModules">Which handler options have already been created</param>
+    /// <returns>The ModuleChainHandler of the created card</returns>
     private ModuleChainHandler GenerateModuleItem(int selectionIndex, ICollection<ModuleChainHandler> selectedModules)
     { 
         var modules = _shopData.ModuleHandlers.ToWeightedList(GameStats.Rounds);
@@ -196,6 +213,10 @@ public partial class GenerateShopSelection : Control
         return selected;
     }
 
+    /// <summary>
+    /// Creates a life option card
+    /// </summary>
+    /// <returns>The LifeSelectionUI created</returns>
     private LifeSelectionUI GenerateLifeItem()
     {
         // Create the ui as a child
@@ -234,6 +255,11 @@ public partial class GenerateShopSelection : Control
         return turretUI;
     }
 
+    /// <summary>
+    /// Creates a hidden option card
+    /// </summary>
+    /// <param name="choice">The option being hidden</param>
+    /// <param name="selectionIndex">The index of the option in the selection</param>
     private void GenerateHiddenUI(object choice, int selectionIndex)
     {
         _hiddenChoices.Add(new Tuple<object, int>(choice, selectionIndex));
@@ -242,6 +268,12 @@ public partial class GenerateShopSelection : Control
         hiddenUI.Name = "_" + hiddenUI.Name;
     }
 
+    /// <summary>
+    /// Calculates if the current index should be hidden
+    /// </summary>
+    /// <param name="selectionIndex">The index of the option in the selection</param>
+    /// <returns>true if the option should be hidden</returns>
+    /// <exception cref="Exception">If the HiddenMode is invalid</exception>
     private bool ShouldHide(int selectionIndex)
     {
         return _shopData.HiddenMode switch
@@ -253,6 +285,10 @@ public partial class GenerateShopSelection : Control
         };
     }
 
+    /// <summary>
+    /// Checks there are still options available to display in the selection
+    /// </summary>
+    /// <param name="selectionCount">How many options have already been created</param>
     private void CheckCategories(int selectionCount)
     {
         try
@@ -288,7 +324,10 @@ public partial class GenerateShopSelection : Control
         if (!_turretTypes.Contains(type))
             _turretTypes.Add(type);
     }
-        
+    
+    /// <summary>
+    /// Opens (displays) the shop
+    /// </summary>
     public void Open()
     {
         _openTimeScale = Engine.TimeScale;
@@ -296,12 +335,19 @@ public partial class GenerateShopSelection : Control
         Visible = true;
     }
 
+    /// <summary>
+    /// Closes (hides) the shop
+    /// </summary>
     public void Resume()
     {
         Engine.TimeScale = _openTimeScale;
         Visible = false;
     }
 
+    /// <summary>
+    /// Prevents the selection from being regenerated until one is picked
+    /// Reveals hidden options
+    /// </summary>
     public void Lock()
     {
         for (var i = 0; i < _hiddenChoices.Count; i++)
@@ -329,6 +375,9 @@ public partial class GenerateShopSelection : Control
         _lockedButton.Visible = true;
     }
 
+    /// <summary>
+    /// Allows the selection to be regenerated (and locked) again
+    /// </summary>
     public void Unlock()
     {
         _isLocked = false;

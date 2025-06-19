@@ -1,27 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using BestagonDefense.Turrets;
 using Godot;
 using Godot.Collections;
-using Turrets;
 
-namespace Abstract.Data;
-
-/// <summary>
-/// A way to disable duplicates in random selections
-/// </summary>
-public enum DuplicateTypes
-{
-    None,
-    ByName,
-    ByType
-}
-
-public enum Strain
-{
-    TurretBlueprint,
-    ModuleChainHandler
-}
+namespace BestagonDefense.Abstract.Data;
     
 /// <summary>
 /// A list of items and their weight.
@@ -31,14 +16,20 @@ public enum Strain
 [Tool]
 public partial class WeightedList : Resource
 {
+    /// <summary>
+    /// The type of the WeightedList
+    /// </summary>
+    private Strain strain;
+    
+    // Data Containers
     private Array<TurretBlueprint> blueprints = [];
     private Array<ModuleChainHandler> handlers = [];
     private Array<float> weights = [];
     
-    private Strain strain;
-    
     private int _size;
-    
+    /// <summary>
+    /// The Count (Size) of the List
+    /// </summary>
     public int Count
     {
         get => _size;
@@ -52,6 +43,10 @@ public partial class WeightedList : Resource
         }
     }
 
+    /// <summary>
+    /// Creates a clone of another list
+    /// </summary>
+    /// <param name="list">The WeightedList to clone</param>
     public WeightedList(WeightedList list)
     {
         Count = list.Count;
@@ -61,11 +56,18 @@ public partial class WeightedList : Resource
         strain = list.strain;
     }
 
+    /// <summary>
+    /// Creates an empty WeightedList of a specific strain
+    /// </summary>
+    /// <param name="strain">The strain of the WeightedList</param>
     public WeightedList(Strain strain)
     {
         this.strain = strain;
     }
 
+    /// <summary>
+    /// Creates an empty WeightedList of TurretBlueprint strain
+    /// </summary>
     public WeightedList()
     {
         strain = Strain.TurretBlueprint;
@@ -80,7 +82,7 @@ public partial class WeightedList : Resource
     /// <returns>A random item</returns>
     /// <exception cref="NullReferenceException">The list isn't suitable to grant all items</exception>
     public T GetRandomItem<[MustBeVariant] T>(DuplicateTypes duplicateType = DuplicateTypes.None, Squirrel3 rng = null, ICollection<T> previousPicks = null)
-        where T : Resource, ISubtypeable
+        where T : Resource, ISubtypable
     {
         rng ??= new Squirrel3();
         previousPicks ??= new Array<T>();
@@ -163,7 +165,7 @@ public partial class WeightedList : Resource
     /// <returns>A random item</returns>
     /// <exception cref="NullReferenceException">The list isn't suitable to grant all items</exception>
     public T[] GetRandomItems<[MustBeVariant] T>(int count, DuplicateTypes duplicateType = DuplicateTypes.None, Squirrel3 rng = null)
-        where T : Resource, ISubtypeable
+        where T : Resource, ISubtypable
     {
         rng ??= new Squirrel3();
         Math.Clamp(count, 0, int.MaxValue);
@@ -239,6 +241,11 @@ public partial class WeightedList : Resource
         return output;
     }
     
+    /// <summary>
+    /// Returns the item at a specified key
+    /// </summary>
+    /// <param name="key">The key of the item to return</param>
+    /// <returns>The blueprint/handler at the given key</returns>
     public Resource GetItemAsResource(int key)
     {
         return strain switch
@@ -249,7 +256,12 @@ public partial class WeightedList : Resource
         };
     }
     
-    public ISubtypeable GetItemAsSubtypable(int key)
+    /// <summary>
+    /// Returns the subtypable item at a specified key
+    /// </summary>
+    /// <param name="key">The key of the item to return</param>
+    /// <returns>The subtypable at the given key</returns>
+    public ISubtypable GetItemAsSubtypable(int key)
     {
         return strain switch
         {
@@ -259,6 +271,12 @@ public partial class WeightedList : Resource
         };
     }
     
+    /// <summary>
+    /// Returns the handler at a key
+    /// Ignores strain
+    /// </summary>
+    /// <param name="key">The key of the item in the List</param>
+    /// <returns>The ModuleChainHandler at the key</returns>
     public ModuleChainHandler GetHandler(int key)
     {
         return handlers[key];
@@ -275,7 +293,11 @@ public partial class WeightedList : Resource
 
         return weights.Where(weight => weight > 0).Sum();
     }
-        
+    
+    /// <summary>
+    /// Removes a key & value pair at a specific position index
+    /// </summary>
+    /// <param name="index">The position index to remove the key, value pair from</param>
     public void RemoveAt(int index)
     {
         blueprints.RemoveAt(index);
@@ -284,7 +306,13 @@ public partial class WeightedList : Resource
         Count--;
     }
     
-    public void Add(TurretBlueprint blueprint, ModuleChainHandler handler, float weight)
+    /// <summary>
+    /// Adds a new value to the List
+    /// </summary>
+    /// <param name="blueprint">The TurretBlueprint to add. May be null</param>
+    /// <param name="handler">The ModuleChainHandler to add. May be null</param>
+    /// <param name="weight">The weight of the value</param>
+    public void Add([MaybeNull] TurretBlueprint blueprint, [MaybeNull] ModuleChainHandler handler, float weight)
     {
         blueprints.Add(blueprint);
         handlers.Add(handler);
@@ -292,6 +320,9 @@ public partial class WeightedList : Resource
         Count++;
     }
 
+    /// <summary>
+    /// Removes all entries in the list of a weight less than or equal to 0
+    /// </summary>
     public void RemoveUnweighted()
     {
         // We can remove everything if the total weight is 0
@@ -319,11 +350,19 @@ public partial class WeightedList : Resource
         Count = 0;
     }
 
+    /// <summary>
+    /// Checks if the List is empty
+    /// </summary>
+    /// <returns>true if there are no entries in the list</returns>
     public bool IsEmpty()
     {
         return Count == 0;
     }
     
+    /// <summary>
+    /// Gets the property list to display in the editor
+    /// </summary>
+    /// <returns>An array of properties to display and how</returns>
     public override Array<Dictionary> _GetPropertyList()
     {
         Array<Dictionary> properties =
@@ -379,6 +418,11 @@ public partial class WeightedList : Resource
         return properties;
     }
     
+    /// <summary>
+    /// Gets the value for a given property
+    /// </summary>
+    /// <param name="property">The property to get the data for</param>
+    /// <returns>The data for that property (if it exists)</returns>
     public override Variant _Get(StringName property)
     {
         var propertyName = property.ToString();
@@ -410,6 +454,12 @@ public partial class WeightedList : Resource
         return default;
     }
 
+    /// <summary>
+    /// Sets the value for a given property
+    /// </summary>
+    /// <param name="property">The property to update</param>
+    /// <param name="value">The new value of the property</param>
+    /// <returns>true if the value was updated</returns>
     public override bool _Set(StringName property, Variant value)
     {
         var propertyName = property.ToString();
