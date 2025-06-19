@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ModuleChain" load_steps=3 format=3 uid="uid://b17bxlv6v731x"]
+
+[ext_resource type="Texture2D" uid="uid://cmx4oaoqfyiw8" path="res://Modules/Sniper/TA_Sniper.tres" id="1_dy5ox"]
+[ext_resource type="Script" uid="uid://05pfhoqbexkq" path="res://Modules/ModuleChain.cs" id="1_i86b0"]
+
+[resource]
+script = ExtResource("1_i86b0")
+ModuleTiers = null
+Unique = false
+AccentColor = Color(0.811765, 0.235294, 0.14902, 1)
+Icon = ExtResource("1_dy5ox")
+DisplayName = "Sniper"
+Tagline = "expert ranger"
+Description = "Hit big from afar"
+metadata/_custom_type_script = "uid://05pfhoqbexkq"

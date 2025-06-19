@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ModuleChain" load_steps=3 format=3 uid="uid://5g4alr60yhwm"]
+
+[ext_resource type="Texture2D" uid="uid://co2cnm8tkv3ri" path="res://Modules/Tracker/TA_Tracker.tres" id="1_a8ah2"]
+[ext_resource type="Script" uid="uid://05pfhoqbexkq" path="res://Modules/ModuleChain.cs" id="1_eofwj"]
+
+[resource]
+script = ExtResource("1_eofwj")
+ModuleTiers = null
+Unique = false
+AccentColor = Color(0.788235, 0.266667, 0.980392, 1)
+Icon = ExtResource("1_a8ah2")
+DisplayName = "Tracker"
+Tagline = "high gear"
+Description = "Boosts rotation speed"
+metadata/_custom_type_script = "uid://05pfhoqbexkq"

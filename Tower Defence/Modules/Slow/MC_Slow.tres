@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ModuleChain" load_steps=3 format=3 uid="uid://wbvgxdviuwf0"]
+
+[ext_resource type="Script" uid="uid://05pfhoqbexkq" path="res://Modules/ModuleChain.cs" id="1_48taj"]
+[ext_resource type="Texture2D" uid="uid://bxa53twnv3u5s" path="res://Modules/Slow/TA_Slow.tres" id="1_wnnjr"]
+
+[resource]
+script = ExtResource("1_48taj")
+ModuleTiers = null
+Unique = true
+AccentColor = Color(0.180392, 0.784314, 0.898039, 1)
+Icon = ExtResource("1_wnnjr")
+DisplayName = "Slow"
+Tagline = "subzero"
+Description = "Slows enemies with each hit"
+metadata/_custom_type_script = "uid://05pfhoqbexkq"

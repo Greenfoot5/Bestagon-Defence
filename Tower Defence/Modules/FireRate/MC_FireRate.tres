@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ModuleChain" load_steps=3 format=3 uid="uid://dp3kf2hqm0tqm"]
+
+[ext_resource type="Script" uid="uid://05pfhoqbexkq" path="res://Modules/ModuleChain.cs" id="1_k5yhd"]
+[ext_resource type="Texture2D" uid="uid://bo5auanjcdp7a" path="res://Modules/FireRate/TA_FireRate.tres" id="1_ro8nk"]
+
+[resource]
+script = ExtResource("1_k5yhd")
+ModuleTiers = null
+Unique = false
+AccentColor = Color(0.462745, 0.227451, 0.941176, 1)
+Icon = ExtResource("1_ro8nk")
+DisplayName = "Fire Rate"
+Tagline = "quickload"
+Description = "Increases fire rate"
+metadata/_custom_type_script = "uid://05pfhoqbexkq"

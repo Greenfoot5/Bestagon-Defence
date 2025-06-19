@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ModuleChain" load_steps=3 format=3 uid="uid://dgvlnbkphfdbw"]
+
+[ext_resource type="Texture2D" uid="uid://bwqxrukshsc7t" path="res://Modules/Surge/TA_Surge.tres" id="1_kn3iq"]
+[ext_resource type="Script" uid="uid://05pfhoqbexkq" path="res://Modules/ModuleChain.cs" id="1_t1bad"]
+
+[resource]
+script = ExtResource("1_t1bad")
+ModuleTiers = null
+Unique = true
+AccentColor = Color(0.384314, 0.67451, 0.792157, 1)
+Icon = ExtResource("1_kn3iq")
+DisplayName = "Surge"
+Tagline = "electrifying"
+Description = "Cycles from high to low attack speed"
+metadata/_custom_type_script = "uid://05pfhoqbexkq"

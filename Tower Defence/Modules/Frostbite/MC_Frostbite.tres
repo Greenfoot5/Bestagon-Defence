@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ModuleChain" load_steps=3 format=3 uid="uid://onkunjp30kbb"]
+
+[ext_resource type="Script" uid="uid://05pfhoqbexkq" path="res://Modules/ModuleChain.cs" id="1_moxcy"]
+[ext_resource type="Texture2D" uid="uid://ce7fss2iwkhkl" path="res://Gameplay/T_DeathBit.png" id="1_ophej"]
+
+[resource]
+script = ExtResource("1_moxcy")
+ModuleTiers = null
+Unique = true
+AccentColor = Color(1, 1, 1, 1)
+Icon = ExtResource("1_ophej")
+DisplayName = "Frostbite"
+Tagline = "Shattering"
+Description = "Removes slow effect for damage"
+metadata/_custom_type_script = "uid://05pfhoqbexkq"

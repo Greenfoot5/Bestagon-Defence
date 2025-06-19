@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ModuleChain" load_steps=3 format=3 uid="uid://t1pr4tv7dio2"]
+
+[ext_resource type="Script" uid="uid://05pfhoqbexkq" path="res://Modules/ModuleChain.cs" id="1_2wb3n"]
+[ext_resource type="Texture2D" uid="uid://c6w7rox84a4dv" path="res://Modules/Reload/TA_Reload.tres" id="1_hgrar"]
+
+[resource]
+script = ExtResource("1_2wb3n")
+ModuleTiers = null
+Unique = false
+AccentColor = Color(0.427451, 0.737255, 0.372549, 1)
+Icon = ExtResource("1_hgrar")
+DisplayName = "Reload"
+Tagline = "Another one!"
+Description = "Hit lots from close"
+metadata/_custom_type_script = "uid://05pfhoqbexkq"

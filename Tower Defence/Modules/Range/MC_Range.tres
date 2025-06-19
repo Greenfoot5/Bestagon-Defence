@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ModuleChain" load_steps=3 format=3 uid="uid://830voq1b6343"]
+
+[ext_resource type="Script" uid="uid://05pfhoqbexkq" path="res://Modules/ModuleChain.cs" id="1_5s3nl"]
+[ext_resource type="Texture2D" uid="uid://b84nc2gdf17yv" path="res://Modules/Range/TA_Range.tres" id="1_wwmlr"]
+
+[resource]
+script = ExtResource("1_5s3nl")
+ModuleTiers = null
+Unique = false
+AccentColor = Color(0.517647, 0.858824, 0.109804, 1)
+Icon = ExtResource("1_wwmlr")
+DisplayName = "Range"
+Tagline = "visionary"
+Description = "Increases range"
+metadata/_custom_type_script = "uid://05pfhoqbexkq"
