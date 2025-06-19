@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://y3feukxp7bde"]
+[gd_scene load_steps=18 format=3 uid="uid://y3feukxp7bde"]
 
 [ext_resource type="Script" uid="uid://bd5mf64k00upw" path="res://Turrets/Shooter/Shooter.cs" id="1_jmpkv"]
 [ext_resource type="PackedScene" uid="uid://b07wmtlp10ngi" path="res://Turrets/Shooter/Shooter_Pellet.tscn" id="2_huo1v"]
+[ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/Modifier.cs" id="3_jmpkv"]
 [ext_resource type="Script" uid="uid://blnrq5atpcclw" path="res://Abstract/Attributes/Attribute.cs" id="4_m7ag8"]
 [ext_resource type="Script" uid="uid://c80di1i4n41ig" path="res://Abstract/Attributes/Attributes.cs" id="5_a81wt"]
 [ext_resource type="Texture2D" uid="uid://d26aqj2odl383" path="res://Turrets/Shooter/T_TurretBase_ShooterDark.png" id="6_ek0y0"]
@@ -13,7 +14,7 @@
 script = ExtResource("4_m7ag8")
 Name = 2
 Base = 650.0
-_modifiers = {}
+_modifiers = Dictionary[Variant, ExtResource("3_jmpkv")]({})
 Min = inf_neg
 Max = inf
 metadata/_custom_type_script = "uid://blnrq5atpcclw"
@@ -22,7 +23,7 @@ metadata/_custom_type_script = "uid://blnrq5atpcclw"
 script = ExtResource("4_m7ag8")
 Name = 3
 Base = 0.7
-_modifiers = {}
+_modifiers = Dictionary[Variant, ExtResource("3_jmpkv")]({})
 Min = inf_neg
 Max = inf
 metadata/_custom_type_script = "uid://blnrq5atpcclw"
@@ -31,7 +32,7 @@ metadata/_custom_type_script = "uid://blnrq5atpcclw"
 script = ExtResource("4_m7ag8")
 Name = 14
 Base = 6.0
-_modifiers = {}
+_modifiers = Dictionary[Variant, ExtResource("3_jmpkv")]({})
 Min = inf_neg
 Max = inf
 metadata/_custom_type_script = "uid://blnrq5atpcclw"
@@ -40,7 +41,7 @@ metadata/_custom_type_script = "uid://blnrq5atpcclw"
 script = ExtResource("4_m7ag8")
 Name = 15
 Base = 2.3
-_modifiers = {}
+_modifiers = Dictionary[Variant, ExtResource("3_jmpkv")]({})
 Min = inf_neg
 Max = inf
 metadata/_custom_type_script = "uid://blnrq5atpcclw"
