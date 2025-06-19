@@ -16,6 +16,8 @@ namespace BestagonDefense.Modules.Surge;
 /// Grants a temporary fire rate increase to a turret
 /// </summary>
 [GlobalClass]
+[Icon("./TA_Surge.tres")]
+[Tool]
 public partial class SurgeModule : Module
 {
     protected override Type[] ValidTypes => [typeof(Shooter), typeof(Smasher), typeof(Lancer), typeof(Choker)];

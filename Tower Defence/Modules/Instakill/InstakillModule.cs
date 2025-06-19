@@ -13,6 +13,7 @@ namespace BestagonDefense.Modules.Instakill;
 /// Chance to instakill an enemy
 /// </summary>
 [GlobalClass]
+[Icon("./TA_Instakill.tres")]
 [Tool]
 public partial class InstakillModule : Module
 {

@@ -12,6 +12,7 @@ namespace BestagonDefense.Modules.Reload;
 /// Chance to attack again
 /// </summary>
 [GlobalClass]
+[Icon("./TA_Reload.tres")]
 [Tool]
 public partial class ReloadModule : Module
 {

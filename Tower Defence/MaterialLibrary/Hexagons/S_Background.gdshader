@@ -152,4 +152,3 @@ void fragment() {
 
     COLOR = color * COLOR;
 }
-

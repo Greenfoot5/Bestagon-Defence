@@ -9,6 +9,7 @@ namespace BestagonDefense.Modules.Damage;
 /// Extends the Module class to create a Damage upgrade
 /// </summary>
 [GlobalClass]
+[Icon("./TA_Damage.tres")]
 [Tool]
 public partial class DamageModule : Module
 {

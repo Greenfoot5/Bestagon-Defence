@@ -15,6 +15,7 @@ namespace BestagonDefense.Modules.Slow;
 /// Used to add effects to enemies
 /// </summary>
 [GlobalClass]
+[Icon("./TA_Slow.tres")]
 [Tool]
 public partial class SlowModule : Module
 {

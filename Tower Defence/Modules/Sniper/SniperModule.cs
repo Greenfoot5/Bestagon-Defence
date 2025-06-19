@@ -12,6 +12,7 @@ namespace BestagonDefense.Modules.Sniper;
 /// Extends the Module class to create a Sniper upgrade
 /// </summary>
 [GlobalClass]
+[Icon("./TA_Sniper.tres")]
 [Tool]
 public partial class SniperModule : Module
 {

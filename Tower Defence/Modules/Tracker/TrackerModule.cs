@@ -12,6 +12,8 @@ namespace BestagonDefense.Modules.Tracker;
 /// Increases the rotation speed of a dynamic turret
 /// </summary>
 [GlobalClass]
+[Icon("./TA_Tracker.tres")]
+[Tool]
 public partial class TrackerModule : Module
 {
     protected override Type[] ValidTypes => [typeof(Shooter), typeof(Laser), typeof(Gunner), typeof(Choker)];

@@ -10,6 +10,7 @@ namespace BestagonDefense.Modules.Range;
 /// Increases the range of a turret
 /// </summary>
 [GlobalClass]
+[Icon("./TA_Range.tres")]
 [Tool]
 public partial class RangeModule : Module
 {

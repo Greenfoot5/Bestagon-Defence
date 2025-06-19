@@ -12,6 +12,7 @@ namespace BestagonDefense.Modules.Bombs;
 /// Extends the Module class to create a BombBullet upgrade
 /// </summary>
 [GlobalClass]
+[Icon("./TA_Bombs.tres")]
 [Tool]
 public partial class BombsModule : Module
 {

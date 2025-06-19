@@ -13,6 +13,7 @@ namespace BestagonDefense.Modules.FireRate;
 /// Increases the fire rate of a turret
 /// </summary>
 [GlobalClass]
+[Icon("./TA_FireRate.tres")]
 [Tool]
 public partial class FireRateModule : Module
 {
