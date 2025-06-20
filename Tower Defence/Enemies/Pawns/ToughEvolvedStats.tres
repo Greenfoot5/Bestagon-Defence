@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EnemyStats" load_steps=9 format=3 uid="uid://dyxwk08l0hs8j"]
 
 [ext_resource type="Script" uid="uid://blnrq5atpcclw" path="res://Abstract/Attributes/Attribute.cs" id="1_fo8qf"]
-[ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/AttributeModifier.cs" id="2_al53y"]
+[ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/Modifier.cs" id="2_al53y"]
 [ext_resource type="Script" uid="uid://c80di1i4n41ig" path="res://Abstract/Attributes/Attributes.cs" id="3_g0ree"]
 [ext_resource type="Script" uid="uid://b2pbxe1edwcmn" path="res://Enemies/EnemyStats.cs" id="4_emfpk"]
 [ext_resource type="Texture2D" uid="uid://b4mp8ronqobqv" path="res://Enemies/Pawns/T_ToughEvolved.png" id="5_fo8qf"]
@@ -34,7 +34,7 @@ _attributes = Dictionary[int, ExtResource("1_fo8qf")]({
 [resource]
 script = ExtResource("4_emfpk")
 Attributes = SubResource("Resource_uaite")
-sprite = ExtResource("5_fo8qf")
+Sprite = ExtResource("5_fo8qf")
 DeathMoney = 20
 DeathLives = 2
 EndPathMoney = 35
