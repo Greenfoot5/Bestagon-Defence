@@ -1,12 +1,12 @@
 [gd_scene load_steps=20 format=3 uid="uid://dpuxc7mfhytlw"]
 
 [ext_resource type="Script" uid="uid://dx57iyb5nvgwg" path="res://Turrets/Hunter/Hunter.cs" id="1_iwr4r"]
-[ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/AttributeModifier.cs" id="2_nye1k"]
+[ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/Modifier.cs" id="2_nye1k"]
 [ext_resource type="Script" uid="uid://blnrq5atpcclw" path="res://Abstract/Attributes/Attribute.cs" id="3_dhfuu"]
 [ext_resource type="Script" uid="uid://c80di1i4n41ig" path="res://Abstract/Attributes/Attributes.cs" id="4_gcote"]
 [ext_resource type="Texture2D" uid="uid://bmjp15oecmtur" path="res://Turrets/Hunter/T_TurretBase_HunterDark.png" id="5_j5jru"]
 [ext_resource type="Texture2D" uid="uid://cyia2gs2h7ktd" path="res://Turrets/Hunter/T_Turret_Hunter.png" id="6_7if64"]
-[ext_resource type="Shader" uid="uid://bjciwmxveqxrx" path="res://MaterialLibrary/Range/T_Range.gdshader" id="7_7src7"]
+[ext_resource type="Shader" uid="uid://bjciwmxveqxrx" path="res://MaterialLibrary/Range/S_Range.gdshader" id="7_7src7"]
 [ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/T_Rectangle_Whitex1000.png" id="8_dy3ac"]
 
 [sub_resource type="Resource" id="Resource_nhn4y"]

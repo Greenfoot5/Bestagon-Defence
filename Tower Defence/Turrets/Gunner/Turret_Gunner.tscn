@@ -7,8 +7,8 @@
 [ext_resource type="Script" uid="uid://blnrq5atpcclw" path="res://Abstract/Attributes/Attribute.cs" id="3_3r6fm"]
 [ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/T_Rectangle_Whitex1000.png" id="3_l5cxh"]
 [ext_resource type="Script" uid="uid://c80di1i4n41ig" path="res://Abstract/Attributes/Attributes.cs" id="4_de50l"]
-[ext_resource type="Shader" uid="uid://bjciwmxveqxrx" path="res://MaterialLibrary/Range/T_Range.gdshader" id="4_wsfmi"]
-[ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/AttributeModifier.cs" id="4_xuf6c"]
+[ext_resource type="Shader" uid="uid://bjciwmxveqxrx" path="res://MaterialLibrary/Range/S_Range.gdshader" id="4_wsfmi"]
+[ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/Modifier.cs" id="4_xuf6c"]
 
 [sub_resource type="Resource" id="Resource_t2fhp"]
 script = ExtResource("3_3r6fm")
