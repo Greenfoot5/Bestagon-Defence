@@ -1,7 +1,7 @@
 name: Bestagon-Defence build
 
 on:
-#  push:
+  push:
 #  pull_request: 
 #    types:
 #      - opened
@@ -17,28 +17,28 @@ jobs:
       matrix:
         include:
           # Temporarily disabled as it wasn't working
-          #- targetPlatform: StandaloneOSX # Build a macOS standalone (Intel 64-bit).
-          #  jobOS: macos-latest
-          - targetPlatform: StandaloneWindows # Build a Windows standalone.
+          - targetPlatform: StandaloneOSX # Build a macOS standalone (Intel 64-bit).
             jobOS: ubuntu-latest
-          - targetPlatform: StandaloneWindows64 # Build a Windows 64-bit standalone.
-            jobOS: ubuntu-latest
-          - targetPlatform: StandaloneLinux64 # Build a Linux 64-bit standalone.
-            jobOS: ubuntu-latest
+#          - targetPlatform: StandaloneWindows # Build a Windows standalone.
+#            jobOS: ubuntu-latest
+#          - targetPlatform: StandaloneWindows64 # Build a Windows 64-bit standalone.
+#            jobOS: ubuntu-latest
+#          - targetPlatform: StandaloneLinux64 # Build a Linux 64-bit standalone.
+#            jobOS: ubuntu-latest
 #          - targetPlatform: iOS # Build an iOS player.
 #            jobOS: ubuntu-latest
-          - targetPlatform: Android # Build an Android .apk standalone app.
-            jobOS: ubuntu-latest
+#          - targetPlatform: Android # Build an Android .apk standalone app.
+#            jobOS: ubuntu-latest
 #          - targetPlatform: WebGL # WebGL.
 #            jobOS: ubuntu-latest
         
     outputs:
       StandaloneOSX: ${{ steps.outputResult.outputs.StandaloneOSX }}
-      StandaloneWindows: ${{ steps.outputResult.outputs.StandaloneWindows }}
-      StandaloneWindows64: ${{ steps.outputResult.outputs.StandaloneWindows64 }}
-      StandaloneLinux64: ${{ steps.outputResult.outputs.StandaloneLinux64 }}
+#      StandaloneWindows: ${{ steps.outputResult.outputs.StandaloneWindows }}
+#      StandaloneWindows64: ${{ steps.outputResult.outputs.StandaloneWindows64 }}
+#      StandaloneLinux64: ${{ steps.outputResult.outputs.StandaloneLinux64 }}
       #iOS: ${{ steps.outputResult.outputs.iOS }}
-      Android: ${{ steps.outputResult.outputs.Android }}
+#      Android: ${{ steps.outputResult.outputs.Android }}
       #WebGL: ${{ steps.outputResult.outputs.WebGL }}
 
     steps:
@@ -46,18 +46,6 @@ jobs:
         with:
           fetch-depth: 0
           lfs: true
-          
-      - uses: actions/cache@v3
-        with:
-          path: ${{ matrix.projectPath }}/Tower Defense/Library
-          key:
-            Library-${{ matrix.projectPath }}-${{ matrix.targetPlatform }}-${{
-            hashFiles(matrix.projectPath) }}
-          restore-keys: |
-            Library-${{ matrix.projectPath }}-${{ matrix.targetPlatform }}-
-            Library-${{ matrix.projectPath }}-
-            Library-
-            Tower Defense-Library-
             
       - uses: jlumbroso/free-disk-space@main
         with:
@@ -73,42 +61,23 @@ jobs:
           large-packages: true
           docker-images: true
           swap-storage: true
-
-      - uses: game-ci/unity-builder@v4
-        env:
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-
-          # Use for paid version:
-          # UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
-
-          # Use for free version:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-        with:
-          projectPath: 'Tower Defence'
-          targetPlatform: ${{ matrix.targetPlatform }}
-        if: ${{ matrix.targetPlatform != 'Android' }}
           
-      - uses: game-ci/unity-builder@v4
-        env:
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+        if: ${{ matrix.targetPlatform != 'Android' }}
 
-          # Use for paid version:
-#          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
-
-          # Use for free version:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+      - name: export game
+        id: export
+        # Use latest version (see releases for all versions)
+        uses: firebelley/godot-export@v6.0.0
         with:
-          projectPath: 'Tower Defence'
-          targetPlatform: ${{ matrix.targetPlatform }}
-          androidKeystoreName: bestagon.keystore # This file won't exist, but this property needs to exist.
-          androidKeystoreBase64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
-          androidKeystorePass: ${{ secrets.ANDROID_KEYSTORE_PASS }}
-          androidKeyaliasName: ${{ secrets.ANDROID_KEYALIAS_NAME }}
-          androidKeyaliasPass: ${{ secrets.ANDROID_KEYALIAS_PASS }}
-          androidTargetSdkVersion: AndroidApiLevel35
-        if: ${{ matrix.targetPlatform == 'Android' }}
+          # Defining all the required inputs
+          godot_executable_download_url: https://downloads.tuxfamily.org/godotengine/4.0/Godot_v4.0-stable_linux.x86_64.zip
+          godot_export_templates_download_url: https://downloads.tuxfamily.org/godotengine/4.0/Godot_v4.0-stable_export_templates.tpz
+          relative_project_path: ./
+          archive_output: true
+          build_directory: "build/"
+          presets_to_export: ${{ matrix.targetPlatform }}
 
       - uses: actions/upload-artifact@v3
         with:
@@ -116,10 +85,6 @@ jobs:
           path: |
             build/
             !*DoNotShip/
-          
-      # Return License
-#      - uses: game-ci/unity-return-license@v2.0.0
-#        if: always()
       
       - id: outputResult
         run: echo "${{ matrix.targetPlatform }}Result=${{ job.status }}" >> $GITHUB_ENV
