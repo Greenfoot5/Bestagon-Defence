@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ckj6jecwq0e0i"
 path.s3tc="res://.godot/imported/T_KoFi_NoBG.png-a8c5ab8a4103878e9dd37d353eaf629c.s3tc.ctex"
+path.etc2="res://.godot/imported/T_KoFi_NoBG.png-a8c5ab8a4103878e9dd37d353eaf629c.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Levels/Generic/MainMenu/T_KoFi_NoBG.png"
-dest_files=["res://.godot/imported/T_KoFi_NoBG.png-a8c5ab8a4103878e9dd37d353eaf629c.s3tc.ctex"]
+dest_files=["res://.godot/imported/T_KoFi_NoBG.png-a8c5ab8a4103878e9dd37d353eaf629c.s3tc.ctex", "res://.godot/imported/T_KoFi_NoBG.png-a8c5ab8a4103878e9dd37d353eaf629c.etc2.ctex"]
 
 [params]
 

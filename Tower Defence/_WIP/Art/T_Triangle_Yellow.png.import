@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dktdijxf3j78e"
 path.s3tc="res://.godot/imported/T_Triangle_Yellow.png-8dc550cfed04d3de739e15d828d9f2bf.s3tc.ctex"
+path.etc2="res://.godot/imported/T_Triangle_Yellow.png-8dc550cfed04d3de739e15d828d9f2bf.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://_WIP/Art/T_Triangle_Yellow.png"
-dest_files=["res://.godot/imported/T_Triangle_Yellow.png-8dc550cfed04d3de739e15d828d9f2bf.s3tc.ctex"]
+dest_files=["res://.godot/imported/T_Triangle_Yellow.png-8dc550cfed04d3de739e15d828d9f2bf.s3tc.ctex", "res://.godot/imported/T_Triangle_Yellow.png-8dc550cfed04d3de739e15d828d9f2bf.etc2.ctex"]
 
 [params]
 

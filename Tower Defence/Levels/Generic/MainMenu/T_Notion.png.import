@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://gid2cgm1lxio"
 path.s3tc="res://.godot/imported/T_Notion.png-d6a17f6149822aaf1e0dfb520f6ea4f6.s3tc.ctex"
+path.etc2="res://.godot/imported/T_Notion.png-d6a17f6149822aaf1e0dfb520f6ea4f6.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Levels/Generic/MainMenu/T_Notion.png"
-dest_files=["res://.godot/imported/T_Notion.png-d6a17f6149822aaf1e0dfb520f6ea4f6.s3tc.ctex"]
+dest_files=["res://.godot/imported/T_Notion.png-d6a17f6149822aaf1e0dfb520f6ea4f6.s3tc.ctex", "res://.godot/imported/T_Notion.png-d6a17f6149822aaf1e0dfb520f6ea4f6.etc2.ctex"]
 
 [params]
 

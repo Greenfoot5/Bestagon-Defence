@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cs1neednfxbpe"
 path.s3tc="res://.godot/imported/T_TextButton.png-9d9a828c2c60185c90dace38b9a4e9ad.s3tc.ctex"
+path.etc2="res://.godot/imported/T_TextButton.png-9d9a828c2c60185c90dace38b9a4e9ad.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://UI/Generic/T_TextButton.png"
-dest_files=["res://.godot/imported/T_TextButton.png-9d9a828c2c60185c90dace38b9a4e9ad.s3tc.ctex"]
+dest_files=["res://.godot/imported/T_TextButton.png-9d9a828c2c60185c90dace38b9a4e9ad.s3tc.ctex", "res://.godot/imported/T_TextButton.png-9d9a828c2c60185c90dace38b9a4e9ad.etc2.ctex"]
 
 [params]
 

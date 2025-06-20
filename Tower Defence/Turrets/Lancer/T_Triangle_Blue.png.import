@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dq8eknhwxvqpn"
 path.s3tc="res://.godot/imported/T_Triangle_Blue.png-5cac7f49215bdd91fb32c1fe466d36ef.s3tc.ctex"
+path.etc2="res://.godot/imported/T_Triangle_Blue.png-5cac7f49215bdd91fb32c1fe466d36ef.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Turrets/Lancer/T_Triangle_Blue.png"
-dest_files=["res://.godot/imported/T_Triangle_Blue.png-5cac7f49215bdd91fb32c1fe466d36ef.s3tc.ctex"]
+dest_files=["res://.godot/imported/T_Triangle_Blue.png-5cac7f49215bdd91fb32c1fe466d36ef.s3tc.ctex", "res://.godot/imported/T_Triangle_Blue.png-5cac7f49215bdd91fb32c1fe466d36ef.etc2.ctex"]
 
 [params]
 

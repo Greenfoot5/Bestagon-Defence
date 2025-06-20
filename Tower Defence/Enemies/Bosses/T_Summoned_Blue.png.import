@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bfli2vm5hanvj"
 path.s3tc="res://.godot/imported/T_Summoned_Blue.png-b3b647028b9fa13d48259fd70eafc111.s3tc.ctex"
+path.etc2="res://.godot/imported/T_Summoned_Blue.png-b3b647028b9fa13d48259fd70eafc111.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Enemies/Bosses/T_Summoned_Blue.png"
-dest_files=["res://.godot/imported/T_Summoned_Blue.png-b3b647028b9fa13d48259fd70eafc111.s3tc.ctex"]
+dest_files=["res://.godot/imported/T_Summoned_Blue.png-b3b647028b9fa13d48259fd70eafc111.s3tc.ctex", "res://.godot/imported/T_Summoned_Blue.png-b3b647028b9fa13d48259fd70eafc111.etc2.ctex"]
 
 [params]
 

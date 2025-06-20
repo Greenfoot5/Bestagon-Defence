@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ca082btq55qao"
 path.s3tc="res://.godot/imported/Bestagon-icon.png-72628e58963b01923510d50738571511.s3tc.ctex"
+path.etc2="res://.godot/imported/Bestagon-icon.png-72628e58963b01923510d50738571511.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://UI/Branding/Bestagon-icon.png"
-dest_files=["res://.godot/imported/Bestagon-icon.png-72628e58963b01923510d50738571511.s3tc.ctex"]
+dest_files=["res://.godot/imported/Bestagon-icon.png-72628e58963b01923510d50738571511.s3tc.ctex", "res://.godot/imported/Bestagon-icon.png-72628e58963b01923510d50738571511.etc2.ctex"]
 
 [params]
 

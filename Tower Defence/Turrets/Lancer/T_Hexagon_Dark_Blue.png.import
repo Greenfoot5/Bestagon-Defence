@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bejiuo1f1nac8"
 path.s3tc="res://.godot/imported/T_Hexagon_Dark_Blue.png-7bc0ca4bcabb3bb557d730c428bb618f.s3tc.ctex"
+path.etc2="res://.godot/imported/T_Hexagon_Dark_Blue.png-7bc0ca4bcabb3bb557d730c428bb618f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Turrets/Lancer/T_Hexagon_Dark_Blue.png"
-dest_files=["res://.godot/imported/T_Hexagon_Dark_Blue.png-7bc0ca4bcabb3bb557d730c428bb618f.s3tc.ctex"]
+dest_files=["res://.godot/imported/T_Hexagon_Dark_Blue.png-7bc0ca4bcabb3bb557d730c428bb618f.s3tc.ctex", "res://.godot/imported/T_Hexagon_Dark_Blue.png-7bc0ca4bcabb3bb557d730c428bb618f.etc2.ctex"]
 
 [params]
 

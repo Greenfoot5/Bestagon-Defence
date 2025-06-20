@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c3dyga7hhjox4"
 path.s3tc="res://.godot/imported/T_Tracer_Red.png-a83c2a730abf2233f7978b7fd4c684ba.s3tc.ctex"
+path.etc2="res://.godot/imported/T_Tracer_Red.png-a83c2a730abf2233f7978b7fd4c684ba.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Enemies/Pawns/T_Tracer_Red.png"
-dest_files=["res://.godot/imported/T_Tracer_Red.png-a83c2a730abf2233f7978b7fd4c684ba.s3tc.ctex"]
+dest_files=["res://.godot/imported/T_Tracer_Red.png-a83c2a730abf2233f7978b7fd4c684ba.s3tc.ctex", "res://.godot/imported/T_Tracer_Red.png-a83c2a730abf2233f7978b7fd4c684ba.etc2.ctex"]
 
 [params]
 

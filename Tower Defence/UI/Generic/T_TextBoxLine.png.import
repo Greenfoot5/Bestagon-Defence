@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cocrw2js53x1q"
 path.s3tc="res://.godot/imported/T_TextBoxLine.png-bcf9de043895b66a2f3674debfcd7a62.s3tc.ctex"
+path.etc2="res://.godot/imported/T_TextBoxLine.png-bcf9de043895b66a2f3674debfcd7a62.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://UI/Generic/T_TextBoxLine.png"
-dest_files=["res://.godot/imported/T_TextBoxLine.png-bcf9de043895b66a2f3674debfcd7a62.s3tc.ctex"]
+dest_files=["res://.godot/imported/T_TextBoxLine.png-bcf9de043895b66a2f3674debfcd7a62.s3tc.ctex", "res://.godot/imported/T_TextBoxLine.png-bcf9de043895b66a2f3674debfcd7a62.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bvrudgxpv3fb2"
 path.s3tc="res://.godot/imported/T_EnergyButton.png-ce99c8054fa16ae0a50245c101e5c929.s3tc.ctex"
+path.etc2="res://.godot/imported/T_EnergyButton.png-ce99c8054fa16ae0a50245c101e5c929.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://UI/Shop/T_EnergyButton.png"
-dest_files=["res://.godot/imported/T_EnergyButton.png-ce99c8054fa16ae0a50245c101e5c929.s3tc.ctex"]
+dest_files=["res://.godot/imported/T_EnergyButton.png-ce99c8054fa16ae0a50245c101e5c929.s3tc.ctex", "res://.godot/imported/T_EnergyButton.png-ce99c8054fa16ae0a50245c101e5c929.etc2.ctex"]
 
 [params]
 

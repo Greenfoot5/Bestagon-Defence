@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://0grw2ifoyo1m"
 path.s3tc="res://.godot/imported/T_LancerBase_Dark.png-ee4b7fe75b948e8fc563c6d0b741dd84.s3tc.ctex"
+path.etc2="res://.godot/imported/T_LancerBase_Dark.png-ee4b7fe75b948e8fc563c6d0b741dd84.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Turrets/Lancer/T_LancerBase_Dark.png"
-dest_files=["res://.godot/imported/T_LancerBase_Dark.png-ee4b7fe75b948e8fc563c6d0b741dd84.s3tc.ctex"]
+dest_files=["res://.godot/imported/T_LancerBase_Dark.png-ee4b7fe75b948e8fc563c6d0b741dd84.s3tc.ctex", "res://.godot/imported/T_LancerBase_Dark.png-ee4b7fe75b948e8fc563c6d0b741dd84.etc2.ctex"]
 
 [params]
 

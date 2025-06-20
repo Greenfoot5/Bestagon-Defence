@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://uf80lcxmrv3m"
 path.s3tc="res://.godot/imported/T_Pentagon_LightBlue.png-b31fa76a72148b57cf0a316ef0a7bfdb.s3tc.ctex"
+path.etc2="res://.godot/imported/T_Pentagon_LightBlue.png-b31fa76a72148b57cf0a316ef0a7bfdb.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Enemies/Bosses/T_Pentagon_LightBlue.png"
-dest_files=["res://.godot/imported/T_Pentagon_LightBlue.png-b31fa76a72148b57cf0a316ef0a7bfdb.s3tc.ctex"]
+dest_files=["res://.godot/imported/T_Pentagon_LightBlue.png-b31fa76a72148b57cf0a316ef0a7bfdb.s3tc.ctex", "res://.godot/imported/T_Pentagon_LightBlue.png-b31fa76a72148b57cf0a316ef0a7bfdb.etc2.ctex"]
 
 [params]
 

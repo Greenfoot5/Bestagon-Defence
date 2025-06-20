@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://rmg52olxgkfm"
 path.s3tc="res://.godot/imported/T_Rectangle_Whitex1000.png-6ef1bc73b4ae5f2927b65a25e7d29965.s3tc.ctex"
+path.etc2="res://.godot/imported/T_Rectangle_Whitex1000.png-6ef1bc73b4ae5f2927b65a25e7d29965.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://_WIP/Art/T_Rectangle_Whitex1000.png"
-dest_files=["res://.godot/imported/T_Rectangle_Whitex1000.png-6ef1bc73b4ae5f2927b65a25e7d29965.s3tc.ctex"]
+dest_files=["res://.godot/imported/T_Rectangle_Whitex1000.png-6ef1bc73b4ae5f2927b65a25e7d29965.s3tc.ctex", "res://.godot/imported/T_Rectangle_Whitex1000.png-6ef1bc73b4ae5f2927b65a25e7d29965.etc2.ctex"]
 
 [params]
 

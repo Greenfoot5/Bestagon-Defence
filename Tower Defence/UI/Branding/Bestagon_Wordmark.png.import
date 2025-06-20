@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cwtlfngne7qak"
 path.s3tc="res://.godot/imported/Bestagon_Wordmark.png-2910f59af2fd0ce9de138f0b81768b0e.s3tc.ctex"
+path.etc2="res://.godot/imported/Bestagon_Wordmark.png-2910f59af2fd0ce9de138f0b81768b0e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://UI/Branding/Bestagon_Wordmark.png"
-dest_files=["res://.godot/imported/Bestagon_Wordmark.png-2910f59af2fd0ce9de138f0b81768b0e.s3tc.ctex"]
+dest_files=["res://.godot/imported/Bestagon_Wordmark.png-2910f59af2fd0ce9de138f0b81768b0e.s3tc.ctex", "res://.godot/imported/Bestagon_Wordmark.png-2910f59af2fd0ce9de138f0b81768b0e.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://csqmlosbude0e"
 path.s3tc="res://.godot/imported/T_SplitterLarge.png-d119bc92e935ab5e8ec8a41302a8d2c5.s3tc.ctex"
+path.etc2="res://.godot/imported/T_SplitterLarge.png-d119bc92e935ab5e8ec8a41302a8d2c5.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Enemies/Bosses/T_SplitterLarge.png"
-dest_files=["res://.godot/imported/T_SplitterLarge.png-d119bc92e935ab5e8ec8a41302a8d2c5.s3tc.ctex"]
+dest_files=["res://.godot/imported/T_SplitterLarge.png-d119bc92e935ab5e8ec8a41302a8d2c5.s3tc.ctex", "res://.godot/imported/T_SplitterLarge.png-d119bc92e935ab5e8ec8a41302a8d2c5.etc2.ctex"]
 
 [params]
 

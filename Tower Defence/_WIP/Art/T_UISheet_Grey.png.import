@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://v5esvnjrt2h1"
 path.s3tc="res://.godot/imported/T_UISheet_Grey.png-916cbf65c5ca0ba3657108b4d35d853f.s3tc.ctex"
+path.etc2="res://.godot/imported/T_UISheet_Grey.png-916cbf65c5ca0ba3657108b4d35d853f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://_WIP/Art/T_UISheet_Grey.png"
-dest_files=["res://.godot/imported/T_UISheet_Grey.png-916cbf65c5ca0ba3657108b4d35d853f.s3tc.ctex"]
+dest_files=["res://.godot/imported/T_UISheet_Grey.png-916cbf65c5ca0ba3657108b4d35d853f.s3tc.ctex", "res://.godot/imported/T_UISheet_Grey.png-916cbf65c5ca0ba3657108b4d35d853f.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cbrbmoxt3cee4"
 path.s3tc="res://.godot/imported/T_Discord.png-0ef09722399a7b56431929bd756a8664.s3tc.ctex"
+path.etc2="res://.godot/imported/T_Discord.png-0ef09722399a7b56431929bd756a8664.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Levels/Generic/MainMenu/T_Discord.png"
-dest_files=["res://.godot/imported/T_Discord.png-0ef09722399a7b56431929bd756a8664.s3tc.ctex"]
+dest_files=["res://.godot/imported/T_Discord.png-0ef09722399a7b56431929bd756a8664.s3tc.ctex", "res://.godot/imported/T_Discord.png-0ef09722399a7b56431929bd756a8664.etc2.ctex"]
 
 [params]
 

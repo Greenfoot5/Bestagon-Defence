@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://5dp5jnbjyagq"
 path.s3tc="res://.godot/imported/T_DropdownArrow.png-b2f4543a3a6eadcd4bd603b91570a2d8.s3tc.ctex"
+path.etc2="res://.godot/imported/T_DropdownArrow.png-b2f4543a3a6eadcd4bd603b91570a2d8.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://UI/Generic/T_DropdownArrow.png"
-dest_files=["res://.godot/imported/T_DropdownArrow.png-b2f4543a3a6eadcd4bd603b91570a2d8.s3tc.ctex"]
+dest_files=["res://.godot/imported/T_DropdownArrow.png-b2f4543a3a6eadcd4bd603b91570a2d8.s3tc.ctex", "res://.godot/imported/T_DropdownArrow.png-b2f4543a3a6eadcd4bd603b91570a2d8.etc2.ctex"]
 
 [params]
 
