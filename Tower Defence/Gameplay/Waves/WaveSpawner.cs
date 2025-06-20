@@ -39,7 +39,7 @@ public partial class WaveSpawner : Node2D
     /// The waves the level will loop through
     /// </summary>
     [Export]
-    private Wave[] _waves;
+    private Waves _waves;
     
     /// <summary>
     /// The countdown for all spawners
@@ -134,7 +134,7 @@ public partial class WaveSpawner : Node2D
         Interlocked.Increment(ref _activeSpawners);
             
         // Update the wave index and spawn the first enemy
-        _waveIndex = GameStats.Rounds - 1;
+        _waveIndex = GameStats.Rounds;
         if (GameStats.Rounds > _waveData.Length)
             _waveIndex = (_waveIndex - _waveData.RepeatIndex) % (_waveData.Length - _waveData.RepeatIndex) + _waveData.RepeatIndex;
         SpawnNext();
