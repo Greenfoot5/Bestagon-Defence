@@ -1,8 +1,6 @@
 shader_type canvas_item;
 
-#include "sdf_noise.gdshaderinc"
-
-global uniform float UNSCALED_TIME;
+#include "../sdf_noise.gdshaderinc"
 
 uniform vec2 animate_direction = vec2(1,1);
 
