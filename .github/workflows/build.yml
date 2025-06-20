@@ -62,9 +62,9 @@ jobs:
           docker-images: true
           swap-storage: true
           
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
-        if: ${{ matrix.targetPlatform != 'Android' }}
+#      - name: Setup Android SDK
+#        uses: android-actions/setup-android@v3
+#        if: ${{ matrix.targetPlatform != 'Android' }}
 
       - name: export game
         id: export
