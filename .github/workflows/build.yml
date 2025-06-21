@@ -77,7 +77,7 @@ jobs:
           relative_project_path: "./Tower Defense"
           verbose: true
           archive_output: true
-          presets_to_export: ${{ matrix.targetPlatform }}
+#          presets_to_export: ${{ matrix.targetPlatform }}
 
       - uses: actions/upload-artifact@v4
         with:
