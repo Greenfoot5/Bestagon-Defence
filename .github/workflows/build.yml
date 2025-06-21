@@ -16,7 +16,7 @@ jobs:
   buildForAllSupportedPlatforms:
     name: Build for ${{ matrix.targetPlatform }}
     runs-on: ${{ matrix.jobOS }}
-    container: barichello/godot-ci:mono-${GODOT_VERSION}
+    container: barichello/godot-ci:mono-4.4.1
     strategy:
       fail-fast: false
       max-parallel: 5
