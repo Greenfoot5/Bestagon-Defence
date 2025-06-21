@@ -67,7 +67,7 @@ jobs:
 #        if: ${{ matrix.targetPlatform != 'Android' }}
       
       - id: ls
-        run: echo "ls './Tower Defense''
+        run: echo "ls './Tower Defense'"
 
       - name: export game
         id: export
