@@ -68,10 +68,10 @@ jobs:
 #          docker-images: true
 #          swap-storage: true
 
-      - name: Setup
-        run: |
-          mkdir -v -p ~/.local/share/godot/export_templates/
-          mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
+#      - name: Setup
+#        run: |
+#          mkdir -v -p ~/.local/share/godot/export_templates/
+#          mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
 
       - name: export
         run: |
