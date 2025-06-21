@@ -6,11 +6,6 @@ on:
     types:
       - opened
   workflow_dispatch:
-    
-env:
-  GODOT_VERSION: 4.4.1
-  EXPORT_NAME: BestagonDefense-Nightly
-  PROJECT_PATH: "TowerDefense"
 
 jobs:
   buildForAllSupportedPlatforms:
@@ -18,23 +13,17 @@ jobs:
     runs-on: ${{ matrix.jobOS }}
     strategy:
       fail-fast: false
-      max-parallel: 5
       matrix:
         include:
-          - exportName: macOS # Build a macOS standalone.
+          - exportName: macOS
             jobOS: ubuntu-latest
             # Must match platform in here https://github.com/firebelley/godot-export/blob/master/src/types/GodotExport.ts
-            platform: macOS
-          - exportName: win # Build a Windows 64-bit standalone.
+          - exportName: Windows
             jobOS: ubuntu-latest
-            platform: "Windows Desktop"
 #          - exportName: StandaloneLinux64 # Build a Linux 64-bit standalone.
 #            jobOS: ubuntu-latest
-#          - exportName: iOS # Build an iOS player.
-#            jobOS: ubuntu-latest
+#            platform: 
 #          - exportName: Android # Build an Android .apk standalone app.
-#            jobOS: ubuntu-latest
-#          - exportName: WebGL # WebGL.
 #            jobOS: ubuntu-latest
         
     outputs:
@@ -48,20 +37,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-        with:
-          lfs: true
 
       - name: export game
-        id: export
         uses: firebelley/godot-export@v6.0.0
         with:
           godot_executable_download_url: https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_mono_linux_x86_64.zip
           godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_mono_export_templates.tpz
           relative_project_path: "./TowerDefense"
           relative_export_path: "./build/${{matrix.exportName}}"
-          verbose: true
           archive_output: true
-          presets_to_export: ${{ matrix.platform }}
+          presets_to_export: ${{ matrix.exportName }}
 
       - uses: actions/upload-artifact@v4
         with:
