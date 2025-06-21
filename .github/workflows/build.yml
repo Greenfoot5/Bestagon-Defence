@@ -6,18 +6,24 @@ on:
 #    types:
 #      - opened
   workflow_dispatch:
+    
+env:
+  GODOT_VERSION: 4.4.1
+  EXPORT_NAME: BestagonDefense-Nightly
+  PROJECT_PATH: "Tower Defense"
 
 jobs:
   buildForAllSupportedPlatforms:
     name: Build for ${{ matrix.targetPlatform }}
     runs-on: ${{ matrix.jobOS }}
+    container: barichello/godot-ci:mono-${{env.GODOT_VERSION}}
     strategy:
       fail-fast: false
       max-parallel: 5
       matrix:
         include:
           # Temporarily disabled as it wasn't working
-          - targetPlatform: StandaloneOSX # Build a macOS standalone (Intel 64-bit).
+          - targetPlatform: macOS # Build a macOS standalone (Intel 64-bit).
             jobOS: ubuntu-latest
 #          - targetPlatform: StandaloneWindows # Build a Windows standalone.
 #            jobOS: ubuntu-latest
@@ -44,7 +50,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+#          fetch-depth: 0
           lfs: true
             
 #      - uses: jlumbroso/free-disk-space@main
@@ -61,33 +67,23 @@ jobs:
 #          large-packages: true
 #          docker-images: true
 #          swap-storage: true
-          
-#      - name: Setup Android SDK
-#        uses: android-actions/setup-android@v3
-#        if: ${{ matrix.targetPlatform != 'Android' }}
-      
-      - id: ls
-        run: echo "ls './Tower Defense'"
 
-      - name: export game
-        id: export
-        # Use latest version (see releases for all versions)
-        uses: firebelley/godot-export@v6.0.0
-        with:
-          # Defining all the required inputs
-          godot_executable_download_url: https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_mono_linux_x86_64.zip
-          godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_mono_export_templates.tpz
-          relative_project_path: "./Tower Defense/"
-          verbose: true
-          archive_output: true
-#          presets_to_export: ${{ matrix.targetPlatform }}
+      - name: Setup
+        run: |
+          mkdir -v -p ~/.local/share/godot/export_templates/
+          mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
+
+      - name: export
+        run: |
+          mkdir -v -p build/${{matrix.targetPlatform}}
+          EXPORT_DIR="$(readlink -f build)"
+          cd $PROJECT_PATH
+          godot --headless --verbose --export-release "${{ matrix.targetPlatform }}" "$EXPORT_DIR/${{matrix.targetPlatform}}/$EXPORT_NAME.zip"
 
       - uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.targetPlatform }}
-          path: |
-            ${{ steps.export.outputs.archive_directory }}/*
-            !*DoNotShip/
+          path: build/${{matrix.targetPlatform}}
       
       - id: outputResult
         run: echo "${{ matrix.targetPlatform }}Result=${{ job.status }}" >> $GITHUB_ENV
