@@ -10,7 +10,7 @@ on:
 env:
   GODOT_VERSION: 4.4.1
   EXPORT_NAME: BestagonDefense-Nightly
-  PROJECT_PATH: "Tower Defense"
+  PROJECT_PATH: "Tower\ Defense"
 
 jobs:
   buildForAllSupportedPlatforms:
@@ -78,8 +78,8 @@ jobs:
         run: |
           mkdir -v -p build/${{matrix.targetPlatform}}
           EXPORT_DIR="$(readlink -f build)"
-          ls
-          cd "$PROJECT_PATH"
+          ls -a
+          cd $PROJECT_PATH
           godot --headless --verbose --export-release "${{ matrix.targetPlatform }}" "$EXPORT_DIR/${{matrix.targetPlatform}}/$EXPORT_NAME.zip"
 
       - uses: actions/upload-artifact@v4
