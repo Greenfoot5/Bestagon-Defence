@@ -65,6 +65,9 @@ jobs:
 #      - name: Setup Android SDK
 #        uses: android-actions/setup-android@v3
 #        if: ${{ matrix.targetPlatform != 'Android' }}
+      
+      - id: ls
+        run: echo "ls './Tower Defense''
 
       - name: export game
         id: export
