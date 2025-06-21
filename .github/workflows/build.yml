@@ -74,16 +74,15 @@ jobs:
           # Defining all the required inputs
           godot_executable_download_url: https://downloads.tuxfamily.org/godotengine/4.0/Godot_v4.0-stable_linux.x86_64.zip
           godot_export_templates_download_url: https://downloads.tuxfamily.org/godotengine/4.0/Godot_v4.0-stable_export_templates.tpz
-          relative_project_path: ./
+          relative_project_path: "./Tower Defense"
           archive_output: true
-          build_directory: "build/"
           presets_to_export: ${{ matrix.targetPlatform }}
 
       - uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.targetPlatform }}
           path: |
-            build/
+            ${{build_directory}}
             !*DoNotShip/
       
       - id: outputResult
