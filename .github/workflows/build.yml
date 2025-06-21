@@ -77,7 +77,7 @@ jobs:
         run: |
           mkdir -v -p build/${{matrix.targetPlatform}}
           EXPORT_DIR="$(readlink -f build)"
-          cd $PROJECT_PATH
+          cd "$PROJECT_PATH"
           godot --headless --verbose --export-release "${{ matrix.targetPlatform }}" "$EXPORT_DIR/${{matrix.targetPlatform}}/$EXPORT_NAME.zip"
 
       - uses: actions/upload-artifact@v4
