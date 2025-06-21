@@ -72,11 +72,13 @@ jobs:
 #        run: |
 #          mkdir -v -p ~/.local/share/godot/export_templates/
 #          mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
-
+      - run: ls
+      
       - name: export
         run: |
           mkdir -v -p build/${{matrix.targetPlatform}}
           EXPORT_DIR="$(readlink -f build)"
+          ls
           cd "$PROJECT_PATH"
           godot --headless --verbose --export-release "${{ matrix.targetPlatform }}" "$EXPORT_DIR/${{matrix.targetPlatform}}/$EXPORT_NAME.zip"
 
