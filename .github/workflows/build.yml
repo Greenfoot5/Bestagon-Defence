@@ -82,7 +82,7 @@ jobs:
         with:
           name: ${{ matrix.targetPlatform }}
           path: |
-            ${{build_directory}}
+            ${{ steps.export.outputs.archive_directory }}/*
             !*DoNotShip/
       
       - id: outputResult
