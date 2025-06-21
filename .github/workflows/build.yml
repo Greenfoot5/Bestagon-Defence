@@ -27,8 +27,8 @@ jobs:
             jobOS: ubuntu-latest
 #          - targetPlatform: StandaloneWindows # Build a Windows standalone.
 #            jobOS: ubuntu-latest
-#          - targetPlatform: StandaloneWindows64 # Build a Windows 64-bit standalone.
-#            jobOS: ubuntu-latest
+          - targetPlatform: win # Build a Windows 64-bit standalone.
+            jobOS: ubuntu-latest
 #          - targetPlatform: StandaloneLinux64 # Build a Linux 64-bit standalone.
 #            jobOS: ubuntu-latest
 #          - targetPlatform: iOS # Build an iOS player.
@@ -40,7 +40,7 @@ jobs:
         
     outputs:
       StandaloneOSX: ${{ steps.outputResult.outputs.StandaloneOSX }}
-#      StandaloneWindows: ${{ steps.outputResult.outputs.StandaloneWindows }}
+      StandaloneWindows: ${{ steps.outputResult.outputs.StandaloneWindows }}
 #      StandaloneWindows64: ${{ steps.outputResult.outputs.StandaloneWindows64 }}
 #      StandaloneLinux64: ${{ steps.outputResult.outputs.StandaloneLinux64 }}
       #iOS: ${{ steps.outputResult.outputs.iOS }}
