@@ -2,9 +2,9 @@ name: Bestagon-Defence build
 
 on:
   push:
-#  pull_request: 
-#    types:
-#      - opened
+  pull_request: 
+    types:
+      - opened
   workflow_dispatch:
     
 env:
@@ -14,28 +14,27 @@ env:
 
 jobs:
   buildForAllSupportedPlatforms:
-    name: Build for ${{ matrix.targetPlatform }}
+    name: Build for ${{ matrix.exportName }}
     runs-on: ${{ matrix.jobOS }}
-#    container: barichello/godot-ci:mono-4.4.1
     strategy:
       fail-fast: false
       max-parallel: 5
       matrix:
         include:
-          # Temporarily disabled as it wasn't working
-          - targetPlatform: macOS # Build a macOS standalone (Intel 64-bit).
+          - exportName: macOS # Build a macOS standalone.
             jobOS: ubuntu-latest
-#          - targetPlatform: StandaloneWindows # Build a Windows standalone.
-#            jobOS: ubuntu-latest
-          - targetPlatform: win # Build a Windows 64-bit standalone.
+            # Must match platform in here https://github.com/firebelley/godot-export/blob/master/src/types/GodotExport.ts
+            platform: macOS
+          - exportName: win # Build a Windows 64-bit standalone.
             jobOS: ubuntu-latest
-#          - targetPlatform: StandaloneLinux64 # Build a Linux 64-bit standalone.
+            platform: "Windows Desktop"
+#          - exportName: StandaloneLinux64 # Build a Linux 64-bit standalone.
 #            jobOS: ubuntu-latest
-#          - targetPlatform: iOS # Build an iOS player.
+#          - exportName: iOS # Build an iOS player.
 #            jobOS: ubuntu-latest
-#          - targetPlatform: Android # Build an Android .apk standalone app.
+#          - exportName: Android # Build an Android .apk standalone app.
 #            jobOS: ubuntu-latest
-#          - targetPlatform: WebGL # WebGL.
+#          - exportName: WebGL # WebGL.
 #            jobOS: ubuntu-latest
         
     outputs:
@@ -50,67 +49,33 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-#          fetch-depth: 0
           lfs: true
-            
-#      - uses: jlumbroso/free-disk-space@main
-#        with:
-#          # this might remove tools that are actually needed,
-#          # if set to "true" but frees about 6 GB
-#          tool-cache: false
-#          
-#          # all of these default to true, but feel free to set to
-#          # "false" if necessary for your workflow
-#          android: true
-#          dotnet: true
-#          haskell: false
-#          large-packages: true
-#          docker-images: true
-#          swap-storage: true
-
-#      - name: Setup
-#        run: |
-#          mkdir -v -p ~/.local/share/godot/export_templates/
-#          mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
 
       - name: export game
         id: export
-        # Use latest version (see releases for all versions)
         uses: firebelley/godot-export@v6.0.0
         with:
-          # Defining all the required inputs
           godot_executable_download_url: https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_mono_linux_x86_64.zip
           godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_mono_export_templates.tpz
           relative_project_path: "./TowerDefense"
-          relative_export_path: "./build/${{matrix.targetPlatform}}"
+          relative_export_path: "./build/${{matrix.exportName}}"
           verbose: true
           archive_output: true
-      #          presets_to_export: ${{ matrix.targetPlatform }}
-      
-#      - name: Setup
-#        run: |
-#          mkdir -v -p build/${{matrix.targetPlatform}}
-#      
-#      - name: export
-#        working-directory: "TowerDefense/"
-#        run: |
-#          mkdir -v -p build/${{matrix.targetPlatform}}
-#          EXPORT_DIR="$(readlink -f build)"
-#          godot --headless --verbose --export-release "${{ matrix.targetPlatform }}" "$EXPORT_DIR/${{matrix.targetPlatform}}/$EXPORT_NAME.zip"
+          presets_to_export: ${{ matrix.platform }}
 
       - uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.targetPlatform }}
-          path: build/${{matrix.targetPlatform}}
+          name: ${{ matrix.exportName }}
+          path: build/${{matrix.exportName}}
       
       - id: outputResult
-        run: echo "${{ matrix.targetPlatform }}Result=${{ job.status }}" >> $GITHUB_ENV
+        run: echo "${{ matrix.exportName }}Result=${{ job.status }}" >> $GITHUB_ENV
   
   sendSuccessNotification:
     runs-on: ubuntu-latest
     needs:
       - buildForAllSupportedPlatforms
-    if: ${{ success() }}
+    if: ${{ success() && github.event_name != 'pull_request' }} 
     steps:
       - uses: tsickert/discord-webhook@v6.0.0
         with:
@@ -125,7 +90,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: 
       - buildForAllSupportedPlatforms
-    if: ${{ failure() }}
+    if: ${{ failure() && github.event_name != 'pull_request' }}
     steps:
       - uses: tsickert/discord-webhook@v6.0.0
         with:
