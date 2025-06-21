@@ -72,14 +72,15 @@ jobs:
 #        run: |
 #          mkdir -v -p ~/.local/share/godot/export_templates/
 #          mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
-      - run: ls
+      - name: Setup
+        run: |
+          mkdir -v -p build/${{matrix.targetPlatform}}
       
       - name: export
+        working-directory: "Tower Defense/"
         run: |
           mkdir -v -p build/${{matrix.targetPlatform}}
           EXPORT_DIR="$(readlink -f build)"
-          ls -a
-          cd $PROJECT_PATH
           godot --headless --verbose --export-release "${{ matrix.targetPlatform }}" "$EXPORT_DIR/${{matrix.targetPlatform}}/$EXPORT_NAME.zip"
 
       - uses: actions/upload-artifact@v4
