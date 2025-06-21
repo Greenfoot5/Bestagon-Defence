@@ -16,7 +16,7 @@ jobs:
   buildForAllSupportedPlatforms:
     name: Build for ${{ matrix.targetPlatform }}
     runs-on: ${{ matrix.jobOS }}
-    container: barichello/godot-ci:mono-4.4.1
+#    container: barichello/godot-ci:mono-4.4.1
     strategy:
       fail-fast: false
       max-parallel: 5
@@ -72,16 +72,30 @@ jobs:
 #        run: |
 #          mkdir -v -p ~/.local/share/godot/export_templates/
 #          mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
-      - name: Setup
-        run: |
-          mkdir -v -p build/${{matrix.targetPlatform}}
+
+      - name: export game
+        id: export
+        # Use latest version (see releases for all versions)
+        uses: firebelley/godot-export@v6.0.0
+        with:
+          # Defining all the required inputs
+          godot_executable_download_url: https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_mono_linux_x86_64.zip
+          godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_mono_export_templates.tpz
+          relative_project_path: "./Tower Defense"
+          verbose: true
+          archive_output: true
+      #          presets_to_export: ${{ matrix.targetPlatform }}
       
-      - name: export
-        working-directory: "TowerDefense/"
-        run: |
-          mkdir -v -p build/${{matrix.targetPlatform}}
-          EXPORT_DIR="$(readlink -f build)"
-          godot --headless --verbose --export-release "${{ matrix.targetPlatform }}" "$EXPORT_DIR/${{matrix.targetPlatform}}/$EXPORT_NAME.zip"
+#      - name: Setup
+#        run: |
+#          mkdir -v -p build/${{matrix.targetPlatform}}
+#      
+#      - name: export
+#        working-directory: "TowerDefense/"
+#        run: |
+#          mkdir -v -p build/${{matrix.targetPlatform}}
+#          EXPORT_DIR="$(readlink -f build)"
+#          godot --headless --verbose --export-release "${{ matrix.targetPlatform }}" "$EXPORT_DIR/${{matrix.targetPlatform}}/$EXPORT_NAME.zip"
 
       - uses: actions/upload-artifact@v4
         with:
