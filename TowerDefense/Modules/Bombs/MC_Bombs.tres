@@ -3,9 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://cxh4f8ubsbkpd" path="res://Modules/Bombs/TA_Bombs.tres" id="1_eahpt"]
 [ext_resource type="Resource" uid="uid://bamvsyhwojrk7" path="res://Modules/Bombs/M_BombsT1.tres" id="1_g0ebs"]
 [ext_resource type="Script" uid="uid://05pfhoqbexkq" path="res://Modules/ModuleChain.cs" id="1_xg04i"]
-[ext_resource type="Resource" uid="uid://c4f1433akw3r2" path="res://Modules/Bombs/M_BombsT2.tres" id="2_eahpt"]
-[ext_resource type="Resource" uid="uid://cgw8cqwny51m3" path="res://Modules/Bombs/M_BombsT3.tres" id="3_rcqw2"]
-[ext_resource type="Resource" uid="uid://dnuu32ls02ld4" path="res://Modules/Bombs/M_BombsT4.tres" id="4_xspbj"]
+[ext_resource type="Resource" uid="uid://cv1aa47xfjaqx" path="res://Modules/Bombs/M_BombsT2.tres" id="2_eahpt"]
+[ext_resource type="Resource" uid="uid://bo4upfl0473b5" path="res://Modules/Bombs/M_BombsT3.tres" id="3_rcqw2"]
+[ext_resource type="Resource" uid="uid://d2gh85llbrv2n" path="res://Modules/Bombs/M_BombsT4.tres" id="4_xspbj"]
 
 [resource]
 script = ExtResource("1_xg04i")
