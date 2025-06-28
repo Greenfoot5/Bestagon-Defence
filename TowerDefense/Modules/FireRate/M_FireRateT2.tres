@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="FireRateModule" load_steps=4 format=3 uid="uid://dcrye0t1xjcpj"]
+
+[ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/Modifier.cs" id="1_6bc0b"]
+[ext_resource type="Script" uid="uid://6poekwmyvdjt" path="res://Modules/FireRate/FireRateModule.cs" id="2_bm1k3"]
+
+[sub_resource type="Resource" id="Resource_sq7i8"]
+script = ExtResource("1_6bc0b")
+Value = 0.86
+Op = 1
+metadata/_custom_type_script = "uid://be3vaboc8v6w0"
+
+[resource]
+script = ExtResource("2_bm1k3")
+_percentageChange = SubResource("Resource_sq7i8")
+ModuleTier = 2
+IsUpgradableTo = true
+metadata/_custom_type_script = "uid://6poekwmyvdjt"

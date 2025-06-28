@@ -1,11 +1,16 @@
-[gd_resource type="Resource" script_class="ModuleChain" load_steps=3 format=3 uid="uid://dp3kf2hqm0tqm"]
+[gd_resource type="Resource" script_class="ModuleChain" load_steps=8 format=3 uid="uid://dp3kf2hqm0tqm"]
 
 [ext_resource type="Script" uid="uid://05pfhoqbexkq" path="res://Modules/ModuleChain.cs" id="1_k5yhd"]
 [ext_resource type="Texture2D" uid="uid://bo5auanjcdp7a" path="res://Modules/FireRate/TA_FireRate.tres" id="1_ro8nk"]
+[ext_resource type="Resource" uid="uid://4fmhhunyr5dm" path="res://Modules/FireRate/M_FireRateT1.tres" id="2_cughr"]
+[ext_resource type="Resource" uid="uid://dcrye0t1xjcpj" path="res://Modules/FireRate/M_FireRateT2.tres" id="3_b2kql"]
+[ext_resource type="Resource" uid="uid://chxd3aoa46n31" path="res://Modules/FireRate/M_FireRateT3.tres" id="4_j2aug"]
+[ext_resource type="Resource" uid="uid://us7t62f3vgsq" path="res://Modules/FireRate/M_FireRateT4.tres" id="5_rg4kh"]
+[ext_resource type="Resource" uid="uid://bl74k4l4gn6n" path="res://Modules/FireRate/M_FireRateT5.tres" id="6_4w2q1"]
 
 [resource]
 script = ExtResource("1_k5yhd")
-ModuleTiers = null
+ModuleTiers = [ExtResource("2_cughr"), ExtResource("3_b2kql"), ExtResource("4_j2aug"), ExtResource("5_rg4kh"), ExtResource("6_4w2q1")]
 Unique = false
 AccentColor = Color(0.462745, 0.227451, 0.941176, 1)
 Icon = ExtResource("1_ro8nk")
