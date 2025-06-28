@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Waves" load_steps=28 format=3 uid="uid://7akq7gvgid27"]
+[gd_resource type="Resource" script_class="Waves" load_steps=31 format=3 uid="uid://7akq7gvgid27"]
 
 [ext_resource type="Script" uid="uid://b4plfepxlwemi" path="res://Gameplay/Waves/Waves.cs" id="1_rh04d"]
 [ext_resource type="Resource" uid="uid://bm67ol4yudaf4" path="res://Enemies/Pawns/BasicStats.tres" id="2_yay6b"]
@@ -136,7 +136,27 @@ EnemySets = Array[Object]([SubResource("Resource_mnvkx"), SubResource("Resource_
 SetDelays = PackedFloat32Array(0.5, 1, 1)
 metadata/_custom_type_script = "uid://bgfugrs685jpk"
 
+[sub_resource type="Resource" id="Resource_aldo2"]
+script = ExtResource("3_8j1sk")
+Enemy = ExtResource("5_qu5hr")
+Count = 8
+Rate = 0.7
+metadata/_custom_type_script = "uid://bmxuh31stih5j"
+
+[sub_resource type="Resource" id="Resource_864a4"]
+script = ExtResource("3_8j1sk")
+Enemy = ExtResource("8_rgg18")
+Count = 3
+Rate = 1.0
+metadata/_custom_type_script = "uid://bmxuh31stih5j"
+
+[sub_resource type="Resource" id="Resource_elmqu"]
+script = ExtResource("4_rgg18")
+EnemySets = Array[Object]([SubResource("Resource_aldo2"), SubResource("Resource_864a4")])
+SetDelays = PackedFloat32Array(1)
+metadata/_custom_type_script = "uid://bgfugrs685jpk"
+
 [resource]
 script = ExtResource("1_rh04d")
-waves = [SubResource("Resource_5omvj"), SubResource("Resource_ryx7f"), SubResource("Resource_e2hpg"), SubResource("Resource_qu5hr"), SubResource("Resource_ai3d2"), SubResource("Resource_fpjk1"), null, null, null, null, null, null, null, null]
+waves = [SubResource("Resource_5omvj"), SubResource("Resource_ryx7f"), SubResource("Resource_e2hpg"), SubResource("Resource_qu5hr"), SubResource("Resource_ai3d2"), SubResource("Resource_fpjk1"), SubResource("Resource_elmqu"), null, null, null, null, null, null, null]
 metadata/_custom_type_script = "uid://b4plfepxlwemi"
