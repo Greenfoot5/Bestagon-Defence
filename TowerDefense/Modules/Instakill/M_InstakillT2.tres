@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InstakillModule" load_steps=2 format=3 uid="uid://dvjgnhwn1xb4w"]
+
+[ext_resource type="Script" uid="uid://chrxjcxk0id15" path="res://Modules/Instakill/InstakillModule.cs" id="1_kjkti"]
+
+[resource]
+script = ExtResource("1_kjkti")
+_instakillChance = 0.04
+ModuleTier = 2
+IsUpgradableTo = true
+metadata/_custom_type_script = "uid://chrxjcxk0id15"

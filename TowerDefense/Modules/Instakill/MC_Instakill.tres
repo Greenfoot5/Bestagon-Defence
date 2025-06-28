@@ -1,11 +1,15 @@
-[gd_resource type="Resource" script_class="ModuleChain" load_steps=3 format=3 uid="uid://dbequb33mo4a4"]
+[gd_resource type="Resource" script_class="ModuleChain" load_steps=7 format=3 uid="uid://dbequb33mo4a4"]
 
 [ext_resource type="Texture2D" uid="uid://n5odap4efql5" path="res://Modules/Instakill/TA_Instakill.tres" id="1_lpcpc"]
 [ext_resource type="Script" uid="uid://05pfhoqbexkq" path="res://Modules/ModuleChain.cs" id="1_ros8q"]
+[ext_resource type="Resource" uid="uid://4xkpln88efrv" path="res://Modules/Instakill/M_InstakillT1.tres" id="2_rcito"]
+[ext_resource type="Resource" uid="uid://dvjgnhwn1xb4w" path="res://Modules/Instakill/M_InstakillT2.tres" id="3_e7yqg"]
+[ext_resource type="Resource" uid="uid://dq3hre8ji27a3" path="res://Modules/Instakill/M_InstakillT3.tres" id="4_yj8h2"]
+[ext_resource type="Resource" uid="uid://c3o8cb1mkrkyx" path="res://Modules/Instakill/M_InstakillT4.tres" id="5_53sie"]
 
 [resource]
 script = ExtResource("1_ros8q")
-ModuleTiers = null
+ModuleTiers = [ExtResource("2_rcito"), ExtResource("3_e7yqg"), ExtResource("4_yj8h2"), ExtResource("5_53sie")]
 Unique = false
 AccentColor = Color(0.52549, 0.121569, 0.211765, 1)
 Icon = ExtResource("1_lpcpc")
