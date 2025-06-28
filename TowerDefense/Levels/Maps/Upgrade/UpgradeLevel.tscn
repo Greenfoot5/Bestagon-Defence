@@ -208,75 +208,6 @@ position = Vector2(116, 432)
 [node name="Waypoint (20)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
 position = Vector2(158.313, 457.5)
 
-[node name="SpawnPoint" type="Sprite2D" parent="Map/SpawnPoint" node_paths=PackedStringArray("_countdown")]
-material = SubResource("ShaderMaterial_nt6x0")
-position = Vector2(-405, -225)
-texture = ExtResource("9_b88u8")
-region_rect = Rect2(414, 439, 164, 145)
-script = ExtResource("3_o3dn4")
-_waves = ExtResource("11_yrqfs")
-_countdown = NodePath("../../../CanvasLayer/UI/WaveCountdown")
-
-[node name="Waypoint (1)" parent="Map/SpawnPoint/SpawnPoint" instance=ExtResource("10_4ignw")]
-position = Vector2(76, 42)
-
-[node name="Waypoint (2)" parent="Map/SpawnPoint/SpawnPoint" instance=ExtResource("10_4ignw")]
-position = Vector2(116, 19)
-
-[node name="Waypoint (3)" parent="Map/SpawnPoint/SpawnPoint" instance=ExtResource("10_4ignw")]
-position = Vector2(196, 65)
-
-[node name="Waypoint (4)" parent="Map/SpawnPoint/SpawnPoint" instance=ExtResource("10_4ignw")]
-position = Vector2(235, 42)
-
-[node name="Waypoint (5)" parent="Map/SpawnPoint/SpawnPoint" instance=ExtResource("10_4ignw")]
-position = Vector2(275, 65)
-
-[node name="Waypoint (6)" parent="Map/SpawnPoint/SpawnPoint" instance=ExtResource("10_4ignw")]
-position = Vector2(275, 111)
-
-[node name="Waypoint (7)" parent="Map/SpawnPoint/SpawnPoint" instance=ExtResource("10_4ignw")]
-position = Vector2(235, 133)
-
-[node name="Waypoint (8)" parent="Map/SpawnPoint/SpawnPoint" instance=ExtResource("10_4ignw")]
-position = Vector2(235, 180)
-
-[node name="Waypoint (9)" parent="Map/SpawnPoint/SpawnPoint" instance=ExtResource("10_4ignw")]
-position = Vector2(275, 203)
-
-[node name="Waypoint (10)" parent="Map/SpawnPoint/SpawnPoint" instance=ExtResource("10_4ignw")]
-position = Vector2(354, 157)
-
-[node name="Waypoint (11)" parent="Map/SpawnPoint/SpawnPoint" instance=ExtResource("10_4ignw")]
-position = Vector2(433, 203)
-
-[node name="Waypoint (12)" parent="Map/SpawnPoint/SpawnPoint" instance=ExtResource("10_4ignw")]
-position = Vector2(433, 386)
-
-[node name="Waypoint (13)" parent="Map/SpawnPoint/SpawnPoint" instance=ExtResource("10_4ignw")]
-position = Vector2(473, 408)
-
-[node name="Waypoint (14)" parent="Map/SpawnPoint/SpawnPoint" instance=ExtResource("10_4ignw")]
-position = Vector2(631, 318)
-
-[node name="Waypoint (15)" parent="Map/SpawnPoint/SpawnPoint" instance=ExtResource("10_4ignw")]
-position = Vector2(512, 248)
-
-[node name="Waypoint (16)" parent="Map/SpawnPoint/SpawnPoint" instance=ExtResource("10_4ignw")]
-position = Vector2(314, 363)
-
-[node name="Waypoint (17)" parent="Map/SpawnPoint/SpawnPoint" instance=ExtResource("10_4ignw")]
-position = Vector2(195, 294)
-
-[node name="Waypoint (18)" parent="Map/SpawnPoint/SpawnPoint" instance=ExtResource("10_4ignw")]
-position = Vector2(116, 340)
-
-[node name="Waypoint (19)" parent="Map/SpawnPoint/SpawnPoint" instance=ExtResource("10_4ignw")]
-position = Vector2(116, 432)
-
-[node name="Waypoint (20)" parent="Map/SpawnPoint/SpawnPoint" instance=ExtResource("10_4ignw")]
-position = Vector2(158.313, 457.5)
-
 [node name="DeathBitManager" type="Node2D" parent="Map"]
 script = ExtResource("12_o3dn4")
 _bit = ExtResource("13_sxdqs")
@@ -345,26 +276,6 @@ pivot_offset = Vector2(128.64, 28.5642)
 [editable path="Map/SpawnPoint/Waypoint (18)"]
 [editable path="Map/SpawnPoint/Waypoint (19)"]
 [editable path="Map/SpawnPoint/Waypoint (20)"]
-[editable path="Map/SpawnPoint/SpawnPoint/Waypoint (1)"]
-[editable path="Map/SpawnPoint/SpawnPoint/Waypoint (2)"]
-[editable path="Map/SpawnPoint/SpawnPoint/Waypoint (3)"]
-[editable path="Map/SpawnPoint/SpawnPoint/Waypoint (4)"]
-[editable path="Map/SpawnPoint/SpawnPoint/Waypoint (5)"]
-[editable path="Map/SpawnPoint/SpawnPoint/Waypoint (6)"]
-[editable path="Map/SpawnPoint/SpawnPoint/Waypoint (7)"]
-[editable path="Map/SpawnPoint/SpawnPoint/Waypoint (8)"]
-[editable path="Map/SpawnPoint/SpawnPoint/Waypoint (9)"]
-[editable path="Map/SpawnPoint/SpawnPoint/Waypoint (10)"]
-[editable path="Map/SpawnPoint/SpawnPoint/Waypoint (11)"]
-[editable path="Map/SpawnPoint/SpawnPoint/Waypoint (12)"]
-[editable path="Map/SpawnPoint/SpawnPoint/Waypoint (13)"]
-[editable path="Map/SpawnPoint/SpawnPoint/Waypoint (14)"]
-[editable path="Map/SpawnPoint/SpawnPoint/Waypoint (15)"]
-[editable path="Map/SpawnPoint/SpawnPoint/Waypoint (16)"]
-[editable path="Map/SpawnPoint/SpawnPoint/Waypoint (17)"]
-[editable path="Map/SpawnPoint/SpawnPoint/Waypoint (18)"]
-[editable path="Map/SpawnPoint/SpawnPoint/Waypoint (19)"]
-[editable path="Map/SpawnPoint/SpawnPoint/Waypoint (20)"]
 [editable path="CanvasLayer/UI/ScreenCanvas"]
 [editable path="CanvasLayer/UI/ScreenCanvas/Selection/SelectionCards/Card_Turret"]
 [editable path="CanvasLayer/UI/ScreenCanvas/Selection/SelectionCards/Card_Module"]
