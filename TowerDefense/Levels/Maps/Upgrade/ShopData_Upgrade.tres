@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ShopData" load_steps=25 format=3 uid="uid://b6vw6l67k0fne"]
+[gd_resource type="Resource" script_class="ShopData" load_steps=30 format=3 uid="uid://b6vw6l67k0fne"]
 
 [ext_resource type="Resource" uid="uid://bjiq0f4ix8kym" path="res://Turrets/Shooter/Shooter_Basic.tres" id="1_d4njv"]
 [ext_resource type="Script" uid="uid://by85y3cqstj04" path="res://Abstract/Data/WeightedList.cs" id="1_ps0rn"]
@@ -71,28 +71,58 @@ _limits = [0.0, 5.0, 0.0, 20.0]
 _data = [Vector2(0, 4), 0.0, 0.0, 0, 0, Vector2(5, 2.5), -0.17519, -0.17519, 0, 0, Vector2(20, 1), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="Curve" id="Curve_m084i"]
+[sub_resource type="Curve" id="Curve_7bum0"]
 _data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_xt8uj"]
+[sub_resource type="Curve" id="Curve_yphpo"]
 _data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_42cso"]
+[sub_resource type="Curve" id="Curve_u1mj1"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_lchvv"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_tjkf6"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_ea6rf"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_rjfgl"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_nwhwp"]
 _data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
 point_count = 2
 
 [sub_resource type="Resource" id="Resource_jbv3k"]
 script = ExtResource("2_d4njv")
 Strain = 0
-Size = 3
-list_0/Blueprint = ExtResource("1_d4njv")
-list_0/Curve = SubResource("Curve_m084i")
-list_1/Blueprint = ExtResource("2_jbv3k")
-list_1/Curve = SubResource("Curve_xt8uj")
-list_2/Blueprint = ExtResource("3_m084i")
-list_2/Curve = SubResource("Curve_42cso")
+Size = 8
+list_0/Blueprint = ExtResource("4_xt8uj")
+list_0/Curve = SubResource("Curve_7bum0")
+list_1/Blueprint = ExtResource("5_42cso")
+list_1/Curve = SubResource("Curve_yphpo")
+list_2/Blueprint = ExtResource("2_jbv3k")
+list_2/Curve = SubResource("Curve_u1mj1")
+list_3/Blueprint = ExtResource("6_vseq1")
+list_3/Curve = SubResource("Curve_lchvv")
+list_4/Blueprint = ExtResource("7_yymvh")
+list_4/Curve = SubResource("Curve_tjkf6")
+list_5/Blueprint = ExtResource("3_m084i")
+list_5/Curve = SubResource("Curve_ea6rf")
+list_6/Blueprint = ExtResource("1_d4njv")
+list_6/Curve = SubResource("Curve_rjfgl")
+list_7/Blueprint = ExtResource("8_dnkco")
+list_7/Curve = SubResource("Curve_nwhwp")
 
 [resource]
 script = ExtResource("4_jbv3k")
