@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ModuleChain" load_steps=8 format=3 uid="uid://830voq1b6343"]
+[gd_resource type="Resource" script_class="ModuleChain" load_steps=3 format=3 uid="uid://830voq1b6343"]
 
 [ext_resource type="Script" uid="uid://05pfhoqbexkq" path="res://Modules/ModuleChain.cs" id="1_5s3nl"]
 [ext_resource type="Texture2D" uid="uid://b84nc2gdf17yv" path="res://Modules/Range/TA_Range.tres" id="1_wwmlr"]
