@@ -1,11 +1,16 @@
-[gd_resource type="Resource" script_class="ModuleChain" load_steps=3 format=3 uid="uid://830voq1b6343"]
+[gd_resource type="Resource" script_class="ModuleChain" load_steps=8 format=3 uid="uid://830voq1b6343"]
 
 [ext_resource type="Script" uid="uid://05pfhoqbexkq" path="res://Modules/ModuleChain.cs" id="1_5s3nl"]
 [ext_resource type="Texture2D" uid="uid://b84nc2gdf17yv" path="res://Modules/Range/TA_Range.tres" id="1_wwmlr"]
+[ext_resource type="Resource" uid="uid://50i2wpiytstq" path="res://Modules/Range/M_RangeT1.tres" id="2_375kc"]
+[ext_resource type="Resource" uid="uid://cprgfrng5o2np" path="res://Modules/Range/M_RangeT2.tres" id="3_tgibe"]
+[ext_resource type="Resource" uid="uid://1ur7y0gpi8l6" path="res://Modules/Range/M_RangeT3.tres" id="4_stdwh"]
+[ext_resource type="Resource" uid="uid://bvh428jai6xna" path="res://Modules/Range/M_RangeT4.tres" id="5_iaa6t"]
+[ext_resource type="Resource" uid="uid://dwo2nltrbvaj6" path="res://Modules/Range/M_RangeT5.tres" id="6_aimix"]
 
 [resource]
 script = ExtResource("1_5s3nl")
-ModuleTiers = null
+ModuleTiers = [ExtResource("2_375kc"), ExtResource("3_tgibe"), ExtResource("4_stdwh"), ExtResource("5_iaa6t"), ExtResource("6_aimix")]
 Unique = false
 AccentColor = Color(0.517647, 0.858824, 0.109804, 1)
 Icon = ExtResource("1_wwmlr")
