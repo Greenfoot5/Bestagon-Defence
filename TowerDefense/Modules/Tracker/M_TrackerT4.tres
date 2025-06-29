@@ -10,7 +10,7 @@ Op = 1
 
 [sub_resource type="Resource" id="Resource_tfiuq"]
 script = ExtResource("1_1fil3")
-Value = 2.0
+Value = 0.9
 Op = 1
 
 [resource]
