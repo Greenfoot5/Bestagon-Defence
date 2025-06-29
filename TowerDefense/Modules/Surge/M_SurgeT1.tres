@@ -1,0 +1,82 @@
+[gd_resource type="Resource" script_class="SurgeModule" load_steps=13 format=3 uid="uid://c6ryr77tjs2qw"]
+
+[ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/Modifier.cs" id="1_eb6h4"]
+[ext_resource type="Script" uid="uid://dj06ehomt0egj" path="res://Modules/Surge/SurgeModule.cs" id="1_ghq13"]
+
+[sub_resource type="Resource" id="Resource_t30j6"]
+script = ExtResource("1_eb6h4")
+Value = 0.9
+Op = 2
+metadata/_custom_type_script = "uid://be3vaboc8v6w0"
+
+[sub_resource type="Resource" id="Resource_1xjxg"]
+script = ExtResource("1_eb6h4")
+Value = 0.8
+Op = 2
+metadata/_custom_type_script = "uid://be3vaboc8v6w0"
+
+[sub_resource type="Resource" id="Resource_pi1nn"]
+script = ExtResource("1_eb6h4")
+Value = 1.5
+Op = 2
+metadata/_custom_type_script = "uid://be3vaboc8v6w0"
+
+[sub_resource type="Resource" id="Resource_koliu"]
+script = ExtResource("1_eb6h4")
+Value = 1.5
+Op = 2
+metadata/_custom_type_script = "uid://be3vaboc8v6w0"
+
+[sub_resource type="Resource" id="Resource_7ilyj"]
+script = ExtResource("1_eb6h4")
+Value = 2.0
+Op = 2
+metadata/_custom_type_script = "uid://be3vaboc8v6w0"
+
+[sub_resource type="Resource" id="Resource_oprha"]
+script = ExtResource("1_eb6h4")
+Value = 1.2
+Op = 2
+metadata/_custom_type_script = "uid://be3vaboc8v6w0"
+
+[sub_resource type="Resource" id="Resource_yms7w"]
+script = ExtResource("1_eb6h4")
+Value = 1.5
+Op = 2
+metadata/_custom_type_script = "uid://be3vaboc8v6w0"
+
+[sub_resource type="Resource" id="Resource_8cdsg"]
+script = ExtResource("1_eb6h4")
+Value = 2.0
+Op = 2
+metadata/_custom_type_script = "uid://be3vaboc8v6w0"
+
+[sub_resource type="Resource" id="Resource_udnne"]
+script = ExtResource("1_eb6h4")
+Value = 1.5
+Op = 2
+metadata/_custom_type_script = "uid://be3vaboc8v6w0"
+
+[sub_resource type="Resource" id="Resource_2okbs"]
+script = ExtResource("1_eb6h4")
+Value = 1.5
+Op = 2
+metadata/_custom_type_script = "uid://be3vaboc8v6w0"
+
+[resource]
+script = ExtResource("1_ghq13")
+_duration = 2
+_cooldown = 2.0
+_surgeShooterFireRateChange = SubResource("Resource_8cdsg")
+_surgeShooterDamageChange = SubResource("Resource_yms7w")
+_surgeSmasherFireRateChange = SubResource("Resource_udnne")
+_surgeSmasherRangeChange = SubResource("Resource_2okbs")
+_surgeLancerFireRateChange = SubResource("Resource_7ilyj")
+_surgeLancerKnockbackChange = SubResource("Resource_oprha")
+_surgeChokerFireRateChange = SubResource("Resource_pi1nn")
+_surgeChokerPartCountChange = SubResource("Resource_koliu")
+_fireRateChange = SubResource("Resource_1xjxg")
+_damageChange = SubResource("Resource_t30j6")
+ModuleTier = 1
+IsUpgradableTo = true
+metadata/_custom_type_script = "uid://dj06ehomt0egj"

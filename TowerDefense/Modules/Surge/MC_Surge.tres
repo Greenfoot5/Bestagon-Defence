@@ -1,11 +1,14 @@
-[gd_resource type="Resource" script_class="ModuleChain" load_steps=3 format=3 uid="uid://dgvlnbkphfdbw"]
+[gd_resource type="Resource" script_class="ModuleChain" load_steps=6 format=3 uid="uid://dgvlnbkphfdbw"]
 
 [ext_resource type="Texture2D" uid="uid://bwqxrukshsc7t" path="res://Modules/Surge/TA_Surge.tres" id="1_kn3iq"]
 [ext_resource type="Script" uid="uid://05pfhoqbexkq" path="res://Modules/ModuleChain.cs" id="1_t1bad"]
+[ext_resource type="Resource" uid="uid://c6ryr77tjs2qw" path="res://Modules/Surge/M_SurgeT1.tres" id="2_rila6"]
+[ext_resource type="Resource" uid="uid://cvgjvbtm72gcw" path="res://Modules/Surge/M_SurgeT2.tres" id="3_d2gox"]
+[ext_resource type="Resource" uid="uid://c55e7mltt2lwd" path="res://Modules/Surge/M_SurgeT3.tres" id="4_ytfwc"]
 
 [resource]
 script = ExtResource("1_t1bad")
-ModuleTiers = null
+ModuleTiers = [ExtResource("2_rila6"), ExtResource("3_d2gox"), ExtResource("4_ytfwc")]
 Unique = true
 AccentColor = Color(0.384314, 0.67451, 0.792157, 1)
 Icon = ExtResource("1_kn3iq")
