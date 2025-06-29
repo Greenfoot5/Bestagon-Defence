@@ -1,11 +1,14 @@
-[gd_resource type="Resource" script_class="ModuleChain" load_steps=3 format=3 uid="uid://b17bxlv6v731x"]
+[gd_resource type="Resource" script_class="ModuleChain" load_steps=6 format=3 uid="uid://b17bxlv6v731x"]
 
 [ext_resource type="Texture2D" uid="uid://cmx4oaoqfyiw8" path="res://Modules/Sniper/TA_Sniper.tres" id="1_dy5ox"]
 [ext_resource type="Script" uid="uid://05pfhoqbexkq" path="res://Modules/ModuleChain.cs" id="1_i86b0"]
+[ext_resource type="Resource" uid="uid://cji1x5fi04kui" path="res://Modules/Sniper/M_SniperT1.tres" id="2_mrhrl"]
+[ext_resource type="Resource" uid="uid://b8s1adw3sb3fw" path="res://Modules/Sniper/M_SniperT2.tres" id="3_n6ng2"]
+[ext_resource type="Resource" uid="uid://cvv2wweuv3nlq" path="res://Modules/Sniper/M_SniperT3.tres" id="4_ikm2t"]
 
 [resource]
 script = ExtResource("1_i86b0")
-ModuleTiers = []
+ModuleTiers = [ExtResource("2_mrhrl"), ExtResource("3_n6ng2"), ExtResource("4_ikm2t")]
 Unique = false
 AccentColor = Color(0.811765, 0.235294, 0.14902, 1)
 Icon = ExtResource("1_dy5ox")
