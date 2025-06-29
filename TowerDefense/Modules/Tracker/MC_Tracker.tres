@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_eofwj")
-ModuleTiers = null
+ModuleTiers = []
 Unique = false
 AccentColor = Color(0.788235, 0.266667, 0.980392, 1)
 Icon = ExtResource("1_a8ah2")

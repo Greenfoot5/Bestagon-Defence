@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="TrackerModule" load_steps=5 format=3 uid="uid://dtstjjbvqbaco"]
+
+[ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/Modifier.cs" id="1_fn0bn"]
+[ext_resource type="Script" uid="uid://bx8c005m0k5bp" path="res://Modules/Tracker/TrackerModule.cs" id="2_6aqiq"]
+
+[sub_resource type="Resource" id="Resource_rassy"]
+script = ExtResource("1_fn0bn")
+Value = 0.6
+Op = 1
+
+[sub_resource type="Resource" id="Resource_tfiuq"]
+script = ExtResource("1_fn0bn")
+Value = 0.4
+Op = 1
+
+[resource]
+script = ExtResource("2_6aqiq")
+_rotationSpeedPercentageChange = SubResource("Resource_tfiuq")
+_damagePercentageChange = SubResource("Resource_rassy")
+ModuleTier = 2
+IsUpgradableTo = true
+metadata/_custom_type_script = "uid://bx8c005m0k5bp"
