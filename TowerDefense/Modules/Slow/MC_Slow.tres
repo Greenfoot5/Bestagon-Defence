@@ -1,11 +1,15 @@
-[gd_resource type="Resource" script_class="ModuleChain" load_steps=3 format=3 uid="uid://wbvgxdviuwf0"]
+[gd_resource type="Resource" script_class="ModuleChain" load_steps=7 format=3 uid="uid://wbvgxdviuwf0"]
 
 [ext_resource type="Script" uid="uid://05pfhoqbexkq" path="res://Modules/ModuleChain.cs" id="1_48taj"]
 [ext_resource type="Texture2D" uid="uid://bxa53twnv3u5s" path="res://Modules/Slow/TA_Slow.tres" id="1_wnnjr"]
+[ext_resource type="Resource" uid="uid://dcou74jvi8ng8" path="res://Modules/Slow/M_SlowT1.tres" id="2_gvsql"]
+[ext_resource type="Resource" uid="uid://ceqgv5c0ddwkf" path="res://Modules/Slow/M_SlowT2.tres" id="3_nykm6"]
+[ext_resource type="Resource" uid="uid://cjo1chpgar117" path="res://Modules/Slow/M_SlowT3.tres" id="4_x6737"]
+[ext_resource type="Resource" uid="uid://b5psnjrnrn28i" path="res://Modules/Slow/M_SlowT4.tres" id="5_ftfga"]
 
 [resource]
 script = ExtResource("1_48taj")
-ModuleTiers = null
+ModuleTiers = [ExtResource("2_gvsql"), ExtResource("3_nykm6"), ExtResource("4_x6737"), ExtResource("5_ftfga")]
 Unique = true
 AccentColor = Color(0.180392, 0.784314, 0.898039, 1)
 Icon = ExtResource("1_wnnjr")

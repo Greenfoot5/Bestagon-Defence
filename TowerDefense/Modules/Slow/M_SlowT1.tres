@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SlowModule" load_steps=4 format=3 uid="uid://dcou74jvi8ng8"]
+
+[ext_resource type="Script" uid="uid://cw5g8sffwttl8" path="res://Modules/Slow/SlowModule.cs" id="1_tau6p"]
+[ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/Modifier.cs" id="1_va0tg"]
+
+[sub_resource type="Resource" id="Resource_1neyp"]
+script = ExtResource("1_va0tg")
+Value = 0.95
+Op = 2
+metadata/_custom_type_script = "uid://be3vaboc8v6w0"
+
+[resource]
+script = ExtResource("1_tau6p")
+_damageChange = SubResource("Resource_1neyp")
+ModuleTier = 1
+IsUpgradableTo = true
+metadata/_custom_type_script = "uid://cw5g8sffwttl8"
