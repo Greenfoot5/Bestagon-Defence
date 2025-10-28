@@ -4,5 +4,5 @@
     <BuildType Name="ExportDebug" />
     <BuildType Name="ExportRelease" />
   </Configurations>
-  <Project Path="Bestagon Defense.csproj" />
+  <Project Path="BestagonDefence.csproj" />
 </Solution>
