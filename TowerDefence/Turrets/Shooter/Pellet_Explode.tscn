@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://jy7g0207on0u"]
+
+[ext_resource type="Texture2D" uid="uid://bn3lpp2td3oth" path="res://Turrets/Smasher/T_Ring.png" id="1_x5w4e"]
+[ext_resource type="Script" uid="uid://dibsip7pifd4w" path="res://Abstract/DeathVfx.cs" id="2_jqb27"]
+
+[sub_resource type="Gradient" id="Gradient_jqb27"]
+offsets = PackedFloat32Array(0, 0.25, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_baif7"]
+gradient = SubResource("Gradient_jqb27")
+
+[sub_resource type="Curve" id="Curve_c8e78"]
+_data = [Vector2(0, 0), 0.0, 3.0, 0, 0, Vector2(1, 1), -4.65166e-07, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1pj45"]
+curve = SubResource("Curve_c8e78")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_q8e4t"]
+lifetime_randomness = 0.8
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_min = 0.04
+scale_max = 0.04
+scale_curve = SubResource("CurveTexture_1pj45")
+color_ramp = SubResource("GradientTexture1D_baif7")
+
+[node name="Pellet_Explode" type="GPUParticles2D" node_paths=PackedStringArray("freeTimer")]
+self_modulate = Color(0.12549, 0.811765, 0.537255, 1)
+emitting = false
+amount = 1
+texture = ExtResource("1_x5w4e")
+lifetime = 0.3
+one_shot = true
+fixed_fps = 60
+interpolate = false
+visibility_rect = Rect2(-30, -30, 60, 60)
+process_material = SubResource("ParticleProcessMaterial_q8e4t")
+script = ExtResource("2_jqb27")
+freeTimer = NodePath("FreeTimer")
+
+[node name="FreeTimer" type="Timer" parent="."]

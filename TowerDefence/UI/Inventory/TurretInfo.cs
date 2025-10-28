@@ -1,0 +1,378 @@
+using System;
+using BestagonDefence.Abstract.Attributes;
+using BestagonDefence.Abstract.Data;
+using BestagonDefence.Gameplay;
+using BestagonDefence.Levels._Tiles;
+using BestagonDefence.Turrets;
+using BestagonDefence.Turrets.Lancer;
+using BestagonDefence.UI.Modules;
+using BestagonDefence.UI.TurretStats;
+using Godot;
+
+namespace BestagonDefence.UI.Inventory;
+
+/// <summary>
+/// Turret info sidebar in the UI
+/// </summary>
+public partial class TurretInfo : Control
+{
+    /// <summary>
+    /// The Shop component of the scene
+    /// </summary>
+    [Export]
+    private Shop.Shop shop;
+        
+    /// <summary>
+    /// The inventory show/hide for the turrets
+    /// </summary>
+    [ExportGroup("Turret Inventory")]
+    [Export]
+    private Control turretInventoryPage;
+    /// <summary>
+    /// The button to open the turret inventory
+    /// </summary>
+    [Export]
+    private Container turretInventoryContent;
+        
+    /// <summary>
+    /// The inventory to show/hide for the modules
+    /// </summary>
+    [ExportGroup("Module Inventory")]
+    [Export]
+    private Control moduleInventoryPage;
+    /// <summary>
+    /// The button list
+    /// </summary>
+    [Export]
+    private Node moduleInventoryContent;
+    /// <summary>
+    /// The colour to set the bg when disabled
+    /// </summary>
+    [Export]
+    private Color moduleDisabledColor;
+        
+    /// <summary>
+    /// The page show/hide for the turret info
+    /// </summary>
+    [ExportGroup("Turret Info")]
+    [Export]
+    private Control turretInfoPage;
+    /// <summary>
+    /// The label for the turret name
+    /// </summary>
+    [Export]
+    private Label inventoryTitle;
+    /// <summary>
+    /// The button to add more modules
+    /// </summary>
+    [Export]
+    private PackedScene addModuleButton;
+        
+    /// <summary>
+    /// The TurretStat used to display the damage
+    /// </summary>
+    [ExportSubgroup("TurretStat")]
+    [Export]
+    private TurretStat damage;
+    /// <summary>
+    /// The TurretStat used to display the fire rate
+    /// </summary>
+    [Export]
+    private TurretStat rate;
+    /// <summary>
+    /// The TurretStat used to display the range
+    /// </summary>
+    [Export]
+    private TurretStat range;
+        
+    /// <summary>
+    /// The GodotObject to spawn the module icons as a child of
+    /// </summary>
+    [ExportSubgroup("Modules")]
+    [Export]
+    private Node modules;
+    /// <summary>
+    /// The prefab of a module icon to instantiate to display the turret's modules
+    /// </summary>
+    [Export]
+    private PackedScene moduleIconPrefab;
+        
+
+    /// <summary>
+    /// The button that changes the targeting method of the turret
+    /// </summary>
+    [ExportGroup("Buttons")]
+    [Export]
+    private BaseButton cycleTargetingButton;
+
+    private Node inventoryButtonSelected;
+    private BuildableTile _target;
+
+    /// <summary>
+    /// Handles adding listeners to events
+    /// </summary>
+    public override void _Ready()
+    {
+        BuildableTile.OnTileSelected += SetTarget;
+        Shop.Shop.OnPickTurret += AddTurret;
+        Shop.Shop.OnPickModule += AddModule;
+        BuildManager.OnBlueprintSelected += SelectBlueprint;
+        BuildManager.OnTurretBuilt += RemoveSelectedTurretItem;
+    }
+
+    /// <summary>
+    /// Removes listeners from events when leaving the tree
+    /// </summary>
+    public override void _ExitTree()
+    {
+        BuildableTile.OnTileSelected -= SetTarget;
+        Shop.Shop.OnPickTurret -= AddTurret;
+        Shop.Shop.OnPickModule -= AddModule;
+        BuildManager.OnBlueprintSelected -= SelectBlueprint;
+        BuildManager.OnTurretBuilt -= RemoveSelectedTurretItem;
+    }
+        
+    /// <summary>
+    /// Called when selecting a new node
+    /// </summary>
+    /// <param name="tile">The new node to display UI for</param>
+    private void SetTarget(BuildableTile tile)
+    {
+        if (tile == null || _target == tile)
+        {
+            _target?.Turret.Deselected();
+            _target = null;
+            DisplayTurretInventory();
+            return;
+        }
+        
+        _target = tile;
+        
+        // Display the radius of the turret
+        _target.Turret.Selected();
+
+        // Enable/Disable Targeting types cycle button if it's (not) a dynamic turret.
+        if (_target.Turret is DynamicTurret dynamicTurret)
+        {
+            cycleTargetingButton.Visible = true;
+            cycleTargetingButton.GetChild<Label>(0).Text = "Targeting:\n" + dynamicTurret.TargetPriorityMethod;
+            // TODO - Clear all other listeners
+            // cycleTargetingButton.Pressed += CycleTargeting;
+        }
+        else if (_target.Turret is Lancer)
+        {
+            cycleTargetingButton.Visible = true;
+            cycleTargetingButton.GetChild<Label>(0).Text = "Rotate";
+            // cycleTargetingButton.Pressed += () => RemoveAllListeners();
+            // cycleTargetingButton.Pressed += RotateLancer;
+        }
+        else
+        {
+            cycleTargetingButton.Visible = false;
+        }
+
+        // // Rebuild the Modules and add the stats
+        // if (moduleInventoryPage.activeSelf)
+        //     OpenModuleInventory();
+        // else
+        OpenTurretInfo();
+    }
+        
+    /// <summary>
+    /// Turret's targeting method increments once through the cycle of targeting methods
+    /// </summary>
+    private void CycleTargeting()
+    {
+        Array types = Enum.GetValues(typeof(DynamicTurret.TargetingMethod));
+        var dynamic = (DynamicTurret)_target.Turret;
+        var currentMethod = (int)dynamic.TargetPriorityMethod;
+        dynamic.TargetPriorityMethod = (DynamicTurret.TargetingMethod)( (currentMethod + 1) % types.Length);
+            
+        // Update our button text
+        cycleTargetingButton.GetChild<Label>(0).Text = "Targeting:\n" + dynamic.TargetPriorityMethod;
+    }
+        
+    /// <summary>
+    /// Updates the stats display when the turret is selected or upgraded
+    /// </summary>
+    private void UpdateStats()
+    {
+        if (_target?.Turret is null) return;
+        Turret turret = _target.Turret;
+        // Stats
+        damage.SetData(turret.Stats[AttributeType.Damage]);
+        rate.SetData(turret.Stats[AttributeType.FireRate]);
+        range.SetData(turret.Stats[AttributeType.Range]);
+        // Display the radius of the turret
+        turret.Selected();
+        Color color = turret.RangeDisplay.Modulate;
+        damage.SetColor(color);
+        rate.SetColor(color);
+        range.SetColor(color);
+    }
+
+    /// <summary>
+    /// Updates the UI's values on the current target's info
+    /// </summary>
+    private void UpdateSelection()
+    {
+        UpdateStats();
+        UpdateModules();
+    }
+    
+    /// <summary>
+    /// Rotates Lancer Turret
+    /// </summary>
+    private void RotateLancer()
+    {
+        ((Lancer)_target.Turret).PartToRotate.Rotate(-60);
+    }
+        
+    /// <summary>
+    /// Updates the render of the modules for a turret
+    /// </summary>
+    private void UpdateModules()
+    {
+        // Removes module icons created from the previously selected turret
+        for (var i = 0; i < modules.GetChildCount(); i++)
+            modules.GetChild(i).QueueFree();
+            
+        // Add each Module as an icon
+        foreach (ModuleChainHandler handle in _target.Turret.ModuleHandlers)
+        {
+            var icon = moduleIconPrefab.Instantiate<ModuleIcon>();
+            modules.AddChild(icon);
+            icon.Name = "_" + icon.Name;
+            icon.SetData(handle);
+        }
+            
+        var addModule = addModuleButton.Instantiate<BaseButton>();
+        modules.AddChild(addModule);
+        addModule.Pressed += DisplayModuleInventory;
+            
+        // modules.GetChild<TriangleLayout>(0).SetLayoutHorizontal();
+        // modules.GetChild<TriangleLayout>(0).SetLayoutVertical();
+    }
+    
+    /// <summary>
+    /// Displays the turret inventory
+    /// </summary>
+    public void DisplayTurretInventory()
+    {
+        turretInventoryPage.Visible = true;
+        moduleInventoryPage.Visible = false;
+        turretInfoPage.Visible = false;
+    }
+    
+    /// <summary>
+    /// Toggles the turret inventory
+    /// </summary>
+    public void ToggleTurretInventory()
+    {
+        if (turretInventoryPage.Visible)
+        {
+            // TODO - Let tile know to deselect
+            return;
+        }
+        DisplayTurretInventory();
+    }
+    
+    /// <summary>
+    /// Toggles the module inventory
+    /// </summary>
+    public void ToggleModuleInventory()
+    {
+        if (moduleInventoryPage.Visible)
+        {
+            BuildableTile.SelectedTile = null;
+            return;
+        }
+        DisplayModuleInventory();
+    }
+
+    /// <summary>
+    /// Displays the module inventory
+    /// </summary>
+    public void DisplayModuleInventory()
+    {
+        foreach (Node child in moduleInventoryContent.GetChildren())
+        {
+            var item = child as ModuleInventoryItem;
+            if (_target != null && item != null && item.IsValid(_target.Turret))
+            {
+                // item.bg.color = item.accent;
+                item.modulesBg.SelfModulate = item.Accent * new Color(1, 1, 1, 0.16f);
+                item.Disabled = false;
+            }
+            else if (item != null)
+            {
+                // item.bg.color = moduleDisabledColor;
+                item.modulesBg.SelfModulate = moduleDisabledColor * new Color(1, 1, 1, 0.16f);
+                item.Disabled = true;
+            }
+        }
+        
+        moduleInventoryPage.Visible = true;
+        turretInventoryPage.Visible = false;
+        turretInfoPage.Visible = false;
+    }
+
+    /// <summary>
+    /// Displays turret info for the target
+    /// </summary>
+    public void OpenTurretInfo()
+    {
+        if (turretInfoPage.Visible)
+        {
+            BuildableTile.SelectedTile = null;
+            return;
+        }
+        
+        inventoryTitle.Text = _target.TurretBlueprint.DisplayName;
+        turretInfoPage.Visible = true;
+        turretInventoryPage.Visible = false;
+        moduleInventoryPage.Visible = false;
+        // turretInventoryButton.Visible = false;
+
+        // TODO - Was GettingComponent<Button>, does still work?
+        // turretInfoButton.SelfModulate = _target.TurretBlueprint.Accent;
+            
+        UpdateStats();
+        UpdateModules();
+    }
+
+    /// <summary>
+    /// Adds a TurretInventoryItem to the inventory
+    /// </summary>
+    /// <param name="blueprint">The TurretInventoryItem to add</param>
+    private void AddTurret(TurretInventoryItem blueprint)
+    {
+        turretInventoryContent.AddChild(blueprint);
+    }
+    
+    /// <summary>
+    /// Adds a ModuleInventoryItem to the inventory
+    /// </summary>
+    /// <param name="item">The ModuleInventoryItem to add</param>
+    private void AddModule(ModuleInventoryItem item)
+    {
+        moduleInventoryContent.AddChild(item);
+    }
+
+    /// <summary>
+    /// Selects a TurretInventoryItem in the inventory
+    /// </summary>
+    /// <param name="item">The TurretInventoryItem to select</param>
+    private void SelectBlueprint(TurretInventoryItem item)
+    {
+        inventoryButtonSelected = item;
+    }
+
+    /// <summary>
+    /// Removes the currently selected turret item
+    /// </summary>
+    private void RemoveSelectedTurretItem()
+    {
+        inventoryButtonSelected.QueueFree();
+    }
+}

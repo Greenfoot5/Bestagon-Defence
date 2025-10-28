@@ -1,0 +1,251 @@
+[gd_resource type="Resource" load_steps=51 format=3 uid="uid://b6vw6l67k0fne"]
+
+[ext_resource type="Resource" uid="uid://bjiq0f4ix8kym" path="res://Turrets/Shooter/Shooter_Basic.tres" id="1_d4njv"]
+[ext_resource type="Script" uid="uid://by85y3cqstj04" path="res://Abstract/Data/WeightedList.cs" id="1_ps0rn"]
+[ext_resource type="Script" uid="uid://c02jid8ovdi0j" path="res://Abstract/Data/WeightedCurveList.cs" id="2_d4njv"]
+[ext_resource type="Resource" uid="uid://57ssw6sspepb" path="res://Turrets/Hunter/Hunter_Basic.tres" id="2_jbv3k"]
+[ext_resource type="Resource" uid="uid://cx2i8uqbstjqg" path="res://Modules/Damage/MC_Damage.tres" id="3_ksl2g"]
+[ext_resource type="Resource" uid="uid://bhxj4rww74nee" path="res://Turrets/Seeker/Seeker_Basic.tres" id="3_m084i"]
+[ext_resource type="Script" uid="uid://5mfid57rp3et" path="res://Levels/Maps/ShopData.cs" id="4_jbv3k"]
+[ext_resource type="Script" uid="uid://ufdo2vxockv6" path="res://Abstract/Data/ModuleChainHandler.cs" id="4_m084i"]
+[ext_resource type="Resource" uid="uid://booj5s0lfehrd" path="res://Turrets/Choker/Choker_Basic.tres" id="4_xt8uj"]
+[ext_resource type="Resource" uid="uid://bb3tga4g0q5r0" path="res://Turrets/Gunner/Gunner_Basic.tres" id="5_42cso"]
+[ext_resource type="Resource" uid="uid://v2yemtkjmcmc" path="res://Turrets/Lancer/Lancer_Basic.tres" id="6_vseq1"]
+[ext_resource type="Resource" uid="uid://bahccgqw0o1mc" path="res://Turrets/Laser/Laser_Basic.tres" id="7_yymvh"]
+[ext_resource type="Resource" uid="uid://bsu3c2tww83dl" path="res://Turrets/Smasher/Smasher_Basic.tres" id="8_dnkco"]
+[ext_resource type="Resource" uid="uid://dnxfle1iissrk" path="res://Modules/Bombs/MC_Bombs.tres" id="12_yphpo"]
+[ext_resource type="Resource" uid="uid://830voq1b6343" path="res://Modules/Range/MC_Range.tres" id="13_u1mj1"]
+[ext_resource type="Resource" uid="uid://5g4alr60yhwm" path="res://Modules/Tracker/MC_Tracker.tres" id="14_lchvv"]
+[ext_resource type="Resource" uid="uid://dbequb33mo4a4" path="res://Modules/Instakill/MC_Instakill.tres" id="15_tjkf6"]
+[ext_resource type="Resource" uid="uid://b17bxlv6v731x" path="res://Modules/Sniper/MC_Sniper.tres" id="16_ea6rf"]
+
+[sub_resource type="Resource" id="Resource_ps0rn"]
+script = ExtResource("1_ps0rn")
+Strain = 0
+Count = 8
+list_0/Blueprint = ExtResource("1_d4njv")
+list_0/Weight = 5.0
+list_1/Blueprint = ExtResource("2_jbv3k")
+list_1/Weight = 1.0
+list_2/Blueprint = ExtResource("3_m084i")
+list_2/Weight = 1.0
+list_3/Blueprint = ExtResource("4_xt8uj")
+list_3/Weight = 1.0
+list_4/Blueprint = ExtResource("5_42cso")
+list_4/Weight = 1.0
+list_5/Blueprint = ExtResource("6_vseq1")
+list_5/Weight = 1.0
+list_6/Blueprint = ExtResource("7_yymvh")
+list_6/Weight = 1.0
+list_7/Blueprint = ExtResource("8_dnkco")
+list_7/Weight = 20.0
+
+[sub_resource type="Curve" id="Curve_d4njv"]
+_limits = [0.0, 1.0, 0.0, 20.0]
+_data = [Vector2(14, 0), 0.0, 0.0, 0, 0, Vector2(20, 0.75), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_jbv3k"]
+_limits = [0.0, 1.0, 0.0, 15.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 1, Vector2(14, 1), 0.0, -1.0, 1, 1, Vector2(15, 0), -1.0, 0.0, 1, 0]
+point_count = 3
+
+[sub_resource type="Resource" id="Resource_xt8uj"]
+script = ExtResource("4_m084i")
+chain = ExtResource("3_ksl2g")
+tier = 1
+metadata/_custom_type_script = "uid://ufdo2vxockv6"
+
+[sub_resource type="Curve" id="Curve_v48ov"]
+_limits = [0.0, 1.0, 14.0, 15.0]
+_data = [Vector2(14, 0), 0.0, 1.0, 0, 1, Vector2(15, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_6ancr"]
+script = ExtResource("4_m084i")
+chain = ExtResource("3_ksl2g")
+tier = 2
+metadata/_custom_type_script = "uid://ufdo2vxockv6"
+
+[sub_resource type="Curve" id="Curve_6ancr"]
+_limits = [0.0, 1.0, 9.0, 23.0]
+_data = [Vector2(9, 0), 0.0, 0.0, 0, 0, Vector2(10, 1), 0.0, 0.0, 0, 0, Vector2(22, 1), 0.0, 0.0, 0, 0, Vector2(23, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Resource" id="Resource_d002j"]
+script = ExtResource("4_m084i")
+chain = ExtResource("12_yphpo")
+tier = 1
+metadata/_custom_type_script = "uid://ufdo2vxockv6"
+
+[sub_resource type="Curve" id="Curve_d002j"]
+_limits = [0.0, 1.0, 22.0, 23.0]
+_data = [Vector2(22, 0), 0.0, 1.0, 0, 1, Vector2(23, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_boayk"]
+script = ExtResource("4_m084i")
+chain = ExtResource("12_yphpo")
+tier = 2
+metadata/_custom_type_script = "uid://ufdo2vxockv6"
+
+[sub_resource type="Curve" id="Curve_boayk"]
+_limits = [0.0, 1.0, 17.0, 18.0]
+_data = [Vector2(17, 1), 0.0, -1.0, 0, 1, Vector2(18, 0), -1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_p4hvl"]
+script = ExtResource("4_m084i")
+chain = ExtResource("13_u1mj1")
+tier = 1
+metadata/_custom_type_script = "uid://ufdo2vxockv6"
+
+[sub_resource type="Curve" id="Curve_p4hvl"]
+_limits = [0.0, 1.0, 17.0, 18.0]
+_data = [Vector2(17, 0), 0.0, 1.0, 0, 1, Vector2(18, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_g65jw"]
+script = ExtResource("4_m084i")
+chain = ExtResource("13_u1mj1")
+tier = 2
+metadata/_custom_type_script = "uid://ufdo2vxockv6"
+
+[sub_resource type="Curve" id="Curve_g65jw"]
+_limits = [0.0, 1.0, 5.0, 6.0]
+_data = [Vector2(5, 0), 0.0, 1.0, 0, 1, Vector2(6, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_sws8l"]
+script = ExtResource("4_m084i")
+chain = ExtResource("14_lchvv")
+tier = 1
+metadata/_custom_type_script = "uid://ufdo2vxockv6"
+
+[sub_resource type="Curve" id="Curve_sws8l"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 1, Vector2(1, 1), 0.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_3a2g3"]
+script = ExtResource("4_m084i")
+chain = ExtResource("15_tjkf6")
+tier = 1
+metadata/_custom_type_script = "uid://ufdo2vxockv6"
+
+[sub_resource type="Curve" id="Curve_3a2g3"]
+_data = [Vector2(1, 1), 1.0, 1.0, 1, 1]
+point_count = 1
+
+[sub_resource type="Resource" id="Resource_giyls"]
+script = ExtResource("4_m084i")
+chain = ExtResource("16_ea6rf")
+tier = 1
+metadata/_custom_type_script = "uid://ufdo2vxockv6"
+
+[sub_resource type="Resource" id="Resource_d4njv"]
+script = ExtResource("2_d4njv")
+Strain = 1
+Size = 9
+list_0/Handler = SubResource("Resource_xt8uj")
+list_0/Curve = SubResource("Curve_jbv3k")
+list_1/Handler = SubResource("Resource_6ancr")
+list_1/Curve = SubResource("Curve_v48ov")
+list_2/Handler = SubResource("Resource_d002j")
+list_2/Curve = SubResource("Curve_6ancr")
+list_3/Handler = SubResource("Resource_boayk")
+list_3/Curve = SubResource("Curve_d002j")
+list_4/Handler = SubResource("Resource_p4hvl")
+list_4/Curve = SubResource("Curve_boayk")
+list_5/Handler = SubResource("Resource_g65jw")
+list_5/Curve = SubResource("Curve_p4hvl")
+list_6/Handler = SubResource("Resource_sws8l")
+list_6/Curve = SubResource("Curve_g65jw")
+list_7/Handler = SubResource("Resource_3a2g3")
+list_7/Curve = SubResource("Curve_sws8l")
+list_8/Handler = SubResource("Resource_giyls")
+list_8/Curve = SubResource("Curve_3a2g3")
+
+[sub_resource type="Curve" id="Curve_7d5lu"]
+_limits = [0.0, 5.0, 0.0, 20.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(5, 1), 0.0, 0.0, 0, 0, Vector2(10, 1), 0.0, 0.0, 0, 0, Vector2(20, 4.5), 0.0, 0.0, 0, 1]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_ksl2g"]
+_limits = [0.0, 5.0, 0.0, 20.0]
+_data = [Vector2(0, 4), 0.0, 0.0, 0, 0, Vector2(5, 2.5), -0.17519, -0.17519, 0, 0, Vector2(20, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_7bum0"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_yphpo"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_u1mj1"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_lchvv"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_tjkf6"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_ea6rf"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_rjfgl"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_nwhwp"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_jbv3k"]
+script = ExtResource("2_d4njv")
+Strain = 0
+Size = 8
+list_0/Blueprint = ExtResource("4_xt8uj")
+list_0/Curve = SubResource("Curve_7bum0")
+list_1/Blueprint = ExtResource("5_42cso")
+list_1/Curve = SubResource("Curve_yphpo")
+list_2/Blueprint = ExtResource("2_jbv3k")
+list_2/Curve = SubResource("Curve_u1mj1")
+list_3/Blueprint = ExtResource("6_vseq1")
+list_3/Curve = SubResource("Curve_lchvv")
+list_4/Blueprint = ExtResource("7_yymvh")
+list_4/Curve = SubResource("Curve_tjkf6")
+list_5/Blueprint = ExtResource("3_m084i")
+list_5/Curve = SubResource("Curve_ea6rf")
+list_6/Blueprint = ExtResource("1_d4njv")
+list_6/Curve = SubResource("Curve_rjfgl")
+list_7/Blueprint = ExtResource("8_dnkco")
+list_7/Curve = SubResource("Curve_nwhwp")
+
+[resource]
+script = ExtResource("4_jbv3k")
+InitialTurretSelection = SubResource("Resource_ps0rn")
+InitialDuplicateCheck = 1
+TurretOptionWeight = SubResource("Curve_ksl2g")
+ModuleOptionWeight = SubResource("Curve_7d5lu")
+LifeOptionWeight = SubResource("Curve_d4njv")
+LifeCount = 2
+Turrets = SubResource("Resource_jbv3k")
+TurretDuplicateCheck = 1
+ModuleHandlers = SubResource("Resource_d4njv")
+ModuleDuplicateCheck = 2
+InitialSelectionCount = 1
+InitialChoices = 3
+SelectionChoices = 3
+HiddenMode = 0
+HiddenChoices = 0
+HiddenChance = 0.0
+SelectionCostFormula = "0.17*x*x+19*x+41"
+SellPercentage = 0.4
+metadata/_custom_type_script = "uid://5mfid57rp3et"

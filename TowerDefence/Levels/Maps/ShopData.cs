@@ -1,0 +1,116 @@
+using BestagonDefence.Abstract.Data;
+using BestagonDefence.UI.Shop;
+using Godot;
+
+namespace BestagonDefence.Levels.Maps;
+
+/// <summary>
+/// Allows us to save data to allow levels to be different
+/// </summary>
+[GlobalClass]
+[Tool]
+public partial class ShopData : Resource
+{
+    /// <summary>
+    /// The chances for turrets in the initial selection(s)
+    /// </summary>
+    [ExportGroup("InitialSelection")]
+    [Export]
+    public WeightedList InitialTurretSelection = new(Strain.TurretBlueprint);
+    
+    /// <summary>
+    /// The duplicate check to perform when generating the initial selection
+    /// </summary>
+    [Export]
+    public DuplicateTypes InitialDuplicateCheck = DuplicateTypes.None;
+
+    /// <summary>
+    /// The weighted chance of a turret card to appear in the selection
+    /// </summary>
+    [ExportGroup("Selection")]
+    [Export]
+    public Curve TurretOptionWeight;
+    /// <summary>
+    /// The weighted chance of a module card to appear in the selection
+    /// </summary>
+    [Export]
+    public Curve ModuleOptionWeight;
+    /// <summary>
+    /// The weighted chance of additional lives to appear in the selection
+    /// </summary>
+    [Export]
+    public Curve LifeOptionWeight;
+    /// <summary>
+    /// How many lives a life card will grant
+    /// </summary>
+    [Export]
+    public int LifeCount;
+
+    /// <summary>
+    /// What turrets can appear and their individual chances
+    /// </summary>
+    [Export]
+    public WeightedCurveList Turrets = new(Strain.TurretBlueprint);
+    /// <summary>
+    /// The duplicate check to perform when generating a turret card
+    /// </summary>
+    [Export]
+    public DuplicateTypes TurretDuplicateCheck = DuplicateTypes.ByName;
+    /// <summary>
+    /// What modules can appear and their individual chances
+    /// </summary>
+    [Export]
+    public WeightedCurveList ModuleHandlers = new(Strain.ModuleChainHandler);
+    /// <summary>
+    /// The duplicate check to perform when generating a module card
+    /// </summary>
+    [Export]
+    public DuplicateTypes ModuleDuplicateCheck = DuplicateTypes.ByType;
+
+    /// <summary>
+    /// How many initial selections should be granted
+    /// </summary>
+    [ExportGroup("Selection Counts")]
+    [Export]
+    public int InitialSelectionCount = 1;
+    /// <summary>
+    /// How many options to show in the initial selection(s)
+    /// </summary>
+    [Export]
+    public int InitialChoices = 3;
+    /// <summary>
+    /// How many options to display in non-initial selections
+    /// </summary>
+    [Export]
+    public int SelectionChoices = 3;
+    /// <summary>
+    /// How cards are selected to be hidden
+    /// </summary>
+    [Export]
+    public HiddenMode HiddenMode = HiddenMode.Disabled;
+    /// <summary>
+    /// How many cards to hide
+    /// </summary>
+    [Export]
+    public int HiddenChoices;
+    /// <summary>
+    /// The for a card to be hidden
+    /// </summary>
+    [Export(PropertyHint.Range, "0,1,or_greater")]
+    public float HiddenChance;
+        
+    /// <summary>
+    /// How costs scale per wave.
+    ///
+    /// Must be a valid Godot Expression where "x" is the wave number
+    /// </summary>
+    [ExportGroup("Costs")]
+    [Export]
+    public string SelectionCostFormula;
+        
+    /// <summary>
+    /// What percentage of the shop cost to refund when selling
+    /// </summary>
+    [Export(PropertyHint.Range, "0,1,or_greater")]
+    public float SellPercentage;
+}

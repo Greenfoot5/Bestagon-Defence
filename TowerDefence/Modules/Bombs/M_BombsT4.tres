@@ -1,0 +1,80 @@
+[gd_resource type="Resource" load_steps=13 format=3 uid="uid://d2gh85llbrv2n"]
+
+[ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/Modifier.cs" id="1_a2xei"]
+[ext_resource type="Script" uid="uid://spmoxo1wvy3b" path="res://Modules/Bombs/BombsModule.cs" id="1_s40e5"]
+
+[sub_resource type="Resource" id="Resource_4fi30"]
+script = ExtResource("1_a2xei")
+Value = 0.5
+Op = 2
+metadata/_custom_type_script = "uid://be3vaboc8v6w0"
+
+[sub_resource type="Resource" id="Resource_8l6cd"]
+script = ExtResource("1_a2xei")
+Value = 3.0
+Op = 1
+metadata/_custom_type_script = "uid://be3vaboc8v6w0"
+
+[sub_resource type="Resource" id="Resource_bfig4"]
+script = ExtResource("1_a2xei")
+Value = 1.2
+Op = 1
+metadata/_custom_type_script = "uid://be3vaboc8v6w0"
+
+[sub_resource type="Resource" id="Resource_llkdc"]
+script = ExtResource("1_a2xei")
+Value = 3.5
+Op = 1
+metadata/_custom_type_script = "uid://be3vaboc8v6w0"
+
+[sub_resource type="Resource" id="Resource_1pogl"]
+script = ExtResource("1_a2xei")
+Value = 0.75
+Op = 1
+metadata/_custom_type_script = "uid://be3vaboc8v6w0"
+
+[sub_resource type="Resource" id="Resource_5ude2"]
+script = ExtResource("1_a2xei")
+Value = 0.5
+Op = 1
+metadata/_custom_type_script = "uid://be3vaboc8v6w0"
+
+[sub_resource type="Resource" id="Resource_lvrek"]
+script = ExtResource("1_a2xei")
+Value = 3.2
+Op = 1
+metadata/_custom_type_script = "uid://be3vaboc8v6w0"
+
+[sub_resource type="Resource" id="Resource_ggi71"]
+script = ExtResource("1_a2xei")
+Value = 2.0
+Op = 1
+metadata/_custom_type_script = "uid://be3vaboc8v6w0"
+
+[sub_resource type="Resource" id="Resource_rqe11"]
+script = ExtResource("1_a2xei")
+Value = 2.0
+Op = 1
+metadata/_custom_type_script = "uid://be3vaboc8v6w0"
+
+[sub_resource type="Resource" id="Resource_gs2g6"]
+script = ExtResource("1_a2xei")
+Value = 1.5
+Op = 1
+metadata/_custom_type_script = "uid://be3vaboc8v6w0"
+
+[resource]
+script = ExtResource("1_s40e5")
+_chokerExplosionRadiusChange = SubResource("Resource_bfig4")
+_chokerBulletCountChange = SubResource("Resource_4fi30")
+_chokerDamageChange = SubResource("Resource_8l6cd")
+_gunnerExplosionRadiusChange = SubResource("Resource_1pogl")
+_gunnerDamageChange = SubResource("Resource_llkdc")
+_shooterExplosionRadiusChange = SubResource("Resource_ggi71")
+_shooterBulletSpeedChange = SubResource("Resource_5ude2")
+_shooterDamageChange = SubResource("Resource_lvrek")
+_smasherDamageChange = SubResource("Resource_rqe11")
+_smasherRangeChange = SubResource("Resource_gs2g6")
+ModuleTier = 4
+IsUpgradableTo = true
+metadata/_custom_type_script = "uid://spmoxo1wvy3b"
