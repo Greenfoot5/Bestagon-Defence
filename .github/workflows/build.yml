@@ -43,7 +43,7 @@ jobs:
         with:
           godot_executable_download_url: https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_mono_linux_x86_64.zip
           godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_mono_export_templates.tpz
-          relative_project_path: "./TowerDefense"
+          relative_project_path: "./TowerDefence"
           relative_export_path: "./build/${{matrix.exportName}}"
           archive_output: true
           presets_to_export: ${{ matrix.exportName }}
@@ -62,7 +62,7 @@ jobs:
       - buildForAllSupportedPlatforms
     if: ${{ success() && github.event_name != 'pull_request' }} 
     steps:
-      - uses: tsickert/discord-webhook@v6.0.0
+      - uses: tsickert/discord-webhook@v7.0.0
         with:
           webhook-url: ${{ secrets.NIGHTLY_WEBHOOK_URL }}
           content: "Build Success"
@@ -77,7 +77,7 @@ jobs:
       - buildForAllSupportedPlatforms
     if: ${{ failure() && github.event_name != 'pull_request' }}
     steps:
-      - uses: tsickert/discord-webhook@v6.0.0
+      - uses: tsickert/discord-webhook@v7.0.0
         with:
           webhook-url: ${{ secrets.NIGHTLY_WEBHOOK_URL }}
           content: "Build Failure"
