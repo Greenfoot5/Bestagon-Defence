@@ -286,6 +286,7 @@ public partial class Bullet : Node2D
             effect.Name = "_" + effect.Name;
             effect.GlobalPosition = explodeArea.GlobalPosition;
             effect.GlobalRotation = explodeArea.GlobalRotation;
+            // TODO - Not use ProcessMaterial.Scale as it applies to all
             ((ParticleProcessMaterial)effect.ProcessMaterial).Scale *= explodeArea.Scale;
             GetTree().GetRoot().AddChild(effect);
         }
