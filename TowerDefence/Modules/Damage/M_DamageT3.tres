@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=4 format=3 uid="uid://dup7qn7dxe7nd"]
+[gd_resource type="Resource" script_class="DamageModule" load_steps=4 format=3 uid="uid://dup7qn7dxe7nd"]
 
 [ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/Modifier.cs" id="1_gl6jw"]
 [ext_resource type="Script" uid="uid://1qgp027mvmyp" path="res://Modules/Damage/DamageModule.cs" id="2_ec1x0"]
@@ -13,5 +13,4 @@ metadata/_custom_type_script = "uid://be3vaboc8v6w0"
 script = ExtResource("2_ec1x0")
 percentageChange = SubResource("Resource_m3eqa")
 ModuleTier = 3
-IsUpgradableTo = true
 metadata/_custom_type_script = "uid://1qgp027mvmyp"

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=4 format=3 uid="uid://bvh428jai6xna"]
+[gd_resource type="Resource" script_class="RangeModule" load_steps=4 format=3 uid="uid://bvh428jai6xna"]
 
 [ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/Modifier.cs" id="1_it2wv"]
 [ext_resource type="Script" uid="uid://l66gc3lgdbe1" path="res://Modules/Range/RangeModule.cs" id="2_qf5d7"]
@@ -13,5 +13,4 @@ metadata/_custom_type_script = "uid://be3vaboc8v6w0"
 script = ExtResource("2_qf5d7")
 _percentageChange = SubResource("Resource_rmj5m")
 ModuleTier = 4
-IsUpgradableTo = true
 metadata/_custom_type_script = "uid://l66gc3lgdbe1"

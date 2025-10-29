@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=51 format=3 uid="uid://b6vw6l67k0fne"]
+[gd_resource type="Resource" script_class="ShopData" load_steps=51 format=3 uid="uid://b6vw6l67k0fne"]
 
 [ext_resource type="Resource" uid="uid://bjiq0f4ix8kym" path="res://Turrets/Shooter/Shooter_Basic.tres" id="1_d4njv"]
 [ext_resource type="Script" uid="uid://by85y3cqstj04" path="res://Abstract/Data/WeightedList.cs" id="1_ps0rn"]
@@ -237,15 +237,7 @@ ModuleOptionWeight = SubResource("Curve_7d5lu")
 LifeOptionWeight = SubResource("Curve_d4njv")
 LifeCount = 2
 Turrets = SubResource("Resource_jbv3k")
-TurretDuplicateCheck = 1
 ModuleHandlers = SubResource("Resource_d4njv")
-ModuleDuplicateCheck = 2
-InitialSelectionCount = 1
-InitialChoices = 3
-SelectionChoices = 3
-HiddenMode = 0
-HiddenChoices = 0
-HiddenChance = 0.0
 SelectionCostFormula = "0.17*x*x+19*x+41"
 SellPercentage = 0.4
 metadata/_custom_type_script = "uid://5mfid57rp3et"

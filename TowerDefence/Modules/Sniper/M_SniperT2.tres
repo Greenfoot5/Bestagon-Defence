@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=21 format=3 uid="uid://b8s1adw3sb3fw"]
+[gd_resource type="Resource" script_class="SniperModule" load_steps=21 format=3 uid="uid://b8s1adw3sb3fw"]
 
 [ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/Modifier.cs" id="1_nojo6"]
 [ext_resource type="Script" uid="uid://cxoo5hakfol7u" path="res://Modules/Sniper/SniperModule.cs" id="2_v588f"]
@@ -130,5 +130,4 @@ _chokerDamageChange = SubResource("Resource_1xb1o")
 _chokerFireRateChange = SubResource("Resource_t51va")
 _chokerPartSpreadChange = SubResource("Resource_cyeva")
 ModuleTier = 2
-IsUpgradableTo = true
 metadata/_custom_type_script = "uid://cxoo5hakfol7u"

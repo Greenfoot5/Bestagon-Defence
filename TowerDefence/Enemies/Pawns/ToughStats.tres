@@ -1,6 +1,7 @@
-[gd_resource type="Resource" load_steps=8 format=3 uid="uid://bye1nn35h5ykk"]
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=9 format=3 uid="uid://bye1nn35h5ykk"]
 
 [ext_resource type="Script" uid="uid://blnrq5atpcclw" path="res://Abstract/Attributes/Attribute.cs" id="1_a0ypd"]
+[ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/Modifier.cs" id="1_h587b"]
 [ext_resource type="Script" uid="uid://c80di1i4n41ig" path="res://Abstract/Attributes/Attributes.cs" id="3_nbh76"]
 [ext_resource type="Script" uid="uid://b2pbxe1edwcmn" path="res://Enemies/EnemyStats.cs" id="4_bvb6e"]
 [ext_resource type="Texture2D" uid="uid://cp8sfcrhubn1t" path="res://Enemies/Pawns/T_Tough.png" id="5_a0ypd"]
@@ -9,18 +10,14 @@
 script = ExtResource("1_a0ypd")
 Name = 11
 Base = 1000.0
-_modifiers = {}
 Min = inf_neg
-Max = inf
 metadata/_custom_type_script = "uid://blnrq5atpcclw"
 
 [sub_resource type="Resource" id="Resource_bl6ue"]
 script = ExtResource("1_a0ypd")
 Name = 17
 Base = 50.0
-_modifiers = {}
 Min = 15.0
-Max = inf
 metadata/_custom_type_script = "uid://blnrq5atpcclw"
 
 [sub_resource type="Resource" id="Resource_uaite"]
@@ -37,8 +34,5 @@ Sprite = ExtResource("5_a0ypd")
 DeathMoney = 15
 DeathLives = 2
 EndPathMoney = 25
-IsBoss = false
-DoesRotation = true
-HitboxSize = 0.25
 DistanceToWaypoint = 0.05
 metadata/_custom_type_script = "uid://b2pbxe1edwcmn"

@@ -1,5 +1,6 @@
-[gd_resource type="Resource" load_steps=9 format=3 uid="uid://ds7rijmb4ir08"]
+[gd_resource type="Resource" script_class="Attributes" load_steps=10 format=3 uid="uid://ds7rijmb4ir08"]
 
+[ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/Modifier.cs" id="1_0iik5"]
 [ext_resource type="Script" uid="uid://blnrq5atpcclw" path="res://Abstract/Attributes/Attribute.cs" id="2_8mc4x"]
 [ext_resource type="Script" uid="uid://c80di1i4n41ig" path="res://Abstract/Attributes/Attributes.cs" id="3_bwqee"]
 
@@ -7,54 +8,42 @@
 script = ExtResource("2_8mc4x")
 Name = 2
 Base = 200.0
-_modifiers = {}
 Min = inf_neg
-Max = inf
 metadata/_custom_type_script = "uid://blnrq5atpcclw"
 
 [sub_resource type="Resource" id="Resource_xud0f"]
 script = ExtResource("2_8mc4x")
 Name = 3
 Base = 1.5
-_modifiers = {}
 Min = inf_neg
-Max = inf
 metadata/_custom_type_script = "uid://blnrq5atpcclw"
 
 [sub_resource type="Resource" id="Resource_1nrke"]
 script = ExtResource("2_8mc4x")
 Name = 12
 Base = 7.0
-_modifiers = {}
 Min = inf_neg
-Max = inf
 metadata/_custom_type_script = "uid://blnrq5atpcclw"
 
 [sub_resource type="Resource" id="Resource_8mc4x"]
 script = ExtResource("2_8mc4x")
 Name = 13
 Base = 1.8
-_modifiers = {}
 Min = inf_neg
-Max = inf
 metadata/_custom_type_script = "uid://blnrq5atpcclw"
 
 [sub_resource type="Resource" id="Resource_bwqee"]
 script = ExtResource("2_8mc4x")
 Name = 14
 Base = 4.0
-_modifiers = {}
 Min = inf_neg
-Max = inf
 metadata/_custom_type_script = "uid://blnrq5atpcclw"
 
 [sub_resource type="Resource" id="Resource_y83xu"]
 script = ExtResource("2_8mc4x")
 Name = 15
 Base = 2.0
-_modifiers = {}
 Min = inf_neg
-Max = inf
 metadata/_custom_type_script = "uid://blnrq5atpcclw"
 
 [resource]

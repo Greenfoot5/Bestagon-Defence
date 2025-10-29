@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=13 format=3 uid="uid://d2gh85llbrv2n"]
+[gd_resource type="Resource" script_class="BombsModule" load_steps=13 format=3 uid="uid://d2gh85llbrv2n"]
 
 [ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/Modifier.cs" id="1_a2xei"]
 [ext_resource type="Script" uid="uid://spmoxo1wvy3b" path="res://Modules/Bombs/BombsModule.cs" id="1_s40e5"]
@@ -76,5 +76,4 @@ _shooterDamageChange = SubResource("Resource_lvrek")
 _smasherDamageChange = SubResource("Resource_rqe11")
 _smasherRangeChange = SubResource("Resource_gs2g6")
 ModuleTier = 4
-IsUpgradableTo = true
 metadata/_custom_type_script = "uid://spmoxo1wvy3b"

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=21 format=3 uid="uid://n0kcky3mpl8q"]
+[gd_resource type="Resource" script_class="TypeSpriteLookup" load_steps=21 format=3 uid="uid://n0kcky3mpl8q"]
 
 [ext_resource type="Script" uid="uid://dw73r34mdjcgj" path="res://Abstract/TypeSpriteLookup.cs" id="1_lvwce"]
 [ext_resource type="Texture2D" uid="uid://dygt1lyjkksen" path="res://UI/Glyphs/TA_Glyph_Choker.tres" id="1_v1bek"]
@@ -16,63 +16,53 @@
 script = ExtResource("2_djc47")
 Glyph = ExtResource("1_v1bek")
 Body = Color(0.976471, 0.396078, 0.223529, 1)
-Shade = Color(0, 0, 0, 0.25)
 metadata/_custom_type_script = "uid://c51bg7vils860"
 
 [sub_resource type="Resource" id="Resource_w8nu2"]
 script = ExtResource("2_djc47")
 Glyph = ExtResource("3_q1ckl")
 Body = Color(0.588235, 0.219608, 0.94902, 1)
-Shade = Color(0, 0, 0, 0.25)
 metadata/_custom_type_script = "uid://c51bg7vils860"
 
 [sub_resource type="Resource" id="Resource_v1bek"]
 script = ExtResource("2_djc47")
 Glyph = ExtResource("4_cndl1")
 Body = Color(0.235294, 0.211765, 0.364706, 1)
-Shade = Color(0, 0, 0, 0.25)
 metadata/_custom_type_script = "uid://c51bg7vils860"
 
 [sub_resource type="Resource" id="Resource_cl63i"]
 script = ExtResource("2_djc47")
 Glyph = ExtResource("5_3hlsn")
 Body = Color(0.203922, 0.266667, 0.670588, 1)
-Shade = Color(0, 0, 0, 0.25)
 metadata/_custom_type_script = "uid://c51bg7vils860"
 
 [sub_resource type="Resource" id="Resource_33q0u"]
 script = ExtResource("2_djc47")
 Glyph = ExtResource("6_lcq5x")
 Body = Color(0.133333, 0.756863, 0.843137, 1)
-Shade = Color(0, 0, 0, 0.25)
 metadata/_custom_type_script = "uid://c51bg7vils860"
 
 [sub_resource type="Resource" id="Resource_q1ckl"]
 script = ExtResource("2_djc47")
 Glyph = ExtResource("7_w8nu2")
 Body = Color(0.901961, 0.0823529, 0.913725, 1)
-Shade = Color(0, 0, 0, 0.25)
 metadata/_custom_type_script = "uid://c51bg7vils860"
 
 [sub_resource type="Resource" id="Resource_2h48r"]
 script = ExtResource("2_djc47")
 Glyph = ExtResource("8_cl63i")
 Body = Color(0.121569, 0.811765, 0.537255, 1)
-Shade = Color(0, 0, 0, 0.25)
 metadata/_custom_type_script = "uid://c51bg7vils860"
 
 [sub_resource type="Resource" id="Resource_6hara"]
 script = ExtResource("2_djc47")
 Glyph = ExtResource("9_33q0u")
 Body = Color(0.882353, 0.117647, 0.368627, 1)
-Shade = Color(0, 0, 0, 0.25)
 metadata/_custom_type_script = "uid://c51bg7vils860"
 
 [sub_resource type="Resource" id="Resource_r70qi"]
 script = ExtResource("2_djc47")
 Glyph = ExtResource("10_2h48r")
-Body = Color(0.6, 0.6, 0.6, 100)
-Shade = Color(0, 0, 0, 0.25)
 metadata/_custom_type_script = "uid://c51bg7vils860"
 
 [resource]

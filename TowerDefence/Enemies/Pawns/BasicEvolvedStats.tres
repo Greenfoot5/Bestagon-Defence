@@ -1,5 +1,6 @@
-[gd_resource type="Resource" load_steps=8 format=3 uid="uid://t2mqmtya2ymu"]
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=9 format=3 uid="uid://t2mqmtya2ymu"]
 
+[ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/Modifier.cs" id="1_bbein"]
 [ext_resource type="Script" uid="uid://blnrq5atpcclw" path="res://Abstract/Attributes/Attribute.cs" id="1_dgspm"]
 [ext_resource type="Script" uid="uid://c80di1i4n41ig" path="res://Abstract/Attributes/Attributes.cs" id="3_epwq6"]
 [ext_resource type="Script" uid="uid://b2pbxe1edwcmn" path="res://Enemies/EnemyStats.cs" id="4_txpdq"]
@@ -9,18 +10,14 @@
 script = ExtResource("1_dgspm")
 Name = 11
 Base = 500.0
-_modifiers = {}
 Min = inf_neg
-Max = inf
 metadata/_custom_type_script = "uid://blnrq5atpcclw"
 
 [sub_resource type="Resource" id="Resource_bl6ue"]
 script = ExtResource("1_dgspm")
 Name = 17
 Base = 90.0
-_modifiers = {}
 Min = 20.0
-Max = inf
 metadata/_custom_type_script = "uid://blnrq5atpcclw"
 
 [sub_resource type="Resource" id="Resource_uaite"]
@@ -35,10 +32,6 @@ script = ExtResource("4_txpdq")
 Attributes = SubResource("Resource_uaite")
 Sprite = ExtResource("5_dgspm")
 DeathMoney = 9
-DeathLives = 1
 EndPathMoney = 15
-IsBoss = false
-DoesRotation = true
-HitboxSize = 0.25
 DistanceToWaypoint = 0.05
 metadata/_custom_type_script = "uid://b2pbxe1edwcmn"
