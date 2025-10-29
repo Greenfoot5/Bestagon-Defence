@@ -121,7 +121,6 @@ shop = NodePath("../../CanvasLayer/UI/ScreenCanvas/ShopButton")
 livesText = NodePath("../../CanvasLayer/UI/ScreenCanvas/GameStats/Lives/Text (TMP)")
 
 [node name="Map" type="Node2D" parent="."]
-visible = false
 
 [node name="PathGrid" type="TileMapLayer" parent="Map"]
 position = Vector2(1, 0)
@@ -222,7 +221,6 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("24_b88u8")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="UI" type="Control" parent="CanvasLayer"]
 layout_mode = 3
