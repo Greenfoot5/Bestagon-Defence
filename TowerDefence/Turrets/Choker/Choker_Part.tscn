@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://hqx2w2q8weko"]
+[gd_scene load_steps=16 format=3 uid="uid://hqx2w2q8weko"]
 
 [ext_resource type="Script" uid="uid://drvqbyytx8ijt" path="res://Turrets/Bullet.cs" id="1_81c6j"]
 [ext_resource type="Texture2D" uid="uid://2gir0cpngs76" path="res://Turrets/Choker/T_Choker_Part.png" id="1_mfbqp"]
@@ -75,11 +75,15 @@ _attributes = Dictionary[int, ExtResource("2_cnrae")]({
 [sub_resource type="CircleShape2D" id="CircleShape2D_81c6j"]
 radius = 150.0
 
-[node name="ChokerPart" type="Node2D" node_paths=PackedStringArray("Area")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_w0rq4"]
+radius = 400.0
+
+[node name="ChokerPart" type="Node2D" node_paths=PackedStringArray("Area", "explodeArea")]
 script = ExtResource("1_81c6j")
 Stats = SubResource("Resource_ahd52")
 Area = NodePath("Area")
 WillHitFirst = true
+explodeArea = NodePath("Area/ExplosionArea")
 
 [node name="Area" type="Area2D" parent="."]
 scale = Vector2(0.02, -0.02)
@@ -93,3 +97,11 @@ texture = ExtResource("1_mfbqp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
 shape = SubResource("CircleShape2D_81c6j")
+
+[node name="ExplosionArea" type="Area2D" parent="Area"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="ExplosionShape" type="CollisionShape2D" parent="Area/ExplosionArea"]
+shape = SubResource("CircleShape2D_w0rq4")
