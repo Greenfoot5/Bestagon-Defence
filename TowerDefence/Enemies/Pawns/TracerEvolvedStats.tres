@@ -16,7 +16,7 @@ metadata/_custom_type_script = "uid://blnrq5atpcclw"
 [sub_resource type="Resource" id="Resource_bl6ue"]
 script = ExtResource("1_hgsbj")
 Name = 17
-Base = 200.0
+Base = 160.0
 Min = 30.0
 metadata/_custom_type_script = "uid://blnrq5atpcclw"
 
