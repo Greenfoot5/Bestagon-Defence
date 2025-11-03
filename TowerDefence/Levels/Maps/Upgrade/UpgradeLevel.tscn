@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://dxeskbdbxmflu"]
+[gd_scene load_steps=28 format=4 uid="uid://dxeskbdbxmflu"]
 
 [ext_resource type="TileSet" uid="uid://cqec5gsl2jrtp" path="res://Levels/_Tiles/PathTiles.tres" id="1_dbecs"]
 [ext_resource type="Shader" uid="uid://ci85qadqdqbak" path="res://MaterialLibrary/Hexagons/S_Background.gdshader" id="1_h5o5v"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://dfou8de5o51ab" path="res://Gameplay/T_DeathByte.png" id="14_8tbnj"]
 [ext_resource type="Script" uid="uid://ci5f1fooga4hq" path="res://Gameplay/GameManager.cs" id="14_dbecs"]
 [ext_resource type="Texture2D" uid="uid://cflrqd6yow3sl" path="res://Gameplay/T_DeathNibble.png" id="14_sxdqs"]
+[ext_resource type="AudioStream" uid="uid://u7tootex1wm8" path="res://Levels/Music/incompetech/Beauty Flow.mp3" id="21_pse8l"]
 [ext_resource type="Script" uid="uid://c4c4ep5oo8o2m" path="res://Gameplay/Camera/CameraController.cs" id="22_ml50w"]
 [ext_resource type="Shader" uid="uid://px34nxwos4w0" path="res://MaterialLibrary/Portal/S_Portal.gdshader" id="23_p388s"]
 [ext_resource type="Texture2D" uid="uid://rmg52olxgkfm" path="res://_WIP/Art/T_Rectangle_Whitex1000.png" id="24_b88u8"]
@@ -253,6 +254,11 @@ pivot_offset = Vector2(150.08, 33.3249)
 
 [node name="Icon" parent="CanvasLayer/UI/ScreenCanvas/Selection/SelectionCards/Card_Module/Button/Icon" index="2"]
 pivot_offset = Vector2(128.64, 28.5642)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_pse8l")
+autoplay = true
+parameters/looping = true
 
 [connection signal="pressed" from="CanvasLayer/UI/ScreenCanvas/ShopButton" to="CanvasLayer/UI/ScreenCanvas/ShopButton" method="ShowFirstItem"]
 
