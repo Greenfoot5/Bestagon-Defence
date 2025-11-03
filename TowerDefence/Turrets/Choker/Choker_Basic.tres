@@ -1,4 +1,17 @@
-[gd_resource type="Resource" format=3 uid="uid://booj5s0lfehrd"]
+[gd_resource type="Resource" script_class="TurretBlueprint" load_steps=6 format=3 uid="uid://nv7jnrcvrw8p"]
+
+[ext_resource type="PackedScene" uid="uid://dp711l52tg2ry" path="res://Turrets/TurretEffect_Build.tscn" id="1_chhir"]
+[ext_resource type="Script" uid="uid://ufdo2vxockv6" path="res://Abstract/Data/ModuleChainHandler.cs" id="1_tnm6t"]
+[ext_resource type="Texture2D" uid="uid://dkg7vvoia8bv3" path="res://Turrets/Choker/T_Turret_Choker.png" id="2_lqudl"]
+[ext_resource type="Script" uid="uid://md2drvi4felr" path="res://Turrets/TurretBlueprint.cs" id="2_w5uoc"]
+[ext_resource type="PackedScene" uid="uid://drpqer5xenoqe" path="res://Turrets/Choker/Turret_Choker.tscn" id="3_77xkt"]
 
 [resource]
+script = ExtResource("2_w5uoc")
+ShopIcon = ExtResource("2_lqudl")
+DisplayName = "Choker"
+Tagline = "Spray and Pray"
+Accent = Color(0.964706, 0.392157, 0.219608, 1)
+Prefab = ExtResource("3_77xkt")
+BuildEffect = ExtResource("1_chhir")
 metadata/_custom_type_script = "uid://md2drvi4felr"
