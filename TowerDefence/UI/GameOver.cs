@@ -56,6 +56,8 @@ public partial class GameOver : Control
     /// </summary>
     public void Menu()
     {
-        TransitionManager.Instance.LoadScene("MainMenu");
+        GetTree().Root.PropagateNotification((int)NotificationWMCloseRequest);
+        GetTree().Quit();
+        // TransitionManager.Instance.LoadScene("MainMenu");
     }
 }

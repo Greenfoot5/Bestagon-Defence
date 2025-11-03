@@ -38,22 +38,6 @@ public partial class SpeedControls : Control
     [Export]
     private string waveText;
 
-    /// <summary>
-    /// Allows the class to listen to the pause button press
-    /// </summary>
-    public override void _Ready()
-    {
-        // GameStats.controls.Game.Pause.performed += ToggleMenu;
-    }
-
-    /// <summary>
-    /// Disconnects the event from running when the level is closed
-    /// </summary>
-    private void OnDestroy()
-    {
-        // GameStats.controls.Game.Pause.performed -= ToggleMenu;
-    }
-
     public void SetSpeed(float speed)
     {
         // Pause
@@ -84,18 +68,6 @@ public partial class SpeedControls : Control
         Engine.TimeScale = speed;
         UpdateTimer();
     }
-
-    /// <summary>
-    /// Pauses/unpauses the game, and enables/disables the UI by input button press
-    // </summary>
-    // TODO - Input
-    // private void ToggleMenu(InputAction.CallbackContext ctx)
-    // {
-    //     pausedUI.SetActive(!pausedUI.activeSelf);
-    //     
-    //     Engine.TimeScale = pausedUI.activeSelf ? 0f : 1f;
-    //     UpdateTimer();
-    // }
         
     /// <summary>
     /// Pauses/unpauses the game and enables/disables the UI by UI button press
@@ -141,7 +113,9 @@ public partial class SpeedControls : Control
     /// </summary>
     public void Menu()
     {
+        GetTree().Root.PropagateNotification((int)NotificationWMCloseRequest);
+        GetTree().Quit();
         // Transition to the main menu
-        TransitionManager.Instance.LoadScene("LevelSelect");
+        // TransitionManager.Instance.LoadScene("LevelSelect");
     }
 }
