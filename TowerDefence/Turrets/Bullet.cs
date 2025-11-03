@@ -313,22 +313,18 @@ public partial class Bullet : Node2D
 
         if (IsInstanceValid(enemy) && !UseLocation && Target.GetInstanceId() == col.GetInstanceId())
         {
-            GD.Print("Hit without UseLocation");
             HitTarget(true, enemy);
             return;
         }
 
         if (IsEthereal || UseLocation)
         {
-            GD.Print("Hit with UseLocation!");
             if (!WillHitFirst)
             {
-                GD.Print("Hit without first");
                 Damage(enemy);
             }
             else
             {
-                GD.Print("Hit with first");
                 HitTarget(true, enemy);
             }
         }
