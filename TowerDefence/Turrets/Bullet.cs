@@ -339,7 +339,7 @@ public partial class Bullet : Node2D
         Area.SetDeferred("monitoring", false);
         isDead = true;
         
-        if (deathTime + 50 < Time.GetTicksMsec())
+        if (deathTime + 50 < Time.GetTicksMsec() && IsInstanceValid(Line))
         {
             Line.Width *= 1f - (1f / Line.Points.Length);
             deathTime = Time.GetTicksMsec();
