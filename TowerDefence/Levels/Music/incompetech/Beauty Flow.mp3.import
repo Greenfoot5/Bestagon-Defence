@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://u7tootex1wm8"
+path="res://.godot/imported/Beauty Flow.mp3-b2ab37c48eedd51abdf0ddd4d7e62511.mp3str"
+
+[deps]
+
+source_file="res://Levels/Music/incompetech/Beauty Flow.mp3"
+dest_files=["res://.godot/imported/Beauty Flow.mp3-b2ab37c48eedd51abdf0ddd4d7e62511.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

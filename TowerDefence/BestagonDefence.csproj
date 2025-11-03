@@ -17,4 +17,7 @@
     <EmbeddedResource Remove="MaterialLibrary\**" />
     <EmbeddedResource Remove="Modules\_NeedRebalance\**" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Levels\Music\" />
+  </ItemGroup>
 </Project>
