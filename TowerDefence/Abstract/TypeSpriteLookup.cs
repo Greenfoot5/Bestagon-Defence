@@ -57,14 +57,17 @@ public partial class TypeSpriteLookup : Resource
     /// <summary>
     /// The list of TurretGlyphs to use
     /// </summary>
-    private Array<TurretGlyph> _sprites = [];
+    private Array<TurretGlyph> _sprites = GetSpritesDefault();
 
     /// <summary>
-    /// Creates a new lookup
+    /// Creates an Array of the correct size for _sprites
     /// </summary>
-    public TypeSpriteLookup()
+    /// <returns></returns>
+    private static Array<TurretGlyph> GetSpritesDefault()
     {
-        _sprites.Resize(Types.Count);
+        Array<TurretGlyph> arr = [];
+        arr.Resize(Types.Count);
+        return arr;
     }
         
     /// <summary>
