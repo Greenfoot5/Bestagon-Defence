@@ -246,6 +246,9 @@ WaveData = ExtResource("9_h5o5v")
 layout_mode = 1
 mouse_filter = 1
 
+[node name="Text (TMP)" parent="CanvasLayer/UI/ScreenCanvas/GameOverUI/Menu" index="0"]
+text = "Quit"
+
 [node name="BackShadow" parent="CanvasLayer/UI/ScreenCanvas/Selection/SelectionCards/Card_Module/Button/Icon" index="0"]
 pivot_offset = Vector2(187.6, 41.6561)
 
