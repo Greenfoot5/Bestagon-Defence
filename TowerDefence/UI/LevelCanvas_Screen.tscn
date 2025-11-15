@@ -1,14 +1,15 @@
-[gd_scene load_steps=36 format=3 uid="uid://bf14d8qox8yy5"]
+[gd_scene load_steps=37 format=3 uid="uid://bf14d8qox8yy5"]
 
-[ext_resource type="Script" uid="uid://b1y7106ggbj46" path="res://UI/SpeedControls.cs" id="1_3vno0"]
-[ext_resource type="Texture2D" uid="uid://bs37ieabggvk2" path="res://UI/TA_Stop.tres" id="1_anr6t"]
+[ext_resource type="Script" uid="uid://b1y7106ggbj46" path="res://UI/Controls/SpeedControls.cs" id="1_3vno0"]
 [ext_resource type="PackedScene" uid="uid://dpv0bwn2n0ebh" path="res://UI/Shop/Card_Turret.tscn" id="1_iukjl"]
-[ext_resource type="Texture2D" uid="uid://g63k4ffc8ofv" path="res://UI/TA_Pause.tres" id="2_5do7x"]
+[ext_resource type="Texture2D" uid="uid://g63k4ffc8ofv" path="res://UI/Controls/TA_Pause.tres" id="2_5do7x"]
+[ext_resource type="ButtonGroup" uid="uid://ct4tsh2d4t240" path="res://UI/Controls/BG_SpeedControls.tres" id="2_6aiq6"]
+[ext_resource type="Texture2D" uid="uid://pvwicmk1suqa" path="res://_WIP/Art/T_Rectangle_Whitex100.png" id="2_lv0it"]
 [ext_resource type="PackedScene" uid="uid://bxr1qd0pjiu10" path="res://UI/Shop/Card_Module.tscn" id="2_wvkwj"]
-[ext_resource type="Texture2D" uid="uid://dpl600v8e8aim" path="res://UI/TA_Play.tres" id="3_3vno0"]
+[ext_resource type="Texture2D" uid="uid://dpl600v8e8aim" path="res://UI/Controls/TA_Play.tres" id="3_3vno0"]
 [ext_resource type="PackedScene" uid="uid://psuoawl8jg4k" path="res://UI/Shop/Card_Life.tscn" id="3_pmuhg"]
 [ext_resource type="PackedScene" uid="uid://dcdfawohp4hf8" path="res://UI/Shop/Card_Hidden.tscn" id="4_q3du4"]
-[ext_resource type="Texture2D" uid="uid://37piix4n332g" path="res://UI/TA_Fast.tres" id="4_tqgei"]
+[ext_resource type="Texture2D" uid="uid://37piix4n332g" path="res://UI/Controls/TA_Fast.tres" id="4_tqgei"]
 [ext_resource type="Texture2D" uid="uid://b62bpy01o0yum" path="res://UI/Generic/T_Life.png" id="5_2lohw"]
 [ext_resource type="Texture2D" uid="uid://dhwain58mvf31" path="res://UI/Generic/T_Powercell.png" id="6_s0rbo"]
 [ext_resource type="Texture2D" uid="uid://bvrudgxpv3fb2" path="res://UI/Shop/T_EnergyButton.png" id="8_m17u4"]
@@ -50,30 +51,53 @@ grow_vertical = 2
 
 [node name="SpeedControls" type="VBoxContainer" parent="." node_paths=PackedStringArray("pausedUI")]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
+anchors_preset = -1
+anchor_left = 0.95
 anchor_right = 1.0
+anchor_bottom = 0.4
 grow_horizontal = 0
-alignment = 1
 script = ExtResource("1_3vno0")
 pausedUI = NodePath("../PauseMenu")
 waveText = "Yeet"
 
-[node name="StopButton" type="Button" parent="SpeedControls"]
+[node name="StopButton" type="TextureButton" parent="SpeedControls"]
 layout_mode = 2
-icon = ExtResource("1_anr6t")
+size_flags_vertical = 3
+toggle_mode = true
+button_pressed = true
+button_group = ExtResource("2_6aiq6")
+texture_normal = ExtResource("2_lv0it")
+ignore_texture_size = true
+stretch_mode = 5
 
-[node name="PauseButton" type="Button" parent="SpeedControls"]
+[node name="PauseButton" type="TextureButton" parent="SpeedControls"]
 layout_mode = 2
-icon = ExtResource("2_5do7x")
+size_flags_vertical = 3
+toggle_mode = true
+button_group = ExtResource("2_6aiq6")
+texture_normal = ExtResource("2_5do7x")
+ignore_texture_size = true
+stretch_mode = 5
 
-[node name="PlayButton" type="Button" parent="SpeedControls"]
+[node name="PlayButton" type="TextureButton" parent="SpeedControls"]
+self_modulate = Color(1, 1, 1, 0.5)
 layout_mode = 2
-icon = ExtResource("3_3vno0")
+size_flags_vertical = 3
+toggle_mode = true
+button_pressed = true
+button_group = ExtResource("2_6aiq6")
+texture_normal = ExtResource("3_3vno0")
+ignore_texture_size = true
+stretch_mode = 5
 
-[node name="FastButton" type="Button" parent="SpeedControls"]
+[node name="FastButton" type="TextureButton" parent="SpeedControls"]
 layout_mode = 2
-icon = ExtResource("4_tqgei")
+size_flags_vertical = 3
+toggle_mode = true
+button_group = ExtResource("2_6aiq6")
+texture_normal = ExtResource("4_tqgei")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="GameStats" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -947,9 +971,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="pressed" from="SpeedControls/StopButton" to="SpeedControls" method="ToggleMenu"]
+[connection signal="toggled" from="SpeedControls/StopButton" to="SpeedControls" method="UpdateColour"]
 [connection signal="pressed" from="SpeedControls/PauseButton" to="SpeedControls" method="SetSpeed" binds= [0.0]]
+[connection signal="toggled" from="SpeedControls/PauseButton" to="SpeedControls" method="UpdateColour"]
 [connection signal="pressed" from="SpeedControls/PlayButton" to="SpeedControls" method="SetSpeed" binds= [1.0]]
+[connection signal="toggled" from="SpeedControls/PlayButton" to="SpeedControls" method="UpdateColour"]
 [connection signal="pressed" from="SpeedControls/FastButton" to="SpeedControls" method="SetSpeed" binds= [2.0]]
+[connection signal="toggled" from="SpeedControls/FastButton" to="SpeedControls" method="UpdateColour"]
 [connection signal="pressed" from="ShopButton" to="Selection" method="Open"]
 [connection signal="pressed" from="GameOverUI/Retry" to="GameOverUI" method="Retry"]
 [connection signal="pressed" from="GameOverUI/Menu" to="GameOverUI" method="Menu"]

@@ -68,6 +68,20 @@ public partial class SpeedControls : Control
         Engine.TimeScale = speed;
         UpdateTimer();
     }
+
+    /// <summary>
+    /// Updates the colour of a button when it's toggled
+    /// </summary>
+    public void UpdateColour(bool toggled)
+    {
+        foreach (Node child in GetChildren())
+        {
+            if (child is BaseButton button)
+            {
+                button.SelfModulate = new Color(1, 1, 1, button.ButtonPressed ? 0.5f : 1f);
+            }
+        }
+    }
         
     /// <summary>
     /// Pauses/unpauses the game and enables/disables the UI by UI button press
