@@ -7,7 +7,13 @@
 [sub_resource type="Resource" id="Resource_fyilw"]
 script = ExtResource("1_0nd1m")
 Name = 2
-Base = 5.0
+Base = 200.0
+
+[sub_resource type="Resource" id="Resource_rcm7u"]
+script = ExtResource("1_0nd1m")
+Name = 3
+Base = 1.0
+metadata/_custom_type_script = "uid://blnrq5atpcclw"
 
 [sub_resource type="Resource" id="Resource_svae6"]
 script = ExtResource("1_0nd1m")
@@ -28,12 +34,6 @@ Base = 2.3
 script = ExtResource("1_0nd1m")
 Name = 15
 Base = 30.0
-
-[sub_resource type="Resource" id="Resource_rcm7u"]
-script = ExtResource("1_0nd1m")
-Name = 3
-Base = 1.0
-metadata/_custom_type_script = "uid://blnrq5atpcclw"
 
 [resource]
 script = ExtResource("3_bnyir")

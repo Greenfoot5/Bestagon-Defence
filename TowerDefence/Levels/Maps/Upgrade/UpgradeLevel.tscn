@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://dxeskbdbxmflu"]
+[gd_scene format=4 uid="uid://dxeskbdbxmflu"]
 
 [ext_resource type="TileSet" uid="uid://cqec5gsl2jrtp" path="res://Levels/_Tiles/PathTiles.tres" id="1_dbecs"]
 [ext_resource type="Shader" uid="uid://ci85qadqdqbak" path="res://MaterialLibrary/Hexagons/S_Background.gdshader" id="1_h5o5v"]
@@ -77,9 +77,11 @@ shader_parameter/inflate = 0.1
 shader_parameter/smooth_fac = 0.6
 shader_parameter/step_mult = 0.05
 
-[node name="Upgrade" type="Node"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_pse8l"]
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Upgrade" type="Node" unique_id=1636106108]
+
+[node name="Panel" type="Panel" parent="." unique_id=1720429920]
 material = SubResource("ShaderMaterial_dbecs")
 anchors_preset = -1
 anchor_left = 1.0
@@ -95,7 +97,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_jq068")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=686115910]
 offset = Vector2(-200, 0)
 limit_left = -2500
 limit_top = -1500
@@ -107,23 +109,23 @@ keyboardPanSpeed = 500.0
 minZoom = 0.3
 maxZoom = 3.0
 
-[node name="_Managers\'" type="Node" parent="."]
+[node name="_Managers\'" type="Node" parent="." unique_id=1528832161]
 
-[node name="GameStats" type="Node" parent="_Managers\'"]
+[node name="GameStats" type="Node" parent="_Managers\'" unique_id=1916536883]
 script = ExtResource("13_p388s")
 
-[node name="BuildManager" type="Node" parent="_Managers\'"]
+[node name="BuildManager" type="Node" parent="_Managers\'" unique_id=1377480052]
 script = ExtResource("13_dbecs")
 
-[node name="GameManager" type="Node" parent="_Managers\'" node_paths=PackedStringArray("GameOverUI", "shop", "livesText")]
+[node name="GameManager" type="Node" parent="_Managers\'" unique_id=1787554534 node_paths=PackedStringArray("GameOverUI", "shop", "livesText")]
 script = ExtResource("14_dbecs")
 GameOverUI = NodePath("../../CanvasLayer/UI/ScreenCanvas/GameOverUI")
 shop = NodePath("../../CanvasLayer/UI/ScreenCanvas/ShopButton")
 livesText = NodePath("../../CanvasLayer/UI/ScreenCanvas/GameStats/Lives/Text (TMP)")
 
-[node name="Map" type="Node2D" parent="."]
+[node name="Map" type="Node2D" parent="." unique_id=1152295507]
 
-[node name="PathGrid" type="TileMapLayer" parent="Map"]
+[node name="PathGrid" type="TileMapLayer" parent="Map" unique_id=1110992953]
 position = Vector2(1, 0)
 scale = Vector2(0.1, 0.1)
 tile_map_data = PackedByteArray("AAD2//v/AAAAAAAAAAD3//v/AAAAAAAAAAD4//v/AAAAAAAAAAD5//v/AAAAAAAAAAD6//z/AAAAAAAAAAD7//v/AAAAAAAAAAD8//z/AAAAAAAAAAD8//3/AAAAAAAAAAD7//3/AAAAAAAAAAD7//7/AAAAAAAAAAD8////AAAAAAAAAAD9//7/AAAAAAAAAAD+//7/AAAAAAAAAAD///7/AAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAMAAAAAAAAAAAACAAMAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAADAAAAAAAAAAAAAAACAAAAAAAAAAAAAAABAAAAAAAAAAAAAAD//wEAAAAAAAAAAAD+/wIAAAAAAAAAAAD9/wIAAAAAAAAAAAD8/wIAAAAAAAAAAAD7/wEAAAAAAAAAAAD6/wEAAAAAAAAAAAD5/wEAAAAAAAAAAAD4/wIAAAAAAAAAAAD4/wMAAAAAAAAAAAD4/wQAAAAAAAAAAAA=")
@@ -132,7 +134,7 @@ occlusion_enabled = false
 collision_enabled = false
 navigation_enabled = false
 
-[node name="BuildableGrid" type="TileMapLayer" parent="Map"]
+[node name="BuildableGrid" type="TileMapLayer" parent="Map" unique_id=1482928658]
 scale = Vector2(0.1, 0.1)
 tile_map_data = PackedByteArray("AAD4//z/AQAAAAAAAQD5//z/AQAAAAAAAQD6//3/AQAAAAAAAQD6//v/AQAAAAAAAQD7//z/AQAAAAAAAQD8//7/AQAAAAAAAQD9//3/AQAAAAAAAQD9//z/AQAAAAAAAQAAAP7/AQAAAAAAAQABAP//AQAAAAAAAQABAAEAAQAAAAAAAQACAAIAAQAAAAAAAQADAAEAAQAAAAAAAQD//wIAAQAAAAAAAQAAAAQAAQAAAAAAAQABAAQAAQAAAAAAAQACAAQAAQAAAAAAAQAFAAIAAQAAAAAAAQAGAAIAAQAAAAAAAQAFAAAAAQAAAAAAAQACAP7/AQAAAAAAAQAEAP7/AQAAAAAAAQD8/wQAAQAAAAAAAQD9/wQAAQAAAAAAAQD+/wQAAQAAAAAAAQD+/wUAAQAAAAAAAQD8/wUAAQAAAAAAAQD7/wMAAQAAAAAAAQD5/wIAAQAAAAAAAQD+/wAAAQAAAAAAAQD7////AQAAAAAAAQD8/wAAAQAAAAAAAQD7/wAAAQAAAAAAAQD9/wEAAQAAAAAAAQD4/wEAAQAAAAAAAQD5////AQAAAAAAAQD4//7/AQAAAAAAAQD2//7/AQAAAAAAAQD2/wEAAQAAAAAAAQDz//z/AQAAAAAAAQACAPz/AQAAAAAAAQAAAPr/AQAAAAAAAQDz/wAAAQAAAAAAAQD0////AQAAAAAAAQD1/wQAAQAAAAAAAQA=")
 tile_set = SubResource("TileSet_uqua4")
@@ -140,7 +142,7 @@ occlusion_enabled = false
 collision_enabled = false
 navigation_enabled = false
 
-[node name="SpawnPoint" type="Sprite2D" parent="Map" node_paths=PackedStringArray("_countdown")]
+[node name="SpawnPoint" type="Sprite2D" parent="Map" unique_id=200976916 node_paths=PackedStringArray("_countdown")]
 material = SubResource("ShaderMaterial_nt6x0")
 position = Vector2(-405, -225)
 texture = ExtResource("9_b88u8")
@@ -149,81 +151,81 @@ script = ExtResource("3_o3dn4")
 _waves = ExtResource("11_yrqfs")
 _countdown = NodePath("../../CanvasLayer/UI/WaveCountdown")
 
-[node name="Waypoint (1)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
+[node name="Waypoint (1)" parent="Map/SpawnPoint" unique_id=897818298 instance=ExtResource("10_4ignw")]
 position = Vector2(76, 42)
 
-[node name="Waypoint (2)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
+[node name="Waypoint (2)" parent="Map/SpawnPoint" unique_id=1791621506 instance=ExtResource("10_4ignw")]
 position = Vector2(116, 19)
 
-[node name="Waypoint (3)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
+[node name="Waypoint (3)" parent="Map/SpawnPoint" unique_id=405367007 instance=ExtResource("10_4ignw")]
 position = Vector2(196, 65)
 
-[node name="Waypoint (4)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
+[node name="Waypoint (4)" parent="Map/SpawnPoint" unique_id=1484387202 instance=ExtResource("10_4ignw")]
 position = Vector2(235, 42)
 
-[node name="Waypoint (5)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
+[node name="Waypoint (5)" parent="Map/SpawnPoint" unique_id=406998590 instance=ExtResource("10_4ignw")]
 position = Vector2(275, 65)
 
-[node name="Waypoint (6)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
+[node name="Waypoint (6)" parent="Map/SpawnPoint" unique_id=1426700678 instance=ExtResource("10_4ignw")]
 position = Vector2(275, 111)
 
-[node name="Waypoint (7)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
+[node name="Waypoint (7)" parent="Map/SpawnPoint" unique_id=1894148661 instance=ExtResource("10_4ignw")]
 position = Vector2(235, 133)
 
-[node name="Waypoint (8)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
+[node name="Waypoint (8)" parent="Map/SpawnPoint" unique_id=1946756961 instance=ExtResource("10_4ignw")]
 position = Vector2(235, 180)
 
-[node name="Waypoint (9)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
+[node name="Waypoint (9)" parent="Map/SpawnPoint" unique_id=42584577 instance=ExtResource("10_4ignw")]
 position = Vector2(275, 203)
 
-[node name="Waypoint (10)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
+[node name="Waypoint (10)" parent="Map/SpawnPoint" unique_id=1435082515 instance=ExtResource("10_4ignw")]
 position = Vector2(354, 157)
 
-[node name="Waypoint (11)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
+[node name="Waypoint (11)" parent="Map/SpawnPoint" unique_id=1001271685 instance=ExtResource("10_4ignw")]
 position = Vector2(433, 203)
 
-[node name="Waypoint (12)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
+[node name="Waypoint (12)" parent="Map/SpawnPoint" unique_id=1406043320 instance=ExtResource("10_4ignw")]
 position = Vector2(433, 386)
 
-[node name="Waypoint (13)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
+[node name="Waypoint (13)" parent="Map/SpawnPoint" unique_id=977234112 instance=ExtResource("10_4ignw")]
 position = Vector2(473, 408)
 
-[node name="Waypoint (14)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
+[node name="Waypoint (14)" parent="Map/SpawnPoint" unique_id=1916272125 instance=ExtResource("10_4ignw")]
 position = Vector2(631, 318)
 
-[node name="Waypoint (15)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
+[node name="Waypoint (15)" parent="Map/SpawnPoint" unique_id=202747306 instance=ExtResource("10_4ignw")]
 position = Vector2(512, 248)
 
-[node name="Waypoint (16)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
+[node name="Waypoint (16)" parent="Map/SpawnPoint" unique_id=1901200396 instance=ExtResource("10_4ignw")]
 position = Vector2(314, 363)
 
-[node name="Waypoint (17)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
+[node name="Waypoint (17)" parent="Map/SpawnPoint" unique_id=733793704 instance=ExtResource("10_4ignw")]
 position = Vector2(195, 294)
 
-[node name="Waypoint (18)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
+[node name="Waypoint (18)" parent="Map/SpawnPoint" unique_id=755291888 instance=ExtResource("10_4ignw")]
 position = Vector2(116, 340)
 
-[node name="Waypoint (19)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
+[node name="Waypoint (19)" parent="Map/SpawnPoint" unique_id=1397938004 instance=ExtResource("10_4ignw")]
 position = Vector2(116, 432)
 
-[node name="Waypoint (20)" parent="Map/SpawnPoint" instance=ExtResource("10_4ignw")]
+[node name="Waypoint (20)" parent="Map/SpawnPoint" unique_id=1121409537 instance=ExtResource("10_4ignw")]
 position = Vector2(158.313, 457.5)
 
-[node name="DeathBitManager" type="Node2D" parent="Map"]
+[node name="DeathBitManager" type="Node2D" parent="Map" unique_id=409287923]
 script = ExtResource("12_o3dn4")
 _bit = ExtResource("13_sxdqs")
 _nibble = ExtResource("14_sxdqs")
 _byte = ExtResource("14_8tbnj")
 
-[node name="Exit" type="Sprite2D" parent="Map"]
+[node name="Exit" type="Sprite2D" parent="Map" unique_id=709087545]
 material = SubResource("ShaderMaterial_p388s")
 position = Vector2(-247, 232)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("24_b88u8")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1020876041]
 
-[node name="UI" type="Control" parent="CanvasLayer"]
+[node name="UI" type="Control" parent="CanvasLayer" unique_id=1160177930]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -235,19 +237,49 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 1
 
-[node name="WaveCountdown" type="Timer" parent="CanvasLayer/UI"]
+[node name="WaveCountdown" type="Timer" parent="CanvasLayer/UI" unique_id=1675669107]
 wait_time = 5.0
 one_shot = true
 autostart = true
 script = ExtResource("8_a02h1")
 WaveData = ExtResource("9_h5o5v")
 
-[node name="ScreenCanvas" parent="CanvasLayer/UI" instance=ExtResource("11_ml50w")]
+[node name="ScreenCanvas" parent="CanvasLayer/UI" unique_id=140960243 instance=ExtResource("11_ml50w")]
 layout_mode = 1
 mouse_filter = 1
 
+[node name="StopButton" parent="CanvasLayer/UI/ScreenCanvas/SpeedControls" index="0"]
+button_group = SubResource("ButtonGroup_pse8l")
+
+[node name="PauseButton" parent="CanvasLayer/UI/ScreenCanvas/SpeedControls" index="1"]
+button_group = SubResource("ButtonGroup_pse8l")
+
+[node name="PlayButton" parent="CanvasLayer/UI/ScreenCanvas/SpeedControls" index="2"]
+button_group = SubResource("ButtonGroup_pse8l")
+
+[node name="FastButton" parent="CanvasLayer/UI/ScreenCanvas/SpeedControls" index="3"]
+button_group = SubResource("ButtonGroup_pse8l")
+
+[node name="Damage" parent="CanvasLayer/UI/ScreenCanvas/Inventory/TurretInfo/Stats" index="0"]
+split_offsets = PackedInt32Array(5)
+
+[node name="Rate" parent="CanvasLayer/UI/ScreenCanvas/Inventory/TurretInfo/Stats" index="1"]
+split_offsets = PackedInt32Array(5)
+
+[node name="Range" parent="CanvasLayer/UI/ScreenCanvas/Inventory/TurretInfo/Stats" index="2"]
+split_offsets = PackedInt32Array(5)
+
 [node name="Text (TMP)" parent="CanvasLayer/UI/ScreenCanvas/GameOverUI/Menu" index="0"]
 text = "Quit"
+
+[node name="Damage" parent="CanvasLayer/UI/ScreenCanvas/Selection/SelectionCards/Card_Turret/Button/Content/Info/Stats" index="0"]
+split_offsets = PackedInt32Array(5)
+
+[node name="Rate" parent="CanvasLayer/UI/ScreenCanvas/Selection/SelectionCards/Card_Turret/Button/Content/Info/Stats" index="1"]
+split_offsets = PackedInt32Array(5)
+
+[node name="Range" parent="CanvasLayer/UI/ScreenCanvas/Selection/SelectionCards/Card_Turret/Button/Content/Info/Stats" index="2"]
+split_offsets = PackedInt32Array(5)
 
 [node name="BackShadow" parent="CanvasLayer/UI/ScreenCanvas/Selection/SelectionCards/Card_Module/Button/Icon" index="0"]
 pivot_offset = Vector2(187.6, 41.6561)
@@ -258,7 +290,7 @@ pivot_offset = Vector2(150.08, 33.3249)
 [node name="Icon" parent="CanvasLayer/UI/ScreenCanvas/Selection/SelectionCards/Card_Module/Button/Icon" index="2"]
 pivot_offset = Vector2(128.64, 28.5642)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2017832604]
 stream = ExtResource("21_pse8l")
 autoplay = true
 parameters/looping = true
