@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dwk4c35d40rf"]
+[gd_scene format=3 uid="uid://dwk4c35d40rf"]
 
 [ext_resource type="Script" uid="uid://drvqbyytx8ijt" path="res://Turrets/Bullet.cs" id="1_haeq8"]
 [ext_resource type="Texture2D" uid="uid://b32y8keo4wjjo" path="res://Turrets/Gunner/T_TurretBase_GunnerLight.png" id="1_oa8tp"]
@@ -10,41 +10,36 @@
 script = ExtResource("2_kuuri")
 Name = 2
 Base = 5.0
-_modifiers = Dictionary[Variant, ExtResource("2_17ky5")]({})
-Min = inf_neg
-Max = inf
+
+[sub_resource type="Resource" id="Resource_kdiqw"]
+script = ExtResource("2_17ky5")
+Value = -1.0
+metadata/_custom_type_script = "uid://be3vaboc8v6w0"
 
 [sub_resource type="Resource" id="Resource_rv6ww"]
 script = ExtResource("2_kuuri")
 Name = 4
 Base = 1.0
-_modifiers = Dictionary[Variant, ExtResource("2_17ky5")]({})
+_modifiers = Dictionary[Variant, ExtResource("2_17ky5")]({
+"default": SubResource("Resource_kdiqw")
+})
 Min = 0.0
-Max = inf
 
 [sub_resource type="Resource" id="Resource_ohrh3"]
 script = ExtResource("2_kuuri")
 Name = 5
 Base = 1.0
-_modifiers = Dictionary[Variant, ExtResource("2_17ky5")]({})
 Min = 0.0
-Max = inf
 
 [sub_resource type="Resource" id="Resource_4ht6e"]
 script = ExtResource("2_kuuri")
 Name = 15
 Base = 2.3
-_modifiers = Dictionary[Variant, ExtResource("2_17ky5")]({})
-Min = inf_neg
-Max = inf
 
 [sub_resource type="Resource" id="Resource_7ac0c"]
 script = ExtResource("2_kuuri")
 Name = 17
 Base = 240.0
-_modifiers = Dictionary[Variant, ExtResource("2_17ky5")]({})
-Min = inf_neg
-Max = inf
 
 [sub_resource type="Resource" id="Resource_w3edi"]
 script = ExtResource("3_17ky5")
@@ -66,7 +61,7 @@ colors = PackedColorArray(0.096, 0.4, 0.2936, 0, 0.588235, 0.219608, 0.94902, 1)
 [sub_resource type="CircleShape2D" id="CircleShape2D_kuuri"]
 radius = 200.0
 
-[node name="GunnerPellet" type="Node2D" node_paths=PackedStringArray("Area", "Line")]
+[node name="GunnerPellet" type="Node2D" unique_id=1591160834 node_paths=PackedStringArray("Area", "Line")]
 script = ExtResource("1_haeq8")
 Stats = SubResource("Resource_w3edi")
 Area = NodePath("Area")
@@ -74,22 +69,22 @@ Line = NodePath("Line2D")
 maxPoints = 3
 pointSpacing = 5.0
 
-[node name="Line2D" type="Line2D" parent="."]
+[node name="Line2D" type="Line2D" parent="." unique_id=864390332]
 points = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 width = 5.0
 width_curve = SubResource("Curve_haeq8")
 default_color = Color(0.588235, 0.219608, 0.94902, 1)
 gradient = SubResource("Gradient_ut4nk")
 
-[node name="Area" type="Area2D" parent="."]
+[node name="Area" type="Area2D" parent="." unique_id=575808503]
 scale = Vector2(0.025, -0.025)
 collision_layer = 0
 collision_mask = 2
 input_pickable = false
 monitorable = false
 
-[node name="Sprite" type="Sprite2D" parent="Area"]
+[node name="Sprite" type="Sprite2D" parent="Area" unique_id=1890120477]
 texture = ExtResource("1_oa8tp")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area" unique_id=1501774617]
 shape = SubResource("CircleShape2D_kuuri")
