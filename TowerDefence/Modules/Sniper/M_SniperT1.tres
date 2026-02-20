@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SniperModule" load_steps=21 format=3 uid="uid://cji1x5fi04kui"]
+[gd_resource type="Resource" script_class="SniperModule" format=3 uid="uid://cji1x5fi04kui"]
 
 [ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/Modifier.cs" id="1_erqrf"]
 [ext_resource type="Script" uid="uid://cxoo5hakfol7u" path="res://Modules/Sniper/SniperModule.cs" id="2_rhmbw"]

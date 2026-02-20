@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Attributes" load_steps=11 format=3 uid="uid://cx80urcq7ywf5"]
+[gd_resource type="Resource" script_class="Attributes" format=3 uid="uid://cx80urcq7ywf5"]
 
 [ext_resource type="Script" uid="uid://blnrq5atpcclw" path="res://Abstract/Attributes/Attribute.cs" id="1_6jclm"]
 [ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/Modifier.cs" id="2_gonbf"]
@@ -8,7 +8,6 @@
 script = ExtResource("1_6jclm")
 Name = 2
 Base = 650.0
-Min = inf_neg
 
 [sub_resource type="Resource" id="Resource_6jclm"]
 script = ExtResource("2_gonbf")
@@ -42,13 +41,11 @@ _modifiers = Dictionary[Variant, ExtResource("2_gonbf")]({
 script = ExtResource("1_6jclm")
 Name = 15
 Base = 2.3
-Min = inf_neg
 
 [sub_resource type="Resource" id="Resource_o6pqp"]
 script = ExtResource("1_6jclm")
 Name = 17
 Base = 120.0
-Min = inf_neg
 metadata/_custom_type_script = "uid://blnrq5atpcclw"
 
 [resource]

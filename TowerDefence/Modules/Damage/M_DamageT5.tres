@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DamageModule" load_steps=4 format=3 uid="uid://o6a2vosi4wme"]
+[gd_resource type="Resource" script_class="DamageModule" format=3 uid="uid://o6a2vosi4wme"]
 
 [ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/Modifier.cs" id="1_yw011"]
 [ext_resource type="Script" uid="uid://1qgp027mvmyp" path="res://Modules/Damage/DamageModule.cs" id="2_6mgpr"]

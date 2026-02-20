@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Attributes" load_steps=9 format=3 uid="uid://cvl6euld4ly6o"]
+[gd_resource type="Resource" script_class="Attributes" format=3 uid="uid://cvl6euld4ly6o"]
 
 [ext_resource type="Script" uid="uid://blnrq5atpcclw" path="res://Abstract/Attributes/Attribute.cs" id="1_0nd1m"]
 [ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/Modifier.cs" id="1_rcm7u"]
@@ -8,7 +8,6 @@
 script = ExtResource("1_0nd1m")
 Name = 2
 Base = 5.0
-Min = inf_neg
 
 [sub_resource type="Resource" id="Resource_svae6"]
 script = ExtResource("1_0nd1m")
@@ -24,13 +23,11 @@ Base = 1.0
 script = ExtResource("1_0nd1m")
 Name = 14
 Base = 2.3
-Min = inf_neg
 
 [sub_resource type="Resource" id="Resource_mcovh"]
 script = ExtResource("1_0nd1m")
 Name = 15
 Base = 30.0
-Min = inf_neg
 
 [resource]
 script = ExtResource("3_bnyir")

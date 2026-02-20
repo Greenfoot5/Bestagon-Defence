@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EnemyStats" load_steps=9 format=3 uid="uid://bye1nn35h5ykk"]
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://bye1nn35h5ykk"]
 
 [ext_resource type="Script" uid="uid://blnrq5atpcclw" path="res://Abstract/Attributes/Attribute.cs" id="1_a0ypd"]
 [ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/Modifier.cs" id="1_h587b"]
@@ -10,7 +10,6 @@
 script = ExtResource("1_a0ypd")
 Name = 11
 Base = 1000.0
-Min = inf_neg
 metadata/_custom_type_script = "uid://blnrq5atpcclw"
 
 [sub_resource type="Resource" id="Resource_bl6ue"]

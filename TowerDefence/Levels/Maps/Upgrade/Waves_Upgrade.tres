@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Waves" load_steps=68 format=3 uid="uid://7akq7gvgid27"]
+[gd_resource type="Resource" script_class="Waves" format=3 uid="uid://7akq7gvgid27"]
 
 [ext_resource type="Script" uid="uid://b4plfepxlwemi" path="res://Gameplay/Waves/Waves.cs" id="1_rh04d"]
 [ext_resource type="Resource" uid="uid://bm67ol4yudaf4" path="res://Enemies/Pawns/BasicStats.tres" id="2_yay6b"]
