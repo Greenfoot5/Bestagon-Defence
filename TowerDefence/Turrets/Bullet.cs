@@ -99,7 +99,8 @@ public partial class Bullet : Node2D
     {
         base._Ready();
         
-        explodeArea.Scale *= Stats[AttributeType.ExplosionRadius].Value;
+        if (explodeArea != null)
+            explodeArea.Scale *= Stats[AttributeType.ExplosionRadius].Value;
         Area.AreaEntered += OnAreaEntered;
     }
 
