@@ -18,46 +18,46 @@ shader_parameter/glow_color = Color(1, 1, 1, 1)
 shader_parameter/glow_radius = 2.0
 shader_parameter/glow_size = 1.6
 
-[node name="Seeker" type="Node2D" node_paths=PackedStringArray("FirePoint", "Ray", "PartToRotate", "RangeDisplay", "Range")]
+[node name="Seeker" type="Node2D" unique_id=1773230526 node_paths=PackedStringArray("FirePoint", "Ray", "PartToRotate", "RangeDisplay", "Range")]
 script = ExtResource("1_s6ie5")
 shot = ExtResource("2_8jhoo")
 FirePoint = NodePath("PartToRotate/Turret/SpawnPoint")
 Ray = NodePath("PartToRotate/Range/RayCast2D")
-PartToRotate = NodePath("PartToRotate/Turret")
+PartToRotate = NodePath("PartToRotate")
 RangeDisplay = NodePath("PartToRotate/Range/Render")
 Range = NodePath("PartToRotate/Range")
 Stats = ExtResource("3_73xnv")
 
-[node name="Base" type="Sprite2D" parent="."]
+[node name="Base" type="Sprite2D" parent="." unique_id=1874344558]
 texture = ExtResource("2_ykbrl")
 
-[node name="PartToRotate" type="Node2D" parent="."]
+[node name="PartToRotate" type="Node2D" parent="." unique_id=532718821]
 rotation = -1.5708
 
-[node name="Turret" type="Sprite2D" parent="PartToRotate"]
+[node name="Turret" type="Sprite2D" parent="PartToRotate" unique_id=69056721]
 rotation = 1.5708
 texture = ExtResource("3_g087p")
 
-[node name="SpawnPoint" type="Node2D" parent="PartToRotate/Turret"]
+[node name="SpawnPoint" type="Node2D" parent="PartToRotate/Turret" unique_id=985800296]
 position = Vector2(0, -120)
 
-[node name="Range" type="Area2D" parent="PartToRotate"]
+[node name="Range" type="Area2D" parent="PartToRotate" unique_id=2053960063]
 scale = Vector2(6, 6)
 collision_layer = 0
 collision_mask = 2
 input_pickable = false
 monitorable = false
 
-[node name="CollisionShape" type="CollisionShape2D" parent="PartToRotate/Range"]
+[node name="CollisionShape" type="CollisionShape2D" parent="PartToRotate/Range" unique_id=1771771822]
 shape = SubResource("CircleShape2D_053vb")
 
-[node name="Render" type="Sprite2D" parent="PartToRotate/Range"]
+[node name="Render" type="Sprite2D" parent="PartToRotate/Range" unique_id=1718145535]
 self_modulate = Color(0.901961, 0.0823529, 0.917647, 1)
 material = SubResource("ShaderMaterial_1nfsl")
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("5_8jhoo")
 
-[node name="RayCast2D" type="RayCast2D" parent="PartToRotate/Range"]
+[node name="RayCast2D" type="RayCast2D" parent="PartToRotate/Range" unique_id=416224703]
 target_position = Vector2(600, 0)
 collision_mask = 2
 collide_with_areas = true
