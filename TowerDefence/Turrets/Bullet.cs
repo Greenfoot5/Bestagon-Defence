@@ -90,7 +90,7 @@ public partial class Bullet : Node2D
     /// </summary>
     private readonly List<ulong> _hitEnemies = [];
     private ulong deathTime;
-    private bool isDead;
+    protected bool IsDead;
 
     /// <summary>
     /// Creates the bullet
@@ -143,7 +143,7 @@ public partial class Bullet : Node2D
     /// </summary>
     public override void _Process(double delta)
     {
-        if (isDead)
+        if (IsDead)
         {
             Die();
             return;
@@ -338,7 +338,7 @@ public partial class Bullet : Node2D
     {
         Area.Visible = false;
         Area.SetDeferred("monitoring", false);
-        isDead = true;
+        IsDead = true;
         
         if (deathTime + 50 < Time.GetTicksMsec() && IsInstanceValid(Line))
         {

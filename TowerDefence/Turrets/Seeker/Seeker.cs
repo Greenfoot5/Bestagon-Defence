@@ -13,6 +13,8 @@ public partial class Seeker : DynamicTurret
     /// </summary>
     [Export]
     private PackedScene shot;
+
+    private int shotCount;
     
     /// <summary>
     /// Rotates towards the target if the turret have one.
@@ -39,7 +41,7 @@ public partial class Seeker : DynamicTurret
         }
             
             
-        if (FireCountdown <= 0)
+        if (FireCountdown <= 0 && shotCount < Stats[AttributeType.SeekerCount].Value)
         {
             FireCountdown = 1 / Stats[AttributeType.FireRate].Value;
             Attack((float) delta);
@@ -65,8 +67,14 @@ public partial class Seeker : DynamicTurret
         ship.Area.Rotation = PartToRotate.Rotation;
         ship.Seek(TargetEnemy, this);
         GetTree().Root.AddChild(ship);
+        shotCount++;
         Shoot(ship);
 
         base.Attack(this);
+    }
+
+    public void RemoveShot()
+    {
+        shotCount--;
     }
 }

@@ -35,6 +35,13 @@ script = ExtResource("1_0nd1m")
 Name = 15
 Base = 30.0
 
+[sub_resource type="Resource" id="Resource_shqcc"]
+script = ExtResource("1_0nd1m")
+Name = 16
+Base = 3.0
+Min = 0.0
+metadata/_custom_type_script = "uid://blnrq5atpcclw"
+
 [resource]
 script = ExtResource("3_bnyir")
 _attributes = Dictionary[int, Variant]({
@@ -43,5 +50,6 @@ _attributes = Dictionary[int, Variant]({
 4: SubResource("Resource_svae6"),
 5: SubResource("Resource_b3ly2"),
 14: SubResource("Resource_r06gm"),
-15: SubResource("Resource_mcovh")
+15: SubResource("Resource_mcovh"),
+16: SubResource("Resource_shqcc")
 })

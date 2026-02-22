@@ -15,6 +15,7 @@ colors = PackedColorArray(0.67451, 0.0627451, 0.686275, 0, 0.901961, 0.0823529, 
 radius = 120.0
 
 [node name="SeekerShot" type="Node2D" unique_id=1477168022 node_paths=PackedStringArray("Area", "Line")]
+rotation = 1.5707964
 script = ExtResource("1_hwxr7")
 Stats = ExtResource("2_hwxr7")
 Area = NodePath("Area")

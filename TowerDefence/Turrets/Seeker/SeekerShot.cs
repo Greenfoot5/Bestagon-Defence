@@ -34,6 +34,12 @@ public partial class SeekerShot : Bullet
     /// </summary>
     public override void _Process(double delta)
     {
+        if (IsDead)
+        {
+            ((Seeker)Source).RemoveShot();
+            return;
+        }
+
         if (startTime + Stats[AttributeType.Lifetime].Value * 1000 < Time.GetTicksMsec())
         {
             Die();
