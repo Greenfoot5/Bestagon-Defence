@@ -90,7 +90,8 @@ public abstract partial class DynamicTurret : Turret
         if (IsInstanceValid(TargetEnemy))
         {
             float distanceToEnemy = GlobalPosition.DistanceSquaredTo(TargetEnemy.GlobalPosition);
-            if (distanceToEnemy <= Stats[AttributeType.Range].Value * Stats[AttributeType.Range].Value)
+            // Use Ray data to avoid converting range to pixels (as it's already done on the ray)
+            if (distanceToEnemy <= Ray.TargetPosition.X * Ray.GlobalScale.X * Ray.TargetPosition.X * Ray.GlobalScale.X)
                 return;
         }
 
