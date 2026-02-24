@@ -201,7 +201,7 @@ public partial class Bullet : Node2D
         Area.GlobalPosition -= new Vector2(distanceThisFrame * Mathf.Sin(-Area.GlobalRotation), distanceThisFrame * Mathf.Cos(Area.GlobalRotation));
             
         Vector2 difference = location - Area.GlobalPosition;
-        const float targetSize = 0.25f;
+        const float targetSize = 3f;
         // Has the bullet "hit" the target?
         if (!isEnemy && difference.LengthSquared() <= targetSize * targetSize)
         {
