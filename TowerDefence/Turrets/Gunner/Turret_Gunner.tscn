@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://mltdln2bc7hj"]
+[gd_scene format=3 uid="uid://mltdln2bc7hj"]
 
 [ext_resource type="Script" uid="uid://b4v8oviw1mkla" path="res://Turrets/Gunner/Gunner.cs" id="1_gs86s"]
 [ext_resource type="Texture2D" uid="uid://bu5ymwlmvorko" path="res://Turrets/Gunner/T_TurretBase_GunnerDark.png" id="1_jo57k"]
@@ -14,15 +14,12 @@
 script = ExtResource("3_3r6fm")
 Name = 2
 Base = 80.0
-_modifiers = Dictionary[Variant, ExtResource("4_xuf6c")]({})
 Min = 0.0
-Max = inf
 
 [sub_resource type="Resource" id="Resource_de50l"]
 script = ExtResource("3_3r6fm")
 Name = 3
 Base = 1.2
-_modifiers = Dictionary[Variant, ExtResource("4_xuf6c")]({})
 Min = 1.2
 Max = 7.0
 metadata/_custom_type_script = "uid://blnrq5atpcclw"
@@ -31,36 +28,24 @@ metadata/_custom_type_script = "uid://blnrq5atpcclw"
 script = ExtResource("3_3r6fm")
 Name = 14
 Base = 6.0
-_modifiers = Dictionary[Variant, ExtResource("4_xuf6c")]({})
-Min = inf_neg
-Max = inf
 metadata/_custom_type_script = "uid://blnrq5atpcclw"
 
 [sub_resource type="Resource" id="Resource_2yspl"]
 script = ExtResource("3_3r6fm")
 Name = 15
 Base = 2.5
-_modifiers = Dictionary[Variant, ExtResource("4_xuf6c")]({})
-Min = inf_neg
-Max = inf
 metadata/_custom_type_script = "uid://blnrq5atpcclw"
 
 [sub_resource type="Resource" id="Resource_h1kq3"]
 script = ExtResource("3_3r6fm")
 Name = 18
 Base = 1.2
-_modifiers = Dictionary[Variant, ExtResource("4_xuf6c")]({})
-Min = inf_neg
-Max = inf
 metadata/_custom_type_script = "uid://blnrq5atpcclw"
 
 [sub_resource type="Resource" id="Resource_ckg1w"]
 script = ExtResource("3_3r6fm")
 Name = 19
 Base = 1.3
-_modifiers = Dictionary[Variant, ExtResource("4_xuf6c")]({})
-Min = inf_neg
-Max = inf
 metadata/_custom_type_script = "uid://blnrq5atpcclw"
 
 [sub_resource type="Resource" id="Resource_xuf6c"]
@@ -89,7 +74,7 @@ shader_parameter/glow_color = Color(1, 1, 1, 1)
 shader_parameter/glow_radius = 2.0
 shader_parameter/glow_size = 1.6
 
-[node name="Gunner_Turret" type="Node2D" node_paths=PackedStringArray("FirePoint", "Ray", "PartToRotate", "RangeDisplay", "Range")]
+[node name="Gunner_Turret" type="Node2D" unique_id=1250495972 node_paths=PackedStringArray("FirePoint", "Ray", "PartToRotate", "RangeDisplay", "Range")]
 script = ExtResource("1_gs86s")
 _bulletPrefab = ExtResource("2_xuf6c")
 FirePoint = NodePath("PartToRotate/Turret/Fire Point")
@@ -99,42 +84,42 @@ RangeDisplay = NodePath("PartToRotate/Range/Render")
 Range = NodePath("PartToRotate/Range")
 Stats = SubResource("Resource_xuf6c")
 
-[node name="Base" type="Sprite2D" parent="."]
+[node name="Base" type="Sprite2D" parent="." unique_id=143925278]
 texture = ExtResource("1_jo57k")
 
-[node name="PartToRotate" type="Node2D" parent="."]
+[node name="PartToRotate" type="Node2D" parent="." unique_id=1594634057]
 rotation = -1.5708
 
-[node name="Turret" type="Sprite2D" parent="PartToRotate"]
+[node name="Turret" type="Sprite2D" parent="PartToRotate" unique_id=1912957261]
 rotation = 1.5708
 texture = ExtResource("2_0v5et")
 
-[node name="Fire Point" type="Node2D" parent="PartToRotate/Turret"]
+[node name="Fire Point" type="Node2D" parent="PartToRotate/Turret" unique_id=1428577811]
 position = Vector2(0, -200)
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="PartToRotate/Turret/Fire Point"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="PartToRotate/Turret/Fire Point" unique_id=378671834]
 emitting = false
 texture = ExtResource("3_l5cxh")
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_gs86s")
 
-[node name="Range" type="Area2D" parent="PartToRotate"]
+[node name="Range" type="Area2D" parent="PartToRotate" unique_id=911050097]
 scale = Vector2(6, 6)
 collision_layer = 0
 collision_mask = 2
 input_pickable = false
 monitorable = false
 
-[node name="CollisionShape" type="CollisionShape2D" parent="PartToRotate/Range"]
+[node name="CollisionShape" type="CollisionShape2D" parent="PartToRotate/Range" unique_id=210858453]
 shape = SubResource("CircleShape2D_xuf6c")
 
-[node name="Ray" type="RayCast2D" parent="PartToRotate/Range"]
+[node name="Ray" type="RayCast2D" parent="PartToRotate/Range" unique_id=851167005]
 target_position = Vector2(200, 0)
 collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="Render" type="Sprite2D" parent="PartToRotate/Range"]
+[node name="Render" type="Sprite2D" parent="PartToRotate/Range" unique_id=826624810]
 self_modulate = Color(0.588235, 0.219608, 0.94902, 1)
 material = SubResource("ShaderMaterial_3r6fm")
 scale = Vector2(0.4, 0.4)

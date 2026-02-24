@@ -14,6 +14,7 @@ Base = 5.0
 [sub_resource type="Resource" id="Resource_kdiqw"]
 script = ExtResource("2_17ky5")
 Value = -1.0
+Op = 1
 metadata/_custom_type_script = "uid://be3vaboc8v6w0"
 
 [sub_resource type="Resource" id="Resource_rv6ww"]
@@ -25,10 +26,18 @@ _modifiers = Dictionary[Variant, ExtResource("2_17ky5")]({
 })
 Min = 0.0
 
+[sub_resource type="Resource" id="Resource_3v4we"]
+script = ExtResource("2_17ky5")
+Value = -1.0
+metadata/_custom_type_script = "uid://be3vaboc8v6w0"
+
 [sub_resource type="Resource" id="Resource_ohrh3"]
 script = ExtResource("2_kuuri")
 Name = 5
 Base = 1.0
+_modifiers = Dictionary[Variant, ExtResource("2_17ky5")]({
+"default": SubResource("Resource_3v4we")
+})
 Min = 0.0
 
 [sub_resource type="Resource" id="Resource_4ht6e"]

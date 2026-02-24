@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dpuxc7mfhytlw"]
+[gd_scene format=3 uid="uid://dpuxc7mfhytlw"]
 
 [ext_resource type="Script" uid="uid://dx57iyb5nvgwg" path="res://Turrets/Hunter/Hunter.cs" id="1_iwr4r"]
 [ext_resource type="Script" uid="uid://be3vaboc8v6w0" path="res://Abstract/Attributes/Modifier.cs" id="2_nye1k"]
@@ -13,35 +13,24 @@
 script = ExtResource("3_dhfuu")
 Name = 2
 Base = 2000.0
-_modifiers = Dictionary[Variant, ExtResource("2_nye1k")]({})
 Min = 0.0
-Max = inf
 
 [sub_resource type="Resource" id="Resource_yv6ch"]
 script = ExtResource("3_dhfuu")
 Name = 3
 Base = 0.4
-_modifiers = Dictionary[Variant, ExtResource("2_nye1k")]({})
-Min = inf_neg
-Max = inf
 metadata/_custom_type_script = "uid://blnrq5atpcclw"
 
 [sub_resource type="Resource" id="Resource_xwmrl"]
 script = ExtResource("3_dhfuu")
 Name = 14
 Base = 20.0
-_modifiers = Dictionary[Variant, ExtResource("2_nye1k")]({})
-Min = inf_neg
-Max = inf
 metadata/_custom_type_script = "uid://blnrq5atpcclw"
 
 [sub_resource type="Resource" id="Resource_mjoli"]
 script = ExtResource("3_dhfuu")
 Name = 15
 Base = 2.0
-_modifiers = Dictionary[Variant, ExtResource("2_nye1k")]({})
-Min = inf_neg
-Max = inf
 metadata/_custom_type_script = "uid://blnrq5atpcclw"
 
 [sub_resource type="Resource" id="Resource_ts1m3"]
@@ -122,7 +111,7 @@ shader_parameter/glow_color = Color(1, 1, 1, 1)
 shader_parameter/glow_radius = 2.0
 shader_parameter/glow_size = 1.6
 
-[node name="Hunter" type="Node2D" node_paths=PackedStringArray("scopeLine", "shotLine", "shotAnimator", "FirePoint", "Ray", "PartToRotate", "RangeDisplay", "Range")]
+[node name="Hunter" type="Node2D" unique_id=1745159824 node_paths=PackedStringArray("scopeLine", "shotLine", "shotAnimator", "FirePoint", "Ray", "PartToRotate", "RangeDisplay", "Range")]
 script = ExtResource("1_iwr4r")
 scopeLine = NodePath("PartToRotate/Turret/Fire Point/Aim")
 shotLine = NodePath("Shot")
@@ -135,10 +124,10 @@ RangeDisplay = NodePath("PartToRotate/Range/Range")
 Range = NodePath("PartToRotate/Range")
 Stats = SubResource("Resource_ts1m3")
 
-[node name="Base" type="Sprite2D" parent="."]
+[node name="Base" type="Sprite2D" parent="." unique_id=1497538184]
 texture = ExtResource("5_j5jru")
 
-[node name="Shot" type="Line2D" parent="."]
+[node name="Shot" type="Line2D" parent="." unique_id=853779253]
 self_modulate = Color(1.5, 1.5, 1.5, 1)
 z_index = 5
 z_as_relative = false
@@ -146,24 +135,22 @@ width = 50.0
 default_color = Color(0.466667, 0.376471, 0.65098, 1)
 texture_mode = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Shot"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Shot" unique_id=376753101]
 reset_on_save = false
-libraries = {
-&"": SubResource("AnimationLibrary_yv6ch")
-}
+libraries/ = SubResource("AnimationLibrary_yv6ch")
 
-[node name="PartToRotate" type="Node2D" parent="."]
+[node name="PartToRotate" type="Node2D" parent="." unique_id=685968738]
 rotation = -1.5708
 
-[node name="Turret" type="Sprite2D" parent="PartToRotate"]
+[node name="Turret" type="Sprite2D" parent="PartToRotate" unique_id=249839283]
 z_index = 10
 rotation = 1.5708
 texture = ExtResource("6_7if64")
 
-[node name="Fire Point" type="Node2D" parent="PartToRotate/Turret"]
+[node name="Fire Point" type="Node2D" parent="PartToRotate/Turret" unique_id=935811583]
 position = Vector2(0, -100)
 
-[node name="Aim" type="Line2D" parent="PartToRotate/Turret/Fire Point"]
+[node name="Aim" type="Line2D" parent="PartToRotate/Turret/Fire Point" unique_id=1943197212]
 z_index = 5
 z_as_relative = false
 width = 300.0
@@ -171,23 +158,23 @@ width_curve = SubResource("Curve_k1h6c")
 gradient = SubResource("Gradient_nhn4y")
 texture_mode = 2
 
-[node name="Range" type="Area2D" parent="PartToRotate"]
+[node name="Range" type="Area2D" parent="PartToRotate" unique_id=1029002279]
 scale = Vector2(6, 6)
 collision_layer = 0
 collision_mask = 2
 input_pickable = false
 monitorable = false
 
-[node name="SpriteRenderer" type="CollisionShape2D" parent="PartToRotate/Range"]
+[node name="SpriteRenderer" type="CollisionShape2D" parent="PartToRotate/Range" unique_id=416709710]
 shape = SubResource("CircleShape2D_nhn4y")
 
-[node name="Range" type="Sprite2D" parent="PartToRotate/Range"]
+[node name="Range" type="Sprite2D" parent="PartToRotate/Range" unique_id=1490434550]
 self_modulate = Color(0.360784, 0.321569, 0.556863, 1)
 material = SubResource("ShaderMaterial_ldkt0")
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("8_dy3ac")
 
-[node name="RayCast2D" type="RayCast2D" parent="PartToRotate/Range"]
+[node name="RayCast2D" type="RayCast2D" parent="PartToRotate/Range" unique_id=107909670]
 target_position = Vector2(600, 0)
 collision_mask = 2
 collide_with_areas = true

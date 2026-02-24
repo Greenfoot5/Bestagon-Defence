@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://hqx2w2q8weko"]
+[gd_scene format=3 uid="uid://hqx2w2q8weko"]
 
 [ext_resource type="Script" uid="uid://drvqbyytx8ijt" path="res://Turrets/Bullet.cs" id="1_81c6j"]
 [ext_resource type="Texture2D" uid="uid://2gir0cpngs76" path="res://Turrets/Choker/T_Choker_Part.png" id="1_mfbqp"]
@@ -10,11 +10,11 @@
 script = ExtResource("2_cnrae")
 Name = 2
 Base = 45.0
-Min = inf_neg
 
 [sub_resource type="Resource" id="Resource_w0rq4"]
 script = ExtResource("3_5436f")
 Value = -1.0
+Op = 1
 metadata/_custom_type_script = "uid://be3vaboc8v6w0"
 
 [sub_resource type="Resource" id="Resource_i5r3r"]
@@ -42,13 +42,11 @@ _modifiers = Dictionary[Variant, ExtResource("3_5436f")]({
 script = ExtResource("2_cnrae")
 Name = 15
 Base = 20.0
-Min = inf_neg
 
 [sub_resource type="Resource" id="Resource_jks4p"]
 script = ExtResource("2_cnrae")
 Name = 17
 Base = 240.0
-Min = inf_neg
 
 [sub_resource type="Resource" id="Resource_ahd52"]
 script = ExtResource("4_emdjg")
@@ -66,30 +64,30 @@ radius = 150.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_w0rq4"]
 radius = 400.0
 
-[node name="ChokerPart" type="Node2D" node_paths=PackedStringArray("Area", "explodeArea")]
+[node name="ChokerPart" type="Node2D" unique_id=1174104461 node_paths=PackedStringArray("Area", "explodeArea")]
 script = ExtResource("1_81c6j")
 Stats = SubResource("Resource_ahd52")
 Area = NodePath("Area")
 WillHitFirst = true
 explodeArea = NodePath("Area/ExplosionArea")
 
-[node name="Area" type="Area2D" parent="."]
+[node name="Area" type="Area2D" parent="." unique_id=519901892]
 scale = Vector2(0.02, -0.02)
 collision_layer = 0
 collision_mask = 2
 input_pickable = false
 monitorable = false
 
-[node name="Sprite" type="Sprite2D" parent="Area"]
+[node name="Sprite" type="Sprite2D" parent="Area" unique_id=516894491]
 texture = ExtResource("1_mfbqp")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area" unique_id=646112379]
 shape = SubResource("CircleShape2D_81c6j")
 
-[node name="ExplosionArea" type="Area2D" parent="Area"]
+[node name="ExplosionArea" type="Area2D" parent="Area" unique_id=493941787]
 collision_layer = 0
 collision_mask = 2
 monitorable = false
 
-[node name="ExplosionShape" type="CollisionShape2D" parent="Area/ExplosionArea"]
+[node name="ExplosionShape" type="CollisionShape2D" parent="Area/ExplosionArea" unique_id=654248007]
 shape = SubResource("CircleShape2D_w0rq4")
